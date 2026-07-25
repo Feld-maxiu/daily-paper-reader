@@ -1,0 +1,345 @@
+{
+  "date": "20260716-20260725",
+  "date_label": "2026-07-16 ~ 2026-07-25",
+  "generated_at": "2026-07-25 13:30:24 UTC",
+  "recommend_exists": true,
+  "run_count": 1,
+  "papers": [
+    {
+      "paper_id": "2607.16716v1",
+      "route": "20260716-20260725/2607.16716v1-recon-benchmarking-agent-memory-for-compositional-reasoning-over-long-contexts",
+      "title": "RECON: Benchmarking Agent Memory for Compositional Reasoning over Long Contexts",
+      "section": "deep",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 10.0,
+      "evidence": "针对长上下文组合推理的智能体记忆基准",
+      "first_seen_at": "2026-07-25 13:30:24 UTC",
+      "updated_at": "2026-07-25 13:30:24 UTC"
+    },
+    {
+      "paper_id": "2607.17621v1",
+      "route": "20260716-20260725/2607.17621v1-mechanistic-attention-guidance-for-agent-memory-refinement",
+      "title": "Mechanistic Attention Guidance for Agent Memory Refinement",
+      "section": "deep",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 10.0,
+      "evidence": "利用检索头注意力揭示记忆利用模式并指导优化",
+      "first_seen_at": "2026-07-25 13:30:24 UTC",
+      "updated_at": "2026-07-25 13:30:24 UTC"
+    },
+    {
+      "paper_id": "2607.14485v1",
+      "route": "20260716-20260725/2607.14485v1-step-level-preference-learning-for-generative-agents-in-social-simulations",
+      "title": "Step-Level Preference Learning for Generative Agents in Social Simulations",
+      "section": "deep",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 9.0,
+      "evidence": "生成式代理中的记忆检索步骤，偏好学习",
+      "first_seen_at": "2026-07-25 13:30:24 UTC",
+      "updated_at": "2026-07-25 13:30:24 UTC"
+    },
+    {
+      "paper_id": "2607.15657v1",
+      "route": "20260716-20260725/2607.15657v1-do-agents-dream-of-false-memories-black-box-visual-attacks-on-long-term-memory-in-multimodal-ai-agents",
+      "title": "Do Agents Dream of False Memories? Black-box Visual Attacks on Long-term Memory in Multimodal AI Agents",
+      "section": "deep",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 9.0,
+      "evidence": "针对多模态代理的长期记忆，记忆投毒攻击",
+      "first_seen_at": "2026-07-25 13:30:24 UTC",
+      "updated_at": "2026-07-25 13:30:24 UTC"
+    },
+    {
+      "paper_id": "2607.15660v1",
+      "route": "20260716-20260725/2607.15660v1-toolverse-unlocking-massive-environments-and-long-horizon-tasks-for-agentic-reinforcement-learning",
+      "title": "ToolVerse: Unlocking Massive Environments and Long-Horizon Tasks for Agentic Reinforcement Learning",
+      "section": "deep",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 9.0,
+      "evidence": "自动构建大规模智能体强化学习环境，使用工具依赖图进行长程推理",
+      "first_seen_at": "2026-07-25 13:30:24 UTC",
+      "updated_at": "2026-07-25 13:30:24 UTC"
+    },
+    {
+      "paper_id": "2607.15715v1",
+      "route": "20260716-20260725/2607.15715v1-behavioral-controllability-of-agentic-models-for-information-extraction-from-fixed-workflows-to-reflective-agents",
+      "title": "Behavioral Controllability of Agentic Models for Information Extraction: From Fixed Workflows to Reflective Agents",
+      "section": "deep",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 9.0,
+      "evidence": "评估带有记忆使用的反思型智能体用于信息抽取",
+      "first_seen_at": "2026-07-25 13:30:24 UTC",
+      "updated_at": "2026-07-25 13:30:24 UTC"
+    },
+    {
+      "paper_id": "2607.15901v1",
+      "route": "20260716-20260725/2607.15901v1-dsworld-a-data-science-world-model-for-efficient-autonomous-agents",
+      "title": "DSWorld: A Data Science World Model for Efficient Autonomous Agents",
+      "section": "deep",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 9.0,
+      "evidence": "引入数据科学世界模型，通过基于LLM的模拟器预测状态转换",
+      "first_seen_at": "2026-07-25 13:30:24 UTC",
+      "updated_at": "2026-07-25 13:30:24 UTC"
+    },
+    {
+      "paper_id": "2607.16900v2",
+      "route": "20260716-20260725/2607.16900v2-environment-free-synthetic-data-generation-for-api-calling-agents",
+      "title": "Environment-free Synthetic Data Generation for API-Calling Agents",
+      "section": "deep",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 9.0,
+      "evidence": "LLM作为数字世界模型为代理模拟生成轨迹",
+      "first_seen_at": "2026-07-25 13:30:24 UTC",
+      "updated_at": "2026-07-25 13:30:24 UTC"
+    },
+    {
+      "paper_id": "2607.17038v1",
+      "route": "20260716-20260725/2607.17038v1-reward-driven-llm-agent-workflows-synthesizing-pomdp-routing-and-self-correction-for-autonomous-decision-making",
+      "title": "Reward-Driven LLM Agent Workflows: Synthesizing POMDP Routing and Self-Correction for Autonomous Decision-Making",
+      "section": "deep",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 9.0,
+      "evidence": "融合POMDP路由与自校正奖励模型，用于强化学习驱动的自主决策",
+      "first_seen_at": "2026-07-25 13:30:24 UTC",
+      "updated_at": "2026-07-25 13:30:24 UTC"
+    },
+    {
+      "paper_id": "2607.18840v1",
+      "route": "20260716-20260725/2607.18840v1-worldscape-policy-20-empowering-steerable-world-action-modeling-with-reasoning-augmented-memory",
+      "title": "WorldScape Policy 2.0: Empowering Steerable World Action Modeling with Reasoning-Augmented Memory",
+      "section": "deep",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 9.0,
+      "evidence": "为世界动作模型引入推理增强的长短期记忆",
+      "first_seen_at": "2026-07-25 13:30:24 UTC",
+      "updated_at": "2026-07-25 13:30:24 UTC"
+    },
+    {
+      "paper_id": "2607.19555v1",
+      "route": "20260716-20260725/2607.19555v1-chmas-a-coupled-hierarchical-framework-for-multi-agent-reinforcement-learning",
+      "title": "CHMAS: A Coupled Hierarchical Framework for Multi-Agent Reinforcement Learning",
+      "section": "deep",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 9.0,
+      "evidence": "提出了一种用于多智能体强化学习的耦合分层框架",
+      "first_seen_at": "2026-07-25 13:30:24 UTC",
+      "updated_at": "2026-07-25 13:30:24 UTC"
+    },
+    {
+      "paper_id": "2607.19739v1",
+      "route": "20260716-20260725/2607.19739v1-personalized-recommendation-tool-learning-via-autonomous-language-agents",
+      "title": "Personalized Recommendation Tool Learning via Autonomous Language Agents",
+      "section": "deep",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 9.0,
+      "evidence": "提出基于记忆的智能体框架克服推荐中LLM的局限性",
+      "first_seen_at": "2026-07-25 13:30:24 UTC",
+      "updated_at": "2026-07-25 13:30:24 UTC"
+    },
+    {
+      "paper_id": "2607.19809v1",
+      "route": "20260716-20260725/2607.19809v1-dreamer-cpc-message-learning-with-world-models-for-decentralized-multi-agent-reinforcement-learning",
+      "title": "Dreamer-CPC: Message Learning with World Models for Decentralized Multi-agent Reinforcement Learning",
+      "section": "deep",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 9.0,
+      "evidence": "提出一种基于世界模型的去中心化多智能体强化学习方法",
+      "first_seen_at": "2026-07-25 13:30:24 UTC",
+      "updated_at": "2026-07-25 13:30:24 UTC"
+    },
+    {
+      "paper_id": "2607.20064v1",
+      "route": "20260716-20260725/2607.20064v1-pro-long-programmatic-memory-enables-long-horizon-reasoning",
+      "title": "PRO-LONG: Programmatic Memory Enables Long-Horizon Reasoning",
+      "section": "deep",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 9.0,
+      "evidence": "程序化记忆使LLM智能体能够进行长时域推理",
+      "first_seen_at": "2026-07-25 13:30:24 UTC",
+      "updated_at": "2026-07-25 13:30:24 UTC"
+    },
+    {
+      "paper_id": "2607.14548v1",
+      "route": "20260716-20260725/2607.14548v1-hymobileagent-data-environment-co-scaling-for-efficient-gui-agents",
+      "title": "HyMobileAgent: Data-Environment Co-Scaling for Efficient GUI Agents",
+      "section": "quick",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 8.0,
+      "evidence": "移动GUI代理处理视觉和文本模态",
+      "first_seen_at": "2026-07-25 13:30:24 UTC",
+      "updated_at": "2026-07-25 13:30:24 UTC"
+    },
+    {
+      "paper_id": "2607.15257v1",
+      "route": "20260716-20260725/2607.15257v1-searchos-v1-towards-robust-open-domain-information-seeking-agent-collaboration",
+      "title": "SearchOS-V1: Towards Robust Open-Domain Information-Seeking Agent Collaboration",
+      "section": "quick",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 8.0,
+      "evidence": "将隐式搜索进度转化为显式持久共享状态来增强智能体记忆",
+      "first_seen_at": "2026-07-25 13:30:24 UTC",
+      "updated_at": "2026-07-25 13:30:24 UTC"
+    },
+    {
+      "paper_id": "2607.18580v1",
+      "route": "20260716-20260725/2607.18580v1-step-signal-temporal-logic-for-precise-specifications-for-action-generation-with-vision-language-models",
+      "title": "STeP: Signal Temporal Logic for Precise Specifications for Action Generation with Vision Language Models",
+      "section": "quick",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 8.0,
+      "evidence": "使用视觉语言模型处理多模态指令以生成机器人动作",
+      "first_seen_at": "2026-07-25 13:30:24 UTC",
+      "updated_at": "2026-07-25 13:30:24 UTC"
+    },
+    {
+      "paper_id": "2607.21361v1",
+      "route": "20260716-20260725/2607.21361v1-fedagentke-federated-semantic-knowledge-evolution-for-heterogeneous-agents",
+      "title": "FedAgentKE: Federated Semantic Knowledge Evolution for Heterogeneous Agents",
+      "section": "quick",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 8.0,
+      "evidence": "通过记忆蒸馏和聚合实现跨智能体的联邦语义知识演化",
+      "first_seen_at": "2026-07-25 13:30:24 UTC",
+      "updated_at": "2026-07-25 13:30:24 UTC"
+    },
+    {
+      "paper_id": "2607.17269v1",
+      "route": "20260716-20260725/2607.17269v1-an-explicit-world-model-based-on-data-first-ontology-daoql-multimodal-storage-validation-and-counterfactual-reasoning-evaluation",
+      "title": "An Explicit World Model Based on Data-First Ontology: DaoQL Multimodal Storage Validation and Counterfactual Reasoning Evaluation",
+      "section": "quick",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 7.0,
+      "evidence": "提出面向高精度领域的显式多模态世界模型",
+      "first_seen_at": "2026-07-25 13:30:24 UTC",
+      "updated_at": "2026-07-25 13:30:24 UTC"
+    },
+    {
+      "paper_id": "2607.17780v1",
+      "route": "20260716-20260725/2607.17780v1-etas-an-effect-typed-language-for-agent-systems",
+      "title": "ETAS: An Effect-Typed Language for Agent Systems",
+      "section": "quick",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 7.0,
+      "evidence": "在智能体语言设计中将类型化内存视为语义程序元素",
+      "first_seen_at": "2026-07-25 13:30:24 UTC",
+      "updated_at": "2026-07-25 13:30:24 UTC"
+    },
+    {
+      "paper_id": "2607.19190v2",
+      "route": "20260716-20260725/2607.19190v2-agentic-real2sim-physics-based-world-modeling-with-vision-language-agents",
+      "title": "Agentic Real2Sim: Physics-based World Modeling with Vision-Language Agents",
+      "section": "quick",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 6.0,
+      "evidence": "视觉-语言代理将真实记录转换为可模拟孪生环境",
+      "first_seen_at": "2026-07-25 13:30:24 UTC",
+      "updated_at": "2026-07-25 13:30:24 UTC"
+    }
+  ]
+}

@@ -1,0 +1,1013 @@
+Title: ETAS: An Effect-Typed Language for Agent Systems
+
+URL Source: https://arxiv.org/pdf/2607.17780v1
+
+Published Time: Tue, 21 Jul 2026 01:44:05 GMT
+
+Number of Pages: 27
+
+Markdown Content:
+# Etas : An Effect-Typed Language for Agent Systems ∗
+
+HUIRI TAN, The Hong Kong University of Science and Technology, Hong Kong 
+
+YIKUN WANG, The Hong Kong University of Science and Technology, Hong Kong 
+
+PUYANG ZHANG, The Hong Kong University of Science and Technology, Hong Kong 
+
+SHANGYU LI, The Hong Kong University of Science and Technology, Hong Kong 
+
+JIASI SHEN, The Hong Kong University of Science and Technology, Hong Kong 
+
+Etas is a programming language designed for agent systems. It treats model-backed agents, tool calls, prompts, typed memory, human approvals, policies, and execution traces as semantic program elements rather than library conventions. The central idea is to separate deterministic computation from agentic nondeterminism and externally visible actions, while retaining the direct programming style expected by application programmers. This paper presents the core design of Etas . The static semantics assigns ordinary types to values through typing with spec conformance and an active monitor context. A computation is checked with two behavioral indices: an escaping effect row and a persistent abstraction of the typed action trace it may request. Specs form a terminating compile-time constraint calculus: type specs provide evidence for polymorphism and resource facts, callable specs constrain function and stage shapes, and trace specs normalize into TraceSpecAlgebra 
+
+objects over allow, deny, and temporal constraints. Typing checks the requested trace against monitors compiled from these trace objects and emits explicit residual obligations when dynamic resources prevent a complete static proof. The dynamic semantics records requested, handled, denied, and committed events, and mediates concrete actions against policies, handlers, deployment permissions, effect boundaries, and the current trace prefix. We formalize a core calculus where source declarations elaborate to checked callable descriptors and handlers mediate typed actions without erasing their traces. We state preservation, progress, type/effect soundness, handler trace-transparency, and policy safety. We implemented an Etas prototype in Rust with a user-facing CLI, typed HIR checks, effect/policy diagnostics, handler checks, and trace-aware execution hooks. The result is a PL foundation for building agent systems whose authorization, nondeterminism, recovery behavior, and audit evidence can be reasoned about before and during execution, even when handlers make some requested effects non-escaping. CCS Concepts: • Software and its engineering → Formal language definitions ; • Theory of computation 
+
+→ Program semantics. Additional Key Words and Phrases: programming languages, agent systems, effects, policy enforcement, semantics 
+
+1 Introduction 
+
+Agent systems are already programs, but they are not yet treated as programs. A production agent application has control flow, state, data dependencies, nondeterministic subcomputations, externally visible effects, resource contracts, failure recovery paths, and audit traces. It branches, calls tools, updates memory, delegates to specialized agents, asks humans for approval, retries failed work, and resumes from checkpoints. Yet the dominant way to build such systems is still framework-level composition: a programmer writes ordinary host-language code around prompt templates, tool registries, vector stores, model providers, guardrails, and logging hooks. Addressing this mismatch is the central motivation for Etas . The logical structure of an agent system is program structure, but it is commonly represented as host-language objects, callbacks, configuration files, and operational logs rather than as source-level syntax with types, effects, and semantics. As a result, questions that should be answered by a programming language are answered by convention. Which actions may a model request? Which memory regions may an agent read or write? Was approval obtained before a high-impact action? Can a run be replayed without  
+
+> ∗Etas project repository: https://github.com/etas-project/etas. arXiv:2607.17780v1 [cs.PL] 20 Jul 2026
+
+2 Tan et al.             
+
+> from typing_extensions import TypedDict
+> from langgraph.graph import StateGraph, START, END
+> class State(TypedDict): topic: str draft: str approved: bool
+> def draft(s: State):
+> return {"draft": call_model(s["topic"])}
+> def publish(s: State):
+> if s["approved"]: send_email(s["draft"])
+> return {} g = StateGraph(State) g.add_node("draft", draft) g.add_node("publish", publish) g.add_edge(START, "draft") g.add_edge("draft", "publish") g.add_edge("publish", END) app = g.compile()
+
+(a) Framework graph.              
+
+> @model("reasoner")
+> agent Draft(req: DraftRequest) →Report {
+> let prompt = Prompt.new() .system(Trusted("Draft a short update.")) .data(req);
+> return perform infer <Report>(prompt); }
+> spec PublishPolicy: trace =+Approval.request & +CompanyEmail.send<WorkAccount> & (Approval.request >> CompanyEmail.send<WorkAccount>);
+> flow publish(req: DraftRequest) →unit ![Approval.request, CompanyEmail.send<WorkAccount>] ~ PublishPolicy {
+> let draft = Draft.run(req);
+> if std.ui.approve("send draft", draft, risk = High) {
+> perform CompanyEmail.send(WorkAccount, req.to, "Draft update", draft.markdown); }}
+
+(b) Etas program. 
+
+Fig. 1. Draft-approve-publish workflow in framework code and Etas . The framework graph exposes state and callback order but not email authority or approval dominance; Etas makes inference, effects, and 
+
+PublishPolicy source-level facts for static checking, audit, and replay. 
+
+repeating an irreversible operation? Does untrusted text flow into a privileged prompt channel? Can a retry duplicate an irreversible side effect? These are not merely framework engineering questions. They are questions about the meaning of a program. 
+
+A missing programming-language account. Figure 1 makes the mismatch concrete by showing the same draft-approve-publish workflow in two representations. The left panel uses the documented shape of LangGraph’s StateGraph API [ 17 ]. Its code structure merely exposes The graph, state schema, and node order without deeper semantic information. The right panel expresses the same workflow as an Etas program, where rich semantic information such as model inference, approval, policy, and email are exposed as source-level facts. The design of Etas enables the static analysis and optimization for agent systems. The example is deliberately small. Static analysis is difficult in the framework version because neither the state schema nor the graph edges say that publish may send email, that approved is an approval token with a particular scope and freshness, or that every path to the email action is dominated by an approval event. A framework can add runtime middleware, interrupts, or guardrails, but the property is not a source-level effect and policy fact. In the Etas version, static analysis is easier because the email authority appears as the action CompanyEmail .send ⟨WorkAccount ⟩, the flow’s effect row exposes possible approval and email actions, and PublishPolicy is a trace spec stating the temporal obligation that approval must precede email. Similarly, optimization is difficult in the framework version, because draft is a nondeterministic model call and publish may perform an irreversible external action, but both are ordinary Python callbacks. In Etas , optimization is easier because Draft.run records the requested action Agentic .infer ⟨Draft .run , Report ⟩, and perform CompanyEmail.send gives the compiler and runtime the distinction they need for replay, caching, scheduling, residual policy checks, and deployment manifests, rather than reconstructing those facts from callback code and logs. Etas 3
+
+Table 1. Capability comparison across representative agent frameworks, effect languages, and coordination-oriented programming models. Check marks, triangles, and crosses denote native, partial, and absent support.                                                                                   
+
+> System Agent constructs Typed communication Effect/action inference Policy automata Approval and limits Prompt trust Semantic trace/replay Runtime enforcement LangGraph / LangChain [17]
+> △△✗✗△△✓△
+> AutoGen [23] △△✗✗△△△△
+> CrewAI [8] △△✗✗△△△△
+> Eino [6] △△✗✗△✗△△
+> OpenAI Agents SDK [ 25 ]△△✗✗△△△△
+> Microsoft Agent Frame-work [22]
+> △△✗✗△✗△△
+> Koka / Links / Frank-style effect languages [ 13 ,18 –20]
+> ✗✗✓✗✗✗✗△
+> Capability/effect systems [4]
+> ✗✗✓✗✗✗✗△
+> Choral / choreographic programming [1, 11]
+> ✗✓✗✗✗✗✗△
+> Etas ✓✓✓✓✓✓✓✓
+
+If agent systems are programs, then the relevant program elements are not only expressions, functions, and modules. They also include flows, agents, model-callable tools, prompt values, typed memory regions, policies, approvals, handlers, runtime resource limits, and traces. A language for agent systems should make these elements explicit enough to check, compile, execute, audit, replay, and optimize them. Table 1 summarizes the current gap by capability rather than by implementation mechanism. Contemporary agent frameworks provide orchestration, memory, human-in-the-loop controls, guardrails, tracing, and deployment, but expose them mainly as host-language APIs or platform services [ 6 , 8 , 17 , 22 , 23 , 25 ]. Conversely, effect languages provide a well-founded account of typed effects and handlers [ 13 , 19 , 20 ], but they are not designed around model inference, model-callable tools, approval-dominated side effects, prompt trust, durable traces, or replay. The missing point is a language whose semantic objects are precisely the authority, policy, nondeterminism, and trace boundaries that agent frameworks currently manage outside the type system. 
+
+Etas is our answer to this missing account. It does not try to make model outputs deterministic, to replace the platforms that host agent workloads, or to present agents, effects, policies, and monitors as separate inventions. The contribution is their combination as one language semantics: agentic nondeterminism, authority-bearing actions, trace safety specs, and typed tool surfaces are checked and executed as parts of the same program. 
+
+First-class agent structure. In Etas , an agent is not an SDK object hidden behind a class interface. It is a compiler-visible semantic node. An agent declaration has input and output types, a model-inference boundary, a tool surface, prompt and context construction, nondeterminism, trace and replay behavior, and an action summary. A flow that calls an agent is therefore not merely calling a Python callback. It is entering a typed region in which model-backed inference may occur, selected tools may be requested, and trace events may be produced. This is what lets the compiler reason about agent fusion, tool-surface specialization, context-harness optimization, effect-aware scheduling, checkpointing, replay, and audit, rather than rediscovering these facts from framework objects and logs. 4 Tan et al. 
+
+Action-centric effects. Etas follows typed effect systems and algebraic effects [ 2 , 18 , 19 , 26 , 27 ], but it uses effects for the semantics of an agent runtime rather than as unrestricted programmable control. An effect name describes a behavioral family, such as company email or filesystem access. An action is the concrete authority boundary inside that family: sending through a work account and reading a path within a reports root are different parameterized actions. A perform is a traceable, interceptable, auditable runtime event. Handlers may interpret selected action requests for testing, replay, recovery, or host adaptation, but handlers do not grant authority. Authorization remains a property of the active effect boundary, deployment grants, policy, approval evidence, and sandboxing. This distinction matters because handling an action should not erase the fact that the action was requested. A conventional effect handler may explain an operation and thereby remove the corresponding obligation from the caller. That is the right account for control, but it is not enough for safety and audit in agent systems. If a flow attempts to send email and a dry-run handler intercepts the request, no external email is committed; nevertheless, the attempt is still relevant to authorization, replay, and audit. Etas therefore separates the effects that still escape to the caller from the action requests that occurred along the way. A handler may discharge the control obligation for CompanyEmail.send , but the trace still records that the program asked for email authority. Agent-runtime actions such as model inference are treated in the same spirit: they are visible to trace planning, policy, and replay even when they are not exposed as ordinary user-facing effects. 
+
+Specs as static constraints. Etas uses spec as a uniform compile-time abstraction for constraints over types, callable shapes, and traces. Trace specs are the source-level form of safety policy, but they are only one branch of the same conformance system. Type specs provide trait-like evidence for polymorphic functions and resource relations; callable specs constrain flow, tool, and agent-method shapes; trace specs constrain requested actions. During checking, type specs produce witnesses and callable specs produce callable artifacts in the static signature. Trace specs are kind-checked, normalized to TraceSpecAlgebra objects, compiled to monitors, and used during typing to check the requested-action abstraction. When the compiler can prove that the requested trace satisfies the active monitors, no run-time check is needed. When the answer depends on run-time information such as paths, tenants, approval freshness, or model-chosen tool arguments, the compiler makes that obligation explicit as a residual check. When the monitor is definitely violated, the program is rejected. 
+
+System consequences. The semantic split above yields system-level capabilities that are hard to obtain when agent behavior is scattered across callbacks, middleware, logs, and deployment configuration. For safety, the compiler can detect missing approvals, forbidden resource access, hidden authority, prompt-trust violations, and tools that expose effects outside their declared surface. For reliability, trace, replay, resampling, checkpointing, and bounded execution are language-level semantics rather than framework conventions. For optimization, the compiler can use agent/action summaries to specialize tool surfaces, fuse compatible agent regions, optimize context construction, and schedule around effects. For auditability, every action request, handler decision, approval, tool call, commit, and denial belongs to the same typed trace vocabulary. For enforcement, static analysis and dynamic monitoring are deliberately connected: static checking is conservative, and every obligation it cannot prove is made explicit as a residual runtime check. 
+
+Contributions. This paper makes the following contributions. (1) We identify first-class semantic constructs for production agent systems: flows, agents, model-callable tools, typed prompts and messages, scoped memory, approvals, handlers, Etas 5
+
+and traces. These constructs make model inference, tool surfaces, context harnesses, replay, and nondeterminism visible to the compiler. (2) We formalize an action-centric effect system in Core Etas , a small calculus that separates values from computations, deterministic flow calls from agentic inference, escaping effects from persistent requested-action traces, and ordinary tool values from authority-bearing action requests. (3) We give a static semantics based on typing with spec conformance. The type-and-effect system distinguishes effects that escape to callers from typed actions that may be requested even when handlers interpret them. The static signature carries declaration summaries and conformance evidence, while any obligation that cannot be proved statically is made explicit as a residual run-time check. (4) We define spec as a unified compile-time calculus for type, callable, and trace constraints. Type specs provide evidence for trait-like polymorphism, callable specs constrain function and stage polymorphism, and trace specs normalize to TraceSpecAlgebra objects that compile to monitors, where automata and abstract interpretation produce either a static proof, residual checks, or rejection. (5) We give a dynamic semantics in which every concrete action is split into request, handled, denied, and commit events. Request events are policy-visible; commit events require effect-boundary, deployment, approval, and sandbox authorization. We state the corresponding preservation, progress, type-soundness, effect-soundness, handler trace-transparency, and policy-safety theorems. (6) We implement a prototype in Rust: a user-facing compiler and interpreter, typed HIR check-ing, effect/policy commands, handler diagnostics, package metadata, checkpoint/resume interfaces, interpreter-enforced token and attempt limits, and a test suite of source fixtures. We also evaluate our approach for ensuring the safety, reliability, optimization, audit, and static–dynamic enforcement benefits of the design. 
+
+Paper structure. Section 2 first develops the language through a running example. Section 3 then defines the core calculus. Section 4 presents types, effects, trace specs, TraceSpecAlgebra , policy automata, and abstract interpretation. Section 5 defines traces and runtime enforcement. Section 6 states the main safety theorems. Section 7 and Section 8 discuss the prototype and evaluation plan, and Section 9 situates the design among effects, handlers, capabilities, runtime monitoring, choreographic languages, and agent-oriented programming models. Section 10 concludes. 
+
+2 Overview 
+
+This section introduces Etas through a small but representative agent workflow. The syntax is intentionally surface-level. The core calculus used for the formal development appears in Section 3. 
+
+A safe report-writing workflow. Consider an organization that uses an agent to prepare a technical report from a project workspace. The workflow in Figure 2 may search the web, read a typed memory region containing prior reports, ask a model to draft prose, write a file, and send a notification. Two properties are required. First, workspace writes and email sends must be explicitly approved. Second, secret values may be read by deterministic code but must not be placed in a model prompt unless they are declassified. The figure illustrates four separations that are central to the language. First, the agent method is ordinary checked code that constructs a Prompt and reaches model nondeterminism only at 
+
+perform infer ⟨Report ⟩; it does not perform publishing. Second, @tools([search_web]) exposes a model-callable boundary to the agent without granting ambient authority to the surrounding flow. Third, memory access is typed and effectful. The report agent may read prior reports, while 6 Tan et al. 
+
+type ProjectMemorySchema = MemoryRegion<{ Reports: Store<ReportId, Report>, Secrets: Store<SecretId, SecretValue<string>>, }>; 
+
+let ProjectMemory = std.memory.region<ProjectMemorySchema>(stable_id = "project_memory", store = "project-main"); 
+
+tool search_web(q: string) → SearchResults ![Web.search<_>]; 
+
+tool write_report(path: string, body: string) → unit ![ProjectWorkspace.write<"reports/**">]; 
+
+tool notify(owner: UserId, path: string) → unit ![CompanyEmail.send<WorkAccount>]; 
+
+flow DraftPrompt(req: DraftRequest) → Prompt ![Memory.read<ProjectMemory.Reports>] { 
+
+let prior = ProjectMemory.Reports.get(req.related); 
+
+return Prompt.new() .system(Trusted("Write a concise technical report.")) .data({ request = req, prior }); }@model("GPT-5.5-Pro") @tools([search_web]) @limits([Tokens(12000), Attempts(2)]) 
+
+agent DraftReport(req: DraftRequest) → Report ![Memory.read<ProjectMemory.Reports>, Web.search<_>] { 
+
+return perform infer <Report>(DraftPrompt(req)); }
+
+spec ApprovalBefore<A: Action> = +Approval.request & +A & (Approval.request >> A); 
+
+spec PublishPolicy = ApprovalBefore<ProjectWorkspace.write<"reports/**">> & ApprovalBefore<CompanyEmail.send< WorkAccount>>; 
+
+flow publish_report(req: DraftRequest) → ReportPath ![Web.search<_>, Memory.read<ProjectMemory.Reports>, Approval.request, ProjectWorkspace.write<"reports/**">, CompanyEmail.send<WorkAccount>, Error<PolicyDenied>] ~ PublishPolicy {
+
+let draft = DraftReport.run(req); 
+
+let path = "reports/" + req.id + ".md"; 
+
+if !std.ui.approve("Publish report?", draft, risk = High) { abort("publish rejected"); } write_report(path, draft.markdown); 
+
+if !std.ui.approve("Notify owner?", req.owner, risk = Medium) { abort("notify rejected"); } notify(req.owner, path); 
+
+return path; }
+
+Fig. 2. Surface Etas program for safe report drafting and publication. The example exposes typed memory, tool action rows, model/tool configuration, resource limits, and ApprovalBefore trace specs. The publish_report 
+
+row bounds escaping actions; dynamic facts such as exact paths or approval freshness remain residual checks. Limits are operational, not part of the Core Etas metatheory. 
+
+values from ProjectMemory.Secrets are SecretValue s and are not prompt-encodable unless an explicit declassification flow is used. Fourth, the approvals are ordinary support-flow calls whose effect is visible in the row, while the policy is written as a trace spec that gives them temporal meaning over the requested trace. The @limits annotation additionally gives the interpreter a token-and-attempt contract for model execution. This is an operational language feature rather than part of the Core Etas effect-and-trace metatheory. 
+
+Effects summarize obligations, traces summarize requests. The type of publish_report contains not only its input and output types, but also a row of effects that may escape to the caller. The row is an upper bound on escaping obligations: a particular execution may not search the web if the model does not invoke the search tool, but any execution that commits a search through the default runtime must do so through the declared action. This matches the practical role of row-typed effects in Koka [ 18 , 19 ], while shifting the domain from exceptions, state, or iterators to authority-bearing agent runtime operations. Etas 7
+
+Table 2. Selected static facts inferred for the overview example.                     
+
+> Category Property Inferred fact Structure Model boundary records Agentic .infer ⟨DraftReport .run ,Report ⟩
+> Tool surface exposes web search only through search_web
+> Authority Tool actions may search web, write workspace, send email Memory actions may read ProjectMemory.Reports
+> Requested trace includes model, approval, write, and email requests Policy Approval obligations approval before write and email Secret flow secret-to-model path rejected or residual-checked Runtime Trace plan checkpoint model, tool, approval, and write events Deployment plan manifests required actions and residual checks Resource contract interpreter-enforced token and attempt limits
+
+The public row contains ordinary escaping actions, such as workspace writes under reports/ ,memory reads, approval requests, and email sends. Separately, the compiler records a requested-action trace abstraction, including metadata such as Agentic .infer ⟨DraftReport .run , Report ⟩ for the inference operation inside the agent method. This abstraction is consumed by the runtime provider, policy checker, trace system, and replay engine; it is not identical to the set of effects that remain unhandled. The distinction matters because a model call is not a tool call and not a deterministic function call: it is a controlled point of nondeterminism. 
+
+Trace specs compile to policies. PublishPolicy is a compile-time trace spec, not a runtime callback. The reusable spec function ApprovalBefore ⟨𝐴 ⟩ abstracts the common constraint that an approval request is allowed, the target action is allowed, and the approval must precede the target action. Instantiating it for workspace writes and email sends beta-reduces at compile time to a TraceSpecAlgebra normal form containing allow rules and temporal obligations. These obligations are not local type constraints. They require a temporal relation between events: a trace prefix ending in a workspace-write action is permitted only if the prefix already contains a suitable 
+
+Approval.request event with a matching scope. Etas compiles TraceSpecAlgebra objects to finite monitors over typed action traces. The static checker then interprets the program over an abstract trace domain; if every abstract trace is accepted by the monitor, the trace spec is statically discharged. If a clause depends on dynamic data, such as the exact report path or approval freshness, the compiler emits a residual runtime check. This is only the trace-kind branch of spec . Type specs resolve to evidence for generic functions and resource-indexed actions; callable specs constrain the shape and effect row of flows, tools, generated agent methods, and composed stages. 
+
+Handled does not mean invisible. Suppose a test wants to replace notify with a mock implemen-tation. Etas supports a scoped handler for the email request. If the handler turns the send into a dry run, the email effect no longer escapes to the caller: 
+
+DryRunEmail : EmailRequest -> EmailResult ![] 
+
+𝐴 ∋ request (CompanyEmail .send ⟨WorkAccount ⟩) .
+
+Thus the handler eliminates the caller’s control obligation but not the audit fact that the program requested email. Policy can still inspect that request, and a real commit still requires the active effect boundary, deployment grants, policy, and sandboxing. This restriction intentionally differs from 8 Tan et al. 
+
+𝑥 ∈ Var 𝑝 ∈ Primitives 𝑐 ∈ CallableName 
+
+𝑎 0 ∈ ActionLabel 
+
+handler arms 𝑟 :: = 𝑎 0 (𝑥 ) ⇒ 𝑒 
+
+handler values ℎ :: = handler {𝑟 }
+
+value 𝑣 :: = 𝑥 | 𝑝 | ⟨ ℓ𝑖 = 𝑣 𝑖 ⟩𝑖 ∈𝐼 | 𝜆𝑥 .𝑒 | ℎ
+
+expr 𝑒 :: = 𝑣 | 𝑒 1 𝑒 2 | let 𝑥 = 𝑒 1 in 𝑒 2
+
+| if 𝑒 then 𝑒 1 else 𝑒 2 | call 𝑐 (𝑒 ) | perform 𝑎 0 (𝑣 )| handle 𝑒 with 𝑒 ℎ
+
+| resume 𝑒 | finish 𝑒    
+
+> Fig. 3. Selected internal syntax of Core Etas . The figure lists metavariables, handler arms and values, ordinary values, and expressions. Named calls enter checked callable boundaries, performed actions request typed authority, and resume /finish are accepted only in handler-arm mode.
+
+fully general algebraic effects [ 15 , 20 , 27 ]. The goal is not to make all control effects programmable. The goal is to let tests, replay, recovery, and host adapters interpret selected runtime actions without undermining the authority model. 
+
+What the compiler learns. From the example, the compiler can extract the summary shown in Table 2. This summary is useful before execution: it drives diagnostics, deployment manifests, policy checks, scheduling decisions, and trace planning. 
+
+3 Core Etas 
+
+Core Etas is an internal calculus. It is not intended to be the full surface language. Its purpose is to isolate the semantic commitments that make agent programs analyzable: values are separated from effectful computations; agent and tool boundaries are represented by checked descriptors; external authority is represented by performed actions; and every action produces a trace event. 
+
+3.1 Syntax 
+
+Figure 3 gives the selected internal grammar. Primitive 𝑝 covers unit, booleans, numbers, and strings; values also include records, unary functions, and first-class handlers. Expressions add call-by-value application and binding, checked calls, performed actions, and handler application. A handler packages action arms as a value. Its arm-local resume and finish forms are checked only by the affine arm judgment in Figure 6; we write 𝑢 when an expression is checked in that mode. Source declarations are not core expressions. Flows, agent methods, tools, and standard-library wrappers elaborate to checked callable descriptors 𝑐 , with summaries Ξ(𝑐 ) = 𝜏 𝑖 ⇒ 𝜏 𝑜 ! 𝜖 ⊲ 𝐴 and unary implementations obtained through body (𝑐 ). Named entry calls use call 𝑐 (𝑒 ), while local higher-order code uses ordinary application; multi-argument functions elaborate by nesting. Specs likewise remain in the declaration layer: type and callable conformance contribute evidence to Ξ,whereas trace specs compile to the monitor context Π. They are never runtime redexes. A core program is therefore an entry expression 𝑒 0 together with Ξ, Π, and the meta-level body lookup; agent and tool metadata is observed through callable and action signatures rather than additional expression forms. An elaborated action label 𝑎 0 is an opaque authority name whose static resource arguments have already been resolved. Its signature in Ξ determines argument and result types, the escaping Etas 9
+
+row, and a requested-trace template. We write 𝑎 = 𝑎 0 (𝑣 ) for a concrete instance. Inference, tool use, memory access, approval, and host I/O are standard action signatures rather than additional core productions; for example, perform infer ⟨𝑇 ⟩( 𝑝 ) becomes perform Agentic .infer ⟨𝑔,𝑇 ⟩( 𝑝 ), where 𝑔 
+
+identifies the enclosing agent method. Finally, for and while are surface derived forms that elaborate to recursive checked callables. Loop-resource accounting is an orthogonal interpreter facility and is not part of Core Etas . The same normalization preserves affine control in handler arms. Other surface composition and handler notations lower compositionally to calls, lets, perform , and handle 𝑒 with 𝑒 ℎ .
+
+3.2 Actions, Effects, and Traces 
+
+An action is a concrete runtime request. An effect is a static pattern that over-approximates actions that may escape their local handlers. For example, a concrete action may be abstracted by a path-patterned effect: 
+
+ProjectWorkspace .write (”reports /a.md ”, 𝑣 ) ⪯ ProjectWorkspace .write ⟨”reports /∗ ∗ ”⟩.
+
+Effects are therefore not permissions by themselves; they are static escaping summaries that must be checked before an action commits through the default runtime dispatcher. Requested-action trace abstractions are separate: they record that an action was requested even when a handler turns it into a mock result, dry run, approval pause, or typed denial. A trace 𝜏 ∈ Ev ∗ is a sequence of concrete events; we write 𝜏 · 𝜂 for appending 𝜂 . Events distinguish an action request from a handled outcome, an external commit, or a denial, whose phase is 𝑗 ∈ { request , commit } and whose cause is 𝜉 ∈ Denial . Thus a handler may interpret a request without committing its external side effect: the request remains visible to policy and audit, whereas a commit records that the default runtime implementation performed the operation. Figure 11 defines the concrete event domain alongside the rules that produce it. 
+
+3.3 Design Restrictions 
+
+Core Etas imposes three restrictions that distinguish it from general algebraic-effect calculi. (1) Agent inference operations are nondeterministic action points. Calls to an agent method are ordinary checked calls, but each perform infer inside the method cannot be silently dupli-cated, erased, or reordered unless a trace-equivalence argument justifies the transformation for the relevant request and commit events. (2) Handlers do not grant authority. A handler can interpret an action request and return a value, but it cannot create a commit event for a side effect unless the active effect boundary, policies, deployment grants, and sandbox constraints permit that commit. (3) Tools are authority boundaries for model-callable operations. A tool body may perform actions covered by its summary, but an agent may request only tools explicitly exposed in its descriptor. These restrictions are pragmatic. They sacrifice some expressiveness of general handlers [ 20 , 27 ]in exchange for a clearer security and recovery story for agent runtimes. 
+
+4 Static Semantics 
+
+The static semantics has two responsibilities. It assigns ordinary types to values, and it computes conservative summaries of the actions a computation may request. The key difference from a conventional row-typed effect account is that the judgment carries both conformance artifacts and a compiled trace-monitor context. The escaping row records effects that remain obligations for the caller, while a persistent requested-action trace abstraction records actions that the computation 10 Tan et al. 
+
+𝑋 ∈ TyVar 𝑌 ∈ SpecName 𝐷 ∈ DataCon ℓ ∈ Label 𝐼 ∈ FinSet 
+
+𝑥 ∈ Var 𝑐 ∈ CallableName 𝑎 0 ∈ ActionLabel 𝑎 ∈ ActionInst 𝑎 ♯ ∈ A ♯
+
+𝑆 ∈ Spec 𝜅 ∈ StaticKind 𝑁 ∈ T alg 𝜖 ∈ EffRow 𝐴 ∈ T ♯
+
+𝜒 ∈ ConfSubj 𝜁 ∈ ConfArt 
+
+Types 𝜏 :: = 𝑋 | 𝐷 𝜏 | 1 | bool | num | string | ⟨ ℓ𝑖 : 𝜏 𝑖 ⟩𝑖 ∈𝐼 | 𝜏 1 → 𝜏 2 ! 𝜖 ⊲ 𝐴 
+
+| ∃𝑋 . ⟨𝜏, Wit (𝑋 ∼ 𝑆 )⟩ | ![𝜖 ℎ ⇒ 𝜖 𝑟 for 𝜏 ] ⊲ 𝐴 ℎ | never .
+
+type schemes 𝜎 :: = 𝜏 | ∀ 𝑋 . 𝜎 | ∀ 𝑋 ∼ 𝑆. 𝜎 
+
+scheme instantiation Ξ ⊢ 𝜎 {inst 𝜏 
+
+term contexts Γ :: = ∅ | Γ, 𝑥 : 𝜎 
+
+static signatures Ξ :: = ⟨Σ𝑎 , Σ𝑐 , Σ𝑠 , Ω⟩
+
+action signatures Σ𝑎 :: = ∅ | Σ𝑎 , 𝑎 0 (𝑥 : 𝜏 𝑖 ) ↦ → ⟨ 𝜏 𝑜 , 𝜖, 𝐴 ⟩
+
+callable table Σ𝑐 :: = ∅ | Σ𝑐 , 𝑐 ↦ → 𝜏 𝑖 ⇒ 𝜏 𝑜 ! 𝜖 𝑐 ⊲ 𝐴 𝑐 
+
+spec table Σ𝑠 :: = ∅ | Σ𝑠 , 𝑌 ↦ → 𝑆 : 𝜅 
+
+evidence table Ω :: = ∅ | Ω, 𝜒 ∼ 𝑆 ↦ → 𝜁 | Ω, 𝑆 1 ⪯ 𝑆 2
+
+spec contexts Δ :: = ∅ | Δ, 𝑥 : 𝜅 
+
+monitor contexts Π :: = ∅ | Π ⊗ compile (𝑁 ).
+
+Fig. 4. Static ingredients of Core Etas : metavariables, value and handler types, schemes, and typing envi-ronments. Function types carry latent escaping effects and requested traces; handler types record handled effects, arm effects, answer type, and arm trace. Ξ, Γ, Δ, and Π hold signatures, terms, spec parameters, and active monitors. 
+
+may request even if a handler interprets them locally. The conformance artifacts and declaration data are collected in a fixed static signature Ξ, while the monitor environment Π records the trace specs that have been compiled to automata and are active at the current program point. Policy checking is therefore one branch of spec conformance, not a separate verifier after type checking. This design follows the long-standing distinction between values and computations in effect systems [ 18 , 19 ], but changes what the effect judgment remembers for agent-runtime authority and audit. 
+
+4.1 Types 
+
+Figure 4 collects the value types, schemes, contexts, and global signature of the core calculus. Typing is bidirectional: synthesis infers the value type, whereas checking consumes an expected type. 
+
+Ξ; Γ; Π ⊢ 𝑒 ⇒ 𝜏 ! 𝜖 ⊲ 𝐴 ⊣ 𝑅 Ξ; Γ; Π ⊢ 𝑒 ⇐ 𝜏 ! 𝜖 ⊲ 𝐴 ⊣ 𝑅 
+
+Both judgments are indexed by the global signature Ξ, term context Γ, and active monitors Π, and return an escaping row 𝜖 , requested-action abstraction 𝐴 , and residual checks 𝑅 . The signature stores declarations and type/callable conformance artifacts; trace conformance instead extends Π.Core functions are unary and carry 𝜖 and 𝐴 ; source arity elaborates to nesting, whereas checked boundaries retain signatures 𝜏 𝑖 ⇒ 𝜏 𝑜 ! 𝜖 ⊲ 𝐴 in Ξ. Records and data constructors provide the remaining value structure. Prompt, trust, memory, and result notions are prelude types or specs, not additional core type forms. Constrained schemes ∀𝑋 ∼ 𝑆. 𝜎 instantiate only with conformance artifacts from Ξ.Etas 11 
+
+> T-Var
+
+𝑥 : 𝜎 ∈ Γ Ξ ⊢ 𝜎 {inst 𝜏 
+
+Ξ; Γ; Π ⊢ 𝑥 ⇒ 𝜏 ! ∅ ⊲ ∅ ⊣ ∅ 
+
+> T-Val
+
+data (𝑣 ) Γ ⊢ 𝑣 : 𝜏 
+
+Ξ; Γ; Π ⊢ 𝑣 ⇒ 𝜏 ! ∅ ⊲ ∅ ⊣ ∅ 
+
+> T-Check
+
+Ξ; Γ; Π ⊢ 𝑒 ⇒ 𝜏 ′ ! 𝜖 ⊲ 𝐴 ⊣ 𝑅 𝜏 ′ ≡ 𝜏 
+
+Ξ; Γ; Π ⊢ 𝑒 ⇐ 𝜏 ! 𝜖 ⊲ 𝐴 ⊣ 𝑅 
+
+> T-Abs
+
+Ξ; Γ, 𝑥 : 𝜏 1; ∅ ⊢ 𝑒 ⇐ 𝜏 2 ! 𝜖 ⊲ 𝐴 ⊣ ∅ 
+
+Ξ; Γ; Π ⊢ 𝜆𝑥 .𝑒 ⇐ 𝜏 1 → 𝜏 2 ! 𝜖 ⊲ 𝐴 ! ∅ ⊲ ∅ ⊣ ∅ 
+
+> T-Call
+
+Ξ(𝑐 ) = 𝜏 𝑖 ⇒ 𝜏 𝑜 ! 𝜖 𝑐 ⊲ 𝐴 𝑐 ∀𝑖. Ξ; Γ; Π ⊢ 𝑒 𝑖 ⇐ 𝜏 𝑖 ! 𝜖 𝑖 ⊲ 𝐴 𝑖 ⊣ 𝑅 𝑖 Ξ; Π ⊢ 𝐴 𝑐 { 𝑅 𝑐 
+
+Ξ; Γ; Π ⊢ call 𝑐 (𝑒 𝑖 ) ⇒ 𝜏 𝑜 ! (
+
+Ä
+
+> 𝑖
+
+𝜖 𝑖 ) ⊔ 𝜖 𝑐 ⊲ 𝐴 1 ; · · · ; 𝐴 𝑛 ; 𝐴 𝑐 ⊣ ( 
+
+Ø
+
+> 𝑖
+
+𝑅 𝑖 ) ∪ 𝑅 𝑐 
+
+> T-Action
+
+Ξ(𝑎 0 (𝑥 𝑖 : 𝜏 𝑖 ) ) = ⟨𝜏 𝑎 , 𝜖 𝑎 , 𝐴 0 ⟩ ∀𝑖. Γ ⊢ 𝑣 𝑖 : 𝜏 𝑖 𝐴 𝑎 = 𝐴 0 [𝑣 𝑖 /𝑥 𝑖 ] Ξ; Π ⊢ 𝐴 𝑎 { 𝑅 𝑎 
+
+Ξ; Γ; Π ⊢ perform 𝑎 0 (𝑣 𝑖 ) ⇒ 𝜏 𝑎 ! 𝜖 𝑎 ⊲ 𝐴 𝑎 ⊣ 𝑅 𝑎 
+
+> T-App
+
+Ξ; Γ; Π ⊢ 𝑒 𝑓 ⇒ ( 𝜏 1 → 𝜏 2 ! 𝜖 ′ 
+
+> 𝑓
+
+⊲ 𝐴 ′ 
+
+> 𝑓
+
+) ! 𝜖 𝑓 ⊲ 𝐴 𝑓 ⊣ 𝑅 𝑓 Ξ; Γ; Π ⊢ 𝑒 ⇐ 𝜏 1 ! 𝜖 𝑒 ⊲ 𝐴 𝑒 ⊣ 𝑅 𝑒 Ξ; Π ⊢ 𝐴 ′ 
+
+> 𝑓
+
+{ 𝑅 ′
+
+> 𝑓
+
+Ξ; Γ; Π ⊢ 𝑒 𝑓 𝑒 ⇒ 𝜏 2 ! 𝜖 𝑓 ⊔ 𝜖 𝑒 ⊔ 𝜖 ′ 
+
+> 𝑓
+
+⊲ 𝐴 𝑓 ; 𝐴 𝑒 ; 𝐴 ′ 
+
+> 𝑓
+
+⊣ 𝑅 𝑓 ∪ 𝑅 𝑒 ∪ 𝑅 ′
+
+> 𝑓
+> T-Let
+
+Ξ; Γ; Π ⊢ 𝑒 1 ⇒ 𝜏 1 ! 𝜖 1 ⊲ 𝐴 1 ⊣ 𝑅 1 Ξ; Γ, 𝑥 : 𝜏 1; Π ⊢ 𝑒 2 ⇒ 𝜏 2 ! 𝜖 2 ⊲ 𝐴 2 ⊣ 𝑅 2
+
+Ξ; Γ; Π ⊢ let 𝑥 = 𝑒 1 in 𝑒 2 ⇒ 𝜏 2 ! 𝜖 1 ⊔ 𝜖 2 ⊲ 𝐴 1 ; 𝐴 2 ⊣ 𝑅 1 ∪ 𝑅 2
+
+> T-LetHandler
+
+Ξ; Γ; Π ⊢ ℎ ⇒ 𝜎 ! 𝜖 1 ⊲ 𝐴 1 ⊣ 𝑅 1 Ξ; Γ, 𝑥 : 𝜎 ; Π ⊢ 𝑒 2 ⇒ 𝜏 2 ! 𝜖 2 ⊲ 𝐴 2 ⊣ 𝑅 2
+
+Ξ; Γ; Π ⊢ let 𝑥 = ℎ in 𝑒 2 ⇒ 𝜏 2 ! 𝜖 1 ⊔ 𝜖 2 ⊲ 𝐴 1 ; 𝐴 2 ⊣ 𝑅 1 ∪ 𝑅 2
+
+> T-If
+
+Ξ; Γ; Π ⊢ 𝑒 ⇐ bool ! 𝜖 0 ⊲ 𝐴 0 ⊣ 𝑅 0 Ξ; Γ; Π ⊢ 𝑒 1 ⇒ 𝜏 ! 𝜖 1 ⊲ 𝐴 1 ⊣ 𝑅 1 Ξ; Γ; Π ⊢ 𝑒 2 ⇒ 𝜏 ! 𝜖 2 ⊲ 𝐴 2 ⊣ 𝑅 2
+
+Ξ; Γ; Π ⊢ if 𝑒 then 𝑒 1 else 𝑒 2 ⇒ 𝜏 ! 𝜖 0 ⊔ 𝜖 1 ⊔ 𝜖 2 ⊲ 𝐴 0 ; (𝐴 1 ⊔ 𝐴 2 ) ⊣ 𝑅 0 ∪ 𝑅 1 ∪ 𝑅 2
+
+> T-TraceConform
+
+Ξ; Δ ⊢ 𝑆 Ξ ⊢ 𝑆 ⇓tr 𝑁 ∈ T alg Π𝑆 = compile Ξ (𝑁 ) Ξ; Γ; Π ⊗ Π𝑆 ⊢ 𝑒 ⇒ 𝜏 ! 𝜖 ⊲ 𝐴 ⊣ 𝑅 
+
+Ξ; Γ; Π ⊢ 𝑒 ∼ 𝑆 ⇒ 𝜏 ! 𝜖 ⊲ 𝐴 ⊣ 𝑅 
+
+Fig. 5. Core bidirectional typing with spec conformance. Each derivation returns a value type, escaping effects, requested-action abstraction, and residual checks. Calls and applications sequence latent summaries; actions instantiate signatures and discharge requests; conditionals join traces; trace conformance extends the monitor context. The split between 𝜖 and 𝐴 preserves handled requests. Boxed labels name rules. 
+
+In Figure 5, calls and actions resolve signatures in Ξ, accumulate escaping rows, and discharge requested traces against Π. T-Action instantiates the selected Σ𝑎 entry with its arguments. The same rule handles Agentic .infer ⟨𝑔, 𝑂 ⟩ because its signature includes tools (𝑔 ). A first-class handler has type ![𝜖 ℎ ⇒ 𝜖 𝑟 for 𝜏 𝑟 ] ⊲ 𝐴 ℎ , recording handled and produced effects, its answer type, and arm trace. Rule T-HandleWith supplies the contextual answer type and may remove 𝜖 ℎ , while 
+
+handle 𝜖 ℎ (𝐴 ) preserves requests and adds handled outcomes. Standalone resume-only handlers are answer-polymorphic; any finish fixes the answer type. Formally, gen 𝑢 𝑖 :
+
+gen 𝑢 𝑖 (![𝜖 ℎ ⇒ 𝜖 𝑟 for 𝜏 𝑟 ] ⊲ 𝐴 ℎ ) =
+
+(
+
+∀𝑋 . ![𝜖 ℎ ⇒ 𝜖 𝑟 for 𝑋 ] ⊲ 𝐴 ℎ if nofinish (𝑢 𝑖 ) and 𝑋 is fresh ,
+
+![𝜖 ℎ ⇒ 𝜖 𝑟 for 𝜏 𝑟 ] ⊲ 𝐴 ℎ otherwise. Monitor discharge Ξ; Π ⊢ 𝐴 { 𝑅 proves an abstract trace, rejects it, or returns checks for runtime-only facts. T-TraceConform compiles trace specs into Π; type and callable specs use the conformance rules of Figure 9. Handler arms reuse ordinary expression typing with terminal 
+
+resume and finish ; the index 𝜐 ∈ { 0, 1} enforces at most one resume per path. Loops and their affine validation elaborate before the core judgment. 12 Tan et al. 
+
+T-HandleWith Ξ; Γ; Π ⊢ 𝑒 ⇒ 𝜏 ! 𝜖 ⊲ 𝐴 ⊣ 𝑅 
+
+Ξ; Γ; Π ⊢ 𝑒 ℎ ⇐ ![𝜖 ℎ ⇒ 𝜖 𝑟 for 𝜏 ] ⊲ 𝐴 ℎ ! 𝜖 𝑔 ⊲ 𝐴 𝑔 ⊣ 𝑅 𝑔 𝜖 ℎ ⊆ 𝜖 𝐴 𝑏 = handle 𝜖 ℎ (𝐴 ) ⊔ 𝐴 ℎ Ξ; Π ⊢ 𝐴 𝑏 { 𝑅 𝑏 
+
+Ξ; Γ; Π ⊢ handle 𝑒 with 𝑒 ℎ ⇒ 𝜏 ! 𝜖 𝑔 ⊔ ( 𝜖 − 𝜖 ℎ ) ⊔ 𝜖 𝑟 ⊲ 𝐴 𝑔 ; 𝐴 𝑏 ⊣ 𝑅 𝑔 ∪ 𝑅 ∪ 𝑅 𝑏 
+
+T-Handler 
+
+ans Ξ,Γ,Π (𝑢 𝑖 ) = 𝜏 𝑟 ∀𝑖. Ξ(𝑎 0 
+
+> 𝑖
+
+(𝑥 𝑖 : 𝜏 𝑖 ) ) = ⟨𝜏 𝑟 𝑖 , 𝜖 𝑖 , 𝐴 0 
+
+> 𝑖
+
+⟩ ∀𝑖. Ξ; Γ, 𝑥 𝑖 : 𝜏 𝑖 ; Π ⊢ 𝑢 𝑖 ⇐ 𝜏 𝑟 𝑖 ⇒ 𝜏 𝑟 ! 𝜖 ′ 
+
+> 𝑖
+
+⊲ 𝐴 𝑖 ⊣ 𝑅 𝑖 ; 𝜐 𝑖 
+
+∀𝑖. 𝜐 𝑖 ≤ 1 𝜖 ℎ = {𝜖 𝑖 }𝑖 𝜖 𝑟 =
+
+Ä
+
+> 𝑖
+
+𝜖 ′ 
+
+> 𝑖
+
+𝐴 ℎ =
+
+Ä
+
+> 𝑖
+
+𝐴 𝑖 𝜎 = gen 𝑢 𝑖 (![𝜖 ℎ ⇒ 𝜖 𝑟 for 𝜏 𝑟 ] ⊲ 𝐴 ℎ )
+
+Ξ; Γ; Π ⊢ handler {𝑎 0 
+
+> 𝑖
+
+(𝑥 𝑖 ) ⇒ 𝑢 𝑖 }𝑖 ∈𝐼 ⇒ 𝜎 ! ∅ ⊲ ∅ ⊣ 
+
+Ø
+
+> 𝑖
+
+𝑅 𝑖 
+
+T-HandlerCheck 
+
+Ξ; Γ; Π ⊢ ℎ ⇒ 𝜎 ! 𝜖 ⊲ 𝐴 ⊣ 𝑅 Ξ ⊢ 𝜎 {inst ![𝜖 ℎ ⇒ 𝜖 𝑟 for 𝜏 𝑟 ] ⊲ 𝐴 ℎ
+
+Ξ; Γ; Π ⊢ ℎ ⇐ ![𝜖 ℎ ⇒ 𝜖 𝑟 for 𝜏 𝑟 ] ⊲ 𝐴 ℎ ! 𝜖 ⊲ 𝐴 ⊣ 𝑅 
+
+T-Resume 
+
+𝜏 𝑎 ≠ never Ξ; Γ; Π ⊢ 𝑒 ⇐ 𝜏 𝑎 ! 𝜖 ⊲ 𝐴 ⊣ 𝑅 
+
+Ξ; Γ; Π ⊢ resume 𝑒 ⇐ 𝜏 𝑎 ⇒ 𝜏 𝑟 ! 𝜖 ⊲ 𝐴 ⊣ 𝑅 ; 1 
+
+T-Finish 
+
+Ξ; Γ; Π ⊢ 𝑒 ⇐ 𝜏 𝑟 ! 𝜖 ⊲ 𝐴 ⊣ 𝑅 
+
+Ξ; Γ; Π ⊢ finish 𝑒 ⇐ 𝜏 𝑎 ⇒ 𝜏 𝑟 ! 𝜖 ⊲ 𝐴 ⊣ 𝑅 ; 0 
+
+T-ArmNever 
+
+Ξ; Γ; Π ⊢ 𝑒 ⇐ never ! 𝜖 ⊲ 𝐴 ⊣ 𝑅 
+
+Ξ; Γ; Π ⊢ 𝑒 ⇐ 𝜏 𝑎 ⇒ 𝜏 𝑟 ! 𝜖 ⊲ 𝐴 ⊣ 𝑅 ; 0 
+
+T-ArmLet 
+
+Ξ; Γ; Π ⊢ 𝑒 1 ⇒ 𝜏 𝑥 ! 𝜖 1 ⊲ 𝐴 1 ⊣ 𝑅 1 Ξ; Γ, 𝑥 : 𝜏 𝑥 ; Π ⊢ 𝑢 ⇐ 𝜏 𝑎 ⇒ 𝜏 𝑟 ! 𝜖 2 ⊲ 𝐴 2 ⊣ 𝑅 2; 𝜐 
+
+Ξ; Γ; Π ⊢ let 𝑥 = 𝑒 1 in 𝑢 ⇐ 𝜏 𝑎 ⇒ 𝜏 𝑟 ! 𝜖 1 ⊔ 𝜖 2 ⊲ 𝐴 1 ; 𝐴 2 ⊣ 𝑅 1 ∪ 𝑅 2; 𝜐 
+
+T-ArmIf Ξ; Γ; Π ⊢ 𝑒 ⇐ bool ! 𝜖 0 ⊲ 𝐴 0 ⊣ 𝑅 0
+
+Ξ; Γ; Π ⊢ 𝑢 1 ⇐ 𝜏 𝑎 ⇒ 𝜏 𝑟 ! 𝜖 1 ⊲ 𝐴 1 ⊣ 𝑅 1; 𝜐 1 Ξ; Γ; Π ⊢ 𝑢 2 ⇐ 𝜏 𝑎 ⇒ 𝜏 𝑟 ! 𝜖 2 ⊲ 𝐴 2 ⊣ 𝑅 2; 𝜐 2 𝜐 = 𝜐 1 ⊔ 𝜐 2
+
+Ξ; Γ; Π ⊢ if 𝑒 then 𝑢 1 else 𝑢 2 ⇐ 𝜏 𝑎 ⇒ 𝜏 𝑟 ! 𝜖 0 ⊔ 𝜖 1 ⊔ 𝜖 2 ⊲ 𝐴 0 ; (𝐴 1 ⊔ 𝐴 2 ) ⊣ 𝑅 0 ∪ 𝑅 1 ∪ 𝑅 2; 𝜐 
+
+Fig. 6. Typing first-class handlers and handle -with expressions. T-HandleWith removes handled effects from the escaping row while preserving requests in 𝐴 ; T-Handler checks arms against a common answer type and synthesizes reusable schemes. Resume-only handlers remain answer-polymorphic, and arm control permits at most one resume per path. 
+
+trace abstractions 𝐴 :: = ∅ | 𝜂 ♯ | 𝐴 1 ; 𝐴 2 | 𝐴 1 ⊔ 𝐴 2 | 𝐴 ★
+
+abstract events 𝜂 ♯ :: = request (𝑎 ♯) | handled (𝑎 ♯, ℎ ) | commit (𝑎 ♯) | denied ( 𝑗 (𝑎 ♯), 𝜉 )
+
+residual obligations 𝑅 :: = ∅ | check (𝜂 ♯, 𝜑 ) | 𝑅 1 ∪ 𝑅 2.
+
+Fig. 7. Static requested-action traces and residual obligations. Trace abstractions sequence, join, and iterate abstract request, handled, commit, and denial events. Monitor discharge returns 𝑅 for dynamic predicates that remain runtime checks, so handled actions stay visible even without escaping effects or commits. 
+
+4.2 Effects 
+
+An effect row 𝜖 is a finite set of action patterns, with row variables during inference. Surface syntax may use namespace notation, but the core treats rows extensionally: 
+
+action patterns 𝜋 :: = 𝜇 ⟨𝜏 ⟩
+
+effect rows 𝜖 :: = ∅ | 𝜋 | 𝜖 ∪ 𝜖. 
+
+Here 𝜇 is a core action name and 𝜏 is a static type argument. Resource regions, accounts, and other selectors are nominal marker types constrained by type specs; containment is derived from their evidence. For example, 
+
+Memory .read ⟨ProjectMemory ⟩ ⊇ Memory .read ⟨ProjectMemory .Reports ⟩,
+
+but not conversely. Read authority also does not imply write authority. Etas 13 
+
+Escaping effects and requested actions. Etas tracks two behavioral summaries: 
+
+Ξ; Γ; Π ⊢ 𝑒 ⇒ 𝜏 ! 𝜖 ⊲ 𝐴 ⊣ 𝑅. 
+
+The escaping effect row 𝜖 is the public type-level upper bound in flow and tool types: it records effects that remain for the caller to handle or mediate. The requested-action trace abstraction 𝐴 
+
+records which typed actions the computation may request, and in which abstract order, regardless of whether each request is handled, denied, or committed. The monitor environment Π constrains 
+
+𝐴 during typing, and 𝑅 records residual checks for facts that cannot be discharged statically. Trace specs and runtime audit therefore use 𝐴 , not just 𝜖 .The distinction is needed for agent inference and handlers. A public flow type need not expose provider-internal details, but the runtime still needs trace evidence for Agentic .infer ⟨𝑔, 𝑂 ⟩, model-selected tools, schema validation, and related events. A dry-run email handler may make the effect non-escaping while leaving its typed request auditable. Handling removes a caller obligation; it does not remove trace evidence. 
+
+Declared rows. For a declaration 𝑒 : 𝜏 !𝜖 𝑑 , the checker requires the inferred row 𝜖 𝑖 to be covered by the declared row: 
+
+𝜖 𝑖 ⊑ 𝜖 𝑑 .
+
+Rows are upper bounds. A missing effect is an error; an unused declared effect is usually a warning unless strict mode requires minimal rows. Declared rows are not complete behavior summaries. They constrain what may escape, while the typing judgment checks the inferred 𝐴 𝑖 against monitors from active trace specs and returns residual obligations. Thus a declaration can honestly say 
+
+DryRunEmail : EmailRequest − > EmailResult ![] 
+
+while the compiler still records the possible email request and checks it against the active trace specs. 
+
+4.3 Spec Conformance 
+
+Etas specs are kinded compile-time constraints consumed by the ∼ conformance relation. A type 
+
+spec constrains types, including resource-marker types; a callable spec constrains callable shape and optional effect bounds, and a trace spec constrains requested actions. The first two produce static artifacts in Ξ; trace specs compile to monitors in Π.Figure 8 gives the terminating spec calculus. Its single kind grammar 𝜅 classifies conformance specs, effect and action parameters, and higher-order spec functions; complete conformance specs have result kind type , callable , or trace . Lambda abstraction and application make specs reusable; for example, ApprovalBefore ⟨𝑃 : Action ⟩ elaborates to 
+
+𝜆𝑃 action . +Approval .request & +𝑃 & (Approval .request ≫ 𝑃 ).
+
+Applications beta-reduce during compilation; recursive and runtime-produced specs are outside the calculus. Figure 8 also pairs each conformance subject with its artifact: types produce witnesses (𝜏, 𝑤 ),callables produce static artifacts (𝑐, 𝜃 ), and requested-trace abstractions produce residual checks 
+
+(𝐴, 𝑅 ). We write the three forms uniformly as 𝜒 ∼ 𝑆 { 𝜁 ; Figure 9 gives their kind-directed rules. The rules are kind-directed. Type conformance resolves witnesses used by constrained schemes 
+
+∀𝑋 ∼ 𝑆. 𝜎 , without treating conformance as subtyping. Callable conformance normalizes 𝑆 to an input/output shape and, when present, checks the upper bound 𝜖 𝑐 ⊑ 𝜖 𝑠 ; omitting the row leaves it open, whereas ![] requires no escaping effects. Trace conformance normalizes 𝑆 , compiles the result, and discharges 𝐴 under the extended monitor context, returning 𝑅 . C-Entail reuses an 14 Tan et al.                                                                                                                               
+
+> 𝑃 ∈PatVar 𝜇 ∈ActionName
+> static kinds 𝜅 :: =type |callable |trace
+> |effect |action |𝜅 1⇒𝜅 2
+> action patterns 𝑝, 𝑞 :: =𝑃 |𝜇 ⟨𝜏 ⟩ | 𝜇 ⟨𝑋 ∼𝑆 ⟩
+> callable shapes 𝐶 :: =𝜏 𝑖 ⇒𝜏 𝑜 |𝜏 𝑖 ⇒𝜏 𝑜 !𝜖
+> conformance forms (𝜒, 𝜁 ):: =(𝜏, 𝑤 ) | ( 𝑐, 𝜃 ) | ( 𝐴, 𝑅 )
+> spec terms 𝑆,𝑇 :: =𝑌 |𝑥 𝜅 |𝜆𝑥 𝜅 . 𝑆 |𝑆 𝑇
+> |𝑆 1&𝑆 2|𝑆 1|𝑆 2| + 𝑝 | − 𝑝
+> |𝑝 ≫𝑞 |𝑝 ≪𝑞 |callable (𝐶 )
+> Ξ;Δ⊢𝑆 :𝜅 Ξ;Δ⊢𝑝 :action Ξ⊢𝑆 ⇓tr 𝑁 ∈ T alg Ξ⊢𝑆 ⇓call 𝐶
+> (𝜆𝑥 𝜅 . 𝑆 )𝑇 −→ 𝑆 [𝑥 ↦→𝑇 ]Ξ(𝑌 )=𝑆 :𝜅 =⇒𝑌 −→ 𝑆 𝑝 ≪𝑞 −→ 𝑞 ≫𝑝
+
+Fig. 8. Terminating compile-time spec calculus. The figure defines kinds, action patterns, callable shapes, conformance result forms, and spec terms, then gives kinding and normalization. Type, callable, and trace specs produce witnesses, callable artifacts, and residual checks. Applications beta-reduce, named specs unfold, 
+
+𝑝 ≪ 𝑞 normalizes to 𝑞 ≫ 𝑝 , and recursion/runtime specs are excluded.                                                                                                     
+
+> C-Type
+> Ξ(𝜏 ∼𝑆 )=𝑤
+> Ξ⊢𝜏 ∼𝑆 {𝑤
+> C-Entail
+> Ξ⊢𝜒 ∼𝑆 1{𝜁 Ξ⊢𝑆 1⪯𝑆 2
+> Ξ⊢𝜒 ∼𝑆 2{𝜁
+> C-Callable
+> Ξ(𝑐 )=𝜏 𝑖 ⇒𝜏 𝑜 !𝜖 𝑐 ⊲𝐴 𝑐 Ξ⊢𝑆 ⇓call (𝜏 𝑖 ⇒𝜏 𝑜 !𝜖 𝑠 )𝜖 𝑐 ⊑𝜖 𝑠
+> Ξ⊢𝑐 ∼𝑆 {𝜃
+> C-CallableOpen
+> Ξ(𝑐 )=𝜏 𝑖 ⇒𝜏 𝑜 !𝜖 𝑐 ⊲𝐴 𝑐 Ξ⊢𝑆 ⇓call (𝜏 𝑖 ⇒𝜏 𝑜 )
+> Ξ⊢𝑐 ∼𝑆 {𝜃
+> C-Trace
+> Ξ⊢𝑆 ⇓tr 𝑁 ∈ T alg Ξ;Π⊗compile Ξ(𝑁 ) ⊢ 𝐴 {𝑅
+> Ξ;Π⊢𝐴 ∼𝑆 {𝑅
+
+Fig. 9. Kind-directed conformance from normalized specs to static checking. Type specs resolve witnesses, callable specs check callable shape and optional effect bounds, and trace specs compile to monitors for requested-action abstractions. The resulting artifacts are 𝑤 , 𝜃 , or residual checks 𝑅 .
+
+artifact at a weaker spec. Evidence-indexed action matching reuses the same type-spec witnesses: a bounded argument 𝑋 ∼ 𝑆 matches 𝜏 exactly when Ξ ⊢ 𝜏 ∼ 𝑆 { 𝑤 for some 𝑤 .For trace specs, Ξ ⊢ 𝑆 ⇓tr 𝑁 expands named specs, beta-reduces applications, and computes the 
+
+TraceSpecAlgebra normal form 𝑁 . The partial meaning function NJ·K in Figure 10 maps a closed, well-kinded trace spec to either an atom ⟨𝐿, 𝐷, 𝐵 ⟩, containing allow patterns, deny patterns, and before-obligations, or a disjunction of such atoms. Deny takes precedence, unmatched actions are denied, and every event matching the target of 
+
+𝑝 ≫ 𝑞 must have an earlier matching 𝑝 . The dual 𝑝 ≪ 𝑞 normalizes to 𝑞 ≫ 𝑝 . Matching is indexed by Ξ, so bounded generic action patterns can reuse ordinary type-spec witnesses. This common conformance boundary is what makes spec more than a policy DSL: it controls type and callable polymorphism as well as typed action traces. 
+
+4.4 Policy Automata and Abstract Interpretation 
+
+Each trace-spec normal form 𝑁 compiles to a finite monitor 𝑀 𝑁 = ⟨𝑄, 𝑞 0, 𝛿, Bad ⟩, where 𝑞 0 is initial, 𝛿 : 𝑄 × Ev → 𝑄 , and Bad ⊆ 𝑄 contains rejecting states. Because events distinguish requests, handling, denials, and commits, a request can be constrained independently of its interpretation or Etas 15 
+
+normal forms 𝑁 :: = ⟨𝐿, 𝐷, 𝐵 ⟩ | 𝑁 1 ⊕ 𝑁 2
+
+allow/deny sets 𝐿, 𝐷 ⊆ ActionPattern 
+
+before obligations 𝐵 ⊆ ActionPattern × ActionPattern 
+
+NJ·K : TraceSpec ⇀ Talg 
+
+NJ+𝑝 K = ⟨{ 𝑝 }, ∅, ∅⟩ NJ−𝑝 K = ⟨∅ , {𝑝 }, ∅⟩ NJ𝑝 ≫ 𝑞 K = ⟨∅ , ∅, {( 𝑝, 𝑞 )}⟩ NJ𝑆 & 𝑇 K = NJ𝑆 K ⊗ N J𝑇 K
+
+NJ𝑆 | 𝑇 K = NJ𝑆 K ⊕ N J𝑇 K NJ(𝜆𝑥 𝜅 . 𝑆 ) 𝑇 K = NJ𝑆 [𝑥 ↦ → 𝑇 ]K
+
+⟨𝐿 1, 𝐷 1, 𝐵 1⟩ ⊗ ⟨ 𝐿 2, 𝐷 2, 𝐵 2⟩ = ⟨𝐿 1 ∪ 𝐿 2, 𝐷 1 ∪ 𝐷 2, 𝐵 1 ∪ 𝐵 2⟩(𝑁 1 ⊕ 𝑁 2) ⊗ 𝑁 = (𝑁 1 ⊗ 𝑁 ) ⊕ ( 𝑁 2 ⊗ 𝑁 )
+
+𝑁 ⊗ ( 𝑁 1 ⊕ 𝑁 2) = (𝑁 ⊗ 𝑁 1) ⊕ ( 𝑁 ⊗ 𝑁 2).
+
+decision ⟨𝐿,𝐷,𝐵 ⟩ (𝑎 ) =
+
+
+
+deny ∃𝑝 ∈ 𝐷. match Ξ (𝑝, 𝑎 )
+
+allow ∃𝑝 ∈ 𝐿. match Ξ (𝑝, 𝑎 )
+
+deny otherwise 
+
+𝜏 |= 𝑝 ≫ 𝑞 ⇐⇒ ∀𝑖. match Ξ (𝑞, 𝜏 𝑖 ) ⇒ ∃ 𝑗 < 𝑖. match Ξ (𝑝, 𝜏 𝑗 ).𝜏 |= 𝑁 1 ⊗ 𝑁 2 ⇐⇒ 𝜏 |= 𝑁 1 ∧ 𝜏 |= 𝑁 2
+
+𝜏 |= 𝑁 1 ⊕ 𝑁 2 ⇐⇒ 𝜏 |= 𝑁 1 ∨ 𝜏 |= 𝑁 2.          
+
+> Fig. 10. TraceSpecAlgebra normal forms and meaning. Atoms collect allow patterns, deny patterns, and before obligations; ⊕represents disjunction. Normalization, composition, action decisions, and trace satisfaction appear below the divider. Deny rules take precedence, unmatched actions are denied, and 𝑝 ≫𝑞 requires prior matching 𝑝 events.
+
+commit. The active environment Π denotes their product 𝑀 Π; any rejecting component rejects the product, so adding a trace spec only narrows accepted traces. The checker discharges an abstract requested trace with the judgment Ξ; Π ⊢ 𝐴 { 𝑅 , defined by abstract interpretation of 𝐴 over the states of 𝑀 Π [ 7]. The monitor-state abstract domain is 
+
+D♯ 
+
+> Π
+
+= P ( 𝑄 Π), and abstract events range over Ev ♯. Its concretization 𝛾 Ξ : Ev ♯ → P ( Ev ) uses type-spec evidence from Ξ. For 𝑄 ♯ ∈ D ♯
+
+> Π
+
+, the abstract event transformer is 
+
+J𝜂 ♯K♯ 
+
+> Ξ,Π
+
+(𝑄 ♯) = {𝛿 Π (𝑞, 𝜂 ) | 𝑞 ∈ 𝑄 ♯, 𝜂 ∈ 𝛾 Ξ (𝜂 ♯)} .
+
+The trace transformer J𝐴 K♯ 
+
+> Ξ,Π
+
+lifts this definition structurally: sequencing composes transformers, joins union successor states, and 𝐴 ★ computes a least fixed point over D♯
+
+> Π
+
+; named boundaries reuse summaries from Ξ.For a successor set 𝑄 ′, 𝑄 ′ ∩ Bad Π = ∅ proves the transition safe, while 𝑄 ′ ⊆ Bad Π leaves the judgment without a derivation. In the remaining case, the checker emits check (𝜂 ♯, 𝜑 ) ∈ 𝑅 .Thus an approval-before-email monitor may prove the ordering while leaving account equality or approval freshness residual. Every accepted but unproved transition is therefore an explicit runtime obligation, as required by Section 6. 16 Tan et al. 
+
+5 Dynamic Semantics 
+
+The dynamic semantics is a small-step semantics over configurations: 
+
+𝐶 = ⟨𝑒, 𝐻, 𝜏 ⟩.𝐻 is the handler stack and 𝜏 is the trace prefix. The active effect boundary 𝜖 𝑏 and the effective policy monitor Π, compiled from TraceSpecAlgebra objects, are fixed parameters of the step relation for the current checked entry point: 
+
+𝜖 𝑏 ; Π ⊢ 𝐶 −→ 𝐶 ′.
+
+We leave these parameters implicit in the rules. They are not mutable runtime state: 𝜖 𝑏 restricts commits at the current checked boundary, and Π is advanced conceptually by replaying the trace prefix 𝜏 . Concrete deployment grants, tool exposure, and sandbox descriptors refine the implementation of dispatch, but they are not separate components of the core calculus. We write 
+
+𝐻 · ℎ for the stack obtained by pushing handler frame ℎ on top of 𝐻 .
+
+5.1 Expression Evaluation 
+
+The small-step relation is call-by-value. Most rules apply under an evaluation context; dedicated action and handler rules update 𝐻 or 𝜏 . Figure 11 combines the context grammar, core redexes, handler rules, and action-enforcement rules. The ordinary contexts evaluate the handler position of handle 𝑒 with 𝑒 ℎ , but they do not evaluate the handled body before the dynamic handler scope is installed. The rules in Section 5.4 push a handler frame and introduce the administrative delimiter 
+
+scope ℎ (𝑒 ); evaluation then continues inside that scoped body. Handler arms reuse the ordinary small-step relation until they reach resume 𝑣 or finish 𝑣 , so arm-local lets, conditionals, and calls are covered by the same rules as ordinary expressions. Source loops elaborate to recursive checked callables and require no additional core redex. No separate arm-evaluation relation is needed. Rule E-Perform-Handle places the selected body in the administrative frame arm ℎ (𝑒 ), where it takes ordinary small steps. Since resume and finish 
+
+are terminal in an arm, the two exit rules consume them at that arm. The enclosing evaluation context is the suspended single-shot continuation: resume replaces the original perform redex by its value, while finish creates the targeted form finish ℎ 𝑣 . E-FinishSkip discards a scope-free finish context 𝐺 , including any intervening arm frames, and crosses a non-target handler scope. 
+
+E-FinishReturn discards the final 𝐺 and returns at the matching delimiter. Calls to checked callables use E-Call . The meta-level lookup body (𝑐 ) returns the unary function value associated with the callable descriptor 𝑐 , whether that descriptor was generated from a source flow, an agent method such as Reviewer.run , a tool wrapper, or a standard-library binding. If 𝑐 has multiple entry arguments, the stored body is a nest of unary abstractions and E-Call turns the checked call into a left-associated sequence of ordinary applications. Model nondeterminism appears only when such a body performs an Agentic .infer action. 
+
+5.2 Actions and Traces 
+
+We use two enforcement phases for a concrete action 𝑎 . Request enforcement decides whether the program may ask for the typed action at the current trace prefix. Commit enforcement decides whether the default runtime implementation may actually perform the external side effect. The split is what makes handled actions persistent in the audit trace without forcing them to escape to the caller. In Figure 11, 𝑞 𝜏 is the monitor state reached by replaying 𝜏 , and 𝑞 𝑟 = 𝛿 Π (𝑞 𝜏 , request (𝑎 )) is the state after the request. Request enforcement succeeds only when 𝑞 𝑟 ∉ Bad . If a handler matches, 
+
+E-Perform-Handle records the request and handled outcome before evaluating the selected arm. Etas 17 
+
+trace events 𝜂 :: = request (𝑎 ) | handled (𝑎, ℎ ) | commit (𝑎 ) | denied ( 𝑗 (𝑎 ), 𝜉 )
+
+evaluation contexts 𝐸 :: = [ ] | 𝐸 𝑒 | 𝑣 𝐸 | let 𝑥 = 𝐸 in 𝑒 
+
+| if 𝐸 then 𝑒 1 else 𝑒 2 | call 𝑐 (𝑣, 𝐸, 𝑒 )| handle 𝑒 with 𝐸 | scope ℎ (𝐸 ) | arm ℎ (𝐸 )| resume 𝐸 | finish 𝐸 
+
+finish contexts 𝐺 ⊆ 𝐸 (𝐺 contains no scope ℎ′ frame ).
+
+E-Ctx 
+
+⟨𝑒, 𝐻, 𝜏 ⟩ −→ ⟨ 𝑒 ′, 𝐻 ′, 𝜏 ′ ⟩⟨𝐸 [𝑒 ], 𝐻, 𝜏 ⟩ −→ ⟨ 𝐸 [𝑒 ′ ], 𝐻 ′, 𝜏 ′ ⟩
+
+E-Beta 
+
+⟨ ( 𝜆𝑥 .𝑒 ) 𝑣, 𝐻, 𝜏 ⟩ −→ ⟨ 𝑒 [𝑥 ↦ → 𝑣 ], 𝐻, 𝜏 ⟩
+
+E-Let 
+
+⟨let 𝑥 = 𝑣 in 𝑒, 𝐻, 𝜏 ⟩ −→ ⟨ 𝑒 [𝑥 ↦ → 𝑣 ], 𝐻, 𝜏 ⟩
+
+E-IfTrue 
+
+⟨if true then 𝑒 1 else 𝑒 2, 𝐻, 𝜏 ⟩ −→ ⟨ 𝑒 1, 𝐻, 𝜏 ⟩
+
+E-IfFalse 
+
+⟨if false then 𝑒 1 else 𝑒 2, 𝐻, 𝜏 ⟩ −→ ⟨ 𝑒 2, 𝐻, 𝜏 ⟩
+
+E-Call body (𝑐 ) = 𝑣 𝑓 
+
+⟨call 𝑐 (𝑣 1, . . . , 𝑣 𝑛 ), 𝐻, 𝜏 ⟩ −→ ⟨ 𝑣 𝑓 𝑣 1 · · · 𝑣 𝑛 , 𝐻, 𝜏 ⟩
+
+E-HandleEnter 
+
+⟨handle 𝑒 with ℎ, 𝐻, 𝜏 ⟩ −→ ⟨ scope ℎ (𝑒 ), 𝐻 · ℎ, 𝜏 ⟩
+
+E-HandleExit 
+
+⟨scope ℎ (𝑣 ), 𝐻 · ℎ, 𝜏 ⟩ −→ ⟨ 𝑣, 𝐻, 𝜏 ⟩
+
+E-FinishSkip ℎ ≠ ℎ′
+
+⟨scope ℎ′ (𝐺 [finish ℎ 𝑣 ] ) , 𝐻 · ℎ′, 𝜏 ⟩ −→ ⟨ finish ℎ 𝑣, 𝐻, 𝜏 ⟩
+
+E-FinishReturn 
+
+⟨scope ℎ (𝐺 [finish ℎ 𝑣 ] ) , 𝐻 · ℎ, 𝜏 ⟩ −→ ⟨ 𝑣, 𝐻, 𝜏 ⟩
+
+E-Perform-Handle 
+
+𝑞 𝑟 = 𝛿 Π (𝑞 𝜏 , request (𝑎 ) ) 𝑞 𝑟 ∉ Bad dispatchH (𝐻, 𝑎 ) = ⟨ℎ, 𝑢 ⟩⟨perform 𝑎, 𝐻, 𝜏 ⟩ −→ ⟨ arm ℎ (𝑢 ), 𝐻, 𝜏 · request (𝑎 ) · handled (𝑎, ℎ ) ⟩ 
+
+E-Perform-Resume 
+
+⟨arm ℎ (resume 𝑣 ), 𝐻, 𝜏 ⟩ −→ ⟨ 𝑣, 𝐻, 𝜏 ⟩
+
+E-Perform-Finish 
+
+⟨arm ℎ (finish 𝑣 ), 𝐻, 𝜏 ⟩ −→ ⟨ finish ℎ 𝑣, 𝐻, 𝜏 ⟩
+
+E-Perform-Commit 
+
+𝑞 𝑟 = 𝛿 Π (𝑞 𝜏 , request (𝑎 ) ) 𝑞 𝑟 ∉ Bad nohandler (𝐻, 𝑎 ) 𝑎 ⪯ 𝜖 𝑏 𝛿 Π (𝑞 𝑟 , commit (𝑎 ) ) ∉ Bad dispatchD (𝑎 ) = 𝑣 
+
+⟨perform 𝑎, 𝐻, 𝜏 ⟩ −→ ⟨ 𝑣, 𝐻, 𝜏 · request (𝑎 ) · commit (𝑎 ) ⟩ 
+
+E-Reqest-Deny 𝛿 Π (𝑞 𝜏 , request (𝑎 ) ) ∈ Bad 
+
+⟨perform 𝑎, 𝐻, 𝜏 ⟩ −→ ⟨ perform Error .raise ⟨PolicyDenied ⟩ ( 𝑎 ), 𝐻, 𝜏 · denied (request (𝑎 ), PolicyDenied ) ⟩ 
+
+E-Commit-Deny 
+
+𝑞 𝑟 = 𝛿 Π (𝑞 𝜏 , request (𝑎 ) ) 𝑞 𝑟 ∉ Bad nohandler (𝐻, 𝑎 ) 𝑎 ⪯̸ 𝜖 𝑏 ∨ 𝛿 Π (𝑞 𝑟 , commit (𝑎 ) ) ∈ Bad 
+
+⟨perform 𝑎, 𝐻, 𝜏 ⟩ −→ ⟨ perform Error .raise ⟨PolicyDenied ⟩ ( 𝑎 ), 𝐻, 𝜏 · request (𝑎 ) · denied (commit (𝑎 ), PolicyDenied ) ⟩
+
+Fig. 11. Call-by-value dynamic semantics over ⟨𝑒, 𝐻, 𝜏 ⟩. The figure gives trace events and contexts, then pure, call, handler, action-enforcement, and denial rules. Handled actions record request and handled events; unhandled actions commit only after request, boundary, and commit-monitor checks. Rejected requests or commits append denial events and raise PolicyDenied , preserving the request/handle/commit distinction. 
+
+Otherwise, E-Perform-Commit additionally requires 𝑎 ⪯ 𝜖 𝑏 and an accepted commit transition before invoking the default implementation. The rules append events only after these premises succeed. The implementation may add deployment-grant, tool-exposure, or sandbox predicates to these checks. The core rules omit them because they do not change the proof obligations: they only make request or commit enforcement more restrictive. The policy trace records request, handled, commit, and denial events. An arm’s resume or finish is represented by its terminal outcome rather than by another policy event; an implementation may retain that distinction as diagnostic metadata. The action redex is written directly as perform 𝑎 .Figure 11 first enters the selected arm and then separates its terminal outcomes. E-Perform-Resume 18 Tan et al. 
+
+fills the suspended action site. E-Perform-Finish unwinds to the handled-expression delimiter. In the handled-action rules, dispatchH (𝐻, 𝑎 ) returns the nearest matching handler frame and the selected arm body after binding the concrete action payload to the clause parameters. The predicate 
+
+nohandler (𝐻, 𝑎 ) selects the complementary path; dispatchD (𝑎 ) = 𝑣 then invokes the registered default implementation and returns its value. If enforcement fails, the semantics raises a typed error action and records a denial event. E-Reqest-Deny covers a rejected request; E-Commit-Deny 
+
+covers either a rejected commit transition or an action outside 𝜖 𝑏 . Both use PolicyDenied as the core typed error; implementations may refine the diagnostic with deployment-grant, sandbox, schema, or tool-exposure causes. Agent-scoped inference is a distinguished action, not a separate core redex. Its surface elaboration is: 
+
+Jperform infer ⟨𝑇 ⟩( 𝑝 )K𝑔 = perform Agentic .infer ⟨𝑔,𝑇 ⟩( 𝑝 ).
+
+Its provider nondeterminism, output-schema validation, model-selected tool calls, metadata, and token consumption are part of default dispatch for that action. Each requested tool call is mediated as an action; no model output can cause an unmediated host operation. If output validation fails, dispatch raises Error .raise ⟨SchemaError ⟩ and records the failure. Retries are represented by ordinary source-level control around the inference operation and do not change the meaning of the model relation. 
+
+5.3 Runtime Policy Enforcement 
+
+Runtime policy enforcement is prefix-based. Before a request or commit event is appended, the monitor compiled from the effective TraceSpecAlgebra object is advanced on that event. If the resulting state is in Bad , the corresponding request or commit is not authorized; the trace records a denied request or denied commit instead. The denial rules in Figure 11 are the failure counterparts of the monitor and effect-boundary premises in the action rules. These rules are the dynamic counterpart of the static automata analysis in Section 4.4. Static proof can remove a check only when the compiler can show that all abstract prefixes accepted by the program remain outside Bad .Otherwise, the residual check remains explicit as a runtime enforcement obligation. 
+
+Effect boundaries. An effect boundary is a runtime contract for an entry point or checked callable boundary. It constrains the actions that may commit through the default runtime implementation and therefore escape the boundary as real external side effects. In the core relation, 𝜖 𝑏 is fixed for the checked boundary currently being evaluated. A nested checked call can be modeled by evaluating the callee under a smaller boundary, but this is an indexed-judgment change rather than mutable runtime state. Because boundaries narrow rather than widen commit authority, callees cannot acquire external actions unavailable to their callers. A local handler may still interpret a request as a dry run, mock result, or recovery path; that interpretation records a handled event rather than a commit event. 
+
+Implementation refinements and recovery. Deployments may strengthen core enforcement with tool-exposure, grant, and sandbox predicates; these checks only reject additional requests or com-mits. The resulting trace also guides recovery: deterministic computations may be recomputed, whereas agent calls, external reads, approvals, and non-idempotent writes are replayed from check-points. Resampling a model call is distinct from replay and requires explicit policy authorization. 
+
+5.4 Handlers 
+
+Handlers interpret selected action requests after request enforcement succeeds. The nearest match-ing frame records a handled event and evaluates its arm; resume fills the suspended action site, Etas 19 
+
+whereas finish supplies the result of the handled expression. With no matching frame, execution proceeds through commit enforcement to the default dispatcher. Installing a handler changes neither 𝜖 𝑏 nor Π: it may make a request non-escaping, but it cannot create authority to commit an action rejected by the boundary or monitor. 
+
+6 Soundness 
+
+This section states the safety properties targeted by the design. The prototype currently implements the corresponding checks as compiler and interpreter invariants; a mechanized proof is future work. We separate two layers of metatheory. First, ordinary type safety ensures that the core calculus is well behaved: well-typed closed programs preserve their result type as they step and do not get stuck. Second, the agent-language-specific theorems connect the same typing derivations to effects, traces, policies, and handlers. 
+
+6.1 Auxiliary Notions 
+
+Let 𝛼 (𝑎 ) be the abstraction of a concrete action 𝑎 to an effect pattern, and let 𝑎 ⪯ 𝜖 mean that 𝛼 (𝑎 ) is covered by effect row 𝜖 , using Ξ for any spec-bound resource predicates in the pattern. Let reqs (𝜏 )
+
+be the sequence of actions that appear in request events, and let commits (𝜏 ) be the sequence of actions that appear in commit events, ignoring checkpoint and resume metadata. Let 𝐴 |= 𝜏 mean that concrete trace 𝜏 is represented by abstract requested-action trace 𝐴 . Let 𝑀 Π be the monitor denoted by the effective environment Π, which is obtained by compiling TraceSpecAlgebra 
+
+objects. We write 𝐴 ′ ⊑ 𝐴 for language inclusion between requested-action abstractions, and 𝜖 ′ ⊑ 𝜖 
+
+for effect-row inclusion. We say that a configuration 𝐶 = ⟨𝑒, 𝐻, 𝜏 ⟩ is well formed under 𝜖 𝑏 ; Π when the expression is well typed, the active effect boundary covers the entry declaration, handlers in 𝐻 have well-typed arms, and all residual policy checks inserted by the compiler are present in the interpreter plan. Resource markers are ordinary types, and their facts are checked through action signatures and type-spec evidence rather than as separate mutable components of the core configuration. 
+
+6.2 Basic Type Safety 
+
+The standard preservation/progress facts are stated for closed Core Etas configurations whose callable, action, handler, and spec summaries are well formed in Ξ. Runtime policy denial and abort are not stuck states: denial becomes a typed error action, while abort is an explicit terminal outcome. 
+
+Lemma 1 (Preservation) . Assume well-formed Ξ and Π, and suppose 
+
+Ξ; ∅; Π ⊢ 𝑒 ⇒ 𝜏 ! 𝜖 ⊲ 𝐴 ⊣ 𝑅 ⟨𝑒, 𝐻, 𝜃 ⟩ −→ ⟨ 𝑒 ′, 𝐻 ′, 𝜃 ′⟩.
+
+If the initial configuration is well formed and contains the residual checks 𝑅 , then there exist 𝜖 ′, 𝐴 ′,and 𝑅 ′ such that 
+
+Ξ; ∅; Π ⊢ 𝑒 ′ ⇒ 𝜏 ! 𝜖 ′ ⊲ 𝐴 ′ ⊣ 𝑅 ′ 𝜖 ′ ⊑ 𝜖 𝐴 ′ ⊑ 𝐴 𝑅 ′ ⊆ 𝑅. 
+
+Moreover, 𝐻 ′ is well formed and any trace event appended by the step is represented by 𝐴 .
+
+Proof sketch. By case analysis on the small-step rule. Pure computation rules E-Beta , E-Let ,
+
+E-IfTrue , and E-IfFalse use the substitution lemma for ordinary values. Checked calls use the callable summary in Ξ, so expanding call 𝑐 (𝑣 ) to the associated unary function application preserves the declared result type and summary bound. Handler rules push, pop, or unwind only 𝐻 ; the typing rule for handle already accounts for the effects produced by arms. Action rules, including inference actions, append request, handled, denied, or commit events only at redexes introduced by 20 Tan et al. 
+
+the corresponding typing rules, and residual checks are consumed only after their guarded dynamic test has succeeded. □
+
+Lemma 2 (Progress) . Assume well-formed Ξ, Π, handler stack 𝐻 , and trace prefix 𝜃 . If 
+
+Ξ; ∅; Π ⊢ 𝑒 ⇒ 𝜏 ! 𝜖 ⊲ 𝐴 ⊣ 𝑅 
+
+and the runtime plan contains the residual checks 𝑅 , then exactly one of the following holds: (i) 𝑒 is a value; (ii) 𝑒 is an explicit enforcement terminal; (iii) ∃𝑒 ′, 𝐻 ′, 𝜃 ′. ⟨𝑒, 𝐻, 𝜃 ⟩ −→ ⟨ 𝑒 ′, 𝐻 ′, 𝜃 ′⟩.
+
+Here enforcement terminals include schema failure and abort outcomes produced by the dynamic semantics. Policy denial instead takes a step to the typed Error .raise ⟨PolicyDenied ⟩ action. 
+
+Proof sketch. By induction on the typing derivation. Values are immediate. Elimination forms either contain a non-value subexpression, in which case the evaluation-context rule applies by the induction hypothesis, or contain values and match a redex rule. A performed action either finds a matching handler, passes through the default dispatcher, or is rejected by policy, boundary, or schema enforcement. The last case is progress: the semantics produces a typed enforcement terminal rather than becoming stuck. The arm typing rules ensure that handler arms cannot fall through; they end in resume , finish , or an explicit abort. □
+
+Theorem 3 (Type soundness) . If a closed expression 𝑒 is well typed under well-formed Ξ and Π, and execution starts from a well-formed runtime configuration containing the residual checks produced by typing, then no reachable configuration is stuck. 
+
+Proof sketch. By induction on the length of the multi-step execution, using Lemma 1 to re-establish typing after each step and Lemma 2 to show that each reachable non-value, non-terminal configuration can take a step. □
+
+6.3 Effect and Trace Soundness 
+
+Effect soundness states that the escaping row is a genuine upper bound on committed external behavior, while the requested-action abstraction is a genuine upper bound on requested trace behavior. The theorem deliberately does not require every requested action to be covered by the escaping row, because a handler may make a request non-escaping. 
+
+Theorem 4 (Effect soundness) . Assume well-formed Ξ and Π, assume Ξ; Γ; Π ⊢ 𝑒 ⇒ 𝜏 ! 𝜖 ⊲ 𝐴 ⊣ 𝑅 ,and assume an initial well-formed configuration 
+
+⟨𝑒, 𝐻, 𝜏 0⟩ −→ ∗ ⟨𝑣, 𝐻 ′, 𝜏 1⟩.
+
+Then: 
+
+∀𝑎 ∈ commits (𝜏 1) \ commits (𝜏 0). 𝑎 ⪯ 𝜖 ∨ residCov (𝑎, 𝜖 ),𝐴 |= (𝜏 1 \ 𝜏 0).
+
+Here residCov (𝑎, 𝜖 ) means that 𝑎 is a compiler-inserted residual check whose guarded action is covered by 𝜖 .
+
+Proof sketch. By induction on the small-step derivation. Pure rules add no actions. Rules for checked callable calls and perform append request events introduced by T-Call and T-Action 
+
+through the static signature Ξ. Callable descriptors and action signatures contribute their boundary events through summaries rather than through ad hoc core redexes. Commit events arise only through default dispatch after commit enforcement, so their abstractions are covered by the escaping Etas 21 
+
+row or by a compiler-inserted residual check. The handler rule may remove handled effects from the escaping row, but the typing rule preserves the handled computation’s requested-action abstraction. Residual checks in 𝑅 are inserted by the monitor-discharge judgment precisely at points where the static event pattern is known but the concrete parameter is dynamic. □
+
+6.4 Policy Safety 
+
+Policy safety states that a program accepted by the typing judgment cannot request or commit an action event that violates the effective monitor compiled from active trace specs. The theorem is stated with residual checks because Etas intentionally permits policies whose resource predicates depend on runtime values. 
+
+Theorem 5 (Policy safety) . Assume Ξ; Γ; Π ⊢ 𝑒 ⇒ 𝜏 ! 𝜖 ⊲ 𝐴 ⊣ 𝑅 . Suppose execution starts from a well-formed configuration that contains 𝑅 , and suppose every residual check is enforced before its guarded request or commit event. Then every prefix of the produced trace is accepted by 𝑀 Π:
+
+∀𝜏 ′. 𝜏 ′ ⪯ 𝜏 1 ⇒ 𝑀 Π (𝜏 ′) ∉ Bad .
+
+Proof sketch. The trace-spec premises inside typing normalize source specs to monitors; the monitor-discharge premises then either prove an event transition accepted, make the typing rule inapplicable, or emit a residual check in 𝑅 . For proved transitions, soundness of the abstraction ensures that all concrete events represented by the abstract event keep the monitor outside Bad .For residual transitions, the dynamic denial rules prevent the request or commit whenever the concrete monitor transition would enter Bad . Since enforcement is prefix-based and every request and commit is mediated before its event is appended, the property holds for all trace prefixes. □
+
+6.5 Handler Transparency 
+
+Handlers should not hide requests or create commit authority. This is the key difference between 
+
+Etas handlers and unrestricted algebraic effect handlers. 
+
+Theorem 6 (Handler trace transparency) . Installing a well-typed handler frame may remove handled effects from the escaping row, but it does not remove the corresponding request events from the requested-action trace. If a handled computation requests action 𝑎 , the produced trace contains request (𝑎 ) followed by a handled outcome. If a handler or default dispatcher commits 𝑎 , then 𝑎 passes the same boundary and policy checks that would be required without the handler frame. 
+
+Proof sketch. The E-HandleEnter rule pushes the handler frame onto 𝐻 , and E-HandleExit/E-FinishReturn restore the previous stack when the scoped computation returns or finishes. The E-Perform-Handle rule appends request and handled events before the arm runs, so either terminal arm outcome remains auditable. The E-Perform-Commit rule is the only rule that appends a commit event, and its premises include commit enforcement. Therefore a handler can affect the interpretation of a request but cannot manufacture commit authority. □
+
+Taken together, these theorems do not assert that model outputs are correct, stable, or safe. They establish a narrower property: whatever the model returns, the surrounding program cannot commit an undeclared, unauthorized, or unmonitored external action without crossing an explicit residual check or raising a typed enforcement error, and it cannot erase a handled request from the audit trace. This is the level at which a programming language can improve agent-system reliability without treating model alignment as a type-system property. 22 Tan et al. 
+
+7 Implementation 
+
+The current Etas prototype is implemented in Rust across component repositories composed by a user-facing distribution workspace. Its CLI composes component repositories for syntax, HIR, types, effects, standard library metadata, host bindings, and interpretation. This structure reflects the language design: the user sees one tool, while compiler and interpreter responsibilities remain separated. 
+
+7.1 Compiler Pipeline 
+
+The implemented pipeline is: 
+
+source → AST → HIR → checked HIR → interpreter .
+
+The frontend parses source, lowers declarations and bodies to source-shaped HIR, resolves imports and names, checks types and effects, analyzes loop progress, and verifies interpreter support. Its output is a CheckedProject containing HIR together with the type, effect, requested-action, source-map, and entry-point facts needed downstream. The interpreter consumes this checked project directly. Before evaluation, it derives an interpreter plan containing slot layouts, globals, resources, intrinsic dispatch, host requirements, and action-mediation metadata. This plan is execution metadata over HIR, not another language representation. Direct HIR interpretation keeps diagnostics and interpreter events connected to source spans while the language is still evolving. 
+
+7.2 Effect, Trace-Spec, and Handler Diagnostics 
+
+The checker treats effect, trace-spec, and policy-monitor failures as first-class diagnostics. Negative tests are expected to report targeted errors rather than generic “not implemented” messages. This matters for the design because the language is useful only if programmers can understand why an action row is too narrow, a trace-spec obligation cannot be proved, a model-callable tool hides high-impact effects, or a handler attempts to resume illegally. Package metadata is part of the same story. Imported modules and host bindings must expose public type, effect, action, tool, and trace-spec contracts, allowing downstream code to check effects and requested traces without seeing every implementation body. This resembles separate compilation for ordinary types; the exported interface also carries authority and TraceSpecAlgebra 
+
+summaries. 
+
+7.3 Checked-HIR Interpreter 
+
+Interpreter::run_checked accepts a CheckedProject , an entry point and arguments, host ser-vices, and run options. It first builds and validates the interpreter plan, including host-readiness and action-mediation facts, then evaluates HIR with explicit frames, slots, control signals, and single-shot continuations. Flow and agent calls, handlers, checkpoints, and resume are therefore interpreter behavior over checked HIR. Runtime limits and retry budgets are implemented as orthogonal interpreter facilities; they are not part of the Core Etas formalism. Pure intrinsics execute locally. Model, tool, memory, approval, console, and command boundaries are converted to typed requests and routed through supplied host services. The result contains an interpreter value or diagnostics, together with workflow events and checkpoints. This implementa-tion provides the compiler-and-interpreter baseline evaluated in this paper; a separate optimization representation and production scheduler are outside the current prototype. 
+
+8 Evaluation 
+
+The evaluation of Etas should answer four questions. Etas 23 
+
+RQ1: Expressiveness. Can the language express representative agent-system patterns with-out encoding the safety-relevant structure outside the language? 
+
+RQ2: Static detection. Do effect, policy, prompt-trust, memory, and handler checks catch the intended classes of mistakes at compile time? 
+
+RQ3: Runtime evidence. Does mediated execution produce traces that are sufficient for audit, replay, recovery, and residual policy enforcement? 
+
+RQ4: Optimization. Does checked program structure expose enough evidence to justify agent-specific rewrites without weakening effects or trace specs? The current prototype supports an artifact-oriented evaluation through case-study programs, compiler diagnostics, and interpreter traces. We use these artifacts to examine whether safety-relevant structure remains visible to static checking, runtime audit, and optimization discovery. 
+
+8.1 Case Studies 
+
+Recent agent practice has converged on three recurring engineering problems. Context engineering 
+
+generalizes prompt engineering into the systematic selection, processing, and management of the information made available to a model at inference time [ 21 ]; in software agents, project-specific context files already encode architecture, interfaces, workflows, and local policies [ 24 ]. 
+
+Harness engineering concerns the runtime substrate around the model: tool surfaces, retrieval strategy, tool-result presentation, structured outputs, validation, retries, and evaluation harnesses. Recent search experiments show that accuracy can depend strongly on the harness and tool-calling style even when the underlying data are fixed [ 29 ]. Loop engineering is the emerging practice of designing recurring agent systems that keep working until a goal, budget, or acceptance predicate is reached; recent hands-free agent loops combine executable evaluators, isolated worktrees, git policies, tracing, and replay [ 31 ], and practitioner accounts identify automations, worktrees, skills, connectors, and subagents as the loop substrate [12]. The budget annotations in Figure 12(b–c) exercise orthogonal interpreter facilities and are not constructs of the Core Etas formal development. Figure 12 presents code snippets extracted from four programs supported by our Etas implementation. 
+
+Context engineering. Figure 12(a) treats the prompt context as a typed program artifact rather than as an unstructured string assembled in callbacks. The effect row states which context sources may be queried, and the trace spec denies secret memory regions while admitting approved report memory and web search. This makes a case study measurable in two ways: the compiler can reject secret leakage before execution, and the interpreter trace can explain which sources entered a model call when an output is audited. 
+
+Harness engineering. Figure 12(b) packages the agent harness into source-level semantics: model choice, tool exposure, structured output type, allowed tool actions, and an implementation-level runtime budget all appear in the program. The interesting comparison is not whether a framework can run the same workflow, but whether the harness is visible to static analysis. In Etas , the compiler can warn if the exposed tool set contains a dangerous action such as shell execution, insert residual checks when a ticket destination is only known at runtime, and use handlers to run the same harness in dry-run or mock mode without erasing the requested actions from the trace. 
+
+Loop engineering. Figure 12(c) represents a recurring repair loop as a bounded program con-strained by trace specs. The loop is allowed to operate only in an isolated worktree, can run CI repeatedly under an interpreter-enforced budget, and can merge only after both CI and review have appeared earlier in the trace. This gives the language concrete static-safety and audit hooks: 24 Tan et al. 
+
+spec PublicContext: trace =+Memory.read<ProjectMemory.Reports> & +Web.search<_> & -Memory.read<ProjectMemory.Secrets>; 
+
+flow BuildContext(req: DraftRequest) →
+
+Prompt ~ PublicContext {
+
+let prior = ProjectMemory.Reports.get( req.related); 
+
+let hits = search_web(req.topic); 
+
+return Prompt.new() .system(Trusted("Use approved context only.")) .data({ request = req, prior, hits }) ;}
+
+(a) Context engineering. 
+
+spec TriageHarness: trace =+Web.search<_> & -Shell.exec<_> & +Tickets.write<Sandbox>; @model("GPT-5.5") @tools([search_web, update_ticket]) @limits([Tokens(8000), Attempts(2)]) 
+
+agent Triage(req: Ticket) →
+
+TriageDecision ~ TriageHarness {
+
+let d = perform infer <TriageDecision>( BuildTicketContext(req)); update_ticket(req.id, d.summary); 
+
+return d; }
+
+(b) Harness engineering. 
+
+spec RepairLoop: trace =+Repo.checkout<IsolatedWorktree> & +CI.run<Project> & +Review.request & +Repo.merge<ProtectedMain> & (CI.run<Project> >> Repo.merge< ProtectedMain>) & (Review.request >> Repo.merge< ProtectedMain>); 
+
+flow repair(goal: Issue) → Patch ~ RepairLoop {
+
+let wt = perform Repo.checkout< IsolatedWorktree>(goal.repo); 
+
+for round in std.range(6) limit Attempts (6), Tokens(60000) do {
+
+let patch = RepairAgent.run({ goal, wt, round }); 
+
+let test = perform CI.run<Project>(wt, patch); 
+
+if test.ok && std.ui.approve("merge?", patch, risk = High) { 
+
+perform Repo.merge<ProtectedMain>(wt, patch); 
+
+return patch; }}abort("repair budget exhausted"); }
+
+(c) Loop engineering. 
+
+@model("gpt-5.5") @tools([web.search, paper.search, repo.read, db.query]) 
+
+agent Researcher(input: ResearchTask) 
+
+→ ResearchResult {
+
+return perform infer <ResearchResult>( ResearchPrompt(input)); }
+
+spec LiteratureOnly: trace =+PaperSearch.search<_> & -WebSearch.search<_> & -Repo.read<_> & -Db.query<_>; 
+
+flow literature_batch(task: ResearchBatch) 
+
+→ Array<ResearchResult> ~ LiteratureOnly {var results = []; 
+
+for q in task.questions limit Tokens (30000) do {
+
+let papers = paper.search(task.topic); results = results.push(Researcher.run( { question = q, papers })); }
+
+return results; }// derived optimization plan: // hoist/dedup paper.search(task.topic) // parallelize independent questions // expose only paper.search 
+
+(d) Optimization. 
+
+Fig. 12. Four language-visible agent-engineering cases. The left column stacks context engineering (a), which excludes secret memory from a typed prompt, and harness engineering (b), which fixes the model, tools, budget, and allowed actions. The middle column gives loop engineering (c): an isolated repair loop must observe CI and review before protected merge. The right column demonstrates an effect- and trace-aware optimization plan (d). The call-site spec narrows a four-tool agent to paper search; a stable, loop-invariant search is hoisted and deduplicated; and independent research iterations may run concurrently while preserving result order and their shared token limit. Token and attempt bounds are operational, while the effect, trace, and specialization facts that justify these rewrites are statically visible. 
+
+the compiler rejects definite ordering violations, while the interpreter enforces the runtime budget and records the actions and checkpoints needed to audit each iteration. 
+
+Answer to RQ1: Expressiveness. Yes, for the evaluated patterns. Figure 12(a–c) expresses model boundaries, tool exposure, typed context and memory, approval ordering, and runtime limits in source declarations and specs rather than external callback conventions. This evidence covers three compact patterns, not general claims about large-program ergonomics. 
+
+Answer to RQ2: Static detection. Yes for the modeled properties, with residualization. Across the cases, the checker infers effects and requested actions and rejects definite secret-memory, shell, ordering, and handler violations. Predicates depending on concrete runtime resources remain explicit residual checks rather than being silently accepted or rejected. 
+
+Answer to RQ3: Runtime evidence. Yes at prototype scope. Checked-HIR execution emits request, handled, commit, denial, workflow, budget, and checkpoint evidence sufficient to audit these runs Etas 25 
+
+and drive the implemented replay and recovery hooks. The case studies do not yet establish trace completeness at production scale. 
+
+8.2 Optimization 
+
+Figure 12(d) combines three optimizations from the language examples. First, package metadata connects tools to action signatures, so LiteratureOnly narrows Researcher ’s four-tool surface to 
+
+{paper .search }. Second, paper.search(task.topic) is loop invariant; when its action summary marks the result stable within the run with topic as its cache key, the search can be hoisted and one traced result can serve all iterations. Third, the remaining Researcher.run calls have no data dependence or conflicting escaping effects. They may therefore be scheduled concurrently when the monitor admits either order, with results restored to source order and the shared token limit preserved. 
+
+Answer to RQ4: Optimization. Yes. The current frontend records tool metadata, specialized action summaries, spec conformance, and source-shaped loop structure in checked HIR, which is sufficient to identify these candidates and their side conditions. Because Etas makes stability, effect conflict, trace equivalence, and limit preservation compiler-visible, this information will enable an optimizer to apply rewrites and improve runtime performance. 
+
+9 Related Work 
+
+Effects, handlers, and authority. Algebraic effects and handlers separate operation interfaces from their interpretations [ 2, 26 , 27 ]; Koka shows that row-typed effects can be inferred and compiled efficiently [ 18 , 19 ]. Related systems study row-polymorphic and direct-style handlers, effect abstraction, handler names, and refinement reasoning [ 3 , 13 , 16 , 20 , 30 ]. Etas adopts rows and first-class handlers but retains a typed requested-action trace after handling: a handler may remove an escaping obligation, but cannot erase the request or grant commit authority. This design also connects scope-based capability accounts with type-based effects [ 4 ]: tool exposure limits which actions an agent can request, while effects and specs mediate the concrete commit. 
+
+Trace enforcement and information flow. Security automata characterize enforceable trace prop-erties [ 28 ]. Etas compiles kinded trace specs to such monitors, but first uses effect inference and abstract requested traces to discharge provable obligations; residual monitors handle resource values and model-selected arguments known only at runtime. Events distinguish requests, handled outcomes, denials, and commits, so local interpretation remains auditable. Prompt trust is related to information-flow control [ 10 ], but targets the narrower problem of exposing untrusted or secret flows into privileged model inputs without requiring a full dependent information-flow system. 
+
+Agent and coordination models. Reward-guided synthesis treats agent control structures as synthesized programs [ 9]; Etas instead provides the checked programming model around inference, tools, memory, approval, traces, replay, and secondary runtime limits. Choreographies make coordination explicit through projection and communication structure [ 1, 11 ], while session types govern protocol progression [ 14 ]. Etas shares their insistence on explicit structure, but targets model-backed agents, tool authority, and trace enforcement rather than endpoint projection or deadlock freedom. Its implementation also differs from optimization DSLs such as Allo [ 5 ]: the current compiler attaches types, effects, and action summaries to source-shaped HIR and interprets it directly, without a separate schedule or optimization IR. This matters for agent runtimes because authority can change between request and commit. Etas therefore preserves the provenance of requested actions even when handlers, deployment grants, or scheduler choices decide whether an 26 Tan et al. 
+
+external action actually occurs. This keeps optimization tied to the same policy evidence used for enforcement, rather than treating scheduling as a separate correctness argument. 
+
+10 Conclusion 
+
+This paper presents Etas , a programming-language for agent systems in which model-backed inference, tool calls, prompts, memory, approvals, policies, handlers, and traces are explicit seman-tic objects rather than framework conventions. The design separates deterministic computation from agentic nondeterminism and separates escaping effects from the persistent requested-action trace, allowing handlers to support testing, replay, recovery, and host adaptation without hiding the authority that a program requested. Its static semantics combines ordinary typing with spec conformance, TraceSpecAlgebra monitors, abstract trace discharge, and residual runtime obliga-tions; its dynamic semantics mediates every request and commit through policy, effect-boundary, deployment, and sandbox checks; and its soundness statements identify the resulting guarantees for types, effects, traces, policy safety, and handler transparency. Our Etas prototype and artifact-oriented evaluation show that these ideas can be implemented as compiler diagnostics, checked-HIR execution, trace-aware runtime plans, fixture tests, and case studies for context, harness, and loop engineering. The broader conclusion is that agent-system safety and auditability need not be recovered from callbacks and logs after the fact: they can be made part of the language interface that programmers write, compilers check, and runtimes enforce. 
+
+References 
+
+[1] Mako Bates, Shun Kashiwa, Syed Jafri, Gan Shen, Lindsey Kuper, and Joseph P. Near. 2025. Efficient, Portable, Census-Polymorphic Choreographic Programming. Proc. ACM Program. Lang. 9, PLDI, Article 193 (June 2025), 24 pages. doi:10.1145/3729296 [2] Andrej Bauer and Matija Pretnar. 2015. Programming with algebraic effects and handlers. Journal of Logical and Algebraic Methods in Programming 84, 1 (Jan. 2015), 108–123. doi:10.1016/j.jlamp.2014.02.001 [3] Dariusz Biernacki, Maciej Piróg, Piotr Polesiuk, and Filip Sieczkowski. 2019. Abstracting algebraic effects. Proc. ACM Program. Lang. 3, POPL, Article 6 (Jan. 2019), 28 pages. doi:10.1145/3290319 [4] Jonathan Immanuel Brachthäuser, Philipp Schuster, Edward Lee, and Aleksander Boruch-Gruszecki. 2022. Effects, capabilities, and boxes: from scope-based reasoning to type-based reasoning and back. Proc. ACM Program. Lang. 6, OOPSLA1, Article 76 (April 2022), 30 pages. doi:10.1145/3527320 [5] Hongzheng Chen, Niansong Zhang, Shaojie Xiang, Zhichen Zeng, Mengjia Dai, and Zhiru Zhang. 2024. Allo: A Programming Model for Composable Accelerator Design. Proc. ACM Program. Lang. 8, PLDI, Article 171 (June 2024), 28 pages. doi:10.1145/3656401 [6] CloudWeGo. 2026. Eino User Manual. https://www.cloudwego.io/docs/eino/ Accessed: 2026-06-17. [7] Patrick Cousot and Radhia Cousot. 1977. Abstract interpretation: a unified lattice model for static analysis of programs by construction or approximation of fixpoints. In Proceedings of the 4th ACM SIGACT-SIGPLAN Symposium on Principles of Programming Languages (Los Angeles, California) (POPL ’77) . Association for Computing Machinery, New York, NY, USA, 238–252. doi:10.1145/512950.512973 [8] CrewAI. 2026. CrewAI Documentation. https://docs.crewai.com/ Accessed: 2026-06-17. [9] Guofeng Cui, Yuning Wang, Wenjie Qiu, and He Zhu. 2024. Reward-Guided Synthesis of Intelligent Agents with Control Structures. Proc. ACM Program. Lang. 8, PLDI, Article 217 (June 2024), 25 pages. doi:10.1145/3656447 [10] Dorothy E. Denning. 1976. A lattice model of secure information flow. Commun. ACM 19, 5 (May 1976), 236–243. doi:10.1145/360051.360056 [11] Saverio Giallorenzo, Fabrizio Montesi, and Marco Peressotti. 2024. Choral: Object-oriented Choreographic Program-ming. ACM Trans. Program. Lang. Syst. 46, 1, Article 1 (Jan. 2024), 59 pages. doi:10.1145/3632398 [12] Brent D. Griffiths. 2026. Forget prompt engineering: ‘Loop engineering’ is all the rage now. https://www.businessinsider. com/what-are-loops-ai-engineering-tips-2026-6 Accessed: 2026-07-03. [13] Daniel Hillerström and Sam Lindley. 2016. Liberating effects with rows and handlers. In Proceedings of the 1st International Workshop on Type-Driven Development (Nara, Japan) (TyDe 2016) . Association for Computing Machinery, New York, NY, USA, 15–27. doi:10.1145/2976022.2976033 [14] Kohei Honda, Vasco T. Vasconcelos, and Makoto Kubo. 1998. Language primitives and type discipline for structured communication-based programming. In Programming Languages and Systems , Chris Hankin (Ed.). Springer Berlin Etas 27 
+
+Heidelberg, Berlin, Heidelberg, 122–138. [15] Ohad Kammar, Sam Lindley, and Nicolas Oury. 2013. Handlers in action. In Proceedings of the 18th ACM SIGPLAN In-ternational Conference on Functional Programming (Boston, Massachusetts, USA) (ICFP ’13) . Association for Computing Machinery, New York, NY, USA, 145–158. doi:10.1145/2500365.2500590 [16] Fuga Kawamata, Hiroshi Unno, Taro Sekiyama, and Tachio Terauchi. 2024. Answer Refinement Modification: Refine-ment Type System for Algebraic Effects and Handlers. Proceedings of the ACM on Programming Languages 8, POPL, Article 5 (2024), 33 pages. doi:10.1145/3633280 [17] LangChain. 2026. LangGraph Overview. https://docs.langchain.com/oss/python/langgraph/overview Accessed: 2026-06-17. [18] Daan Leijen. 2014. Koka: Programming with Row Polymorphic Effect Types. Electronic Proceedings in Theoretical Computer Science 153 (June 2014), 100–126. doi:10.4204/eptcs.153.8 [19] Daan Leijen. 2017. Type directed compilation of row-typed algebraic effects. In Proceedings of the 44th ACM SIGPLAN Symposium on Principles of Programming Languages (Paris, France) (POPL ’17) . Association for Computing Machinery, New York, NY, USA, 486–499. doi:10.1145/3009837.3009872 [20] Sam Lindley, Conor McBride, and Craig McLaughlin. 2017. Do be do be do. In Proceedings of the 44th ACM SIGPLAN Symposium on Principles of Programming Languages (Paris, France) (POPL ’17) . Association for Computing Machinery, New York, NY, USA, 500–514. doi:10.1145/3009837.3009897 [21] Lingrui Mei, Jiayu Yao, Yuyao Ge, Yiwei Wang, Baolong Bi, Yujun Cai, Jiazhi Liu, Mingyu Li, Zhong-Zhi Li, Duzhen Zhang, Chenlin Zhou, Jiayi Mao, Tianze Xia, Jiafeng Guo, and Shenghua Liu. 2025. A Survey of Context Engineering for Large Language Models. arXiv:2507.13334 [cs.CL] https://arxiv.org/abs/2507.13334 [22] Microsoft. 2026. Agent Framework Documentation. https://learn.microsoft.com/en-us/agent-framework/ Accessed: 2026-06-17. [23] Microsoft. 2026. AutoGen Documentation. https://microsoft.github.io/autogen/stable/ Accessed: 2026-06-17. [24] Seyedmoein Mohsenimofidi, Matthias Galster, Christoph Treude, and Sebastian Baltes. 2026. Context Engineering for AI Agents in Open-Source Software. arXiv:2510.21413 [cs.SE] https://arxiv.org/abs/2510.21413 [25] OpenAI. 2026. OpenAI Agents SDK Documentation. https://openai.github.io/openai-agents-python/ Accessed: 2026-06-17. [26] Gordon Plotkin and John Power. 2003. Algebraic Operations and Generic Effects. Applied Categorical Structures 11, 1 (2003), 69–94. doi:10.1023/A:1023064908962 [27] Gordon D Plotkin and Matija Pretnar. 2013. Handling Algebraic Effects. Logical Methods in Computer Science 9, 4, Article 23 (Dec. 2013), 36 pages. doi:10.2168/lmcs-9(4:23)2013 [28] Fred B. Schneider. 2000. Enforceable security policies. ACM Trans. Inf. Syst. Secur. 3, 1 (Feb. 2000), 30–50. doi:10.1145/ 353323.353382 [29] Sahil Sen, Akhil Kasturi, Elias Lumer, Anmol Gulati, and Vamse Kumar Subbiah. 2026. Is Grep All You Need? How Agent Harnesses Reshape Agentic Search. arXiv:2605.15184 [cs.CL] https://arxiv.org/abs/2605.15184 [30] Ningning Xie, Youyou Cong, Kazuki Ikemori, and Daan Leijen. 2022. First-class names for effect handlers. Proc. ACM Program. Lang. 6, OOPSLA2, Article 126 (Oct. 2022), 30 pages. doi:10.1145/3563289 [31] Cunxi Yu, Chenhui Deng, Nathaniel Pinckney, and Brucek Khailany. 2026. Agentic Hardware Design as Repository-Level Code Evolution. arXiv:2606.28279 [cs.AR] https://arxiv.org/abs/2606.28279
