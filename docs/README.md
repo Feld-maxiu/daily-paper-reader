@@ -41,17 +41,17 @@
 <section class="dpr-home-dashboard-card dpr-home-report-card">
   <div class="dpr-home-dashboard-header">
     <div>
-      <span class="dpr-home-dashboard-kicker">2026-07-16 ~ 2026-07-25</span>
+      <span class="dpr-home-dashboard-kicker">2026-07-25</span>
       <h3 class="dpr-home-dashboard-title">今日汇总</h3>
     </div>
-    <strong class="dpr-home-dashboard-count">共 21 篇</strong>
+    <strong class="dpr-home-dashboard-count">共 7 篇</strong>
   </div>
   <dl class="dpr-home-dashboard-stats">
     <div class="dpr-home-dashboard-stat"><dt>累计更新</dt><dd>1 次</dd></div>
-    <div class="dpr-home-dashboard-stat"><dt>精读</dt><dd>14</dd></div>
-    <div class="dpr-home-dashboard-stat"><dt>速读</dt><dd>7</dd></div>
+    <div class="dpr-home-dashboard-stat"><dt>精读</dt><dd>5</dd></div>
+    <div class="dpr-home-dashboard-stat"><dt>速读</dt><dd>2</dd></div>
   </dl>
-  <p class="dpr-home-dashboard-body">最近更新：2026-07-25 13:30:24 UTC<br>状态：成功</p>
+  <p class="dpr-home-dashboard-body">最近更新：2026-07-25 21:03:00 UTC<br>状态：成功</p>
 </section>
 <section class="dpr-home-dashboard-card dpr-home-brief-card">
   <div class="dpr-home-dashboard-header">
@@ -62,9 +62,9 @@
     <strong class="dpr-home-dashboard-count">AI</strong>
   </div>
   <div class="dpr-home-dashboard-body">
-<p>近期重点精读了两篇关于智能体记忆的满分论文，兼顾速读了高效GUI智能体、搜索协作与视觉语言动作生成等方向。</p>
-<p>最值得关注的是组合推理中记忆的评测与注意力引导机制，为构建可靠长程记忆提供了关键基准和优化思路。</p>
-<p>建议先从RECON和Mechanistic Attention Guidance入手，抓住记忆评测与精细化修正核心，再延伸阅读HyMobileAgent等应用研究。</p>
+<p>今日精读聚焦智能体自主演化与共创世界，从操作系统到文学交互皆有突破。</p>
+<p>值得关注：具身智能实现认知规划与物理执行的解耦，而开放式文学世界中角色与世界观能协同演化。</p>
+<p>下一步可留意这类“自演化”与“共创”架构如何走向更自主的日常助手与沉浸式故事体验。</p>
   </div>
 </section>
 <section class="dpr-home-dashboard-card dpr-home-deep-card">
@@ -73,12 +73,12 @@
       <span class="dpr-home-dashboard-kicker">今日累计</span>
       <h3 class="dpr-home-dashboard-title">精读推荐</h3>
     </div>
-    <strong class="dpr-home-dashboard-count">14 篇</strong>
+    <strong class="dpr-home-dashboard-count">5 篇</strong>
   </div>
   <div class="dpr-home-dashboard-body">
-<ul class="dpr-home-dashboard-paper-list"><li><span class="dpr-home-dashboard-paper-title" title="RECON: Benchmarking Agent Memory for Compositional Reasoning over Long Contexts">RECON: Benchmarking Agent Memory for Compositional Reasoning over Long Contexts</span></li><li><span class="dpr-home-dashboard-paper-title" title="Mechanistic Attention Guidance for Agent Memory Refinement">Mechanistic Attention Guidance for Agent Memory Refinement</span></li><li><span class="dpr-home-dashboard-paper-title" title="Step-Level Preference Learning for Generative Agents in Social Simulations">Step-Level Preference Learning for Generative Agents in Social Simulations</span></li></ul>
+<ul class="dpr-home-dashboard-paper-list"><li><span class="dpr-home-dashboard-paper-title" title="PhyAgentOS: A Self-Evolving Operating System for Embodied Agents with Decoupled Cognitive Planning and Physical Execution">PhyAgentOS: A Self-Evolving Operating System for Embodied Agents with Decoupled Cognitive Planning and Physical Execution</span></li><li><span class="dpr-home-dashboard-paper-title" title="EvolvingWorld: An Open-Schema Framework for Co-Evolving Role-Play Agents and World Model in Interactive Literary World">EvolvingWorld: An Open-Schema Framework for Co-Evolving Role-Play Agents and World Model in Interactive Literary World</span></li><li><span class="dpr-home-dashboard-paper-title" title="ArbiGraph: Arbitrarily Scalable Verifiable Task Graphs for Evaluating Context Management">ArbiGraph: Arbitrarily Scalable Verifiable Task Graphs for Evaluating Context Management</span></li></ul>
   </div>
-  <div class="dpr-home-dashboard-tags"><span class="dpr-home-dashboard-tag">agent-memory <strong>14</strong></span></div>
+  <div class="dpr-home-dashboard-tags"><span class="dpr-home-dashboard-tag">agent-memory <strong>5</strong></span></div>
 </section>
 <section class="dpr-home-dashboard-card dpr-home-skim-card">
   <div class="dpr-home-dashboard-header">
@@ -86,12 +86,12 @@
       <span class="dpr-home-dashboard-kicker">今日累计</span>
       <h3 class="dpr-home-dashboard-title">速读推荐</h3>
     </div>
-    <strong class="dpr-home-dashboard-count">7 篇</strong>
+    <strong class="dpr-home-dashboard-count">2 篇</strong>
   </div>
   <div class="dpr-home-dashboard-body">
-<ul class="dpr-home-dashboard-paper-list"><li><span class="dpr-home-dashboard-paper-title" title="HyMobileAgent: Data-Environment Co-Scaling for Efficient GUI Agents">HyMobileAgent: Data-Environment Co-Scaling for Efficient GUI Agents</span></li><li><span class="dpr-home-dashboard-paper-title" title="SearchOS-V1: Towards Robust Open-Domain Information-Seeking Agent Collaboration">SearchOS-V1: Towards Robust Open-Domain Information-Seeking Agent Collaboration</span></li><li><span class="dpr-home-dashboard-paper-title" title="STeP: Signal Temporal Logic for Precise Specifications for Action Generation with Vision Language Models">STeP: Signal Temporal Logic for Precise Specifications for Action Generation with Vision Language Models</span></li></ul>
+<ul class="dpr-home-dashboard-paper-list"><li><span class="dpr-home-dashboard-paper-title" title="Binding Drift in Multi-Step Tool-Augmented Agents">Binding Drift in Multi-Step Tool-Augmented Agents</span></li><li><span class="dpr-home-dashboard-paper-title" title="Solar Open 2 Technical Report">Solar Open 2 Technical Report</span></li></ul>
   </div>
-  <div class="dpr-home-dashboard-tags"><span class="dpr-home-dashboard-tag">agent-memory <strong>7</strong></span></div>
+  <div class="dpr-home-dashboard-tags"><span class="dpr-home-dashboard-tag">agent-memory <strong>2</strong></span></div>
 </section>
 </div>
 

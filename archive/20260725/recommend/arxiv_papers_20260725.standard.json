@@ -1,0 +1,337 @@
+{
+  "mode": "standard",
+  "generated_at": "2026-07-25T20:51:48.583757+00:00",
+  "stats": {
+    "mode": "standard",
+    "tag_count": 1,
+    "deep_divecandidates": 5,
+    "deep_cap": 6,
+    "deep_selected": 5,
+    "quick_candidates": 2,
+    "quick_skim_target": 11,
+    "quick_selected": 2
+  },
+  "deep_dive": [
+    {
+      "id": "2607.16636v1",
+      "source": "arxiv",
+      "title": "PhyAgentOS: A Self-Evolving Operating System for Embodied Agents with Decoupled Cognitive Planning and Physical Execution",
+      "abstract": "Vision-language-action models, world models, and agentic planners each advance physical intelligence, yet their composition lacks a common execution abstraction, shared state, semantic verification, and persistent experience across heterogeneous embodiments. We present PhyAgentOS, a runtime foundation delivering scheduling, verification, memory, benchmarking, and safety as system-level services. Its Session-Centered Runtime treats a session, not an action, as the minimum unit of scheduling, compatibility preflight, supervised execution, evidence collection, and acceptance. To decouple cognition from physical execution, the cognition-physics boundary is a file system: the State-as-a-File protocol materializes cross-layer state as Markdown with YAML, yielding inspectable, versionable records without code dependencies between Agent and Runtime layers. These views form a unified cognitive state space aligning intent, capabilities, environment, execution, and experience. The SessionVerifier distinguishes execution termination from semantic task completion via evidence-grounded verdicts of success, failure, or replan. Verified outcomes are consolidated through epistemic memory into reusable knowledge and corrective lessons, closing a trial-and-error loop without retraining. Benchmarking reuses the deployment session and verification path, so results trace to real execution. Layered safety constrains both policy-driven and agent-driven execution: preflight, action bridges, SafetyGuard, heartbeat monitoring, and target-local constraints. Validation is progressive: games test cognitive planning, simulation adds dynamics and control, real robots add hardware noise, with the cognitive layer held constant. PhyAgentOS is benchmarked on Optimus-67, StarDojo, and DST-Dojo, validated on 19+ simulated and physical embodiments, and gains on LIBERO, Calvin, and RoboCasa365 across multiple VLA models.",
+      "authors": [
+        "Yang Liu",
+        "Weixing Chen",
+        "Xinshuai Song",
+        "Tao Pu",
+        "Siwen Mo",
+        "Yongjie Bai",
+        "Zihao Chen",
+        "Qianran Sun",
+        "Liruo Zhong",
+        "Ying Shen",
+        "Liang Lin"
+      ],
+      "primary_category": "cs.RO",
+      "categories": [
+        "cs.RO"
+      ],
+      "published": "2026-07-18T04:46:53+00:00",
+      "link": "https://arxiv.org/pdf/2607.16636v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "provides persistent memory as a system service for embodied agents",
+      "llm_evidence_cn": "为具身智能体提供持久记忆系统服务",
+      "llm_evidence": "为具身智能体提供持久记忆系统服务",
+      "canonical_evidence": "为具身智能体提供持久记忆系统服务",
+      "llm_tldr_en": "PhyAgentOS introduces a runtime system offering memory, verification, and safety services for embodied agents, using a session-centered runtime and State-as-a-File protocol to decouple cognition from execution and enable experience reuse.",
+      "llm_tldr_cn": "针对具身智能体缺乏统一执行抽象和持久记忆的问题，PhyAgentOS提出将记忆、验证等作为系统级服务的运行时基础，通过会话中心运行时和文件协议解耦认知与执行，实现了跨会话的经验保存和复用。实验表明该设计提升了多异构体系统的协作效率与安全性，为智能体记忆系统构建提供参考。",
+      "llm_tldr": "针对具身智能体缺乏统一执行抽象和持久记忆的问题，PhyAgentOS提出将记忆、验证等作为系统级服务的运行时基础，通过会话中心运行时和文件协议解耦认知与执行，实现了跨会话的经验保存和复用。实验表明该设计提升了多异构体系统的协作效率与安全性，为智能体记忆系统构建提供参考。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "memory mechanisms for intelligent agents",
+      "matched_requirement_id": "req-1",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2607.17250v1",
+      "source": "arxiv",
+      "title": "EvolvingWorld: An Open-Schema Framework for Co-Evolving Role-Play Agents and World Model in Interactive Literary World",
+      "abstract": "This paper introduces EvolvingWorld, a framework and benchmark for character and world co-evolution in interactive literary worlds. Existing systems either treat interactive literary simulation as static persona imitation or isolated scene generation, failing to capture how characters and worlds evolve together over time. To address this, EvolvingWorld models literary simulation as a long-horizon process where characters interact, scenes progress, and character and world states are persistently updated. Unlike prior systems relying on fixed schemas, EvolvingWorld adopts an open-schema framework to support simulation across diverse literary worlds. The framework consists of two coupled modules: a Character Agent for multi-character role-play and persistent profile evolution, and an LLM-based World Model for global and location/entity-level state maintenance and scene progression. Based on this architecture, we formulate 7 trainable tasks for scene initialization, interaction generation, and state update. We construct a dataset from 57 books, producing 138,596 supervised training samples and 222 snapshots for testing. Furthermore, we introduce a trajectory-level LLM-as-Judge evaluation protocol spanning 10 dimensions and 20 metrics. Experiments show that EvolvingWorld can improve long-horizon simulation by effectively maintaining persistent, coherent character and world development.",
+      "authors": [
+        "Qing Zong",
+        "Yue Guo",
+        "Mengxin Yang",
+        "Yiwen Guo",
+        "Yangqiu Song"
+      ],
+      "primary_category": "cs.CL",
+      "categories": [
+        "cs.CL"
+      ],
+      "published": "2026-07-19T13:40:34+00:00",
+      "link": "https://arxiv.org/pdf/2607.17250v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "proposes a framework where character agents and a world model co-evolve in interactive literary simulation",
+      "llm_evidence_cn": "提出角色智能体与世界模型共同演化的框架，支撑交互式文学世界模拟",
+      "llm_evidence": "提出角色智能体与世界模型共同演化的框架，支撑交互式文学世界模拟",
+      "canonical_evidence": "提出角色智能体与世界模型共同演化的框架，支撑交互式文学世界模拟",
+      "llm_tldr_en": "Introduces EvolvingWorld, a framework that couples character agents with a world model for co-evolving interactive literary worlds, enabling persistent and long-horizon narrative simulation.",
+      "llm_tldr_cn": "针对现有交互式文学模拟仅关注静态角色模仿或孤立场景生成的问题，提出EvolvingWorld框架，将角色智能体与世界模型耦合，允许角色与世界状态在长期交互中共同演化，采用开放模式支持多样化文学世界模拟，并构建了相应基准，推动了语言世界模型在叙事代理中的应用。",
+      "llm_tldr": "针对现有交互式文学模拟仅关注静态角色模仿或孤立场景生成的问题，提出EvolvingWorld框架，将角色智能体与世界模型耦合，允许角色与世界状态在长期交互中共同演化，采用开放模式支持多样化文学世界模拟，并构建了相应基准，推动了语言世界模型在叙事代理中的应用。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "How do text world models support language based agent simulation?",
+      "matched_requirement_id": "req-7",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2607.20764v1",
+      "source": "arxiv",
+      "title": "ArbiGraph: Arbitrarily Scalable Verifiable Task Graphs for Evaluating Context Management",
+      "abstract": "We introduce ARBIGRAPH, a benchmark generator for evaluating whether tool-assisted language agents can retain, update, compose, and discard task-relevant context across extended reasoning workflows. ARBIGRAPH represents each task as a natural-language problem with an executable Python solver, and composes tasks through typed intermediate states, instantiated here as scalar and list values. This design enables controllable task graphs whose length, dependency structure, distractor count, and value type can be varied while preserving exact automatic verification. We instantiate ARBIGRAPH with math, GSM-style word-problems, and Python-tracing task categories, and evaluate a Qwen3.5-27B tool-assisted agent across four topologies. The results show high accuracy on isolated tasks but substantial degradation on more complex dependent tasks: accuracy drops by up to 33.3% on branching chains of dependent math tasks. This shows that ARBIGRAPH exposes failures that are not visible from single-task evaluation alone. Our code, generated datasets, and evaluation results are available at https://github.com/pavelgolikov/ArbiGraph.git",
+      "authors": [
+        "Pavel Golikov",
+        "Evgenii Opryshko",
+        "Gennady Pekhimenko",
+        "Mark C. Jeffrey"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-07-22T22:30:12+00:00",
+      "link": "https://arxiv.org/pdf/2607.20764v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "evaluates how well agents retain, update, compose, and discard context, directly testing memory mechanisms in tool-assisted agents",
+      "llm_evidence_cn": "通过控制任务图评估智能体在上下文中保留、更新、组合和丢弃信息的能力，检验记忆机制",
+      "llm_evidence": "通过控制任务图评估智能体在上下文中保留、更新、组合和丢弃信息的能力，检验记忆机制",
+      "canonical_evidence": "通过控制任务图评估智能体在上下文中保留、更新、组合和丢弃信息的能力，检验记忆机制",
+      "llm_tldr_en": "Introduces a benchmark generator that produces task graphs to systematically evaluate context management (memory) in tool-assisted language agents, revealing limits in long dependency structures.",
+      "llm_tldr_cn": "针对现有上下文管理评估缺乏可扩展性的问题，提出可自动生成验证任务图的基准ArbiGraph。该基准通过控制任务长度、依赖关系和干扰项，系统评估智能体在扩展推理工作流中保存、更新和丢弃信息的能力。对Qwen3.5-27B的测试揭示了处理长依赖任务的局限性，为智能体记忆评估提供了可扩展工具。",
+      "llm_tldr": "针对现有上下文管理评估缺乏可扩展性的问题，提出可自动生成验证任务图的基准ArbiGraph。该基准通过控制任务长度、依赖关系和干扰项，系统评估智能体在扩展推理工作流中保存、更新和丢弃信息的能力。对Qwen3.5-27B的测试揭示了处理长依赖任务的局限性，为智能体记忆评估提供了可扩展工具。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "memory mechanisms for intelligent agents",
+      "matched_requirement_id": "req-1",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2607.16610v1",
+      "source": "arxiv",
+      "title": "Just A Rather Very Intelligent Spoken Agent",
+      "abstract": "Long-horizon AI agents are becoming increasingly capable, yet their interaction with users remains surprisingly thin. In most workflows, users give an initial instruction, receive only selective textual updates, and lose a clear sense of what the agent is doing or when to step in. This leaves a missing part in the current agent ecosystem: an always-on Jarvis-style mediator that keeps the agent continuously reachable to the user. Such a mediator should support real-time spoken interaction with the user, answer questions without interrupting the worker, proactively report progress or confusion, and inject user guidance back into the agent's execution when useful. In this work, we introduce JarvisBench, a benchmark for measuring the dual value of mediation in long-horizon agent workflows. JarvisBench contains two complementary tracks: an agent-collaboration track that measures whether mediation improves downstream task completion, and a user-interaction track that measures whether mediation makes ongoing execution more understandable, responsive, and accessible to users. We instantiate the benchmark with a modular reference Jarvis prototype and evaluate it on 34 text-only WildClaw tasks executed in OpenClaw. Preliminary results with GPT-5.5, Claude Opus 4.7, Gemini-based, and GPT-based worker agents suggest that Jarvis-style mediation can provide trace-grounded responses to user questions and improve task performance when sparse user guidance is injected at appropriate moments. The results also show that effectiveness depends strongly on the mediator's LLM brain, highlighting both the promise of this missing middle layer and the need for broader community effort. Demo page https://cchen1436.github.io/jarvis",
+      "authors": [
+        "Chen Chen",
+        "Zhehuai Chen"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-07-18T03:10:19+00:00",
+      "link": "https://arxiv.org/pdf/2607.16610v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "spoken agent mediator enabling real-time multimodal interaction with users",
+      "llm_evidence_cn": "口语智能体中介实现与用户的实时多模态交互",
+      "llm_evidence": "口语智能体中介实现与用户的实时多模态交互",
+      "canonical_evidence": "口语智能体中介实现与用户的实时多模态交互",
+      "llm_tldr_en": "Introduces a spoken agent mediator (Jarvis-style) that enables real-time spoken interaction, progress reporting, and user guidance for long-horizon agents, processing speech as an additional modality.",
+      "llm_tldr_cn": "针对长程智能体与用户交互单一、缺乏实时沟通的问题，提出Jarvis风格的口语中介智能体。该智能体支持实时语音交互，能回答询问、主动报告进展，并注入用户指导。构建JarvisBench基准评估中介价值。实验证明口语交互提升用户体验与智能体协作效率。",
+      "llm_tldr": "针对长程智能体与用户交互单一、缺乏实时沟通的问题，提出Jarvis风格的口语中介智能体。该智能体支持实时语音交互，能回答询问、主动报告进展，并注入用户指导。构建JarvisBench基准评估中介价值。实验证明口语交互提升用户体验与智能体协作效率。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "agent that processes multiple modalities",
+      "matched_requirement_id": "req-2",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2607.21419v1",
+      "source": "arxiv",
+      "title": "PATS: Policy-Aware Training Scaffolding for Agentic Reinforcement Learning",
+      "abstract": "In long-horizon LLM agent reinforcement learning, weak policies often repeat similar failures, producing uninformative rollout trajectories and limiting effective policy optimization. Existing skill-centric methods improve exploration by optimizing, filtering, or internalizing reusable skills. However, they remain centered on the skills themselves rather than being designed as adaptive training-time support for the evolving policy. To address this, we propose a policy-centric training paradigm that reframes skills as a dynamic training scaffold. Our framework, Pats, converts rollout groups from the latest policy into evidence cards and uses task-specific evaluation to adjust the context used in subsequent rollouts. Concrete guidance helps weak policies to complete challenging tasks. As policy improves, redundant context is revised or removed to reduce reliance on explicit guidance while preserving useful rollout variation. The policy is optimized with environmental rewards using standard RLVR, and the training scaffold is discarded at deployment. On ALFWorld and WebShop, Pats improves over strong baselines by up to 18.6%. Across seven search-augmented QA benchmarks, it remains competitive while using 32.1% fewer prompt tokens than the baseline.",
+      "authors": [
+        "Yipeng Shi",
+        "Zhipeng Ma",
+        "Yue Wang",
+        "Qitai Tan",
+        "Yang Li",
+        "Peng Chen",
+        "Zhengzhou Zhu"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-07-23T15:24:35+00:00",
+      "link": "https://arxiv.org/pdf/2607.21419v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "policy-centric training scaffold to improve exploration in agentic RL",
+      "llm_evidence_cn": "以策略为中心的训练脚手架改进智能体强化学习探索",
+      "llm_evidence": "以策略为中心的训练脚手架改进智能体强化学习探索",
+      "canonical_evidence": "以策略为中心的训练脚手架改进智能体强化学习探索",
+      "llm_tldr_en": "Proposes PATS, a policy-centric training paradigm that converts rollout groups into evidence cards to adjust context, providing dynamic scaffolding to improve exploration in long-horizon agentic RL.",
+      "llm_tldr_cn": "针对长程智能体强化学习中弱策略产生无效轨迹的问题，提出PATS框架。该方法将最新策略的轨迹组转化为证据卡，利用任务评估动态调整后续交互的上下文，形成策略感知的训练脚手架。实验证明该方法能有效引导探索，提升策略优化效率。",
+      "llm_tldr": "针对长程智能体强化学习中弱策略产生无效轨迹的问题，提出PATS框架。该方法将最新策略的轨迹组转化为证据卡，利用任务评估动态调整后续交互的上下文，形成策略感知的训练脚手架。实验证明该方法能有效引导探索，提升策略优化效率。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "reinforcement learning applied to autonomous agents",
+      "matched_requirement_id": "req-3",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "quick_skim": [
+    {
+      "id": "2607.18316v1",
+      "source": "arxiv",
+      "title": "Binding Drift in Multi-Step Tool-Augmented Agents",
+      "abstract": "Tool-augmented language-model agents execute multi-step workflows over external systems, resolving an entity once and then acting on it across subsequent steps. Prior work shows that in single-step actions, agents select the correct tool but bind it to the wrong entity 24-26% of the time. We study what happens to entity bindings over time: do they stay correct, silently drift to a different entity, or, if wrong from the start, propagate and compound? We formalize binding drift (correct at step 1, wrong later) as distinct from error propagation (wrong at step 1, carried forward), and score them on disjoint workflow sets so the two cannot be conflated. In a controlled multi-step testbed (200 workflows, 580 entity-binding-scored steps, four enterprise domains, eight model backends spanning small to frontier), we find: (1) under controlled error injection, an entity lock (the intuitive \"persist the first binding\" fix) amplifies wrong actions from 907 to 2,746 (3.0x; bootstrap 95% CI [2.8, 3.3]), because it faithfully carries the seeded wrong entity into every later step; (2) the amplification reaches 8.5x on the most affected model (Claude Opus 4.5); (3) a practical LLM-based re-verifier (a single cheap second model call re-reading the original instruction) reduces wrong actions by 79% (0.21x; CI [0.18, 0.25]), closing the gap to within 1 percentage point of an oracle upper-bound (0.20x); and (4) in the natural (non-injected) setting, baseline agents drift on 18% of eligible workflows, with the per-step error rate rising across steps. Persistence and re-verification are not interchangeable: a defense that eliminates drift can worsen propagation, and a practical re-verifier nearly matches oracle recovery.",
+      "authors": [
+        "Rahul Suresh Babu",
+        "Shashank Indukuri"
+      ],
+      "primary_category": "cs.SE",
+      "categories": [
+        "cs.SE",
+        "cs.AI",
+        "cs.CL"
+      ],
+      "published": "2026-07-17T20:00:10+00:00",
+      "link": "https://arxiv.org/pdf/2607.18316v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "studies entity binding drift over multi-step, a memory failure in tool-augmented agents",
+      "llm_evidence_cn": "研究工具增强智能体的多步实体绑定漂移，属记忆机制故障",
+      "llm_evidence": "研究工具增强智能体的多步实体绑定漂移，属记忆机制故障",
+      "canonical_evidence": "研究工具增强智能体的多步实体绑定漂移，属记忆机制故障",
+      "llm_tldr_en": "Formalizes binding drift vs. error propagation in multi-step tool-augmented agents, revealing high drift rates and model-dependent failures that highlight critical memory reliability issues in agent workflows.",
+      "llm_tldr_cn": "针对多步骤工具增强智能体，首次形式化实体绑定漂移现象，将其与错误传播区分，并在覆盖四个企业领域和八种模型的受控测试中揭示高漂移率与模型相关性。该研究指出上下文窗口内实体记忆的脆弱性，为设计更可靠的智能体记忆机制提供了量化依据和新指标。",
+      "llm_tldr": "针对多步骤工具增强智能体，首次形式化实体绑定漂移现象，将其与错误传播区分，并在覆盖四个企业领域和八种模型的受控测试中揭示高漂移率与模型相关性。该研究指出上下文窗口内实体记忆的脆弱性，为设计更可靠的智能体记忆机制提供了量化依据和新指标。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "memory mechanisms for intelligent agents",
+      "matched_requirement_id": "req-1",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2607.20062v1",
+      "source": "arxiv",
+      "title": "Solar Open 2 Technical Report",
+      "abstract": "We present Solar Open 2, a 250B-A15B Mixture-of-Experts language model built for long-horizon agentic tasks, scaled up from Solar Open 1 (Solar Open 100B). To hold entire agent trajectories in a single context, Solar Open 2 reaches a 1M-token window through a hybrid attention stack that interleaves one softmax layer among every three linear-attention layers, using no positional encoding and a gated delta rule extended to negative eigenvalues. To train at this scale under a fixed compute budget, we make training efficient in two ways: a stronger starting point, and higher-value data. For the starting point, we initialize Solar Open 2 from Solar Open 1, transferring the 5.69B-parameter shared skeleton that survives the architectural change and learning everything else through full pre-training. For the data, we curate for value per token: quality- and rarity-aware data curation and mixture-ratio optimization refine a 20T pool into a 10T mixture that, at equal token budget, outperforms the Solar Open 1 recipe. To build its agent skills, we train twelve domain specialists across purpose-built scenarios, then consolidate them into a single model by Multi-teacher On-Policy Distillation (MOPD). Against comparably sized open-weight models on English benchmarks, Solar Open 2 leads on MMLU-Pro, LiveCodeBench, and the APEX-Agents agentic suite, and stays competitive with the strongest (DeepSeek-V4-Flash and MiMo-V2.5) elsewhere. On Korean benchmarks, Solar Open 2 records the highest average of any model compared, including fast-tier closed APIs, and on Ko-GDPval, an in-house Korean officework-agent benchmark, it is competitive with DeepSeek-V4-Pro (1.6T) at less than a sixth of its size.",
+      "authors": [
+        "Sungrae Park",
+        "Sanghoon Kim",
+        "Gyoungjin Gim",
+        "Jungho Cho",
+        "Hyunwoong Ko",
+        "Minbyul Jeong",
+        "Minjeong Kim",
+        "Keunwoo Choi",
+        "Chaehun Shin",
+        "Chanwoong Yoon",
+        "Dongjun Kim",
+        "Eunwon Kim",
+        "Gyungin Shin",
+        "Hyeonju Lee",
+        "Hyungkyu Kang",
+        "Inseo Song",
+        "Jisu Bae",
+        "Jiyoon Han",
+        "Jiyun Lee",
+        "Joonkee Kim",
+        "Junyeop Lee",
+        "Mikyoung Cha",
+        "Sangwon Yu",
+        "Sehwan Joo",
+        "Seokyoon Kang",
+        "Seonghoon Yang",
+        "Seung Shin",
+        "Seunghyun Lee",
+        "Seungseop Lim",
+        "Seungyoun Shin",
+        "Sukyung Lee",
+        "Taegyeong Eo",
+        "Taehwan Oh",
+        "Taewhoo Lee",
+        "Wonho Song",
+        "Wonjun Oh",
+        "Wonseok Hwang",
+        "Yunsu Kim",
+        "Yura Shim",
+        "Hwalsuk Lee",
+        "Sunghun Kim",
+        "Du-Seong Chang",
+        "Kyunghyun Cho",
+        "Seungju Han",
+        "Yejin Choi",
+        "Junsuk Choe",
+        "Hwaran Lee",
+        "Minjeong Ban",
+        "Yun Taewon",
+        "Hwanjun Song",
+        "Jae-Gil Lee",
+        "KyungTae Lim",
+        "Alice Oh"
+      ],
+      "primary_category": "cs.CL",
+      "categories": [
+        "cs.CL"
+      ],
+      "published": "2026-07-22T12:08:41+00:00",
+      "link": "https://arxiv.org/pdf/2607.20062v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "1M-token context window to hold entire agent trajectories for memory augmentation",
+      "llm_evidence_cn": "百万token上下文窗口支持完整智能体轨迹记忆增强",
+      "llm_evidence": "百万token上下文窗口支持完整智能体轨迹记忆增强",
+      "canonical_evidence": "百万token上下文窗口支持完整智能体轨迹记忆增强",
+      "llm_tldr_en": "Presents a 250B MoE language model with a 1M-token window via hybrid attention, enabling agents to hold entire trajectories in context, effectively serving as memory augmentation for long-horizon tasks.",
+      "llm_tldr_cn": "针对长程智能体任务中记忆不足的问题，提出Solar Open 2，一个具备百万token上下文窗口的混合专家语言模型。通过混合注意力机制和高效训练策略，模型能完整保存智能体轨迹，充当增强记忆。实验表明该设计支持长序列任务，为智能体记忆增强提供了有效基础架构。",
+      "llm_tldr": "针对长程智能体任务中记忆不足的问题，提出Solar Open 2，一个具备百万token上下文窗口的混合专家语言模型。通过混合注意力机制和高效训练策略，模型能完整保存智能体轨迹，充当增强记忆。实验表明该设计支持长序列任务，为智能体记忆增强提供了有效基础架构。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "agent with memory augmentation for better performance",
+      "matched_requirement_id": "req-6",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    }
+  ]
+}
