@@ -41,17 +41,17 @@
 <section class="dpr-home-dashboard-card dpr-home-report-card">
   <div class="dpr-home-dashboard-header">
     <div>
-      <span class="dpr-home-dashboard-kicker">2026-07-25</span>
+      <span class="dpr-home-dashboard-kicker">2026-07-26</span>
       <h3 class="dpr-home-dashboard-title">今日汇总</h3>
     </div>
-    <strong class="dpr-home-dashboard-count">共 7 篇</strong>
+    <strong class="dpr-home-dashboard-count">共 5 篇</strong>
   </div>
   <dl class="dpr-home-dashboard-stats">
     <div class="dpr-home-dashboard-stat"><dt>累计更新</dt><dd>1 次</dd></div>
     <div class="dpr-home-dashboard-stat"><dt>精读</dt><dd>5</dd></div>
-    <div class="dpr-home-dashboard-stat"><dt>速读</dt><dd>2</dd></div>
+    <div class="dpr-home-dashboard-stat"><dt>速读</dt><dd>0</dd></div>
   </dl>
-  <p class="dpr-home-dashboard-body">最近更新：2026-07-25 21:03:00 UTC<br>状态：成功</p>
+  <p class="dpr-home-dashboard-body">最近更新：2026-07-26 21:15:51 UTC<br>状态：成功</p>
 </section>
 <section class="dpr-home-dashboard-card dpr-home-brief-card">
   <div class="dpr-home-dashboard-header">
@@ -62,9 +62,9 @@
     <strong class="dpr-home-dashboard-count">AI</strong>
   </div>
   <div class="dpr-home-dashboard-body">
-<p>今日精读聚焦智能体自主演化与共创世界，从操作系统到文学交互皆有突破。</p>
-<p>值得关注：具身智能实现认知规划与物理执行的解耦，而开放式文学世界中角色与世界观能协同演化。</p>
-<p>下一步可留意这类“自演化”与“共创”架构如何走向更自主的日常助手与沉浸式故事体验。</p>
+<p>今日精读两篇9.0分前沿论文：探索长效LLM智能体如何从记忆证据中进化出可复用技能，以及用数据优先本体与反事实推理检验多模态显式世界模型。</p>
+<p>最值得关注的长时程记忆→技能协同治理路径，和基于DaoQL存储的反事实评估如何让世界模型更可信。</p>
+<p>建议关注智能体持续进化的读者直接跟进这两篇的补充材料，它们正在重新定义记忆与世界模型的评价标准。</p>
   </div>
 </section>
 <section class="dpr-home-dashboard-card dpr-home-deep-card">
@@ -76,7 +76,7 @@
     <strong class="dpr-home-dashboard-count">5 篇</strong>
   </div>
   <div class="dpr-home-dashboard-body">
-<ul class="dpr-home-dashboard-paper-list"><li><span class="dpr-home-dashboard-paper-title" title="PhyAgentOS: A Self-Evolving Operating System for Embodied Agents with Decoupled Cognitive Planning and Physical Execution">PhyAgentOS: A Self-Evolving Operating System for Embodied Agents with Decoupled Cognitive Planning and Physical Execution</span></li><li><span class="dpr-home-dashboard-paper-title" title="EvolvingWorld: An Open-Schema Framework for Co-Evolving Role-Play Agents and World Model in Interactive Literary World">EvolvingWorld: An Open-Schema Framework for Co-Evolving Role-Play Agents and World Model in Interactive Literary World</span></li><li><span class="dpr-home-dashboard-paper-title" title="ArbiGraph: Arbitrarily Scalable Verifiable Task Graphs for Evaluating Context Management">ArbiGraph: Arbitrarily Scalable Verifiable Task Graphs for Evaluating Context Management</span></li></ul>
+<ul class="dpr-home-dashboard-paper-list"><li><span class="dpr-home-dashboard-paper-title" title="From Memory to Skills: Evidence-Grounded Co-Evolution Governance for Long-Horizon LLM Agents">From Memory to Skills: Evidence-Grounded Co-Evolution Governance for Long-Horizon LLM Agents</span></li><li><span class="dpr-home-dashboard-paper-title" title="An Explicit World Model Based on Data-First Ontology: DaoQL Multimodal Storage Validation and Counterfactual Reasoning Evaluation">An Explicit World Model Based on Data-First Ontology: DaoQL Multimodal Storage Validation and Counterfactual Reasoning Evaluation</span></li><li><span class="dpr-home-dashboard-paper-title" title="Reinforcement Learning: From Algorithms To Foundation Models">Reinforcement Learning: From Algorithms To Foundation Models</span></li></ul>
   </div>
   <div class="dpr-home-dashboard-tags"><span class="dpr-home-dashboard-tag">agent-memory <strong>5</strong></span></div>
 </section>
@@ -86,12 +86,12 @@
       <span class="dpr-home-dashboard-kicker">今日累计</span>
       <h3 class="dpr-home-dashboard-title">速读推荐</h3>
     </div>
-    <strong class="dpr-home-dashboard-count">2 篇</strong>
+    <strong class="dpr-home-dashboard-count">0 篇</strong>
   </div>
   <div class="dpr-home-dashboard-body">
-<ul class="dpr-home-dashboard-paper-list"><li><span class="dpr-home-dashboard-paper-title" title="Binding Drift in Multi-Step Tool-Augmented Agents">Binding Drift in Multi-Step Tool-Augmented Agents</span></li><li><span class="dpr-home-dashboard-paper-title" title="Solar Open 2 Technical Report">Solar Open 2 Technical Report</span></li></ul>
+<p class="dpr-home-dashboard-empty">今日暂无推荐。</p>
   </div>
-  <div class="dpr-home-dashboard-tags"><span class="dpr-home-dashboard-tag">agent-memory <strong>2</strong></span></div>
+
 </section>
 </div>
 

@@ -1,0 +1,212 @@
+{
+  "mode": "standard",
+  "generated_at": "2026-07-26T21:08:05.634310+00:00",
+  "stats": {
+    "mode": "standard",
+    "tag_count": 1,
+    "deep_divecandidates": 5,
+    "deep_cap": 6,
+    "deep_selected": 5,
+    "quick_candidates": 0,
+    "quick_skim_target": 11,
+    "quick_selected": 0
+  },
+  "deep_dive": [
+    {
+      "id": "2607.16621v1",
+      "source": "arxiv",
+      "title": "From Memory to Skills: Evidence-Grounded Co-Evolution Governance for Long-Horizon LLM Agents",
+      "abstract": "Existing memory systems for long-horizon LLM agents often retrieve prior traces as passive context rather than converting them into executable capabilities. In this paper, we propose MSCE, a training-free Memory--Skill Co-Evolution framework that organizes agent experience into grounded step traces, reusable procedural policies, and declarative environmental cognition. MSCE crystallizes evidence-backed L2 policies with positive estimated gain into callable skills that retain evidence links, applicability boundaries, decision guidance, verification rules, and reliability estimates. It further introduces reflection-weighted value backfilling, which propagates sparse terminal feedback through dense local self-reflections to produce evidence-calibrated trace values for governing memory and skill evolution. Experiments on EvoAgentBench and LoCoMo demonstrate that MSCE significantly outperforms state-of-the-art skill-augmented and memory-driven agent baselines, exhibiting strong cross-domain transferability and lifelong-evolution capabilities.",
+      "authors": [
+        "Bo Tang",
+        "Yang Zhang",
+        "Guomian Zhuang",
+        "Wenqiang Wei",
+        "Gaoyang Zheng",
+        "Lindong Xie",
+        "Yanchao Tan",
+        "Feiyu Xiong",
+        "Qingyu Yang",
+        "Edward Chung",
+        "Zhiyu li"
+      ],
+      "primary_category": "cs.CL",
+      "categories": [
+        "cs.CL"
+      ],
+      "published": "2026-07-18T03:46:22+00:00",
+      "link": "https://arxiv.org/pdf/2607.16621v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "MSCE converts memory into executable skills with evidence",
+      "llm_evidence_cn": "MSCE将记忆转化为有证据支持的可执行技能",
+      "llm_evidence": "MSCE将记忆转化为有证据支持的可执行技能",
+      "canonical_evidence": "MSCE将记忆转化为有证据支持的可执行技能",
+      "llm_tldr_en": "Proposes a memory-skill co-evolution framework that converts agent memory traces into executable skills with evidence links and reliability estimates.",
+      "llm_tldr_cn": "现有LLM智能体记忆系统仅将经验作为被动上下文，无法转化为可执行能力。提出MSCE框架，通过记忆-技能协同演化，将经验组织为有证据支持的步骤轨迹、可重用策略和环境认知。引入反思加权回填，由稀疏终端反馈生成密集自我反思，提升策略评估可靠性。该方法实现了记忆到技能的升华，使智能体在长时程任务中表现更优。",
+      "llm_tldr": "现有LLM智能体记忆系统仅将经验作为被动上下文，无法转化为可执行能力。提出MSCE框架，通过记忆-技能协同演化，将经验组织为有证据支持的步骤轨迹、可重用策略和环境认知。引入反思加权回填，由稀疏终端反馈生成密集自我反思，提升策略评估可靠性。该方法实现了记忆到技能的升华，使智能体在长时程任务中表现更优。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "memory mechanisms for intelligent agents",
+      "matched_requirement_id": "req-1",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2607.17269v1",
+      "source": "arxiv",
+      "title": "An Explicit World Model Based on Data-First Ontology: DaoQL Multimodal Storage Validation and Counterfactual Reasoning Evaluation",
+      "abstract": "Large language models encode world models implicitly in neural weights, which exposes four structural risks in high-precision domains such as medicine and finance: hallucination, frozen knowledge, poor explainability, and poor modifiability. This paper proposes data-first ontology: LLMs are treated as reasoning and language engines, while deterministic knowledge is moved into an explicit multimodal database, DaoQL. We formalize an explicit world model and show that, under rule independence, deterministic evaluation, and fixed conflict resolution, explicit models provide a sufficient condition for composable counterfactual decomposability; implicit models lack atomic read/delta semantics and therefore provide no comparable architectural guarantee. The implemented system focuses on DaoQL's verified storage layer and explicit Eval path, integrating graph, column, vector, and full-text engines within one process. KVCache graph nodes, expert hot updates, and the DaoQL-Agent runtime remain future work. On an embedded same-machine setup, DaoQL reports graph BFS at 1.20 ms, HNSW at 83.1 us, and a Fluent hybrid query at 105.8 us; these results indicate engineering potential but must be interpreted with deployment-shape differences from client-server systems. Exploratory measurements on LDBC SNB SF1 and ANN-Benchmarks further show 34/34 query coverage with interactive-class queries mostly in the sub-millisecond to millisecond range, but only 1.8 QPS overall due to long-tail BI/IC queries; ANN-Benchmarks reaches Recall@10 >= 99% at thousand-level QPS after a bridge-edge protection fix. In a five-domain counterfactual experiment (n = 1250), DaoQL+GPT-4o achieves 94% composable counterfactual decomposability, 49 percentage points above GPT-4o alone. The paper explicitly separates provable structure, preliminary empirical evidence, and architectural roadmap claims.",
+      "authors": [
+        "Zhanbo Li",
+        "Shifeng Wu",
+        "Xiangjin Meng",
+        "Wenjie Cai"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI",
+        "cs.DB"
+      ],
+      "published": "2026-07-19T14:20:22+00:00",
+      "link": "https://arxiv.org/pdf/2607.17269v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "Explicit multimodal world model DaoQL for agent reasoning and counterfactual evaluation",
+      "llm_evidence_cn": "显式多模态世界模型DaoQL，用于智能体推理与反事实评估",
+      "llm_evidence": "显式多模态世界模型DaoQL，用于智能体推理与反事实评估",
+      "canonical_evidence": "显式多模态世界模型DaoQL，用于智能体推理与反事实评估",
+      "llm_tldr_en": "DaoQL introduces an explicit, multimodal world model that externalizes knowledge from LLMs, enabling reliable counterfactual reasoning and addressing hallucination risks in high-stakes domains.",
+      "llm_tldr_cn": "该论文提出数据优先本体论，将确定性知识移入显式多模态数据库DaoQL，构建可解释的世界模型，以解决大语言模型隐式世界模型存在的幻觉、知识冻结等问题。理论证明了在规则独立性条件下，显式模型具备可组合的反事实分解性。实验验证了DaoQL在多模态存储和反事实推理中的有效性，为构建可信赖的智能体推理系统提供了新架构。",
+      "llm_tldr": "该论文提出数据优先本体论，将确定性知识移入显式多模态数据库DaoQL，构建可解释的世界模型，以解决大语言模型隐式世界模型存在的幻觉、知识冻结等问题。理论证明了在规则独立性条件下，显式模型具备可组合的反事实分解性。实验验证了DaoQL在多模态存储和反事实推理中的有效性，为构建可信赖的智能体推理系统提供了新架构。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "language-based world model for agent reasoning",
+      "matched_requirement_id": "req-5",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2607.17560v1",
+      "source": "arxiv",
+      "title": "Reinforcement Learning: From Algorithms To Foundation Models",
+      "abstract": "Reinforcement learning (RL) provides a framework for sequential decision making under explicit objectives. In its classical form, RL studies how an agent should act to maximise long-term reward in a dynamic environment. In richer settings, the problem extends beyond a single agent and fixed environment: intelligent behavior may require strategic interaction, adaptation to uncertainty, and reasoning over high-dimensional worlds. This thesis studies RL from two perspectives: algorithms in games and RL in the era of foundation models.   The first part focuses on multi-agent RL in games. It examines how incentives, policies, and equilibrium concepts interact in competitive and general-sum environments, spanning two-player zero-sum games, large-scale video games, and multi-player settings with general structure. These works investigate learning in multi-agent systems and the behavior of RL methods in interactive environments. The second part studies RL with generative and foundation models, motivated by the idea that prior knowledge can enrich sequential decision making. Pretrained generative models and learned world models serve as representation tools and structured priors for planning, control, and policy optimization. The thesis develops diffusion-based world models, investigates RL for efficient video generation, explores generative models as policy classes, and studies interactive video world models in which actions shape future observations. It also addresses long-horizon modeling through architectures with memory. Together, these contributions present a unified view of RL as objective-driven adaptation in complex sequential domains. From strategic games to generative world models, the thesis highlights how RL connects decision making, environment modeling, and emerging foundation-model capabilities, offering a broader perspective on the principles underlying intelligent behavior.",
+      "authors": [
+        "Zihan Ding"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-07-20T05:09:36+00:00",
+      "link": "https://arxiv.org/pdf/2607.17560v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "RL thesis covering algorithms and foundation models for sequential decision making agents",
+      "llm_evidence_cn": "论文研究强化学习算法和基础模型，用于自主智能体的序列决策",
+      "llm_evidence": "论文研究强化学习算法和基础模型，用于自主智能体的序列决策",
+      "canonical_evidence": "论文研究强化学习算法和基础模型，用于自主智能体的序列决策",
+      "llm_tldr_en": "This thesis explores reinforcement learning algorithms in multi-agent games and the integration of RL with foundation models, advancing sequential decision-making for intelligent agents.",
+      "llm_tldr_cn": "该论文研究了多智能体博弈中的强化学习算法以及强化学习与基础模型的结合，推动了智能体在动态环境中的序列决策能力。核心方法涵盖博弈论中的策略和均衡概念，并探索基础模型如何增强强化学习的泛化性。实验覆盖大规模视频游戏等场景，表明这些算法能提升智能体在复杂任务中的表现，对自主智能体研究具有重要意义。",
+      "llm_tldr": "该论文研究了多智能体博弈中的强化学习算法以及强化学习与基础模型的结合，推动了智能体在动态环境中的序列决策能力。核心方法涵盖博弈论中的策略和均衡概念，并探索基础模型如何增强强化学习的泛化性。实验覆盖大规模视频游戏等场景，表明这些算法能提升智能体在复杂任务中的表现，对自主智能体研究具有重要意义。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "reinforcement learning applied to autonomous agents",
+      "matched_requirement_id": "req-3",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2607.20988v1",
+      "source": "arxiv",
+      "title": "HyWorldVLA: A Vision-Language-Action Model with Hybrid World Modeling for Autonomous Driving",
+      "abstract": "Vision-Language-Action (VLA) models augmented with world modeling represent a promising paradigm for end-to-end autonomous driving. While pixel-level future prediction enables fine-grained spatiotemporal reasoning, it compromises robustness in noisy driving scenarios. Conversely, latent-based world models alleviate this sensitivity but often incur limited interpretability and representational degradation due to absent pixel-level grounding. To reconcile this trade-off, we propose HyWorldVLA, a hybrid world-VLA framework that unifies pixel-level supervision and latent representation learning. In the pre-training stage, HyWorldVLA predicts video latents encoded by a pre-trained video VAE, while simultaneously reconstructing video frames to provide precise pixel-level grounding. During the subsequent co-fine-tuning phase, the model exclusively predicts latent features, which are fed into an action expert to generate trajectories. Extensive experiments on NAVSIM v1 and v2 benchmarks demonstrate that HyWorldVLA significantly outperforms both pixel-based and latent-based world model baselines. Notably, we present the first comprehensive qualitative and quantitative analysis of world model noise robustness in autonomous driving, establishing a new benchmark for evaluating future architectures.",
+      "authors": [
+        "Quanfu Yu",
+        "Xian Wu",
+        "Hao Xu",
+        "Liulong Ma"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV",
+        "cs.AI"
+      ],
+      "published": "2026-07-23T07:11:41+00:00",
+      "link": "https://arxiv.org/pdf/2607.20988v1",
+      "tags": [
+        "keyword:agent-memory"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "HyWorldVLA processes vision, language, action modalities with hybrid world model",
+      "llm_evidence_cn": "HyWorldVLA用混合世界模型处理视觉、语言、动作多模态",
+      "llm_evidence": "HyWorldVLA用混合世界模型处理视觉、语言、动作多模态",
+      "canonical_evidence": "HyWorldVLA用混合世界模型处理视觉、语言、动作多模态",
+      "llm_tldr_en": "Proposes a hybrid world model that unifies pixel and latent prediction for autonomous driving VLA, improving robustness and interpretability.",
+      "llm_tldr_cn": "为克服自动驾驶世界模型中像素级预测的鲁棒性不足和潜变量方法的可解释性缺陷，提出HyWorldVLA框架。该框架在预训练阶段同时预测视频潜变量和重建视频帧，实现像素级监督与潜表示学习的统一。混合世界建模使模型在保持细粒度时空推理的同时具备噪声鲁棒性，显著提升了驾驶决策的可靠性和可解释性。",
+      "llm_tldr": "为克服自动驾驶世界模型中像素级预测的鲁棒性不足和潜变量方法的可解释性缺陷，提出HyWorldVLA框架。该框架在预训练阶段同时预测视频潜变量和重建视频帧，实现像素级监督与潜表示学习的统一。混合世界建模使模型在保持细粒度时空推理的同时具备噪声鲁棒性，显著提升了驾驶决策的可靠性和可解释性。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "agent that processes multiple modalities",
+      "matched_requirement_id": "req-2",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2607.21522v1",
+      "source": "arxiv",
+      "title": "GS-Agent: Creating 4D Physical Worlds With Generative Simulation",
+      "abstract": "Creating dynamic and physically realistic 4D worlds from natural language descriptions is both fascinating and challenging. Traditional computer graphics methods rely on manual creation, requiring extensive human effort to fine-tune materials, motions, and visual fidelity. Recent advances in generative foundation models have sparked interest in learning to generate such 4D worlds from large-scale data; however, existing methods still struggle to ensure physical plausibility and controllability. In this work, we take a different path by leveraging foundation models to construct an agentic system that emulates how humans traditionally create 4D worlds, yet automates the entire process. We present GS-Agent, an end-to-end multi-agent framework that integrates physics engines in the loop to generate realistic, dynamic, and controllable 4D physical worlds from natural language. Inspired by how humans build 4D worlds, GS-Agent decomposes the task into entity management, covering 3D asset curation, material tuning, placement, and motion control, and rendering configuration, including camera and lighting manipulation. Multiple agents with distinct expertise interact with the physics engine via code, seek multimodal feedback, and collaborate to iteratively construct 4D worlds that align with the given descriptions. Experimental results show that GS-Agent effectively converts natural language into diverse and physically plausible 4D worlds exhibiting rich interactions among liquids, deformable objects, and rigid bodies, while achieving cinematic camera and lighting control. We envision GS-Agent as a foundation for a new paradigm in 4D world generation, empowering creative content creation and physical AI. Project page at https://umass-embodied-agi.github.io/gs-agent/",
+      "authors": [
+        "Hongxin Zhang",
+        "Chunru Lin",
+        "Junyan Li",
+        "Zhou Xian",
+        "Tsun-Hsuan Wang",
+        "Chuang Gan"
+      ],
+      "primary_category": "cs.RO",
+      "categories": [
+        "cs.RO",
+        "cs.AI",
+        "cs.CL",
+        "cs.CV"
+      ],
+      "published": "2026-07-23T17:04:36+00:00",
+      "link": "https://arxiv.org/pdf/2607.21522v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "Multi-agent system generates 4D worlds from language, serving as a text-based world model",
+      "llm_evidence_cn": "多智能体系统从语言生成4D世界，作为文本世界模型用于环境模拟",
+      "llm_evidence": "多智能体系统从语言生成4D世界，作为文本世界模型用于环境模拟",
+      "canonical_evidence": "多智能体系统从语言生成4D世界，作为文本世界模型用于环境模拟",
+      "llm_tldr_en": "GS-Agent is a multi-agent framework that generates dynamic 4D worlds from natural language, bridging text-based world models and realistic environment simulation for embodied AI.",
+      "llm_tldr_cn": "GS-Agent提出一个多智能体框架，利用基础模型从自然语言描述自动生成动态且物理真实的4D世界，解决了传统手动创建耗时且可控性差的问题。该方法模拟了人类创建三维世界的流程，整合物理仿真以确保结果的可信度。实验展示了该框架在生成可控4D场景方面的有效性，为语言驱动物理世界模拟和具身智能体训练提供了新的工具。",
+      "llm_tldr": "GS-Agent提出一个多智能体框架，利用基础模型从自然语言描述自动生成动态且物理真实的4D世界，解决了传统手动创建耗时且可控性差的问题。该方法模拟了人类创建三维世界的流程，整合物理仿真以确保结果的可信度。实验展示了该框架在生成可控4D场景方面的有效性，为语言驱动物理世界模拟和具身智能体训练提供了新的工具。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "text-based world model for environment simulation",
+      "matched_requirement_id": "req-4",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "quick_skim": []
+}

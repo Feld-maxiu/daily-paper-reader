@@ -1,0 +1,89 @@
+{
+  "date": "20260726",
+  "date_label": "",
+  "generated_at": "2026-07-26 21:15:51 UTC",
+  "recommend_exists": true,
+  "run_count": 1,
+  "papers": [
+    {
+      "paper_id": "2607.16621v1",
+      "route": "202607/26/2607.16621v1-from-memory-to-skills-evidence-grounded-co-evolution-governance-for-long-horizon-llm-agents",
+      "title": "From Memory to Skills: Evidence-Grounded Co-Evolution Governance for Long-Horizon LLM Agents",
+      "section": "deep",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 9.0,
+      "evidence": "MSCE将记忆转化为有证据支持的可执行技能",
+      "first_seen_at": "2026-07-26 21:15:51 UTC",
+      "updated_at": "2026-07-26 21:15:51 UTC"
+    },
+    {
+      "paper_id": "2607.17269v1",
+      "route": "202607/26/2607.17269v1-an-explicit-world-model-based-on-data-first-ontology-daoql-multimodal-storage-validation-and-counterfactual-reasoning-evaluation",
+      "title": "An Explicit World Model Based on Data-First Ontology: DaoQL Multimodal Storage Validation and Counterfactual Reasoning Evaluation",
+      "section": "deep",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 9.0,
+      "evidence": "显式多模态世界模型DaoQL，用于智能体推理与反事实评估",
+      "first_seen_at": "2026-07-26 21:15:51 UTC",
+      "updated_at": "2026-07-26 21:15:51 UTC"
+    },
+    {
+      "paper_id": "2607.17560v1",
+      "route": "202607/26/2607.17560v1-reinforcement-learning-from-algorithms-to-foundation-models",
+      "title": "Reinforcement Learning: From Algorithms To Foundation Models",
+      "section": "deep",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 9.0,
+      "evidence": "论文研究强化学习算法和基础模型，用于自主智能体的序列决策",
+      "first_seen_at": "2026-07-26 21:15:51 UTC",
+      "updated_at": "2026-07-26 21:15:51 UTC"
+    },
+    {
+      "paper_id": "2607.20988v1",
+      "route": "202607/26/2607.20988v1-hyworldvla-a-vision-language-action-model-with-hybrid-world-modeling-for-autonomous-driving",
+      "title": "HyWorldVLA: A Vision-Language-Action Model with Hybrid World Modeling for Autonomous Driving",
+      "section": "deep",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 9.0,
+      "evidence": "HyWorldVLA用混合世界模型处理视觉、语言、动作多模态",
+      "first_seen_at": "2026-07-26 21:15:51 UTC",
+      "updated_at": "2026-07-26 21:15:51 UTC"
+    },
+    {
+      "paper_id": "2607.21522v1",
+      "route": "202607/26/2607.21522v1-gs-agent-creating-4d-physical-worlds-with-generative-simulation",
+      "title": "GS-Agent: Creating 4D Physical Worlds With Generative Simulation",
+      "section": "deep",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 8.0,
+      "evidence": "多智能体系统从语言生成4D世界，作为文本世界模型用于环境模拟",
+      "first_seen_at": "2026-07-26 21:15:51 UTC",
+      "updated_at": "2026-07-26 21:15:51 UTC"
+    }
+  ]
+}
