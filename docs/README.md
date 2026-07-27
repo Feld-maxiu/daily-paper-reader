@@ -41,17 +41,17 @@
 <section class="dpr-home-dashboard-card dpr-home-report-card">
   <div class="dpr-home-dashboard-header">
     <div>
-      <span class="dpr-home-dashboard-kicker">2026-07-26</span>
+      <span class="dpr-home-dashboard-kicker">2026-07-27</span>
       <h3 class="dpr-home-dashboard-title">今日汇总</h3>
     </div>
-    <strong class="dpr-home-dashboard-count">共 5 篇</strong>
+    <strong class="dpr-home-dashboard-count">共 6 篇</strong>
   </div>
   <dl class="dpr-home-dashboard-stats">
     <div class="dpr-home-dashboard-stat"><dt>累计更新</dt><dd>1 次</dd></div>
-    <div class="dpr-home-dashboard-stat"><dt>精读</dt><dd>5</dd></div>
-    <div class="dpr-home-dashboard-stat"><dt>速读</dt><dd>0</dd></div>
+    <div class="dpr-home-dashboard-stat"><dt>精读</dt><dd>4</dd></div>
+    <div class="dpr-home-dashboard-stat"><dt>速读</dt><dd>2</dd></div>
   </dl>
-  <p class="dpr-home-dashboard-body">最近更新：2026-07-26 21:15:51 UTC<br>状态：成功</p>
+  <p class="dpr-home-dashboard-body">最近更新：2026-07-27 21:32:35 UTC<br>状态：成功</p>
 </section>
 <section class="dpr-home-dashboard-card dpr-home-brief-card">
   <div class="dpr-home-dashboard-header">
@@ -62,9 +62,9 @@
     <strong class="dpr-home-dashboard-count">AI</strong>
   </div>
   <div class="dpr-home-dashboard-body">
-<p>今日精读两篇9.0分前沿论文：探索长效LLM智能体如何从记忆证据中进化出可复用技能，以及用数据优先本体与反事实推理检验多模态显式世界模型。</p>
-<p>最值得关注的长时程记忆→技能协同治理路径，和基于DaoQL存储的反事实评估如何让世界模型更可信。</p>
-<p>建议关注智能体持续进化的读者直接跟进这两篇的补充材料，它们正在重新定义记忆与世界模型的评价标准。</p>
+<p>今日聚焦智能体记忆评测与持续学习，用两篇高分精读串起“长效可靠”与“落地进化”两条主线。</p>
+<p>最值得关注：记忆架构的长期排名会发生“任期交叉”逆转，而冻结权重的智能体也能通过部署反馈实现在线成长。</p>
+<p>推荐读者从《Ground Truth First》的评测框架和《Learning on the Job》的纠偏方法入手，理解如何让智能体在真实时间里越用越聪明。</p>
   </div>
 </section>
 <section class="dpr-home-dashboard-card dpr-home-deep-card">
@@ -73,12 +73,12 @@
       <span class="dpr-home-dashboard-kicker">今日累计</span>
       <h3 class="dpr-home-dashboard-title">精读推荐</h3>
     </div>
-    <strong class="dpr-home-dashboard-count">5 篇</strong>
+    <strong class="dpr-home-dashboard-count">4 篇</strong>
   </div>
   <div class="dpr-home-dashboard-body">
-<ul class="dpr-home-dashboard-paper-list"><li><span class="dpr-home-dashboard-paper-title" title="From Memory to Skills: Evidence-Grounded Co-Evolution Governance for Long-Horizon LLM Agents">From Memory to Skills: Evidence-Grounded Co-Evolution Governance for Long-Horizon LLM Agents</span></li><li><span class="dpr-home-dashboard-paper-title" title="An Explicit World Model Based on Data-First Ontology: DaoQL Multimodal Storage Validation and Counterfactual Reasoning Evaluation">An Explicit World Model Based on Data-First Ontology: DaoQL Multimodal Storage Validation and Counterfactual Reasoning Evaluation</span></li><li><span class="dpr-home-dashboard-paper-title" title="Reinforcement Learning: From Algorithms To Foundation Models">Reinforcement Learning: From Algorithms To Foundation Models</span></li></ul>
+<ul class="dpr-home-dashboard-paper-list"><li><span class="dpr-home-dashboard-paper-title" title="Ground Truth First: A Longitudinal Evaluation Instrument for Agent Memory, and the Tenure Crossover in Memory-Architecture Rankings">Ground Truth First: A Longitudinal Evaluation Instrument for Agent Memory, and the Tenure Crossover in Memory-Architecture Rankings</span></li><li><span class="dpr-home-dashboard-paper-title" title="Learning on the Job: Continual Learning from Deployment Feedback for Frozen-Weights Agents">Learning on the Job: Continual Learning from Deployment Feedback for Frozen-Weights Agents</span></li><li><span class="dpr-home-dashboard-paper-title" title="From Agent Failures to Text Policies: What Works and What Breaks">From Agent Failures to Text Policies: What Works and What Breaks</span></li></ul>
   </div>
-  <div class="dpr-home-dashboard-tags"><span class="dpr-home-dashboard-tag">agent-memory <strong>5</strong></span></div>
+  <div class="dpr-home-dashboard-tags"><span class="dpr-home-dashboard-tag">agent-memory <strong>4</strong></span></div>
 </section>
 <section class="dpr-home-dashboard-card dpr-home-skim-card">
   <div class="dpr-home-dashboard-header">
@@ -86,12 +86,12 @@
       <span class="dpr-home-dashboard-kicker">今日累计</span>
       <h3 class="dpr-home-dashboard-title">速读推荐</h3>
     </div>
-    <strong class="dpr-home-dashboard-count">0 篇</strong>
+    <strong class="dpr-home-dashboard-count">2 篇</strong>
   </div>
   <div class="dpr-home-dashboard-body">
-<p class="dpr-home-dashboard-empty">今日暂无推荐。</p>
+<ul class="dpr-home-dashboard-paper-list"><li><span class="dpr-home-dashboard-paper-title" title="Nanbeige4.2-3B: Unlocking Agentic Capabilities in a Compact Mode">Nanbeige4.2-3B: Unlocking Agentic Capabilities in a Compact Mode</span></li><li><span class="dpr-home-dashboard-paper-title" title="SceneActBench: Can Agents Act on the 3D Scenes They See?">SceneActBench: Can Agents Act on the 3D Scenes They See?</span></li></ul>
   </div>
-
+  <div class="dpr-home-dashboard-tags"><span class="dpr-home-dashboard-tag">agent-memory <strong>2</strong></span></div>
 </section>
 </div>
 

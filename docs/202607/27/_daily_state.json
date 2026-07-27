@@ -1,0 +1,105 @@
+{
+  "date": "20260727",
+  "date_label": "",
+  "generated_at": "2026-07-27 21:32:35 UTC",
+  "recommend_exists": true,
+  "run_count": 1,
+  "papers": [
+    {
+      "paper_id": "2607.21962v1",
+      "route": "202607/27/2607.21962v1-ground-truth-first-a-longitudinal-evaluation-instrument-for-agent-memory-and-the-tenure-crossover-in-memory-architecture-rankings",
+      "title": "Ground Truth First: A Longitudinal Evaluation Instrument for Agent Memory, and the Tenure Crossover in Memory-Architecture Rankings",
+      "section": "deep",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 9.0,
+      "evidence": "基于真实标注的智能体记忆纵向评估工具",
+      "first_seen_at": "2026-07-27 21:32:35 UTC",
+      "updated_at": "2026-07-27 21:32:35 UTC"
+    },
+    {
+      "paper_id": "2607.22157v1",
+      "route": "202607/27/2607.22157v1-learning-on-the-job-continual-learning-from-deployment-feedback-for-frozen-weights-agents",
+      "title": "Learning on the Job: Continual Learning from Deployment Feedback for Frozen-Weights Agents",
+      "section": "deep",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 9.0,
+      "evidence": "使用外部记忆将每个片段提炼为可检索的自然语言规则，实现冻结权重智能体的持续学习",
+      "first_seen_at": "2026-07-27 21:32:35 UTC",
+      "updated_at": "2026-07-27 21:32:35 UTC"
+    },
+    {
+      "paper_id": "2607.20668v1",
+      "route": "202607/27/2607.20668v1-from-agent-failures-to-text-policies-what-works-and-what-breaks",
+      "title": "From Agent Failures to Text Policies: What Works and What Breaks",
+      "section": "deep",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 8.0,
+      "evidence": "在基于文本的世界TextWorldExpress上研究文本策略",
+      "first_seen_at": "2026-07-27 21:32:35 UTC",
+      "updated_at": "2026-07-27 21:32:35 UTC"
+    },
+    {
+      "paper_id": "2607.22014v1",
+      "route": "202607/27/2607.22014v1-zero-shot-mission-level-evaluation-for-aerial-mllm-agents",
+      "title": "Zero-Shot Mission-Level Evaluation for Aerial MLLM Agents",
+      "section": "deep",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 8.0,
+      "evidence": "评估使用自我中心视觉观察和动作历史的多模态大语言模型智能体",
+      "first_seen_at": "2026-07-27 21:32:35 UTC",
+      "updated_at": "2026-07-27 21:32:35 UTC"
+    },
+    {
+      "paper_id": "2607.22083v1",
+      "route": "202607/27/2607.22083v1-nanbeige42-3b-unlocking-agentic-capabilities-in-a-compact-mode",
+      "title": "Nanbeige4.2-3B: Unlocking Agentic Capabilities in a Compact Mode",
+      "section": "quick",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 7.0,
+      "evidence": "利用混合模式RLHF提升3B紧凑模型的智能体能力",
+      "first_seen_at": "2026-07-27 21:32:35 UTC",
+      "updated_at": "2026-07-27 21:32:35 UTC"
+    },
+    {
+      "paper_id": "2607.22393v1",
+      "route": "202607/27/2607.22393v1-sceneactbench-can-agents-act-on-the-3d-scenes-they-see",
+      "title": "SceneActBench: Can Agents Act on the 3D Scenes They See?",
+      "section": "quick",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 7.0,
+      "evidence": "视觉语言模型智能体在3D场景中行动的基准",
+      "first_seen_at": "2026-07-27 21:32:35 UTC",
+      "updated_at": "2026-07-27 21:32:35 UTC"
+    }
+  ]
+}
