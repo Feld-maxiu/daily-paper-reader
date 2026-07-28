@@ -41,17 +41,17 @@
 <section class="dpr-home-dashboard-card dpr-home-report-card">
   <div class="dpr-home-dashboard-header">
     <div>
-      <span class="dpr-home-dashboard-kicker">2026-07-27</span>
+      <span class="dpr-home-dashboard-kicker">2026-07-28</span>
       <h3 class="dpr-home-dashboard-title">今日汇总</h3>
     </div>
-    <strong class="dpr-home-dashboard-count">共 6 篇</strong>
+    <strong class="dpr-home-dashboard-count">共 7 篇</strong>
   </div>
   <dl class="dpr-home-dashboard-stats">
     <div class="dpr-home-dashboard-stat"><dt>累计更新</dt><dd>1 次</dd></div>
     <div class="dpr-home-dashboard-stat"><dt>精读</dt><dd>4</dd></div>
-    <div class="dpr-home-dashboard-stat"><dt>速读</dt><dd>2</dd></div>
+    <div class="dpr-home-dashboard-stat"><dt>速读</dt><dd>3</dd></div>
   </dl>
-  <p class="dpr-home-dashboard-body">最近更新：2026-07-27 21:32:35 UTC<br>状态：成功</p>
+  <p class="dpr-home-dashboard-body">最近更新：2026-07-28 21:38:51 UTC<br>状态：成功</p>
 </section>
 <section class="dpr-home-dashboard-card dpr-home-brief-card">
   <div class="dpr-home-dashboard-header">
@@ -62,9 +62,9 @@
     <strong class="dpr-home-dashboard-count">AI</strong>
   </div>
   <div class="dpr-home-dashboard-body">
-<p>今日聚焦智能体记忆评测与持续学习，用两篇高分精读串起“长效可靠”与“落地进化”两条主线。</p>
-<p>最值得关注：记忆架构的长期排名会发生“任期交叉”逆转，而冻结权重的智能体也能通过部署反馈实现在线成长。</p>
-<p>推荐读者从《Ground Truth First》的评测框架和《Learning on the Job》的纠偏方法入手，理解如何让智能体在真实时间里越用越聪明。</p>
+<p>今日精读4篇智能体前沿论文，聚焦视觉语言模型（VLM）强化学习与认知架构迁移，其中两篇斩获9分。</p>
+<p>混合优势估计提出用统一评论家改进VLM智能体训练，机制级综述则梳理了从认知架构到语言模型的迁移鸿沟与融合路径。</p>
+<p>想快速上手，不妨先读这两篇高分论文，从认知机制和优势函数入手，理解更鲁棒的AI智能体设计逻辑。</p>
   </div>
 </section>
 <section class="dpr-home-dashboard-card dpr-home-deep-card">
@@ -76,7 +76,7 @@
     <strong class="dpr-home-dashboard-count">4 篇</strong>
   </div>
   <div class="dpr-home-dashboard-body">
-<ul class="dpr-home-dashboard-paper-list"><li><span class="dpr-home-dashboard-paper-title" title="Ground Truth First: A Longitudinal Evaluation Instrument for Agent Memory, and the Tenure Crossover in Memory-Architecture Rankings">Ground Truth First: A Longitudinal Evaluation Instrument for Agent Memory, and the Tenure Crossover in Memory-Architecture Rankings</span></li><li><span class="dpr-home-dashboard-paper-title" title="Learning on the Job: Continual Learning from Deployment Feedback for Frozen-Weights Agents">Learning on the Job: Continual Learning from Deployment Feedback for Frozen-Weights Agents</span></li><li><span class="dpr-home-dashboard-paper-title" title="From Agent Failures to Text Policies: What Works and What Breaks">From Agent Failures to Text Policies: What Works and What Breaks</span></li></ul>
+<ul class="dpr-home-dashboard-paper-list"><li><span class="dpr-home-dashboard-paper-title" title="Hybrid Advantage Estimation with Unified Critic for VLM Agentic Reinforcement Learning">Hybrid Advantage Estimation with Unified Critic for VLM Agentic Reinforcement Learning</span></li><li><span class="dpr-home-dashboard-paper-title" title="From Cognitive Architectures to Language Agents: A Mechanism-Level Review of Lineage, Convergence, and Migration Gaps">From Cognitive Architectures to Language Agents: A Mechanism-Level Review of Lineage, Convergence, and Migration Gaps</span></li><li><span class="dpr-home-dashboard-paper-title" title="Scaling GUI Agents with Visual State Transitions">Scaling GUI Agents with Visual State Transitions</span></li></ul>
   </div>
   <div class="dpr-home-dashboard-tags"><span class="dpr-home-dashboard-tag">agent-memory <strong>4</strong></span></div>
 </section>
@@ -86,12 +86,12 @@
       <span class="dpr-home-dashboard-kicker">今日累计</span>
       <h3 class="dpr-home-dashboard-title">速读推荐</h3>
     </div>
-    <strong class="dpr-home-dashboard-count">2 篇</strong>
+    <strong class="dpr-home-dashboard-count">3 篇</strong>
   </div>
   <div class="dpr-home-dashboard-body">
-<ul class="dpr-home-dashboard-paper-list"><li><span class="dpr-home-dashboard-paper-title" title="Nanbeige4.2-3B: Unlocking Agentic Capabilities in a Compact Mode">Nanbeige4.2-3B: Unlocking Agentic Capabilities in a Compact Mode</span></li><li><span class="dpr-home-dashboard-paper-title" title="SceneActBench: Can Agents Act on the 3D Scenes They See?">SceneActBench: Can Agents Act on the 3D Scenes They See?</span></li></ul>
+<ul class="dpr-home-dashboard-paper-list"><li><span class="dpr-home-dashboard-paper-title" title="Streaming Multi-Agent Autoregressive Diffusion Model with World State Registers">Streaming Multi-Agent Autoregressive Diffusion Model with World State Registers</span></li><li><span class="dpr-home-dashboard-paper-title" title="Towards Dual-Brain Minimal Sufficient Representation for Vision-Language Navigation">Towards Dual-Brain Minimal Sufficient Representation for Vision-Language Navigation</span></li><li><span class="dpr-home-dashboard-paper-title" title="Data Pyramid for Embodied Manipulation">Data Pyramid for Embodied Manipulation</span></li></ul>
   </div>
-  <div class="dpr-home-dashboard-tags"><span class="dpr-home-dashboard-tag">agent-memory <strong>2</strong></span></div>
+  <div class="dpr-home-dashboard-tags"><span class="dpr-home-dashboard-tag">agent-memory <strong>3</strong></span></div>
 </section>
 </div>
 

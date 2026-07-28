@@ -1,0 +1,121 @@
+{
+  "date": "20260728",
+  "date_label": "",
+  "generated_at": "2026-07-28 21:38:51 UTC",
+  "recommend_exists": true,
+  "run_count": 1,
+  "papers": [
+    {
+      "paper_id": "2607.23605v1",
+      "route": "202607/28/2607.23605v1-hybrid-advantage-estimation-with-unified-critic-for-vlm-agentic-reinforcement-learning",
+      "title": "Hybrid Advantage Estimation with Unified Critic for VLM Agentic Reinforcement Learning",
+      "section": "deep",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 9.0,
+      "evidence": "为VLM智能体强化学习提出混合优势估计",
+      "first_seen_at": "2026-07-28 21:38:51 UTC",
+      "updated_at": "2026-07-28 21:38:51 UTC"
+    },
+    {
+      "paper_id": "2607.23942v1",
+      "route": "202607/28/2607.23942v1-from-cognitive-architectures-to-language-agents-a-mechanism-level-review-of-lineage-convergence-and-migration-gaps",
+      "title": "From Cognitive Architectures to Language Agents: A Mechanism-Level Review of Lineage, Convergence, and Migration Gaps",
+      "section": "deep",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 9.0,
+      "evidence": "在机制层面综述了认知架构和语言智能体中的记忆、规划、反思和工具使用，涵盖自适应记忆",
+      "first_seen_at": "2026-07-28 21:38:51 UTC",
+      "updated_at": "2026-07-28 21:38:51 UTC"
+    },
+    {
+      "paper_id": "2607.24112v1",
+      "route": "202607/28/2607.24112v1-scaling-gui-agents-with-visual-state-transitions",
+      "title": "Scaling GUI Agents with Visual State Transitions",
+      "section": "deep",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 9.0,
+      "evidence": "采用统一多模态模型和内部世界模型用于GUI智能体",
+      "first_seen_at": "2026-07-28 21:38:51 UTC",
+      "updated_at": "2026-07-28 21:38:51 UTC"
+    },
+    {
+      "paper_id": "2607.22319v1",
+      "route": "202607/28/2607.22319v1-towards-trustworthy-and-cost-efficient-data-integration-from-nave-rag-to-agentic-rag",
+      "title": "Towards Trustworthy and Cost-Efficient Data Integration: From Naïve RAG to Agentic RAG",
+      "section": "deep",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 8.0,
+      "evidence": "Agentic RAG集成检索记忆以接地智能体决策",
+      "first_seen_at": "2026-07-28 21:38:51 UTC",
+      "updated_at": "2026-07-28 21:38:51 UTC"
+    },
+    {
+      "paper_id": "2607.21594v1",
+      "route": "202607/28/2607.21594v1-streaming-multi-agent-autoregressive-diffusion-model-with-world-state-registers",
+      "title": "Streaming Multi-Agent Autoregressive Diffusion Model with World State Registers",
+      "section": "quick",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 7.0,
+      "evidence": "可学习的令牌存储共享世界信息、追踪个体智能体状态并动态更新",
+      "first_seen_at": "2026-07-28 21:38:51 UTC",
+      "updated_at": "2026-07-28 21:38:51 UTC"
+    },
+    {
+      "paper_id": "2607.23181v1",
+      "route": "202607/28/2607.23181v1-towards-dual-brain-minimal-sufficient-representation-for-vision-language-navigation",
+      "title": "Towards Dual-Brain Minimal Sufficient Representation for Vision-Language Navigation",
+      "section": "quick",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 7.0,
+      "evidence": "视觉语言导航智能体使用多模态处理和选择性感知",
+      "first_seen_at": "2026-07-28 21:38:51 UTC",
+      "updated_at": "2026-07-28 21:38:51 UTC"
+    },
+    {
+      "paper_id": "2607.24744v1",
+      "route": "202607/28/2607.24744v1-data-pyramid-for-embodied-manipulation",
+      "title": "Data Pyramid for Embodied Manipulation",
+      "section": "quick",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 6.0,
+      "evidence": "为具身智能体组织多模态数据源",
+      "first_seen_at": "2026-07-28 21:38:51 UTC",
+      "updated_at": "2026-07-28 21:38:51 UTC"
+    }
+  ]
+}
