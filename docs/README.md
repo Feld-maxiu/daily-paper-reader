@@ -41,17 +41,17 @@
 <section class="dpr-home-dashboard-card dpr-home-report-card">
   <div class="dpr-home-dashboard-header">
     <div>
-      <span class="dpr-home-dashboard-kicker">2026-07-28</span>
+      <span class="dpr-home-dashboard-kicker">2026-07-29</span>
       <h3 class="dpr-home-dashboard-title">今日汇总</h3>
     </div>
-    <strong class="dpr-home-dashboard-count">共 7 篇</strong>
+    <strong class="dpr-home-dashboard-count">共 4 篇</strong>
   </div>
   <dl class="dpr-home-dashboard-stats">
     <div class="dpr-home-dashboard-stat"><dt>累计更新</dt><dd>1 次</dd></div>
-    <div class="dpr-home-dashboard-stat"><dt>精读</dt><dd>4</dd></div>
-    <div class="dpr-home-dashboard-stat"><dt>速读</dt><dd>3</dd></div>
+    <div class="dpr-home-dashboard-stat"><dt>精读</dt><dd>3</dd></div>
+    <div class="dpr-home-dashboard-stat"><dt>速读</dt><dd>1</dd></div>
   </dl>
-  <p class="dpr-home-dashboard-body">最近更新：2026-07-28 21:38:51 UTC<br>状态：成功</p>
+  <p class="dpr-home-dashboard-body">最近更新：2026-07-29 21:42:47 UTC<br>状态：成功</p>
 </section>
 <section class="dpr-home-dashboard-card dpr-home-brief-card">
   <div class="dpr-home-dashboard-header">
@@ -62,9 +62,9 @@
     <strong class="dpr-home-dashboard-count">AI</strong>
   </div>
   <div class="dpr-home-dashboard-body">
-<p>今日精读4篇智能体前沿论文，聚焦视觉语言模型（VLM）强化学习与认知架构迁移，其中两篇斩获9分。</p>
-<p>混合优势估计提出用统一评论家改进VLM智能体训练，机制级综述则梳理了从认知架构到语言模型的迁移鸿沟与融合路径。</p>
-<p>想快速上手，不妨先读这两篇高分论文，从认知机制和优势函数入手，理解更鲁棒的AI智能体设计逻辑。</p>
+<p>今日精读两篇Agent重磅论文，探索让冻结大模型习得领域能力与构建通用人机交互认知模型。</p>
+<p>最值得关注：一文给出了固定LLM下通过控制系统与数据集让其学会新领域的完整配方，另一文用世界认知模型实现跨场景的机器人交互泛化。</p>
+<p>普通读者可先读速读的HiSkill技能图谱框架，再跟随配方亲手让静态模型长出专项技能。</p>
   </div>
 </section>
 <section class="dpr-home-dashboard-card dpr-home-deep-card">
@@ -73,12 +73,12 @@
       <span class="dpr-home-dashboard-kicker">今日累计</span>
       <h3 class="dpr-home-dashboard-title">精读推荐</h3>
     </div>
-    <strong class="dpr-home-dashboard-count">4 篇</strong>
+    <strong class="dpr-home-dashboard-count">3 篇</strong>
   </div>
   <div class="dpr-home-dashboard-body">
-<ul class="dpr-home-dashboard-paper-list"><li><span class="dpr-home-dashboard-paper-title" title="Hybrid Advantage Estimation with Unified Critic for VLM Agentic Reinforcement Learning">Hybrid Advantage Estimation with Unified Critic for VLM Agentic Reinforcement Learning</span></li><li><span class="dpr-home-dashboard-paper-title" title="From Cognitive Architectures to Language Agents: A Mechanism-Level Review of Lineage, Convergence, and Migration Gaps">From Cognitive Architectures to Language Agents: A Mechanism-Level Review of Lineage, Convergence, and Migration Gaps</span></li><li><span class="dpr-home-dashboard-paper-title" title="Scaling GUI Agents with Visual State Transitions">Scaling GUI Agents with Visual State Transitions</span></li></ul>
+<ul class="dpr-home-dashboard-paper-list"><li><span class="dpr-home-dashboard-paper-title" title="A Control System, a Dataset, and a Recipe for Making Frozen LLM Agents Learn a Domain">A Control System, a Dataset, and a Recipe for Making Frozen LLM Agents Learn a Domain</span></li><li><span class="dpr-home-dashboard-paper-title" title="WCM: World-Cognition Model for Generalizable Human-Robot Interaction">WCM: World-Cognition Model for Generalizable Human-Robot Interaction</span></li><li><span class="dpr-home-dashboard-paper-title" title="Speculate While You Reason: Teaching Agents to Predict Their Next Tool Call via Joint Agent-Speculator RL">Speculate While You Reason: Teaching Agents to Predict Their Next Tool Call via Joint Agent-Speculator RL</span></li></ul>
   </div>
-  <div class="dpr-home-dashboard-tags"><span class="dpr-home-dashboard-tag">agent-memory <strong>4</strong></span></div>
+  <div class="dpr-home-dashboard-tags"><span class="dpr-home-dashboard-tag">agent-memory <strong>3</strong></span></div>
 </section>
 <section class="dpr-home-dashboard-card dpr-home-skim-card">
   <div class="dpr-home-dashboard-header">
@@ -86,12 +86,12 @@
       <span class="dpr-home-dashboard-kicker">今日累计</span>
       <h3 class="dpr-home-dashboard-title">速读推荐</h3>
     </div>
-    <strong class="dpr-home-dashboard-count">3 篇</strong>
+    <strong class="dpr-home-dashboard-count">1 篇</strong>
   </div>
   <div class="dpr-home-dashboard-body">
-<ul class="dpr-home-dashboard-paper-list"><li><span class="dpr-home-dashboard-paper-title" title="Streaming Multi-Agent Autoregressive Diffusion Model with World State Registers">Streaming Multi-Agent Autoregressive Diffusion Model with World State Registers</span></li><li><span class="dpr-home-dashboard-paper-title" title="Towards Dual-Brain Minimal Sufficient Representation for Vision-Language Navigation">Towards Dual-Brain Minimal Sufficient Representation for Vision-Language Navigation</span></li><li><span class="dpr-home-dashboard-paper-title" title="Data Pyramid for Embodied Manipulation">Data Pyramid for Embodied Manipulation</span></li></ul>
+<ul class="dpr-home-dashboard-paper-list"><li><span class="dpr-home-dashboard-paper-title" title="HiSkill: Empowering LLM Agents with Hierarchical Skill Graphs">HiSkill: Empowering LLM Agents with Hierarchical Skill Graphs</span></li></ul>
   </div>
-  <div class="dpr-home-dashboard-tags"><span class="dpr-home-dashboard-tag">agent-memory <strong>3</strong></span></div>
+  <div class="dpr-home-dashboard-tags"><span class="dpr-home-dashboard-tag">agent-memory <strong>1</strong></span></div>
 </section>
 </div>
 
