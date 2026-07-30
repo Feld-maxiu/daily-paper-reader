@@ -1,0 +1,195 @@
+{
+  "mode": "standard",
+  "generated_at": "2026-07-30T21:41:49.059920+00:00",
+  "stats": {
+    "mode": "standard",
+    "tag_count": 1,
+    "deep_divecandidates": 4,
+    "deep_cap": 6,
+    "deep_selected": 4,
+    "quick_candidates": 0,
+    "quick_skim_target": 11,
+    "quick_selected": 0
+  },
+  "deep_dive": [
+    {
+      "id": "2607.26393v1",
+      "source": "arxiv",
+      "title": "CaM-Wolf: Causal-Aware Multimodal Agents for Social Deduction Games",
+      "abstract": "Social deduction games (SDGs) such as Werewolf have become challenging testbeds for AI agents. These games require complex social skills such as reasoning, deception, and collaboration. While recent advances in large language models (LLMs) have driven significant progress in SDG agents, current approaches are predominantly text-based, overlooking the multimodal nature that is fundamental to human social interaction. To bridge this gap, we introduce CaM-Wolf, the first SDG agent that integrates multimodal perception and generation. CaM-Wolf processes video inputs from other players, employs a causal-aware Reasoner trained via reinforcement learning to establish logical chains between observable behaviors and hidden roles, and presents itself through an animated avatar. Our experiments and user study show that CaM-Wolf achieves superior agent gameplay performance and enhances the quality of human-AI interaction. This work represents a significant advancement towards creating more human-like AI agents capable of participating in nuanced social dynamics. Our code is available at https://3dagentworld.github.io/avatar_wolf.",
+      "authors": [
+        "Zheng Zhang",
+        "Nanjie Yao",
+        "Jiarui He",
+        "Deheng Ye",
+        "Peilin Zhao",
+        "Hao Wang"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-07-29T01:58:36+00:00",
+      "link": "https://arxiv.org/pdf/2607.26393v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 10.0,
+      "llm_evidence_en": "integrates multimodal perception and generation, processes video inputs, uses RL-trained causal reasoner",
+      "llm_evidence_cn": "集成多模态感知与生成，处理视频输入，使用RL训练的因果推理器",
+      "llm_evidence": "集成多模态感知与生成，处理视频输入，使用RL训练的因果推理器",
+      "canonical_evidence": "集成多模态感知与生成，处理视频输入，使用RL训练的因果推理器",
+      "llm_tldr_en": "CaM-Wolf is the first multimodal agent for social deduction games, combining video perception, RL-based causal reasoning, and animated generation to master complex social interactions.",
+      "llm_tldr_cn": "CaM-Wolf 是针对社交推理游戏的首个多模态智能体，克服了纯文本方法的局限。它通过视频感知、基于强化学习的因果推理和动画生成，实现多模态社交互动。实验表明其在狼人游戏等场景中表现优异，为多模态智能体研究提供了新范式。",
+      "llm_tldr": "CaM-Wolf 是针对社交推理游戏的首个多模态智能体，克服了纯文本方法的局限。它通过视频感知、基于强化学习的因果推理和动画生成，实现多模态社交互动。实验表明其在狼人游戏等场景中表现优异，为多模态智能体研究提供了新范式。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "agent that processes multiple modalities",
+      "matched_requirement_id": "req-2",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2607.23147v1",
+      "source": "arxiv",
+      "title": "False Prophets: On the Security of World Models in Agentic Systems",
+      "abstract": "Large language models now power autonomous agents capable of complex, multi-step tasks in different environments. Accurate and reliable execution of these tasks requires the agent to predict the results of its actions. Recent research proposes to enhance predictive capabilities via specially trained environment simulators-world models. While world models can improve performance, they can also mislead agents into executing harmful actions, creating significant security and privacy risks. In this paper, we raise security concerns regarding the usage of world models in agentic systems. We discover a range of world model specific vulnerabilities, which can be exploited in terminal-based agents to execute malicious code or extract sensitive data. To facilitate future development, we introduce a security benchmark dataset designed for text-based world models. We argue that some risks are intrinsic to approximate world modeling, and show that attackers can induce mispredictions in agentic pipelines with up to 95% success rate, possibly resulting in unintended command execution, denial of service, drainage of wallet and private information extraction. Finally, we provide practical recommendations for practitioners to mitigate the discovered harms and harden agentic systems.",
+      "authors": [
+        "Erik Imgrund",
+        "Anna Wimbauer",
+        "Klim Kireev",
+        "Konrad Rieck"
+      ],
+      "primary_category": "cs.CR",
+      "categories": [
+        "cs.CR",
+        "cs.AI"
+      ],
+      "published": "2026-07-25T10:55:14+00:00",
+      "link": "https://arxiv.org/pdf/2607.23147v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "world models in agentic systems, environment simulators that predict action outcomes",
+      "llm_evidence_cn": "智能体系统中的世界模型，预测动作结果的环境模拟器",
+      "llm_evidence": "智能体系统中的世界模型，预测动作结果的环境模拟器",
+      "canonical_evidence": "智能体系统中的世界模型，预测动作结果的环境模拟器",
+      "llm_tldr_en": "This paper uncovers security risks of world models used by agents, revealing vulnerabilities that allow malicious exploitation, and calls for careful integration of world models.",
+      "llm_tldr_cn": "该论文关注智能体系统中世界模型的安全隐患。世界模型虽能提高任务执行准确性，但会误导智能体执行有害操作。作者发现了一系列特定漏洞，可在终端智能体中触发恶意代码执行或窃取敏感数据，呼吁在集成世界模型时加强安全防护。",
+      "llm_tldr": "该论文关注智能体系统中世界模型的安全隐患。世界模型虽能提高任务执行准确性，但会误导智能体执行有害操作。作者发现了一系列特定漏洞，可在终端智能体中触发恶意代码执行或窃取敏感数据，呼吁在集成世界模型时加强安全防护。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "text-based world model for environment simulation",
+      "matched_requirement_id": "req-4",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2607.26760v1",
+      "source": "arxiv",
+      "title": "Metis: Memory Foundation Model",
+      "abstract": "Recent advances in AI agents have increasingly internalized native capabilities into their underlying foundation models, giving rise to multimodal foundation models and large reasoning models. However, agent memory is still primarily implemented through external modules, leaving the native memory capability largely unexplored. In this paper, we take a first step toward this direction by introducing memory foundation models, which empower foundation models with native memory capabilities. We formalize native memory from two perspectives: a persistent and dynamically evolving memory state within the backbone, and native memory procedures that autonomously store and utilize information through model computation. We show that native memory offers advantages in architecture, end-to-end optimization, and efficiency. Based on this formulation, we propose Metis, the first prototype of memory foundation models. Metis introduces a new architecture that equips a foundation model with a native memory state, allowing historical information to be compressed into the model and accessed through memory attention. We construct large-scale memory-specific training data and introduce multiple optimization objectives to acquire these native memory procedures through mid-training. The online memory maintenance of Metis is gradient-free, and the memory update requires only a forward pass. At inference time, all learned model weights remain frozen, while the native memory states are autonomously transformed through standard forward computation. Through extensive experiments, we show that Metis exhibits native memory capabilities and further provide a detailed analysis of its strengths, limitations, and behaviors. To facilitate future research on memory foundation models, we release our project and model checkpoints.",
+      "authors": [
+        "Zeyu Zhang",
+        "Ziliang Guo",
+        "Yihang Sun",
+        "Xichong Zhang",
+        "Xixuan Hao",
+        "Zehao Lin",
+        "Yang Zhang",
+        "Xiaoyan Zhao",
+        "Tong Shen",
+        "Bo Tang",
+        "Zhi-Qin John Xu",
+        "Junchi Yan",
+        "Haofen Wang",
+        "Xu Chen",
+        "Feiyu Xiong",
+        "Zhiyu Li",
+        "Tat-Seng Chua"
+      ],
+      "primary_category": "cs.CL",
+      "categories": [
+        "cs.CL",
+        "cs.LG"
+      ],
+      "published": "2026-07-29T10:58:44+00:00",
+      "link": "https://arxiv.org/pdf/2607.26760v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "introduces memory foundation models with native memory capabilities: persistent dynamically evolving memory state and autonomous store/utilize procedures",
+      "llm_evidence_cn": "提出具有原生记忆能力的基础模型：持久动态演化的记忆状态和自主存储/利用程序",
+      "llm_evidence": "提出具有原生记忆能力的基础模型：持久动态演化的记忆状态和自主存储/利用程序",
+      "canonical_evidence": "提出具有原生记忆能力的基础模型：持久动态演化的记忆状态和自主存储/利用程序",
+      "llm_tldr_en": "Introduces memory foundation models that internalize native memory capabilities, enabling persistent memory state and learned memory procedures within the model backbone, advancing beyond external memory modules for AI agents.",
+      "llm_tldr_cn": "针对现有智能体记忆主要依赖外部模块、缺乏原生记忆能力的问题，本文提出记忆基础模型，将原生记忆形式化为模型主干内持久动态的记忆状态和自主存储与利用信息的计算过程。这种方法支持端到端优化，有望从根本上提升智能体记忆的效率和泛化性，为构建具有内在记忆的AI智能体迈出第一步。",
+      "llm_tldr": "针对现有智能体记忆主要依赖外部模块、缺乏原生记忆能力的问题，本文提出记忆基础模型，将原生记忆形式化为模型主干内持久动态的记忆状态和自主存储与利用信息的计算过程。这种方法支持端到端优化，有望从根本上提升智能体记忆的效率和泛化性，为构建具有内在记忆的AI智能体迈出第一步。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "memory mechanisms for intelligent agents",
+      "matched_requirement_id": "req-1",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2607.26784v1",
+      "source": "arxiv",
+      "title": "SkillRise: Agentic Reinforcement Learning for Cross-Task Skill Evolution",
+      "abstract": "Large language model agents often encounter related yet distinct tasks that share reusable solution patterns. Yet standard agentic reinforcement learning treats tasks as independent episodes, while existing approaches to skill learning either focus on repeated attempts of one task or use pipelines with multiple stages that entangle extraction, retrieval, and execution. We introduce SkillRise, a unified reinforcement learning framework for learning skills across tasks. SkillRise organizes related instances into progressively challenging sequences and uses a single policy to alternate between task solving and curating an evolving skill document passed directly to the next task. Decoupled credit assignment across tasks supervises solving with the current task outcome and curation with discounted downstream outcomes. Experiments on ALFWorld, WebShop, and ScienceWorld show that SkillRise achieves the strongest Pass@1 performance among the compared methods, with gains over the strongest baseline ranging from 2.3 to 8.5 percentage points. Although trained across distinct tasks, its learned curation policy remains effective for repeated attempts on the same task. Further analysis reveals scaling at test time across tasks: performance improves with longer sequences of related tasks even when each task is attempted only once. This trend suggests that SkillRise reuses transferable skills across tasks rather than benefiting from repeated sampling of the same task. SkillRise further retains strong performance while substantially reducing the runtime overhead of skill learning pipelines with multiple stages. Together, these results provide a simple and efficient training paradigm for LLM agents to extract, refine, and reuse transferable skills across tasks.",
+      "authors": [
+        "Zhiyuan Yao",
+        "Yuxin Chen",
+        "Zhengxi Lu",
+        "Zishan Xu",
+        "Yueqing Sun",
+        "Yifu Guo",
+        "Yuquan Lu",
+        "Zhengzhou Cai",
+        "Kangning Zhang",
+        "Zhuowen Han",
+        "Zi-Han Wang",
+        "Ziang Ye",
+        "Qi Gu",
+        "Xunliang Cai",
+        "Weiwen Liu",
+        "Yongliang Shen"
+      ],
+      "primary_category": "cs.LG",
+      "categories": [
+        "cs.LG",
+        "cs.AI"
+      ],
+      "published": "2026-07-29T11:26:33+00:00",
+      "link": "https://arxiv.org/pdf/2607.26784v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "unified RL framework for cross-task skill learning, with skill document as shared memory across tasks",
+      "llm_evidence_cn": "统一的跨任务技能学习RL框架，利用技能文档作为任务间共享记忆",
+      "llm_evidence": "统一的跨任务技能学习RL框架，利用技能文档作为任务间共享记忆",
+      "canonical_evidence": "统一的跨任务技能学习RL框架，利用技能文档作为任务间共享记忆",
+      "llm_tldr_en": "SkillRise is a unified RL framework that learns reusable skills across tasks by maintaining an evolving skill document, outperforming methods that treat tasks independently.",
+      "llm_tldr_cn": "针对智能体跨任务技能学习，现有方法常独立处理任务或使用多阶段管道，不够统一。SkillRise 提出统一强化学习框架，将相关任务组织为递增难度的序列，学习一个技能文档在任务间传递。通过解耦的信用分配，实现高效技能进化，在多个相关任务上显著优于基线方法。",
+      "llm_tldr": "针对智能体跨任务技能学习，现有方法常独立处理任务或使用多阶段管道，不够统一。SkillRise 提出统一强化学习框架，将相关任务组织为递增难度的序列，学习一个技能文档在任务间传递。通过解耦的信用分配，实现高效技能进化，在多个相关任务上显著优于基线方法。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "reinforcement learning applied to autonomous agents",
+      "matched_requirement_id": "req-3",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "quick_skim": []
+}

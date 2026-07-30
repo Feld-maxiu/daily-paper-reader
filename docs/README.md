@@ -41,17 +41,17 @@
 <section class="dpr-home-dashboard-card dpr-home-report-card">
   <div class="dpr-home-dashboard-header">
     <div>
-      <span class="dpr-home-dashboard-kicker">2026-07-29</span>
+      <span class="dpr-home-dashboard-kicker">2026-07-30</span>
       <h3 class="dpr-home-dashboard-title">今日汇总</h3>
     </div>
     <strong class="dpr-home-dashboard-count">共 4 篇</strong>
   </div>
   <dl class="dpr-home-dashboard-stats">
     <div class="dpr-home-dashboard-stat"><dt>累计更新</dt><dd>1 次</dd></div>
-    <div class="dpr-home-dashboard-stat"><dt>精读</dt><dd>3</dd></div>
-    <div class="dpr-home-dashboard-stat"><dt>速读</dt><dd>1</dd></div>
+    <div class="dpr-home-dashboard-stat"><dt>精读</dt><dd>4</dd></div>
+    <div class="dpr-home-dashboard-stat"><dt>速读</dt><dd>0</dd></div>
   </dl>
-  <p class="dpr-home-dashboard-body">最近更新：2026-07-29 21:42:47 UTC<br>状态：成功</p>
+  <p class="dpr-home-dashboard-body">最近更新：2026-07-30 21:45:37 UTC<br>状态：成功</p>
 </section>
 <section class="dpr-home-dashboard-card dpr-home-brief-card">
   <div class="dpr-home-dashboard-header">
@@ -62,9 +62,9 @@
     <strong class="dpr-home-dashboard-count">AI</strong>
   </div>
   <div class="dpr-home-dashboard-body">
-<p>今日精读两篇Agent重磅论文，探索让冻结大模型习得领域能力与构建通用人机交互认知模型。</p>
-<p>最值得关注：一文给出了固定LLM下通过控制系统与数据集让其学会新领域的完整配方，另一文用世界认知模型实现跨场景的机器人交互泛化。</p>
-<p>普通读者可先读速读的HiSkill技能图谱框架，再跟随配方亲手让静态模型长出专项技能。</p>
+<p>今日精读社交推理与世界模型安全两篇重磅论文，直击多模态智能体的因果博弈与安全隐忧。</p>
+<p>最值得关注：《CaM-Wolf》用因果感知赋予 AI 狼人杀玩家近乎满分表现，《False Prophets》则揭示智能体世界模型如何被“假先知”操纵。</p>
+<p>建议读者从这两篇切入，审视前沿代理系统的能力上限与信任边界。</p>
   </div>
 </section>
 <section class="dpr-home-dashboard-card dpr-home-deep-card">
@@ -73,12 +73,12 @@
       <span class="dpr-home-dashboard-kicker">今日累计</span>
       <h3 class="dpr-home-dashboard-title">精读推荐</h3>
     </div>
-    <strong class="dpr-home-dashboard-count">3 篇</strong>
+    <strong class="dpr-home-dashboard-count">4 篇</strong>
   </div>
   <div class="dpr-home-dashboard-body">
-<ul class="dpr-home-dashboard-paper-list"><li><span class="dpr-home-dashboard-paper-title" title="A Control System, a Dataset, and a Recipe for Making Frozen LLM Agents Learn a Domain">A Control System, a Dataset, and a Recipe for Making Frozen LLM Agents Learn a Domain</span></li><li><span class="dpr-home-dashboard-paper-title" title="WCM: World-Cognition Model for Generalizable Human-Robot Interaction">WCM: World-Cognition Model for Generalizable Human-Robot Interaction</span></li><li><span class="dpr-home-dashboard-paper-title" title="Speculate While You Reason: Teaching Agents to Predict Their Next Tool Call via Joint Agent-Speculator RL">Speculate While You Reason: Teaching Agents to Predict Their Next Tool Call via Joint Agent-Speculator RL</span></li></ul>
+<ul class="dpr-home-dashboard-paper-list"><li><span class="dpr-home-dashboard-paper-title" title="CaM-Wolf: Causal-Aware Multimodal Agents for Social Deduction Games">CaM-Wolf: Causal-Aware Multimodal Agents for Social Deduction Games</span></li><li><span class="dpr-home-dashboard-paper-title" title="False Prophets: On the Security of World Models in Agentic Systems">False Prophets: On the Security of World Models in Agentic Systems</span></li><li><span class="dpr-home-dashboard-paper-title" title="Metis: Memory Foundation Model">Metis: Memory Foundation Model</span></li></ul>
   </div>
-  <div class="dpr-home-dashboard-tags"><span class="dpr-home-dashboard-tag">agent-memory <strong>3</strong></span></div>
+  <div class="dpr-home-dashboard-tags"><span class="dpr-home-dashboard-tag">agent-memory <strong>4</strong></span></div>
 </section>
 <section class="dpr-home-dashboard-card dpr-home-skim-card">
   <div class="dpr-home-dashboard-header">
@@ -86,12 +86,12 @@
       <span class="dpr-home-dashboard-kicker">今日累计</span>
       <h3 class="dpr-home-dashboard-title">速读推荐</h3>
     </div>
-    <strong class="dpr-home-dashboard-count">1 篇</strong>
+    <strong class="dpr-home-dashboard-count">0 篇</strong>
   </div>
   <div class="dpr-home-dashboard-body">
-<ul class="dpr-home-dashboard-paper-list"><li><span class="dpr-home-dashboard-paper-title" title="HiSkill: Empowering LLM Agents with Hierarchical Skill Graphs">HiSkill: Empowering LLM Agents with Hierarchical Skill Graphs</span></li></ul>
+<p class="dpr-home-dashboard-empty">今日暂无推荐。</p>
   </div>
-  <div class="dpr-home-dashboard-tags"><span class="dpr-home-dashboard-tag">agent-memory <strong>1</strong></span></div>
+
 </section>
 </div>
 

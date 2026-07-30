@@ -1,0 +1,69 @@
+{
+  "label": "2026-07-30",
+  "date": "2026-07-30",
+  "generated_at": "2026-07-30T21:45:49",
+  "count": 4,
+  "papers": [
+    {
+      "paper_id": "202607/30/2607.26393v1-cam-wolf-causal-aware-multimodal-agents-for-social-deduction-games",
+      "section": "deep",
+      "title_en": "CaM-Wolf: Causal-Aware Multimodal Agents for Social Deduction Games",
+      "authors": "Zheng Zhang, Nanjie Yao, Jiarui He, Deheng Ye, Peilin Zhao, Hao Wang",
+      "date": "2026-07-29",
+      "pdf": "https://arxiv.org/pdf/2607.26393v1",
+      "score": "10.0",
+      "evidence": "集成多模态感知与生成，处理视频输入，使用RL训练的因果推理器",
+      "tldr": "社交推理游戏（如狼人杀）对AI的社交推理、欺骗与协作能力提出严峻挑战，现有代理多仅依赖文本，忽略了现实交互中语音、表情、行为等多模态信息。CaM-Wolf首次将多模态感知与生成融入SDG代理，直接从玩家视频中捕捉行为特征，利用强化学习训练的因果推理器建立可观测行为与隐藏角色的逻辑关联，并驱动动画化身进行具身交互。定量实验与用户研究表明其游戏胜率和交互自然度均大幅超越基线模型。该工作显著提升了AI在复杂社交场景中的表现，为构建高社交智能的类人代理开辟了新途径。",
+      "tags": "query:agent-memory",
+      "abstract_en": "Social deduction games (SDGs) such as Werewolf have become challenging testbeds for AI agents. These games require complex social skills such as reasoning, deception, and collaboration. While recent advances in large language models (LLMs) have driven significant progress in SDG agents, current approaches are predominantly text-based, overlooking the multimodal nature that is fundamental to human social interaction. To bridge this gap, we introduce CaM-Wolf, the first SDG agent that integrates multimodal perception and generation. CaM-Wolf processes video inputs from other players, employs a causal-aware Reasoner trained via reinforcement learning to establish logical chains between observable behaviors and hidden roles, and presents itself through an animated avatar. Our experiments and user study show that CaM-Wolf achieves superior agent gameplay performance and enhances the quality of human-AI interaction. This work represents a significant advancement towards creating more human-like AI agents capable of participating in nuanced social dynamics. Our code is available at https://3dagentworld.github.io/avatar_wolf.",
+      "source": "arxiv",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "paper_id": "202607/30/2607.23147v1-false-prophets-on-the-security-of-world-models-in-agentic-systems",
+      "section": "deep",
+      "title_en": "False Prophets: On the Security of World Models in Agentic Systems",
+      "authors": "Erik Imgrund, Anna Wimbauer, Klim Kireev, Konrad Rieck",
+      "date": "2026-07-25",
+      "pdf": "https://arxiv.org/pdf/2607.23147v1",
+      "score": "9.0",
+      "evidence": "智能体系统中的世界模型，预测动作结果的环境模拟器",
+      "tldr": "大型语言模型驱动的自主智能体依赖世界模型预测动作结果，但这些模型可能误导智能体执行有害操作，引发严重安全与隐私风险。本文揭示世界模型特有漏洞，并构建面向文本世界模型的安全基准数据集。攻击者能以高达95%的成功率诱导错误预测，导致意外命令执行、服务中断、资金损失及隐私泄露。为实践者提供缓解建议，强化智能体系统安全性。",
+      "tags": "query:agent-memory",
+      "abstract_en": "Large language models now power autonomous agents capable of complex, multi-step tasks in different environments. Accurate and reliable execution of these tasks requires the agent to predict the results of its actions. Recent research proposes to enhance predictive capabilities via specially trained environment simulators-world models. While world models can improve performance, they can also mislead agents into executing harmful actions, creating significant security and privacy risks. In this paper, we raise security concerns regarding the usage of world models in agentic systems. We discover a range of world model specific vulnerabilities, which can be exploited in terminal-based agents to execute malicious code or extract sensitive data. To facilitate future development, we introduce a security benchmark dataset designed for text-based world models. We argue that some risks are intrinsic to approximate world modeling, and show that attackers can induce mispredictions in agentic pipelines with up to 95% success rate, possibly resulting in unintended command execution, denial of service, drainage of wallet and private information extraction. Finally, we provide practical recommendations for practitioners to mitigate the discovered harms and harden agentic systems.",
+      "source": "arxiv",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "paper_id": "202607/30/2607.26760v1-metis-memory-foundation-model",
+      "section": "deep",
+      "title_en": "Metis: Memory Foundation Model",
+      "authors": "Zeyu Zhang, Ziliang Guo, Yihang Sun, Xichong Zhang, Xixuan Hao, Zehao Lin, Yang Zhang, Xiaoyan Zhao, Tong Shen, Bo Tang, Zhi-Qin John Xu, Junchi Yan, Haofen Wang, Xu Chen, Feiyu Xiong, Zhiyu Li, Tat-Seng Chua",
+      "date": "2026-07-29",
+      "pdf": "https://arxiv.org/pdf/2607.26760v1",
+      "score": "9.0",
+      "evidence": "提出具有原生记忆能力的基础模型：持久动态演化的记忆状态和自主存储/利用程序",
+      "tldr": "针对当前智能体记忆依赖外部模块的现状，本文首次提出记忆基础模型Metis，通过原生记忆状态和记忆注意力将历史信息压缩到模型中，实现端到端优化。Metis的记忆维护无需梯度，仅前向计算即可动态更新，在推理时所有参数冻结，记忆状态自主演变。实验验证其原生记忆能力，展示了架构与效率优势，并开源模型代码，为智能体的内部记忆机制开辟新方向。Metis通过记忆注意力实现高效存取，推理时状态自主更新，无需外部检索。",
+      "tags": "query:agent-memory",
+      "abstract_en": "Recent advances in AI agents have increasingly internalized native capabilities into their underlying foundation models, giving rise to multimodal foundation models and large reasoning models. However, agent memory is still primarily implemented through external modules, leaving the native memory capability largely unexplored. In this paper, we take a first step toward this direction by introducing memory foundation models, which empower foundation models with native memory capabilities. We formalize native memory from two perspectives: a persistent and dynamically evolving memory state within the backbone, and native memory procedures that autonomously store and utilize information through model computation. We show that native memory offers advantages in architecture, end-to-end optimization, and efficiency. Based on this formulation, we propose Metis, the first prototype of memory foundation models. Metis introduces a new architecture that equips a foundation model with a native memory state, allowing historical information to be compressed into the model and accessed through memory attention. We construct large-scale memory-specific training data and introduce multiple optimization objectives to acquire these native memory procedures through mid-training. The online memory maintenance of Metis is gradient-free, and the memory update requires only a forward pass. At inference time, all learned model weights remain frozen, while the native memory states are autonomously transformed through standard forward computation. Through extensive experiments, we show that Metis exhibits native memory capabilities and further provide a detailed analysis of its strengths, limitations, and behaviors. To facilitate future research on memory foundation models, we release our project and model checkpoints.",
+      "source": "arxiv",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "paper_id": "202607/30/2607.26784v1-skillrise-agentic-reinforcement-learning-for-cross-task-skill-evolution",
+      "section": "deep",
+      "title_en": "SkillRise: Agentic Reinforcement Learning for Cross-Task Skill Evolution",
+      "authors": "Zhiyuan Yao, Yuxin Chen, Zhengxi Lu, Zishan Xu, Yueqing Sun, Yifu Guo, Yuquan Lu, Zhengzhou Cai, Kangning Zhang, Zhuowen Han, Zi-Han Wang, Ziang Ye, Qi Gu, Xunliang Cai, Weiwen Liu, Yongliang Shen",
+      "date": "2026-07-29",
+      "pdf": "https://arxiv.org/pdf/2607.26784v1",
+      "score": "9.0",
+      "evidence": "统一的跨任务技能学习RL框架，利用技能文档作为任务间共享记忆",
+      "tldr": "大型语言模型智能体在相关但不同的任务中常面临技能重用难题，现有方法或独立处理任务或依赖多阶段流水线。SkillRise 提出统一强化学习框架，将任务编排为渐进序列，通过单一策略交替进行任务求解与技能文档的策展传递，并利用解耦的信用分配跨任务训练。在多个基准上 Pass@1 性能超越最强基线 2.3–8.5 个百分点，且运行时开销显著降低，证明了跨任务技能进化可有效提升智能体泛化与效率。",
+      "tags": "query:agent-memory",
+      "abstract_en": "Large language model agents often encounter related yet distinct tasks that share reusable solution patterns. Yet standard agentic reinforcement learning treats tasks as independent episodes, while existing approaches to skill learning either focus on repeated attempts of one task or use pipelines with multiple stages that entangle extraction, retrieval, and execution. We introduce SkillRise, a unified reinforcement learning framework for learning skills across tasks. SkillRise organizes related instances into progressively challenging sequences and uses a single policy to alternate between task solving and curating an evolving skill document passed directly to the next task. Decoupled credit assignment across tasks supervises solving with the current task outcome and curation with discounted downstream outcomes. Experiments on ALFWorld, WebShop, and ScienceWorld show that SkillRise achieves the strongest Pass@1 performance among the compared methods, with gains over the strongest baseline ranging from 2.3 to 8.5 percentage points. Although trained across distinct tasks, its learned curation policy remains effective for repeated attempts on the same task. Further analysis reveals scaling at test time across tasks: performance improves with longer sequences of related tasks even when each task is attempted only once. This trend suggests that SkillRise reuses transferable skills across tasks rather than benefiting from repeated sampling of the same task. SkillRise further retains strong performance while substantially reducing the runtime overhead of skill learning pipelines with multiple stages. Together, these results provide a simple and efficient training paradigm for LLM agents to extract, refine, and reuse transferable skills across tasks.",
+      "source": "arxiv",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "errors": []
+}

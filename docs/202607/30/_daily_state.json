@@ -1,0 +1,73 @@
+{
+  "date": "20260730",
+  "date_label": "",
+  "generated_at": "2026-07-30 21:45:37 UTC",
+  "recommend_exists": true,
+  "run_count": 1,
+  "papers": [
+    {
+      "paper_id": "2607.26393v1",
+      "route": "202607/30/2607.26393v1-cam-wolf-causal-aware-multimodal-agents-for-social-deduction-games",
+      "title": "CaM-Wolf: Causal-Aware Multimodal Agents for Social Deduction Games",
+      "section": "deep",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 10.0,
+      "evidence": "集成多模态感知与生成，处理视频输入，使用RL训练的因果推理器",
+      "first_seen_at": "2026-07-30 21:45:37 UTC",
+      "updated_at": "2026-07-30 21:45:37 UTC"
+    },
+    {
+      "paper_id": "2607.23147v1",
+      "route": "202607/30/2607.23147v1-false-prophets-on-the-security-of-world-models-in-agentic-systems",
+      "title": "False Prophets: On the Security of World Models in Agentic Systems",
+      "section": "deep",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 9.0,
+      "evidence": "智能体系统中的世界模型，预测动作结果的环境模拟器",
+      "first_seen_at": "2026-07-30 21:45:37 UTC",
+      "updated_at": "2026-07-30 21:45:37 UTC"
+    },
+    {
+      "paper_id": "2607.26760v1",
+      "route": "202607/30/2607.26760v1-metis-memory-foundation-model",
+      "title": "Metis: Memory Foundation Model",
+      "section": "deep",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 9.0,
+      "evidence": "提出具有原生记忆能力的基础模型：持久动态演化的记忆状态和自主存储/利用程序",
+      "first_seen_at": "2026-07-30 21:45:37 UTC",
+      "updated_at": "2026-07-30 21:45:37 UTC"
+    },
+    {
+      "paper_id": "2607.26784v1",
+      "route": "202607/30/2607.26784v1-skillrise-agentic-reinforcement-learning-for-cross-task-skill-evolution",
+      "title": "SkillRise: Agentic Reinforcement Learning for Cross-Task Skill Evolution",
+      "section": "deep",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 9.0,
+      "evidence": "统一的跨任务技能学习RL框架，利用技能文档作为任务间共享记忆",
+      "first_seen_at": "2026-07-30 21:45:37 UTC",
+      "updated_at": "2026-07-30 21:45:37 UTC"
+    }
+  ]
+}
