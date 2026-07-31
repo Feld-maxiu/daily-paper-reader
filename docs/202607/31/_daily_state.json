@@ -1,0 +1,57 @@
+{
+  "date": "20260731",
+  "date_label": "",
+  "generated_at": "2026-07-31 21:18:19 UTC",
+  "recommend_exists": true,
+  "run_count": 1,
+  "papers": [
+    {
+      "paper_id": "2607.26336v1",
+      "route": "202607/31/2607.26336v1-learning-implicit-causal-world-models-from-multi-agent-demonstrations",
+      "title": "Learning Implicit Causal World Models from Multi-Agent Demonstrations",
+      "section": "deep",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 9.0,
+      "evidence": "基于模型的强化学习与多智能体因果世界模型",
+      "first_seen_at": "2026-07-31 21:18:19 UTC",
+      "updated_at": "2026-07-31 21:18:19 UTC"
+    },
+    {
+      "paper_id": "2607.22997v1",
+      "route": "202607/31/2607.22997v1-real2sim2real-for-vision-language-action-manipulation-an-amd-rocm-based-pipeline",
+      "title": "Real2Sim2Real for Vision-Language-Action Manipulation: An AMD ROCm-Based Pipeline",
+      "section": "deep",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 8.0,
+      "evidence": "集成大型视觉-语言-动作模型与具身代理",
+      "first_seen_at": "2026-07-31 21:18:19 UTC",
+      "updated_at": "2026-07-31 21:18:19 UTC"
+    },
+    {
+      "paper_id": "2607.27497v1",
+      "route": "202607/31/2607.27497v1-skillsmith-learning-to-compose-parametric-skills-and-textual-knowledge",
+      "title": "SkillSmith: Learning to Compose Parametric Skills and Textual Knowledge",
+      "section": "deep",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 8.0,
+      "evidence": "整合文本知识与参数化技能作为记忆增强",
+      "first_seen_at": "2026-07-31 21:18:19 UTC",
+      "updated_at": "2026-07-31 21:18:19 UTC"
+    }
+  ]
+}

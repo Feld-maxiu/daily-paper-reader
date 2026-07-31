@@ -1,0 +1,134 @@
+{
+  "mode": "standard",
+  "generated_at": "2026-07-31T21:12:33.797327+00:00",
+  "stats": {
+    "mode": "standard",
+    "tag_count": 1,
+    "deep_divecandidates": 3,
+    "deep_cap": 6,
+    "deep_selected": 3,
+    "quick_candidates": 0,
+    "quick_skim_target": 11,
+    "quick_selected": 0
+  },
+  "deep_dive": [
+    {
+      "id": "2607.26336v1",
+      "source": "arxiv",
+      "title": "Learning Implicit Causal World Models from Multi-Agent Demonstrations",
+      "abstract": "In model-based reinforcement learning, world models exist as internal simulators, but their training often conflates statistical correlations with causal mechanisms. This problem is exacerbated in multi-agent systems where physical transitions are intertwined with strategic agent intents, causing world models to fail under distribution shift. We introduce Implicit Causal World Models to recover environmental dynamics from offline demonstrations without requiring pre-defined causal graphs. By incorporating policy variance, we render world models discoverable via the sequential backdoor condition. Evaluations across coordination tasks (Two-Door, Navigation, and Giveway) demonstrate that these models provide interpretable causal representations under both full and partial observability, with model accuracy scaling directly with interventional strength.",
+      "authors": [
+        "Jasorsi Ghosh"
+      ],
+      "primary_category": "cs.LG",
+      "categories": [
+        "cs.LG",
+        "cs.MA",
+        "cs.RO"
+      ],
+      "published": "2026-07-28T23:18:38+00:00",
+      "link": "https://arxiv.org/pdf/2607.26336v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "Model-based RL with causal world models for multi-agent systems",
+      "llm_evidence_cn": "基于模型的强化学习与多智能体因果世界模型",
+      "llm_evidence": "基于模型的强化学习与多智能体因果世界模型",
+      "canonical_evidence": "基于模型的强化学习与多智能体因果世界模型",
+      "llm_tldr_en": "Introduces implicit causal world models for model-based RL in multi-agent settings, recovering dynamics from demonstrations without pre-specified causal graphs, improving robustness to distribution shift.",
+      "llm_tldr_cn": "针对多智能体系统中世界模型易混淆统计相关与因果机制的问题，本文提出隐式因果世界模型，利用策略方差使世界模型可发现，从离线演示中恢复环境动力学。在协调任务上的评估显示该模型具有可解释的因果表示，并在分布偏移下保持鲁棒性，为多智能体强化学习世界模型构建提供了新方法。",
+      "llm_tldr": "针对多智能体系统中世界模型易混淆统计相关与因果机制的问题，本文提出隐式因果世界模型，利用策略方差使世界模型可发现，从离线演示中恢复环境动力学。在协调任务上的评估显示该模型具有可解释的因果表示，并在分布偏移下保持鲁棒性，为多智能体强化学习世界模型构建提供了新方法。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "reinforcement learning applied to autonomous agents",
+      "matched_requirement_id": "req-3",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2607.22997v1",
+      "source": "arxiv",
+      "title": "Real2Sim2Real for Vision-Language-Action Manipulation: An AMD ROCm-Based Pipeline",
+      "abstract": "Physical AI -- the integration of large vision-language-action (VLA) models with embodied agents that act in the real world -- has emerged as the next major frontier for AI, echoed by industry leaders such as Jensen Huang (``the next big thing is Physical AI, AI with a body,'' GTC Paris, June 2025) and Dr. Lisa Su (`we're entering the world of Physical AI ... this is where AI enters the real world,' CES 2026). This paper presents an end-to-end, fully AMD-accelerated technology stack for embodied manipulation, spanning data-center training silicon, Radeon PRO simulation/rendering GPUs, and Ryzen AI edge compute, unified by the open ROCm software stack. We demonstrate that training and deploying VLA-based manipulation policies does not require a CUDA-locked ecosystem. Four progressive demonstrations are presented: (1) a Sim-to-Real manipulation pipeline trained with SmolVLA and deployed on a physical Franka arm; (2) a semantic, language-grounded object-selection task (`one-of-three'); (3) a Real2Sim synthetic-data generation pipeline that fuses 3D Gaussian Splatting (3DGS) reconstructions of real scenes with the Genesis physics engine; and (4) large-scale reinforcement learning for quadruped and humanoid locomotion benchmarked across multiple hardware platforms. All pipelines run natively on ROCm + PyTorch on RDNA4 (Radeon AI PRO R9700) and RDNA3.5 (Radeon PRO W7900) hardware and are reproducible on the free Radeon Cloud Platform.",
+      "authors": [
+        "Qing Yang",
+        "Xun Wang",
+        "Ziguan Wang",
+        "Zhenjiang Li",
+        "Hongqiang Wang",
+        "Dongdong Weng"
+      ],
+      "primary_category": "cs.RO",
+      "categories": [
+        "cs.RO",
+        "cs.AI",
+        "cs.GR",
+        "cs.LG"
+      ],
+      "published": "2026-07-25T02:23:34+00:00",
+      "link": "https://arxiv.org/pdf/2607.22997v1",
+      "tags": [
+        "keyword:agent-memory"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "integrates large vision-language-action (VLA) models with embodied agents",
+      "llm_evidence_cn": "集成大型视觉-语言-动作模型与具身代理",
+      "llm_evidence": "集成大型视觉-语言-动作模型与具身代理",
+      "canonical_evidence": "集成大型视觉-语言-动作模型与具身代理",
+      "llm_tldr_en": "This paper presents an end-to-end AMD-accelerated pipeline for training and deploying VLA-based manipulation policies, demonstrating full-stack solutions from data center to edge.",
+      "llm_tldr_cn": "本文提出一个端到端的AMD全加速技术栈，用于训练和部署基于视觉-语言-动作（VLA）模型的具身操作策略，覆盖数据中心训练到边缘推理，展示多模态代理的完整解决方案。",
+      "llm_tldr": "本文提出一个端到端的AMD全加速技术栈，用于训练和部署基于视觉-语言-动作（VLA）模型的具身操作策略，覆盖数据中心训练到边缘推理，展示多模态代理的完整解决方案。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "agent that processes multiple modalities",
+      "matched_requirement_id": "req-2",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2607.27497v1",
+      "source": "arxiv",
+      "title": "SkillSmith: Learning to Compose Parametric Skills and Textual Knowledge",
+      "abstract": "Agentic systems driven by large language models (LLMs) regularly feature two key mechanisms to autonomously solve complex problems: synthesizing text-based knowledge and procedures from past experiences and building parametric (weight-space) skill libraries for recurring sub-goals. To date, research has largely treated these as orthogonal pursuits: either organizing textual knowledge through composition and reflection, or consolidating parametric skills via weight-space merging. Consequently, the seamless integration of text and model weights for targeted performance improvements remains largely unexplored. This work bridges this modality gap by treating model weights as an additional modality that an LLM can natively reason over. We instantiate parametric learning via prefix-tuning and augment an LLM to ingest both prefix weights and rich textual data which capture relationships to a target capability. Our augmented LLM, which we call SkillSmith, synthesizes these inputs to perform instruction-steered parametric synthesis, directly outputting new prefix weights that manifest the target skill. We demonstrate that our approach significantly outperforms both text-only and weight-space-only baselines, unlocking performance gains that are out of reach for uni-modal (text-only or weight-only) adaptations.",
+      "authors": [
+        "Lucio M. Dery",
+        "Benedict Aaron Tjandra",
+        "Siavash Samiei",
+        "Adhiguna Kuncoro",
+        "Zohar Yahav",
+        "Jiajun Shen",
+        "Arthur Szlam"
+      ],
+      "primary_category": "cs.CL",
+      "categories": [
+        "cs.CL"
+      ],
+      "published": "2026-07-29T22:28:36+00:00",
+      "link": "https://arxiv.org/pdf/2607.27497v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "Integrates textual knowledge and parametric skills as memory augmentation",
+      "llm_evidence_cn": "整合文本知识与参数化技能作为记忆增强",
+      "llm_evidence": "整合文本知识与参数化技能作为记忆增强",
+      "canonical_evidence": "整合文本知识与参数化技能作为记忆增强",
+      "llm_tldr_en": "SkillSmith bridges the gap between textual knowledge and parametric skill libraries by treating model weights as an additional modality, allowing LLMs to compose both for better task performance.",
+      "llm_tldr_cn": "SkillSmith通过将模型权重视为一种额外模态，使大语言模型能够原生地推理并组合文本知识与参数化技能库，从而弥合了文本知识组织与权重技能库之间的鸿沟，在多项任务上提升了智能体的性能，展示了权重作为知识载体的潜力。",
+      "llm_tldr": "SkillSmith通过将模型权重视为一种额外模态，使大语言模型能够原生地推理并组合文本知识与参数化技能库，从而弥合了文本知识组织与权重技能库之间的鸿沟，在多项任务上提升了智能体的性能，展示了权重作为知识载体的潜力。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "agent with memory augmentation for better performance",
+      "matched_requirement_id": "req-6",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "quick_skim": []
+}

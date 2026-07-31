@@ -41,17 +41,17 @@
 <section class="dpr-home-dashboard-card dpr-home-report-card">
   <div class="dpr-home-dashboard-header">
     <div>
-      <span class="dpr-home-dashboard-kicker">2026-07-30</span>
+      <span class="dpr-home-dashboard-kicker">2026-07-31</span>
       <h3 class="dpr-home-dashboard-title">今日汇总</h3>
     </div>
-    <strong class="dpr-home-dashboard-count">共 4 篇</strong>
+    <strong class="dpr-home-dashboard-count">共 3 篇</strong>
   </div>
   <dl class="dpr-home-dashboard-stats">
     <div class="dpr-home-dashboard-stat"><dt>累计更新</dt><dd>1 次</dd></div>
-    <div class="dpr-home-dashboard-stat"><dt>精读</dt><dd>4</dd></div>
+    <div class="dpr-home-dashboard-stat"><dt>精读</dt><dd>3</dd></div>
     <div class="dpr-home-dashboard-stat"><dt>速读</dt><dd>0</dd></div>
   </dl>
-  <p class="dpr-home-dashboard-body">最近更新：2026-07-30 21:45:37 UTC<br>状态：成功</p>
+  <p class="dpr-home-dashboard-body">最近更新：2026-07-31 21:18:19 UTC<br>状态：成功</p>
 </section>
 <section class="dpr-home-dashboard-card dpr-home-brief-card">
   <div class="dpr-home-dashboard-header">
@@ -62,9 +62,9 @@
     <strong class="dpr-home-dashboard-count">AI</strong>
   </div>
   <div class="dpr-home-dashboard-body">
-<p>今日精读社交推理与世界模型安全两篇重磅论文，直击多模态智能体的因果博弈与安全隐忧。</p>
-<p>最值得关注：《CaM-Wolf》用因果感知赋予 AI 狼人杀玩家近乎满分表现，《False Prophets》则揭示智能体世界模型如何被“假先知”操纵。</p>
-<p>建议读者从这两篇切入，审视前沿代理系统的能力上限与信任边界。</p>
+<p>今日精读两篇论文：9分高分工作从多智能体示范中学习隐式因果世界模型，另一篇通过AMD ROCm打通视觉-语言-动作操纵的Real2Sim2Real全流程。</p>
+<p>最值得关注的方向：多智能体场景下的因果推理，以及基于AMD生态的低成本sim-to-real机器人训练范式。</p>
+<p>建议读者尝试将因果模型集成到你的智能体决策中，或体验ROCm管线加速你的仿真训练。</p>
   </div>
 </section>
 <section class="dpr-home-dashboard-card dpr-home-deep-card">
@@ -73,12 +73,12 @@
       <span class="dpr-home-dashboard-kicker">今日累计</span>
       <h3 class="dpr-home-dashboard-title">精读推荐</h3>
     </div>
-    <strong class="dpr-home-dashboard-count">4 篇</strong>
+    <strong class="dpr-home-dashboard-count">3 篇</strong>
   </div>
   <div class="dpr-home-dashboard-body">
-<ul class="dpr-home-dashboard-paper-list"><li><span class="dpr-home-dashboard-paper-title" title="CaM-Wolf: Causal-Aware Multimodal Agents for Social Deduction Games">CaM-Wolf: Causal-Aware Multimodal Agents for Social Deduction Games</span></li><li><span class="dpr-home-dashboard-paper-title" title="False Prophets: On the Security of World Models in Agentic Systems">False Prophets: On the Security of World Models in Agentic Systems</span></li><li><span class="dpr-home-dashboard-paper-title" title="Metis: Memory Foundation Model">Metis: Memory Foundation Model</span></li></ul>
+<ul class="dpr-home-dashboard-paper-list"><li><span class="dpr-home-dashboard-paper-title" title="Learning Implicit Causal World Models from Multi-Agent Demonstrations">Learning Implicit Causal World Models from Multi-Agent Demonstrations</span></li><li><span class="dpr-home-dashboard-paper-title" title="Real2Sim2Real for Vision-Language-Action Manipulation: An AMD ROCm-Based Pipeline">Real2Sim2Real for Vision-Language-Action Manipulation: An AMD ROCm-Based Pipeline</span></li><li><span class="dpr-home-dashboard-paper-title" title="SkillSmith: Learning to Compose Parametric Skills and Textual Knowledge">SkillSmith: Learning to Compose Parametric Skills and Textual Knowledge</span></li></ul>
   </div>
-  <div class="dpr-home-dashboard-tags"><span class="dpr-home-dashboard-tag">agent-memory <strong>4</strong></span></div>
+  <div class="dpr-home-dashboard-tags"><span class="dpr-home-dashboard-tag">agent-memory <strong>3</strong></span></div>
 </section>
 <section class="dpr-home-dashboard-card dpr-home-skim-card">
   <div class="dpr-home-dashboard-header">
