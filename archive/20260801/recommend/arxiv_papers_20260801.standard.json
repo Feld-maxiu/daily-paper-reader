@@ -1,0 +1,323 @@
+{
+  "mode": "standard",
+  "generated_at": "2026-08-01T21:09:23.706972+00:00",
+  "stats": {
+    "mode": "standard",
+    "tag_count": 1,
+    "deep_divecandidates": 6,
+    "deep_cap": 6,
+    "deep_selected": 6,
+    "quick_candidates": 1,
+    "quick_skim_target": 11,
+    "quick_selected": 1
+  },
+  "deep_dive": [
+    {
+      "id": "2607.28076v1",
+      "source": "arxiv",
+      "title": "Group-Reflective Self-Distillation for Agentic Reinforcement Learning",
+      "abstract": "Reinforcement learning with verifiable rewards (RLVR) is effective for training large language model agents. However, terminal rewards provide only coarse trajectory-level supervision, leaving successful behaviors, recurring mistakes, and incidental choices entangled in the same outcome signal. Existing agentic self-distillation methods enrich sparse supervision with natural-language skills, but skills retrieved externally or extracted from a single trajectory by stronger models may mismatch current experience, exceed the policy's capability, or remain path-specific. We propose Group-Reflective Self-Distillation (GRSD), which derives capability-aligned and outcome-discriminative guidance from the policy's own verified rollouts. For each prompt, the policy reflects on each verified trajectory in an on-policy group, and a stop-gradient snapshot contrasts the resulting reflections from successful and failed rollouts to construct group-level privileged guidance. Conditioned on this guidance, a self-teacher refines turn-level credit assignment by modulating outcome-based advantages while preserving the verifier-determined learning direction. Experiments across multiple agentic environments and model scales demonstrate that GRSD consistently outperforms competitive baselines and generalizes more effectively to unseen tasks.",
+      "authors": [
+        "Binbin Zheng",
+        "Zijun Xie",
+        "Guanqun Zhao",
+        "Enlei Gong",
+        "Xing Ma",
+        "Xiaoliang Fu",
+        "Zeyu Chen"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI",
+        "cs.LG"
+      ],
+      "published": "2026-07-30T11:49:46+00:00",
+      "link": "https://arxiv.org/pdf/2607.28076v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "agentic reinforcement learning with group-reflective self-distillation",
+      "llm_evidence_cn": "基于群体反思自蒸馏的智能体强化学习",
+      "llm_evidence": "基于群体反思自蒸馏的智能体强化学习",
+      "canonical_evidence": "基于群体反思自蒸馏的智能体强化学习",
+      "llm_tldr_en": "GRSD improves RL for LLM agents by distilling capability‑aligned and outcome‑discriminative skills from the policy’s own rollouts, enriching sparse terminal rewards.",
+      "llm_tldr_cn": "针对智能体强化学习中终端奖励信号稀疏、成功与错误行为难以区分的挑战，本文提出群体反思自蒸馏（GRSD），从策略自身的验证轨迹中提取与能力对齐且区分结果的技能说明，作为自然语言辅助监督信号，强化成功行为并纠正错误。实验表明，GRSD显著提升了多个智能体任务的学习效率和最终表现，证明了从自身经验中提炼知识是提升智能体RL的有效途径。",
+      "llm_tldr": "针对智能体强化学习中终端奖励信号稀疏、成功与错误行为难以区分的挑战，本文提出群体反思自蒸馏（GRSD），从策略自身的验证轨迹中提取与能力对齐且区分结果的技能说明，作为自然语言辅助监督信号，强化成功行为并纠正错误。实验表明，GRSD显著提升了多个智能体任务的学习效率和最终表现，证明了从自身经验中提炼知识是提升智能体RL的有效途径。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "reinforcement learning applied to autonomous agents",
+      "matched_requirement_id": "req-3",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2607.28595v1",
+      "source": "arxiv",
+      "title": "Beacon: Knowing When and How to Perform Agentic Visual Reasoning",
+      "abstract": "The fundamental goal of agentic visual reasoning is to improve the success rate of multimodal large language models (MLLMs) on complex tasks, rather than merely equipping them with a sophisticated yet inefficient reasoning paradigm. In this work, we rethink agentic visual reasoning through two key dimensions of tool use: Mode Adaptiveness (MA) and Tool Effect (TE). Mode Adaptiveness characterizes whether an MLLM can recognize when tools are truly necessary and invoke them accordingly, thereby avoiding unnecessary computational overhead while improving performance on challenging problems that require tool assistance. Tool Effect characterizes the actual impact of tool use: tools should extend the model's capabilities on problems unsolvable through text-only reasoning, while avoiding additional errors on problems that the model can already solve without tools. We conduct a comprehensive analysis to quantify these two properties and empirically reveal that existing agentic visual reasoning models exhibit limited Mode Adaptiveness, while the gains produced by tool use on hard examples are largely offset by the harm introduced on easy examples that the models can already solve. Motivated by these observations, we propose Beacon, a novel agentic visual reasoning model that achieves stronger overall performance, improved Mode Adaptiveness, and genuine tool-induced performance gains. At the core of Beacon are the Necessity-Aware Adaptive Reward and the Hint-Guided Capability Expansion mechanism in the reinforcement learning stage, which respectively encourage adaptive tool invocation based on task necessity and strengthen the model's tool-use capability on the most challenging problems. Extensive experiments across diverse benchmarks demonstrate the strong overall performance of Beacon and its substantial improvements in both Mode Adaptiveness and Tool Effect.",
+      "authors": [
+        "Qixun Wang",
+        "Yang Shi",
+        "Letian Cheng",
+        "Zhuoran Zhang",
+        "Yan He",
+        "Yuqi Tang",
+        "Qi Zhang",
+        "Xinlei Yu",
+        "Ruizhe Chen",
+        "Tianrun Xu",
+        "Yuanxing Zhang",
+        "Pengfei Wan",
+        "Haotian Wang",
+        "Xianghua Ying"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV"
+      ],
+      "published": "2026-07-30T17:46:55+00:00",
+      "link": "https://arxiv.org/pdf/2607.28595v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "agentic visual reasoning with multimodal LLMs",
+      "llm_evidence_cn": "多模态大语言模型进行智能体视觉推理",
+      "llm_evidence": "多模态大语言模型进行智能体视觉推理",
+      "canonical_evidence": "多模态大语言模型进行智能体视觉推理",
+      "llm_tldr_en": "Beacon improves MLLMs' complex visual reasoning by adaptively deciding when and how to use tools, avoiding overhead and enhancing hard-problem performance.",
+      "llm_tldr_cn": "针对多模态大语言模型在复杂视觉推理任务中工具使用低效的问题，本文提出Beacon框架，通过自适应决定何时及如何调用工具来提升成功率。该方法引入模式自适应和工具效果两个维度，使模型在需要时使用工具，避免对简单问题的不必要计算开销，同时在困难问题上扩展模型能力。实验表明，Beacon在多个视觉推理基准上实现了高效且精准的表现，证明了自适应工具使用对智能体视觉推理的重要性。",
+      "llm_tldr": "针对多模态大语言模型在复杂视觉推理任务中工具使用低效的问题，本文提出Beacon框架，通过自适应决定何时及如何调用工具来提升成功率。该方法引入模式自适应和工具效果两个维度，使模型在需要时使用工具，避免对简单问题的不必要计算开销，同时在困难问题上扩展模型能力。实验表明，Beacon在多个视觉推理基准上实现了高效且精准的表现，证明了自适应工具使用对智能体视觉推理的重要性。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "agent that processes multiple modalities",
+      "matched_requirement_id": "req-2",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2607.28624v1",
+      "source": "arxiv",
+      "title": "PhiZero: A World Model Built Around Physical Language",
+      "abstract": "We introduce PhiZero, a physical world model built around physical language, a compact discrete representation of world-state transitions. Existing physical world models typically predict future videos directly in pixel space, leaving the underlying world dynamics implicit within high-dimensional visual predictors. Motivated by humans' ability to abstract predictive structure from visual experience and organize it in natural language for explicit reasoning, we learn physical language from in-the-wild videos through self-supervision and use it to explicitly reason about how the physical world evolves. Accordingly, PhiZero adopts a reason-then-render paradigm: it first infers future world evolution as a physical-language sequence and then renders the inferred transitions into videos. Extensive experiments across generation and understanding benchmarks validate the ability of PhiZero to model physically coherent world evolution. We further show its potential for realistic and interactive world modeling, fine-grained action-conditioned simulation, and zero-shot motion transfer.",
+      "authors": [
+        "Shuyao Shang",
+        "Yuqi Wang",
+        "Ruopeng Gao",
+        "Xu Chen",
+        "Tieniu Tan",
+        "Lue Fan",
+        "Zhaoxiang Zhang"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV"
+      ],
+      "published": "2026-07-30T17:59:46+00:00",
+      "link": "https://arxiv.org/pdf/2607.28624v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "learns a discrete physical language to compactly represent world-state transitions for explicit reasoning and future prediction",
+      "llm_evidence_cn": "学习一种离散物理语言，紧凑表示世界状态转换，进行显式推理和未来预测",
+      "llm_evidence": "学习一种离散物理语言，紧凑表示世界状态转换，进行显式推理和未来预测",
+      "canonical_evidence": "学习一种离散物理语言，紧凑表示世界状态转换，进行显式推理和未来预测",
+      "llm_tldr_en": "Proposes PhiZero, a world model that learns a discrete physical language from videos via self-supervision, then uses a reason-then-render paradigm to predict future states as language sequences before rendering them, enabling explicit reasoning about physical world evolution.",
+      "llm_tldr_cn": "针对现有物理世界模型直接在像素空间预测而忽略显式动态推理的问题，提出PhiZero。它通过自监督从真实视频中学习物理语言，将世界状态转换抽象为离散序列，并采用先推理后渲染的范式：先用物理语言序列推演未来演变再渲染。该方法使模型能显式推理物理世界演化，为基于语言的世界模型提供了新途径。",
+      "llm_tldr": "针对现有物理世界模型直接在像素空间预测而忽略显式动态推理的问题，提出PhiZero。它通过自监督从真实视频中学习物理语言，将世界状态转换抽象为离散序列，并采用先推理后渲染的范式：先用物理语言序列推演未来演变再渲染。该方法使模型能显式推理物理世界演化，为基于语言的世界模型提供了新途径。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "language-based world model for agent reasoning",
+      "matched_requirement_id": "req-5",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2607.26148v1",
+      "source": "arxiv",
+      "title": "Embodied Agents Take Control: Minimal-Interface Zero-Shot Agents Rival Industrial-Scale Policies in Vision-and-Language Navigation",
+      "abstract": "Autonomous embodied agents must sustain a long decision-making loop that involves perceiving, acting, verifying, and self-correcting over many steps. Current systems sustain this loop through task-specific workflows or embodied policies. We study a third form, agentic embodied control, in which a general-purpose agent holds the loop itself. Using zero-shot navigation as a controlled testbed, we evaluate three software-engineering agent harnesses given only a monocular RGB camera and discrete actions. Under this strictly minimal condition, replicated default-effort configurations reach 70.7$\\pm$3.5% success (opus-5, mean over three runs), and fable-5 reaches 78% at maximum effort. When a trained waypoint tool is exposed alongside primitives as an optional capability, the hybrid fable-5 agent reaches 76.7$\\pm$0.6% at default effort, using half the environment steps and less than one quarter of the wall time of the maximum-effort primitive run. Controlled interventions show that capability is primarily model-centered: model choice strongly changes success, harness effects are descriptive, and a forced waypoint interface helps weaker models but can hinder stronger ones. Performance nevertheless falls sharply on longer-horizon tasks, while latency and context growth limit sustained operation. These results show that agentic control is already competitive in zero-shot navigation and that models, harnesses, and interfaces offer complementary paths toward autonomous embodied agents.",
+      "authors": [
+        "Jian Zhou",
+        "Xunyi Zhao",
+        "Gengze Zhou",
+        "Zerui Li",
+        "Sihao Lin",
+        "Jiajun Liu",
+        "Qi Wu"
+      ],
+      "primary_category": "cs.RO",
+      "categories": [
+        "cs.RO"
+      ],
+      "published": "2026-07-28T18:00:34+00:00",
+      "link": "https://arxiv.org/pdf/2607.26148v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "zero-shot agents using monocular RGB camera and discrete actions for navigation",
+      "llm_evidence_cn": "使用单目RGB摄像头和离散动作的零样本代理进行导航",
+      "llm_evidence": "使用单目RGB摄像头和离散动作的零样本代理进行导航",
+      "canonical_evidence": "使用单目RGB摄像头和离散动作的零样本代理进行导航",
+      "llm_tldr_en": "Studies zero-shot embodied agents for vision-and-language navigation with minimal interface, showing default configurations reach high success rates rivaling industrial policies.",
+      "llm_tldr_cn": "该文研究在仅使用单目RGB摄像头和离散动作的极简条件下，通用零样本代理在视觉语言导航任务中的表现。默认配置下成功率达70%以上，最大努力可达78%，表明通用代理框架能与工业级专业策略相媲美。这为低成本、易部署的具身代理提供了新路径。",
+      "llm_tldr": "该文研究在仅使用单目RGB摄像头和离散动作的极简条件下，通用零样本代理在视觉语言导航任务中的表现。默认配置下成功率达70%以上，最大努力可达78%，表明通用代理框架能与工业级专业策略相媲美。这为低成本、易部署的具身代理提供了新路径。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "agent that processes multiple modalities",
+      "matched_requirement_id": "req-2",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2607.27599v1",
+      "source": "arxiv",
+      "title": "World Action Planner: Generalizable Decision-Making with Action-Conditioned World Models",
+      "abstract": "Building generalizable agents for diverse applications remains a fundamental challenge. While imitation learning-based policies succeed in specific training environments, they often fail to generalize to novel scenes and tasks. In this work, we propose World Action Planner, a robot planning system that leverages the reasoning capabilities of Vision-Language Models (VLMs) and the physical grounding of a multi-task pose-image conditioned world model. Our system enables an agent to propose initial action plans and iteratively refine them via optimization and search, reasoning over imagined world model rollouts. We demonstrate that our approach achieves superior performance across compositional tasks, new layouts, and zero-shot generalization scenarios, significantly outperforming state-of-the-art end-to-end policy models such as VLAs and WAMs. Project website at worldactionplanner.github.io",
+      "authors": [
+        "Xiangcheng Zhang",
+        "Yilun Du"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI",
+        "cs.RO"
+      ],
+      "published": "2026-07-30T02:41:52+00:00",
+      "link": "https://arxiv.org/pdf/2607.27599v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "uses VLMs for reasoning and action-conditioned world model for planning",
+      "llm_evidence_cn": "使用视觉语言模型进行推理和动作条件世界模型进行规划",
+      "llm_evidence": "使用视觉语言模型进行推理和动作条件世界模型进行规划",
+      "canonical_evidence": "使用视觉语言模型进行推理和动作条件世界模型进行规划",
+      "llm_tldr_en": "Proposes World Action Planner combining VLM reasoning with a pose-image world model, enabling agents to iteratively refine actions via imagined rollouts for generalizable decision-making.",
+      "llm_tldr_cn": "针对模仿学习策略难以泛化的问题，本文提出世界行动规划器，结合视觉语言模型推理与多任务位姿-图像条件世界模型，使代理能通过想象世界模型推演来迭代优化行动方案。实验显示该方法在组合任务、新布局和零样本泛化上均取得优异性能，为通用机器人决策提供了新思路。",
+      "llm_tldr": "针对模仿学习策略难以泛化的问题，本文提出世界行动规划器，结合视觉语言模型推理与多任务位姿-图像条件世界模型，使代理能通过想象世界模型推演来迭代优化行动方案。实验显示该方法在组合任务、新布局和零样本泛化上均取得优异性能，为通用机器人决策提供了新思路。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "agent that processes multiple modalities",
+      "matched_requirement_id": "req-2",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2607.27652v1",
+      "source": "arxiv",
+      "title": "Harness-G: A Graph-Structured Harness for Search Agents",
+      "abstract": "Reinforcement learning (RL) search agents commonly model retrieval as free-form natural-language query generation and optimize multi-turn interactions using final-answer rewards. Current studies mainly improve training with denser or more structured credit signals, but rarely examine whether retrieval is properly formulated at the policy-environment interface. We observe pronounced retrieval aliasing during Search-R1 training: rollouts for the same question continue to generate distinct query strings, yet their accumulated evidence sets increasingly overlap. We call this phenomenon retrieval-equivalence collapse; in this regime, trajectories approach utility equivalence with respect to retrieval decisions, leaving within-group returns with little effective retrieval contrast. To address this problem, we propose Harness-G, a graph-structured retrieval framework that redesigns this interface. It reformulates free-form query generation as finite action selection: the policy selects an evidence sentence or entity, or chooses to answer, while the environment constructs the menu, tracks retrieval state, and validates and executes each choice. This interface reduces linguistic aliasing and makes same-state alternatives directly comparable. Building on this interface, we introduce Structured Non-myopic Credit (SNC), which uses a frozen answer scorer to compare the selected action with its alternatives and assigns downstream gains to the earlier actions that enabled them. Across six QA benchmarks, Harness-G achieves the highest average F1 at both evaluated model scales, outperforming the strongest baseline, Graph-R1, by 10.74 points at 1.5B and 3.98 points at 3B.",
+      "authors": [
+        "Yanning Hou",
+        "Haoyuan Chen",
+        "Sihang Zhou",
+        "Xiaoshu Chen",
+        "Xirui Liu",
+        "Duanyang Yuan",
+        "Lingyuan Meng",
+        "Quan Liu",
+        "Jian Huang"
+      ],
+      "primary_category": "cs.CL",
+      "categories": [
+        "cs.CL"
+      ],
+      "published": "2026-07-30T04:05:05+00:00",
+      "link": "https://arxiv.org/pdf/2607.27652v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "applies reinforcement learning to train search agents and addresses retrieval aliasing, a problem in RL training of retrieval-augmented agents",
+      "llm_evidence_cn": "应用强化学习训练搜索智能体，解决检索增强智能体RL训练中的检索混叠问题",
+      "llm_evidence": "应用强化学习训练搜索智能体，解决检索增强智能体RL训练中的检索混叠问题",
+      "canonical_evidence": "应用强化学习训练搜索智能体，解决检索增强智能体RL训练中的检索混叠问题",
+      "llm_tldr_en": "Identifies retrieval-equivalence collapse in RL-trained search agents where diverse queries yield overlapping evidence sets, and proposes a graph-structured harness to mitigate it, improving retrieval and training efficiency.",
+      "llm_tldr_cn": "针对搜索智能体RL训练中的检索混叠现象——不同查询产生重叠证据集导致效用等价，提出了图结构外壳Harness-G来缓解这一问题。实验表明该方法改善了检索多样性并提升了训练效率，为RL智能体的检索策略设计提供了新见解。",
+      "llm_tldr": "针对搜索智能体RL训练中的检索混叠现象——不同查询产生重叠证据集导致效用等价，提出了图结构外壳Harness-G来缓解这一问题。实验表明该方法改善了检索多样性并提升了训练效率，为RL智能体的检索策略设计提供了新见解。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "reinforcement learning applied to autonomous agents",
+      "matched_requirement_id": "req-3",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "quick_skim": [
+    {
+      "id": "2607.28609v1",
+      "source": "arxiv",
+      "title": "OSReward: Instituting Standardized Evaluation for Cross-Platform Computer-Use Reward Models",
+      "abstract": "Computer-using agents (CUAs) are advancing rapidly across the digital world. A CUA trajectory records the agent's actions, states, and reasoning. Verifying whether it fulfilled the task instruction is central to CUA evaluation, data curation, and reinforcement learning. Neither human-written verifiers nor human annotators can provide such verification at scale, so the field increasingly turns to vision-language models (VLMs) as judges of CUA trajectories. But a fundamental question has long gone unexamined: are these VLM judges reliable enough? To study it systematically, we introduce OSReward, a realistic, high-quality benchmark that evaluates VLM judges on CUA trajectories. The trajectories come from diverse agent backbones executing human-verified instructions across platforms, then rigorously labeled with ground-truth verdicts through multi-stage human annotation. Building on it, we derive OSReward-Hard, a challenge set concentrating genuinely hard cases, and OSReward-Multi for fine-grained efficiency and alignment scoring. The most comprehensive evaluation of VLM judges to date finds even state-of-the-art models fall short of an ideal judge, sharing a systematic leniency bias that mislabels failed runs as successes. The few reliable enough to trust are too expensive to run at scale, while affordable open models trail far behind. To close this gap, we construct and release OS-Shepherd-100K, an open corpus of reasoning-annotated trajectory judgments for the CUA community. On it, we train OS-Shepherd (9B and 35B), open reward models that supply low-cost, stable, and reliable reward signals, matching commercial judges at 30-60% lower cost than the frontier. Extensive analyses further inform the design of reliable CUA reward at scale. Our code, benchmark, dataset, and model checkpoints are available at https://os-copilot.github.io/OSReward-Home/.",
+      "authors": [
+        "Qiushi Sun",
+        "Kanzhi Cheng",
+        "Yian Wang",
+        "Bowen Yang",
+        "Hang Yan",
+        "Liheng Chen",
+        "Fangzhi Xu",
+        "Zichen Ding",
+        "Nuo Chen",
+        "Jialin Cao",
+        "Xingdong Gong",
+        "Zehao Li",
+        "Kaiming Jin",
+        "Xinfeng Yuan",
+        "Zhoumianze Liu",
+        "Jingyang Gong",
+        "Zhangyue Yin",
+        "Jiahui Gao",
+        "Zhiyong Wu",
+        "Tianbao Xie",
+        "Jianbing Zhang",
+        "Ben Kao",
+        "Lingpeng Kong"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI",
+        "cs.CL",
+        "cs.CV"
+      ],
+      "published": "2026-07-30T17:57:41+00:00",
+      "link": "https://arxiv.org/pdf/2607.28609v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "evaluating reward models for computer-using agents in RL",
+      "llm_evidence_cn": "评估强化学习中的计算机使用智能体奖励模型",
+      "llm_evidence": "评估强化学习中的计算机使用智能体奖励模型",
+      "canonical_evidence": "评估强化学习中的计算机使用智能体奖励模型",
+      "llm_tldr_en": "OSReward benchmarks VLM judges for verifying CUA trajectories in RL, revealing reliability gaps and enabling better reward modeling.",
+      "llm_tldr_cn": "针对计算机使用智能体强化学习中奖励模型验证的可靠性问题，本文提出OSReward基准，系统评估视觉语言模型作为评判器在智能体轨迹上的表现。该基准涵盖多种智能体骨架和平台，发现现有VLM评判器存在显著错误，为开发更可靠的自动化验证方法提供了标准化测试平台。OSReward推动了强化学习任务中奖励模型的改进研究。",
+      "llm_tldr": "针对计算机使用智能体强化学习中奖励模型验证的可靠性问题，本文提出OSReward基准，系统评估视觉语言模型作为评判器在智能体轨迹上的表现。该基准涵盖多种智能体骨架和平台，发现现有VLM评判器存在显著错误，为开发更可靠的自动化验证方法提供了标准化测试平台。OSReward推动了强化学习任务中奖励模型的改进研究。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "reinforcement learning applied to autonomous agents",
+      "matched_requirement_id": "req-3",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    }
+  ]
+}

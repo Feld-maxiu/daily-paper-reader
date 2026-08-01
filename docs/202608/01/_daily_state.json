@@ -1,0 +1,121 @@
+{
+  "date": "20260801",
+  "date_label": "",
+  "generated_at": "2026-08-01 21:19:22 UTC",
+  "recommend_exists": true,
+  "run_count": 1,
+  "papers": [
+    {
+      "paper_id": "2607.28076v1",
+      "route": "202608/01/2607.28076v1-group-reflective-self-distillation-for-agentic-reinforcement-learning",
+      "title": "Group-Reflective Self-Distillation for Agentic Reinforcement Learning",
+      "section": "deep",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 9.0,
+      "evidence": "基于群体反思自蒸馏的智能体强化学习",
+      "first_seen_at": "2026-08-01 21:19:22 UTC",
+      "updated_at": "2026-08-01 21:19:22 UTC"
+    },
+    {
+      "paper_id": "2607.28595v1",
+      "route": "202608/01/2607.28595v1-beacon-knowing-when-and-how-to-perform-agentic-visual-reasoning",
+      "title": "Beacon: Knowing When and How to Perform Agentic Visual Reasoning",
+      "section": "deep",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 9.0,
+      "evidence": "多模态大语言模型进行智能体视觉推理",
+      "first_seen_at": "2026-08-01 21:19:22 UTC",
+      "updated_at": "2026-08-01 21:19:22 UTC"
+    },
+    {
+      "paper_id": "2607.28624v1",
+      "route": "202608/01/2607.28624v1-phizero-a-world-model-built-around-physical-language",
+      "title": "PhiZero: A World Model Built Around Physical Language",
+      "section": "deep",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 9.0,
+      "evidence": "学习一种离散物理语言，紧凑表示世界状态转换，进行显式推理和未来预测",
+      "first_seen_at": "2026-08-01 21:19:22 UTC",
+      "updated_at": "2026-08-01 21:19:22 UTC"
+    },
+    {
+      "paper_id": "2607.26148v1",
+      "route": "202608/01/2607.26148v1-embodied-agents-take-control-minimal-interface-zero-shot-agents-rival-industrial-scale-policies-in-vision-and-language-navigation",
+      "title": "Embodied Agents Take Control: Minimal-Interface Zero-Shot Agents Rival Industrial-Scale Policies in Vision-and-Language Navigation",
+      "section": "deep",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 8.0,
+      "evidence": "使用单目RGB摄像头和离散动作的零样本代理进行导航",
+      "first_seen_at": "2026-08-01 21:19:22 UTC",
+      "updated_at": "2026-08-01 21:19:22 UTC"
+    },
+    {
+      "paper_id": "2607.27599v1",
+      "route": "202608/01/2607.27599v1-world-action-planner-generalizable-decision-making-with-action-conditioned-world-models",
+      "title": "World Action Planner: Generalizable Decision-Making with Action-Conditioned World Models",
+      "section": "deep",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 8.0,
+      "evidence": "使用视觉语言模型进行推理和动作条件世界模型进行规划",
+      "first_seen_at": "2026-08-01 21:19:22 UTC",
+      "updated_at": "2026-08-01 21:19:22 UTC"
+    },
+    {
+      "paper_id": "2607.27652v1",
+      "route": "202608/01/2607.27652v1-harness-g-a-graph-structured-harness-for-search-agents",
+      "title": "Harness-G: A Graph-Structured Harness for Search Agents",
+      "section": "deep",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 8.0,
+      "evidence": "应用强化学习训练搜索智能体，解决检索增强智能体RL训练中的检索混叠问题",
+      "first_seen_at": "2026-08-01 21:19:22 UTC",
+      "updated_at": "2026-08-01 21:19:22 UTC"
+    },
+    {
+      "paper_id": "2607.28609v1",
+      "route": "202608/01/2607.28609v1-osreward-instituting-standardized-evaluation-for-cross-platform-computer-use-reward-models",
+      "title": "OSReward: Instituting Standardized Evaluation for Cross-Platform Computer-Use Reward Models",
+      "section": "quick",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 7.0,
+      "evidence": "评估强化学习中的计算机使用智能体奖励模型",
+      "first_seen_at": "2026-08-01 21:19:22 UTC",
+      "updated_at": "2026-08-01 21:19:22 UTC"
+    }
+  ]
+}
