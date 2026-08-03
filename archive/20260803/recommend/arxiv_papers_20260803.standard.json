@@ -1,0 +1,385 @@
+{
+  "mode": "standard",
+  "generated_at": "2026-08-03T20:42:13.948220+00:00",
+  "stats": {
+    "mode": "standard",
+    "tag_count": 1,
+    "deep_divecandidates": 8,
+    "deep_cap": 6,
+    "deep_selected": 6,
+    "quick_candidates": 3,
+    "quick_skim_target": 11,
+    "quick_selected": 3
+  },
+  "deep_dive": [
+    {
+      "id": "2607.28272v1",
+      "source": "arxiv",
+      "title": "MemHarness: Memory Is Reconstructed, Not Replayed",
+      "abstract": "Retrieving past experiences has become a common strategy to enhance large language model agents. However, most existing memory-augmented agents treat retrieved experiences as static records to be replayed verbatim, injecting them into the context regardless of whether they align with the agent's current situation. This ``replay'' paradigm ignores the gap between the abstract, general nature of stored experience and the concrete, ever-changing states encountered at decision time, frequently causing negative transfer. In contrast, humans rarely recall past experiences verbatim; instead, they reorganize and adapt retrieved memories to fit the present context. Inspired by this, we propose MemHarness, a framework that equips LLM agents to actively harness and reconstruct past experiences based on the present context. At each decision step, a unified policy model critiques and reconstructs the retrieved experience conditioned on the current state, producing context-grounded guidance before acting. This reconstructive ability emerges naturally through end-to-end training with GRPO. Experiments on ALFWorld and WebShop show that MemHarness substantially outperforms pure RL and static memory-augmented baselines, demonstrating strong robustness in out-of-distribution (OOD) scenarios. Furthermore, our analyses reveal that this reconstruction objective not only prevents negative transfer but also serves as latent guidance during training, fundamentally improving the agent's intrinsic reasoning capabilities.",
+      "authors": [
+        "Rong Wu",
+        "Daocheng Fu",
+        "Licheng Wen",
+        "Xuemeng Yang",
+        "Shu Zou",
+        "Jianbiao Mei",
+        "Yuxin Wang",
+        "Hairong Zhang",
+        "Yu Yang",
+        "Tao Hu",
+        "Cong Zhang",
+        "Botian Shi",
+        "Pinlong Cai"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-07-30T14:25:49+00:00",
+      "link": "https://arxiv.org/pdf/2607.28272v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "framework that reconstructs past experiences for LLM agents, improving memory-augmented decision making",
+      "llm_evidence_cn": "重构过去经验以改进智能体决策的记忆增强框架",
+      "llm_evidence": "重构过去经验以改进智能体决策的记忆增强框架",
+      "canonical_evidence": "重构过去经验以改进智能体决策的记忆增强框架",
+      "llm_tldr_en": "MemHarness enables LLM agents to actively reconstruct past experiences instead of replaying them, aligning retrieved memories with current context to reduce negative transfer and improve decision-making.",
+      "llm_tldr_cn": "现有记忆增强智能体将检索到的经验静态回放，忽略与当前情境的匹配，常导致负迁移。MemHarness框架让LLM智能体主动驾驭并重构过往经验，使其适应决策时的具体状态，从而更有效地利用历史信息提升性能，为构建更类人的记忆机制提供了新思路。",
+      "llm_tldr": "现有记忆增强智能体将检索到的经验静态回放，忽略与当前情境的匹配，常导致负迁移。MemHarness框架让LLM智能体主动驾驭并重构过往经验，使其适应决策时的具体状态，从而更有效地利用历史信息提升性能，为构建更类人的记忆机制提供了新思路。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "agent with memory augmentation for better performance",
+      "matched_requirement_id": "req-6",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2607.28692v1",
+      "source": "arxiv",
+      "title": "SciToolAgent-Evo: An Ontology-Aware Self-Evolving Agent for Open-World Scientific Tool Acquisition",
+      "abstract": "Large language model (LLM) agents have been increasingly adopted in scientific research for organizing and invoking specialized computational tools. However, their reliance on predefined tool spaces with static semantics limits their applicability to open-world scientific workflows, where tool requirements, capabilities, and boundaries evolve dynamically. To this end, we propose SciToolAgent-Evo, an ontology-aware self-evolving agent for open-world scientific tool acquisition. Driven by an evolving memory of skills, experiences, and an ontologized tool graph, it distills generalizable knowledge from contrastive trajectories during accumulation, whereas during inference, it formulates active requests and utilizes a LinUCB-based bandit gate to dynamically balance exploration and exploitation. Once a novel tool is acquired, its scientific ontology is completed online for seamless integration into the known graph. Moreover, we introduce OpenSciToolBench, a benchmark containing 900 realistic tasks across four difficulty levels. Extensive evaluations show that SciToolAgent-Evo achieves state-of-the-art performance, validating its robustness and generalization.",
+      "authors": [
+        "Yuqi Tang",
+        "Chenyi Zhou",
+        "Libin Wang",
+        "Keyan Ding",
+        "Qiang Zhang",
+        "Huajun Chen"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI",
+        "cs.CL"
+      ],
+      "published": "2026-07-30T08:47:11+00:00",
+      "link": "https://arxiv.org/pdf/2607.28692v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "evolving memory of skills, experiences, and ontologized tool graph",
+      "llm_evidence_cn": "技能、经验和本体化工具图的进化记忆",
+      "llm_evidence": "技能、经验和本体化工具图的进化记忆",
+      "canonical_evidence": "技能、经验和本体化工具图的进化记忆",
+      "llm_tldr_en": "Proposes an ontology-aware self-evolving agent that uses an evolving memory to acquire tools in open-world scientific workflows, demonstrating improved tool selection and adaptation.",
+      "llm_tldr_cn": "应对开放科学工作流中工具需求动态变化的挑战，提出基于进化记忆的本体感知自进化智能体，通过技能记忆、经验记忆和工具图本体持续积累知识，在推断时主动请求并利用LinUCB选择工具，实验表明其能有效适应动态工具空间，提升工具获取的自适应性。",
+      "llm_tldr": "应对开放科学工作流中工具需求动态变化的挑战，提出基于进化记忆的本体感知自进化智能体，通过技能记忆、经验记忆和工具图本体持续积累知识，在推断时主动请求并利用LinUCB选择工具，实验表明其能有效适应动态工具空间，提升工具获取的自适应性。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "memory mechanisms for intelligent agents",
+      "matched_requirement_id": "req-1",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2607.28826v1",
+      "source": "arxiv",
+      "title": "Distilling Knowledge from Large Language Models into Lightweight Reinforcement Learning Agents for Autonomous Cyber Operations",
+      "abstract": "Autonomous Cyber Operations (ACO) are increasingly important for defending enterprise networks as cyber threats continue to evolve in sophistication. ACO applications commonly employ Reinforcement Learning (RL) agents to learn defensive behaviors through interaction with environments. However, RL agents typically require extensive exploration during training, often resulting in unstable behavior and poor initial decision-making before converging toward effective defense strategies.   In this work, we investigate the use of a Large Language Model (LLM) to improve autonomous defensive decision-making within an ACO environment. Through prompt engineering rather than fine-tuning, we demonstrate that an 8-billion parameter LLM pretrained on cybersecurity data can outperform a baseline RL agent in a modified CybORG CAGE Challenge 2 environment. We then propose an online policy distillation framework that transfers the LLM's defensive policy into a lightweight RL agent containing only 64,910 parameters, reducing model size by several orders of magnitude while maintaining effective defensive capabilities. This provides a pathway toward operationalizing frontier cybersecurity models within lightweight, deployable agents.   To evaluate transferability, we construct CybORG scenarios ranging from 4 to 12 hosts and assess the approach across varying network configurations. We also evaluate teacher-guided RL stabilization strategies and observe that none consistently surpass the optimized teacher policy, suggesting policy-alignment limitations between reward-driven RL optimization and teacher-guided defense strategies.   Our results demonstrate the potential of cybersecurity-focused LLMs as sources of expertise for autonomous cyber defense, while policy distillation provides a practical path toward operationalizing frontier cybersecurity models within efficient, scalable agents.",
+      "authors": [
+        "Konur Tholl",
+        "François Rivest",
+        "Mariam El Mezouar",
+        "Adrian Taylor",
+        "Ranwa Al Mallah"
+      ],
+      "primary_category": "cs.LG",
+      "categories": [
+        "cs.LG"
+      ],
+      "published": "2026-07-30T20:28:02+00:00",
+      "link": "https://arxiv.org/pdf/2607.28826v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "Applies reinforcement learning to autonomous cyber defense agents with LLM guidance.",
+      "llm_evidence_cn": "将强化学习应用于自主网络防御智能体，并使用LLM引导。",
+      "llm_evidence": "将强化学习应用于自主网络防御智能体，并使用LLM引导。",
+      "canonical_evidence": "将强化学习应用于自主网络防御智能体，并使用LLM引导。",
+      "llm_tldr_en": "Uses prompt-engineered LLM to provide guidance for RL agents in ACO, reducing exploration and improving initial decision-making stability and defense effectiveness.",
+      "llm_tldr_cn": "针对自主网络操作中RL智能体训练探索庞大、初期决策不稳定问题，采用LLM通过提示工程为RL智能体提供防御指导，从而减少无效探索，提升训练初期稳定性和最终防御效果。",
+      "llm_tldr": "针对自主网络操作中RL智能体训练探索庞大、初期决策不稳定问题，采用LLM通过提示工程为RL智能体提供防御指导，从而减少无效探索，提升训练初期稳定性和最终防御效果。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "reinforcement learning applied to autonomous agents",
+      "matched_requirement_id": "req-3",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2607.28990v1",
+      "source": "arxiv",
+      "title": "Scaling Scientific Discovery Environments for Turn-Level Agentic RL",
+      "abstract": "Large language model agents have shown promising capabilities in data-driven scientific discovery tasks, where an agent interacts with an execution environment and produces a statistical claim. Long-horizon scientific analysis remains constrained by the lack of process supervised environments over real-world scientific data. This paper introduces SciDisco, a scalable framework for training Scientific Discovery agents in process-verifiable environments. SciThèque compiles hypotheses, datasets, hidden evidence graphs, and verifiers into task environments where analytical progress can be checked during interaction. DAG-grounded trajectory synthesis uses these environments to construct verifier-filtered multi-turn demonstrations. DiscoPO then uses the environment as the source of training signal, assigning turn-level credit to actions that produce verifiable analytical evidence. Experiments show that SciDisco-14B reaches state-of-the-art on hypothesis-driven scientific data analysis benchmarks.",
+      "authors": [
+        "Yucheng Xu",
+        "Keyi Zhang",
+        "Yuyang Yu",
+        "Min Zhang",
+        "Shiyuan Meng",
+        "Pei Chu",
+        "Zhongying Tu"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-07-31T03:34:39+00:00",
+      "link": "https://arxiv.org/pdf/2607.28990v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "RL training framework for autonomous agents in scientific discovery environments",
+      "llm_evidence_cn": "用于科学发现环境中自主智能体的强化学习训练框架",
+      "llm_evidence": "用于科学发现环境中自主智能体的强化学习训练框架",
+      "canonical_evidence": "用于科学发现环境中自主智能体的强化学习训练框架",
+      "llm_tldr_en": "SciDisco is a scalable framework for training scientific discovery agents via process-verified RL environments, enabling turn-level agentic RL with verifier-filtered demonstrations and DAG-grounded trajectories.",
+      "llm_tldr_cn": "SciDisco是一个可扩展框架，通过过程可验证的强化学习环境训练科学发现智能体；它利用SciThèque构建带验证器的问题环境，并用DAG引导的轨迹合成生成多轮演示，进而通过DiscoPO进行策略优化，从而解决长周期科学分析中缺乏过程监督环境的局限，推动数据驱动的科学发现自动化。",
+      "llm_tldr": "SciDisco是一个可扩展框架，通过过程可验证的强化学习环境训练科学发现智能体；它利用SciThèque构建带验证器的问题环境，并用DAG引导的轨迹合成生成多轮演示，进而通过DiscoPO进行策略优化，从而解决长周期科学分析中缺乏过程监督环境的局限，推动数据驱动的科学发现自动化。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "reinforcement learning applied to autonomous agents",
+      "matched_requirement_id": "req-3",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2607.29032v1",
+      "source": "arxiv",
+      "title": "TransMem: Transforming Hidden States into Memory for Large Language Models",
+      "abstract": "Large language model (LLM) agents increasingly operate over long interaction histories, where effective reasoning requires identifying and exploiting task-relevant evidence distributed across past observations and actions. However, useful information encoded in previously computed representations is often underutilized during subsequent generation. We propose \\textbf{TransMem}, a lightweight inference-time parametric memory module that transforms sparse historical hidden states from a frozen LLM backbone into reusable memory representations. TransMem uses a lightweight gating network to dynamically apply the latent intervention to the current hidden states, without repeatedly encoding the preceding context. To learn transferable memory utilization rather than task-specific knowledge, we introduce evidence-conditioned self-distillation. A memory-augmented student processes the full context and matches the predictive distribution of an evidence-only teacher that shares the same frozen backbone. Experiments on LoCoMo, HotpotQA, and MemoryAgentBench demonstrate consistent improvements across different model architectures and scales. TransMem yields gains of 11.58--29.25 $F_1$ on LoCoMo and 10.20--13.03 $F_1$ on HotpotQA, while improving the average MemoryAgentBench accuracy from 29.54\\% to 40.00\\%. These results establish sparse historical hidden states as an effective and efficient memory substrate for long-context LLM agents. Our code is available at https://github.com/Haodong-Lei-Ray/TransMem.",
+      "authors": [
+        "Haodong Lei",
+        "Junming Liu",
+        "Yirong Chen",
+        "Pinlong Cai",
+        "Botian Shi",
+        "Ding Wang",
+        "Hongsong Wang"
+      ],
+      "primary_category": "cs.MA",
+      "categories": [
+        "cs.MA",
+        "cs.CL"
+      ],
+      "published": "2026-07-31T05:11:04+00:00",
+      "link": "https://arxiv.org/pdf/2607.29032v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "lightweight memory module that transforms historical hidden states for LLM agents",
+      "llm_evidence_cn": "将历史隐状态转化为记忆表示的轻量级模块，用于LLM智能体",
+      "llm_evidence": "将历史隐状态转化为记忆表示的轻量级模块，用于LLM智能体",
+      "canonical_evidence": "将历史隐状态转化为记忆表示的轻量级模块，用于LLM智能体",
+      "llm_tldr_en": "TransMem is an inference-time memory module that reuses past hidden states from a frozen LLM to enhance reasoning over long interaction histories, reducing context re-encoding.",
+      "llm_tldr_cn": "LLM智能体在处理长交互史时，先前计算中有用信息常被忽视。TransMem提出一种轻量级推理时参数记忆模块，利用冻结LLM的历史隐状态动态生成可复用记忆表示，通过门控网络注入当前状态，避免重复编码，从而高效利用长程证据提升推理能力。",
+      "llm_tldr": "LLM智能体在处理长交互史时，先前计算中有用信息常被忽视。TransMem提出一种轻量级推理时参数记忆模块，利用冻结LLM的历史隐状态动态生成可复用记忆表示，通过门控网络注入当前状态，避免重复编码，从而高效利用长程证据提升推理能力。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "memory mechanisms for intelligent agents",
+      "matched_requirement_id": "req-1",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2607.29600v1",
+      "source": "arxiv",
+      "title": "HAM-VLN: Harnessing Hierarchical Agentic Memory for Zero-Shot Vision-and-Language Navigation",
+      "abstract": "Vision-and-language navigation (VLN) enables robots to follow instructions in previously unseen environments. Recently, a training-free paradigm has emerged: the robot queries a multimodal LLM to understand its observations and plan the next action. However, long-horizon navigation based on either image streams or dense map inevitably introduces a growing memory and reasoning bottleneck. We present HAM-VLN, a decision-coupled, agent-authored memory that equips the robot with a persistent, depth-grounded world graph. In the same model call used to select the next action, HAM-VLN also records semantic and reflective information---including room type, objects, navigation progress, and failure notes. Recent waypoints remain verbatim within a bounded window, while older history re-enters the context only through retrieval scored by relevance, recency, and salience, together with one-hop topological expansion. This design requires no additional LLM calls beyond the per-waypoint decision. Compared to previous methods, HAM-VLN not only improves various navigation metrics but also reduces the context length by more than 65%. Specifically, HAM-VLN achieves 61.0% Success Rate (SR) on VLN-CE R2R, 52.7% SR on VLN-CE RxR, and 79.7% SR on HM3D-v2 ObjectNav without any training.",
+      "authors": [
+        "An Liu",
+        "Bingxi Liu",
+        "Hongyu Ding",
+        "Yixuan Jiang",
+        "Yaran Chen",
+        "Fulin Tang",
+        "Cong Leng",
+        "Hong Zhang",
+        "Jian Cheng"
+      ],
+      "primary_category": "cs.RO",
+      "categories": [
+        "cs.RO"
+      ],
+      "published": "2026-07-31T16:32:38+00:00",
+      "link": "https://arxiv.org/pdf/2607.29600v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "Introduces hierarchical agentic memory for zero-shot vision-and-language navigation",
+      "llm_evidence_cn": "引入分层智能体记忆用于零样本视觉-语言导航",
+      "llm_evidence": "引入分层智能体记忆用于零样本视觉-语言导航",
+      "canonical_evidence": "引入分层智能体记忆用于零样本视觉-语言导航",
+      "llm_tldr_en": "HAM-VLN proposes a decision-coupled, agent-authored memory that builds a persistent depth-grounded world graph to address memory bottlenecks in long-horizon VLN, enabling zero-shot navigation in unseen environments.",
+      "llm_tldr_cn": "针对长程视觉-语言导航中的记忆与推理瓶颈，提出HAM-VLN，一种决策耦合的智能体自主记忆方法。它构建持久的深度图世界图并记录语义和反思信息，使机器人在模型调用中同时完成动作选择与记忆更新，实现未知环境中的零样本导航。实验表明该方法有效缓解了记忆增长问题。",
+      "llm_tldr": "针对长程视觉-语言导航中的记忆与推理瓶颈，提出HAM-VLN，一种决策耦合的智能体自主记忆方法。它构建持久的深度图世界图并记录语义和反思信息，使机器人在模型调用中同时完成动作选择与记忆更新，实现未知环境中的零样本导航。实验表明该方法有效缓解了记忆增长问题。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "memory mechanisms for intelligent agents",
+      "matched_requirement_id": "req-1",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "quick_skim": [
+    {
+      "id": "2607.29002v1",
+      "source": "arxiv",
+      "title": "MMShopBench: A Real-Log Benchmark for Multimodal, Multi-Turn Shopping Agents",
+      "abstract": "Online shoppers increasingly turn to AI shopping assistants, using images and multi-turn dialogue to express and refine product needs that are difficult to articulate in text alone. However, existing benchmarks largely rely on text-only or synthetic requests, underrepresenting complex real-world shopping requirements jointly expressed through images and language. We introduce MMShopBench, the first real-log benchmark for multimodal, multi-turn shopping agents. Built from carefully cleaned and manually annotated shopping logs, MMShopBench provides ground-truth annotations of each request's purchase intent and mandatory product requirements. Agents must infer these requirements jointly from user images and multi-turn dialogue, retrieve candidate products through image and text search, and verify that each candidate satisfies all requirements using its product images and structured attributes. We evaluate representative open-source and proprietary models using an evidence-grounded multimodal protocol and construct a companion training set for fine-tuning an open-source model. To ensure reproducible experimentation, we build an offline shopping sandbox, where fine-tuning substantially narrows the performance gap between our open-source model and leading proprietary models, demonstrating the effectiveness of our training data.",
+      "authors": [
+        "Zeying Hao",
+        "Hao Guo",
+        "Mengtao Xu",
+        "Yimin Hu",
+        "Yuheng Song",
+        "Zesheng Zhou",
+        "Jinsong Lan",
+        "Xiaoyong Zhu"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-07-31T04:00:15+00:00",
+      "link": "https://arxiv.org/pdf/2607.29002v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "First real-log benchmark for multimodal, multi-turn shopping agents using images and dialogue",
+      "llm_evidence_cn": "首个基于真实日志的多模态多轮购物智能体基准，联合使用图像和对话",
+      "llm_evidence": "首个基于真实日志的多模态多轮购物智能体基准，联合使用图像和对话",
+      "canonical_evidence": "首个基于真实日志的多模态多轮购物智能体基准，联合使用图像和对话",
+      "llm_tldr_en": "MMShopBench provides a real-world benchmark for multimodal shopping agents that must infer purchase intent from images and multi-turn dialogue, filling a gap in text-only evaluations.",
+      "llm_tldr_cn": "针对现有购物助手基准多为纯文本或合成数据的不足，引入MMShopBench，首个基于真实日志的多模态多轮购物智能体基准。要求智能体根据用户图像和多轮对话联合推断购买意图与产品需求，并提供详细标注，为多模态对话式购物研究奠定基础。",
+      "llm_tldr": "针对现有购物助手基准多为纯文本或合成数据的不足，引入MMShopBench，首个基于真实日志的多模态多轮购物智能体基准。要求智能体根据用户图像和多轮对话联合推断购买意图与产品需求，并提供详细标注，为多模态对话式购物研究奠定基础。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "agent that processes multiple modalities",
+      "matched_requirement_id": "req-2",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "8plus"
+    },
+    {
+      "id": "2607.28942v1",
+      "source": "arxiv",
+      "title": "NeSyFS: A Neuro-symbolic Fast-Slow Thinking Framework for LLM Agent under Partial Observability",
+      "abstract": "Recently Large Language Models (LLMs) have been increasingly deployed as autonomous agents in applications such as self-reflection, retrieval-augmented generation, and scientific discovery. In these settings, agents must act based on limited observations rather than full environmental states, leading to partial observability. This introduces several key challenges: belief state inference, task objective misalignment, and planning under uncertainty. Prior approaches typically condition actions on full or summarized action-observation histories whose redundant and irrelevant information can mislead the decision making of LLM agent. Inspired by human cognition, we propose a novel neuro-symbolic fast-slow thinking (NeSyFS) framework for LLM agent, addressing the challenges introduced by partial observability in a unified approach. We use a knowledge graph (KG) to represent the belief state, providing triplets as context for every module of NeSyFS. The fast-thinking module performs reactive action, while slow-thinking conducts a new uncertainty-aware planning by following the high-level structure of twisted sequential Monte Carlo (TSMC) algorithm. To mitigate the misalignment of task objective, a reflection module is used to reflect fast-thinking actions, and also switches to the slow-thinking module whenever reactive actions repeatedly fail. Experiments on three representative benchmarks, i.e. ALFWorld, Webshop, and ScienceWorld, demonstrate significant advantages over previous methods.",
+      "authors": [
+        "Duo Xu",
+        "Faramarz Fekri"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-07-31T01:53:41+00:00",
+      "link": "https://arxiv.org/pdf/2607.28942v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "Proposes a neuro-symbolic fast-slow thinking framework that manages belief states from observation histories",
+      "llm_evidence_cn": "提出神经符号快慢思考框架管理从观察历史中得出的信念状态",
+      "llm_evidence": "提出神经符号快慢思考框架管理从观察历史中得出的信念状态",
+      "canonical_evidence": "提出神经符号快慢思考框架管理从观察历史中得出的信念状态",
+      "llm_tldr_en": "NeSyFS tackles partial observability in LLM agents by introducing a fast-slow thinking framework that filters redundant history, enabling more robust planning and belief inference.",
+      "llm_tldr_cn": "针对LLM智能体在部分可观测环境中的决策问题，提出神经符号快慢思考框架。通过模拟人类认知，该框架过滤冗余的观察历史信息，更有效地推断信念状态和进行规划，提升不确定条件下的任务对齐与决策鲁棒性。",
+      "llm_tldr": "针对LLM智能体在部分可观测环境中的决策问题，提出神经符号快慢思考框架。通过模拟人类认知，该框架过滤冗余的观察历史信息，更有效地推断信念状态和进行规划，提升不确定条件下的任务对齐与决策鲁棒性。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "memory mechanisms for intelligent agents",
+      "matched_requirement_id": "req-1",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2607.29613v1",
+      "source": "arxiv",
+      "title": "WCM: A World Critic Model for Vision-Language-Action Reinforcement Learning",
+      "abstract": "Reinforcement learning (RL) post-training of Vision-Language-Action (VLA) models has shown strong promise for robotic manipulation. Among RL methods, critic-based approaches rely on a value estimator that predominantly operates on single-frame observations or single-frame VLM backbone latents, which is a fundamental mismatch with the partially observable nature of robot control. A naive approach to incorporate observation history into the critic incurs exponential complexity with high-dimensional visual space, and still fails because pure scalar-return regression provides insufficient supervision for learning cross-temporal dynamics. We identify the root cause as a state approximation problem: without an explicit world modeling objective, the critic's representation cannot capture the temporal structure needed for accurate value estimation. To address this, we propose the World Critic Model (WCM), built on a lightweight LeJEPA architecture; WCM jointly predicts future latent state and estimates values, such that the critic's representation is explicitly trained to capture temporal dynamics rather than merely regress scalar returns. WCM integrates seamlessly into both on-policy and off-policy training pipelines and is compatible with state-of-the-art VLA backbones including Pi0, Pi0.5, and OpenVLA-OFT. Extensive experiments on 149 tasks across four benchmarks demonstrate that WCM consistently achieves state-of-the-art performance in both in-distribution and out-of-distribution settings, with particularly strong generalization gains. We further validate WCM on seven real-world manipulation tasks using OpenVLA-OFT and Pi0.5 with off-policy RL, confirming stable deployment across diverse settings.",
+      "authors": [
+        "Senyu Fei",
+        "Xiaopeng Yu",
+        "Siyin Wang",
+        "Xianzhong Zhao",
+        "Jingjing Gong",
+        "Xipeng Qiu"
+      ],
+      "primary_category": "cs.RO",
+      "categories": [
+        "cs.RO",
+        "cs.CL",
+        "cs.CV"
+      ],
+      "published": "2026-07-31T16:48:45+00:00",
+      "link": "https://arxiv.org/pdf/2607.29613v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "world critic model for VLA RL, handling multimodal observations (vision and language) for robotic agents",
+      "llm_evidence_cn": "用于视觉语言动作强化学习的世界批评模型，处理机器人智能体的多模态观测",
+      "llm_evidence": "用于视觉语言动作强化学习的世界批评模型，处理机器人智能体的多模态观测",
+      "canonical_evidence": "用于视觉语言动作强化学习的世界批评模型，处理机器人智能体的多模态观测",
+      "llm_tldr_en": "WCM proposes a world critic model that learns explicit world dynamics to improve RL for Vision-Language-Action agents, addressing partial observability by incorporating history through latent state approximation.",
+      "llm_tldr_cn": "视觉语言动作模型的RL后训练在机器人操作中常因只利用单帧观测而导致部分可观测问题。WCM提出世界批评模型，通过显式的世界建模目标学习跨时间动态，将历史观测整合为状态近似，从而提升多模态强化学习的效果，为具身智能体的多模态决策提供新方法。",
+      "llm_tldr": "视觉语言动作模型的RL后训练在机器人操作中常因只利用单帧观测而导致部分可观测问题。WCM提出世界批评模型，通过显式的世界建模目标学习跨时间动态，将历史观测整合为状态近似，从而提升多模态强化学习的效果，为具身智能体的多模态决策提供新方法。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "agent that processes multiple modalities",
+      "matched_requirement_id": "req-2",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "8plus"
+    }
+  ]
+}

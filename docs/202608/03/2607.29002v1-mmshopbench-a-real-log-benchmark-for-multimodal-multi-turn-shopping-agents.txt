@@ -1,0 +1,495 @@
+Title: MMShopBench: A Real-Log Benchmark for Multimodal, Multi-Turn Shopping Agents
+
+URL Source: https://arxiv.org/pdf/2607.29002v1
+
+Published Time: Mon, 03 Aug 2026 00:24:47 GMT
+
+Number of Pages: 16
+
+Markdown Content:
+# MMShopBench: A Real-Log Benchmark for Multimodal, Multi-Turn Shopping Agents 
+
+## Zeying Hao 1∗, Hao Guo 1∗, Mengtao Xu 1†, Yimin Hu 1,Yuheng Song 1, Zesheng Zhou 1, Jinsong Lan 1†, Xiaoyong Zhu 1
+
+> 1
+
+Alibaba Group {haozeying.hzy, gh225907, mengtao.xmt, jinsonglan.ljs}@taobao.com 
+
+Abstract 
+
+Online shoppers increasingly turn to AI shopping assistants, using images and multi-turn dialogue to express and refine product needs that are difficult to articulate in text alone. How-ever, existing benchmarks largely rely on text-only or synthetic requests, underrepresenting complex real-world shopping re-quirements jointly expressed through images and language. We introduce MMShopBench, the first real-log benchmark for multimodal, multi-turn shopping agents. Built from carefully cleaned and manually annotated shopping logs, MMShop-Bench provides ground-truth annotations of each request’s purchase intent and mandatory product requirements. Agents must infer these requirements jointly from user images and multi-turn dialogue, retrieve candidate products through im-age and text search, and verify that each candidate satisfies all requirements using its product images and structured at-tributes. We evaluate representative open-source and propri-etary models using an evidence-grounded multimodal pro-tocol and construct a companion training set for fine-tuning an open-source model. To ensure reproducible experimenta-tion, we build an offline shopping sandbox, where fine-tuning substantially narrows the performance gap between our open-source model and leading proprietary models, demonstrating the effectiveness of our training data. 
+
+Code and Data —https://github.com/H-cool/MMshopbench 
+
+## Introduction 
+
+Recent advances in large language models (LLMs) have ac-celerated the development of agents that can reason over multiple steps, invoke external tools, and act in interactive environments (Yao et al. 2023). Building on multimodal lan-guage models, these agents are increasingly able to process images alongside text, ground intermediate decisions in vi-sual evidence, and select modality-specific tools during task execution (Zhang et al. 2026b). As a domain of substantial practical value and broad application potential, e-commerce has naturally become a key setting for evaluating agent ca-pabilities. Within this setting, conversational shopping agents offer a new interaction paradigm in which users can express com-plex, intent-driven needs through natural dialogue rather than 
+
+> ∗
+
+These authors contributed equally. 
+
+> †
+
+Corresponding author. 
+
+relying on keyword-based search. Product search often be-gins before a shopper has a complete textual query. A user may first upload an image to indicate a style, object, or printed list; refer back to it with an ambiguous phrase such as “this kind”; and only later add a budget, material, size, compatibil-ity, or bundle constraint. The operative request is therefore not the latest utterance, but a purchase specification accu-mulated across visual evidence and dialogue. A competent shopping agent must derive the operative set of user con-straints from the available visual and textual evidence, select the appropriate retrieval modality—text or image—and re-ject any candidate whose product evidence fails to establish compliance with every hard constraint. Existing evaluation settings cover these capabilities only in isolation. Shopping-agent benchmarks predominantly be-gin with self-contained text instructions or constructed in-teractions and emphasize navigation, planning, preference elicitation, or final product choice (Yao et al. 2022; Wang et al. 2026b,c; Du, Li, and Zhang 2026). Multimodal search benchmarks instead focus on cross-modal evidence acqui-sition for authored search questions, while multimodal dia-logue datasets preserve images and interaction history with-out requiring end-to-end catalog retrieval and requirement-level product verification (Kottur et al. 2021; Zhao et al. 2022; Jiang et al. 2025; Li et al. 2025; Tao et al. 2026; Zhang et al. 2026a). These paradigms therefore do not cap-ture the complete path from requirements expressed across an organic multimodal conversation, through modality-aware retrieval, to evidence-grounded product selection. Address-ing both limitations requires realistic request provenance to-gether with a frozen, inspectable environment. MMShopBench addresses this gap through a unified benchmark, environment, and agent framework, as summa-rized in Figure 1. Through rigorous filtering and cleaning of real-world logs from an online AI shopping assistant, we construct 289 evaluation cases that retain the complete se-quence of images and dialogue through which users progres-sively supplement, clarify, and refine their shopping needs over the course of an interaction. Each case is manually annotated to identify the purchase intent, the mandatory at-tributes that a target product must satisfy, and one or more verified target products. We pair these real-log tasks with a frozen sandbox of 100,000 products and an agent framework that chooses between BM25 text search and requirement-arXiv:2607.29002v1 [cs.AI] 31 Jul 2026 1 Multimodal Multi -Turn History H ₜ     
+
+> img_0
+> …
+> img_1
+> Ground Truth: Intent Iₜ+ Requirements Rₜ
+> (Hidden from the agent)
+> BData Curation
+
+… 
+
+> SFT · 900
+> conversations
+> Open -Source
+> Agent
+> LSFT = −Σᵢ log p θ(yᵢ | x, y <i)
+> 2
+
+Requirement Inference            
+
+> Purchase Intent
+> Strict validation criterion
+> Valid( p) = Intent ✓
+> AND
+> ∀rᵢ
+> ∈Rₜ: Supported ✓
+> Missing evidence = Failure
+> Mandatory Attributes
+> Infer intent and mandatory
+> requirements fro m history Ht
+> DEvidence -Grounded Evaluation
+> Judge@1 Judge@3 ID@1 ID@3
+> Full context
+> HₜAND
+> Human
+> annotations
+> (I ₜ, R ₜ)
+
+External multimodal judge Frozen Offline Catalog    
+
+> 100K products
+> OCR
+> AReal Shopping Logs
+> 10,000
+> sampled
+> Five intent categories
+> 400 export
+> annotated
+> Filter
+> MMShopBench
+> 289 cases
+> Privacy &
+> Satisfiable
+> Online multi -turn sessions
+> I want an ita bag that I
+> can use to display this
+> merch
+> I’m looking for a
+> similarly sized ita
+> bag with double -
+> sided display
+> panels
+> Here are some
+> options …
+> 3
+
+Multimodal Retrieval · ≤ 8 steps       
+
+> Candidate Pool
+> 𝒞
+> Refine query
+> &region
+> Region Image Search
+> img_idx
+> region
+> img_1
+> Embedding
+> Search
+> Top -5 candidates
+> …
+> Text Search (BM25)
+> double -sided ita bag 17cm ×8.5cm ×28.5cm ×
+> …
+> 4
+
+Evidence -Grounded Verification 
+
+& Selection               
+
+> Candidates from 𝒞 Top -K
+> Recommendations
+> Image Attributes SKU OCR
+> Intent
+> All requirements
+> Image Attributes SKU OCR
+> Intent
+> All requirements
+> Image Attributes SKU OCR
+> Intent
+> All requirements
+
+…
+
+(a) Agent Workflow 
+
+(b) Overview of Data Collection and training Pipeline of MMShopBench    
+
+> CTeacher Trajectories
+> Images Attributes
+> SKU OCR
+> Retrieval
+> Conversation
+> Intent
+> Evaluation
+
+… 
+
+> 1
+> 2
+> Every product
+> ID comes from
+> retrieval
+> Provenance:
+
+Figure 1: Overview of MMShopBench and its offline shopping-agent workflow. Real multimodal, multi-turn logs are curated into 289 cases with hidden purchase-intent and mandatory-requirement annotations. Within the frozen 100K-product sandbox, agents infer requirements, interleave text and region-aware image retrieval, and apply evidence-grounded verification and selection; the same environment supports teacher-trajectory SFT and grounded evaluation. conditioned regional visual retrieval. To preserve visual provenance across multi-turn interactions, the framework assigns persistent identities to user images and conditions region selection on the accumulated purchase specification. An Evidence-Grounded Verification and Selection stage then checks and reranks retrieved candidates against fixed product images and structured attributes before the final response. Finally, we construct a quality-controlled SFT corpus and evaluate representative open- and closed-source models, en-abling controlled study of how targeted supervision improves multimodal shopping agents. The key contributions of this work can be summarized as follows: 
+
+• A real-log multimodal shopping benchmark. We curate 289 real multimodal, multi-turn shopping-assistant con-versations, each annotated with purchase intent, manda-tory requirements, and verified target products. 
+
+• A reproducible sandbox and evidence-grounded agent framework. We build a frozen 100,000-product sand-box and an agent framework integrating text search, requirement-conditioned regional visual retrieval, and Evidence-Grounded Verification and Selection. 
+
+• Broad evaluation and effective supervision. We bench-mark representative open- and closed-source models and show that fine-tuning on our quality-controlled corpus yields substantial gains across model scales and narrows the gap to leading proprietary systems. 
+
+## Related Work 
+
+Product Search and Shopping Agents 
+
+Product-search datasets offer strong catalog grounding but generally reduce a need to a single textual query. The Shop-ping Queries Dataset, for example, contains real Amazon queries and manually judged query–product pairs for rank-ing and relevance classification (Reddy et al. 2022). Web-Shop turns compositional text instructions into navigation and purchase actions over a simulated site populated with real products (Yao et al. 2022). ShoppingBench adds com-plex intent grounded in product records, while generating evaluation instructions from sampled products (Wang et al. 2026b). Recent shopping environments extend evaluation to simulated multi-turn preference discovery or long-horizon hidden intent (Wang et al. 2026c; Du, Li, and Zhang 2026). Despite their realism at the product or interaction level, these benchmarks formulate shopping needs primarily as text-only or manually constructed requests, and therefore underrepre-sent requirements that are conveyed visually and progres-sively clarified across multiple dialogue turns. In contrast, MMShopBench derives its tasks from real multimodal inter-actions with AI shopping assistants: agents must jointly infer the user’s purchase intent and mandatory requirements from images and dialogue, retrieve candidate products through text and image search, and verify each constraint against frozen product images and structured attributes. Multimodal Search Agent Benchmarks 
+
+Multimodal search-agent benchmarks evaluate whether mod-els can formulate queries, use retrieval and browsing tools, and synthesize evidence across visual and textual sources. MMSearch decomposes multimodal search into requery-ing, reranking, summarization, and end-to-end search (Jiang et al. 2025). MM-BrowseComp uses hand-crafted questions whose prompts or supporting webpages contain essential image or video evidence, requiring agents to browse be-yond text-only cues (Li et al. 2025). MMSearch-Plus re-quires fine-grained visual cues to be extracted and propa-gated through iterative image–text retrieval under retrieval noise (Tao et al. 2026). BrowseComp-V 3 emphasizes deep cross-modal, multi-hop browsing with publicly searchable evidence and subgoal-level process evaluation (Zhang et al. 2026a). Other benchmarks focus on the structure and reliability of the search trajectory. MC-Search supplies long, step-wise annotated reasoning chains and process-level measures for retrieval and planning (Ning et al. 2026). MERRIN evalu-ates modality selection, multimodal evidence retrieval, and multi-hop reasoning over noisy or conflicting web sources (Wang et al. 2026a), while InterLV-Search requires visual and textual evidence to repeatedly condition subsequent search actions and provides a standardized agent interface for tool use and trajectory logging (Hou et al. 2026). Collectively, these benchmarks move beyond final-answer accuracy by exposing intermediate capabilities such as query planning, modality choice, evidence acquisition, and cross-modal in-tegration. 
+
+## MMShopBench 
+
+Task Definition 
+
+An evaluation case is x = ( Ht, I t, R t) at target turn t. The history Ht contains all user images, user utterances, and as-sistant responses through t. It denotes the purchase intent, and Rt = {r1, . . . , r m} contains the mandatory attributes that any acceptable target product must satisfy. The agent ob-serves Ht but not the annotations. Using a bounded sequence of retrieval calls, it returns an ordered list Pk = ( p1, . . . , p k).A product is valid only when available evidence supports both the purchase intent It and every mandatory attribute 
+
+ri ∈ Rt. This conjunctive criterion is strict: if any manda-tory attribute is violated or cannot be verified, the product is judged unsuccessful, even when it otherwise matches the requested product type. This formulation distinguishes two sources of failure. Intent- or attribute-inference errors yield an incorrect search or acceptance criterion, whereas ground-ing errors retrieve or accept a product without sufficient sup-porting evidence. 
+
+Data Collection, Curation, and Annotation 
+
+Log sampling. MMShopBench is derived from interac-tion logs of a deployed e-commerce conversational shopping assistant. We consider online multi-turn sessions collected between June and July 2026 and randomly sample 10,000 conversations that contain both at least one user-provided image and nonempty user text. Multimodal production traf-fic is not restricted to purchase-oriented requests: users may ask for product information, request generic visual recogni-tion, or provide input that remains too ambiguous to support a concrete shopping action. The initial pool therefore serves as a broad sample of real multimodal assistant usage rather than as the evaluation set itself. All textual data and annotations in MMShopBench are originally in Chinese, and the benchmark and reported eval-uations use these original Chinese records. To facilitate pre-sentation, dialogue excerpts, annotations, and examples in this paper are translated into English. 
+
+Intent stratification and target-turn localization. We organize the sampled traffic into five Level-1 in-tent categories: Find Exact Same Product , Find Simi-lar/Alternative/Recommendation , Product Knowledge and Comparative Decision-Making , General Visual Recognition ,and Ambiguous Intent . We use Claude Opus 4.8 (Anthropic 2026) as a scalable pre-annotation model to assign a Level-1 category to each of the 10,000 conversations and to localize the target turn t, defined as the turn by which the accumu-lated dialogue history contains the user’s complete set of requirements. This step identifies both whether a conversa-tion expresses an actionable shopping need and how much of its preceding multimodal context is required to recover that need. 
+
+Expert annotation and quality control. The first two Level-1 categories directly require retrieval of a concrete product and are therefore retained as benchmark candidates. We draw a balanced sample of 400 conversations across these two categories and ask professional annotators with e-commerce expertise to inspect the multimodal history through the target turn. For each case, annotators specify the purchase intent, enumerate the mandatory product at-tributes that cannot be traded off, and verify one or more target products when available. During quality control, we exclude conversations containing personally identifiable in-formation or other sensitive content to protect user privacy. We also remove cases for which no product satisfying the an-notated requirements can be found on the shopping platform. After filtering, 289 evaluation cases remain. 
+
+Hierarchical intent taxonomy. We further assign Level-2 labels within the two retained shopping intents. Find Ex-act Same Product maps to an exact-match subtype, whereas 
+
+Find Similar/Alternative/Recommendation is decomposed into need-solving recommendation, similar-product search, purchase decision/selection, and matching recommendation. Figure 2 reports the resulting hierarchy and distribution. At the leaf level, the two most prevalent intents are Find Exact Same Product (35.8%) and Need-Solving Recommendation 
+
+(26.0%). Each released record stores pseudonymous conversation and trace identifiers, the target turn, per-turn user images and text, preceding assistant messages, the purchase intent, slash-delimited mandatory-attribute annotations, and verified item identifiers. We preserve the original turn order because later requests often resolve referents introduced by an earlier im-Figure 2: Hierarchical intent distribution of MMShopBench. The inner ring shows the two retained Level-1 shopping in-tents, and the outer ring shows their Level-2 decomposition. Percentages are computed over the final 289-case evaluation set.      
+
+> Statistic Value Evaluation cases 289 Target turn, mean / median 4.38 / 4 Target turn, range 2–12 Images through target, mean / median 1.38 / 1
+
+Table 1: MMShopBench evaluation-set statistics. age or assistant response. The evaluation therefore exposes the complete history through the target turn rather than con-verting the interaction into a synthetic one-shot query. Table 1 summarizes the interaction structure. The median target is turn 4, and the latest target occurs at turn 12. Every case contains at least one user-provided image by the target turn, with an average of 1.38 images per case. This universal visual coverage makes image history a structural component of the benchmark rather than an optional modality. 
+
+Positioning 
+
+Table 2 positions MMShopBench against representative shopping-agent benchmarks. Here, real logs means naturally occurring shopper–assistant conversations rather than gener-ated requests over real products or purchase histories. Image input and text input distinguish the modalities supplied in shopper requests or dialogue history; product images in a catalog do not by themselves constitute image input. Multi-turn requires shopper–assistant utterance exchange rather than repeated agent–environment actions, and Visual ob-ject grounding requires linking request-side visual objects to fixed product evidence. Prior benchmarks cover text-based long-horizon interaction or personalization, but none com-bines these capabilities with real multimodal dialogue. 
+
+## Offline Shopping Sandbox 
+
+Frozen Offline Product Catalog 
+
+We construct the sandbox catalog in a target-grounded man-ner. Starting from the identifiers of the human-verified target products in MMShopBench, we retrieve the corresponding products from the full online catalog and use their category assignments as sampling anchors. All available target prod-ucts are retained. We then perform stratified sampling over non-target products, first drawing products from the same leaf categories and broader Level-2 categories as the tar-gets. To preserve catalog diversity rather than restricting the sandbox to benchmark-specific categories, we allocate the remaining quota uniformly across other product categories. After deduplication, this procedure yields a frozen catalog of 100,000 distinct products. Real-world shopping requests often contain fine-grained constraints that cannot be resolved from surface-level metadata such as product titles, prices, and shop information alone. We therefore augment each catalog record with available SKU-level labels, structured product at-tributes, and OCR text extracted from product-detail images, providing richer evidence for verifying whether a retrieved product satisfies every mandatory user requirement. 
+
+Multimodal Retrieval Tools 
+
+The sandbox exposes complementary text- and image-based product retrieval tools. Text search applies BM25 (Robert-son and Zaragoza 2009) over product titles, categories, at-tributes, and shop fields, returning up to ten products for each search query. It is primarily used when the dialogue speci-fies category, function, brand, or other attribute constraints in language. For visual retrieval, we use Marqo-Ecommerce-Embeddings-L (Zhu, Jung, and Clark 2025) to encode cata-log product images and the user-provided query image into a shared embedding space, rank products by cosine similarity, and return the identifiers of the top five candidates. We introduce two interface designs to make visual retrieval effective in multi-turn, multi-image interactions. 
+
+Persistent image identities. When images are passed only as content blocks in the model input, the model can inspect them during inference, but subsequent tool calls lack a stable han-dle for specifying which earlier image should be reused. This ambiguity becomes particularly problematic when a conver-sation spans multiple turns or contains several images. We instead promote every incoming image to a persistent, ad-dressable session object and assign it a session-global iden-tifier, img_idx . The identifier is recorded in the dialogue history together with the image’s turn and within-turn posi-tion, and image-tool calls take img_idx as an explicit argu-ment. At execution time, the sandbox resolves this identifier back to the original image, allowing the agent to recall, dis-ambiguate, and reuse any previously observed image rather than limiting tool access to the latest input. The identifier also preserves provenance by making each visual retrieval action traceable to a specific user image. Benchmark Text input Multi-turn Real logs Image input Visual object grounding WebShop (Yao et al. 2022) ✓ × × × ×                              
+
+> ShoppingBench (Wang et al. 2026b) ✓××××
+> ShopSimulator (Wang et al. 2026c) ✓✓×××
+> Shopping Companion Bench (Yu et al. 2026) ✓✓×××
+> Shopping Reasoning Bench (Fan et al. 2026) ✓✓×××
+> EComAgentBench (Du, Li, and Zhang 2026) ✓✓×××
+> MMShopBench ✓✓✓✓✓
+
+Table 2: Positioning of MMShopBench against representative shopping-agent benchmarks. Input modalities refer to shopper requests or dialogue history, not product media or tool observations. ✓ denotes that the benchmark includes the capability, and 
+
+× denotes its absence. 
+
+Requirement-conditioned region retrieval. Whole-image embeddings can be dominated by backgrounds, secondary objects, or other visually salient content unrelated to the user’s current shopping goal. We therefore formulate the crop as an agent-selected visual query rather than a fixed prepro-cessing operation. After resolving the requested img_idx ,the agent jointly conditions on the selected image, purchase intent, and accumulated dialogue constraints to predict a normalized target region (x1, y 1, x 2, y 2). The sandbox then crops the selected region, encodes the resulting crop with Marqo-Ecommerce-Embeddings-L (Zhu, Jung, and Clark 2025), the same model used to construct the catalog image index, and ranks catalog images by cosine similarity. Be-cause the region is generated at tool-call time, the agent can shift to a different object or refine the spatial extent when re-trieved candidates conflict with the request. This establishes a feedback loop between cross-modal requirement inference, visual grounding, and product retrieval while suppressing similarity signals from irrelevant image content. 
+
+Evidence-Grounded Verification and Selection 
+
+Retrieval success does not always translate into recommen-dation success: a product that satisfies every requirement may surface in a tool result yet be dropped during the agent’s implicit final selection. Evidence-Grounded Verification and Selection (EGVS) targets this gap between what retrieval makes available and what the agent finally recommends. Af-ter search terminates, it reconstructs the full candidate pool 
+
+C = ( SSs=1 Cs) ∪ F , combining products returned by every text or image search call with the agent’s original final picks 
+
+F . For each candidate c ∈ C , EGVS assembles product-side evidence E(c) comprising its title, primary image, structured attributes, SKU-level labels, and product-detail OCR text. The policy model then operates in a self-verification mode and receives the same inferred specification ˆSt = ( ˆIt, ˆRt),derived solely from Ht, together with E(c). It does not re-infer or revise the specification for individual candidates. A product is confirmed only when its evidence is compatible with the inferred purchase intent ˆIt and supports every re-quirement in ˆRt. The human annotations (It, R t), verified product identifiers, and external-judge outputs are never ex-posed to the agent or self-verifier. Let S = {c ∈ C : v(c)=1 }
+
+denote the candidates the self-verifier v confirms. EGVS then refines rather than rebuilds the selection, composing the fi-nal top-K recommendation ( K is the recommendation size, with K ≥ 3 to cover the reported cutoffs) as 
+
+A = top K
+
+ (S ∩ F ) ∥ (S \ F ) ∥ (F \ S ),
+
+where ∥ concatenates the ordered segments and top K keeps the first K items. Confirmed original picks S ∩ F come first, followed by confirmed products the agent had missed S \ F ,and any remaining original picks F \ S fill leftover slots. Verification thus prioritizes confirmed products within the top-K budget while keeping the agent’s other picks wherever slots remain, promoting and recovering products rather than replacing the agent’s list. The self-verifier uses the policy model with a separate prompt and context from the external evaluator and introduces no additional model dependency. 
+
+Agent Workflow 
+
+Given the multimodal dialogue history, the agent first consol-idates the purchase intent and mandatory requirements into an inferred specification ( ˆIt, ˆRt), then decides whether to in-voke text search, requirement-conditioned region retrieval, or both. It alternates between reasoning and retrieval (Yao et al. 2023) for at most eight tool steps, revising textual queries or image regions when the returned candidates are inconsistent with the request. After search terminates, EGVS applies the verification-and-selection procedure above to the accumu-lated retrieval trace. The agent returns the resulting product identifiers, each paired with a concise textual description; be-cause every identifier must originate from a tool result, each recommendation remains traceable to its supporting retrieval action. 
+
+Supervised Fine-Tuning 
+
+Following the filtering and quality-control procedure used to construct MMShopBench, we screen 900 multimodal, multi-turn conversations from online shopping-assistant logs to form a companion SFT corpus. Within the sandbox, Gemini-3.1-Pro-Preview serves as the teacher policy and executes the agent workflow above, producing search trajectories that in-terleave dialogue-conditioned decisions, text or region-aware image retrieval calls, retrieved product evidence, and final verification and selection. Given an interaction context x and a teacher-generated agent-token sequence y = ( y1, . . . , y L),we optimize the student model with the autoregressive cross-entropy objective 
+
+LSFT (θ) = −
+
+> L
+
+X
+
+> i=1
+
+log pθ (yi | x, y <i ).
+
+This supervision targets the agent’s operational policy rather than a direct mapping from a dialogue to a product identi-fier. It teaches the model to coordinate tools over multiple rounds, determine when visual or textual evidence should be acquired, refine subsequent search actions from tool feed-back, and assess whether the accumulated evidence supports the user’s mandatory requirements. 
+
+Evaluation Metrics 
+
+We use GPT-5.5 (OpenAI 2026) as a multimodal LLM judge, kept separate from the policy-model self-verifier in EGVS. For candidate p(n) 
+
+> j
+
+, let E(p(n) 
+
+> j
+
+) denote its frozen product evidence, comprising product images, title, struc-tured attributes, SKU-level labels, and OCR text extracted from product-detail images. The judge jointly considers the complete multimodal history H(n) 
+
+> t
+
+and the human-annotated purchase intent I(n) 
+
+> t
+
+and mandatory requirements R(n) 
+
+> t
+
+when assessing the product evidence. Let yn,j denote the resulting binary decision: yn,j = 1 only if the evidence is consistent with the constraints expressed in the contextual images and text while satisfying the annotated purchase intent and ev-ery mandatory requirement; any contradiction or insufficient support with respect to either source yields yn,j = 0 .Our primary evaluation reports four metrics. For k ∈{1, 3}, the evidence-grounded judge score is 
+
+Judge@ k = 1
+
+N
+
+> N
+
+X
+
+> n=1
+
+1[∃j ≤ k : yn,j = 1] .
+
+Judge@1 evaluates the first returned product, whereas Judge@3 counts a case as successful if any of the first three products satisfies this joint decision rule. As a deterministic complement, let V (n) denote the set of manually verified product identifiers for case n, and P (n) 
+
+> k
+
+the first k products the system returns. For k ∈ { 1, 3}, exact-identifier retrieval is 
+
+ID@ k = 1
+
+N
+
+> N
+
+X
+
+> n=1
+
+1
+
+h
+
+P (n) 
+
+> k
+
+∩ V (n)̸ = ∅
+
+i
+
+.
+
+ID@1 tests whether the first product matches an annotated identifier, while ID@3 allows a match anywhere among the first three products. Because the verified identifiers are re-tained in the offline catalog, both metrics directly measure recovery of an annotated target. They are nevertheless con-servative: the catalog may contain additional products that satisfy I(n) 
+
+> t
+
+and every requirement in R(n) 
+
+> t
+
+but are not enu-merated in V (n). Judge@ k can therefore exceed ID@ k by recognizing such valid alternatives. For EGVS analysis, we additionally report Judge@Pool and ID@Pool, which apply the same two success criteria to the reconstructed candidate pool C(n) rather than to the final top-three output. These pool-level scores are retrieval oracles, not leaderboard metrics.                              
+
+> Model Judge@1 ID@1 Judge@3 ID@3
+> Thinking
+> Gemini-3.1-Pro-Preview 64.7 61.4 73.4 64.0
+> Claude Opus 4.8 64.4 55.0 72.0 59.9 MiniMax-M2.7 20.1 20.4 26.0 21.5
+> Non-Thinking
+> Qwen3.5-9B 15.9 11.4 20.4 19.4 Qwen3.5-9B+SFT 52.9 50.5 65.4 51.9 Qwen3.5-122B-A10B 5.5 4.8 5.9 5.9 Qwen3.5-122B-A10B+SFT 52.9 49.8 67.5 55.4
+
+Table 3: Main results on MMShopBench, reported as per-centages after EGVS. Best and second-best values in each column are shown in bold and underlined, respectively. Since LLM judges may introduce systematic bias (Zheng et al. 2023), we freeze the judge prompt and evidence schema across all evaluated agents. 
+
+## Experiments 
+
+Experimental Setup 
+
+Evaluation. We evaluate Gemini-3.1-Pro-Preview (Google DeepMind 2026), Claude Opus 4.8 (Anthropic 2026), Kimi-K2.6 (Moonshot AI 2026), MiniMax-M2.7 (MiniMax 2026), and Qwen3.5-9B, Qwen3.5-27B, and Qwen3.5-122B-A10B (Qwen Team 2026). Every model receives the same mul-timodal dialogue history and tool interface. In the re-ported EGVS snapshot, Gemini-3.1-Pro-Preview, Claude Opus 4.8, MiniMax-M2.7, and Kimi-K2.6 use Thinking mode, whereas all Qwen3.5 configurations use Non-Thinking mode. GPT-5.5 serves as the frozen multimodal judge, and we report Judge@1, Judge@3, ID@1, and ID@3 as defined above. 
+
+SFT implementation. We use the same training configu-ration for Qwen3.5-9B, Qwen3.5-27B, and Qwen3.5-122B-A10B. For each model, we freeze the visual module and fully optimize all remaining parameters for four epochs with a learning rate of 5 × 10 −6 on 32 NVIDIA A100 GPUs. 
+
+Main Results 
+
+Table 3 reports end-to-end performance under the four pri-mary metrics. Gemini-3.1-Pro-Preview attains the strongest results, with 64.7% Judge@1 and 61.4% ID@1, yet its top-ranked product satisfies the complete request in fewer than two thirds of cases, underscoring the difficulty of MMShop-Bench. Supervised fine-tuning yields a pronounced improve-ment for Qwen3.5-122B-A10B: Judge@1 rises from 5.5% to 52.9% and Judge@3 from 5.9% to 67.5%, gains of 47.4 and 61.6 percentage points, respectively, while ID@1 and ID@3 increase from 4.8% and 5.9% to 49.8% and 55.4%. Although the fine-tuned model does not surpass the leading proprietary systems, it approaches their performance while operating in Non-Thinking mode, trailing the best proprietary result by 5.9 points on Judge@3. Judge@3 (%) Judge@Pool ID@3 (%) ID@Pool Model Base +EGVS ∆ Orc. Base +EGVS ∆ Orc.                                                                                 
+
+> Thinking
+> Gemini-3.1-Pro-Preview 69.2 73.4 +4.2 75.8 61.6 64.0 +2.4 67.5 Claude Opus 4.8 65.4 72.0 +6.6 76.5 57.4 59.9 +2.4 70.2
+> MiniMax-M2.7 24.9 26.0 +1.0 29.1 21.5 21.5 +0.0 27.7 KIMI-K2.6 43.6 47.8 +4.2 49.1 35.6 38.8 +3.1 43.6
+> Non-Thinking
+> Qwen3.5-9B Instruct 11.1 20.4 +9.3 20.8 9.7 19.4 +9.7 21.5 Qwen3.5-27B Instruct 10.0 10.7 +0.7 10.7 10.0 11.4 +1.4 11.8 Qwen3.5-122B-A10B Instruct 5.2 5.9 +0.7 6.2 4.8 5.9 +1.1 6.6 Qwen3.5-9B+SFT (Ours) 49.5 65.4 +15.9 73.4 41.5 51.9 +10.4 63.3 Qwen3.5-27B+SFT (Ours) 54.7 62.3 +7.6 65.7 46.0 50.5 +4.5 58.5 Qwen3.5-122B-A10B+SFT (Ours) 61.9 67.5 +5.5 69.6 50.2 55.4 +5.2 62.6
+
+Table 4: Ablation of Evidence-Grounded Verification and Selection (EGVS) on MMShopBench. Base and +EGVS are evaluated with Judge@3 and ID@3, while Judge@Pool and ID@Pool are oracle success rates over the union of the top-20 retrieved candidates and final selections. Best and second-best results in each numeric column are shown in bold and underlined. 
+
+Ablation Studies 
+
+EGVS. Table 4 reports fixed-denominator performance be-fore and after evidence-grounded selection. Gemini-3.1-Pro-Preview obtains the highest Judge@3, reaching 73.4 after verification, and the supervised Qwen3.5 variants substan-tially outperform their instruction-tuned counterparts even before EGVS. Applied after retrieval, EGVS raises Judge@3 for every configuration, with the largest gain on Qwen3.5-9B SFT (+15.9 points). Qwen3.5-122B-A10B SFT achieves the strongest open-model result at 67.5, trailing Gemini by 5.9 points. Because ID@ k matches returned identifiers against the human-verified set V (n) without model-side evidence rea-soning, it shares neither the evidence schema nor the accep-tance logic of the self-verifier and is immune to verifier–judge alignment. Its consistent rise under EGVS—for nine of ten configurations, led by +10 .4 points on Qwen3.5-9B SFT— confirms that verification recovers annotated targets rather than re-scoring candidates toward the judge’s preferences. Where a Judge@3 gain exceeds the corresponding ID@3 gain (e.g., Claude Opus 4.8, +6 .6 vs. +2 .4), the difference reflects EGVS promoting valid products absent from the in-complete set V (n) rather than verifier–judge coupling. The pool-level Oracle columns bound remaining head-room: Qwen3.5-9B Instruct reaches 20.4 Judge@3 against a 20.8 Judge@Pool ceiling, recovering nearly all satisfy-ing candidates in its pool, whereas the SFT agents remain 2.1–8.0 points below their ceilings, leaving room for better verification and ranking. 
+
+Necessity of multimodal evaluation. To test whether MMShopBench captures capabilities omitted by text-only benchmarks, we rescreen online shopping-assistant logs to form a separate 300-case diagnostic set. Claude Opus 4.8 stratifies the set into three equally sized regimes based on modality dependence: text-sufficient cases can be resolved from text alone, image-required cases depend on visual ev-idence, and mixed cases require joint reasoning over both modalities. We compare full and text-only inputs using the Text-sufficient Image-required Mixed    
+
+> 0
+> 10
+> 20
+> 30
+> 40
+> 50
+> 60
+> Judge@3 (%)  47.8 49.0 32.7 43.1 11.2 13.3 Full Text-only
+
+Figure 3: Effect of removing dialogue images across modality strata. Full uses the original multimodal input, whereas Text-only retains only the query text. same agent and prompt. Figure 3 yields two complementary findings. Under full multimodal input, mixed cases obtain the lowest Judge@3, indicating that reconciling constraints distributed across im-ages and dialogue is the most challenging regime. Removing images produces the largest degradation on image-required cases, followed by mixed cases, while text-sufficient cases change only modestly. This shows that user images encode indispensable product constraints unrecoverable from text alone, so text-only evaluation omits a core capability of real shopping agents, motivating MMShopBench’s preservation of user images and multi-turn context. 
+
+## Conclusion and Future Work 
+
+We introduced MMShopBench, a real-log benchmark for multimodal, multi-turn shopping agents, with a reproducible 100,000-product sandbox. It evaluates whether agents can infer intent and requirements from images and dialogue, re-trieve candidates, and verify them against frozen product evidence. Experiments show supervised trajectory tuning substantially improves open-model agents, while EGVS re-covers valid products overlooked during selection, highlight-ing the importance of cross-modal requirement inference and evidence-grounded selection for realistic shopping as-sistance. Future work will explore broader training strategies and scale MMShopBench with more real-log interactions. 
+
+## References 
+
+Anthropic. 2026. Claude Opus 4.8 System Card. https: //www.anthropic.com/claude-opus-4-8-system-card. Ac-cessed: 2026-07-28. Du, Z.; Li, T.; and Zhang, H. 2026. EComAgent-Bench: Benchmarking Shopping Agents on Long-Horizon Tasks with Distributed Hidden Intent. arXiv preprint arXiv:2606.17698 .Fan, S.; Min, S.; Hu, Y.; Xia, B.; Unnikrishnan, J.; Mussel-mann, R.; Gao, Y.; Yin, Q.; Nigam, P.; and Yin, B. 2026. Shopping Reasoning Bench: An Expert-Authored Bench-mark for Multi-Turn Conversational Shopping Assistants. 
+
+arXiv preprint arXiv:2606.12608 .Google DeepMind. 2026. Gemini 3.1 Pro Model Card. https://deepmind.google/models/model-cards/gemini-3-1-pro. Accessed: 2026-07-28. Hou, B.; Gu, J.; Guo, J.; Dang, R.; Leng, S.; Li, X.; Song, X.; and Yang, J. 2026. InterLV-Search: Benchmark-ing Interleaved Multimodal Agentic Search. arXiv preprint arXiv:2605.07510 .Jiang, D.; Zhang, R.; Guo, Z.; Wu, Y.; Lei, J.; Qiu, P.; Lu, P.; Chen, Z.; Song, G.; Gao, P.; Liu, Y.; Li, C.; and Li, H. 2025. MMSearch: Unveiling the Potential of Large Models as Multi-Modal Search Engines. In International Conference on Learning Representations .Kottur, S.; Moon, S.; Geramifard, A.; and Damavandi, B. 2021. SIMMC 2.0: A Task-oriented Dialog Dataset for Im-mersive Multimodal Conversations. In Proceedings of the 2021 Conference on Empirical Methods in Natural Language Processing , 4903–4912. Online and Punta Cana, Dominican Republic: Association for Computational Linguistics. Li, S.; Bu, X.; Wang, W.; Liu, J.; Dong, J.; He, H.; Lu, H.; Zhang, H.; Jing, C.; Li, Z.; Li, C.; Tian, J.; Zhang, C.; Peng, T.; He, Y.; Gu, J.; Zhang, Y.; Yang, J.; Zhang, G.; Huang, W.; Zhou, W.; Zhang, Z.; Ding, R.; and Wen, S. 2025. MM-BrowseComp: A Comprehensive Benchmark for Multimodal Browsing Agents. arXiv preprint arXiv:2508.13186 .MiniMax. 2026. The MiniMax-M2 Series: Mini Activations Unleashing Max Real-World Intelligence. arXiv preprint arXiv:2605.26494 .Moonshot AI. 2026. Kimi K2.6: Advancing Open-Source Coding. https://www.kimi.com/blog/kimi-k2-6. Accessed: 2026-07-28. Ning, X.; Fu, D.; Wei, T.; Ai, M.; Zou, J.; Li, T.-W.; Tong, H.; Zhu, Y.; Hamann, H.; and He, J. 2026. MC-Search: Evaluating and Enhancing Multimodal Agentic Search with Structured Long Reasoning Chains. In The Fourteenth Inter-national Conference on Learning Representations .OpenAI. 2026. GPT-5.5 System Card. https://openai.com/ index/gpt-5-5-system-card/. Accessed: 2026-07-28. Qwen Team. 2026. Qwen3.5: Towards Native Multimodal Agents. https://qwen.ai/blog?id=qwen3.5. Accessed: 2026-07-28. Reddy, C. K.; Màrquez, L.; Valero, F.; Rao, N.; Zaragoza, H.; Bandyopadhyay, S.; Biswas, A.; Xing, A.; and Subbian, K. 2022. Shopping Queries Dataset: A Large-Scale ESCI Benchmark for Improving Product Search. arXiv preprint arXiv:2206.06588 .Robertson, S.; and Zaragoza, H. 2009. The Probabilistic Relevance Framework: BM25 and Beyond. Foundations and Trends in Information Retrieval , 3(4): 333–389. Tao, X.; Teng, Y.; Su, X.; Fu, X.; Wu, J.; Tao, C.; Liu, Z.; Bai, H.; Liu, R.; and Kong, L. 2026. MMSearch-Plus: Bench-marking Provenance-Aware Search for Multimodal Browsing Agents. In International Conference on Learning Represen-tations .Wang, H.; Wan, D.; Lee, H.; Pham, T.; Cankosyan, M.; Chen, W.; Stengel-Eskin, E.; Vu, T.; and Bansal, M. 2026a. MERRIN: A Benchmark for Multimodal Evidence Retrieval and Reasoning in Noisy Web Environments. arXiv preprint arXiv:2604.13418 .Wang, J.; Xiao, K.; Sun, Q.; Zhao, H.; Luo, T.; Zhang, J. D.; and Zeng, X. 2026b. Shoppingbench: A real-world intent-grounded shopping benchmark for llm-based agents. In Pro-ceedings of the AAAI Conference on Artificial Intelligence ,volume 40, 33521–33529. Wang, P.; Wu, Y.; Song, X.; Wang, W.; Chen, G.; Li, Z.; Yan, K.; Liu, Q.; Deng, K.; Zhao, S.; Xiong, S.; Liu, X.; Chen, X.; Deng, W.; Su, W.; and Zheng, B. 2026c. ShopSimulator: Evaluating and Exploring RL-Driven LLM Agent for Shop-ping Assistants. In Proceedings of the 64th Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers) , 35600–35619. Yao, S.; Chen, H.; Yang, J.; and Narasimhan, K. 2022. Web-Shop: Towards Scalable Real-World Web Interaction with Grounded Language Agents. In Advances in Neural Infor-mation Processing Systems , volume 35, 20744–20757. Yao, S.; Zhao, J.; Yu, D.; Du, N.; Shafran, I.; Narasimhan, K.; and Cao, Y. 2023. ReAct: Synergizing Reasoning and Acting in Language Models. In International Conference on Learning Representations .Yu, Z.; Xiao, K.; Zhao, H.; Luo, T.; and Zeng, X. 2026. Shop-ping Companion: Benchmarking and Training LLM Agents for Long-Horizon Preference-Grounded E-Commerce Tasks. 
+
+arXiv preprint arXiv:2603.14864 .Zhang, H.; Zhou, J.; Li, B.; Zhou, B.; Shan, Y.; Lu, H.; Cao, Z.; Chen, J.; Han, Y.; Sheng, Z.; Tao, Z.; Liang, H.; Wu, J.; Shi, Y.; He, Y.; Lin, J.; Zhang, Q.; Yan, G.; Zhao, R.; Li, Z.; Yu, X.; Mei, L.; Chen, C.; Zhang, W.; and Cui, B. 2026a. BrowseComp-V 3: A Visual, Vertical, and Verifiable Benchmark for Multimodal Browsing Agents. arXiv preprint arXiv:2602.12876 .Zhang, Z.; Miao, C.; Su, J.; Zhou, Z.; Zhang, C.; Wang, X.; Liu, R.; Zheng, K.; Cai, J.; Zhang, B.; Li, Z.; Xiang, S.; and Yan, Y. 2026b. Visual-Seeker: Towards Visual-Native Multimodal Agentic Search via Active Visual Reasoning. 
+
+arXiv preprint arXiv:2606.15231 .Zhao, N.; Li, H.; Wu, Y.; and He, X. 2022. JDDC 2.1: A Multimodal Chinese Dialogue Dataset with Joint Tasks of Query Rewriting, Response Generation, Discourse Parsing, and Summarization. In Proceedings of the 2022 Confer-ence on Empirical Methods in Natural Language Processing ,12037–12051. Abu Dhabi, United Arab Emirates: Associa-tion for Computational Linguistics. Zheng, L.; Chiang, W.-L.; Sheng, Y.; Zhuang, S.; Wu, Z.; Zhuang, Y.; Lin, Z.; Li, Z.; Li, D.; Xing, E. P.; Zhang, H.; Gonzalez, J. E.; and Stoica, I. 2023. Judging LLM-as-a-Judge with MT-Bench and Chatbot Arena. In Advances in Neural Information Processing Systems , volume 36, 46595–46623. Zhu, T.; Jung, M. C.; and Clark, J. 2025. Generalized Con-trastive Learning for Multi-Modal Retrieval and Ranking. In Companion Proceedings of the ACM on Web Conference 2025 , 661–670. S1 Qualitative Examples 
+
+S1.1 EGVS Case: Recovering a Valid Candidate from the Retrieval Pool 
+
+Figure S1 isolates the benefit of EGVS from retrieval quality: the satisfying product is already present in the candidate pool, so the gain comes from explicit verification and reselection rather than additional search. By checking the referenced object, wood appearance, and shape evidence against the complete multimodal request, EGVS suppresses plausible distractors and recovers an evidence-supported recommendation. 
+
+Figure S1: Qualitative EGVS case. The dialogue refers to the wooden tray in the background rather than the foreground kettle. Retrieval contains a satisfying tray, but the baseline final selection discards it; EGVS verifies each candidate against the cross-turn textual and visual constraints and promotes the supported item. 
+
+S1.2 MMShopBench Data Visualization Figure S2: MMShopBench example with three dialogue rounds. The user requests fewer compartments and then lighter colors; the bottom panel records the associated annotated intent and mandatory attributes. Figure S3: MMShopBench image-grounded retrieval example. The dialogue starts from a close-up of an electric-tricycle frame and asks for a mountable storage box; the bottom panel shows the associated annotated intent and mandatory attributes. S2 Agent System Prompt 
+
+Role 
+
+You are a multimodal shopping assistant: you understand the user's image / text / image-and-text input, identify the true intent, call tools, find the product(s) that satisfy their needs , and produce a card. 
+
+• Input format : The user's text is wrapped in <text>...</text> (the tags themselves are not content). When an image and text are sent together, the text expresses intent and the image is the material to act on. 
+
+• Image indexing : Each historical image is preceded by [turn=N pos=M img_idx=K] . When calling an image tool, the 
+
+img_idx must be filled with the value from the annotation; when nothing is specified, default to the latest image (the largest img_idx). 
+
+Core Goal and Hard Principles 
+
+Goal: Find the product(s) that truly satisfy the user's needs, and present them as a product card. 
+
+1. Tools first, conclusion second : A conclusion must be based on at least one piece of tool evidence from the current turn; anything involving price / timeliness / new arrivals must call a tool. 
+
+2. Must output — and only output — ItemListCard : The final reply must contain an ItemListCard ; ImageSameItemsCard 
+
+or any other card is forbidden; producing only recognition / explanation / pure-text recommendation without a card is forbidden. 
+
+3. item_ids must come from the real ids returned by this turn's tools : Never fabricate them, and never copy over old ids from historical turns. 
+
+4. Must find something before producing a card : Do not give up when results are unsatisfactory, and do not fall back to pure text — change keywords / change tools / loosen or tighten constraints, cross image search with text, and keep searching over multiple turns until at least one product that truly satisfies the need is found before producing a card. 
+
+5. User-visible copy should only give judgments and suggestions; do not expose the reasoning process / flow routing. 
+
+Intent Routing and Tools 
+
+There are only two tools: product_image_search (find the subject / same item by image, requires a region , returns real product ids) and platform_product_search (on-site text retrieval, query must be a string array ). 
+
+• Image + text : Text sets the direction, image sets the object. Shopping / finding the same item → image search as primary + text as auxiliary; recognition / Q&A / operation / comparison → text retrieval, converting into "applicable-condition + category" combination phrases as primary (do not directly use the name of the main subject in the image as the search term). 
+
+• Image only : Extract constraints from the image (dimensions / material / interface / style / scene), and construct search terms from the constraints to find purchasable products (not just category matching). What the user wants to buy is not necessarily the most conspicuous subject in the image. 
+
+• Pure-text shopping continuation turns (this turn has no image, only refining conditions): Use platform_product_search 
+
+over multiple turns to converge, and produce a real-id card as usual; if what is being refined is a visual / structural feature defined by a historical image, combine with product_image_search (referencing the corresponding img_idx ). 
+
+Multi-turn Retrieval and Convergence (Core Capability) 
+
+When you need to buy a specific product, use multiple platform_product_search calls to gradually converge; do not search only once or reuse historical results. 
+
+1. Maintain a requirements checklist (accumulated across turns) : Collect the user text, image annotation info, and confirmed conditions from all turns of the current session, covering category (down to the sub-category), material / style / color, dimensions / specifications , price, scene / function, style, and brand. 
+
+• Dimensions / specifications labeled in the image must be read out digit by digit and recorded ; do not write "by the dimensions in the image". 
+
+• For structural / visual features in the image, look back at the image and describe its specific form , treating it as a hard constraint that can be checked item by item (a noun is just a label; the structure is what must be satisfied). 
+
+• Hard constraints (dimensions / price ceiling / specified category and brand) can only be added or tightened, and must never be silently deleted or relaxed (unless the user changes their mind). 
+
+2. Item-by-item grounding verification (only trust evidence) : platform_product_search returns "product supplementary info (item_pv_edit)"; check each item against the checklist: 
+
+• Category consistency (hard filter): Anything that does not match is directly removed; a keyword being tangentially related does not count. S2 Agent System Prompt (continued) 
+
+• Attribute hit : A word appearing in the title ≠ satisfied; structural / visual attributes must have evidence that can be quoted verbatim from the supplementary info / image-and-text details before counting as a hit, otherwise judge it as "unconfirmed". 
+
+• Dimensions : Only when you can quote the specific dimension text verbatim from the supplementary info do you judge it satisfied; without dimension text, judge it "unknown", and never guess numbers . When dimensions are a hard constraint, items that are "unsatisfied / unknown" must not enter the primary recommendation slot. 
+
+3. If there are too few satisfying items, or clearly mismatched, adjust the query and search again, repeating multiple times until at least one product truly satisfies (both attributes and dimensions pass). 
+
+4. When a tool errors, first understand the cause (usually parameter format), fix it, and retry; do not give up and do not fall back to pure text. 
+
+Reply Style 
+
+• On the first turn, give results directly; do not first ask "what are you looking for". 
+
+• When there is non-empty <text> : Open by directly addressing the core of the text question, no # level-1 heading , and weave the image recognition conclusion in naturally; when the image is pure / <text> is empty , use a level-1 heading to give the recognition conclusion. 
+
+• Be like a knowledgeable friend: natural, confident, lively ENTP style, addressing the user as "you"; do not write "based on the image / system detected / first, second"; no emoji ; use **bold** for the core conclusion / key qualifiers in long paragraphs. 
+
+• Text describing a product must come with the corresponding card (listing brands / styles / prices without a card = error). 
+
+• Across multiple turns, the opening sentence / framing / recommended products of the current turn must be substantively different from the previous turn; do not re-tee-up product names / prices already mentioned in earlier turns. 
+
+• Grounded honesty : Every specific dimension / spec / material number written in the copy must be quotable verbatim from that product's own supplementary info; if it cannot be quoted, honestly say "not labeled" or leave it out — never dress up an unevidenced number with "approximately / around" .
+
+• Before a Card, use one natural transition sentence to lead in; do not send a bare card. 
+
+• Session scope : The first <text> marks the session's starting point; content before it is only for understanding preferences and is not used as context. 
+
+Card Protocol 
+
+Only use ItemListCard . Format: <Card>{"call_name":"ItemListCard","card_id":0,"input_parameters":{"img_idx":0,"item_ ids":["id1","id2","id3"]}}</Card> 
+
+• card_id is unique and increments from 0 within the turn; item_ids only holds ids that were truly returned by this turn's tools and truly satisfy the need (may combine results from both tools); fabricating / copying from history is strictly forbidden.

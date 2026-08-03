@@ -1,0 +1,153 @@
+{
+  "date": "20260803",
+  "date_label": "",
+  "generated_at": "2026-08-03 20:51:38 UTC",
+  "recommend_exists": true,
+  "run_count": 1,
+  "papers": [
+    {
+      "paper_id": "2607.28272v1",
+      "route": "202608/03/2607.28272v1-memharness-memory-is-reconstructed-not-replayed",
+      "title": "MemHarness: Memory Is Reconstructed, Not Replayed",
+      "section": "deep",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 9.0,
+      "evidence": "重构过去经验以改进智能体决策的记忆增强框架",
+      "first_seen_at": "2026-08-03 20:51:38 UTC",
+      "updated_at": "2026-08-03 20:51:38 UTC"
+    },
+    {
+      "paper_id": "2607.28692v1",
+      "route": "202608/03/2607.28692v1-scitoolagent-evo-an-ontology-aware-self-evolving-agent-for-open-world-scientific-tool-acquisition",
+      "title": "SciToolAgent-Evo: An Ontology-Aware Self-Evolving Agent for Open-World Scientific Tool Acquisition",
+      "section": "deep",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 9.0,
+      "evidence": "技能、经验和本体化工具图的进化记忆",
+      "first_seen_at": "2026-08-03 20:51:38 UTC",
+      "updated_at": "2026-08-03 20:51:38 UTC"
+    },
+    {
+      "paper_id": "2607.28826v1",
+      "route": "202608/03/2607.28826v1-distilling-knowledge-from-large-language-models-into-lightweight-reinforcement-learning-agents-for-autonomous-cyber-operations",
+      "title": "Distilling Knowledge from Large Language Models into Lightweight Reinforcement Learning Agents for Autonomous Cyber Operations",
+      "section": "deep",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 9.0,
+      "evidence": "将强化学习应用于自主网络防御智能体，并使用LLM引导。",
+      "first_seen_at": "2026-08-03 20:51:38 UTC",
+      "updated_at": "2026-08-03 20:51:38 UTC"
+    },
+    {
+      "paper_id": "2607.28990v1",
+      "route": "202608/03/2607.28990v1-scaling-scientific-discovery-environments-for-turn-level-agentic-rl",
+      "title": "Scaling Scientific Discovery Environments for Turn-Level Agentic RL",
+      "section": "deep",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 9.0,
+      "evidence": "用于科学发现环境中自主智能体的强化学习训练框架",
+      "first_seen_at": "2026-08-03 20:51:38 UTC",
+      "updated_at": "2026-08-03 20:51:38 UTC"
+    },
+    {
+      "paper_id": "2607.29032v1",
+      "route": "202608/03/2607.29032v1-transmem-transforming-hidden-states-into-memory-for-large-language-models",
+      "title": "TransMem: Transforming Hidden States into Memory for Large Language Models",
+      "section": "deep",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 9.0,
+      "evidence": "将历史隐状态转化为记忆表示的轻量级模块，用于LLM智能体",
+      "first_seen_at": "2026-08-03 20:51:38 UTC",
+      "updated_at": "2026-08-03 20:51:38 UTC"
+    },
+    {
+      "paper_id": "2607.29600v1",
+      "route": "202608/03/2607.29600v1-ham-vln-harnessing-hierarchical-agentic-memory-for-zero-shot-vision-and-language-navigation",
+      "title": "HAM-VLN: Harnessing Hierarchical Agentic Memory for Zero-Shot Vision-and-Language Navigation",
+      "section": "deep",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 9.0,
+      "evidence": "引入分层智能体记忆用于零样本视觉-语言导航",
+      "first_seen_at": "2026-08-03 20:51:38 UTC",
+      "updated_at": "2026-08-03 20:51:38 UTC"
+    },
+    {
+      "paper_id": "2607.29002v1",
+      "route": "202608/03/2607.29002v1-mmshopbench-a-real-log-benchmark-for-multimodal-multi-turn-shopping-agents",
+      "title": "MMShopBench: A Real-Log Benchmark for Multimodal, Multi-Turn Shopping Agents",
+      "section": "quick",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 8.0,
+      "evidence": "首个基于真实日志的多模态多轮购物智能体基准，联合使用图像和对话",
+      "first_seen_at": "2026-08-03 20:51:38 UTC",
+      "updated_at": "2026-08-03 20:51:38 UTC"
+    },
+    {
+      "paper_id": "2607.29613v1",
+      "route": "202608/03/2607.29613v1-wcm-a-world-critic-model-for-vision-language-action-reinforcement-learning",
+      "title": "WCM: A World Critic Model for Vision-Language-Action Reinforcement Learning",
+      "section": "quick",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 8.0,
+      "evidence": "用于视觉语言动作强化学习的世界批评模型，处理机器人智能体的多模态观测",
+      "first_seen_at": "2026-08-03 20:51:38 UTC",
+      "updated_at": "2026-08-03 20:51:38 UTC"
+    },
+    {
+      "paper_id": "2607.28942v1",
+      "route": "202608/03/2607.28942v1-nesyfs-a-neuro-symbolic-fast-slow-thinking-framework-for-llm-agent-under-partial-observability",
+      "title": "NeSyFS: A Neuro-symbolic Fast-Slow Thinking Framework for LLM Agent under Partial Observability",
+      "section": "quick",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 6.0,
+      "evidence": "提出神经符号快慢思考框架管理从观察历史中得出的信念状态",
+      "first_seen_at": "2026-08-03 20:51:38 UTC",
+      "updated_at": "2026-08-03 20:51:38 UTC"
+    }
+  ]
+}
