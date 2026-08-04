@@ -1,0 +1,185 @@
+{
+  "date": "20260804",
+  "date_label": "",
+  "generated_at": "2026-08-04 21:20:14 UTC",
+  "recommend_exists": true,
+  "run_count": 1,
+  "papers": [
+    {
+      "paper_id": "2607.27773v1",
+      "route": "202608/04/2607.27773v1-chronomem-version-control-and-semantic-rollback-for-large-language-model-agent-memory",
+      "title": "ChronoMem: Version Control and Semantic Rollback for Large Language Model Agent Memory",
+      "section": "deep",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 10.0,
+      "evidence": "提出智能体记忆的语义版本控制层",
+      "first_seen_at": "2026-08-04 21:20:14 UTC",
+      "updated_at": "2026-08-04 21:20:14 UTC"
+    },
+    {
+      "paper_id": "2608.00962v1",
+      "route": "202608/04/2608.00962v1-pmmc-prospective-multimodal-memory-compilation-for-long-term-lvlm-agents",
+      "title": "PMMC: Prospective Multimodal Memory Compilation for Long-Term LVLM Agents",
+      "section": "deep",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 10.0,
+      "evidence": "提出前瞻性多模态记忆编译，为长程LVLM智能体提供长期记忆。",
+      "first_seen_at": "2026-08-04 21:20:14 UTC",
+      "updated_at": "2026-08-04 21:20:14 UTC"
+    },
+    {
+      "paper_id": "2607.25066v1",
+      "route": "202608/04/2607.25066v1-addressable-recall-compaction-for-long-context-window-control-in-ai-agents",
+      "title": "Addressable Recall Compaction for Long Context-Window Control in AI Agents",
+      "section": "deep",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 9.0,
+      "evidence": "提出可寻址回忆压缩框架ARC，用于智能体记忆管理。",
+      "first_seen_at": "2026-08-04 21:20:14 UTC",
+      "updated_at": "2026-08-04 21:20:14 UTC"
+    },
+    {
+      "paper_id": "2607.27973v1",
+      "route": "202608/04/2607.27973v1-tapo-transition-aware-policy-optimization-for-llm-agents",
+      "title": "TAPO: Transition-Aware Policy Optimization for LLM Agents",
+      "section": "deep",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 9.0,
+      "evidence": "提出利用密集转移监督的强化学习框架训练LLM智能体",
+      "first_seen_at": "2026-08-04 21:20:14 UTC",
+      "updated_at": "2026-08-04 21:20:14 UTC"
+    },
+    {
+      "paper_id": "2608.01561v1",
+      "route": "202608/04/2608.01561v1-fedworld-scope-aware-federation-of-agent-world-models",
+      "title": "FedWorld: Scope-Aware Federation of Agent World Models",
+      "section": "deep",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 9.0,
+      "evidence": "提出FedWorld联合语言世界模型，通过共享经验提升推理。",
+      "first_seen_at": "2026-08-04 21:20:14 UTC",
+      "updated_at": "2026-08-04 21:20:14 UTC"
+    },
+    {
+      "paper_id": "2608.02101v1",
+      "route": "202608/04/2608.02101v1-cross-domain-hybrid-opd-for-generalizable-search-agents",
+      "title": "Cross-Domain Hybrid OPD for Generalizable Search Agents",
+      "section": "deep",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 9.0,
+      "evidence": "结合智能体强化学习与跨领域专家在策略蒸馏",
+      "first_seen_at": "2026-08-04 21:20:14 UTC",
+      "updated_at": "2026-08-04 21:20:14 UTC"
+    },
+    {
+      "paper_id": "2608.00215v1",
+      "route": "202608/04/2608.00215v1-personalizing-large-language-model-agents-with-small-policy-models",
+      "title": "Personalizing Large Language Model Agents with Small Policy Models",
+      "section": "quick",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 8.0,
+      "evidence": "从用户反馈中分解记忆、信息获取与响应决策，个性化智能体执行策略",
+      "first_seen_at": "2026-08-04 21:20:14 UTC",
+      "updated_at": "2026-08-04 21:20:14 UTC"
+    },
+    {
+      "paper_id": "2607.25369v1",
+      "route": "202608/04/2607.25369v1-odysse-episode-wise-policy-optimization-for-personalized-agentic-reasoning",
+      "title": "ODYSSE: Episode-wise Policy Optimization for Personalized Agentic Reasoning",
+      "section": "quick",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 7.0,
+      "evidence": "提出强化微调框架用于个性化智能体推理，将强化学习应用于人机联合交互",
+      "first_seen_at": "2026-08-04 21:20:14 UTC",
+      "updated_at": "2026-08-04 21:20:14 UTC"
+    },
+    {
+      "paper_id": "2608.00485v1",
+      "route": "202608/04/2608.00485v1-serl-sql-selective-hindsight-distillation-for-text-to-sql-reinforcement-agentic-learning",
+      "title": "SERL-SQL: Selective Hindsight Distillation for Text-to-SQL Reinforcement Agentic Learning",
+      "section": "quick",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 7.0,
+      "evidence": "利用选择性事后蒸馏强化学习优化多轮Text-to-SQL智能体",
+      "first_seen_at": "2026-08-04 21:20:14 UTC",
+      "updated_at": "2026-08-04 21:20:14 UTC"
+    },
+    {
+      "paper_id": "2608.01326v1",
+      "route": "202608/04/2608.01326v1-context-compaction-theory",
+      "title": "Context Compaction Theory",
+      "section": "quick",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 7.0,
+      "evidence": "对AI智能体中上下文压缩这一记忆管理策略的形式化研究。",
+      "first_seen_at": "2026-08-04 21:20:14 UTC",
+      "updated_at": "2026-08-04 21:20:14 UTC"
+    },
+    {
+      "paper_id": "2607.24280v1",
+      "route": "202608/04/2607.24280v1-from-proprietary-to-open-source-bridging-the-distribution-gap-via-multi-agent-protocol-distillation-in-agentic-search",
+      "title": "From Proprietary to Open-Source: Bridging the Distribution Gap via Multi-Agent Protocol Distillation in Agentic Search",
+      "section": "quick",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 6.0,
+      "evidence": "在智能搜索中应用强化学习并提出多智能体蒸馏方法",
+      "first_seen_at": "2026-08-04 21:20:14 UTC",
+      "updated_at": "2026-08-04 21:20:14 UTC"
+    }
+  ]
+}

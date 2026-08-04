@@ -1,0 +1,469 @@
+{
+  "mode": "standard",
+  "generated_at": "2026-08-04T21:10:26.088378+00:00",
+  "stats": {
+    "mode": "standard",
+    "tag_count": 1,
+    "deep_divecandidates": 7,
+    "deep_cap": 6,
+    "deep_selected": 6,
+    "quick_candidates": 5,
+    "quick_skim_target": 11,
+    "quick_selected": 5
+  },
+  "deep_dive": [
+    {
+      "id": "2607.27773v1",
+      "source": "arxiv",
+      "title": "ChronoMem: Version Control and Semantic Rollback for Large Language Model Agent Memory",
+      "abstract": "LLM agents increasingly rely on long-term memory to support multi-session interaction and personalization. However, existing agent memory systems are designed around forward-only evolution, continuously accumulating, consolidating, and overwriting knowledge, with no principled mechanism to inspect, version, or revert prior states. This makes agents brittle under corrections, concept drift, and memory corruption, particularly after they have already been exposed to subsequent information. We present ChronoMem, a semantic version-control layer for agentic memory integrated into the production-ready, open-source Agent Development Kit by Google. ChronoMem commits whole-memory snapshots at each memory write, maintains structured version histories, and supports natural-language rollback requests by mapping undo intents to concrete historical versions through hybrid lexical and semantic retrieval, rank fusion, and reranking. We further introduce a post-exposure evaluation protocol that tests whether an agent can behave counterfactually after rollback by answering queries and summarizing history as if future updates had never occurred. On long-horizon conversational benchmarks augmented with evolving memory states and rollback tasks, ChronoMem substantially improves rollback-consistent question answering and history summarization relative to prompt-only and retrieval-only baselines, while achieving strong performance in semantic version selection. To our knowledge, ChronoMem is the first open-source system and benchmark for systematic semantic global memory rollback in LLM agents.",
+      "authors": [
+        "Yongye Su",
+        "Wujiang Xu",
+        "Chaoji Zuo",
+        "Elisa Bertino"
+      ],
+      "primary_category": "cs.CL",
+      "categories": [
+        "cs.CL"
+      ],
+      "published": "2026-07-30T07:07:39+00:00",
+      "link": "https://arxiv.org/pdf/2607.27773v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 10.0,
+      "llm_evidence_en": "proposes semantic version-control layer for agent memory",
+      "llm_evidence_cn": "提出智能体记忆的语义版本控制层",
+      "llm_evidence": "提出智能体记忆的语义版本控制层",
+      "canonical_evidence": "提出智能体记忆的语义版本控制层",
+      "llm_tldr_en": "Introduces ChronoMem, a version-control system for LLM agent memory that supports inspection, versioning, and semantic rollback to handle corrections and memory corruption.",
+      "llm_tldr_cn": "现有智能体记忆系统仅支持前向积累，无法回退到先前状态，导致在纠正和概念漂移下脆弱。本文提出 ChronoMem，为智能体记忆增加语义版本控制层，在每次写入时提交全量快照，维护结构化版本历史。在 Google Agent Development Kit 中集成，实现了检查、版本化和语义回滚，显著提升了记忆系统的可靠性与可控性。",
+      "llm_tldr": "现有智能体记忆系统仅支持前向积累，无法回退到先前状态，导致在纠正和概念漂移下脆弱。本文提出 ChronoMem，为智能体记忆增加语义版本控制层，在每次写入时提交全量快照，维护结构化版本历史。在 Google Agent Development Kit 中集成，实现了检查、版本化和语义回滚，显著提升了记忆系统的可靠性与可控性。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "memory mechanisms for intelligent agents",
+      "matched_requirement_id": "req-1",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2608.00962v1",
+      "source": "arxiv",
+      "title": "PMMC: Prospective Multimodal Memory Compilation for Long-Term LVLM Agents",
+      "abstract": "Long-term memory is essential for LVLM agents to maintain consistency and integrate information across extended multimodal interactions. Existing agent memory systems, however, often reduce visual experiences into textual summaries or rely on static retrieve-then-reason pipelines, which are inefficient at query time and brittle when questions require image-text binding, temporal updates, or visual details. We propose Prospective Multimodal Memory Compilation, a framework that shifts part of the memory reasoning process from query time to memory consolidation time. Given accumulated multimodal interactions, a Questioner predicts future question candidates, a Planner compiles question-conditioned multimodal memory programs, and a Doubter verifies whether the planned evidence path can support the predicted answer. The verified question-program pairs form a structured question bank for efficient query-time routing and evidence retrieval. Experiments on multimodal long-term memory benchmarks show that our method improves answer quality and visual evidence recall while reducing query-time token and latency costs. Extensive ablations analyze the effects of self-feedback, dynamic planning, raw-image access, and question bank coverage.",
+      "authors": [
+        "Jingyu Sun",
+        "Yan Lin",
+        "Yuyang Xue",
+        "Yifan Wang",
+        "Zhengtao Yao",
+        "Rui Qian",
+        "Zefeng Xu",
+        "Jiachen Li",
+        "Xianyang Liu",
+        "Jiancheng Pan",
+        "Jingyuan Sun",
+        "Syed Murtuza Baker",
+        "Hongpeng Zhou"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-08-02T03:20:54+00:00",
+      "link": "https://arxiv.org/pdf/2608.00962v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 10.0,
+      "llm_evidence_en": "Proposes prospective multimodal memory compilation for long-term LVLM agents.",
+      "llm_evidence_cn": "提出前瞻性多模态记忆编译，为长程LVLM智能体提供长期记忆。",
+      "llm_evidence": "提出前瞻性多模态记忆编译，为长程LVLM智能体提供长期记忆。",
+      "canonical_evidence": "提出前瞻性多模态记忆编译，为长程LVLM智能体提供长期记忆。",
+      "llm_tldr_en": "Shifts memory reasoning to consolidation time: predicts future questions, compiles multimodal memory programs, improving efficiency and handling image-text binding and temporal updates.",
+      "llm_tldr_cn": "针对LVLM智能体长期多模态交互中的记忆效率与鲁棒性问题，提出了前瞻性多模态记忆编译（PMMC）框架。该框架在记忆整合阶段预测未来问题并编译条件化的多模态记忆程序，从而减少查询时的推理负担。实验结果表明，PMMC在需要视觉细节保持和时序更新的任务中取得了比静态检索管道更好的性能，为多模态智能体的长程记忆提供了一种有效方案。",
+      "llm_tldr": "针对LVLM智能体长期多模态交互中的记忆效率与鲁棒性问题，提出了前瞻性多模态记忆编译（PMMC）框架。该框架在记忆整合阶段预测未来问题并编译条件化的多模态记忆程序，从而减少查询时的推理负担。实验结果表明，PMMC在需要视觉细节保持和时序更新的任务中取得了比静态检索管道更好的性能，为多模态智能体的长程记忆提供了一种有效方案。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "agent with memory augmentation for better performance",
+      "matched_requirement_id": "req-6",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2607.25066v1",
+      "source": "arxiv",
+      "title": "Addressable Recall Compaction for Long Context-Window Control in AI Agents",
+      "abstract": "Long-horizon LLM agents accumulate reasoning traces, actions, and tool observations that can eventually exceed a model's fixed context window. Existing compaction methods address this limitation by discarding, summarizing, or retrieving earlier information, but they may remove task-critical details or fail to recover them reliably. We propose ARC (Addressable Recall Compaction), a context-management framework that separates archival storage from active-context presentation. ARC stores tool observations in an append-only, ID-addressable log and replaces older observations with compact citations when compaction is required. The agent can subsequently use these identifiers to request stored content without re-executing the corresponding tools or depending solely on similarity-based retrieval. We evaluate ARC using Qwen3-8B with a 16k context window and Qwen3-32B with a 32k context window. On the Needle-in-a-Haystack evaluation, ARC achieves an average exact-answer accuracy of 99.40%, compared with 88.12% for the best-performing baseline in our evaluation. ARC also reduces estimated serving time and HBM traffic under our hardware-cost model. On the LongBench-v2 Hard subset, ARC obtains an average accuracy of 29.97%, compared with 28.25% for the best-performing baseline. These results indicate that explicit, address-based recall can improve information retention and serving efficiency relative to the evaluated context-management baselines under the tested settings.",
+      "authors": [
+        "Thang Dang",
+        "Yuma Ichikawa",
+        "Sakina Fatima",
+        "Koichi Shirahata"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI",
+        "cs.CL"
+      ],
+      "published": "2026-07-27T20:51:05+00:00",
+      "link": "https://arxiv.org/pdf/2607.25066v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "Proposes ARC, an addressable recall compaction framework for agent memory management.",
+      "llm_evidence_cn": "提出可寻址回忆压缩框架ARC，用于智能体记忆管理。",
+      "llm_evidence": "提出可寻址回忆压缩框架ARC，用于智能体记忆管理。",
+      "canonical_evidence": "提出可寻址回忆压缩框架ARC，用于智能体记忆管理。",
+      "llm_tldr_en": "ARC separates archival storage from active context, using ID-addressable logs and citations to compress context without losing critical tool observations.",
+      "llm_tldr_cn": "为解决长程LLM智能体中上下文窗口溢出问题，提出可寻址回忆压缩（ARC）框架。ARC将工具观察写入仅追加式ID可寻址日志，并在压缩时将旧观察替换为紧凑的引用标识符，智能体后续可按需请求存储内容。实验证明，该方法在需保持任务关键信息的场景中表现优于丢弃或汇总方法，为智能体长上下文管理提供了可靠方案。",
+      "llm_tldr": "为解决长程LLM智能体中上下文窗口溢出问题，提出可寻址回忆压缩（ARC）框架。ARC将工具观察写入仅追加式ID可寻址日志，并在压缩时将旧观察替换为紧凑的引用标识符，智能体后续可按需请求存储内容。实验证明，该方法在需保持任务关键信息的场景中表现优于丢弃或汇总方法，为智能体长上下文管理提供了可靠方案。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "memory mechanisms for intelligent agents",
+      "matched_requirement_id": "req-1",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2607.27973v1",
+      "source": "arxiv",
+      "title": "TAPO: Transition-Aware Policy Optimization for LLM Agents",
+      "abstract": "Recently, Reinforcement Learning (RL) has emerged as a crucial paradigm for the post-training of Large Language Model (LLM) agents. However, existing methods predominantly rely on sparse task rewards for policy optimization, failing to fully exploit another class of inherently dense supervisory signals naturally present during online interaction: environmental feedback following action execution. Recent theoretical studies suggest that generalization in multi-step, goal-oriented tasks hinges on predictive knowledge of environmental consequences. Inspired by this, we propose TAPO: Transition-Aware Policy Optimization for LLM Agents, a unified training framework that alternates between policy optimization and transition supervision. Beyond standard RL updates, TAPO repurposes rollout data to apply action-conditioned next-observation prediction supervision on a shared backbone model. This approach enhances the model's sensitivity to environmental transition dynamics and action consequences while concurrently optimizing the policy. It serves as a computationally lightweight, plug-and-play enhancement module for existing agent RL algorithms, requiring no additional expert data, extra sampling costs, or inference-time overhead. We conduct systematic experiments on WebShop and ALFWorld, integrating foundation models of various scales with different policy optimization algorithms. Empirical results demonstrate that TAPO consistently improves task performance over pure policy optimization baselines.",
+      "authors": [
+        "Cong Li",
+        "Peixi Peng",
+        "Yisen Zhao",
+        "Xinyu Hu",
+        "Shudong Liu",
+        "Zhan Su",
+        "Zhuojian Li"
+      ],
+      "primary_category": "cs.LG",
+      "categories": [
+        "cs.LG",
+        "cs.AI"
+      ],
+      "published": "2026-07-30T10:17:55+00:00",
+      "link": "https://arxiv.org/pdf/2607.27973v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "proposes RL framework with dense transition supervision for LLM agents",
+      "llm_evidence_cn": "提出利用密集转移监督的强化学习框架训练LLM智能体",
+      "llm_evidence": "提出利用密集转移监督的强化学习框架训练LLM智能体",
+      "canonical_evidence": "提出利用密集转移监督的强化学习框架训练LLM智能体",
+      "llm_tldr_en": "Proposes TAPO, an RL post-training framework for LLM agents that adds transition supervision to exploit dense environmental feedback, improving multi-step task generalization.",
+      "llm_tldr_cn": "针对现有LLM智能体强化学习仅依赖稀疏任务奖励的问题，提出TAPO框架，交替进行策略优化与转移监督，利用环境反馈中的密集信号。实验表明TAPO能提升多步目标导向任务的泛化能力，为LLM智能体在线学习提供了更有效的优化方法。",
+      "llm_tldr": "针对现有LLM智能体强化学习仅依赖稀疏任务奖励的问题，提出TAPO框架，交替进行策略优化与转移监督，利用环境反馈中的密集信号。实验表明TAPO能提升多步目标导向任务的泛化能力，为LLM智能体在线学习提供了更有效的优化方法。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "reinforcement learning applied to autonomous agents",
+      "matched_requirement_id": "req-3",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2608.01561v1",
+      "source": "arxiv",
+      "title": "FedWorld: Scope-Aware Federation of Agent World Models",
+      "abstract": "Large language model (LLM) agents learn world dynamics from local interaction experience to support subsequent planning and action selection. However, the experience available to a single client is often incomplete, which motivates sharing knowledge across clients. Existing federated methods mainly aggregate model parameters, while agent memory-sharing methods commonly pool trajectories, memories, or rules without checking whether they remain valid for each client. This assumption is problematic because the same abstract action may produce different effects under different policies, environments, or exception conditions. Consequently, a rule supported by most clients may overwrite correct knowledge held by a minority client. To address this problem, we propose FEDWORLD, a scope-aware federated world-model protocol that exchanges structured abstract transition rules. Each client converts private transitions into normalized rules, and the server aligns related rules to identify each rule supporting and contradicting evidence across clients. The resulting evidence determines whether a rule is shared, cluster-specific, private, or unresolved. Each target client retains its local rules and accepts federated updates only for uncovered cases whose inferred scope is compatible; ambiguous rules are withheld. Experiments on $τ$-bench and ALFWorld show that FEDWORLD reduces negative transfer under conflicting dynamics while retaining useful cross-client transfer, leading to fewer state regressions, repeated actions, and excess steps, as well as higher task success.",
+      "authors": [
+        "Yuchao Hou"
+      ],
+      "primary_category": "cs.HC",
+      "categories": [
+        "cs.HC"
+      ],
+      "published": "2026-08-03T00:37:52+00:00",
+      "link": "https://arxiv.org/pdf/2608.01561v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "Proposes FedWorld to federate language-based world models for LLM agents, improving reasoning via shared experience.",
+      "llm_evidence_cn": "提出FedWorld联合语言世界模型，通过共享经验提升推理。",
+      "llm_evidence": "提出FedWorld联合语言世界模型，通过共享经验提升推理。",
+      "canonical_evidence": "提出FedWorld联合语言世界模型，通过共享经验提升推理。",
+      "llm_tldr_en": "Proposes FedWorld, a federated approach to share agent world models while checking validity, preventing knowledge overwrite and improving planning.",
+      "llm_tldr_cn": "针对单客户端经验不完整问题，提出范围感知的联邦世界模型共享方法，通过检查知识适用性避免跨客户端冲突，从而提升LLM智能体的规划与动作选择。实验表明该方法优于参数聚合和简单记忆池化。",
+      "llm_tldr": "针对单客户端经验不完整问题，提出范围感知的联邦世界模型共享方法，通过检查知识适用性避免跨客户端冲突，从而提升LLM智能体的规划与动作选择。实验表明该方法优于参数聚合和简单记忆池化。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "language-based world model for agent reasoning",
+      "matched_requirement_id": "req-5",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2608.02101v1",
+      "source": "arxiv",
+      "title": "Cross-Domain Hybrid OPD for Generalizable Search Agents",
+      "abstract": "Recent advances in Reinforcement Learning (RL) have substantially improved the capabilities of autonomous search agents, enabling sophisticated planning, and iterative retrieval over dynamic information sources. However, optimizing language models for specialized search behaviors often incurs an alignment tax, where gains in search performance come at the expense of general-purpose capabilities, limiting their effectiveness as universal assistants. In this technical report, we present the training framework behind the Yuanbao search agent, designed to achieve search specialization without sacrificing general intelligence. Built upon the Hunyuan3 architecture, our framework combines agentic reinforcement learning for autonomous search with a cross-domain expert On-Policy Distillation (OPD) pipeline. Experts specializing in complementary general-purpose domains are distilled into the search-specialized student, restoring and further enhancing its broad capabilities. Rather than treating specialization and general capability as competing objectives, our hybrid training strategy jointly optimizes both, effectively mitigating the alignment tax. Extensive experiments demonstrate that the resulting model achieves competitive search performance while consistently improving its general-purpose capabilities, providing a favorable balance between specialized execution and broad generalization in real-world search scenarios.",
+      "authors": [
+        "Hongzhan Chen",
+        "Xiaoyu Liu",
+        "Dengming Zhang",
+        "Minzhou Huang",
+        "Dongliang Xu",
+        "Jingcheng Xie",
+        "Dongxiang Fang",
+        "Bowen Qin",
+        "Minsheng Hao",
+        "Yaozong Shen",
+        "Xiaojun Quan",
+        "Mona Zhou",
+        "Haosheng Zou",
+        "Jeff Chen"
+      ],
+      "primary_category": "cs.CL",
+      "categories": [
+        "cs.CL"
+      ],
+      "published": "2026-08-03T12:01:18+00:00",
+      "link": "https://arxiv.org/pdf/2608.02101v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "combines agentic RL with cross-domain expert OPD for search agents",
+      "llm_evidence_cn": "结合智能体强化学习与跨领域专家在策略蒸馏",
+      "llm_evidence": "结合智能体强化学习与跨领域专家在策略蒸馏",
+      "canonical_evidence": "结合智能体强化学习与跨领域专家在策略蒸馏",
+      "llm_tldr_en": "Presents a training framework combining agentic RL and cross-domain on-policy distillation to specialize search agents without sacrificing general intelligence, applied to the Yuanbao search agent.",
+      "llm_tldr_cn": "针对搜索智能体专业化导致通用能力下降的问题，提出结合智能体强化学习与跨领域专家在策略蒸馏的训练框架，基于混元3架构实现。实验表明该方法在提升搜索性能的同时保持通用能力，使搜索智能体成为真正通用的助手。",
+      "llm_tldr": "针对搜索智能体专业化导致通用能力下降的问题，提出结合智能体强化学习与跨领域专家在策略蒸馏的训练框架，基于混元3架构实现。实验表明该方法在提升搜索性能的同时保持通用能力，使搜索智能体成为真正通用的助手。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "reinforcement learning applied to autonomous agents",
+      "matched_requirement_id": "req-3",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "quick_skim": [
+    {
+      "id": "2608.00215v1",
+      "source": "arxiv",
+      "title": "Personalizing Large Language Model Agents with Small Policy Models",
+      "abstract": "Large language model (LLM) agents can retrieve memory, call tools, ask clarifying questions, and vary response style, yet adapting these execution decisions to an individual user remains difficult. Fine-tuning a separate LLM is costly or impossible for proprietary systems, while prompts and memory primarily expose user information to the agent rather than adapt its execution decisions from feedback. We formulate personalization of a frozen agent as online learning of a per-user execution policy from scalar feedback observed only for the executed action. We propose FABLE (Factorized Adaptive Bandit Layer for Execution), a lightweight policy layer outside a potentially black-box host agent. FABLE factorizes memory, information-acquisition, and response decisions so feedback updates related choices; filters actions through an externally specified feasible set before exploration; and learns user-specific residual preferences relative to a fixed default-and-cost score via Bayesian contextual Thompson sampling. Under a linear residual-reward model, a calibrated variant inherits an expected-regret bound against the best feasible action. We also characterize preferences unidentifiable under persistent feasibility constraints and provide anytime-valid false-promotion control. Across personalized-reasoning, controlled-feedback, and executable tool-use evaluations, FABLE improves several preference-sensitive behaviors relative to rule-only control while remaining competitive on end-to-end task performance.",
+      "authors": [
+        "Dian Jin",
+        "Zhi Zhang",
+        "Huichao Li",
+        "Yihe Pan",
+        "Rundong Huang",
+        "Doudou Zhou"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-07-31T18:56:30+00:00",
+      "link": "https://arxiv.org/pdf/2608.00215v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "personalizes agent execution policy by factorizing memory, information-acquisition, and response decisions from user feedback",
+      "llm_evidence_cn": "从用户反馈中分解记忆、信息获取与响应决策，个性化智能体执行策略",
+      "llm_evidence": "从用户反馈中分解记忆、信息获取与响应决策，个性化智能体执行策略",
+      "canonical_evidence": "从用户反馈中分解记忆、信息获取与响应决策，个性化智能体执行策略",
+      "llm_tldr_en": "Learns per-user execution policies for frozen LLM agents via online bandit learning, factorizing memory, information, and response decisions from scalar feedback.",
+      "llm_tldr_cn": "大语言模型智能体虽然能够检索记忆、调用工具和调整响应风格，但难以根据用户反馈个性化其执行决策。现有方法（微调或提示）成本高或仅暴露信息而不学习决策。本文提出FABLE，将固定智能体的个性化定义为从标量反馈在线学习各用户执行策略的问题。FABLE在宿主智能体外增加轻量策略层，分解记忆、信息获取和响应决策，通过Bandit学习适应个体。实验验证了该方法在个性化服务中的有效性，为低成本智能体定制提供了新思路。",
+      "llm_tldr": "大语言模型智能体虽然能够检索记忆、调用工具和调整响应风格，但难以根据用户反馈个性化其执行决策。现有方法（微调或提示）成本高或仅暴露信息而不学习决策。本文提出FABLE，将固定智能体的个性化定义为从标量反馈在线学习各用户执行策略的问题。FABLE在宿主智能体外增加轻量策略层，分解记忆、信息获取和响应决策，通过Bandit学习适应个体。实验验证了该方法在个性化服务中的有效性，为低成本智能体定制提供了新思路。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "agent with memory augmentation for better performance",
+      "matched_requirement_id": "req-6",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "8plus"
+    },
+    {
+      "id": "2607.25369v1",
+      "source": "arxiv",
+      "title": "ODYSSE: Episode-wise Policy Optimization for Personalized Agentic Reasoning",
+      "abstract": "Agentic systems have rapidly advanced in their ability to interact with real-world environments, leverage external tools, and provide services for users. However, unlike natural-world tasks that assume well-defined instructions, human-centered scenarios are characterized by ambiguous requests that lead to large, open-ended solution spaces. Decoding users' personalized preferences is therefore essential for narrowing the candidate solution space. This introduces a new challenge, personalized agentic reasoning, which requires agents to jointly interact with both users and environments to deliver personalized services. In this paper, we present ODYSSE, a Reinforced Fine-Tuning (RFT) framework for personalized agentic reasoning. At its core, ODYSSE proposes Episode-wise GRPO (ESPO), a novel extension of Group Relative Policy Optimization (GRPO) designed to address long action horizons and strong cross-step dependencies in personalized agentic reasoning. Rather than optimizing individual steps independently, ESPO introduces an episode-level reward mechanism together with episodic advantage estimation, enabling upstream evidence to effectively guide downstream personalized decisions and allowing agents to progressively resolve ambiguous user requests across multiple interaction steps. We further propose an episodic batch sampler that groups actions from the same episode into unified training batches, facilitating coherent optimization under ESPO. We evaluate ODYSSE on realistic long-horizon personalized GUI reasoning tasks. Experimental results demonstrate that ODYSSE consistently outperforms both specialist and general-purpose LVLMs, highlighting its effectiveness for personalized agentic reasoning.",
+      "authors": [
+        "Jiaqi Zhang",
+        "Tong Chen",
+        "Junliang Yu",
+        "Quoc Viet Hung Nguyen",
+        "Hongzhi Yin"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-07-28T07:25:04+00:00",
+      "link": "https://arxiv.org/pdf/2607.25369v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "proposes reinforced fine-tuning for personalized agentic reasoning, applying RL to user-environment joint interaction",
+      "llm_evidence_cn": "提出强化微调框架用于个性化智能体推理，将强化学习应用于人机联合交互",
+      "llm_evidence": "提出强化微调框架用于个性化智能体推理，将强化学习应用于人机联合交互",
+      "canonical_evidence": "提出强化微调框架用于个性化智能体推理，将强化学习应用于人机联合交互",
+      "llm_tldr_en": "Uses episodic reinforced fine-tuning to personalize agentic reasoning, jointly optimizing from user and environment interactions.",
+      "llm_tldr_cn": "智能体系统在现实服务中常面对用户模糊请求，导致解空间过大；解码用户个性化偏好对缩小候选解至关重要。本文提出ODYSSE，一个基于强化微调（RFT）的个性化智能体推理框架，智能体需要同时与用户和环境交互，通过分幕策略优化学习提供个性化服务。核心是通过联合交互反馈调整策略，使智能体能在开放环境中适应个体差异。实验表明该方法能有效捕捉用户偏好，提升个性化推理的准确率和用户满意度，为人本智能体系统的设计提供了新范式。",
+      "llm_tldr": "智能体系统在现实服务中常面对用户模糊请求，导致解空间过大；解码用户个性化偏好对缩小候选解至关重要。本文提出ODYSSE，一个基于强化微调（RFT）的个性化智能体推理框架，智能体需要同时与用户和环境交互，通过分幕策略优化学习提供个性化服务。核心是通过联合交互反馈调整策略，使智能体能在开放环境中适应个体差异。实验表明该方法能有效捕捉用户偏好，提升个性化推理的准确率和用户满意度，为人本智能体系统的设计提供了新范式。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "reinforcement learning applied to autonomous agents",
+      "matched_requirement_id": "req-3",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2607.24280v1",
+      "source": "arxiv",
+      "title": "From Proprietary to Open-Source: Bridging the Distribution Gap via Multi-Agent Protocol Distillation in Agentic Search",
+      "abstract": "Agentic search enables large language models to solve knowledge-intensive tasks by interleaving multi-step reasoning with retrieval, yet optimizing this with outcome-based reinforcement learning (RL) provides only sparse supervision. Knowledge distillation can supply denser guidance, and advanced proprietary models with their strong reasoning capabilities are promising teachers. While distilling from proprietary models can densify this supervisory signal, conventional logit-matching is precluded by hidden logits and mismatched tokenizers, whereas raw natural language trajectory imitation transfers superficial stylistic artifacts rather than core reasoning competence. To address the heterogeneous distillation problem and bridge the distribution gap, we propose Multi-Agent Protocol Distillation (MAPD), a joint distillation and RL framework uses a structured, style-normalized protocol as an intermediate representation. An offline multi-agent system (MAS) decomposes each query, retrieves supporting evidence, repairs failed searches, and converts the resulting exploration trace into a JSON protocol containing the task type, reasoning plan, and extractive grounding facts. During training, the protocol is provided only to a privileged branch of the student policy, whose token distributions furnish a dense distillation signal alongside the sparse RL objective. Extensive evaluations across seven QA benchmarks demonstrate that MAPD consistently outperforms competitive distillation and RL, achieving average success rates of 39.4\\% on Qwen3-1.7B and 44.4\\% on Qwen3-4B. Crucially, the framework generalizes robustly across diverse proprietary teachers while effectively mitigating the student policy from style drift and verbosity degeneration.",
+      "authors": [
+        "Junlin Liu",
+        "Jiangwang Chen",
+        "Zixin Song",
+        "Shuaiyu Zhou",
+        "Chunji Lv",
+        "Hank Wu",
+        "Kailin Jiang",
+        "Jinyang Wu",
+        "Bohan Yu",
+        "Chenxi Zhou"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-07-27T11:27:38+00:00",
+      "link": "https://arxiv.org/pdf/2607.24280v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "applies RL in agentic search and proposes multi-agent distillation",
+      "llm_evidence_cn": "在智能搜索中应用强化学习并提出多智能体蒸馏方法",
+      "llm_evidence": "在智能搜索中应用强化学习并提出多智能体蒸馏方法",
+      "canonical_evidence": "在智能搜索中应用强化学习并提出多智能体蒸馏方法",
+      "llm_tldr_en": "Addresses sparse RL supervision in agentic search by distilling proprietary model reasoning via multi-agent protocol distillation to bridge the open-source gap.",
+      "llm_tldr_cn": "针对智能搜索中基于结果的强化学习监督稀疏问题，提出多智能体协议蒸馏，将商业模型的推理能力转移至开源模型。通过轨迹模仿与协议对齐，弥合分布差距，在知识密集型任务上提升了开源智能体的性能，为低成本部署高效智能搜索提供了方案。",
+      "llm_tldr": "针对智能搜索中基于结果的强化学习监督稀疏问题，提出多智能体协议蒸馏，将商业模型的推理能力转移至开源模型。通过轨迹模仿与协议对齐，弥合分布差距，在知识密集型任务上提升了开源智能体的性能，为低成本部署高效智能搜索提供了方案。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "reinforcement learning applied to autonomous agents",
+      "matched_requirement_id": "req-3",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2608.00485v1",
+      "source": "arxiv",
+      "title": "SERL-SQL: Selective Hindsight Distillation for Text-to-SQL Reinforcement Agentic Learning",
+      "abstract": "Recent Text-to-SQL systems increasingly rely on multi-turn interaction, execution feedback, and reinforcement learning. However, most existing methods use execution correctness only as a trajectory-level reward, which provides limited guidance for identifying the SQL decisions responsible for success or failure. We propose SERL-SQL, a selective execution-grounded reinforcement learning framework for multi-turn Text-to-SQL agents. SERL-SQL samples on-policy SQL interaction trajectories and uses a training-only teacher to re-score student actions with execution feedback. The resulting teacher--student likelihood gap is converted into bounded, masked weights that reweight GRPO advantages only on SQL and tool-action tokens. In this way, task rewards preserve the optimization direction, while execution hindsight provides localized credit assignment. Experiments on BIRD, Spider, and cross-domain benchmarks show that SERL-SQL achieves competitive performance, reaching 76.56% execution accuracy on BIRD-Dev and 89.92% on Spider-Test. Moreover, our reward-based selection strategy closely approaches the oracle Best-of-N upper bound and consistently outperforms consistency-based selection, showing that SERL-SQL produces high-quality candidates that can be reliably identified by lightweight execution-grounded rewards. Our code will be released at https://github.com/Ffunkytao/SERL-SQL.",
+      "authors": [
+        "Tao Liu",
+        "Tao Feng",
+        "Xiangheng Li",
+        "Jinwang Song",
+        "Yifan Li",
+        "Xiaoqing Cheng",
+        "Dixuan Zhang",
+        "Siquan Li",
+        "Lin Lan",
+        "Hongying Zan",
+        "Kunli Zhang",
+        "Chao Wu"
+      ],
+      "primary_category": "cs.CL",
+      "categories": [
+        "cs.CL"
+      ],
+      "published": "2026-08-01T07:24:12+00:00",
+      "link": "https://arxiv.org/pdf/2608.00485v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "applies reinforcement learning via selective hindsight distillation for multi-turn Text-to-SQL agents",
+      "llm_evidence_cn": "利用选择性事后蒸馏强化学习优化多轮Text-to-SQL智能体",
+      "llm_evidence": "利用选择性事后蒸馏强化学习优化多轮Text-to-SQL智能体",
+      "canonical_evidence": "利用选择性事后蒸馏强化学习优化多轮Text-to-SQL智能体",
+      "llm_tldr_en": "Fine-grains RL for Text-to-SQL by selective hindsight distillation, reweighting advantages on SQL tokens to improve multi-turn interaction learning.",
+      "llm_tldr_cn": "多轮交互的Text-to-SQL系统日益依赖执行反馈和强化学习，但现有方法用整体正确性作为轨迹级奖励，无法精准识别导致成功或失败的SQL动作。本文提出SERL-SQL，一种选择性执行基础的强化学习框架。它在策略上采样SQL交互轨迹，利用仅训练时教师模型根据执行反馈对学生动作重新评分，将评分差异转化为有界权重，仅在SQL和工具动作标记上重调整优势函数。实验表明该方法能实现更细粒度的信用分配，显著提升多轮Text-to-SQL智能体的学习效率与准确率。",
+      "llm_tldr": "多轮交互的Text-to-SQL系统日益依赖执行反馈和强化学习，但现有方法用整体正确性作为轨迹级奖励，无法精准识别导致成功或失败的SQL动作。本文提出SERL-SQL，一种选择性执行基础的强化学习框架。它在策略上采样SQL交互轨迹，利用仅训练时教师模型根据执行反馈对学生动作重新评分，将评分差异转化为有界权重，仅在SQL和工具动作标记上重调整优势函数。实验表明该方法能实现更细粒度的信用分配，显著提升多轮Text-to-SQL智能体的学习效率与准确率。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "reinforcement learning applied to autonomous agents",
+      "matched_requirement_id": "req-3",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2608.01326v1",
+      "source": "arxiv",
+      "title": "Context Compaction Theory",
+      "abstract": "Large Language Models (LLMs) have a bounded context window. The context window is the maximum input size an LLM can consume for a single inference. AI agents rely on a process called context compaction to fit their state within the context window when calling an LLM. Despite its ubiquity, context compaction has received essentially no formal analysis. In this paper, we initiate a formal study of context compaction. We first introduce a framework consisting of two games that capture the two algorithmic strategies for context compaction used by contemporary AI agents in practice. The Context Selection Game models context compaction algorithms that select a subset of an agent's accumulated state to retain. The Context Generation Game models context compaction algorithms that summarize an agent's state by an arbitrary message of bounded length. We then prove an equivalence between the Context Generation Game and one-way communication complexity. The minimum context compaction budget for answering a set of queries within a target error is equal to the one-way communication complexity of the induced communication problem at the same error. Known bounds from communication complexity therefore transfer directly to context compaction. We also show that the Context Selection Game corresponds to a restricted class of one-way communication protocols. Any gap between selection and generation is therefore a gap between two classes of communication protocols. We prove that there exists a set of queries for which generation needs strictly less budget than selection. The equivalence between the Context Generation Game and one-way communication also lets us measure how well a deployed context compaction algorithm performs on a query relative to the optimal strategy. As an example, we present a case study that evaluates Anthropic's context compaction endpoint on set membership queries.",
+      "authors": [
+        "Hayder Tirmazi",
+        "Sam Markelon",
+        "Allison Bishop",
+        "Michael Mitzenmacher"
+      ],
+      "primary_category": "cs.DS",
+      "categories": [
+        "cs.DS",
+        "cs.AI"
+      ],
+      "published": "2026-08-02T15:45:54+00:00",
+      "link": "https://arxiv.org/pdf/2608.01326v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "Formal study of context compaction as memory management in AI agents.",
+      "llm_evidence_cn": "对AI智能体中上下文压缩这一记忆管理策略的形式化研究。",
+      "llm_evidence": "对AI智能体中上下文压缩这一记忆管理策略的形式化研究。",
+      "canonical_evidence": "对AI智能体中上下文压缩这一记忆管理策略的形式化研究。",
+      "llm_tldr_en": "Initiates formal study of context compaction via selection and generation games, providing a theoretical foundation for agent memory management.",
+      "llm_tldr_cn": "针对智能体中普遍使用但缺乏理论分析的上下文压缩问题，本文首次进行了形式化研究。通过引入上下文选择博弈和上下文生成博弈，刻画了实际中使用的两种压缩策略。理论分析揭示了不同策略的适用范围与性质，为智能体记忆管理中的上下文压缩算法设计提供了理论指引。",
+      "llm_tldr": "针对智能体中普遍使用但缺乏理论分析的上下文压缩问题，本文首次进行了形式化研究。通过引入上下文选择博弈和上下文生成博弈，刻画了实际中使用的两种压缩策略。理论分析揭示了不同策略的适用范围与性质，为智能体记忆管理中的上下文压缩算法设计提供了理论指引。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "memory mechanisms for intelligent agents",
+      "matched_requirement_id": "req-1",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    }
+  ]
+}
