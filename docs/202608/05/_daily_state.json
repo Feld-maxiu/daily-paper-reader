@@ -1,0 +1,105 @@
+{
+  "date": "20260805",
+  "date_label": "",
+  "generated_at": "2026-08-05 21:00:23 UTC",
+  "recommend_exists": true,
+  "run_count": 1,
+  "papers": [
+    {
+      "paper_id": "2608.03137v1",
+      "route": "202608/05/2608.03137v1-verifiable-memory-learning-unified-memory-management-with-local-and-global-verifiers-for-large-language-model-agents",
+      "title": "Verifiable Memory: Learning Unified Memory Management with Local and Global Verifiers for Large Language Model Agents",
+      "section": "deep",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 10.0,
+      "evidence": "通过局部和全局验证器为LLM智能体学习统一记忆操作策略",
+      "first_seen_at": "2026-08-05 21:00:23 UTC",
+      "updated_at": "2026-08-05 21:00:23 UTC"
+    },
+    {
+      "paper_id": "2608.00335v1",
+      "route": "202608/05/2608.00335v1-rmsweb-reflection-failure-mode-mining-and-salvage-ds-for-web-agent-reinforcement-learning",
+      "title": "RMSWeb: Reflection, Failure-Mode Mining, and Salvage-DS for Web Agent Reinforcement Learning",
+      "section": "deep",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 9.0,
+      "evidence": "将强化学习应用于自主Web智能体",
+      "first_seen_at": "2026-08-05 21:00:23 UTC",
+      "updated_at": "2026-08-05 21:00:23 UTC"
+    },
+    {
+      "paper_id": "2608.03223v1",
+      "route": "202608/05/2608.03223v1-agentic-reinforcement-learning-with-self-distilled-reward-shaping",
+      "title": "Agentic Reinforcement Learning with Self-Distilled Reward Shaping",
+      "section": "deep",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 9.0,
+      "evidence": "面向LLM智能体的强化学习与奖励塑形",
+      "first_seen_at": "2026-08-05 21:00:23 UTC",
+      "updated_at": "2026-08-05 21:00:23 UTC"
+    },
+    {
+      "paper_id": "2608.02713v1",
+      "route": "202608/05/2608.02713v1-quo-vadis-world-modeling",
+      "title": "Quo Vadis, World Modeling?",
+      "section": "deep",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 8.0,
+      "evidence": "提出以智能体为中心的交互式世界代理作为世界建模新范式，提供文本和反馈信号用于智能体模拟",
+      "first_seen_at": "2026-08-05 21:00:23 UTC",
+      "updated_at": "2026-08-05 21:00:23 UTC"
+    },
+    {
+      "paper_id": "2608.03502v1",
+      "route": "202608/05/2608.03502v1-hybrid-llm-augmented-reinforcement-learning-agents-for-complex-sequential-decision-tasks",
+      "title": "Hybrid LLM-Augmented Reinforcement Learning Agents for Complex Sequential Decision Tasks",
+      "section": "deep",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 8.0,
+      "evidence": "将LLM规划与基于RL的动作优化相结合，用于自主智能体",
+      "first_seen_at": "2026-08-05 21:00:23 UTC",
+      "updated_at": "2026-08-05 21:00:23 UTC"
+    },
+    {
+      "paper_id": "2608.03800v1",
+      "route": "202608/05/2608.03800v1-autoreflection-how-agentic-strange-loops-turn-human-culture-into-ai-infrastructure",
+      "title": "Autoreflection: How Agentic Strange Loops Turn Human Culture into AI Infrastructure",
+      "section": "quick",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 6.0,
+      "evidence": "研究智能体如何将记忆外化为可编辑文件",
+      "first_seen_at": "2026-08-05 21:00:23 UTC",
+      "updated_at": "2026-08-05 21:00:23 UTC"
+    }
+  ]
+}

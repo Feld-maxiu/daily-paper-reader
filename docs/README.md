@@ -41,17 +41,17 @@
 <section class="dpr-home-dashboard-card dpr-home-report-card">
   <div class="dpr-home-dashboard-header">
     <div>
-      <span class="dpr-home-dashboard-kicker">2026-08-04</span>
+      <span class="dpr-home-dashboard-kicker">2026-08-05</span>
       <h3 class="dpr-home-dashboard-title">今日汇总</h3>
     </div>
-    <strong class="dpr-home-dashboard-count">共 11 篇</strong>
+    <strong class="dpr-home-dashboard-count">共 6 篇</strong>
   </div>
   <dl class="dpr-home-dashboard-stats">
     <div class="dpr-home-dashboard-stat"><dt>累计更新</dt><dd>1 次</dd></div>
-    <div class="dpr-home-dashboard-stat"><dt>精读</dt><dd>6</dd></div>
-    <div class="dpr-home-dashboard-stat"><dt>速读</dt><dd>5</dd></div>
+    <div class="dpr-home-dashboard-stat"><dt>精读</dt><dd>5</dd></div>
+    <div class="dpr-home-dashboard-stat"><dt>速读</dt><dd>1</dd></div>
   </dl>
-  <p class="dpr-home-dashboard-body">最近更新：2026-08-04 21:20:14 UTC<br>状态：成功</p>
+  <p class="dpr-home-dashboard-body">最近更新：2026-08-05 21:00:23 UTC<br>状态：成功</p>
 </section>
 <section class="dpr-home-dashboard-card dpr-home-brief-card">
   <div class="dpr-home-dashboard-header">
@@ -62,9 +62,9 @@
     <strong class="dpr-home-dashboard-count">AI</strong>
   </div>
   <div class="dpr-home-dashboard-body">
-<p>今日精读11篇LLM智能体前沿研究，两篇满分论文从版本控制和前瞻编译角度攻克长期记忆难题。</p>
-<p>最值得关注的方向是给智能体记忆引入Git式语义回滚（ChronoMem）和让多模态智能体学会“预判未来”的记忆编译（PMMC）。</p>
-<p>想升级你的AI智能体，不妨先从记忆系统入手：试试用版本化管理避免上下文混乱，或让模型主动编译未来可能用到的信息。</p>
+<p>今日精筛6篇智能体前沿论文，重点拆解了LLM记忆管理与Web智能体强化学习两大难题。</p>
+<p>满分论文提出可验证的统一记忆框架，用局部-全局验证器解决智能体记忆混乱；9分研究则通过失败模式挖掘与反思机制，大幅提升Web智能体的RL训练效果。</p>
+<p>建议关注如何将失败反思回路与可验证记忆结合，打造在复杂环境中更可靠的自主智能体。</p>
   </div>
 </section>
 <section class="dpr-home-dashboard-card dpr-home-deep-card">
@@ -73,12 +73,12 @@
       <span class="dpr-home-dashboard-kicker">今日累计</span>
       <h3 class="dpr-home-dashboard-title">精读推荐</h3>
     </div>
-    <strong class="dpr-home-dashboard-count">6 篇</strong>
+    <strong class="dpr-home-dashboard-count">5 篇</strong>
   </div>
   <div class="dpr-home-dashboard-body">
-<ul class="dpr-home-dashboard-paper-list"><li><span class="dpr-home-dashboard-paper-title" title="ChronoMem: Version Control and Semantic Rollback for Large Language Model Agent Memory">ChronoMem: Version Control and Semantic Rollback for Large Language Model Agent Memory</span></li><li><span class="dpr-home-dashboard-paper-title" title="PMMC: Prospective Multimodal Memory Compilation for Long-Term LVLM Agents">PMMC: Prospective Multimodal Memory Compilation for Long-Term LVLM Agents</span></li><li><span class="dpr-home-dashboard-paper-title" title="Addressable Recall Compaction for Long Context-Window Control in AI Agents">Addressable Recall Compaction for Long Context-Window Control in AI Agents</span></li></ul>
+<ul class="dpr-home-dashboard-paper-list"><li><span class="dpr-home-dashboard-paper-title" title="Verifiable Memory: Learning Unified Memory Management with Local and Global Verifiers for Large Language Model Agents">Verifiable Memory: Learning Unified Memory Management with Local and Global Verifiers for Large Language Model Agents</span></li><li><span class="dpr-home-dashboard-paper-title" title="RMSWeb: Reflection, Failure-Mode Mining, and Salvage-DS for Web Agent Reinforcement Learning">RMSWeb: Reflection, Failure-Mode Mining, and Salvage-DS for Web Agent Reinforcement Learning</span></li><li><span class="dpr-home-dashboard-paper-title" title="Agentic Reinforcement Learning with Self-Distilled Reward Shaping">Agentic Reinforcement Learning with Self-Distilled Reward Shaping</span></li></ul>
   </div>
-  <div class="dpr-home-dashboard-tags"><span class="dpr-home-dashboard-tag">agent-memory <strong>6</strong></span></div>
+  <div class="dpr-home-dashboard-tags"><span class="dpr-home-dashboard-tag">agent-memory <strong>5</strong></span></div>
 </section>
 <section class="dpr-home-dashboard-card dpr-home-skim-card">
   <div class="dpr-home-dashboard-header">
@@ -86,12 +86,12 @@
       <span class="dpr-home-dashboard-kicker">今日累计</span>
       <h3 class="dpr-home-dashboard-title">速读推荐</h3>
     </div>
-    <strong class="dpr-home-dashboard-count">5 篇</strong>
+    <strong class="dpr-home-dashboard-count">1 篇</strong>
   </div>
   <div class="dpr-home-dashboard-body">
-<ul class="dpr-home-dashboard-paper-list"><li><span class="dpr-home-dashboard-paper-title" title="Personalizing Large Language Model Agents with Small Policy Models">Personalizing Large Language Model Agents with Small Policy Models</span></li><li><span class="dpr-home-dashboard-paper-title" title="ODYSSE: Episode-wise Policy Optimization for Personalized Agentic Reasoning">ODYSSE: Episode-wise Policy Optimization for Personalized Agentic Reasoning</span></li><li><span class="dpr-home-dashboard-paper-title" title="SERL-SQL: Selective Hindsight Distillation for Text-to-SQL Reinforcement Agentic Learning">SERL-SQL: Selective Hindsight Distillation for Text-to-SQL Reinforcement Agentic Learning</span></li></ul>
+<ul class="dpr-home-dashboard-paper-list"><li><span class="dpr-home-dashboard-paper-title" title="Autoreflection: How Agentic Strange Loops Turn Human Culture into AI Infrastructure">Autoreflection: How Agentic Strange Loops Turn Human Culture into AI Infrastructure</span></li></ul>
   </div>
-  <div class="dpr-home-dashboard-tags"><span class="dpr-home-dashboard-tag">agent-memory <strong>5</strong></span></div>
+  <div class="dpr-home-dashboard-tags"><span class="dpr-home-dashboard-tag">agent-memory <strong>1</strong></span></div>
 </section>
 </div>
 
