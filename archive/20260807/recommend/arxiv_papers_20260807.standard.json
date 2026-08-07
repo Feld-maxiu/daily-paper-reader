@@ -1,0 +1,252 @@
+{
+  "mode": "standard",
+  "generated_at": "2026-08-07T21:02:48.458770+00:00",
+  "stats": {
+    "mode": "standard",
+    "tag_count": 1,
+    "deep_divecandidates": 5,
+    "deep_cap": 6,
+    "deep_selected": 5,
+    "quick_candidates": 0,
+    "quick_skim_target": 11,
+    "quick_selected": 0
+  },
+  "deep_dive": [
+    {
+      "id": "2608.04830v1",
+      "source": "arxiv",
+      "title": "ContextWeave: A Real-World Workflow Benchmark",
+      "abstract": "Memory is essential as language agents move from isolated tasks to long-horizon, stateful workflows, yet existing evaluations often reduce it to retrieval or question answering. We introduce ContextWeave, a longitudinal benchmark that evaluates whether recalled experience improves downstream agent performance in realistic office-work streams. ContextWeave reconstructs privacy-preserved, multi-month workflows of 14 participants into 1,005 executable tasks, including 568 core evaluation tasks, with instructions, containerized environments, trajectories, and task-specific rubrics. It measures workspace quality and alignment with participant-specific preferences, complemented by diagnostics of relevance, continuity, solvability, and robustness to misleading recall. Across six memory components under a fixed model, the strongest configuration raises Workspace Score from 68.08 to 78.20 and Preference Score from 41.50 to 70.60. With a fixed memory component, recall improves both outcomes for all five tested base models, although gains vary substantially. Our analysis shows that actionable, experience-rich memory supports workflow continuation and reduces redundant exploration more effectively than compact summaries, while it can also be more susceptible to misleading recall. These findings motivate memory systems that optimize not only retrieval relevance but also reliable use during execution.",
+      "authors": [
+        "Bo Wang",
+        "Yuqian Yao",
+        "Enxi Wang",
+        "Luozhijie Jin",
+        "Yang Liu",
+        "Yiran Suo",
+        "Yuxuan Cai",
+        "Enyu Zhou",
+        "Yufei Gao",
+        "Honglin Guo",
+        "Tianyu Huai",
+        "Li Ji",
+        "Zhikai Lei",
+        "Bufan Li",
+        "Lizhi Lin",
+        "Jinxiu Liu",
+        "Jie Yang",
+        "Jiazheng Zhou",
+        "Maosen Zhou",
+        "Pengfang Qian",
+        "Shichun Liu",
+        "Guanshan Liu",
+        "Hao Zheng",
+        "Yunhao Yu",
+        "Hang Yan",
+        "Jihua Kang",
+        "Xinchi Chen",
+        "Xipeng Qiu"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-08-05T13:31:18+00:00",
+      "link": "https://arxiv.org/pdf/2608.04830v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 10.0,
+      "llm_evidence_en": "benchmark evaluating agent memory recall for improved performance",
+      "llm_evidence_cn": "评估智能体记忆召回对性能提升的基准",
+      "llm_evidence": "评估智能体记忆召回对性能提升的基准",
+      "canonical_evidence": "评估智能体记忆召回对性能提升的基准",
+      "llm_tldr_en": "Addresses the gap in memory evaluation for agents by creating a longitudinal benchmark of real office-work streams, measuring if recalled experience enhances downstream task performance.",
+      "llm_tldr_cn": "针对现有评估将智能体记忆简化为检索或问答的局限，构建了基于真实办公流程的纵向基准ContextWeave，包含1005个可执行任务，评估记忆召回是否提升智能体在长期工作流中的表现。实验揭示了记忆召回对工作空间质量的影响，并提供了诊断指标。该基准推动了智能体记忆机制的标准化评估。",
+      "llm_tldr": "针对现有评估将智能体记忆简化为检索或问答的局限，构建了基于真实办公流程的纵向基准ContextWeave，包含1005个可执行任务，评估记忆召回是否提升智能体在长期工作流中的表现。实验揭示了记忆召回对工作空间质量的影响，并提供了诊断指标。该基准推动了智能体记忆机制的标准化评估。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "memory mechanisms for intelligent agents",
+      "matched_requirement_id": "req-1",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2608.06197v1",
+      "source": "arxiv",
+      "title": "EnvACE: Internalizing Environment Dynamics via World Rehearsal for Agentic Reinforcement Learning",
+      "abstract": "Training large language model agents for long-horizon tool use typically relies on interactions with real or synthesized executable environments, whose construction and verification are costly, or on external simulators that are difficult to ground. We introduce EnvACE, an agentic reinforcement learning method that replaces external environment interaction during training with world rehearsal. The policy alternates between acting and rehearsal: it first generates a tool call, then plays the role of the environment to produce the response induced by that action, and conditions subsequent decisions on the rehearsed response. Both roles are jointly optimized end-to-end using task-success rewards. Through world rehearsal, the policy internalizes the relationship between actions and their environment responses in its parameters, yielding an agent world model that directly supports decision making. Across BFCL-v4, tau^2-Bench, VitaBench, and FinMCP-Bench, EnvACE achieves strong and transferable performance, outperforming environment-scaling baselines in the overall evaluation. Controlled studies further show that world rehearsal consistently improves policy learning across model scales. At test time, the internalized world model enables private rehearsal before committed execution, yielding further gains under a moderate rehearsal budget without additional external interaction. Our findings establish world rehearsal as a new path toward scaling LLM agent training beyond the constraints of external environments. Our code is publicly available at https://github.com/Within-yao/EnvACE.",
+      "authors": [
+        "Zishan Xu",
+        "Zhiyuan Yao",
+        "Yuxin Chen",
+        "Yifu Guo",
+        "Zhengxi Lu",
+        "Yuquan Lu",
+        "Jinyang Huang",
+        "Yan Xu",
+        "Yasheng Wang",
+        "Weinan Zhang",
+        "Xingshan Zeng",
+        "Weiwen Liu"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-08-06T15:54:36+00:00",
+      "link": "https://arxiv.org/pdf/2608.06197v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 10.0,
+      "llm_evidence_en": "RL method with world rehearsal for agent training",
+      "llm_evidence_cn": "使用世界演练的强化学习方法训练智能体",
+      "llm_evidence": "使用世界演练的强化学习方法训练智能体",
+      "canonical_evidence": "使用世界演练的强化学习方法训练智能体",
+      "llm_tldr_en": "Replaces external environment interaction with world rehearsal where the policy generates environment responses, enabling end-to-end RL training without costly simulators.",
+      "llm_tldr_cn": "针对训练长时程工具使用智能体需依赖昂贵的外部环境或模拟器的问题，提出EnvACE方法，通过让策略交替执行动作和扮演环境生成响应（世界演练），并利用任务成功奖励进行端到端强化学习。实验表明，该方法无需真实环境即可有效训练智能体，降低了训练成本。世界演练为语言基世界模型提供了新范式。",
+      "llm_tldr": "针对训练长时程工具使用智能体需依赖昂贵的外部环境或模拟器的问题，提出EnvACE方法，通过让策略交替执行动作和扮演环境生成响应（世界演练），并利用任务成功奖励进行端到端强化学习。实验表明，该方法无需真实环境即可有效训练智能体，降低了训练成本。世界演练为语言基世界模型提供了新范式。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "reinforcement learning applied to autonomous agents",
+      "matched_requirement_id": "req-3",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2608.04436v1",
+      "source": "arxiv",
+      "title": "ToolArtist: Tool-Using Unified Multimodal Models for Agentic Image Generation",
+      "abstract": "Text-to-image (T2I) models can produce visually compelling images, yet they remain limited on open-world tasks that require complex semantic understanding, multi-step reasoning, and the integration of external world knowledge. Existing efforts introduce agent capabilities into image generation, but they either prescribe a fixed workflow or place only a subset of the open-world image generation process under agent control. Consequently, reasoning, tool invocation, and image generation are not coordinated by a single policy. We propose ToolArtist, a fully agentic image generation model obtained by post-training a Unified Multimodal Model (UMM). ToolArtist dynamically orchestrates reasoning, external tool use, and native image generation within one unified policy. During Supervised Fine-Tuning (SFT), we equip a teacher agent with search tools alongside an image-generation tool. We then convert the collected trajectories into a UMM compatible format, where the image-generation tool is concealed while the resulting generated images are retained. During Reinforcement Learning (RL), we develop an agentic RL infrastructure for UMMs and introduce Reason-Act-Draw GRPO (RAD-GRPO), which uses complementary intent and quality rewards to jointly optimize the model. Experiments show that placing the entire open-world image-generation process under an agent policy consistently outperforms approaches with fixed pipelines or only partially agent-controlled components. We release the training data and the complete post-training infrastructure.",
+      "authors": [
+        "Jiahao Zhao",
+        "Xiaomin Yu",
+        "Zhongxiang Sun",
+        "Fengwei Teng",
+        "Chengwei Qin",
+        "Xiaobin Hu",
+        "Jun Xu",
+        "Shuicheng Yan"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV"
+      ],
+      "published": "2026-08-05T04:26:19+00:00",
+      "link": "https://arxiv.org/pdf/2608.04436v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "unified multimodal model for agentic multimodal processing",
+      "llm_evidence_cn": "用于智能体多模态处理的统一多模态模型",
+      "llm_evidence": "用于智能体多模态处理的统一多模态模型",
+      "canonical_evidence": "用于智能体多模态处理的统一多模态模型",
+      "llm_tldr_en": "Proposes ToolArtist, an agentic model that combines reasoning, tool use, and image generation within a single multimodal model, enabling dynamic orchestration for open-world multimodal tasks.",
+      "llm_tldr_cn": "针对文本到图像模型在开放世界任务中缺乏复杂语义理解和外部知识整合的问题，提出ToolArtist，通过对统一多模态模型进行后训练，使其能够动态协调推理、工具调用和图像生成。实验表明，该智能体模型在多步推理和知识密集型图像生成任务上表现优异。该工作为多模态智能体提供了端到端的生成方案。",
+      "llm_tldr": "针对文本到图像模型在开放世界任务中缺乏复杂语义理解和外部知识整合的问题，提出ToolArtist，通过对统一多模态模型进行后训练，使其能够动态协调推理、工具调用和图像生成。实验表明，该智能体模型在多步推理和知识密集型图像生成任务上表现优异。该工作为多模态智能体提供了端到端的生成方案。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "agent that processes multiple modalities",
+      "matched_requirement_id": "req-2",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2608.04588v1",
+      "source": "arxiv",
+      "title": "EASy: Towards Efficient LLM-Based Agentic System",
+      "abstract": "Agentic systems have emerged as a promising paradigm for solving complex tasks by coordinating specialized LLM-based agents. However, most existing systems primarily optimize task success while giving limited consideration to execution efficiency under practical constraints such as executor capability and computational cost. Existing router-based methods have limited ability to reason over rich, evolving task contexts, multi-step dependencies, and intermediate execution feedback, and often generalize poorly to unseen executors. We propose EASy, a trainable agentic framework that jointly optimizes task performance and computational efficiency through reinforcement learning. EASy equips an LLM-based orchestrator with explicit knowledge of the capability and cost profiles of heterogeneous executors, enabling context-sensitive coordination beyond performance-only routing. It further introduces a milestone-plan-act workflow that decomposes complex tasks into manageable milestones, constructs dependency-aware execution graphs, assigns suitable executors, and parallelizes independent steps while adapting subsequent decisions to intermediate outcomes. To train the orchestrator, we develop a tree-structured rollout procedure that explores alternative milestone decompositions and execution plans, together with multi-component rewards that capture task correctness, execution efficiency, and trajectory completeness. Extensive experiments on mathematical reasoning, embodied decision-making, and deep research benchmarks show that EASy consistently achieves stronger performance-efficiency trade-offs than strong agentic baselines.",
+      "authors": [
+        "Junnan Liu",
+        "Linhao Luo",
+        "Thuy-Trang Vu",
+        "Gholamreza Haffari"
+      ],
+      "primary_category": "cs.CL",
+      "categories": [
+        "cs.CL",
+        "cs.AI"
+      ],
+      "published": "2026-08-05T08:50:36+00:00",
+      "link": "https://arxiv.org/pdf/2608.04588v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "uses reinforcement learning to jointly optimize task performance and efficiency in agentic systems",
+      "llm_evidence_cn": "使用强化学习联合优化智能体系统的任务性能和效率",
+      "llm_evidence": "使用强化学习联合优化智能体系统的任务性能和效率",
+      "canonical_evidence": "使用强化学习联合优化智能体系统的任务性能和效率",
+      "llm_tldr_en": "Proposes EASy, a trainable agentic framework that applies reinforcement learning to an LLM-based orchestrator to jointly optimize task performance and computational efficiency by considering executor capability and cost profiles.",
+      "llm_tldr_cn": "针对现有LLM智能体系统忽视执行效率的问题，提出EASy，将强化学习应用于LLM编排器，使其在任务规划时显式权衡执行器的能力与成本，通过在线学习联合优化完成质量和效率，在保持高成功率的同时显著降低计算开销，为资源受限下的智能体系统设计提供了实用方案。",
+      "llm_tldr": "针对现有LLM智能体系统忽视执行效率的问题，提出EASy，将强化学习应用于LLM编排器，使其在任务规划时显式权衡执行器的能力与成本，通过在线学习联合优化完成质量和效率，在保持高成功率的同时显著降低计算开销，为资源受限下的智能体系统设计提供了实用方案。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "reinforcement learning applied to autonomous agents",
+      "matched_requirement_id": "req-3",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2608.05446v1",
+      "source": "arxiv",
+      "title": "EvoHarness-RL: Learning Self-Evolving Runtime Harness for Long-Horizon LLM Agents",
+      "abstract": "Long-horizon LLM agents increasingly rely on external execution support to maintain state, track progress, invoke tools, verify outcomes, and reuse experience across interactions. However, effective harness use raises two coupled challenges: state formation from noisy interaction traces and runtime control over external-state access. Existing agents usually handle both through prompts, heuristics, or domain-specific conventions, leaving the external workspace and its usage policy manually engineered. To address this, we study the problem of harness policy learning, where agents learn harness policies offline and deploy them to construct and update external harness state online during runtime task execution. We introduce EvoHarness-RL, which exposes Belief, Progress, and Experience (BPE) as policy-facing harness state. Supervised harness fine-tuning teaches the base agent the harness action space and how to construct useful external state, while cost-aware GRPO explores coordination policies to selectively read, update, and consolidate that state during long-horizon interaction. Instantiated on ALFWorld with a Qwen3-8B LLM, EvoHarness-RL reaches 96.9% success and reveals two key dynamics: harness annealing, where training internalizes recurring harness-use patterns into the model policy and shifts the agent from frequent harness calls toward selective external-state access, and harness evolution, where progress updates and experience consolidation refine the harness into a compact, task-adaptive state substrate. These results suggest that long-horizon agents benefit from trainable policies for constructing and coordinating with external harness workspaces, beyond simply adding stronger tools or larger memories.",
+      "authors": [
+        "Xuying Ning",
+        "Dongqi Fu",
+        "Tianxin Wei",
+        "Hanqing Zeng",
+        "Yuanchen Bei",
+        "Bingxuan Li",
+        "Zihao Li",
+        "Qifan Wang",
+        "Xiang Shen",
+        "Yifan Wu",
+        "Jiayi Liu",
+        "Hong Li",
+        "Yinglong Xia",
+        "Xiangjun Fan",
+        "Hanghang Tong",
+        "Jingrui He"
+      ],
+      "primary_category": "cs.LG",
+      "categories": [
+        "cs.LG",
+        "cs.CL"
+      ],
+      "published": "2026-08-05T22:29:20+00:00",
+      "link": "https://arxiv.org/pdf/2608.05446v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "harness as external memory mechanism for agents",
+      "llm_evidence_cn": "作为智能体外部记忆机制的运行时支撑",
+      "llm_evidence": "作为智能体外部记忆机制的运行时支撑",
+      "canonical_evidence": "作为智能体外部记忆机制的运行时支撑",
+      "llm_tldr_en": "Addresses harness policy learning for long-horizon LLM agents, where agents learn to maintain external harness state online, implementing a memory mechanism that reuses experience across interactions.",
+      "llm_tldr_cn": "针对长时程LLM智能体依赖外部支撑来维护状态和重用经验的问题，提出EvoHarness-RL方法，让智能体离线学习支撑策略并在运行时在线构建和更新外部支撑状态，从而形成一种记忆机制。实验表明该方法能有效管理状态并提升任务执行性能。",
+      "llm_tldr": "针对长时程LLM智能体依赖外部支撑来维护状态和重用经验的问题，提出EvoHarness-RL方法，让智能体离线学习支撑策略并在运行时在线构建和更新外部支撑状态，从而形成一种记忆机制。实验表明该方法能有效管理状态并提升任务执行性能。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "memory mechanisms for intelligent agents",
+      "matched_requirement_id": "req-1",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "quick_skim": []
+}

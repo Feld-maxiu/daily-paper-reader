@@ -1,0 +1,89 @@
+{
+  "date": "20260807",
+  "date_label": "",
+  "generated_at": "2026-08-07 21:09:03 UTC",
+  "recommend_exists": true,
+  "run_count": 1,
+  "papers": [
+    {
+      "paper_id": "2608.04830v1",
+      "route": "202608/07/2608.04830v1-contextweave-a-real-world-workflow-benchmark",
+      "title": "ContextWeave: A Real-World Workflow Benchmark",
+      "section": "deep",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 10.0,
+      "evidence": "评估智能体记忆召回对性能提升的基准",
+      "first_seen_at": "2026-08-07 21:09:03 UTC",
+      "updated_at": "2026-08-07 21:09:03 UTC"
+    },
+    {
+      "paper_id": "2608.06197v1",
+      "route": "202608/07/2608.06197v1-envace-internalizing-environment-dynamics-via-world-rehearsal-for-agentic-reinforcement-learning",
+      "title": "EnvACE: Internalizing Environment Dynamics via World Rehearsal for Agentic Reinforcement Learning",
+      "section": "deep",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 10.0,
+      "evidence": "使用世界演练的强化学习方法训练智能体",
+      "first_seen_at": "2026-08-07 21:09:03 UTC",
+      "updated_at": "2026-08-07 21:09:03 UTC"
+    },
+    {
+      "paper_id": "2608.04436v1",
+      "route": "202608/07/2608.04436v1-toolartist-tool-using-unified-multimodal-models-for-agentic-image-generation",
+      "title": "ToolArtist: Tool-Using Unified Multimodal Models for Agentic Image Generation",
+      "section": "deep",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 9.0,
+      "evidence": "用于智能体多模态处理的统一多模态模型",
+      "first_seen_at": "2026-08-07 21:09:03 UTC",
+      "updated_at": "2026-08-07 21:09:03 UTC"
+    },
+    {
+      "paper_id": "2608.04588v1",
+      "route": "202608/07/2608.04588v1-easy-towards-efficient-llm-based-agentic-system",
+      "title": "EASy: Towards Efficient LLM-Based Agentic System",
+      "section": "deep",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 9.0,
+      "evidence": "使用强化学习联合优化智能体系统的任务性能和效率",
+      "first_seen_at": "2026-08-07 21:09:03 UTC",
+      "updated_at": "2026-08-07 21:09:03 UTC"
+    },
+    {
+      "paper_id": "2608.05446v1",
+      "route": "202608/07/2608.05446v1-evoharness-rl-learning-self-evolving-runtime-harness-for-long-horizon-llm-agents",
+      "title": "EvoHarness-RL: Learning Self-Evolving Runtime Harness for Long-Horizon LLM Agents",
+      "section": "deep",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 9.0,
+      "evidence": "作为智能体外部记忆机制的运行时支撑",
+      "first_seen_at": "2026-08-07 21:09:03 UTC",
+      "updated_at": "2026-08-07 21:09:03 UTC"
+    }
+  ]
+}
