@@ -1,6 +1,9 @@
 * <a class="dpr-sidebar-root-link" href="#/">首页</a>
 * <a class="dpr-sidebar-root-link dpr-sidebar-noactive-link" href="javascript:void(0)" data-dpr-hash="#/tutorial/README">使用教程</a>
 * Daily Papers
+  * 2026-08-08 <!--dpr-date:20260808-->
+    * 精读区
+      * <a class="dpr-sidebar-item-link dpr-sidebar-item-structured" href="#/202608/08/2608.04574v1-when-memory-lies-an-empirical-study-of-spatial-memory-staleness-in-vlm-agents" data-sidebar-item="{&quot;title&quot;: &quot;When Memory Lies: An Empirical Study of Spatial Memory Staleness in VLM Agents&quot;, &quot;link&quot;: &quot;https://arxiv.org/abs/2608.04574v1-when-memory-lies-an-empirical-study-of-spatial-memory-staleness-in-vlm-agents&quot;, &quot;score&quot;: &quot;9.0&quot;, &quot;tags&quot;: [{&quot;kind&quot;: &quot;query&quot;, &quot;label&quot;: &quot;agent-memory&quot;}], &quot;evidence&quot;: &quot;对记忆增强VLM智能体中空间记忆陈旧性的实证研究&quot;}">When Memory Lies: An Empirical Study of Spatial Memory Staleness in VLM Agents</a>
   * 2026-08-07 <!--dpr-date:20260807-->
     * 精读区
       * <a class="dpr-sidebar-item-link dpr-sidebar-item-structured" href="#/202608/07/2608.04830v1-contextweave-a-real-world-workflow-benchmark" data-sidebar-item="{&quot;title&quot;: &quot;ContextWeave: A Real-World Workflow Benchmark&quot;, &quot;link&quot;: &quot;https://arxiv.org/abs/2608.04830v1-contextweave-a-real-world-workflow-benchmark&quot;, &quot;score&quot;: &quot;10.0&quot;, &quot;tags&quot;: [{&quot;kind&quot;: &quot;query&quot;, &quot;label&quot;: &quot;agent-memory&quot;}], &quot;evidence&quot;: &quot;评估智能体记忆召回对性能提升的基准&quot;}">ContextWeave: A Real-World Workflow Benchmark</a>

@@ -41,17 +41,17 @@
 <section class="dpr-home-dashboard-card dpr-home-report-card">
   <div class="dpr-home-dashboard-header">
     <div>
-      <span class="dpr-home-dashboard-kicker">2026-08-07</span>
+      <span class="dpr-home-dashboard-kicker">2026-08-08</span>
       <h3 class="dpr-home-dashboard-title">今日汇总</h3>
     </div>
-    <strong class="dpr-home-dashboard-count">共 5 篇</strong>
+    <strong class="dpr-home-dashboard-count">共 1 篇</strong>
   </div>
   <dl class="dpr-home-dashboard-stats">
     <div class="dpr-home-dashboard-stat"><dt>累计更新</dt><dd>1 次</dd></div>
-    <div class="dpr-home-dashboard-stat"><dt>精读</dt><dd>5</dd></div>
+    <div class="dpr-home-dashboard-stat"><dt>精读</dt><dd>1</dd></div>
     <div class="dpr-home-dashboard-stat"><dt>速读</dt><dd>0</dd></div>
   </dl>
-  <p class="dpr-home-dashboard-body">最近更新：2026-08-07 21:09:03 UTC<br>状态：成功</p>
+  <p class="dpr-home-dashboard-body">最近更新：2026-08-08 20:15:52 UTC<br>状态：成功</p>
 </section>
 <section class="dpr-home-dashboard-card dpr-home-brief-card">
   <div class="dpr-home-dashboard-header">
@@ -62,9 +62,9 @@
     <strong class="dpr-home-dashboard-count">AI</strong>
   </div>
   <div class="dpr-home-dashboard-body">
-<p>今日精读两篇满分论文，聚焦工作流基准与智能体世界模型。</p>
-<p>其中，ContextWeave 提供真实场景的工作流评测框架，EnvACE 提出让智能体通过世界预演内化环境动态。</p>
-<p>建议关注如何将这类环境内化机制引入实际工作流，构建更鲁棒的自主智能系统。</p>
+<p>今日精读高分论文，揭秘VLM智能体为何会因“空间记忆过期”而迷路。</p>
+<p>核心发现：环境变化后，模型仍固守陈旧记忆，空间幻觉导致导航严重失误。</p>
+<p>不妨给你的AI助手加个“刷新记忆”的按钮，别让过去的印象骗了它。</p>
   </div>
 </section>
 <section class="dpr-home-dashboard-card dpr-home-deep-card">
@@ -73,12 +73,12 @@
       <span class="dpr-home-dashboard-kicker">今日累计</span>
       <h3 class="dpr-home-dashboard-title">精读推荐</h3>
     </div>
-    <strong class="dpr-home-dashboard-count">5 篇</strong>
+    <strong class="dpr-home-dashboard-count">1 篇</strong>
   </div>
   <div class="dpr-home-dashboard-body">
-<ul class="dpr-home-dashboard-paper-list"><li><span class="dpr-home-dashboard-paper-title" title="ContextWeave: A Real-World Workflow Benchmark">ContextWeave: A Real-World Workflow Benchmark</span></li><li><span class="dpr-home-dashboard-paper-title" title="EnvACE: Internalizing Environment Dynamics via World Rehearsal for Agentic Reinforcement Learning">EnvACE: Internalizing Environment Dynamics via World Rehearsal for Agentic Reinforcement Learning</span></li><li><span class="dpr-home-dashboard-paper-title" title="ToolArtist: Tool-Using Unified Multimodal Models for Agentic Image Generation">ToolArtist: Tool-Using Unified Multimodal Models for Agentic Image Generation</span></li></ul>
+<ul class="dpr-home-dashboard-paper-list"><li><span class="dpr-home-dashboard-paper-title" title="When Memory Lies: An Empirical Study of Spatial Memory Staleness in VLM Agents">When Memory Lies: An Empirical Study of Spatial Memory Staleness in VLM Agents</span></li></ul>
   </div>
-  <div class="dpr-home-dashboard-tags"><span class="dpr-home-dashboard-tag">agent-memory <strong>5</strong></span></div>
+  <div class="dpr-home-dashboard-tags"><span class="dpr-home-dashboard-tag">agent-memory <strong>1</strong></span></div>
 </section>
 <section class="dpr-home-dashboard-card dpr-home-skim-card">
   <div class="dpr-home-dashboard-header">

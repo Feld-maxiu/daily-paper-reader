@@ -1,0 +1,25 @@
+{
+  "date": "20260808",
+  "date_label": "",
+  "generated_at": "2026-08-08 20:15:52 UTC",
+  "recommend_exists": true,
+  "run_count": 1,
+  "papers": [
+    {
+      "paper_id": "2608.04574v1",
+      "route": "202608/08/2608.04574v1-when-memory-lies-an-empirical-study-of-spatial-memory-staleness-in-vlm-agents",
+      "title": "When Memory Lies: An Empirical Study of Spatial Memory Staleness in VLM Agents",
+      "section": "deep",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 9.0,
+      "evidence": "对记忆增强VLM智能体中空间记忆陈旧性的实证研究",
+      "first_seen_at": "2026-08-08 20:15:52 UTC",
+      "updated_at": "2026-08-08 20:15:52 UTC"
+    }
+  ]
+}
