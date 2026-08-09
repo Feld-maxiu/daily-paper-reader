@@ -1,0 +1,304 @@
+{
+  "mode": "standard",
+  "generated_at": "2026-08-09T19:57:30.785597+00:00",
+  "stats": {
+    "mode": "standard",
+    "tag_count": 1,
+    "deep_divecandidates": 4,
+    "deep_cap": 6,
+    "deep_selected": 4,
+    "quick_candidates": 3,
+    "quick_skim_target": 11,
+    "quick_selected": 3
+  },
+  "deep_dive": [
+    {
+      "id": "2608.02508v2",
+      "source": "arxiv",
+      "title": "RoMeRL: Balancing Feedback Coverage and the Memory-Reward Trap in Self-Evolving Agent Memory via Reduced-Order Utility States",
+      "abstract": "Learning-based memory systems for self-evolving LLM agents face two tightly coupled challenges. First, trajectory-indexed utilities grow with the interaction history, thereby dispersing limited feedback over an ever-expanding state space. Second, because trajectory-level rewards are jointly assigned to co-retrieved memories, irrelevant experiences may receive misleading utility updates and consequently enter the memory-reward trap. To address these challenges, we introduce Reduced-Order Memory Reinforcement Learning (RoMeRL), which represents the growing trajectory-indexed utility space using a fixed-dimensional per-task memory state factorized by outcome polarity and memory dynamics. RoMeRL incorporates new experiences through a fixed set of semantic coordinates whose contents are updated or replaced over time, thereby concentrating feedback over a bounded utility support. Theoretically, we show that this reduced-order parameterization increases the average feedback received by each utility coordinate and characterize the steady-state occupancy of erroneous coordinates under a generic coordinate-transition model. Empirically, across ALFWorld and LifelongAgentBench, RoMeRL improves task performance, reduces the Cold-Q ratio by 80.0%, increases feedback density by approximately 6.0 times, reduces the maintained memory size by 84.4%, and cuts LLM calls by 21.1%. These results show that reduced-order utility states support efficient self-evolving agent memory while limiting persistent reward contamination. Code is available at: https://github.com/YOUNG-fnxm/RoMeRL",
+      "authors": [
+        "Yi Yang",
+        "Zhennan Chen",
+        "Yihong Zhuang",
+        "Tiehan Fan",
+        "Yinan Chen",
+        "Jian Li",
+        "Jian Yang",
+        "Ying Tai"
+      ],
+      "primary_category": "cs.LG",
+      "categories": [
+        "cs.LG",
+        "cs.CL"
+      ],
+      "published": "2026-08-03T17:07:50+00:00",
+      "link": "https://arxiv.org/pdf/2608.02508v2",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 10.0,
+      "llm_evidence_en": "learning-based memory systems with Reduced-Order Memory Reinforcement Learning",
+      "llm_evidence_cn": "基于学习的记忆系统与降阶记忆强化学习",
+      "llm_evidence": "基于学习的记忆系统与降阶记忆强化学习",
+      "canonical_evidence": "基于学习的记忆系统与降阶记忆强化学习",
+      "llm_tldr_en": "Addresses challenges in learning-based memory for LLM agents by introducing RoMeRL, which uses a fixed-dimensional per-task memory state to prevent utility dispersion and the memory-reward trap, improving feedback efficiency.",
+      "llm_tldr_cn": "针对自进化LLM智能体记忆系统中反馈覆盖稀疏和记忆-奖励陷阱问题，该论文提出RoMeRL方法，采用按结果极性和记忆动力学分解的固定维度任务内存状态，取代轨迹索引的效用空间，通过降阶状态和结构化效用更新，实验证明能更有效地学习记忆策略，避免无关经验误导。",
+      "llm_tldr": "针对自进化LLM智能体记忆系统中反馈覆盖稀疏和记忆-奖励陷阱问题，该论文提出RoMeRL方法，采用按结果极性和记忆动力学分解的固定维度任务内存状态，取代轨迹索引的效用空间，通过降阶状态和结构化效用更新，实验证明能更有效地学习记忆策略，避免无关经验误导。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "memory mechanisms for intelligent agents",
+      "matched_requirement_id": "req-1",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2608.01759v1",
+      "source": "arxiv",
+      "title": "Benign Alone, Harmful Together: Exploiting Experience Composition in Self-Evolving LLM Agents",
+      "abstract": "Self-evolving large language model agents improve their capabilities by distilling interaction trajectories into persistent experiences. Yet this mechanism introduces a new safety risk: experiences that are benign in isolation may jointly weaken an agent's safety boundary when accumulated and reused across sessions. Existing memory attacks typically require direct memory access or induce explicitly malicious records, limiting their stealthiness and applicability. We propose EvoBreak, an experience-conditioned sequential attack that operates through individually benign attack-stage tasks and induced experiences. EvoBreak repeatedly observes the experiences distilled by the victim, identifies uncovered target-relevant requirements, and adaptively acquires complementary experiences before reformulating the final query to activate them jointly. To support training, we introduce BreakGym, a structure-first synthesis pipeline that generates decomposable safety-sensitive targets with diverse dependency structures. EvoBreak is optimized using rejection-sampling supervised fine-tuning and Hint-guided GRPO. Experiments across self-evolving frameworks, victim backbones, pre-evolution domains, and safety benchmarks demonstrate that EvoBreak consistently outperforms existing attacks while maintaining high benignness. These results reveal benign experience composition as a persistent attack surface in self-evolving agents.",
+      "authors": [
+        "Bingyu Yan",
+        "Xiaoming Zhang",
+        "Chaozhuo Li",
+        "Ziyi Zhou",
+        "Yirui Qi",
+        "Litian Zhang"
+      ],
+      "primary_category": "cs.CR",
+      "categories": [
+        "cs.CR"
+      ],
+      "published": "2026-08-03T06:28:21+00:00",
+      "link": "https://arxiv.org/pdf/2608.01759v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "Studies memory safety in self-evolving agents with persistent experience storage",
+      "llm_evidence_cn": "研究自进化智能体中持久化经验存储的内存安全性",
+      "llm_evidence": "研究自进化智能体中持久化经验存储的内存安全性",
+      "canonical_evidence": "研究自进化智能体中持久化经验存储的内存安全性",
+      "llm_tldr_en": "Uncovers a safety risk in self-evolving LLM agents: accumulated benign experiences can jointly weaken safety boundaries, and proposes EvoBreak, an experience-conditioned sequential attack.",
+      "llm_tldr_cn": "揭示自进化LLM智能体中一项安全隐患：孤立的良性经验经累积和跨会话复用可能共同削弱安全边界。提出EvoBreak攻击方法，通过串联良性阶段性任务和诱导经验，在不直接修改内存的情况下逐步攻破智能体防御。实验表明该方法隐蔽有效，暴露了智能体记忆机制的安全风险。",
+      "llm_tldr": "揭示自进化LLM智能体中一项安全隐患：孤立的良性经验经累积和跨会话复用可能共同削弱安全边界。提出EvoBreak攻击方法，通过串联良性阶段性任务和诱导经验，在不直接修改内存的情况下逐步攻破智能体防御。实验表明该方法隐蔽有效，暴露了智能体记忆机制的安全风险。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "memory mechanisms for intelligent agents",
+      "matched_requirement_id": "req-1",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2608.01881v1",
+      "source": "arxiv",
+      "title": "Hear, Invoke, and Understand: A Skill-Calling Multimodal Agent for Large Audio Language Models",
+      "abstract": "Complex acoustic problems may require models to perform acoustic operations, interact with external tools and reason over the resulting textual or processed-audio observations rather than answer directly from a fixed audio input. We study such problems as tool-interactive audio reasoning and develop SpeechAgent-R, an audio agent that coordinates its intrinsic multimodal understanding with external skills and tools. To support this capability, we construct HIU-Corpus, comprising 65,492 interaction trajectories and 507.6 hours of audio across 24 tasks, 8 skills and 9 tools. SpeechAgent-R first learns structured interaction behaviors through trajectory-based supervised fine-tuning and then improves its decisions through multi-turn reinforcement learning. We further introduce HIU-Bench to jointly evaluate task performance, interaction quality and generalization to diverse task settings. It contains 1,395 samples across 56 tasks, including in-distribution (ID) and out-of-distribution (OOD) splits with substantial shifts in tool usage and workflow composition. SpeechAgent-R achieves 84.17 on ID tasks and 70.94 on OOD tasks, improving over the base model under the same agent harness by 15.40 and 14.23 points. These results demonstrate that learning skill and tool coordination improves audio agents' ability to handle diverse task settings and adaptive tool interactions.",
+      "authors": [
+        "Yuwen Wang",
+        "Tian-Hao Zhang",
+        "Minghao Cai",
+        "Yilin Ren",
+        "Ziyang Jiang",
+        "Xin Wang",
+        "Zhichao Wang",
+        "Pan Zhou",
+        "Kun Zhan",
+        "Xinyuan Qian"
+      ],
+      "primary_category": "cs.MM",
+      "categories": [
+        "cs.MM",
+        "cs.AI"
+      ],
+      "published": "2026-08-03T08:24:54+00:00",
+      "link": "https://arxiv.org/pdf/2608.01881v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "multimodal audio agent coordinating understanding with external tools",
+      "llm_evidence_cn": "协调理解与外部工具的多模态音频智能体",
+      "llm_evidence": "协调理解与外部工具的多模态音频智能体",
+      "canonical_evidence": "协调理解与外部工具的多模态音频智能体",
+      "llm_tldr_en": "Develops SpeechAgent-R, a multimodal audio agent that performs tool-interactive audio reasoning, combining intrinsic audio understanding with external skills via supervised fine-tuning and multi-turn self-improvement.",
+      "llm_tldr_cn": "针对复杂声学问题需要工具交互和推理的挑战，该论文提出SpeechAgent-R，一种多模态音频智能体，通过构建包含6.5万条交互轨迹的HIU-Corpus数据集进行监督微调，并采用多轮自改进，使得智能体能够协调内在多模态理解与外部工具调用，在音频推理任务中取得优异表现。",
+      "llm_tldr": "针对复杂声学问题需要工具交互和推理的挑战，该论文提出SpeechAgent-R，一种多模态音频智能体，通过构建包含6.5万条交互轨迹的HIU-Corpus数据集进行监督微调，并采用多轮自改进，使得智能体能够协调内在多模态理解与外部工具调用，在音频推理任务中取得优异表现。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "agent that processes multiple modalities",
+      "matched_requirement_id": "req-2",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2608.04341v1",
+      "source": "arxiv",
+      "title": "Continuous Improvement and Parallel Autonomous Exploration: An LLM-Agent Framework for Searching Large Solution Spaces",
+      "abstract": "We present a framework that gives LLM agents two mechanisms for searching large solution spaces autonomously. First, a leaderboard scored on held-out data acts as a reward signal that drives each agent to refine its solutions over repeated submissions, a loop that operates even with a single agent. Second, the framework enables running many agents in parallel, fully autonomously, with no human in the loop: agents independently analyze, survey methods, implement, self-evaluate, submit, and revise, while a moderator agent handles only logistics. Running agents in parallel under the shared reward broadens the explored region of the solution space rather than refining the single seeded paradigm. We instantiate the framework on product-to-catalog matching (a core e-commerce retrieval task with a large, category-structured solution space), posed as selective prediction with a precision-coverage operating point. A single agent refines within its seeded paradigm, whereas parallel autonomous agents surface qualitatively different solutions. On this testbed, best qualified coverage (>=95% P@1 per category) reaches 47.8-57.4% with a single agent and 62.8-69.4% with five, against a 33.3% baseline. Our contribution is the framework itself: a continuous-improvement reward loop and a substrate for fully autonomous parallel exploration, backed by case-study evidence.",
+      "authors": [
+        "Dulmini Hettiarachchi",
+        "Andre Rusli",
+        "Julio Christian Young",
+        "Sho Akiyama"
+      ],
+      "primary_category": "cs.MA",
+      "categories": [
+        "cs.MA"
+      ],
+      "published": "2026-08-05T01:40:25+00:00",
+      "link": "https://arxiv.org/pdf/2608.04341v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "framework with leaderboard reward drives agent refinement and parallel exploration",
+      "llm_evidence_cn": "利用排行榜奖励驱动智能体持续改进与并行探索的框架",
+      "llm_evidence": "利用排行榜奖励驱动智能体持续改进与并行探索的框架",
+      "canonical_evidence": "利用排行榜奖励驱动智能体持续改进与并行探索的框架",
+      "llm_tldr_en": "This paper presents a framework enabling LLM agents to autonomously explore large solution spaces via a leaderboard reward signal and parallel multi-agent search, iteratively improving solutions without human intervention.",
+      "llm_tldr_cn": "本文提出一个让大语言模型智能体自主搜索大解空间的框架，通过排行榜评分作为奖励信号驱动单智能体持续改进，并支持多智能体并行探索，无需人工干预即可迭代优化解决方案。该框架拓宽了搜索范围，提升了解决方案质量，为基于强化信号的自助式智能体研究提供了新范式。",
+      "llm_tldr": "本文提出一个让大语言模型智能体自主搜索大解空间的框架，通过排行榜评分作为奖励信号驱动单智能体持续改进，并支持多智能体并行探索，无需人工干预即可迭代优化解决方案。该框架拓宽了搜索范围，提升了解决方案质量，为基于强化信号的自助式智能体研究提供了新范式。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "reinforcement learning applied to autonomous agents",
+      "matched_requirement_id": "req-3",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "quick_skim": [
+    {
+      "id": "2608.06153v1",
+      "source": "arxiv",
+      "title": "Learning Globally Reusable Skills for Coding Agents",
+      "abstract": "Automated skill evolution enables Large Language Model (LLM) agents to continuously improve without expensive retraining. However, existing approaches typically treat skill evolution as a sequence of local updates, overlooking relationships among skills and often producing overfitted skill updates that fail to generalize across tasks. We propose GSE, a globalized skill evolution framework that jointly optimizes skill compatibility and skill generalization. To preserve consistency across the skill bank, GSE maintains a Skill Relation Graph (SRG) that explicitly models and co-evolves inter-skill relationships. To improve generalization, GSE performs cluster-based skill consolidation to abstract reusable capabilities from local updates and employs replay-driven verification to prevent overfitting and behavioral regressions. We evaluate GSE on two representative software engineering tasks: bug-revealing test generation and false-positive bug report filtering. Across two state-of-the-art coding agents, OpenHands and mini-SWE-agent, GSE consistently achieves the best precision, recall, and F1-score. Compared with existing evolution techniques, GSE improves precision and recall by 6.1%~34.1% and 31.8%~180.0% for test generation, and by 15.4%~96.4% and 13.1%~19.8% for false-positive filtering. Deployment on an internal industrial agent further yields a 61.4% improvement in F1-score, demonstrating the effectiveness and generalizability of GSE for evolving effective skills.",
+      "authors": [
+        "Chen Yang",
+        "Jiashuo Tian",
+        "Ziqi Wang",
+        "Xinyin Liu",
+        "Meiru Ye",
+        "Junjie Chen"
+      ],
+      "primary_category": "cs.SE",
+      "categories": [
+        "cs.SE",
+        "cs.AI"
+      ],
+      "published": "2026-08-06T15:19:56+00:00",
+      "link": "https://arxiv.org/pdf/2608.06153v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "Skill evolution framework as memory augmentation, storing and reusing skills across tasks",
+      "llm_evidence_cn": "技能演化框架作为记忆增强，跨任务存储和重用技能",
+      "llm_evidence": "技能演化框架作为记忆增强，跨任务存储和重用技能",
+      "canonical_evidence": "技能演化框架作为记忆增强，跨任务存储和重用技能",
+      "llm_tldr_en": "GSE globally optimizes skill evolution for coding agents by maintaining a Skill Relation Graph and cluster-based consolidation to improve skill reuse and generalization.",
+      "llm_tldr_cn": "现有技能演化方法忽视技能间关系导致过拟合，提出GSE框架通过技能关系图建模和聚类巩固实现全局优化，增强技能的可复用性和泛化能力。实验表明该框架能够持续提升编码智能体性能，避免技能退化。",
+      "llm_tldr": "现有技能演化方法忽视技能间关系导致过拟合，提出GSE框架通过技能关系图建模和聚类巩固实现全局优化，增强技能的可复用性和泛化能力。实验表明该框架能够持续提升编码智能体性能，避免技能退化。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "agent with memory augmentation for better performance",
+      "matched_requirement_id": "req-6",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2608.02876v1",
+      "source": "arxiv",
+      "title": "BAP-SQL: Budget-Aware Observation Planning for Agentic Text-to-SQL",
+      "abstract": "Tool-using agents do not merely consume observations: their actions determine what arrives next. In agentic text-to-SQL, a broad query can spend context and database work before useful evidence appears, while post-hoc compression cannot recover omitted rows or expended work. We present BAP-SQL, which treats observation formation as a budget-control stage: it estimates query risk, rewrites SQL when useful, and delegates hard limits to an independent runtime shield. Across general 4B, specialized FINER-SQL 4B, and 7B backbones, BAP-SQL improves tight-budget success. On the primary BIRD-derived setting, it gains 3.4/3.6 percentage points over matched SFT while using 4.5/5.0% fewer tokens. Matched retraining and task-level transfer associate the gain with policy-visible planning and budget-sensitive rescue. The benefit attenuates as model capability and budget increase, reverses at the loosest setting, and does not reduce database work.",
+      "authors": [
+        "Chong Peng",
+        "Pin Qian",
+        "Su Wang",
+        "Yihang Chen",
+        "Varun Sah"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-08-03T20:55:58+00:00",
+      "link": "https://arxiv.org/pdf/2608.02876v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "budget-aware observation planning reduces context cost for agentic Text-to-SQL",
+      "llm_evidence_cn": "预算感知的观察规划降低智能体Text-to-SQL的上下文成本",
+      "llm_evidence": "预算感知的观察规划降低智能体Text-to-SQL的上下文成本",
+      "canonical_evidence": "预算感知的观察规划降低智能体Text-to-SQL的上下文成本",
+      "llm_tldr_en": "BAP-SQL introduces observation planning under budget constraints for Text-to-SQL agents, estimating query risk to preemptively filter observations, improving success rate while using fewer tokens.",
+      "llm_tldr_cn": "针对工具使用智能体因盲目观察而消耗大量上下文的问题，BAP-SQL提出预算感知的观察规划方法，通过估计查询风险主动重写SQL并限制运行时观察，在降低上下文开销的同时提升了成功率和budget利用率，为智能体的高效上下文管理提供了新思路。",
+      "llm_tldr": "针对工具使用智能体因盲目观察而消耗大量上下文的问题，BAP-SQL提出预算感知的观察规划方法，通过估计查询风险主动重写SQL并限制运行时观察，在降低上下文开销的同时提升了成功率和budget利用率，为智能体的高效上下文管理提供了新思路。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "agent with memory augmentation for better performance",
+      "matched_requirement_id": "req-6",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2608.04934v1",
+      "source": "arxiv",
+      "title": "State2State: Environment-Derived Mid-Training for LLM Agents",
+      "abstract": "Training LLM agents commonly relies on supervised fine-tuning from expert trajectories or online reinforcement learning over human-specified tasks with handcrafted verifiers. Though effective, both remain bottlenecked by externally specified tasks and supervision signals, limiting the scalability and diversity of agent training. We study an environment learning paradigm in which agents acquire interaction and manipulation capabilities solely through environment interaction, without externally specified tasks. We propose State2State, an environment-derived mid-training method that converts explored environment states into training objectives, challenging agents to reach a specified target state. By deriving tasks from environment exploration and verifying success through rule-based state matching, State2State provides scalable and verifiable training objectives without expert supervision or manual task design. Experiments on ALFWorld and ScienceWorld show that State2State improves agent performance as a standalone environment-learning stage in most settings. As initialization for downstream RL, it further improves final performance and learning efficiency, with promising evidence of cross-environment generalization.",
+      "authors": [
+        "Xuanyu Lei",
+        "Yiqi Zhu",
+        "Chenliang Li",
+        "Kaiming Liu",
+        "Peng Li",
+        "Ming Yan",
+        "Jieping Ye",
+        "Ya-Qin Zhang",
+        "Yang Liu"
+      ],
+      "primary_category": "cs.CL",
+      "categories": [
+        "cs.CL",
+        "cs.LG"
+      ],
+      "published": "2026-08-05T15:02:41+00:00",
+      "link": "https://arxiv.org/pdf/2608.04934v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "environment-derived mid-training for agents to reach target states without external tasks",
+      "llm_evidence_cn": "从环境衍生中训训练智能体以达成目标状态",
+      "llm_evidence": "从环境衍生中训训练智能体以达成目标状态",
+      "canonical_evidence": "从环境衍生中训训练智能体以达成目标状态",
+      "llm_tldr_en": "Proposes State2State, a mid-training method that derives tasks from environment exploration, teaching LLM agents to reach target states without human-specified tasks, scaling up agent training diversity.",
+      "llm_tldr_cn": "针对传统LLM智能体训练依赖外部指定任务和验证信号的问题，该论文提出State2State环境衍生中段训练方法，直接从环境探索中导出到达目标状态的训练目标，无需人工任务设计，实验表明该方法能规模化扩展智能体的交互和操控能力，为自主智能体训练提供了新范式。",
+      "llm_tldr": "针对传统LLM智能体训练依赖外部指定任务和验证信号的问题，该论文提出State2State环境衍生中段训练方法，直接从环境探索中导出到达目标状态的训练目标，无需人工任务设计，实验表明该方法能规模化扩展智能体的交互和操控能力，为自主智能体训练提供了新范式。",
+      "llm_tags": [
+        "query:agent-memory:composite"
+      ],
+      "matched_query_tag": "query:agent-memory:composite",
+      "matched_query_text": "Papers central to 智能体记忆，多模态，智能体强化学习，文本世界模型，语言世界模型, especially work that connects or combines: memory mechanisms for intelligent agents; agent that processes multiple modalities; reinforcement learning applied to autonomous agents; text-based world model for environment simulation; language-based world model for agent reasoning; agent with memory augmentation for better performance; How do text world models support language based agent simulation?.",
+      "matched_requirement_id": "req-composite-agent-memory",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    }
+  ]
+}
