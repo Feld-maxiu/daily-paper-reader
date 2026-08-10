@@ -1,0 +1,153 @@
+{
+  "date": "20260810",
+  "date_label": "",
+  "generated_at": "2026-08-10 20:15:23 UTC",
+  "recommend_exists": true,
+  "run_count": 1,
+  "papers": [
+    {
+      "paper_id": "2608.01425v1",
+      "route": "202608/10/2608.01425v1-training-small-llms-as-spatial-multi-agent-policies",
+      "title": "Training Small LLMs as Spatial Multi-Agent Policies",
+      "section": "deep",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 9.0,
+      "evidence": "在多智能体强化学习中训练基于LLM的空间合作游戏策略",
+      "first_seen_at": "2026-08-10 20:15:23 UTC",
+      "updated_at": "2026-08-10 20:15:23 UTC"
+    },
+    {
+      "paper_id": "2608.06699v1",
+      "route": "202608/10/2608.06699v1-agentpatch-coarse-to-fine-weak-task-repair-for-merging-agentic-multimodal-large-language-models",
+      "title": "AgentPatch: Coarse-to-Fine Weak-Task Repair for Merging Agentic Multimodal Large Language Models",
+      "section": "deep",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 9.0,
+      "evidence": "智能体多模态大语言模型实现多模态感知与推理",
+      "first_seen_at": "2026-08-10 20:15:23 UTC",
+      "updated_at": "2026-08-10 20:15:23 UTC"
+    },
+    {
+      "paper_id": "2608.06861v1",
+      "route": "202608/10/2608.06861v1-gated-bepo-confidence-gated-bellman-credit-assignment-for-large-language-model-agents",
+      "title": "Gated-BEPO: Confidence-Gated Bellman Credit Assignment for Large Language Model Agents",
+      "section": "deep",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 9.0,
+      "evidence": "利用经验回滚图为LLM智能体进行强化学习信用分配的方法",
+      "first_seen_at": "2026-08-10 20:15:23 UTC",
+      "updated_at": "2026-08-10 20:15:23 UTC"
+    },
+    {
+      "paper_id": "2608.07107v1",
+      "route": "202608/10/2608.07107v1-memwm-memory-augmented-text-based-world-model",
+      "title": "MemWM: Memory-Augmented Text-Based World Model",
+      "section": "deep",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 9.0,
+      "evidence": "记忆增强的文本世界模型",
+      "first_seen_at": "2026-08-10 20:15:23 UTC",
+      "updated_at": "2026-08-10 20:15:23 UTC"
+    },
+    {
+      "paper_id": "2608.07169v1",
+      "route": "202608/10/2608.07169v1-agent-memory-distillation-empowering-small-llm-agents-with-hierarchical-teacher-memory",
+      "title": "Agent Memory Distillation: Empowering Small LLM Agents with Hierarchical Teacher Memory",
+      "section": "deep",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 9.0,
+      "evidence": "用于智能体的分层记忆：工作流、子任务和函数记忆",
+      "first_seen_at": "2026-08-10 20:15:23 UTC",
+      "updated_at": "2026-08-10 20:15:23 UTC"
+    },
+    {
+      "paper_id": "2608.06503v1",
+      "route": "202608/10/2608.06503v1-toward-reliable-context-compression-for-long-horizon-agents-an-empirical-study-of-execution-instability",
+      "title": "Toward Reliable Context Compression for Long-Horizon Agents: An Empirical Study of Execution Instability",
+      "section": "deep",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 8.0,
+      "evidence": "上下文压缩作为记忆管理技术，以及TRACE框架优化压缩以提升智能体性能",
+      "first_seen_at": "2026-08-10 20:15:23 UTC",
+      "updated_at": "2026-08-10 20:15:23 UTC"
+    },
+    {
+      "paper_id": "2608.06714v1",
+      "route": "202608/10/2608.06714v1-the-optimizer-is-the-agent-reasoning-driven-search-across-prompts-programs-and-ml-workflows",
+      "title": "The Optimizer Is the Agent: Reasoning-Driven Search across Prompts, Programs, and ML Workflows",
+      "section": "quick",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 7.0,
+      "evidence": "持久记忆改进智能体优化策略",
+      "first_seen_at": "2026-08-10 20:15:23 UTC",
+      "updated_at": "2026-08-10 20:15:23 UTC"
+    },
+    {
+      "paper_id": "2608.07449v1",
+      "route": "202608/10/2608.07449v1-skillprox-self-evolving-agent-skills-via-proximal-textual-gradient-descent",
+      "title": "SkillProx: Self-Evolving Agent Skills via Proximal Textual Gradient Descent",
+      "section": "quick",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 7.0,
+      "evidence": "将程序性知识积累为技能作为智能体记忆的一种形式",
+      "first_seen_at": "2026-08-10 20:15:23 UTC",
+      "updated_at": "2026-08-10 20:15:23 UTC"
+    },
+    {
+      "paper_id": "2608.04828v1",
+      "route": "202608/10/2608.04828v1-skill-use-can-llms-actually-use-skills-in-agentic-harnesses",
+      "title": "Skill-Use: Can LLMs Actually Use Skills in Agentic Harnesses?",
+      "section": "quick",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 6.0,
+      "evidence": "评估智能体识别和使用技能的能力，技能是记忆的一种形式",
+      "first_seen_at": "2026-08-10 20:15:23 UTC",
+      "updated_at": "2026-08-10 20:15:23 UTC"
+    }
+  ]
+}

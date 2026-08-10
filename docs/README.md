@@ -41,17 +41,17 @@
 <section class="dpr-home-dashboard-card dpr-home-report-card">
   <div class="dpr-home-dashboard-header">
     <div>
-      <span class="dpr-home-dashboard-kicker">2026-08-09</span>
+      <span class="dpr-home-dashboard-kicker">2026-08-10</span>
       <h3 class="dpr-home-dashboard-title">今日汇总</h3>
     </div>
-    <strong class="dpr-home-dashboard-count">共 7 篇</strong>
+    <strong class="dpr-home-dashboard-count">共 9 篇</strong>
   </div>
   <dl class="dpr-home-dashboard-stats">
     <div class="dpr-home-dashboard-stat"><dt>累计更新</dt><dd>1 次</dd></div>
-    <div class="dpr-home-dashboard-stat"><dt>精读</dt><dd>4</dd></div>
+    <div class="dpr-home-dashboard-stat"><dt>精读</dt><dd>6</dd></div>
     <div class="dpr-home-dashboard-stat"><dt>速读</dt><dd>3</dd></div>
   </dl>
-  <p class="dpr-home-dashboard-body">最近更新：2026-08-09 20:03:37 UTC<br>状态：成功</p>
+  <p class="dpr-home-dashboard-body">最近更新：2026-08-10 20:15:23 UTC<br>状态：成功</p>
 </section>
 <section class="dpr-home-dashboard-card dpr-home-brief-card">
   <div class="dpr-home-dashboard-header">
@@ -62,9 +62,9 @@
     <strong class="dpr-home-dashboard-count">AI</strong>
   </div>
   <div class="dpr-home-dashboard-body">
-<p>今天深挖了7篇智能体相关论文，重点研读了自我进化记忆优化与组合利用经验的高分研究。</p>
-<p>核心发现是：智能体记忆更新需防“好心办坏事”陷入局部陷阱，而单独无害的经验组合起来竟能被恶意利用。</p>
-<p>想跟上智能体安全与进化前沿，可以从这组对立视角切入：既要设计更聪明的遗忘机制，也要警惕多智能体协作中的合成谬误。</p>
+<p>今日深入解读多智能体策略与模型融合修复，并速览技能进化与优化器智能体研究。</p>
+<p>最值得关注：小型大模型可高效训练为空间多智能体，而AgentPatch 用粗到细的弱任务修复解决了多模态模型合并后的能力退化。</p>
+<p>建议读者从模型融合修复入手，或追踪小模型在机器人等空间任务中的高效协作范式。</p>
   </div>
 </section>
 <section class="dpr-home-dashboard-card dpr-home-deep-card">
@@ -73,12 +73,12 @@
       <span class="dpr-home-dashboard-kicker">今日累计</span>
       <h3 class="dpr-home-dashboard-title">精读推荐</h3>
     </div>
-    <strong class="dpr-home-dashboard-count">4 篇</strong>
+    <strong class="dpr-home-dashboard-count">6 篇</strong>
   </div>
   <div class="dpr-home-dashboard-body">
-<ul class="dpr-home-dashboard-paper-list"><li><span class="dpr-home-dashboard-paper-title" title="RoMeRL: Balancing Feedback Coverage and the Memory-Reward Trap in Self-Evolving Agent Memory via Reduced-Order Utility States">RoMeRL: Balancing Feedback Coverage and the Memory-Reward Trap in Self-Evolving Agent Memory via Reduced-Order Utility States</span></li><li><span class="dpr-home-dashboard-paper-title" title="Benign Alone, Harmful Together: Exploiting Experience Composition in Self-Evolving LLM Agents">Benign Alone, Harmful Together: Exploiting Experience Composition in Self-Evolving LLM Agents</span></li><li><span class="dpr-home-dashboard-paper-title" title="Hear, Invoke, and Understand: A Skill-Calling Multimodal Agent for Large Audio Language Models">Hear, Invoke, and Understand: A Skill-Calling Multimodal Agent for Large Audio Language Models</span></li></ul>
+<ul class="dpr-home-dashboard-paper-list"><li><span class="dpr-home-dashboard-paper-title" title="Training Small LLMs as Spatial Multi-Agent Policies">Training Small LLMs as Spatial Multi-Agent Policies</span></li><li><span class="dpr-home-dashboard-paper-title" title="AgentPatch: Coarse-to-Fine Weak-Task Repair for Merging Agentic Multimodal Large Language Models">AgentPatch: Coarse-to-Fine Weak-Task Repair for Merging Agentic Multimodal Large Language Models</span></li><li><span class="dpr-home-dashboard-paper-title" title="Gated-BEPO: Confidence-Gated Bellman Credit Assignment for Large Language Model Agents">Gated-BEPO: Confidence-Gated Bellman Credit Assignment for Large Language Model Agents</span></li></ul>
   </div>
-  <div class="dpr-home-dashboard-tags"><span class="dpr-home-dashboard-tag">agent-memory <strong>4</strong></span></div>
+  <div class="dpr-home-dashboard-tags"><span class="dpr-home-dashboard-tag">agent-memory <strong>6</strong></span></div>
 </section>
 <section class="dpr-home-dashboard-card dpr-home-skim-card">
   <div class="dpr-home-dashboard-header">
@@ -89,7 +89,7 @@
     <strong class="dpr-home-dashboard-count">3 篇</strong>
   </div>
   <div class="dpr-home-dashboard-body">
-<ul class="dpr-home-dashboard-paper-list"><li><span class="dpr-home-dashboard-paper-title" title="Learning Globally Reusable Skills for Coding Agents">Learning Globally Reusable Skills for Coding Agents</span></li><li><span class="dpr-home-dashboard-paper-title" title="BAP-SQL: Budget-Aware Observation Planning for Agentic Text-to-SQL">BAP-SQL: Budget-Aware Observation Planning for Agentic Text-to-SQL</span></li><li><span class="dpr-home-dashboard-paper-title" title="State2State: Environment-Derived Mid-Training for LLM Agents">State2State: Environment-Derived Mid-Training for LLM Agents</span></li></ul>
+<ul class="dpr-home-dashboard-paper-list"><li><span class="dpr-home-dashboard-paper-title" title="The Optimizer Is the Agent: Reasoning-Driven Search across Prompts, Programs, and ML Workflows">The Optimizer Is the Agent: Reasoning-Driven Search across Prompts, Programs, and ML Workflows</span></li><li><span class="dpr-home-dashboard-paper-title" title="SkillProx: Self-Evolving Agent Skills via Proximal Textual Gradient Descent">SkillProx: Self-Evolving Agent Skills via Proximal Textual Gradient Descent</span></li><li><span class="dpr-home-dashboard-paper-title" title="Skill-Use: Can LLMs Actually Use Skills in Agentic Harnesses?">Skill-Use: Can LLMs Actually Use Skills in Agentic Harnesses?</span></li></ul>
   </div>
   <div class="dpr-home-dashboard-tags"><span class="dpr-home-dashboard-tag">agent-memory <strong>3</strong></span></div>
 </section>
