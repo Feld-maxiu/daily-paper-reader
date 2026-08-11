@@ -1,0 +1,229 @@
+{
+  "mode": "standard",
+  "generated_at": "2026-08-11T21:17:12.809988+00:00",
+  "stats": {
+    "mode": "standard",
+    "tag_count": 1,
+    "deep_divecandidates": 3,
+    "deep_cap": 6,
+    "deep_selected": 3,
+    "quick_candidates": 2,
+    "quick_skim_target": 11,
+    "quick_selected": 2
+  },
+  "deep_dive": [
+    {
+      "id": "2608.08995v1",
+      "source": "arxiv",
+      "title": "Muscle Memory for Agents: Compile not Merely Retrieve",
+      "abstract": "Memory for LLM agents has converged on a single architectural pattern: store experience as text, embeddings, reflections, or rules; retrieve at inference time; let a general-purpose orchestrator interpret what to do. This paper argues that the pattern is the wrong default for personalization. We position Muscle Memory - the practice of compiling recurring user intent into purpose-built specialist agents - as a distinct memory paradigm from retrieval, and we argue that compilation is a better fit for the workloads where current assistants impose a multi-turn tax on their users: making them repeatedly correct format, depth, and scope to obtain a domain-appropriate answer. We support the position with a reference implementation and empirical evidence. The implementation is a four-phase pipeline (Harvest $\\rightarrow$ Analyze $\\rightarrow$ Augment $\\rightarrow$ Evaluate) that mines conversational history, separates behavioral from task patterns, and emits quality-gated executable compiled specialists with two-stage trigger matching. On 90 held-out scenarios across five user personas, the augmented assistant wins 32 of 36 cases where a specialist fires, an 88.9% win rate, with a +2.05 personalization gain and only a $-0.28$ accuracy cost on a 1-4 scale. We discuss why compilation is better suited than retrieval in this regime, what the result implies for the broader memory design space, and what open problems remain.",
+      "authors": [
+        "Pouya Ghiasnezhad Omran",
+        "Soujanya Lanka",
+        "Qin Zhang",
+        "Tanya Dixit"
+      ],
+      "primary_category": "cs.MA",
+      "categories": [
+        "cs.MA"
+      ],
+      "published": "2026-08-10T01:30:55+00:00",
+      "link": "https://arxiv.org/pdf/2608.08995v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 10.0,
+      "llm_evidence_en": "proposes compiling recurring user intent into specialist agents as a memory paradigm",
+      "llm_evidence_cn": "提出将重复用户意图编译为专用智能体作为一种记忆范式",
+      "llm_evidence": "提出将重复用户意图编译为专用智能体作为一种记忆范式",
+      "canonical_evidence": "提出将重复用户意图编译为专用智能体作为一种记忆范式",
+      "llm_tldr_en": "Muscle Memory argues for compilation over retrieval in agent memory, where recurring user intents are compiled into specialist agents, reducing multi-turn corrections in personalization tasks.",
+      "llm_tldr_cn": "当前智能体记忆主要以检索为主，但个性化场景中用户常需反复纠正格式和深度。本文主张肌肉记忆范式，将重复出现的用户意图编译为专用智能体，而非仅仅检索经验。通过参考实现和实证，证明了编译能显著减少多轮调整，更适配个性化工作负载，为智能体记忆机制引入了一种强化的替代方案。",
+      "llm_tldr": "当前智能体记忆主要以检索为主，但个性化场景中用户常需反复纠正格式和深度。本文主张肌肉记忆范式，将重复出现的用户意图编译为专用智能体，而非仅仅检索经验。通过参考实现和实证，证明了编译能显著减少多轮调整，更适配个性化工作负载，为智能体记忆机制引入了一种强化的替代方案。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "agent with memory augmentation for better performance",
+      "matched_requirement_id": "req-6",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2608.08960v1",
+      "source": "arxiv",
+      "title": "Reading is not Reasoning: Bridging the Agentic Policy Gap in Vision-Text Compression",
+      "abstract": "Multi-step language-model agents repeatedly process growing interaction histories, leading to substantial context costs. Vision--text compression reduces these costs by rendering history as images, but the resulting modality shift creates a marked capability gap. Through controlled evaluations of history recovery, matched-state decisions, and complete trajectories, we show that this gap cannot be explained by OCR quality alone. Visual-history agents exhibit systematic drift in action selection, query formulation, stopping, and evidence use, revealing an agentic policy gap. We introduce \\textbf{CAPS}, a two-stage \\textbf{C}ross-modal \\textbf{A}gentic \\textbf{P}olicy \\textbf{S}elf-distillation framework that uses the same model's stronger text-history policy to supervise its visual-history counterpart. Offline trajectory self-distillation transfers successful text-policy behavior to visual-history inputs, while online policy self-distillation provides dense supervision on states visited by the visual-history policy during reinforcement learning. On SearchQA, CAPS improves over AgentOCR by 5.0\\% and 3.4\\% with 3B and 7B backbones, respectively. On full-history ALFWorld, the corresponding gains are 15.6\\% and 14.5\\%. Across settings, CAPS reduces average memory-context cost by up to 63.3\\% and peak cost by up to 83.4\\% relative to matched text-history policies. These results show that explicit cross-modal policy self-distillation can preserve agent capability under vision--text compression. Our code will be made publicly available in a future release.",
+      "authors": [
+        "Cheng Fan",
+        "Junyi Zhou",
+        "Tingzhang Luo",
+        "RongJian Xu",
+        "Qiyanhui Lu",
+        "Mingjian Zhu",
+        "Hanting Chen",
+        "Jianyuan Guo"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-08-09T23:38:12+00:00",
+      "link": "https://arxiv.org/pdf/2608.08960v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "cross-modal self-distillation for multimodal agent policies to bridge vision-text gap",
+      "llm_evidence_cn": "跨模态自蒸馏以弥合视觉文本智能体的策略差距",
+      "llm_evidence": "跨模态自蒸馏以弥合视觉文本智能体的策略差距",
+      "canonical_evidence": "跨模态自蒸馏以弥合视觉文本智能体的策略差距",
+      "llm_tldr_en": "CAPS cross-modal self-distills visual-history agents from text-based policies to bridge the capability gap in vision-text compressed agent histories.",
+      "llm_tldr_cn": "多步语言模型智能体因交互历史增长导致高昂语境成本。视觉文本压缩可通过图像记录历史，但模态转换引入策略差距。本文提出CAPS，两阶段跨模态智能体策略自蒸馏框架，用同模型更强的text策略蒸馏visual策略。实验表明CAPS显著缩小了动作选择、查询构造等方面的差距，证明了跨模态知识迁移对多模态智能体的价值。",
+      "llm_tldr": "多步语言模型智能体因交互历史增长导致高昂语境成本。视觉文本压缩可通过图像记录历史，但模态转换引入策略差距。本文提出CAPS，两阶段跨模态智能体策略自蒸馏框架，用同模型更强的text策略蒸馏visual策略。实验表明CAPS显著缩小了动作选择、查询构造等方面的差距，证明了跨模态知识迁移对多模态智能体的价值。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "agent that processes multiple modalities",
+      "matched_requirement_id": "req-2",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2608.08839v1",
+      "source": "arxiv",
+      "title": "SG-WAM: Text-Grounded and Spatial-aware Semantic Guidance for World-Action Models",
+      "abstract": "World-Action Models (WAMs) have emerged as a promising paradigm for robotic manipulation. However, most existing WAMs generate future videos and actions by relying mainly on visual cues rather than language instructions, since off-the-shelf text encoders embed instructions independently of visual observations. As a result, the videos predicted by these WAMs are often semantically misaligned with their corresponding language instructions, which degrades the accuracy of the predicted actions. To overcome this limitation, we propose SG-WAM, a semantic guidance method for world-action models that leverages a vision-language model (VLM) as a semantic planner to enhance the instruction-grounding capacity of world-action models. Specifically, we train a VLM-based planner to predict text-grounded and spatial-aware semantic foresight. The text-grounded semantic foresight grounds the instruction by identifying the correct target objects, and the spatial-aware semantic foresight provides the scene geometry for precise manipulation. We then inject this foresight into the world-action model as high-level semantic guidance, ensuring that both future-video generation and action prediction faithfully follow the language instruction. Extensive experiments in simulation and the real world demonstrate the superiority of our semantic guidance method, showcasing precise manipulation and strong instruction-following capabilities.",
+      "authors": [
+        "Junjie He",
+        "Junfeng Li",
+        "Zhide Zhong",
+        "Haodong Yan",
+        "Ruixin Li",
+        "Yangyang Zheng",
+        "Jiaguan Zhu",
+        "Tianran Zhang",
+        "Yuqiao Du",
+        "Wen Chen",
+        "Shunbo Zhou",
+        "Haoang Li"
+      ],
+      "primary_category": "cs.RO",
+      "categories": [
+        "cs.RO",
+        "cs.CV"
+      ],
+      "published": "2026-08-09T17:59:35+00:00",
+      "link": "https://arxiv.org/pdf/2608.08839v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "language-grounded world-action model for agents using VLM as semantic planner",
+      "llm_evidence_cn": "利用视觉语言模型作为语义规划器的语言引导世界动作模型",
+      "llm_evidence": "利用视觉语言模型作为语义规划器的语言引导世界动作模型",
+      "canonical_evidence": "利用视觉语言模型作为语义规划器的语言引导世界动作模型",
+      "llm_tldr_en": "SG-WAM enhances world-action models with language grounding using a vision-language model as semantic planner, improving action prediction accuracy.",
+      "llm_tldr_cn": "现有世界动作模型主要依赖视觉线索，缺乏语言指令的语义对齐。SG-WAM提出一种语义引导方法，利用视觉语言模型作为语义规划器，将语言指令嵌入世界动作模型，生成与指令语义一致的未来视频和动作。实验证实该方法提升了指令接地能力与动作预测准确性，推动了语言引导的智能体世界模型。",
+      "llm_tldr": "现有世界动作模型主要依赖视觉线索，缺乏语言指令的语义对齐。SG-WAM提出一种语义引导方法，利用视觉语言模型作为语义规划器，将语言指令嵌入世界动作模型，生成与指令语义一致的未来视频和动作。实验证实该方法提升了指令接地能力与动作预测准确性，推动了语言引导的智能体世界模型。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "language-based world model for agent reasoning",
+      "matched_requirement_id": "req-5",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "quick_skim": [
+    {
+      "id": "2608.08036v1",
+      "source": "arxiv",
+      "title": "Compiling and Benchmarking Task-State Horizons for Embodied Agents",
+      "abstract": "Frontier agentic models are increasingly deployed as high-level planners for long-horizon embodied tasks. Existing robotic benchmarks have advanced long-horizon evaluation, but primarily characterize difficulty through action-sequence length and subtask complexity, overlooking a distinct challenge: agents must track evolving task-relevant world states induced by both their exploration and environmental dynamics. We define the span of task-relevant state transitions that an agent must track as task-state horizon (TSH). To evaluate how agent performance varies with TSH, we introduce RoboGraph, a robotic task compiler that translates state-transition dependencies into executable symbolic graphs. Specifically, RoboGraph constructs task-state horizons from spatial and temporal causal dependencies, including those induced by unexpected failures and interventions during task execution. Building on RoboGraph, we release a benchmark comprising 588 episodes across 84 scenes with varying TSHs. Experiments evaluating 15 advanced agentic models in both semantic and visual closed-loop environments show that most models struggle with demanding TSHs, revealing substantial gaps in maintaining, exploring, and updating task-relevant state over long horizon.",
+      "authors": [
+        "Meiqi Wang",
+        "Shichao Li"
+      ],
+      "primary_category": "cs.RO",
+      "categories": [
+        "cs.RO"
+      ],
+      "published": "2026-08-08T09:45:01+00:00",
+      "link": "https://arxiv.org/pdf/2608.08036v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "Defines task-state horizon to measure state tracking demands, linking to agent memory requirements",
+      "llm_evidence_cn": "定义任务状态视野衡量状态跟踪需求，关联智能体记忆机制",
+      "llm_evidence": "定义任务状态视野衡量状态跟踪需求，关联智能体记忆机制",
+      "canonical_evidence": "定义任务状态视野衡量状态跟踪需求，关联智能体记忆机制",
+      "llm_tldr_en": "Introduces task-state horizon (TSH) to capture memory demands in long-horizon embodied tasks and RoboGraph, a symbolic graph compiler for evaluating agent performance on state tracking.",
+      "llm_tldr_cn": "针对现有基准忽视智能体需跟踪任务相关世界状态变化的问题，定义任务状态视野（TSH）量化记忆跨度，并提出RoboGraph编译器将状态依赖转化为符号图，用于评估不同TSH下智能体性能，揭示记忆相关挑战对具身智能体的影响。",
+      "llm_tldr": "针对现有基准忽视智能体需跟踪任务相关世界状态变化的问题，定义任务状态视野（TSH）量化记忆跨度，并提出RoboGraph编译器将状态依赖转化为符号图，用于评估不同TSH下智能体性能，揭示记忆相关挑战对具身智能体的影响。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "memory mechanisms for intelligent agents",
+      "matched_requirement_id": "req-1",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2608.08392v1",
+      "source": "arxiv",
+      "title": "CAP: A Scalable Benchmark for Evaluating Cross-Site Browser Agents with Complex Actions and Perception",
+      "abstract": "Large language models are increasingly deployed as autonomous agents that interact with the web through browsers. While recent progress has been driven by benchmarks that evaluate end-to-end task success, these evaluations largely overlook two fundamental sources of difficulty in real web browsing: complex actions over rich user interfaces and visual perception of dynamically rendered content, especially in workflows that span multiple websites. We introduce CAP, a scalable benchmark for evaluating browser agents on cross-site, human-like web tasks that require non-trivial UI interactions and visual understanding. Specifically, we adopt a decomposition-and-recomposition pipeline that first abstracts each website into a structured site card capturing user-facing functions, complex execution operations, and perceptual requirements, and then recomposes these components into realistic cross-site workflows. Each task is therefore grounded in multiple specific operations on each website, enabling fine-grained diagnosis. Built on this framework, we construct 420 tasks across 108 real-world websites and 24 domains under careful quality control. Experiments on state-of-the-art browser agents using our verifiable agent-as-a-judge evaluation framework show low success rates and reveal that perception-heavy interactions remain a major bottleneck, exposing substantial gaps between current agents and real-world web browsing demands.",
+      "authors": [
+        "Zejun Xu",
+        "Taiyi Chen",
+        "Jin Li",
+        "Yongtong Gu",
+        "Qi Cheng",
+        "Aixuan Lv",
+        "Shuai Zhu",
+        "Pengfei Zhu",
+        "Kaichen Yang",
+        "Boyu Sun",
+        "Yixian Yang",
+        "Mulong Xie",
+        "Xin Liu",
+        "Dagang Li",
+        "Xiaoteng Ma",
+        "Hongru Wang"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI",
+        "cs.CL"
+      ],
+      "published": "2026-08-09T01:08:19+00:00",
+      "link": "https://arxiv.org/pdf/2608.08392v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "Benchmark for browser agents requiring visual perception and multimodal interaction",
+      "llm_evidence_cn": "面向需要视觉感知和多模态交互的浏览器智能体的基准",
+      "llm_evidence": "面向需要视觉感知和多模态交互的浏览器智能体的基准",
+      "canonical_evidence": "面向需要视觉感知和多模态交互的浏览器智能体的基准",
+      "llm_tldr_en": "CAP provides a scalable benchmark for evaluating multimodal browser agents on cross-site tasks demanding visual perception, offering a methodological bridge for agent perception evaluation.",
+      "llm_tldr_cn": "CAP提出可扩展的跨站浏览器智能体基准，强调视觉感知和复杂UI交互，为多模态智能体评估提供方法论桥梁。",
+      "llm_tldr": "CAP提出可扩展的跨站浏览器智能体基准，强调视觉感知和复杂UI交互，为多模态智能体评估提供方法论桥梁。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "agent that processes multiple modalities",
+      "matched_requirement_id": "req-2",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    }
+  ]
+}
