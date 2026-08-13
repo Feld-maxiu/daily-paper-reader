@@ -1,0 +1,73 @@
+{
+  "date": "20260813",
+  "date_label": "",
+  "generated_at": "2026-08-13 20:42:38 UTC",
+  "recommend_exists": true,
+  "run_count": 1,
+  "papers": [
+    {
+      "paper_id": "2608.09044v1",
+      "route": "202608/13/2608.09044v1-tree-of-experience-hierarchical-experience-management-for-self-evolving-agents",
+      "title": "Tree-of-Experience: Hierarchical Experience Management for Self-Evolving Agents",
+      "section": "deep",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 10.0,
+      "evidence": "分层经验管理将经验与推理过程对齐，支持智能体自进化",
+      "first_seen_at": "2026-08-13 20:42:38 UTC",
+      "updated_at": "2026-08-13 20:42:38 UTC"
+    },
+    {
+      "paper_id": "2608.11616v1",
+      "route": "202608/13/2608.11616v1-mba-multimodal-benchmark-and-agents-for-real-world-business-ideation",
+      "title": "MBA: Multimodal Benchmark and Agents for Real-World Business Ideation",
+      "section": "deep",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 9.0,
+      "evidence": "面向商业创意生成的多模态基准与智能体",
+      "first_seen_at": "2026-08-13 20:42:38 UTC",
+      "updated_at": "2026-08-13 20:42:38 UTC"
+    },
+    {
+      "paper_id": "2608.12253v1",
+      "route": "202608/13/2608.12253v1-one-frozen-simulator-is-not-enough-simulator-collapse-in-multi-agent-rl",
+      "title": "One Frozen Simulator Is Not Enough: Simulator Collapse in Multi-Agent RL",
+      "section": "deep",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 9.0,
+      "evidence": "多智能体强化学习使用LLM模拟器，处理模拟器坍塌问题",
+      "first_seen_at": "2026-08-13 20:42:38 UTC",
+      "updated_at": "2026-08-13 20:42:38 UTC"
+    },
+    {
+      "paper_id": "2608.08600v1",
+      "route": "202608/13/2608.08600v1-population-scalable-multi-agent-world-modeling",
+      "title": "Population-Scalable Multi-Agent World Modeling",
+      "section": "quick",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 6.0,
+      "evidence": "共享世界状态与渲染接口的可扩展多智能体世界模型",
+      "first_seen_at": "2026-08-13 20:42:38 UTC",
+      "updated_at": "2026-08-13 20:42:38 UTC"
+    }
+  ]
+}

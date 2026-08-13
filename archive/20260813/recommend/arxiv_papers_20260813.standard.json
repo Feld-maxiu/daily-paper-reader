@@ -1,0 +1,190 @@
+{
+  "mode": "standard",
+  "generated_at": "2026-08-13T20:37:14.567441+00:00",
+  "stats": {
+    "mode": "standard",
+    "tag_count": 1,
+    "deep_divecandidates": 3,
+    "deep_cap": 6,
+    "deep_selected": 3,
+    "quick_candidates": 1,
+    "quick_skim_target": 11,
+    "quick_selected": 1
+  },
+  "deep_dive": [
+    {
+      "id": "2608.09044v1",
+      "source": "arxiv",
+      "title": "Tree-of-Experience: Hierarchical Experience Management for Self-Evolving Agents",
+      "abstract": "Continual self-evolution requires LLM agents to transform environmental interactions into reliable and reusable experience. Existing methods typically refine individual trajectories or abstract shared knowledge from related trajectories, but their experience representations are often disconnected from the underlying reasoning process. This limits feedback attribution, cross-task transfer, and update and retrieval efficiency, particularly in complex reasoning tasks with outcome-level feedback. To overcome this limitation, we propose \\textbf{T}ree-\\textbf{o}f-\\textbf{E}xperience (ToE), a structured experience-management framework that aligns experience organization with the hierarchical reasoning process of LLM agents. Specifically, ToE organizes the experience into a shared tree of analytical perspectives and reasoning paths, whose reliability is calibrated through environmental outcomes to support systematic updating, transfer, and efficient retrieval. The experimental results on \\textsc{Game of 24} and \\textsc{FinEvolveBench} show that ToE substantially improves both problem-solving performance and efficiency. On \\textsc{Game of 24}, ToE achieves a 31.4\\% relative improvement in accuracy over the experience-free ToT baseline. On \\textsc{FinEvolveBench}, ToE improves tsIC by an average of 41.24\\% over the experience-free pipeline across 12 evaluation settings, whereas conventional experience-management methods often underperform experience-free baselines.",
+      "authors": [
+        "Zihao Deng",
+        "Yining Zhu",
+        "Leiming Wang",
+        "Jingfei Lu",
+        "Junbo Wang",
+        "Chuncheng Ran",
+        "Yu Yang",
+        "Dixuan Yang",
+        "Jikun Shen"
+      ],
+      "primary_category": "cs.CL",
+      "categories": [
+        "cs.CL"
+      ],
+      "published": "2026-08-10T02:49:38+00:00",
+      "link": "https://arxiv.org/pdf/2608.09044v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 10.0,
+      "llm_evidence_en": "Hierarchical experience management aligns experience with reasoning process for agent self-evolution",
+      "llm_evidence_cn": "分层经验管理将经验与推理过程对齐，支持智能体自进化",
+      "llm_evidence": "分层经验管理将经验与推理过程对齐，支持智能体自进化",
+      "canonical_evidence": "分层经验管理将经验与推理过程对齐，支持智能体自进化",
+      "llm_tldr_en": "Tree-of-Experience organizes agent experience hierarchically aligned with reasoning, improving feedback attribution, transfer, and retrieval efficiency.",
+      "llm_tldr_cn": "针对LLM智能体持续自进化中经验表示与推理过程脱节的问题，提出Tree-of-Experience（ToE）框架，将经验组织与智能体的分层推理过程对齐，构建结构化的经验管理机制。该框架在复杂推理任务中改善了反馈归因、跨任务迁移以及更新和检索效率。实验表明ToE能更可靠地将环境交互转化为可复用经验，为智能体记忆机制提供了新思路。",
+      "llm_tldr": "针对LLM智能体持续自进化中经验表示与推理过程脱节的问题，提出Tree-of-Experience（ToE）框架，将经验组织与智能体的分层推理过程对齐，构建结构化的经验管理机制。该框架在复杂推理任务中改善了反馈归因、跨任务迁移以及更新和检索效率。实验表明ToE能更可靠地将环境交互转化为可复用经验，为智能体记忆机制提供了新思路。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "memory mechanisms for intelligent agents",
+      "matched_requirement_id": "req-1",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2608.11616v1",
+      "source": "arxiv",
+      "title": "MBA: Multimodal Benchmark and Agents for Real-World Business Ideation",
+      "abstract": "Agentic systems powered by large language models (LLMs) have opened new opportunities for business ideation. Yet existing approaches remain confined to a text-only paradigm, despite the inherently multimodal nature of real-world contexts. We thus introduce MBA-Bench, the first multimodal benchmark for training and evaluating business ideation agents, comprising 30K samples across six domains, each domain characterized by distinct visual cues not fully conveyed by text alone. Concretely, we automatically caption images and employ GPT-4o to generate five reference ideas for each of three business questions through retrieval query generation, market evidence retrieval, and evidence-augmented synthesis. Following prior work, we evaluate agents across six business-oriented criteria using MLLM-as-a-Judge. To consider settings where criteria are hidden or disclosed, we present MBA-b and MBA-k for blind and known, respectively. We train both with two novel reward objectives---creativity and feasibility---while MBA-k further optimizes the six disclosed criteria for eight in total. Both are trained via LoRA-based supervised fine-tuning followed by group relative policy optimization with these setting-specific rewards. For extensive experiments on MBA-Bench, we set up two baselines accommodating either captions only or multimodal inputs, with the latter nearing closed-source performance on several metrics. MBA-b and MBA-k outperform caption baselines by 63.9% and 77.1%, and multimodal baselines by 25.6% and 35.8%, respectively.",
+      "authors": [
+        "Hojun Choi",
+        "Jaeyo Shin",
+        "Suin Lee",
+        "Hyunjung Shim"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI",
+        "cs.CV",
+        "cs.LG"
+      ],
+      "published": "2026-08-12T03:52:57+00:00",
+      "link": "https://arxiv.org/pdf/2608.11616v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "multimodal benchmark and agents for business ideation",
+      "llm_evidence_cn": "面向商业创意生成的多模态基准与智能体",
+      "llm_evidence": "面向商业创意生成的多模态基准与智能体",
+      "canonical_evidence": "面向商业创意生成的多模态基准与智能体",
+      "llm_tldr_en": "Introduces MBA-Bench, the first multimodal benchmark for business ideation agents with 30K samples across six domains, and evaluates multimodal agentic systems on creative tasks.",
+      "llm_tldr_cn": "现有商业创意智能体局限于纯文本，忽略真实场景的多模态信息。本文提出MBA-Bench，首个多模态商业创意基准，包含6个领域、3万样本，并自动生成参考创意。该基准用于训练和评估多模态智能体，强调视觉线索对领域理解的作用。实验表明多模态智能体在创意生成上具有潜力，推动了实际业务场景下的多模态智能体研究。",
+      "llm_tldr": "现有商业创意智能体局限于纯文本，忽略真实场景的多模态信息。本文提出MBA-Bench，首个多模态商业创意基准，包含6个领域、3万样本，并自动生成参考创意。该基准用于训练和评估多模态智能体，强调视觉线索对领域理解的作用。实验表明多模态智能体在创意生成上具有潜力，推动了实际业务场景下的多模态智能体研究。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "agent that processes multiple modalities",
+      "matched_requirement_id": "req-2",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2608.12253v1",
+      "source": "arxiv",
+      "title": "One Frozen Simulator Is Not Enough: Simulator Collapse in Multi-Agent RL",
+      "abstract": "Multi-agent reinforcement learning for human-AI interaction typically relies on a single large language model to simulate user behavior. We show that this approach systematically fails to generalize, and trace the failure to simulator collapse: because the simulator LLM is mode-collapsed, an LLM policy trained against it overfits to narrow strategies that exploit the simulator's dominant mode, and such a policy transfers poorly to unseen simulators and real users. We formalize this collapse theoretically and propose two complementary solutions, one at inference time and one at training time. The inference-time solution, Verbalized Sampling, broadens the simulator's behavior by sampling from a verbalized response distribution, reducing mode collapse. The training-time solution, Co-Training, jointly optimizes the policy against a population of trainable simulators, preventing it from overfitting to any single simulator's mode. We validate both solutions on three multi-turn benchmarks: Persuasion for Good, $τ^2$-bench, and CooperBench. Verbalized Sampling improves held-out success by up to 9% over single-simulator RL, and Co-Training pushes gains further to 14%; the human study shows similar gain on real users. Both solutions preserve the policy diversity that collapses under single-simulator RL. To support further work in this direction, we release SCOPE, an open-source framework for Population Co-Training multi-agent RL. More broadly, our results suggest that the diversity of the training environment, not only the policy, is critical to the generalization of multi-turn RL to real-world deployment.",
+      "authors": [
+        "Simon Yu",
+        "Nicholas Tomlin",
+        "Marwa Abdulhai",
+        "Ximing Lu",
+        "Derek Chong",
+        "Abe Hou",
+        "Dilara Soylu",
+        "Sergey Levine",
+        "Christopher D. Manning",
+        "Weiyan Shi"
+      ],
+      "primary_category": "cs.CL",
+      "categories": [
+        "cs.CL",
+        "cs.AI",
+        "cs.LG"
+      ],
+      "published": "2026-08-12T16:55:50+00:00",
+      "link": "https://arxiv.org/pdf/2608.12253v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "multi-agent RL with LLM simulators, addressing simulator collapse",
+      "llm_evidence_cn": "多智能体强化学习使用LLM模拟器，处理模拟器坍塌问题",
+      "llm_evidence": "多智能体强化学习使用LLM模拟器，处理模拟器坍塌问题",
+      "canonical_evidence": "多智能体强化学习使用LLM模拟器，处理模拟器坍塌问题",
+      "llm_tldr_en": "Multi-agent RL using a single frozen LLM simulator suffers from simulator collapse, causing policy overfitting; the paper formalizes collapse and proposes verbalized sampling at inference plus a training-time method to reduce mode collapse and improve generalization.",
+      "llm_tldr_cn": "多智能体强化学习用于人机交互时，通常依赖单一大语言模型模拟用户行为。本文发现这种冻结模拟器存在模式坍塌，导致训练的策略过拟合于模拟器主导模式，泛化到未见模拟器和真实用户时表现差。作者对坍塌进行理论形式化，并提出推理时言语化采样与训练时互补方案来拓宽模拟器行为分布、缓解模式坍塌。实验表明该方法提升策略在多样模拟器与真实场景中的泛化能力，为多智能体RL中的模拟器设计提供了新方向。",
+      "llm_tldr": "多智能体强化学习用于人机交互时，通常依赖单一大语言模型模拟用户行为。本文发现这种冻结模拟器存在模式坍塌，导致训练的策略过拟合于模拟器主导模式，泛化到未见模拟器和真实用户时表现差。作者对坍塌进行理论形式化，并提出推理时言语化采样与训练时互补方案来拓宽模拟器行为分布、缓解模式坍塌。实验表明该方法提升策略在多样模拟器与真实场景中的泛化能力，为多智能体RL中的模拟器设计提供了新方向。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "reinforcement learning applied to autonomous agents",
+      "matched_requirement_id": "req-3",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "quick_skim": [
+    {
+      "id": "2608.08600v1",
+      "source": "arxiv",
+      "title": "Population-Scalable Multi-Agent World Modeling",
+      "abstract": "World models have recently achieved impressive progress in visual prediction and interactive generation, but extending them to multi-agent environments introduces a fundamental scalability challenge. Existing methods generally assume a fixed number of agents during training and inference, which ties the model to a pre-determined agent population and limits inference-time scalability. Our key insight is that cross-view consistency should arise from a shared world state whose evolution does not assume a predefined number of agents, while agent-specific observations should be generated by querying this state through a unified rendering interface. Based on this insight, we propose Khora, a scalable multi-agent world model that supports inference-time expansion to arbitrary numbers of agents without retraining. Our framework decouples world-state evolution from visual rendering and introduces a population-agnostic rendering mechanism for incorporating other agent information. This design maintains cross-view consistency through the shared world state rather than through dense interactions among observation streams inside the expensive video generator, enabling approximately linear practical scaling with the number of queried views. Qualitative experiments demonstrate that our approach generalizes to unseen numbers of agents while maintaining visual quality and multi-agent consistency. We further implement a real-time interactive system to demonstrate scalable open-world simulation.",
+      "authors": [
+        "Renjie Zhao",
+        "Yuxiang Wu",
+        "Mingyu Zhang",
+        "Jiaxin Li",
+        "Sisi Li",
+        "Yimin Sheng",
+        "Tianxi Tan",
+        "Zhenkai Zhang",
+        "Jianyi Zhu",
+        "Yong-Lu Li"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV",
+        "cs.AI",
+        "cs.LG"
+      ],
+      "published": "2026-08-09T09:26:15+00:00",
+      "link": "https://arxiv.org/pdf/2608.08600v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "scalable multi-agent world model with shared world state and rendering interface",
+      "llm_evidence_cn": "共享世界状态与渲染接口的可扩展多智能体世界模型",
+      "llm_evidence": "共享世界状态与渲染接口的可扩展多智能体世界模型",
+      "canonical_evidence": "共享世界状态与渲染接口的可扩展多智能体世界模型",
+      "llm_tldr_en": "Existing multi-agent world models fixed agent count; Khora introduces shared world state and unified rendering to support inference-time expansion to arbitrary agents, enabling scalable multi-agent world modeling.",
+      "llm_tldr_cn": "多智能体世界建模中，现有方法通常假设固定数量的智能体，限制了推理时的群体扩展。本文提出Khora，核心思想是通过共享世界状态驱动跨视角一致性，并通过统一渲染接口生成智能体特定观测，从而解耦模型与智能体数量。该设计支持推理时扩展到任意数量的智能体，实现群体可扩展的多智能体世界建模。这一框架为多智能体环境模拟与交互生成提供了新的可扩展基础。",
+      "llm_tldr": "多智能体世界建模中，现有方法通常假设固定数量的智能体，限制了推理时的群体扩展。本文提出Khora，核心思想是通过共享世界状态驱动跨视角一致性，并通过统一渲染接口生成智能体特定观测，从而解耦模型与智能体数量。该设计支持推理时扩展到任意数量的智能体，实现群体可扩展的多智能体世界建模。这一框架为多智能体环境模拟与交互生成提供了新的可扩展基础。",
+      "llm_tags": [
+        "query:agent-memory:composite"
+      ],
+      "matched_query_tag": "query:agent-memory:composite",
+      "matched_query_text": "Papers central to 智能体记忆，多模态，智能体强化学习，文本世界模型，语言世界模型, especially work that connects or combines: memory mechanisms for intelligent agents; agent that processes multiple modalities; reinforcement learning applied to autonomous agents; text-based world model for environment simulation; language-based world model for agent reasoning; agent with memory augmentation for better performance; How do text world models support language based agent simulation?.",
+      "matched_requirement_id": "req-composite-agent-memory",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    }
+  ]
+}

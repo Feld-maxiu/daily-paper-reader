@@ -1,0 +1,69 @@
+{
+  "label": "2026-08-13",
+  "date": "2026-08-13",
+  "generated_at": "2026-08-13T20:42:48",
+  "count": 4,
+  "papers": [
+    {
+      "paper_id": "202608/13/2608.09044v1-tree-of-experience-hierarchical-experience-management-for-self-evolving-agents",
+      "section": "deep",
+      "title_en": "Tree-of-Experience: Hierarchical Experience Management for Self-Evolving Agents",
+      "authors": "Zihao Deng, Yining Zhu, Leiming Wang, Jingfei Lu, Junbo Wang, Chuncheng Ran, Yu Yang, Dixuan Yang, Jikun Shen",
+      "date": "2026-08-10",
+      "pdf": "https://arxiv.org/pdf/2608.09044v1",
+      "score": "10.0",
+      "evidence": "分层经验管理将经验与推理过程对齐，支持智能体自进化",
+      "tldr": "持续自进化要求智能体将环境交互转为可靠经验，但现有方法经验表示与推理过程脱节，导致反馈归因和迁移困难。提出Tree-of-Experience框架，将经验组织为与分析视角和推理路径对齐的层级树，并通过环境结果校准可靠性。在Game of 24和FinEvolveBench上，ToE分别相对提升31.4%准确率和平均41.24%的tsIC，显著优于无经验基线。该框架为复杂推理任务的高效经验管理提供了新思路。",
+      "tags": "query:agent-memory",
+      "abstract_en": "Continual self-evolution requires LLM agents to transform environmental interactions into reliable and reusable experience. Existing methods typically refine individual trajectories or abstract shared knowledge from related trajectories, but their experience representations are often disconnected from the underlying reasoning process. This limits feedback attribution, cross-task transfer, and update and retrieval efficiency, particularly in complex reasoning tasks with outcome-level feedback. To overcome this limitation, we propose \\textbf{T}ree-\\textbf{o}f-\\textbf{E}xperience (ToE), a structured experience-management framework that aligns experience organization with the hierarchical reasoning process of LLM agents. Specifically, ToE organizes the experience into a shared tree of analytical perspectives and reasoning paths, whose reliability is calibrated through environmental outcomes to support systematic updating, transfer, and efficient retrieval. The experimental results on \\textsc{Game of 24} and \\textsc{FinEvolveBench} show that ToE substantially improves both problem-solving performance and efficiency. On \\textsc{Game of 24}, ToE achieves a 31.4\\% relative improvement in accuracy over the experience-free ToT baseline. On \\textsc{FinEvolveBench}, ToE improves tsIC by an average of 41.24\\% over the experience-free pipeline across 12 evaluation settings, whereas conventional experience-management methods often underperform experience-free baselines.",
+      "source": "arxiv",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "paper_id": "202608/13/2608.11616v1-mba-multimodal-benchmark-and-agents-for-real-world-business-ideation",
+      "section": "deep",
+      "title_en": "MBA: Multimodal Benchmark and Agents for Real-World Business Ideation",
+      "authors": "Hojun Choi, Jaeyo Shin, Suin Lee, Hyunjung Shim",
+      "date": "2026-08-12",
+      "pdf": "https://arxiv.org/pdf/2608.11616v1",
+      "score": "9.0",
+      "evidence": "面向商业创意生成的多模态基准与智能体",
+      "tldr": "现有基于大模型的业务创意代理系统仅处理文本，忽视真实场景中视觉信息。为解决此问题，我们构建首个多模态基准MBA-Bench，包含30K样本覆盖六个领域，并为每个问题生成五个参考创意。基于该基准，训练MBA-b和MBA-k两个代理，采用LoRA监督微调与群体相对策略优化，分别优化创造力、可行性等奖励。实验显示，这两个代理分别超过多模态基线25.6%和35.8%，超过纯文本基线63.9%和77.1%，证明多模态感知能大幅提升业务创意生成质量。",
+      "tags": "query:agent-memory",
+      "abstract_en": "Agentic systems powered by large language models (LLMs) have opened new opportunities for business ideation. Yet existing approaches remain confined to a text-only paradigm, despite the inherently multimodal nature of real-world contexts. We thus introduce MBA-Bench, the first multimodal benchmark for training and evaluating business ideation agents, comprising 30K samples across six domains, each domain characterized by distinct visual cues not fully conveyed by text alone. Concretely, we automatically caption images and employ GPT-4o to generate five reference ideas for each of three business questions through retrieval query generation, market evidence retrieval, and evidence-augmented synthesis. Following prior work, we evaluate agents across six business-oriented criteria using MLLM-as-a-Judge. To consider settings where criteria are hidden or disclosed, we present MBA-b and MBA-k for blind and known, respectively. We train both with two novel reward objectives---creativity and feasibility---while MBA-k further optimizes the six disclosed criteria for eight in total. Both are trained via LoRA-based supervised fine-tuning followed by group relative policy optimization with these setting-specific rewards. For extensive experiments on MBA-Bench, we set up two baselines accommodating either captions only or multimodal inputs, with the latter nearing closed-source performance on several metrics. MBA-b and MBA-k outperform caption baselines by 63.9% and 77.1%, and multimodal baselines by 25.6% and 35.8%, respectively.",
+      "source": "arxiv",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "paper_id": "202608/13/2608.12253v1-one-frozen-simulator-is-not-enough-simulator-collapse-in-multi-agent-rl",
+      "section": "deep",
+      "title_en": "One Frozen Simulator Is Not Enough: Simulator Collapse in Multi-Agent RL",
+      "authors": "Simon Yu, Nicholas Tomlin, Marwa Abdulhai, Ximing Lu, Derek Chong, Abe Hou, Dilara Soylu, Sergey Levine, Christopher D. Manning, Weiyan Shi",
+      "date": "2026-08-12",
+      "pdf": "https://arxiv.org/pdf/2608.12253v1",
+      "score": "9.0",
+      "evidence": "多智能体强化学习使用LLM模拟器，处理模拟器坍塌问题",
+      "tldr": "现有基于单一冻结LLM模拟用户的多智能体强化学习因模拟器模式坍塌导致策略过拟合，在真实环境泛化差。本文提出推理时言语化采样与训练时联合训练两种互补方案，分别拓宽模拟器行为分布和训练模拟器群体。在三个多轮基准上，两种方案分别提升留存成功率最高9%和14%，人类研究也显示真实用户增益。研究表明训练环境多样性对多轮RL泛化至关重要，并开源SCOPE框架。",
+      "tags": "query:agent-memory",
+      "abstract_en": "Multi-agent reinforcement learning for human-AI interaction typically relies on a single large language model to simulate user behavior. We show that this approach systematically fails to generalize, and trace the failure to simulator collapse: because the simulator LLM is mode-collapsed, an LLM policy trained against it overfits to narrow strategies that exploit the simulator's dominant mode, and such a policy transfers poorly to unseen simulators and real users. We formalize this collapse theoretically and propose two complementary solutions, one at inference time and one at training time. The inference-time solution, Verbalized Sampling, broadens the simulator's behavior by sampling from a verbalized response distribution, reducing mode collapse. The training-time solution, Co-Training, jointly optimizes the policy against a population of trainable simulators, preventing it from overfitting to any single simulator's mode. We validate both solutions on three multi-turn benchmarks: Persuasion for Good, $τ^2$-bench, and CooperBench. Verbalized Sampling improves held-out success by up to 9% over single-simulator RL, and Co-Training pushes gains further to 14%; the human study shows similar gain on real users. Both solutions preserve the policy diversity that collapses under single-simulator RL. To support further work in this direction, we release SCOPE, an open-source framework for Population Co-Training multi-agent RL. More broadly, our results suggest that the diversity of the training environment, not only the policy, is critical to the generalization of multi-turn RL to real-world deployment.",
+      "source": "arxiv",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "paper_id": "202608/13/2608.08600v1-population-scalable-multi-agent-world-modeling",
+      "section": "quick",
+      "title_en": "Population-Scalable Multi-Agent World Modeling",
+      "authors": "Renjie Zhao, Yuxiang Wu, Mingyu Zhang, Jiaxin Li, Sisi Li, Yimin Sheng, Tianxi Tan, Zhenkai Zhang, Jianyi Zhu, Yong-Lu Li",
+      "date": "2026-08-09",
+      "pdf": "https://arxiv.org/pdf/2608.08600v1",
+      "score": "6.0",
+      "evidence": "共享世界状态与渲染接口的可扩展多智能体世界模型",
+      "tldr": "多智能体世界模型面临训练与推理时智能体数量固定的扩展性瓶颈，难以在推理阶段动态扩展群体规模。本文提出Khora框架，将共享世界状态的演化与视觉渲染解耦，并引入群体无关的渲染接口，使任意数量的智能体都能通过查询同一状态生成各自观测。实验表明，该方法无需重新训练即可泛化到未见智能体数量，同时保持视觉质量与多智能体一致性。该设计通过共享状态而非视频生成器内部密集交互来维持跨视图一致性，实现了随查询视图数量近似线性的扩展，为可扩展开放世界模拟提供了可行路径。",
+      "tags": "query:agent-memory",
+      "abstract_en": "World models have recently achieved impressive progress in visual prediction and interactive generation, but extending them to multi-agent environments introduces a fundamental scalability challenge. Existing methods generally assume a fixed number of agents during training and inference, which ties the model to a pre-determined agent population and limits inference-time scalability. Our key insight is that cross-view consistency should arise from a shared world state whose evolution does not assume a predefined number of agents, while agent-specific observations should be generated by querying this state through a unified rendering interface. Based on this insight, we propose Khora, a scalable multi-agent world model that supports inference-time expansion to arbitrary numbers of agents without retraining. Our framework decouples world-state evolution from visual rendering and introduces a population-agnostic rendering mechanism for incorporating other agent information. This design maintains cross-view consistency through the shared world state rather than through dense interactions among observation streams inside the expensive video generator, enabling approximately linear practical scaling with the number of queried views. Qualitative experiments demonstrate that our approach generalizes to unseen numbers of agents while maintaining visual quality and multi-agent consistency. We further implement a real-time interactive system to demonstrate scalable open-world simulation.",
+      "source": "arxiv",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "errors": []
+}
