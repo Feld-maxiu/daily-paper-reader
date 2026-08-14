@@ -1,0 +1,89 @@
+{
+  "date": "20260814",
+  "date_label": "",
+  "generated_at": "2026-08-14 21:04:44 UTC",
+  "recommend_exists": true,
+  "run_count": 1,
+  "papers": [
+    {
+      "paper_id": "2608.12626v1",
+      "route": "202608/14/2608.12626v1-llms-are-not-good-strategists-yet-memory-enhanced-agency-boosts-reasoning",
+      "title": "LLMs Are Not Good Strategists, Yet Memory-Enhanced Agency Boosts Reasoning",
+      "section": "deep",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 9.0,
+      "evidence": "EpicStar 框架让智能体将记忆作为策略学习，利用成功回合和工作记忆提升长期推理",
+      "first_seen_at": "2026-08-14 21:04:44 UTC",
+      "updated_at": "2026-08-14 21:04:44 UTC"
+    },
+    {
+      "paper_id": "2608.12743v1",
+      "route": "202608/14/2608.12743v1-spatial-memory-agent-experience-grounded-procedure-memory-for-spatial-intelligence",
+      "title": "Spatial Memory Agent: Experience-Grounded Procedure Memory for Spatial Intelligence",
+      "section": "deep",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 9.0,
+      "evidence": "基于经验的空间智能程序记忆",
+      "first_seen_at": "2026-08-14 21:04:44 UTC",
+      "updated_at": "2026-08-14 21:04:44 UTC"
+    },
+    {
+      "paper_id": "2608.13420v1",
+      "route": "202608/14/2608.13420v1-enhancing-virtual-agents-through-slms-and-edge-computing-an-exploratory-evaluation-of-think-and-memory-processes",
+      "title": "Enhancing Virtual Agents through SLMs and Edge-Computing: An Exploratory Evaluation of Think and Memory Processes",
+      "section": "deep",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 9.0,
+      "evidence": "具身虚拟智能体的记忆过程",
+      "first_seen_at": "2026-08-14 21:04:44 UTC",
+      "updated_at": "2026-08-14 21:04:44 UTC"
+    },
+    {
+      "paper_id": "2608.12564v1",
+      "route": "202608/14/2608.12564v1-scaling-automatic-research-agents-via-world-models",
+      "title": "Scaling Automatic Research Agents via World Models",
+      "section": "deep",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 8.0,
+      "evidence": "使用世界模型模拟环境执行，解决自动研究智能体强化学习扩展瓶颈",
+      "first_seen_at": "2026-08-14 21:04:44 UTC",
+      "updated_at": "2026-08-14 21:04:44 UTC"
+    },
+    {
+      "paper_id": "2608.13456v1",
+      "route": "202608/14/2608.13456v1-a-unifying-perspective-on-causal-world-models-from-observations-to-representations-to-structure",
+      "title": "A Unifying Perspective on Causal World Models: From Observations to Representations to Structure",
+      "section": "quick",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 7.0,
+      "evidence": "面向智能体的因果世界模型",
+      "first_seen_at": "2026-08-14 21:04:44 UTC",
+      "updated_at": "2026-08-14 21:04:44 UTC"
+    }
+  ]
+}
