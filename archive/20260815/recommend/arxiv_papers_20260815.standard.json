@@ -1,0 +1,146 @@
+{
+  "mode": "standard",
+  "generated_at": "2026-08-15T20:24:18.566894+00:00",
+  "stats": {
+    "mode": "standard",
+    "tag_count": 1,
+    "deep_divecandidates": 2,
+    "deep_cap": 6,
+    "deep_selected": 2,
+    "quick_candidates": 1,
+    "quick_skim_target": 11,
+    "quick_selected": 1
+  },
+  "deep_dive": [
+    {
+      "id": "2608.09555v1",
+      "source": "arxiv",
+      "title": "Bidirectional Context Self-Distillation for Reinforcement Learning of Skill-Based LLM Agents",
+      "abstract": "External natural-language skills provide large language model (LLM) agents with reusable and editable guidance for solving complex tasks. Yet their effectiveness depends not only on skill quality, but also on whether the policy can translate the provided guidance into appropriate actions. However, methods specifically designed to improve this skill-utilization ability remain largely underexplored. In practice, skill-based agents are commonly trained with reinforcement learning objectives centered on task-level rewards, which offer limited supervision and struggle to capture subtle differences in how effectively the policy uses the provided skills. We propose BCSD (Bidirectional Context Self-Distillation), a framework that combines self-distillation with reinforcement learning to train LLM agents to use external skills more effectively. Unlike prior self-distillation methods that rely on a single privileged context, BCSD evaluates each trajectory from two complementary skill-context views. The augmented view introduces higher-level Meta-Skill guidance, while the reduced view prunes general guidance to highlight task-specific skills. Their complementary token-level signals are combined to rescale the RL advantage. Experiments on ALFWorld and WebShop demonstrate that BCSD achieves the strongest overall performance across model scales, enabling agents to utilize external skills more effectively. Ablation studies further verify the complementary contributions of the augmented and reduced context views. Code will be released to ensure full reproducibility.",
+      "authors": [
+        "Tianjun Pan",
+        "Yuan Li",
+        "Hongda Wang",
+        "Linbo Jin",
+        "Mengfei Song",
+        "Lei Gao",
+        "Qiming Shi",
+        "Shaokang Fu",
+        "Jiarong Zhao",
+        "Chengyu Wang",
+        "Chengfu Huo"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-08-10T12:53:06+00:00",
+      "link": "https://arxiv.org/pdf/2608.09555v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 10.0,
+      "llm_evidence_en": "Proposes BCSD to improve skill-utilization in RL-trained skill-based LLM agents via bidirectional context self-distillation",
+      "llm_evidence_cn": "提出BCSD框架，通过双向上下文自蒸馏提升基于技能的LLM智能体在强化学习中的技能利用率",
+      "llm_evidence": "提出BCSD框架，通过双向上下文自蒸馏提升基于技能的LLM智能体在强化学习中的技能利用率",
+      "canonical_evidence": "提出BCSD框架，通过双向上下文自蒸馏提升基于技能的LLM智能体在强化学习中的技能利用率",
+      "llm_tldr_en": "BCSD combines reinforcement learning objectives with bidirectional context self-distillation to improve how skill-based LLM agents translate provided guidance into actions, addressing limited supervision from task-level rewards.",
+      "llm_tldr_cn": "基于外部自然语言技能的LLM智能体虽然能获得可复用指导，但强化学习仅依赖任务级奖励难以监督技能利用的细微差异。BCSD提出双向上下文自蒸馏框架，结合强化学习目标来强化策略对技能的执行能力。实验表明该方法能更好利用技能指导并提升智能体性能。该工作为技能型智能体的强化学习训练提供了有效监督信号。",
+      "llm_tldr": "基于外部自然语言技能的LLM智能体虽然能获得可复用指导，但强化学习仅依赖任务级奖励难以监督技能利用的细微差异。BCSD提出双向上下文自蒸馏框架，结合强化学习目标来强化策略对技能的执行能力。实验表明该方法能更好利用技能指导并提升智能体性能。该工作为技能型智能体的强化学习训练提供了有效监督信号。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "reinforcement learning applied to autonomous agents",
+      "matched_requirement_id": "req-3",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2608.06735v1",
+      "source": "arxiv",
+      "title": "IB-RL: Isolated Bilateral Reinforcement Learning for Strategic Dialogue Agents",
+      "abstract": "Reinforcement learning (RL) has achieved strong results in improving large language models (LLMs) on tasks with stationary, verifiable rewards, such as mathematical reasoning and code execution. In these settings, the environment follows fixed rules and does not adapt strategically to the agent. Strategic dialogue differs in this respect: the environment is another agent that adapts to the policy, and success depends on the interaction between the two sides. Despite this interactive nature, current RL approaches typically train a target agent against a fixed counterpart or simulator. We find that this training paradigm encourages the policy to exploit counterpart-specific regularities rather than learn strategies that generalize across counterparts. We call this problem the static-counterpart mismatch, which we quantify directly in our experiments. To address it, we propose Isolated Bilateral Reinforcement Learning (IB-RL), in which the two roles coevolve through joint rollouts while each role optimizes its own reward through fully independent advantages, action masks, and update paths. We evaluate frozen policies against fully independent held-out counterparts in both domains. On Vehicle TeleSales, IB-RL achieves 89.6% Success@1, compared to 84.6% for the best unilateral RL baseline. On Deal-or-NoDeal, it reaches 98.4% agreement against DeepSeek V4 Pro, compared to 86.4% for the best unilateral baseline. These results indicate that jointly training both roles with strict peragent isolation produces policies that generalize more effectively to unseen counterparts.",
+      "authors": [
+        "Senhao Wang",
+        "Chenghao Cai",
+        "Haitao Hu",
+        "Mingxing Huang",
+        "Xingguang Wang",
+        "Wenhao Li",
+        "Zecheng Lin"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI",
+        "cs.CL"
+      ],
+      "published": "2026-08-07T02:59:53+00:00",
+      "link": "https://arxiv.org/pdf/2608.06735v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "Proposes Isolated Bilateral Reinforcement Learning for strategic dialogue agents, directly applying RL to autonomous agent interaction.",
+      "llm_evidence_cn": "提出孤立双边强化学习用于战略对话智能体，直接将强化学习应用于自主智能体交互",
+      "llm_evidence": "提出孤立双边强化学习用于战略对话智能体，直接将强化学习应用于自主智能体交互",
+      "canonical_evidence": "提出孤立双边强化学习用于战略对话智能体，直接将强化学习应用于自主智能体交互",
+      "llm_tldr_en": "Addresses non-stationary strategic dialogue by proposing IB-RL, which trains each agent in isolation against a frozen copy to learn generalizable strategies, avoiding counterpart overfitting.",
+      "llm_tldr_cn": "针对现有强化学习方法在战略对话中固定对手导致策略过拟合的问题，提出孤立双边强化学习（IB-RL）方法，通过让智能体在训练时使用冻结的对手副本进行自我对弈式学习，从而学习更具泛化性的交互策略。该方法避免了对特定对手规律的利用，提高了跨对手的泛化能力，为多智能体强化学习在对话场景中的应用提供了新思路。",
+      "llm_tldr": "针对现有强化学习方法在战略对话中固定对手导致策略过拟合的问题，提出孤立双边强化学习（IB-RL）方法，通过让智能体在训练时使用冻结的对手副本进行自我对弈式学习，从而学习更具泛化性的交互策略。该方法避免了对特定对手规律的利用，提高了跨对手的泛化能力，为多智能体强化学习在对话场景中的应用提供了新思路。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "reinforcement learning applied to autonomous agents",
+      "matched_requirement_id": "req-3",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "quick_skim": [
+    {
+      "id": "2608.11350v1",
+      "source": "arxiv",
+      "title": "Self-Evolving Embodied Agents via Skill-Harness Evolution",
+      "abstract": "Embodied agents are increasingly built as systems around foundation models, where performance depends not only on model weights but also on the skills, context, action interfaces, and execution harness surrounding the model. While supervised fine-tuning and reinforcement learning can adapt agents to new environments, they require additional data, rewards, and training runs; meanwhile, many train-free code-centric approaches rely on programmable robot APIs that may be unavailable in fixed-interface settings. We propose SHAPER, a self-evolving framework for train-free embodied adaptation that keeps model parameters frozen and improves the non-parametric agent system by evolving reusable skills and a context-code harness through target-environment rollouts. In SHAPER, the same frozen model can serve as both planner and optimizer, refining its external skills and context-code harness without parameter updates. We evaluate SHAPER on VLABench and ESI-Bench, covering embodied agents with different low-level action interfaces, and compare against pure execution, supervised fine-tuning, and test-time-scaling baselines such as verifier-free selection and voting. Our results suggest that skill-and-harness optimization is a practical route to self-evolving embodied agents when model training is expensive, unavailable, or undesirable.",
+      "authors": [
+        "Peidong Wang",
+        "Zhiming Ma",
+        "Ying Chang",
+        "Xufang Luo",
+        "Xiaocui Yang",
+        "Shi Feng",
+        "Yuqing Yang",
+        "Dongsheng Li"
+      ],
+      "primary_category": "cs.CL",
+      "categories": [
+        "cs.CL",
+        "cs.RO"
+      ],
+      "published": "2026-08-11T18:55:58+00:00",
+      "link": "https://arxiv.org/pdf/2608.11350v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "SHAPER evolves reusable skills and context-code harness as non-parametric memory for self-evolving embodied agents.",
+      "llm_evidence_cn": "SHAPER进化可复用技能和上下文代码底座，作为自进化具身智能体的非参数记忆",
+      "llm_evidence": "SHAPER进化可复用技能和上下文代码底座，作为自进化具身智能体的非参数记忆",
+      "canonical_evidence": "SHAPER进化可复用技能和上下文代码底座，作为自进化具身智能体的非参数记忆",
+      "llm_tldr_en": "Proposes SHAPER, a train-free framework that evolves skills and harness via target-environment rollouts to adapt embodied agents without weight updates, acting as memory augmentation.",
+      "llm_tldr_cn": "针对具身智能体在固定接口环境中缺乏可训练数据、奖励或训练运行的问题，提出SHAPER框架，冻结模型参数，通过目标环境滚动进化可复用技能和上下文代码底座，实现无训练的自适应。该方法不依赖权重更新，仅通过非参数系统演化来积累任务经验，提升了具身智能体在新环境中的适应能力，可视为一种记忆增强机制。",
+      "llm_tldr": "针对具身智能体在固定接口环境中缺乏可训练数据、奖励或训练运行的问题，提出SHAPER框架，冻结模型参数，通过目标环境滚动进化可复用技能和上下文代码底座，实现无训练的自适应。该方法不依赖权重更新，仅通过非参数系统演化来积累任务经验，提升了具身智能体在新环境中的适应能力，可视为一种记忆增强机制。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "memory mechanisms for intelligent agents",
+      "matched_requirement_id": "req-1",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    }
+  ]
+}

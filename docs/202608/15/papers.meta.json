@@ -1,0 +1,54 @@
+{
+  "label": "2026-08-15",
+  "date": "2026-08-15",
+  "generated_at": "2026-08-15T20:29:35",
+  "count": 3,
+  "papers": [
+    {
+      "paper_id": "202608/15/2608.09555v1-bidirectional-context-self-distillation-for-reinforcement-learning-of-skill-based-llm-agents",
+      "section": "deep",
+      "title_en": "Bidirectional Context Self-Distillation for Reinforcement Learning of Skill-Based LLM Agents",
+      "authors": "Tianjun Pan, Yuan Li, Hongda Wang, Linbo Jin, Mengfei Song, Lei Gao, Qiming Shi, Shaokang Fu, Jiarong Zhao, Chengyu Wang, Chengfu Huo",
+      "date": "2026-08-10",
+      "pdf": "https://arxiv.org/pdf/2608.09555v1",
+      "score": "10.0",
+      "evidence": "提出BCSD框架，通过双向上下文自蒸馏提升基于技能的LLM智能体在强化学习中的技能利用率",
+      "tldr": "技能型LLM智能体虽可利用外部自然语言技能，但传统RL仅以任务奖励优化，难以捕捉技能利用的细微差异。为此提出BCSD框架，结合自蒸馏与RL，从增强视图（引入Meta-Skill高层指导）和缩减视图（突出任务特定技能）两个互补上下文提取token级信号，重新缩放RL优势。在ALFWorld和WebShop上，BCSD在不同模型规模下均取得最强整体性能，使智能体更有效利用外部技能。该框架为技能型智能体的技能利用训练提供新思路，并承诺代码开源。",
+      "tags": "query:agent-memory",
+      "abstract_en": "External natural-language skills provide large language model (LLM) agents with reusable and editable guidance for solving complex tasks. Yet their effectiveness depends not only on skill quality, but also on whether the policy can translate the provided guidance into appropriate actions. However, methods specifically designed to improve this skill-utilization ability remain largely underexplored. In practice, skill-based agents are commonly trained with reinforcement learning objectives centered on task-level rewards, which offer limited supervision and struggle to capture subtle differences in how effectively the policy uses the provided skills. We propose BCSD (Bidirectional Context Self-Distillation), a framework that combines self-distillation with reinforcement learning to train LLM agents to use external skills more effectively. Unlike prior self-distillation methods that rely on a single privileged context, BCSD evaluates each trajectory from two complementary skill-context views. The augmented view introduces higher-level Meta-Skill guidance, while the reduced view prunes general guidance to highlight task-specific skills. Their complementary token-level signals are combined to rescale the RL advantage. Experiments on ALFWorld and WebShop demonstrate that BCSD achieves the strongest overall performance across model scales, enabling agents to utilize external skills more effectively. Ablation studies further verify the complementary contributions of the augmented and reduced context views. Code will be released to ensure full reproducibility.",
+      "source": "arxiv",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "paper_id": "202608/15/2608.06735v1-ib-rl-isolated-bilateral-reinforcement-learning-for-strategic-dialogue-agents",
+      "section": "deep",
+      "title_en": "IB-RL: Isolated Bilateral Reinforcement Learning for Strategic Dialogue Agents",
+      "authors": "Senhao Wang, Chenghao Cai, Haitao Hu, Mingxing Huang, Xingguang Wang, Wenhao Li, Zecheng Lin",
+      "date": "2026-08-07",
+      "pdf": "https://arxiv.org/pdf/2608.06735v1",
+      "score": "9.0",
+      "evidence": "提出孤立双边强化学习用于战略对话智能体，直接将强化学习应用于自主智能体交互",
+      "tldr": "战略对话中，环境是另一个会适应的智能体，但现有RL常训练目标代理对抗固定对手，导致策略利用对手特定规律而泛化差。IB-RL让两角色通过联合rollouts共同进化，同时每个角色使用完全独立优势、动作掩码和更新路径优化自身奖励。在Vehicle TeleSales和Deal-or-NoDeal上，IB-RL分别达到89.6% Success@1和98.4%协议率，超过最佳单边基线。结果表明严格隔离的双边联合训练能显著提升策略对未知对手的泛化能力。",
+      "tags": "query:agent-memory",
+      "abstract_en": "Reinforcement learning (RL) has achieved strong results in improving large language models (LLMs) on tasks with stationary, verifiable rewards, such as mathematical reasoning and code execution. In these settings, the environment follows fixed rules and does not adapt strategically to the agent. Strategic dialogue differs in this respect: the environment is another agent that adapts to the policy, and success depends on the interaction between the two sides. Despite this interactive nature, current RL approaches typically train a target agent against a fixed counterpart or simulator. We find that this training paradigm encourages the policy to exploit counterpart-specific regularities rather than learn strategies that generalize across counterparts. We call this problem the static-counterpart mismatch, which we quantify directly in our experiments. To address it, we propose Isolated Bilateral Reinforcement Learning (IB-RL), in which the two roles coevolve through joint rollouts while each role optimizes its own reward through fully independent advantages, action masks, and update paths. We evaluate frozen policies against fully independent held-out counterparts in both domains. On Vehicle TeleSales, IB-RL achieves 89.6% Success@1, compared to 84.6% for the best unilateral RL baseline. On Deal-or-NoDeal, it reaches 98.4% agreement against DeepSeek V4 Pro, compared to 86.4% for the best unilateral baseline. These results indicate that jointly training both roles with strict peragent isolation produces policies that generalize more effectively to unseen counterparts.",
+      "source": "arxiv",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "paper_id": "202608/15/2608.11350v1-self-evolving-embodied-agents-via-skill-harness-evolution",
+      "section": "quick",
+      "title_en": "Self-Evolving Embodied Agents via Skill-Harness Evolution",
+      "authors": "Peidong Wang, Zhiming Ma, Ying Chang, Xufang Luo, Xiaocui Yang, Shi Feng, Yuqing Yang, Dongsheng Li",
+      "date": "2026-08-11",
+      "pdf": "https://arxiv.org/pdf/2608.11350v1",
+      "score": "6.0",
+      "evidence": "SHAPER进化可复用技能和上下文代码底座，作为自进化具身智能体的非参数记忆",
+      "tldr": "具身智能体性能不仅取决于模型权重，还依赖技能、上下文与执行框架；微调和强化学习成本高，无训练代码方法依赖可编程接口。提出 SHAPER，在冻结模型参数下通过目标环境试运行进化可复用技能与上下文代码框架，同一模型同时充当规划器与优化器。在 VLABench 和 ESI-Bench 上，SHAPER 优于纯执行、监督微调及测试时缩放基线。该工作展示了技能与框架优化是模型训练昂贵或不可用时实现自进化具身智能体的实用路线。",
+      "tags": "query:agent-memory",
+      "abstract_en": "Embodied agents are increasingly built as systems around foundation models, where performance depends not only on model weights but also on the skills, context, action interfaces, and execution harness surrounding the model. While supervised fine-tuning and reinforcement learning can adapt agents to new environments, they require additional data, rewards, and training runs; meanwhile, many train-free code-centric approaches rely on programmable robot APIs that may be unavailable in fixed-interface settings. We propose SHAPER, a self-evolving framework for train-free embodied adaptation that keeps model parameters frozen and improves the non-parametric agent system by evolving reusable skills and a context-code harness through target-environment rollouts. In SHAPER, the same frozen model can serve as both planner and optimizer, refining its external skills and context-code harness without parameter updates. We evaluate SHAPER on VLABench and ESI-Bench, covering embodied agents with different low-level action interfaces, and compare against pure execution, supervised fine-tuning, and test-time-scaling baselines such as verifier-free selection and voting. Our results suggest that skill-and-harness optimization is a practical route to self-evolving embodied agents when model training is expensive, unavailable, or undesirable.",
+      "source": "arxiv",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "errors": []
+}

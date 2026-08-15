@@ -1,0 +1,57 @@
+{
+  "date": "20260815",
+  "date_label": "",
+  "generated_at": "2026-08-15 20:29:22 UTC",
+  "recommend_exists": true,
+  "run_count": 1,
+  "papers": [
+    {
+      "paper_id": "2608.09555v1",
+      "route": "202608/15/2608.09555v1-bidirectional-context-self-distillation-for-reinforcement-learning-of-skill-based-llm-agents",
+      "title": "Bidirectional Context Self-Distillation for Reinforcement Learning of Skill-Based LLM Agents",
+      "section": "deep",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 10.0,
+      "evidence": "提出BCSD框架，通过双向上下文自蒸馏提升基于技能的LLM智能体在强化学习中的技能利用率",
+      "first_seen_at": "2026-08-15 20:29:22 UTC",
+      "updated_at": "2026-08-15 20:29:22 UTC"
+    },
+    {
+      "paper_id": "2608.06735v1",
+      "route": "202608/15/2608.06735v1-ib-rl-isolated-bilateral-reinforcement-learning-for-strategic-dialogue-agents",
+      "title": "IB-RL: Isolated Bilateral Reinforcement Learning for Strategic Dialogue Agents",
+      "section": "deep",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 9.0,
+      "evidence": "提出孤立双边强化学习用于战略对话智能体，直接将强化学习应用于自主智能体交互",
+      "first_seen_at": "2026-08-15 20:29:22 UTC",
+      "updated_at": "2026-08-15 20:29:22 UTC"
+    },
+    {
+      "paper_id": "2608.11350v1",
+      "route": "202608/15/2608.11350v1-self-evolving-embodied-agents-via-skill-harness-evolution",
+      "title": "Self-Evolving Embodied Agents via Skill-Harness Evolution",
+      "section": "quick",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 6.0,
+      "evidence": "SHAPER进化可复用技能和上下文代码底座，作为自进化具身智能体的非参数记忆",
+      "first_seen_at": "2026-08-15 20:29:22 UTC",
+      "updated_at": "2026-08-15 20:29:22 UTC"
+    }
+  ]
+}
