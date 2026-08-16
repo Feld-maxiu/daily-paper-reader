@@ -1,0 +1,270 @@
+{
+  "mode": "standard",
+  "generated_at": "2026-08-16T19:26:32.588567+00:00",
+  "stats": {
+    "mode": "standard",
+    "tag_count": 1,
+    "deep_divecandidates": 3,
+    "deep_cap": 6,
+    "deep_selected": 3,
+    "quick_candidates": 3,
+    "quick_skim_target": 11,
+    "quick_selected": 3
+  },
+  "deep_dive": [
+    {
+      "id": "2608.08523v1",
+      "source": "arxiv",
+      "title": "Discovering Diverse Planning Policies for Multimodal Embodied Agents with Quality-Diversity Optimization",
+      "abstract": "Multimodal embodied agents are increasingly required to solve long-horizon tasks by integrating visual observations, textual goals, and interaction history into closed-loop decision making. However, state-of-the-art large-model-based planners often rely on a single dominant planning style during execution. Once this execution mode becomes ineffective, the agent may remain stalled for many steps, repeatedly interacting with the environment without making meaningful progress. We address this limitation by proposing a Quality-Diversity (QD) framework for discovering diverse planning policies for multimodal embodied agents. The proposed method treats planning-policy templates as evolvable individuals and organizes them into a behavior-indexed archive rather than collapsing search to a single prompt style. In the offline stage, rollout trajectories are summarized into structured success and failure experiences, which guide policy variation through recombination and experience-guided mutation. The resulting policies are mapped into a behavior space defined by interaction intensity and goal-directedness, and the highest-quality policy in each niche is retained in the archive. In the online stage, the agent executes one policy at a time while monitoring task progress. When persistent stall is detected, the system rolls back to the latest checkpoint and switches to a behaviorally distinct archive policy to resume execution. Experiments on the ThreeDWorld transport benchmark show that the proposed framework improves both task success and interaction efficiency over representative baseline planners. These results suggest that discovering diverse policy repertoires is an effective way to support adaptive multimodal planning and online failure recovery.",
+      "authors": [
+        "Pengfei Xu",
+        "Yong Liu",
+        "Xiaoya Nan",
+        "Qiang Yang",
+        "Peilan Xu"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-08-09T06:41:53+00:00",
+      "link": "https://arxiv.org/pdf/2608.08523v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "diverse planning policies for multimodal embodied agents via QD optimization",
+      "llm_evidence_cn": "通过质量-多样性优化为多模态具身智能体发现多样化规划策略",
+      "llm_evidence": "通过质量-多样性优化为多模态具身智能体发现多样化规划策略",
+      "canonical_evidence": "通过质量-多样性优化为多模态具身智能体发现多样化规划策略",
+      "llm_tldr_en": "Proposes a Quality-Diversity optimization framework that treats planning-policy templates as evolvable individuals to discover diverse planning policies for multimodal embodied agents integrating visual, textual, and interaction history.",
+      "llm_tldr_cn": "针对多模态具身智能体在长程任务中因单一规划风格失效而反复停滞的问题，本文提出基于质量-多样性的优化框架。该方法将规划策略模板视为可进化个体，通过质量-多样性算法组织并演化出多样化规划策略。智能体在闭环决策中集成视觉观察、文本目标和交互历史，可动态切换不同策略。实验表明，该框架显著减少了停滞并提高了任务完成率。该工作为多模态具身智能体的鲁棒规划提供了新方法。",
+      "llm_tldr": "针对多模态具身智能体在长程任务中因单一规划风格失效而反复停滞的问题，本文提出基于质量-多样性的优化框架。该方法将规划策略模板视为可进化个体，通过质量-多样性算法组织并演化出多样化规划策略。智能体在闭环决策中集成视觉观察、文本目标和交互历史，可动态切换不同策略。实验表明，该框架显著减少了停滞并提高了任务完成率。该工作为多模态具身智能体的鲁棒规划提供了新方法。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "agent that processes multiple modalities",
+      "matched_requirement_id": "req-2",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2608.09516v1",
+      "source": "arxiv",
+      "title": "HarnessWAM: Bridging Prediction and Deliberation in World Action Models",
+      "abstract": "World Action Models (WAMs) jointly learn environmental dynamics and robot actions, introducing priors over physical evolution into embodied control. However, finite-horizon prediction and action generation are insufficient for complex embodied tasks that require global planning, cross-stage state maintenance, execution verification, and failure recovery. We refer to this mismatch as the prediction-deliberation gap of WAMs. To address this gap, we propose HarnessWAM, an agentic framework for WAMs. HarnessWAM employs a vision-language-model-based Task Manager to maintain an evidence-grounded scene belief and a structured task graph. A capability-conditioned executable-space projection further constrains open-ended semantic plans into sequences of atomic skills that satisfy task dependencies, embodiment-state constraints, and the capability boundary of the underlying WAM. During execution, HarnessWAM operates through an event-driven, dual-timescale feedback loop: a lightweight progress estimator continuously provides high-frequency execution evidence, while the Task Manager deliberates at salient milestones by jointly considering the current observation, task state, and interaction history to determine whether to advance the task, acquire additional observations, revise the plan, or initiate local recovery. This mechanism enables the robot to recover its state after a subtask failure and resume execution without discarding previously acquired scene knowledge. HarnessWAM achieves state-of-the-art full-task and subtask success rates of 59.6% and 69.9% on RoboMemArena, and an SR of 23.7% on RoboCerebra Ideal. These results demonstrate that model-external structured state maintenance and closed-loop agentic decision making can effectively extend the local control capabilities of WAMs into embodied task execution that is plannable, verifiable, and recoverable.",
+      "authors": [
+        "Zhaopeng Gu",
+        "Bingke Zhu",
+        "Tianxi Lin",
+        "Guibo Zhu",
+        "Yingying Chen",
+        "Kai Wang",
+        "Tingyu Yuan",
+        "Chaoyang Zhao",
+        "Zhaowen Li",
+        "Peng Su",
+        "Jinqiao Wang"
+      ],
+      "primary_category": "cs.RO",
+      "categories": [
+        "cs.RO"
+      ],
+      "published": "2026-08-10T12:15:59+00:00",
+      "link": "https://arxiv.org/pdf/2608.09516v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "cross-stage state maintenance and evidence-grounded scene belief",
+      "llm_evidence_cn": "跨阶段状态维护与证据接地的场景信念",
+      "llm_evidence": "跨阶段状态维护与证据接地的场景信念",
+      "canonical_evidence": "跨阶段状态维护与证据接地的场景信念",
+      "llm_tldr_en": "Addresses the prediction-deliberation gap in World Action Models by proposing an agentic framework with a VLM-based Task Manager that maintains scene belief and task graph, enabling planning, verification, and recovery in embodied tasks.",
+      "llm_tldr_cn": "针对世界动作模型（WAM）有限时域预测无法支持复杂具身任务中的全局规划与状态维护问题，论文提出HarnessWAM智能体框架。该框架利用视觉语言模型任务管理器维护证据接地的场景信念和结构化任务图，并通过能力条件可执行空间投影约束语义计划为原子动作。实验表明该方法能有效桥接预测与深思鸿沟，提升长程任务执行可靠性。",
+      "llm_tldr": "针对世界动作模型（WAM）有限时域预测无法支持复杂具身任务中的全局规划与状态维护问题，论文提出HarnessWAM智能体框架。该框架利用视觉语言模型任务管理器维护证据接地的场景信念和结构化任务图，并通过能力条件可执行空间投影约束语义计划为原子动作。实验表明该方法能有效桥接预测与深思鸿沟，提升长程任务执行可靠性。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "memory mechanisms for intelligent agents",
+      "matched_requirement_id": "req-1",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2608.10402v1",
+      "source": "arxiv",
+      "title": "TideRL: Boosting Agentic RL Goodput with Readiness-Aware Scheduling",
+      "abstract": "Reinforcement learning (RL) for large language models is moving toward multi-turn agentic workloads, where rollout tasks repeatedly pause for external environments, resume with growing contexts, and finish at highly variable times. In this setting, RL training goodput, measured by training throughput, matters more than raw GPU occupancy: GPU waiting and repeated prefill recomputation are pure overhead. We present TideRL, a readiness-aware elastic RL system with Continuous Task Batching, Resource-Aware Ref-Actor Pipelining, and Elastic Resource Scaling. CTB preserves useful rollout state, $\\textrm{RA}^2\\textrm{P}$ selects between decoupled streaming and colocated aggregation from the ready backlog and arrival interval, and ERS moves ranks between rollout and training using the same readiness signals. Across text-only and multi-modal agentic workloads, TideRL improves RL training goodput by up to 5.6$\\times$ over synchronous baselines and over 33% over asynchronous baselines, while reaching similar task performance. It also improves KV cache hit rate by 1.58$\\times$, reduces per-step training time by up to 44.3%, and cuts total waiting time by up to 77.6%.",
+      "authors": [
+        "Yanyu Ren",
+        "Xizheng Wang",
+        "Xiao Liu",
+        "Bowen Lv",
+        "Hanchen Zhang",
+        "Shudan Zhang",
+        "Hanyu Lai",
+        "Shuai Wang",
+        "Li Chen",
+        "Dan Li",
+        "Jie Tang"
+      ],
+      "primary_category": "cs.LG",
+      "categories": [
+        "cs.LG",
+        "cs.DC"
+      ],
+      "published": "2026-08-11T02:49:33+00:00",
+      "link": "https://arxiv.org/pdf/2608.10402v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "readiness-aware scheduling for agentic RL training throughput",
+      "llm_evidence_cn": "就绪感知调度提升智能体强化学习训练吞吐",
+      "llm_evidence": "就绪感知调度提升智能体强化学习训练吞吐",
+      "canonical_evidence": "就绪感知调度提升智能体强化学习训练吞吐",
+      "llm_tldr_en": "TideRL introduces readiness-aware elastic scheduling with continuous task batching and resource scaling to boost goodput in multi-turn agentic RL workloads.",
+      "llm_tldr_cn": "针对大语言模型强化学习向多轮智能体工作负载转变中GPU等待和重复预填充重计算导致吞吐低的问题，提出TideRL就绪感知弹性RL系统。系统包含连续任务批处理、资源感知参考-行动者流水线以及弹性资源扩展三个核心组件。连续任务批处理保留有用回滚状态，资源感知流水线在解码流和共置聚合间选择，弹性扩展动态调整rollout与训练角色间资源。实验表明该方法显著提升智能体RL训练吞吐，减少资源浪费。",
+      "llm_tldr": "针对大语言模型强化学习向多轮智能体工作负载转变中GPU等待和重复预填充重计算导致吞吐低的问题，提出TideRL就绪感知弹性RL系统。系统包含连续任务批处理、资源感知参考-行动者流水线以及弹性资源扩展三个核心组件。连续任务批处理保留有用回滚状态，资源感知流水线在解码流和共置聚合间选择，弹性扩展动态调整rollout与训练角色间资源。实验表明该方法显著提升智能体RL训练吞吐，减少资源浪费。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "reinforcement learning applied to autonomous agents",
+      "matched_requirement_id": "req-3",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "quick_skim": [
+    {
+      "id": "2608.09492v1",
+      "source": "arxiv",
+      "title": "Rethink Before You Execute: Adaptive Execution for World Action Models",
+      "abstract": "World Action Models (WAMs) jointly predict future actions and the evolution of the environment. At each inference, a WAM generates a chunk of actions and the robot executes a fixed prefix before replanning. We argue that this fixed execution horizon is poorly matched to execution dynamics: the chunk reliability varies across task stages, so when to replan depends on the result of accumulated execution, not on the step counts. We propose TempoWAM (Timing Execution by Monitoring Progress Online), a lightweight plug-and-play execution scheme for WAMs. A Recurrent Progress Monitor first estimates task progress from the current observation, task instruction, remaining actions, and execution history; and an Adaptive Execution Protocol then evaluates whether the chunk is advancing the task to decide if replanning is needed. To bridge the training-deployment gap, the protocol is calibrated by a task-dependent calibration factor with online adaptation. Experiments on LIBERO, RoboTwin, and real-world tasks show that TempoWAM consistently improves the efficiency-success trade-off of WAM execution. On real robots, it reduces WAM inferences by 26.9% on easy tasks while maintaining success, and improves success by 13.3 points on difficult tasks.",
+      "authors": [
+        "Feng Ye",
+        "Yiming Zhao",
+        "Yong Yu",
+        "Hongxu Zhou",
+        "Yong Pan",
+        "Yuan Xue",
+        "Peng Jia",
+        "Chuanmin Jia"
+      ],
+      "primary_category": "cs.RO",
+      "categories": [
+        "cs.RO"
+      ],
+      "published": "2026-08-10T11:59:42+00:00",
+      "link": "https://arxiv.org/pdf/2608.09492v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "adaptive execution for world action models with progress monitoring",
+      "llm_evidence_cn": "通过进度监控为世界-动作模型提供自适应执行",
+      "llm_evidence": "通过进度监控为世界-动作模型提供自适应执行",
+      "canonical_evidence": "通过进度监控为世界-动作模型提供自适应执行",
+      "llm_tldr_en": "TempoWAM is a plug-and-play execution scheme for world-action models that uses a recurrent progress monitor and adaptive protocol to decide when to replan based on accumulated execution, improving timing and efficiency.",
+      "llm_tldr_cn": "针对世界-动作模型固定执行前缀无法适应块可靠性变化的问题，本文提出TempoWAM自适应执行方案。该方法利用循环进度监控器从当前观测、任务指令、剩余动作和执行历史中估计任务进展，并通过自适应执行协议评估是否需要重规划。该轻量级方案可插入现有世界-动作模型，根据累积执行结果动态调整执行时机。实验表明，TempoWAM提高了动作执行的时序匹配度和整体性能。该工作为世界模型在机器人操作中的高效执行提供了新思路。",
+      "llm_tldr": "针对世界-动作模型固定执行前缀无法适应块可靠性变化的问题，本文提出TempoWAM自适应执行方案。该方法利用循环进度监控器从当前观测、任务指令、剩余动作和执行历史中估计任务进展，并通过自适应执行协议评估是否需要重规划。该轻量级方案可插入现有世界-动作模型，根据累积执行结果动态调整执行时机。实验表明，TempoWAM提高了动作执行的时序匹配度和整体性能。该工作为世界模型在机器人操作中的高效执行提供了新思路。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "language-based world model for agent reasoning",
+      "matched_requirement_id": "req-5",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2608.08600v1",
+      "source": "arxiv",
+      "title": "Population-Scalable Multi-Agent World Modeling",
+      "abstract": "World models have recently achieved impressive progress in visual prediction and interactive generation, but extending them to multi-agent environments introduces a fundamental scalability challenge. Existing methods generally assume a fixed number of agents during training and inference, which ties the model to a pre-determined agent population and limits inference-time scalability. Our key insight is that cross-view consistency should arise from a shared world state whose evolution does not assume a predefined number of agents, while agent-specific observations should be generated by querying this state through a unified rendering interface. Based on this insight, we propose Khora, a scalable multi-agent world model that supports inference-time expansion to arbitrary numbers of agents without retraining. Our framework decouples world-state evolution from visual rendering and introduces a population-agnostic rendering mechanism for incorporating other agent information. This design maintains cross-view consistency through the shared world state rather than through dense interactions among observation streams inside the expensive video generator, enabling approximately linear practical scaling with the number of queried views. Qualitative experiments demonstrate that our approach generalizes to unseen numbers of agents while maintaining visual quality and multi-agent consistency. We further implement a real-time interactive system to demonstrate scalable open-world simulation.",
+      "authors": [
+        "Renjie Zhao",
+        "Yuxiang Wu",
+        "Mingyu Zhang",
+        "Jiaxin Li",
+        "Sisi Li",
+        "Yimin Sheng",
+        "Tianxi Tan",
+        "Zhenkai Zhang",
+        "Jianyi Zhu",
+        "Yong-Lu Li"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV",
+        "cs.AI",
+        "cs.LG"
+      ],
+      "published": "2026-08-09T09:26:15+00:00",
+      "link": "https://arxiv.org/pdf/2608.08600v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "scalable multi-agent world model with shared world state and rendering interface",
+      "llm_evidence_cn": "可扩展多智能体世界模型，共享世界状态与渲染接口",
+      "llm_evidence": "可扩展多智能体世界模型，共享世界状态与渲染接口",
+      "canonical_evidence": "可扩展多智能体世界模型，共享世界状态与渲染接口",
+      "llm_tldr_en": "Proposes Khora, a multi-agent world model decoupling shared world state from per-agent observations via a rendering interface, enabling population scalability.",
+      "llm_tldr_cn": "针对现有多智能体世界模型假设固定智能体数量、限制推理时可扩展性的问题，提出Khora可扩展多智能体世界模型。核心思想是跨视角一致性应来自共享世界状态，而不假设预定义智能体数量，并通过统一渲染接口查询该状态生成智能体特定观测。该方法支持推理时扩展到任意数量智能体。该工作为多智能体环境中的世界建模提供了新范式，虽非文本或语言世界模型，但对世界模型主题有方法论贡献。",
+      "llm_tldr": "针对现有多智能体世界模型假设固定智能体数量、限制推理时可扩展性的问题，提出Khora可扩展多智能体世界模型。核心思想是跨视角一致性应来自共享世界状态，而不假设预定义智能体数量，并通过统一渲染接口查询该状态生成智能体特定观测。该方法支持推理时扩展到任意数量智能体。该工作为多智能体环境中的世界建模提供了新范式，虽非文本或语言世界模型，但对世界模型主题有方法论贡献。",
+      "llm_tags": [
+        "query:agent-memory:composite"
+      ],
+      "matched_query_tag": "query:agent-memory:composite",
+      "matched_query_text": "Papers central to 智能体记忆，多模态，智能体强化学习，文本世界模型，语言世界模型, especially work that connects or combines: memory mechanisms for intelligent agents; agent that processes multiple modalities; reinforcement learning applied to autonomous agents; text-based world model for environment simulation; language-based world model for agent reasoning; agent with memory augmentation for better performance; How do text world models support language based agent simulation?.",
+      "matched_requirement_id": "req-composite-agent-memory",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2608.13456v1",
+      "source": "arxiv",
+      "title": "A Unifying Perspective on Causal World Models: From Observations to Representations to Structure",
+      "abstract": "World Models (WM) are increasingly seen as a foundation for intelligent agents that can predict, plan, and act beyond their training distribution. In this paper, we study WMs from a causal perspective across multiple levels of abstraction, ranging from perceptual observations to building a conceptual representation of the structure governing the environment dynamics. We argue that useful WMs must go beyond generative capabilities alone: they should also capture entity properties, entity-to-entity interactions, and entity-to-environment interactions that determine and explain the dynamics of a system. We provide a formal definition of Causal WMs (CWMs) grounded in the tasks they are intended to support, connecting world modelling with existing work in causal representation learning, object-centric learning, causal discovery, structural causal models, and model-based decision-making. Finally, we relate CWMs to the literature on identifiability, clarifying when the components of a WM can be recovered from data and up to which equivalence. With this, we ground WMs in representations and structures that support causal reasoning and informed decision-making.",
+      "authors": [
+        "Avinash Kori",
+        "Fabrizio Russo"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI",
+        "cs.CV"
+      ],
+      "published": "2026-08-13T16:40:35+00:00",
+      "link": "https://arxiv.org/pdf/2608.13456v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "causal world models as foundation for agents to predict, plan, and act",
+      "llm_evidence_cn": "因果世界模型作为智能体预测、规划和行动的基础",
+      "llm_evidence": "因果世界模型作为智能体预测、规划和行动的基础",
+      "canonical_evidence": "因果世界模型作为智能体预测、规划和行动的基础",
+      "llm_tldr_en": "Provides a unifying perspective on causal world models, arguing they must capture entity properties and interactions beyond generative capabilities to support intelligent agents.",
+      "llm_tldr_cn": "针对现有世界模型仅关注生成能力而缺乏因果结构理解的问题，论文从因果视角统一审视世界模型的不同抽象层次，提出因果世界模型应捕捉实体属性、实体间交互及实体与环境交互。该视角为构建支持智能体预测、规划与泛化的世界模型提供了理论基础，有助于指导未来世界模型设计。",
+      "llm_tldr": "针对现有世界模型仅关注生成能力而缺乏因果结构理解的问题，论文从因果视角统一审视世界模型的不同抽象层次，提出因果世界模型应捕捉实体属性、实体间交互及实体与环境交互。该视角为构建支持智能体预测、规划与泛化的世界模型提供了理论基础，有助于指导未来世界模型设计。",
+      "llm_tags": [
+        "query:agent-memory:composite"
+      ],
+      "matched_query_tag": "query:agent-memory:composite",
+      "matched_query_text": "Papers central to 智能体记忆，多模态，智能体强化学习，文本世界模型，语言世界模型, especially work that connects or combines: memory mechanisms for intelligent agents; agent that processes multiple modalities; reinforcement learning applied to autonomous agents; text-based world model for environment simulation; language-based world model for agent reasoning; agent with memory augmentation for better performance; How do text world models support language based agent simulation?.",
+      "matched_requirement_id": "req-composite-agent-memory",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    }
+  ]
+}

@@ -1,0 +1,105 @@
+{
+  "date": "20260816",
+  "date_label": "",
+  "generated_at": "2026-08-16 19:32:01 UTC",
+  "recommend_exists": true,
+  "run_count": 1,
+  "papers": [
+    {
+      "paper_id": "2608.08523v1",
+      "route": "202608/16/2608.08523v1-discovering-diverse-planning-policies-for-multimodal-embodied-agents-with-quality-diversity-optimization",
+      "title": "Discovering Diverse Planning Policies for Multimodal Embodied Agents with Quality-Diversity Optimization",
+      "section": "deep",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 9.0,
+      "evidence": "通过质量-多样性优化为多模态具身智能体发现多样化规划策略",
+      "first_seen_at": "2026-08-16 19:32:01 UTC",
+      "updated_at": "2026-08-16 19:32:01 UTC"
+    },
+    {
+      "paper_id": "2608.09516v1",
+      "route": "202608/16/2608.09516v1-harnesswam-bridging-prediction-and-deliberation-in-world-action-models",
+      "title": "HarnessWAM: Bridging Prediction and Deliberation in World Action Models",
+      "section": "deep",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 8.0,
+      "evidence": "跨阶段状态维护与证据接地的场景信念",
+      "first_seen_at": "2026-08-16 19:32:01 UTC",
+      "updated_at": "2026-08-16 19:32:01 UTC"
+    },
+    {
+      "paper_id": "2608.10402v1",
+      "route": "202608/16/2608.10402v1-tiderl-boosting-agentic-rl-goodput-with-readiness-aware-scheduling",
+      "title": "TideRL: Boosting Agentic RL Goodput with Readiness-Aware Scheduling",
+      "section": "deep",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 8.0,
+      "evidence": "就绪感知调度提升智能体强化学习训练吞吐",
+      "first_seen_at": "2026-08-16 19:32:01 UTC",
+      "updated_at": "2026-08-16 19:32:01 UTC"
+    },
+    {
+      "paper_id": "2608.09492v1",
+      "route": "202608/16/2608.09492v1-rethink-before-you-execute-adaptive-execution-for-world-action-models",
+      "title": "Rethink Before You Execute: Adaptive Execution for World Action Models",
+      "section": "quick",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 7.0,
+      "evidence": "通过进度监控为世界-动作模型提供自适应执行",
+      "first_seen_at": "2026-08-16 19:32:01 UTC",
+      "updated_at": "2026-08-16 19:32:01 UTC"
+    },
+    {
+      "paper_id": "2608.08600v1",
+      "route": "202608/16/2608.08600v1-population-scalable-multi-agent-world-modeling",
+      "title": "Population-Scalable Multi-Agent World Modeling",
+      "section": "quick",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 6.0,
+      "evidence": "可扩展多智能体世界模型，共享世界状态与渲染接口",
+      "first_seen_at": "2026-08-16 19:32:01 UTC",
+      "updated_at": "2026-08-16 19:32:01 UTC"
+    },
+    {
+      "paper_id": "2608.13456v1",
+      "route": "202608/16/2608.13456v1-a-unifying-perspective-on-causal-world-models-from-observations-to-representations-to-structure",
+      "title": "A Unifying Perspective on Causal World Models: From Observations to Representations to Structure",
+      "section": "quick",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 6.0,
+      "evidence": "因果世界模型作为智能体预测、规划和行动的基础",
+      "first_seen_at": "2026-08-16 19:32:01 UTC",
+      "updated_at": "2026-08-16 19:32:01 UTC"
+    }
+  ]
+}
