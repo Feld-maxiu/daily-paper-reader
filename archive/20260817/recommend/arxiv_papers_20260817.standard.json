@@ -1,0 +1,181 @@
+{
+  "mode": "standard",
+  "generated_at": "2026-08-17T20:17:14.466752+00:00",
+  "stats": {
+    "mode": "standard",
+    "tag_count": 1,
+    "deep_divecandidates": 2,
+    "deep_cap": 6,
+    "deep_selected": 2,
+    "quick_candidates": 2,
+    "quick_skim_target": 11,
+    "quick_selected": 2
+  },
+  "deep_dive": [
+    {
+      "id": "2608.13787v1",
+      "source": "arxiv",
+      "title": "From Passive Delegates to Strategic Negotiators: Reinforcing Social Reasoning in Small Language Models with SocialRL",
+      "abstract": "AI agents increasingly act on their users' behalf, handling tasks such as scheduling meetings, comparing offers, and haggling over prices. These principal-driven tasks routinely place the agent across from a counterpart (another user's agent, a seller, a recruiter) whose goals may conflict with its principal's. Yet the dispositions that make an assistant pleasant can make it a poor delegate: a friendly, helpful frontier model may disclose its principal's private information unprompted and concede at the first sign of resistance. We present SocialRL, a general recipe that trains social reasoning directly, and apply it to a 4B model across six domains: Deal-or-No-Deal, CaSiNo, Craigslist, Job Interview, Calendar, and Marketplace. Every domain is trained in-domain under the same recipe, and every policy is evaluated on all six. We find that (1) in-domain training reaches the frontier: on held-out scenarios the 4B matches or exceeds the GPT-5 family per domain, closing 73-122% of the baseline-to-frontier gap on the negotiation games, with 78% of buyer openings anchoring below target versus 3% untrained; (2) cross-domain transfer follows game structure: structurally paired games lift each other, a broad multi-issue donor lifts nearly all domains, and structurally isolated games transfer nothing; (3) guided by this transfer structure, two strategies, cascade RL and multi-teacher on-policy distillation (OPD), consolidate the per-domain specialists into a single unified 4B that reaches 0.627 average utility across all six environments, matching or exceeding GPT-4.1 (0.625), GPT-5.1 (0.619), and GPT-5.2 (0.613); (4) an explicit theory-of-mind scaffold helps only through training: distilling the ToM trace, rather than actions alone, lifts utility on every environment and generalizes better across them, and of the two ToM skills, only next-action prediction predicts negotiation outcomes.",
+      "authors": [
+        "Wenyue Hua",
+        "Zachary Huang",
+        "Tyler Payne",
+        "Safoora Yousefi",
+        "Saleema Amershi",
+        "Asli Celikyilmaz"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI",
+        "cs.CL",
+        "cs.LG",
+        "cs.MA"
+      ],
+      "published": "2026-08-13T21:39:12+00:00",
+      "link": "https://arxiv.org/pdf/2608.13787v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "reinforcement learning to train social reasoning in agent negotiation",
+      "llm_evidence_cn": "强化学习训练智能体谈判中的社会推理",
+      "llm_evidence": "强化学习训练智能体谈判中的社会推理",
+      "canonical_evidence": "强化学习训练智能体谈判中的社会推理",
+      "llm_tldr_en": "SocialRL is a general recipe that trains social reasoning directly in small language models, applied across six negotiation domains, turning passive delegates into strategic negotiators without revealing private information.",
+      "llm_tldr_cn": "现有助手式智能体在谈判中过于被动，容易泄露隐私或轻易让步。SocialRL提出直接训练社会推理的强化学习方案，在4B模型上六个谈判领域验证，使智能体能够在不泄露信息的情况下进行策略性协商。",
+      "llm_tldr": "现有助手式智能体在谈判中过于被动，容易泄露隐私或轻易让步。SocialRL提出直接训练社会推理的强化学习方案，在4B模型上六个谈判领域验证，使智能体能够在不泄露信息的情况下进行策略性协商。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "reinforcement learning applied to autonomous agents",
+      "matched_requirement_id": "req-3",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2608.14026v1",
+      "source": "arxiv",
+      "title": "MMDynOpt-Agent: Dynamic Optimization for Multimodal Large Language Model Reasoning via Reinforcement Learning",
+      "abstract": "Recently, multimodal large language models (MLLMs) have demonstrated strong potential in visual understanding and complex reasoning tasks. However, existing methods often struggle to efficiently transform visual cues from multimodal inputs and the semantics of the question into effective reasoning conditions, thereby limiting the reasoning performance of multimodal large language models. To address this challenge, we propose MMDynOpt-Agent, which models the dynamic optimization of multimodal reasoning as a Markov decision process via end-to-end reinforcement learning. Specifically, a lightweight multimodal agent serves as the decision policy and interacts with the target MLLM as the environment, adaptively steering its reasoning through multi-turn dynamic optimization prompts. Furthermore, to reduce the cost of multimodal reasoning, a reward mechanism that combines format compliance, answer correctness, and budget awareness is designed to jointly ensure reasoning accuracy and efficiency. MMDynOpt-Agent is transferable and generalizable, enabling training with one target MLLM and inference-time transfer to others. Experimental results on fifteen public datasets show MMDynOpt-Agent achieves strong performance and outperforms baselines. Our project is available at https://github.com/QwenQKing/MMDynOpt-Agent.",
+      "authors": [
+        "Wenjin Liu",
+        "Haoran Luo",
+        "Fayuan Ke",
+        "Zhenghong Lin",
+        "Yue Lu",
+        "Zhe Cui",
+        "Anh Tuan Luu",
+        "Carl Yang"
+      ],
+      "primary_category": "cs.CE",
+      "categories": [
+        "cs.CE"
+      ],
+      "published": "2026-08-14T07:17:52+00:00",
+      "link": "https://arxiv.org/pdf/2608.14026v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "dynamic optimization for multimodal reasoning via reinforcement learning",
+      "llm_evidence_cn": "通过强化学习对多模态推理进行动态优化",
+      "llm_evidence": "通过强化学习对多模态推理进行动态优化",
+      "canonical_evidence": "通过强化学习对多模态推理进行动态优化",
+      "llm_tldr_en": "Multimodal LLMs struggle to integrate visual cues into reasoning. MMDynOpt-Agent formulates dynamic optimization as an MDP and uses RL with a lightweight multimodal agent to steer the target MLLM, improving multimodal reasoning performance.",
+      "llm_tldr_cn": "针对多模态大语言模型在推理时难以有效融合视觉线索与语义的问题，本文提出MMDynOpt-Agent。该方法将多模态推理的动态优化建模为马尔可夫决策过程，通过端到端强化学习让轻量级多模态智能体作为策略与环境（目标MLLM）交互，自适应调整推理条件。实验表明该框架能提升多模态推理性能，为多模态智能体的强化学习优化提供了新途径。",
+      "llm_tldr": "针对多模态大语言模型在推理时难以有效融合视觉线索与语义的问题，本文提出MMDynOpt-Agent。该方法将多模态推理的动态优化建模为马尔可夫决策过程，通过端到端强化学习让轻量级多模态智能体作为策略与环境（目标MLLM）交互，自适应调整推理条件。实验表明该框架能提升多模态推理性能，为多模态智能体的强化学习优化提供了新途径。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "agent that processes multiple modalities",
+      "matched_requirement_id": "req-2",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "quick_skim": [
+    {
+      "id": "2608.11876v1",
+      "source": "arxiv",
+      "title": "D3D-GEN: Robot-Aware Domain-Grounded Interactive 3D World Generation for Social Robotics",
+      "abstract": "Training and validation of Embodied AI for social navigation critically depends on realistic simulation environments, yet many current approaches fail to find a balance between realism and simulability. We propose D3D-GEN, a novel world generation system that combines a domain agent with a retrieval-augmented generation (RAG) pipeline grounded in that domain. Our system enables users to rapidly generate domain-grounded, fully interactive 3D worlds by automating both the collection of domain knowledge and the synthesis of realistic floorplans and object placements, without dependence on any fixed 3D model database. Given a domain description prompt, the research agent collects publicly accessible domain-specific data and constructs a persistent domain database. Using this database, our RAG pipeline generates plausible floorplans and object placements by dynamically querying a user-provided semantic database, which can be easily extended or modified. The output is a fully interactive 3D world loadable by the popular simulators Isaac Sim and Gazebo. With our approach, we have built databases for several common domains (indoor residential, hospital, office) and generated dozens of distinct, plausible simulation environments for each domain. We present D3D-GEN with a local web frontend that facilitates rapid, interactive world generation for robot simulation.",
+      "authors": [
+        "Anh Duc Do",
+        "Volodymyr Scherbyna",
+        "Tai Duc Nguyen",
+        "Spaarsh Thakkar",
+        "Zhengcheng Shen",
+        "Teham Buiyan",
+        "Archan Misra",
+        "Linh Kästner"
+      ],
+      "primary_category": "cs.RO",
+      "categories": [
+        "cs.RO",
+        "cs.HC"
+      ],
+      "published": "2026-08-12T10:03:01+00:00",
+      "link": "https://arxiv.org/pdf/2608.11876v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "domain-grounded interactive 3D world generation from text prompts for simulation",
+      "llm_evidence_cn": "从文本提示生成领域接地的交互式3D世界用于仿真",
+      "llm_evidence": "从文本提示生成领域接地的交互式3D世界用于仿真",
+      "canonical_evidence": "从文本提示生成领域接地的交互式3D世界用于仿真",
+      "llm_tldr_en": "D3D-GEN combines a domain research agent with RAG to automate domain knowledge collection and synthesize realistic floorplans and object placements, generating interactive 3D worlds for social robotics simulation.",
+      "llm_tldr_cn": "社会机器人仿真环境生成难以平衡真实性与可模拟性。D3D-GEN利用领域智能体和检索增强生成自动收集知识，合成可交互的3D世界，无需固定模型库，实现了快速领域接地仿真环境构建。",
+      "llm_tldr": "社会机器人仿真环境生成难以平衡真实性与可模拟性。D3D-GEN利用领域智能体和检索增强生成自动收集知识，合成可交互的3D世界，无需固定模型库，实现了快速领域接地仿真环境构建。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "text-based world model for environment simulation",
+      "matched_requirement_id": "req-4",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2608.13456v1",
+      "source": "arxiv",
+      "title": "A Unifying Perspective on Causal World Models: From Observations to Representations to Structure",
+      "abstract": "World Models (WM) are increasingly seen as a foundation for intelligent agents that can predict, plan, and act beyond their training distribution. In this paper, we study WMs from a causal perspective across multiple levels of abstraction, ranging from perceptual observations to building a conceptual representation of the structure governing the environment dynamics. We argue that useful WMs must go beyond generative capabilities alone: they should also capture entity properties, entity-to-entity interactions, and entity-to-environment interactions that determine and explain the dynamics of a system. We provide a formal definition of Causal WMs (CWMs) grounded in the tasks they are intended to support, connecting world modelling with existing work in causal representation learning, object-centric learning, causal discovery, structural causal models, and model-based decision-making. Finally, we relate CWMs to the literature on identifiability, clarifying when the components of a WM can be recovered from data and up to which equivalence. With this, we ground WMs in representations and structures that support causal reasoning and informed decision-making.",
+      "authors": [
+        "Avinash Kori",
+        "Fabrizio Russo"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI",
+        "cs.CV"
+      ],
+      "published": "2026-08-13T16:40:35+00:00",
+      "link": "https://arxiv.org/pdf/2608.13456v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "causal world models as foundation for intelligent agents",
+      "llm_evidence_cn": "因果世界模型作为智能体的基础",
+      "llm_evidence": "因果世界模型作为智能体的基础",
+      "canonical_evidence": "因果世界模型作为智能体的基础",
+      "llm_tldr_en": "This paper presents a formal definition of Causal World Models grounded in entity interactions and environment dynamics, arguing they go beyond generative capabilities to support prediction, planning, and acting beyond training distribution.",
+      "llm_tldr_cn": "世界模型被视为智能体预测、规划和行动的基础，但缺少因果结构形式化。本文从因果视角定义因果世界模型，强调实体属性、交互及环境动态，为智能体提供超越生成能力的结构化环境表示。",
+      "llm_tldr": "世界模型被视为智能体预测、规划和行动的基础，但缺少因果结构形式化。本文从因果视角定义因果世界模型，强调实体属性、交互及环境动态，为智能体提供超越生成能力的结构化环境表示。",
+      "llm_tags": [
+        "query:agent-memory:composite"
+      ],
+      "matched_query_tag": "query:agent-memory:composite",
+      "matched_query_text": "Papers central to 智能体记忆，多模态，智能体强化学习，文本世界模型，语言世界模型, especially work that connects or combines: memory mechanisms for intelligent agents; agent that processes multiple modalities; reinforcement learning applied to autonomous agents; text-based world model for environment simulation; language-based world model for agent reasoning; agent with memory augmentation for better performance; How do text world models support language based agent simulation?.",
+      "matched_requirement_id": "req-composite-agent-memory",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    }
+  ]
+}

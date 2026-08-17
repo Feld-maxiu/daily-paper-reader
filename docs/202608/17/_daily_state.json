@@ -1,0 +1,73 @@
+{
+  "date": "20260817",
+  "date_label": "",
+  "generated_at": "2026-08-17 20:26:16 UTC",
+  "recommend_exists": true,
+  "run_count": 1,
+  "papers": [
+    {
+      "paper_id": "2608.13787v1",
+      "route": "202608/17/2608.13787v1-from-passive-delegates-to-strategic-negotiators-reinforcing-social-reasoning-in-small-language-models-with-socialrl",
+      "title": "From Passive Delegates to Strategic Negotiators: Reinforcing Social Reasoning in Small Language Models with SocialRL",
+      "section": "deep",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 9.0,
+      "evidence": "强化学习训练智能体谈判中的社会推理",
+      "first_seen_at": "2026-08-17 20:26:16 UTC",
+      "updated_at": "2026-08-17 20:26:16 UTC"
+    },
+    {
+      "paper_id": "2608.14026v1",
+      "route": "202608/17/2608.14026v1-mmdynopt-agent-dynamic-optimization-for-multimodal-large-language-model-reasoning-via-reinforcement-learning",
+      "title": "MMDynOpt-Agent: Dynamic Optimization for Multimodal Large Language Model Reasoning via Reinforcement Learning",
+      "section": "deep",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 9.0,
+      "evidence": "通过强化学习对多模态推理进行动态优化",
+      "first_seen_at": "2026-08-17 20:26:16 UTC",
+      "updated_at": "2026-08-17 20:26:16 UTC"
+    },
+    {
+      "paper_id": "2608.11876v1",
+      "route": "202608/17/2608.11876v1-d3d-gen-robot-aware-domain-grounded-interactive-3d-world-generation-for-social-robotics",
+      "title": "D3D-GEN: Robot-Aware Domain-Grounded Interactive 3D World Generation for Social Robotics",
+      "section": "quick",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 7.0,
+      "evidence": "从文本提示生成领域接地的交互式3D世界用于仿真",
+      "first_seen_at": "2026-08-17 20:26:16 UTC",
+      "updated_at": "2026-08-17 20:26:16 UTC"
+    },
+    {
+      "paper_id": "2608.13456v1",
+      "route": "202608/17/2608.13456v1-a-unifying-perspective-on-causal-world-models-from-observations-to-representations-to-structure",
+      "title": "A Unifying Perspective on Causal World Models: From Observations to Representations to Structure",
+      "section": "quick",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 6.0,
+      "evidence": "因果世界模型作为智能体的基础",
+      "first_seen_at": "2026-08-17 20:26:16 UTC",
+      "updated_at": "2026-08-17 20:26:16 UTC"
+    }
+  ]
+}
