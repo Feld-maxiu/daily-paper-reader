@@ -1,0 +1,233 @@
+{
+  "date": "20260818",
+  "date_label": "",
+  "generated_at": "2026-08-18 20:54:27 UTC",
+  "recommend_exists": true,
+  "run_count": 1,
+  "papers": [
+    {
+      "paper_id": "2608.15008v1",
+      "route": "202608/18/2608.15008v1-harness-the-memory-a-holistic-evaluation-of-memory-substrates-in-memory-agents",
+      "title": "Harness the Memory: A Holistic Evaluation of Memory Substrates in Memory Agents",
+      "section": "deep",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 9.0,
+      "evidence": "对记忆增强智能体记忆基质的整体评估，覆盖问答与决策任务",
+      "first_seen_at": "2026-08-18 20:54:27 UTC",
+      "updated_at": "2026-08-18 20:54:27 UTC"
+    },
+    {
+      "paper_id": "2608.15509v1",
+      "route": "202608/18/2608.15509v1-temporal-logic-guided-universal-task-representations-for-reinforcement-learning",
+      "title": "Temporal Logic Guided Universal Task Representations for Reinforcement Learning",
+      "section": "deep",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 9.0,
+      "evidence": "面向强化学习智能体的通用任务表示",
+      "first_seen_at": "2026-08-18 20:54:27 UTC",
+      "updated_at": "2026-08-18 20:54:27 UTC"
+    },
+    {
+      "paper_id": "2608.15703v1",
+      "route": "202608/18/2608.15703v1-hymem-hierarchical-context-management-for-long-horizon-agents-via-information-isolation",
+      "title": "HyMem: Hierarchical Context Management for Long-Horizon Agents via Information Isolation",
+      "section": "deep",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 9.0,
+      "evidence": "面向长程智能体的分层上下文记忆管理",
+      "first_seen_at": "2026-08-18 20:54:27 UTC",
+      "updated_at": "2026-08-18 20:54:27 UTC"
+    },
+    {
+      "paper_id": "2608.14047v1",
+      "route": "202608/18/2608.14047v1-evolve-vision-language-action-model-into-an-agent-with-on-the-fly-tool-use",
+      "title": "Evolve Vision-Language-Action Model into an Agent with On-the-fly Tool-use",
+      "section": "deep",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 8.0,
+      "evidence": "视觉-语言-动作模型结合在线工具使用处理多模态",
+      "first_seen_at": "2026-08-18 20:54:27 UTC",
+      "updated_at": "2026-08-18 20:54:27 UTC"
+    },
+    {
+      "paper_id": "2608.15175v1",
+      "route": "202608/18/2608.15175v1-lapf-llm-agent-based-path-finder-using-the-uavscenes-dataset",
+      "title": "LAPF: LLM-Agent-Based Path Finder Using the UAVScenes Dataset",
+      "section": "deep",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 8.0,
+      "evidence": "具有记忆、规划与工具交互的LLM智能体无人机路径规划",
+      "first_seen_at": "2026-08-18 20:54:27 UTC",
+      "updated_at": "2026-08-18 20:54:27 UTC"
+    },
+    {
+      "paper_id": "2608.15491v1",
+      "route": "202608/18/2608.15491v1-hxagent-iterative-agent-planning-for-end-to-end-web-application-testing",
+      "title": "HxAgent: Iterative Agent Planning for End-to-End Web Application Testing",
+      "section": "deep",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 8.0,
+      "evidence": "使用短期与长期记忆进行迭代智能体规划用于Web测试",
+      "first_seen_at": "2026-08-18 20:54:27 UTC",
+      "updated_at": "2026-08-18 20:54:27 UTC"
+    },
+    {
+      "paper_id": "2608.15654v1",
+      "route": "202608/18/2608.15654v1-when-stories-evolve-benchmarking-llm-storytelling-across-agent-architectures-in-open-ended-world-simulations",
+      "title": "When Stories Evolve: Benchmarking LLM Storytelling Across Agent Architectures in Open-Ended World Simulations",
+      "section": "quick",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 8.0,
+      "evidence": "开放世界模拟中基准测试LLM叙事，追踪一致性与因果依赖",
+      "first_seen_at": "2026-08-18 20:54:27 UTC",
+      "updated_at": "2026-08-18 20:54:27 UTC"
+    },
+    {
+      "paper_id": "2608.14132v1",
+      "route": "202608/18/2608.14132v1-act2intention-a-benchmark-for-developing-active-mobile-agents-through-inferring-user-intention-from-gui-actions",
+      "title": "Act2Intention: A Benchmark For Developing Active Mobile Agents Through Inferring User Intention from GUI Actions",
+      "section": "quick",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 7.0,
+      "evidence": "多模态移动GUI智能体意图推断基准",
+      "first_seen_at": "2026-08-18 20:54:27 UTC",
+      "updated_at": "2026-08-18 20:54:27 UTC"
+    },
+    {
+      "paper_id": "2608.15071v1",
+      "route": "202608/18/2608.15071v1-evo-harness-context-to-harness-skill-compilation-for-self-evolving-agents",
+      "title": "Evo-Harness: Context-to-Harness Skill Compilation for Self-Evolving Agents",
+      "section": "quick",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 7.0,
+      "evidence": "通过反思、记忆与技能编译从经验中学习实现自我进化智能体",
+      "first_seen_at": "2026-08-18 20:54:27 UTC",
+      "updated_at": "2026-08-18 20:54:27 UTC"
+    },
+    {
+      "paper_id": "2608.15265v1",
+      "route": "202608/18/2608.15265v1-vibeworlding-can-multimodal-agents-construct-3d-open-worlds-end-to-end",
+      "title": "VibeWorlding: Can Multimodal Agents Construct 3D Open Worlds End-to-End?",
+      "section": "quick",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 7.0,
+      "evidence": "多模态智能体端到端构建3D开放世界",
+      "first_seen_at": "2026-08-18 20:54:27 UTC",
+      "updated_at": "2026-08-18 20:54:27 UTC"
+    },
+    {
+      "paper_id": "2608.16422v1",
+      "route": "202608/18/2608.16422v1-proving-the-utility-of-large-language-models-in-cybersecurity-simulations-a-comprehensive-examination",
+      "title": "Proving the Utility of Large Language Models in Cybersecurity Simulations: A Comprehensive Examination",
+      "section": "quick",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 7.0,
+      "evidence": "LLM驱动管道支持网络安全模拟中的强化学习智能体训练",
+      "first_seen_at": "2026-08-18 20:54:27 UTC",
+      "updated_at": "2026-08-18 20:54:27 UTC"
+    },
+    {
+      "paper_id": "2608.13456v1",
+      "route": "202608/18/2608.13456v1-a-unifying-perspective-on-causal-world-models-from-observations-to-representations-to-structure",
+      "title": "A Unifying Perspective on Causal World Models: From Observations to Representations to Structure",
+      "section": "quick",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 6.0,
+      "evidence": "因果世界模型用于智能体预测、规划与行动超出训练分布",
+      "first_seen_at": "2026-08-18 20:54:27 UTC",
+      "updated_at": "2026-08-18 20:54:27 UTC"
+    },
+    {
+      "paper_id": "2608.16707v1",
+      "route": "202608/18/2608.16707v1-semantic-bandits-in-context-exploration-exploitation-is-biased-by-semantic-priors",
+      "title": "Semantic Bandits: In-Context Exploration-Exploitation is Biased by Semantic Priors",
+      "section": "quick",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 6.0,
+      "evidence": "研究LLM决策智能体中探索与利用的语义先验偏差",
+      "first_seen_at": "2026-08-18 20:54:27 UTC",
+      "updated_at": "2026-08-18 20:54:27 UTC"
+    },
+    {
+      "paper_id": "2608.16794v1",
+      "route": "202608/18/2608.16794v1-neurosymbolic-embodied-agents",
+      "title": "Neurosymbolic Embodied Agents",
+      "section": "quick",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 6.0,
+      "evidence": "PDDL过渡模型作为符号世界模型约束智能体规划",
+      "first_seen_at": "2026-08-18 20:54:27 UTC",
+      "updated_at": "2026-08-18 20:54:27 UTC"
+    }
+  ]
+}

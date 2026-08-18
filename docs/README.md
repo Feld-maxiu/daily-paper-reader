@@ -41,17 +41,17 @@
 <section class="dpr-home-dashboard-card dpr-home-report-card">
   <div class="dpr-home-dashboard-header">
     <div>
-      <span class="dpr-home-dashboard-kicker">2026-08-17</span>
+      <span class="dpr-home-dashboard-kicker">2026-08-18</span>
       <h3 class="dpr-home-dashboard-title">今日汇总</h3>
     </div>
-    <strong class="dpr-home-dashboard-count">共 4 篇</strong>
+    <strong class="dpr-home-dashboard-count">共 14 篇</strong>
   </div>
   <dl class="dpr-home-dashboard-stats">
     <div class="dpr-home-dashboard-stat"><dt>累计更新</dt><dd>1 次</dd></div>
-    <div class="dpr-home-dashboard-stat"><dt>精读</dt><dd>2</dd></div>
-    <div class="dpr-home-dashboard-stat"><dt>速读</dt><dd>2</dd></div>
+    <div class="dpr-home-dashboard-stat"><dt>精读</dt><dd>6</dd></div>
+    <div class="dpr-home-dashboard-stat"><dt>速读</dt><dd>8</dd></div>
   </dl>
-  <p class="dpr-home-dashboard-body">最近更新：2026-08-17 20:26:16 UTC<br>状态：成功</p>
+  <p class="dpr-home-dashboard-body">最近更新：2026-08-18 20:54:27 UTC<br>状态：成功</p>
 </section>
 <section class="dpr-home-dashboard-card dpr-home-brief-card">
   <div class="dpr-home-dashboard-header">
@@ -62,9 +62,9 @@
     <strong class="dpr-home-dashboard-count">AI</strong>
   </div>
   <div class="dpr-home-dashboard-body">
-<p>今日共生成 4 篇推荐（精读 2 篇，速读 2 篇）</p>
-<p>精读：《From Passive Delegates to Strategic Negotiators: Reinforcing Social Reasoning in Small Language Models with SocialRL》（9.0/10）, 《MMDynOpt-Agent: Dynamic Optimization for Multimodal Large Language Model Reasoning via Reinforcement Learning》（9.0/10）</p>
-<p>速读：《D3D-GEN: Robot-Aware Domain-Grounded Interactive 3D World Generation for Social Robotics》（7.0/10）, 《A Unifying Perspective on Causal World Models: From Observations to Representations to Structure》（6.0/10）</p>
+<p>今日共生成 14 篇推荐（精读 6 篇，速读 8 篇）</p>
+<p>精读：《Harness the Memory: A Holistic Evaluation of Memory Substrates in Memory Agents》（9.0/10）, 《Temporal Logic Guided Universal Task Representations for Reinforcement Learning》（9.0/10）</p>
+<p>速读：《When Stories Evolve: Benchmarking LLM Storytelling Across Agent Architectures in Open-Ended World Simulations》（8.0/10）, 《Act2Intention: A Benchmark For Developing Active Mobile Agents Through Inferring User Intention from GUI Actions》（7.0/10）, 《Evo-Harness: Context-to-Harness Skill Compilation for Self-Evolving Agents》（7.0/10）</p>
 <p>这些结果覆盖了当下较热的方向，建议先看精读区论文的关键问题与方法。</p>
   </div>
 </section>
@@ -74,12 +74,12 @@
       <span class="dpr-home-dashboard-kicker">今日累计</span>
       <h3 class="dpr-home-dashboard-title">精读推荐</h3>
     </div>
-    <strong class="dpr-home-dashboard-count">2 篇</strong>
+    <strong class="dpr-home-dashboard-count">6 篇</strong>
   </div>
   <div class="dpr-home-dashboard-body">
-<ul class="dpr-home-dashboard-paper-list"><li><span class="dpr-home-dashboard-paper-title" title="From Passive Delegates to Strategic Negotiators: Reinforcing Social Reasoning in Small Language Models with SocialRL">From Passive Delegates to Strategic Negotiators: Reinforcing Social Reasoning in Small Language Models with SocialRL</span></li><li><span class="dpr-home-dashboard-paper-title" title="MMDynOpt-Agent: Dynamic Optimization for Multimodal Large Language Model Reasoning via Reinforcement Learning">MMDynOpt-Agent: Dynamic Optimization for Multimodal Large Language Model Reasoning via Reinforcement Learning</span></li></ul>
+<ul class="dpr-home-dashboard-paper-list"><li><span class="dpr-home-dashboard-paper-title" title="Harness the Memory: A Holistic Evaluation of Memory Substrates in Memory Agents">Harness the Memory: A Holistic Evaluation of Memory Substrates in Memory Agents</span></li><li><span class="dpr-home-dashboard-paper-title" title="Temporal Logic Guided Universal Task Representations for Reinforcement Learning">Temporal Logic Guided Universal Task Representations for Reinforcement Learning</span></li><li><span class="dpr-home-dashboard-paper-title" title="HyMem: Hierarchical Context Management for Long-Horizon Agents via Information Isolation">HyMem: Hierarchical Context Management for Long-Horizon Agents via Information Isolation</span></li></ul>
   </div>
-  <div class="dpr-home-dashboard-tags"><span class="dpr-home-dashboard-tag">agent-memory <strong>2</strong></span></div>
+  <div class="dpr-home-dashboard-tags"><span class="dpr-home-dashboard-tag">agent-memory <strong>6</strong></span></div>
 </section>
 <section class="dpr-home-dashboard-card dpr-home-skim-card">
   <div class="dpr-home-dashboard-header">
@@ -87,12 +87,12 @@
       <span class="dpr-home-dashboard-kicker">今日累计</span>
       <h3 class="dpr-home-dashboard-title">速读推荐</h3>
     </div>
-    <strong class="dpr-home-dashboard-count">2 篇</strong>
+    <strong class="dpr-home-dashboard-count">8 篇</strong>
   </div>
   <div class="dpr-home-dashboard-body">
-<ul class="dpr-home-dashboard-paper-list"><li><span class="dpr-home-dashboard-paper-title" title="D3D-GEN: Robot-Aware Domain-Grounded Interactive 3D World Generation for Social Robotics">D3D-GEN: Robot-Aware Domain-Grounded Interactive 3D World Generation for Social Robotics</span></li><li><span class="dpr-home-dashboard-paper-title" title="A Unifying Perspective on Causal World Models: From Observations to Representations to Structure">A Unifying Perspective on Causal World Models: From Observations to Representations to Structure</span></li></ul>
+<ul class="dpr-home-dashboard-paper-list"><li><span class="dpr-home-dashboard-paper-title" title="When Stories Evolve: Benchmarking LLM Storytelling Across Agent Architectures in Open-Ended World Simulations">When Stories Evolve: Benchmarking LLM Storytelling Across Agent Architectures in Open-Ended World Simulations</span></li><li><span class="dpr-home-dashboard-paper-title" title="Act2Intention: A Benchmark For Developing Active Mobile Agents Through Inferring User Intention from GUI Actions">Act2Intention: A Benchmark For Developing Active Mobile Agents Through Inferring User Intention from GUI Actions</span></li><li><span class="dpr-home-dashboard-paper-title" title="Evo-Harness: Context-to-Harness Skill Compilation for Self-Evolving Agents">Evo-Harness: Context-to-Harness Skill Compilation for Self-Evolving Agents</span></li></ul>
   </div>
-  <div class="dpr-home-dashboard-tags"><span class="dpr-home-dashboard-tag">agent-memory <strong>2</strong></span></div>
+  <div class="dpr-home-dashboard-tags"><span class="dpr-home-dashboard-tag">agent-memory <strong>8</strong></span></div>
 </section>
 </div>
 
