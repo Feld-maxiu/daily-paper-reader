@@ -1,0 +1,57 @@
+{
+  "date": "20260819",
+  "date_label": "",
+  "generated_at": "2026-08-19 20:23:21 UTC",
+  "recommend_exists": true,
+  "run_count": 1,
+  "papers": [
+    {
+      "paper_id": "2608.17129v1",
+      "route": "202608/19/2608.17129v1-probe-manipulation-grounded-visual-question-answering-with-vlm-agents",
+      "title": "PROBE: Manipulation-Grounded Visual Question Answering with VLM Agents",
+      "section": "deep",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 8.0,
+      "evidence": "VLM智能体通过物理操作进行视觉问答，多模态推理",
+      "first_seen_at": "2026-08-19 20:23:21 UTC",
+      "updated_at": "2026-08-19 20:23:21 UTC"
+    },
+    {
+      "paper_id": "2608.13317v1",
+      "route": "202608/19/2608.13317v1-statebridge-training-free-hidden-state-alignment-for-latent-communication-in-llm-multi-agent-systems",
+      "title": "StateBridge: Training-free Hidden-state Alignment for Latent Communication in LLM Multi-Agent Systems",
+      "section": "quick",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 6.0,
+      "evidence": "多智能体系统中的潜在通信与工作记忆",
+      "first_seen_at": "2026-08-19 20:23:21 UTC",
+      "updated_at": "2026-08-19 20:23:21 UTC"
+    },
+    {
+      "paper_id": "2608.15844v1",
+      "route": "202608/19/2608.15844v1-microverse-an-instrument-for-measuring-self-authored-identity-drift-in-long-horizon-multi-agent-language-model-simulations",
+      "title": "MicroVerse: An Instrument for Measuring Self-Authored Identity Drift in Long-Horizon Multi-Agent Language-Model Simulations",
+      "section": "quick",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 6.0,
+      "evidence": "多智能体语言模型仿真与环境",
+      "first_seen_at": "2026-08-19 20:23:21 UTC",
+      "updated_at": "2026-08-19 20:23:21 UTC"
+    }
+  ]
+}
