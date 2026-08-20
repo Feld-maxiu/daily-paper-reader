@@ -1,0 +1,39 @@
+{
+  "label": "2026-08-20",
+  "date": "2026-08-20",
+  "generated_at": "2026-08-20T20:15:36",
+  "count": 2,
+  "papers": [
+    {
+      "paper_id": "202608/20/2608.19197v1-spade-self-play-in-adaptive-synthetic-executable-environments",
+      "section": "deep",
+      "title_en": "SPADE: Self-Play in Adaptive Synthetic Executable Environments",
+      "authors": "Bo Liu, Simon Yu, Yiding Jiang, Ao Qu, Andrew Zhao, Zichen Liu, Junsu Kim, Zijian Zhou, Seungone Kim, Tongzheng Ren, Mickel Liu, Hanfei Yu, Zhaorun Chen, Weiyan Shi, Paul Pu Liang, Luke Zettlemoyer, Yejin Choi, Natasha Jaques",
+      "date": "2026-08-19",
+      "pdf": "https://arxiv.org/pdf/2608.19197v1",
+      "score": "9.0",
+      "evidence": "自博弈强化学习框架中LLM设计可执行环境，智能体在其中学习行动",
+      "tldr": "现有训练环境池保持目标分布固定，难以支撑语言智能体的持续自我改进。SPADE采用自博弈RL框架，让单一LLM同时扮演环境设计师与推理智能体，设计师编写可执行Gym风格环境，通过遗憾信号生成处于智能体能力边缘的任务。在30B模型上，SPADE于8个数学、科学、代码和推理基准平均提升+5.3分，工具使用场景提升显著。该工作使环境设计成为可学习组件，向开放式自我改进迈出关键一步。",
+      "tags": "query:agent-memory",
+      "abstract_en": "Continuous self-improvement requires an ever-expanding pool of self-generated, diverse, adaptive goals. For language agents, existing training environment pools (hand-curated, statically synthesized, or frozen-verifier) keep the goal distribution fixed as the learner scales. We introduce SPADE (Self-Play in Adaptive Synthetic Executable Environments), a self-play RL framework in which a single LLM plays two roles: an Environment Designer that writes complete, long-horizon training environments as executable code with an OpenAI Gym-style reset()/step() interface, and a Reasoning Agent that learns to act in them. Each is a stateful, multi-turn environment (state transitions, reward functions, and verification code), so one interface spans reasoning problems and multi-step agentic tool use. The Reasoning Agent's regret is estimated using the gap between its reward with and without privileged hints; in optimizing this regret signal the Environment Designer learns to target environments at the edge of the agent's capabilities while keeping them feasible. Through extensive experimentation, we find several components critical to success: grounding the Environment Designer on documents sampled from a large pretraining corpus, and giving it an accumulated environment memory. Scaling to 30B-parameter models, SPADE improves over the strongest fixed-environment baseline by +5.3 on average across eight held-out math, science, code, and reasoning benchmarks, and lifts the tool-use setting by +5.7 on BFCL-v4 multi-turn and +13.9 on ACEBench-Agent; on the games setting, the margin over the strongest baseline grows with model scale. By making environment design itself a learnable component, SPADE takes a concrete step toward open-ended self-improvement.",
+      "source": "arxiv",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "paper_id": "202608/20/2608.17209v1-teach-and-grow-an-agent-centered-architecture-for-general-robot-learning",
+      "section": "deep",
+      "title_en": "Teach and Grow: An Agent-Centered Architecture for General Robot Learning",
+      "authors": "Chang Nie, Zhe Liu, Hesheng Wang",
+      "date": "2026-08-17",
+      "pdf": "https://arxiv.org/pdf/2608.17209v1",
+      "score": "8.0",
+      "evidence": "多模态智能体将演示转化为可复用技能块",
+      "tldr": "端到端VLA模型受已验证物理覆盖限制，遇到新对象或接触需重新采集数据与策略更新，形成重训练税。TGL智能体将少量演示转化为可复用技能块，在新场景中组合并基于物理结果修订路线。在LIBERO上取得最先进性能，实验证实技能归纳、持久重用与自适应。方法无需任务特定策略重训练，并提出部署即持续学习的缩放律假设，使一任务促进下一任务。",
+      "tags": "query:agent-memory",
+      "abstract_en": "End-to-end vision-language-action (VLA) and world-action models offer an elegant route to general-purpose robotics, but their reliability is bounded by validated physical coverage. When an unfamiliar object, sensor, embodiment, or contact falls outside that coverage and no validated fallback exists, correcting the failure requires new robot data, a policy update, and regression testing. This recurring burden is the retraining tax. Unlike text, embodied data must often be created by operating machines. We present Teach-and-Grow Learning (TGL), an agent-centered architecture for general robot learning. In its general form, a multimodal agent turns a few successful demonstrations into reusable Skill Blocks: closed-loop behaviors for meaningful subgoals. In a new scene, the agent grounds and composes these blocks, selects learned or geometric tools, observes the physical outcome, and revises the route when execution departs from intent. A Skill Library stores executable behavior, while structured Experience Memory carries forward success, failure, and repair. New tasks are acquired without task-specific policy retraining. Our LIBERO evaluation attains state-of-the-art performance; controlled studies expose skill induction, persistent reuse, and agent-directed adaptation. Finally, we propose the Teach-and-Grow scaling-law hypothesis: if X denotes effective reusable experience, future-task error and teaching demand should approach irreducible floors as power laws in X. The architecture therefore treats deployment as a period of continued learning, in which one task can make the next easier.",
+      "source": "arxiv",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "errors": []
+}

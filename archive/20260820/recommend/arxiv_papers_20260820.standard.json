@@ -1,0 +1,108 @@
+{
+  "mode": "standard",
+  "generated_at": "2026-08-20T20:11:00.769267+00:00",
+  "stats": {
+    "mode": "standard",
+    "tag_count": 1,
+    "deep_divecandidates": 2,
+    "deep_cap": 6,
+    "deep_selected": 2,
+    "quick_candidates": 0,
+    "quick_skim_target": 11,
+    "quick_selected": 0
+  },
+  "deep_dive": [
+    {
+      "id": "2608.19197v1",
+      "source": "arxiv",
+      "title": "SPADE: Self-Play in Adaptive Synthetic Executable Environments",
+      "abstract": "Continuous self-improvement requires an ever-expanding pool of self-generated, diverse, adaptive goals. For language agents, existing training environment pools (hand-curated, statically synthesized, or frozen-verifier) keep the goal distribution fixed as the learner scales. We introduce SPADE (Self-Play in Adaptive Synthetic Executable Environments), a self-play RL framework in which a single LLM plays two roles: an Environment Designer that writes complete, long-horizon training environments as executable code with an OpenAI Gym-style reset()/step() interface, and a Reasoning Agent that learns to act in them. Each is a stateful, multi-turn environment (state transitions, reward functions, and verification code), so one interface spans reasoning problems and multi-step agentic tool use. The Reasoning Agent's regret is estimated using the gap between its reward with and without privileged hints; in optimizing this regret signal the Environment Designer learns to target environments at the edge of the agent's capabilities while keeping them feasible. Through extensive experimentation, we find several components critical to success: grounding the Environment Designer on documents sampled from a large pretraining corpus, and giving it an accumulated environment memory. Scaling to 30B-parameter models, SPADE improves over the strongest fixed-environment baseline by +5.3 on average across eight held-out math, science, code, and reasoning benchmarks, and lifts the tool-use setting by +5.7 on BFCL-v4 multi-turn and +13.9 on ACEBench-Agent; on the games setting, the margin over the strongest baseline grows with model scale. By making environment design itself a learnable component, SPADE takes a concrete step toward open-ended self-improvement.",
+      "authors": [
+        "Bo Liu",
+        "Simon Yu",
+        "Yiding Jiang",
+        "Ao Qu",
+        "Andrew Zhao",
+        "Zichen Liu",
+        "Junsu Kim",
+        "Zijian Zhou",
+        "Seungone Kim",
+        "Tongzheng Ren",
+        "Mickel Liu",
+        "Hanfei Yu",
+        "Zhaorun Chen",
+        "Weiyan Shi",
+        "Paul Pu Liang",
+        "Luke Zettlemoyer",
+        "Yejin Choi",
+        "Natasha Jaques"
+      ],
+      "primary_category": "cs.CL",
+      "categories": [
+        "cs.CL",
+        "cs.AI"
+      ],
+      "published": "2026-08-19T17:58:56+00:00",
+      "link": "https://arxiv.org/pdf/2608.19197v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "self-play RL framework where LLM designs executable environments and an agent learns to act in them",
+      "llm_evidence_cn": "自博弈强化学习框架中LLM设计可执行环境，智能体在其中学习行动",
+      "llm_evidence": "自博弈强化学习框架中LLM设计可执行环境，智能体在其中学习行动",
+      "canonical_evidence": "自博弈强化学习框架中LLM设计可执行环境，智能体在其中学习行动",
+      "llm_tldr_en": "SPADE is a self-play RL framework where a single LLM acts as both Environment Designer and Reasoning Agent, generating adaptive executable environments with Gym-style interfaces to enable continuous self-improvement for language agents.",
+      "llm_tldr_cn": "针对语言智能体连续自我改进需要不断扩展自生成多样化自适应目标，而现有训练环境池保持固定目标分布的问题，该工作提出SPADE，一个自博弈强化学习框架。单一LLM同时扮演环境设计者和推理智能体，环境设计者编写完整的长程可执行训练环境（带OpenAI Gym风格reset/step接口），推理智能体在其中学习行动。每个环境包含状态转移、奖励函数和验证代码。该统一接口覆盖推理问题和交互任务，使目标分布随学习者扩展而动态增长，为语言智能体的持续强化学习提供了新范式。",
+      "llm_tldr": "针对语言智能体连续自我改进需要不断扩展自生成多样化自适应目标，而现有训练环境池保持固定目标分布的问题，该工作提出SPADE，一个自博弈强化学习框架。单一LLM同时扮演环境设计者和推理智能体，环境设计者编写完整的长程可执行训练环境（带OpenAI Gym风格reset/step接口），推理智能体在其中学习行动。每个环境包含状态转移、奖励函数和验证代码。该统一接口覆盖推理问题和交互任务，使目标分布随学习者扩展而动态增长，为语言智能体的持续强化学习提供了新范式。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "reinforcement learning applied to autonomous agents",
+      "matched_requirement_id": "req-3",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2608.17209v1",
+      "source": "arxiv",
+      "title": "Teach and Grow: An Agent-Centered Architecture for General Robot Learning",
+      "abstract": "End-to-end vision-language-action (VLA) and world-action models offer an elegant route to general-purpose robotics, but their reliability is bounded by validated physical coverage. When an unfamiliar object, sensor, embodiment, or contact falls outside that coverage and no validated fallback exists, correcting the failure requires new robot data, a policy update, and regression testing. This recurring burden is the retraining tax. Unlike text, embodied data must often be created by operating machines. We present Teach-and-Grow Learning (TGL), an agent-centered architecture for general robot learning. In its general form, a multimodal agent turns a few successful demonstrations into reusable Skill Blocks: closed-loop behaviors for meaningful subgoals. In a new scene, the agent grounds and composes these blocks, selects learned or geometric tools, observes the physical outcome, and revises the route when execution departs from intent. A Skill Library stores executable behavior, while structured Experience Memory carries forward success, failure, and repair. New tasks are acquired without task-specific policy retraining. Our LIBERO evaluation attains state-of-the-art performance; controlled studies expose skill induction, persistent reuse, and agent-directed adaptation. Finally, we propose the Teach-and-Grow scaling-law hypothesis: if X denotes effective reusable experience, future-task error and teaching demand should approach irreducible floors as power laws in X. The architecture therefore treats deployment as a period of continued learning, in which one task can make the next easier.",
+      "authors": [
+        "Chang Nie",
+        "Zhe Liu",
+        "Hesheng Wang"
+      ],
+      "primary_category": "cs.RO",
+      "categories": [
+        "cs.RO",
+        "cs.AI",
+        "cs.CV",
+        "cs.LG"
+      ],
+      "published": "2026-08-17T23:45:21+00:00",
+      "link": "https://arxiv.org/pdf/2608.17209v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "multimodal agent converts demonstrations into reusable Skill Blocks",
+      "llm_evidence_cn": "多模态智能体将演示转化为可复用技能块",
+      "llm_evidence": "多模态智能体将演示转化为可复用技能块",
+      "canonical_evidence": "多模态智能体将演示转化为可复用技能块",
+      "llm_tldr_en": "The paper addresses the retraining tax in general robot learning by proposing Teach-and-Grow Learning, where a multimodal agent turns a few demonstrations into reusable closed-loop Skill Blocks, reducing policy updates for novel objects or embodiments.",
+      "llm_tldr_cn": "针对通用机器人学习中验证覆盖有限导致的反复重训问题，提出以智能体为中心的Teach-and-Grow Learning架构，由多模态智能体将少量成功演示转化为可复用的Skill Blocks闭环行为。该方法有望降低面对新物体、传感器或本体时的重训成本，提升机器人策略的泛化与持续学习能力。",
+      "llm_tldr": "针对通用机器人学习中验证覆盖有限导致的反复重训问题，提出以智能体为中心的Teach-and-Grow Learning架构，由多模态智能体将少量成功演示转化为可复用的Skill Blocks闭环行为。该方法有望降低面对新物体、传感器或本体时的重训成本，提升机器人策略的泛化与持续学习能力。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "agent that processes multiple modalities",
+      "matched_requirement_id": "req-2",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "quick_skim": []
+}

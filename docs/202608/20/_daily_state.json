@@ -1,0 +1,41 @@
+{
+  "date": "20260820",
+  "date_label": "",
+  "generated_at": "2026-08-20 20:15:22 UTC",
+  "recommend_exists": true,
+  "run_count": 1,
+  "papers": [
+    {
+      "paper_id": "2608.19197v1",
+      "route": "202608/20/2608.19197v1-spade-self-play-in-adaptive-synthetic-executable-environments",
+      "title": "SPADE: Self-Play in Adaptive Synthetic Executable Environments",
+      "section": "deep",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 9.0,
+      "evidence": "自博弈强化学习框架中LLM设计可执行环境，智能体在其中学习行动",
+      "first_seen_at": "2026-08-20 20:15:22 UTC",
+      "updated_at": "2026-08-20 20:15:22 UTC"
+    },
+    {
+      "paper_id": "2608.17209v1",
+      "route": "202608/20/2608.17209v1-teach-and-grow-an-agent-centered-architecture-for-general-robot-learning",
+      "title": "Teach and Grow: An Agent-Centered Architecture for General Robot Learning",
+      "section": "deep",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 8.0,
+      "evidence": "多模态智能体将演示转化为可复用技能块",
+      "first_seen_at": "2026-08-20 20:15:22 UTC",
+      "updated_at": "2026-08-20 20:15:22 UTC"
+    }
+  ]
+}
