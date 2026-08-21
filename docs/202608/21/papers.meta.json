@@ -1,0 +1,39 @@
+{
+  "label": "2026-08-21",
+  "date": "2026-08-21",
+  "generated_at": "2026-08-21T20:57:41",
+  "count": 2,
+  "papers": [
+    {
+      "paper_id": "202608/21/2608.20274v1-break-it-down-pass-it-on-cross-task-skill-transfer-in-llm-agents",
+      "section": "deep",
+      "title_en": "Break It Down, Pass It On: Cross-Task Skill Transfer in LLM Agents",
+      "authors": "Yiyang Feng, Biddut Sarker Bijoy, Niranjan Balasubramanian, Jiawei Zhou",
+      "date": "2026-08-20",
+      "pdf": "https://arxiv.org/pdf/2608.20274v1",
+      "score": "9.0",
+      "evidence": "研究技能归纳与迁移作为LLM智能体记忆机制以提升性能",
+      "tldr": "LLM智能体虽能从已完成任务归纳技能并复用，但诱导出的技能跨任务迁移常常不可靠，甚至损害检索该技能的智能体，何时可靠迁移仍无定论。本研究系统比较任务级与子任务级技能归纳、文本与代码技能格式对迁移的影响。发现子任务级文本技能平均提升表现，任务级技能低于无记忆基线，文本技能迁移优于代码技能。进一步提出结合特异性与抽象性的技能效用分数，可仅凭技能与任务描述预估迁移效果，作为实际诊断工具。",
+      "tags": "query:agent-memory",
+      "abstract_en": "Large language model (LLM) agents can induce skills from completed tasks and reuse them later to grow more capable with experience. In practice, induced skills may transfer unreliably and can even harm the agent that retrieves them. When agent-induced skills transfer reliably across tasks remains an open question. We conduct a comprehensive and controlled study of how the way skills are induced shapes their transfer across tasks. Specifically, we compare task-level with subtask-level skill induction and text with code skill formats, the two axes along which existing methods differ. Task-level skills mostly reduce the agent's performance below its no-memory baseline while subtask-level skills raise it above on average, and text skills transfer better than code skills. To further understand our findings, we examine two complementary properties of the induced skills: specificity, which measures how closely a skill matches real tasks, and abstractness, which measures how evenly its relevance spreads across tasks. Neither property alone predicts task success, but their combined effect does, which we propose as a skill utility score. The score correlates consistently with task success when skills are transferred, and subtask-level and text skills score higher. Computing skill utility only needs the skills and task descriptions but not any task execution, so our score serves as a practical diagnostic of a skill memory before any new task runs.",
+      "source": "arxiv",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "paper_id": "202608/21/2608.19621v1-mitigating-identity-essentialism-in-llm-agents-with-longitudinal-life-trajectories",
+      "section": "deep",
+      "title_en": "Mitigating Identity Essentialism in LLM Agents with Longitudinal Life Trajectories",
+      "authors": "Hexi Wang, Yujia Zhou, Bangde Du, Weihang Su, Xinyuan Cao, Qingyi Pan, Qingyao Ai, Yueyue Wu, Min Zhang, Yiqun Liu",
+      "date": "2026-08-20",
+      "pdf": "https://arxiv.org/pdf/2608.19621v1",
+      "score": "8.0",
+      "evidence": "利用纵向生活轨迹作为记忆提升社会模拟中智能体多样性",
+      "tldr": "大型语言模型虽为社会模拟提供可扩展路径，但静态画像代理常强化群体标签，导致组内个体差异被压缩，呈现身份本质主义倾向。本文提出LifeMem纵向记忆框架，结合结构化生活事件检索与代理特定参数记忆，使代理随生命历程持续整合经验。在Add Health与Understanding Society数据集上，LifeMem改善了响应分布、组内多样性及跨生命阶段个人变化模式与人类数据的对齐。该工作证明纵向生活事件记忆是构建更真实、动态演化社会代理的关键。",
+      "tags": "query:agent-memory",
+      "abstract_en": "Large language models (LLMs) offer a scalable approach to social simulation, but their credibility depends on how agents are constructed. Existing methods can partially reproduce population-level patterns, yet often fail to capture human-like diversity. Our analysis shows that static-profile agents exhibit stronger demographic separation and within-group compression than humans, a pattern consistent with identity essentialism: demographic labels can encourage models to treat group-average tendencies as individual traits, homogenizing responses within groups. We argue that this limitation arises from two related factors: sparse, static agent representations and the limited ability of prompt-only memory to persistently integrate experience. Inspired by complementary memory systems, we propose LifeMem, a longitudinal memory framework that combines structured life-event retrieval with agent-specific parametric memory for experience integration. Experiments on Add Health and Understanding Society with three LLMs show that LifeMem improves alignment with human data in terms of response distributions, overall and within-group diversity, and patterns of within-person response change across life stages. These findings highlight the value of longitudinal life-event memory for constructing more faithful and dynamically evolving social agents.",
+      "source": "arxiv",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "errors": []
+}

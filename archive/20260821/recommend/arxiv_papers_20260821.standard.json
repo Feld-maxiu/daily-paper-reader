@@ -1,0 +1,98 @@
+{
+  "mode": "standard",
+  "generated_at": "2026-08-21T20:49:58.116214+00:00",
+  "stats": {
+    "mode": "standard",
+    "tag_count": 1,
+    "deep_divecandidates": 2,
+    "deep_cap": 6,
+    "deep_selected": 2,
+    "quick_candidates": 0,
+    "quick_skim_target": 11,
+    "quick_selected": 0
+  },
+  "deep_dive": [
+    {
+      "id": "2608.20274v1",
+      "source": "arxiv",
+      "title": "Break It Down, Pass It On: Cross-Task Skill Transfer in LLM Agents",
+      "abstract": "Large language model (LLM) agents can induce skills from completed tasks and reuse them later to grow more capable with experience. In practice, induced skills may transfer unreliably and can even harm the agent that retrieves them. When agent-induced skills transfer reliably across tasks remains an open question. We conduct a comprehensive and controlled study of how the way skills are induced shapes their transfer across tasks. Specifically, we compare task-level with subtask-level skill induction and text with code skill formats, the two axes along which existing methods differ. Task-level skills mostly reduce the agent's performance below its no-memory baseline while subtask-level skills raise it above on average, and text skills transfer better than code skills. To further understand our findings, we examine two complementary properties of the induced skills: specificity, which measures how closely a skill matches real tasks, and abstractness, which measures how evenly its relevance spreads across tasks. Neither property alone predicts task success, but their combined effect does, which we propose as a skill utility score. The score correlates consistently with task success when skills are transferred, and subtask-level and text skills score higher. Computing skill utility only needs the skills and task descriptions but not any task execution, so our score serves as a practical diagnostic of a skill memory before any new task runs.",
+      "authors": [
+        "Yiyang Feng",
+        "Biddut Sarker Bijoy",
+        "Niranjan Balasubramanian",
+        "Jiawei Zhou"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI",
+        "cs.CL"
+      ],
+      "published": "2026-08-20T17:12:08+00:00",
+      "link": "https://arxiv.org/pdf/2608.20274v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "Studies skill induction and transfer as a memory mechanism for LLM agents to improve performance",
+      "llm_evidence_cn": "研究技能归纳与迁移作为LLM智能体记忆机制以提升性能",
+      "llm_evidence": "研究技能归纳与迁移作为LLM智能体记忆机制以提升性能",
+      "canonical_evidence": "研究技能归纳与迁移作为LLM智能体记忆机制以提升性能",
+      "llm_tldr_en": "Conducts controlled study of how skill induction granularity and format affect cross-task transfer in LLM agents, finding subtask-level and text skills transfer better.",
+      "llm_tldr_cn": "针对LLM智能体从完成任务中归纳技能并复用以提升能力时迁移不可靠甚至有害的问题，系统比较任务级与子任务级技能归纳以及文本与代码技能格式对跨任务迁移的影响。实验表明任务级技能大多降低性能，子任务级技能平均提高性能，文本技能比代码技能迁移更好。该研究为智能体记忆增强提供了技能迁移的实证指导。",
+      "llm_tldr": "针对LLM智能体从完成任务中归纳技能并复用以提升能力时迁移不可靠甚至有害的问题，系统比较任务级与子任务级技能归纳以及文本与代码技能格式对跨任务迁移的影响。实验表明任务级技能大多降低性能，子任务级技能平均提高性能，文本技能比代码技能迁移更好。该研究为智能体记忆增强提供了技能迁移的实证指导。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "agent with memory augmentation for better performance",
+      "matched_requirement_id": "req-6",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2608.19621v1",
+      "source": "arxiv",
+      "title": "Mitigating Identity Essentialism in LLM Agents with Longitudinal Life Trajectories",
+      "abstract": "Large language models (LLMs) offer a scalable approach to social simulation, but their credibility depends on how agents are constructed. Existing methods can partially reproduce population-level patterns, yet often fail to capture human-like diversity. Our analysis shows that static-profile agents exhibit stronger demographic separation and within-group compression than humans, a pattern consistent with identity essentialism: demographic labels can encourage models to treat group-average tendencies as individual traits, homogenizing responses within groups. We argue that this limitation arises from two related factors: sparse, static agent representations and the limited ability of prompt-only memory to persistently integrate experience. Inspired by complementary memory systems, we propose LifeMem, a longitudinal memory framework that combines structured life-event retrieval with agent-specific parametric memory for experience integration. Experiments on Add Health and Understanding Society with three LLMs show that LifeMem improves alignment with human data in terms of response distributions, overall and within-group diversity, and patterns of within-person response change across life stages. These findings highlight the value of longitudinal life-event memory for constructing more faithful and dynamically evolving social agents.",
+      "authors": [
+        "Hexi Wang",
+        "Yujia Zhou",
+        "Bangde Du",
+        "Weihang Su",
+        "Xinyuan Cao",
+        "Qingyi Pan",
+        "Qingyao Ai",
+        "Yueyue Wu",
+        "Min Zhang",
+        "Yiqun Liu"
+      ],
+      "primary_category": "cs.CL",
+      "categories": [
+        "cs.CL"
+      ],
+      "published": "2026-08-20T04:13:11+00:00",
+      "link": "https://arxiv.org/pdf/2608.19621v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "Uses longitudinal life trajectories as memory to improve agent diversity in social simulation",
+      "llm_evidence_cn": "利用纵向生活轨迹作为记忆提升社会模拟中智能体多样性",
+      "llm_evidence": "利用纵向生活轨迹作为记忆提升社会模拟中智能体多样性",
+      "canonical_evidence": "利用纵向生活轨迹作为记忆提升社会模拟中智能体多样性",
+      "llm_tldr_en": "This paper addresses identity essentialism in LLM-based social simulation agents by proposing longitudinal life trajectories to replace static profiles. It shows that trajectory-based agents exhibit more human-like diversity, reducing demographic separation and within-group compression. The approach highlights the importance of persistent memory in agent construction.",
+      "llm_tldr_cn": "本文针对LLM社会模拟中静态档案智能体出现身份本质主义的问题，提出使用纵向生活轨迹替代稀疏静态表征。实验显示，基于轨迹的智能体具有更接近人类的多样性，减少了群体间压缩和人口分离。该工作证明持续记忆对智能体可信构建至关重要。",
+      "llm_tldr": "本文针对LLM社会模拟中静态档案智能体出现身份本质主义的问题，提出使用纵向生活轨迹替代稀疏静态表征。实验显示，基于轨迹的智能体具有更接近人类的多样性，减少了群体间压缩和人口分离。该工作证明持续记忆对智能体可信构建至关重要。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "agent with memory augmentation for better performance",
+      "matched_requirement_id": "req-6",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "quick_skim": []
+}

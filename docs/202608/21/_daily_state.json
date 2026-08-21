@@ -1,0 +1,41 @@
+{
+  "date": "20260821",
+  "date_label": "",
+  "generated_at": "2026-08-21 20:57:29 UTC",
+  "recommend_exists": true,
+  "run_count": 1,
+  "papers": [
+    {
+      "paper_id": "2608.20274v1",
+      "route": "202608/21/2608.20274v1-break-it-down-pass-it-on-cross-task-skill-transfer-in-llm-agents",
+      "title": "Break It Down, Pass It On: Cross-Task Skill Transfer in LLM Agents",
+      "section": "deep",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 9.0,
+      "evidence": "研究技能归纳与迁移作为LLM智能体记忆机制以提升性能",
+      "first_seen_at": "2026-08-21 20:57:29 UTC",
+      "updated_at": "2026-08-21 20:57:29 UTC"
+    },
+    {
+      "paper_id": "2608.19621v1",
+      "route": "202608/21/2608.19621v1-mitigating-identity-essentialism-in-llm-agents-with-longitudinal-life-trajectories",
+      "title": "Mitigating Identity Essentialism in LLM Agents with Longitudinal Life Trajectories",
+      "section": "deep",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 8.0,
+      "evidence": "利用纵向生活轨迹作为记忆提升社会模拟中智能体多样性",
+      "first_seen_at": "2026-08-21 20:57:29 UTC",
+      "updated_at": "2026-08-21 20:57:29 UTC"
+    }
+  ]
+}
