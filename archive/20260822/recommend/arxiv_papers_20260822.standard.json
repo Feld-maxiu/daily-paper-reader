@@ -1,0 +1,95 @@
+{
+  "mode": "standard",
+  "generated_at": "2026-08-22T20:24:56.892199+00:00",
+  "stats": {
+    "mode": "standard",
+    "tag_count": 1,
+    "deep_divecandidates": 1,
+    "deep_cap": 6,
+    "deep_selected": 1,
+    "quick_candidates": 1,
+    "quick_skim_target": 11,
+    "quick_selected": 1
+  },
+  "deep_dive": [
+    {
+      "id": "2608.19652v1",
+      "source": "arxiv",
+      "title": "Can Agent Memory Systems Track Evolving State?",
+      "abstract": "As LLM-based agents are deployed for longer and higher-stakes tasks, their memory systems continue to have crucial gaps. While existing memory benchmarks focus largely on recall-shaped tasks, we argue an effective memory system must track the evolving state of the world; as facts, constraints, and decisions are revised over a long interaction, answers must reflect the current state and not a superseded one. We define this capability as state tracking and instantiate it in StateMemBench, a benchmark of 234 multi-session scenarios spanning two conversation-length regimes. Its closed-pool grading scores whether an answer reflects the current state, the superseded state, or fails otherwise, separating state-tracking failures from other errors by construction. Our analysis shows that this task is challenging for existing memory systems, retrieval-augmented baselines, and long-context baselines. We then present StateMem, a state-first memory method that explicitly tracks supersession and relational dependencies, and show it improves current-state accuracy over the strongest same-backbone baseline by 1.8x (0.205 -> 0.363) on DeepSeek-V4-Flash and over the strongest memory system by 1.6x (0.149 -> 0.233) on Qwen-3.5-9B, while remaining competitive with the long-context baselines. Finally, we show the same state approach can be applied as a lightweight single-call wrapper over existing memory systems, lifting current-state accuracy by +32 to +67 points on StateMemBench across six memory and retrieval backends. A length- and cost-matched control attributes +15 to +32 of those points to state structure rather than added context.",
+      "authors": [
+        "Xinyi Fan",
+        "Miri Liu",
+        "Ruozhen Yang",
+        "Siru Ouyang",
+        "Jiawei Han"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI",
+        "cs.CL"
+      ],
+      "published": "2026-08-20T05:41:23+00:00",
+      "link": "https://arxiv.org/pdf/2608.19652v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "benchmark for state tracking in agent memory systems",
+      "llm_evidence_cn": "智能体记忆系统的状态跟踪基准",
+      "llm_evidence": "智能体记忆系统的状态跟踪基准",
+      "canonical_evidence": "智能体记忆系统的状态跟踪基准",
+      "llm_tldr_en": "Introduces StateMemBench, a benchmark of 234 multi-session scenarios testing whether agent memory systems track evolving world state rather than superseded facts.",
+      "llm_tldr_cn": "现有智能体记忆基准主要关注回忆任务，忽视对世界状态演变的跟踪。该论文定义状态跟踪能力，并构建StateMemBench基准，包含234个多会话场景，采用封闭池评分区分当前状态与过时状态答案。分析显示现有记忆系统状态跟踪存在明显差距，为改进智能体长期记忆提供评测基础。",
+      "llm_tldr": "现有智能体记忆基准主要关注回忆任务，忽视对世界状态演变的跟踪。该论文定义状态跟踪能力，并构建StateMemBench基准，包含234个多会话场景，采用封闭池评分区分当前状态与过时状态答案。分析显示现有记忆系统状态跟踪存在明显差距，为改进智能体长期记忆提供评测基础。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "memory mechanisms for intelligent agents",
+      "matched_requirement_id": "req-1",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "quick_skim": [
+    {
+      "id": "2608.18171v1",
+      "source": "arxiv",
+      "title": "Looped Language Models Improve Compositional Tool Calling",
+      "abstract": "Looped language models have shown promising results on reasoning benchmarks, yet their potential for agentic tool use remains largely unexplored. We study this question in compositional tool-calling settings, where models must coordinate multiple API calls, maintain intermediate state, and preserve dependencies across tool interactions. We evaluate native and retrofitted looped language models on API-Bank, BFCL, and NESTful, comparing looped and non-looped models trained under matched supervised fine-tuning recipes and varying recurrent depth at inference time. In controlled experiments, recurrent computation generally benefits compositional and dependency-aware tool use, while providing smaller and more model-dependent gains on isolated API invocation. Accuracy on multi-step tool use generally increases with recurrent depth; adaptive inference, however, achieves a more favorable compute-performance trade-off by allocating additional computation only when needed. Our results suggest that looped language models are a promising architecture for agentic systems that require reliable planning, coordination, and execution of compositional tool use workflows.",
+      "authors": [
+        "Andrei Cristian Popescu",
+        "Haitz Sáez de Ocáriz Borde",
+        "Pietro Liò"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI",
+        "cs.LG"
+      ],
+      "published": "2026-08-17T18:17:54+00:00",
+      "link": "https://arxiv.org/pdf/2608.18171v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "looped models provide recurrent memory-like state to improve multi-step tool calling",
+      "llm_evidence_cn": "循环模型提供类似记忆的循环状态提升多步工具调用",
+      "llm_evidence": "循环模型提供类似记忆的循环状态提升多步工具调用",
+      "canonical_evidence": "循环模型提供类似记忆的循环状态提升多步工具调用",
+      "llm_tldr_en": "Examines looped language models for compositional tool calling, showing recurrent computation benefits dependency-aware multi-call performance.",
+      "llm_tldr_cn": "论文研究循环语言模型在组合工具调用中的应用，循环计算可维持中间状态并保留跨工具依赖。在API-Bank、BFCL和NESTful等基准上，循环模型相比非循环模型提高了依赖感知工具调用精度，对需要记忆增强的智能体任务具有借鉴意义。",
+      "llm_tldr": "论文研究循环语言模型在组合工具调用中的应用，循环计算可维持中间状态并保留跨工具依赖。在API-Bank、BFCL和NESTful等基准上，循环模型相比非循环模型提高了依赖感知工具调用精度，对需要记忆增强的智能体任务具有借鉴意义。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "agent with memory augmentation for better performance",
+      "matched_requirement_id": "req-6",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    }
+  ]
+}

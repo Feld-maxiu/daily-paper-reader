@@ -1,6 +1,11 @@
 * <a class="dpr-sidebar-root-link" href="#/">首页</a>
 * <a class="dpr-sidebar-root-link dpr-sidebar-noactive-link" href="javascript:void(0)" data-dpr-hash="#/tutorial/README">使用教程</a>
 * Daily Papers
+  * 2026-08-22 <!--dpr-date:20260822-->
+    * 精读区
+      * <a class="dpr-sidebar-item-link dpr-sidebar-item-structured" href="#/202608/22/2608.19652v1-can-agent-memory-systems-track-evolving-state" data-sidebar-item="{&quot;title&quot;: &quot;Can Agent Memory Systems Track Evolving State?&quot;, &quot;link&quot;: &quot;https://arxiv.org/abs/2608.19652v1-can-agent-memory-systems-track-evolving-state&quot;, &quot;score&quot;: &quot;9.0&quot;, &quot;tags&quot;: [{&quot;kind&quot;: &quot;query&quot;, &quot;label&quot;: &quot;agent-memory&quot;}], &quot;evidence&quot;: &quot;智能体记忆系统的状态跟踪基准&quot;}">Can Agent Memory Systems Track Evolving State?</a>
+    * 速读区
+      * <a class="dpr-sidebar-item-link dpr-sidebar-item-structured" href="#/202608/22/2608.18171v1-looped-language-models-improve-compositional-tool-calling" data-sidebar-item="{&quot;title&quot;: &quot;Looped Language Models Improve Compositional Tool Calling&quot;, &quot;link&quot;: &quot;https://arxiv.org/abs/2608.18171v1-looped-language-models-improve-compositional-tool-calling&quot;, &quot;score&quot;: &quot;6.0&quot;, &quot;tags&quot;: [{&quot;kind&quot;: &quot;query&quot;, &quot;label&quot;: &quot;agent-memory&quot;}], &quot;evidence&quot;: &quot;循环模型提供类似记忆的循环状态提升多步工具调用&quot;}">Looped Language Models Improve Compositional Tool Calling</a>
   * 2026-08-21 <!--dpr-date:20260821-->
     * 精读区
       * <a class="dpr-sidebar-item-link dpr-sidebar-item-structured" href="#/202608/21/2608.20274v1-break-it-down-pass-it-on-cross-task-skill-transfer-in-llm-agents" data-sidebar-item="{&quot;title&quot;: &quot;Break It Down, Pass It On: Cross-Task Skill Transfer in LLM Agents&quot;, &quot;link&quot;: &quot;https://arxiv.org/abs/2608.20274v1-break-it-down-pass-it-on-cross-task-skill-transfer-in-llm-agents&quot;, &quot;score&quot;: &quot;9.0&quot;, &quot;tags&quot;: [{&quot;kind&quot;: &quot;query&quot;, &quot;label&quot;: &quot;agent-memory&quot;}], &quot;evidence&quot;: &quot;研究技能归纳与迁移作为LLM智能体记忆机制以提升性能&quot;}">Break It Down, Pass It On: Cross-Task Skill Transfer in LLM Agents</a>

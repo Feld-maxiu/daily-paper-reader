@@ -1,0 +1,41 @@
+{
+  "date": "20260822",
+  "date_label": "",
+  "generated_at": "2026-08-22 20:32:51 UTC",
+  "recommend_exists": true,
+  "run_count": 1,
+  "papers": [
+    {
+      "paper_id": "2608.19652v1",
+      "route": "202608/22/2608.19652v1-can-agent-memory-systems-track-evolving-state",
+      "title": "Can Agent Memory Systems Track Evolving State?",
+      "section": "deep",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 9.0,
+      "evidence": "智能体记忆系统的状态跟踪基准",
+      "first_seen_at": "2026-08-22 20:32:51 UTC",
+      "updated_at": "2026-08-22 20:32:51 UTC"
+    },
+    {
+      "paper_id": "2608.18171v1",
+      "route": "202608/22/2608.18171v1-looped-language-models-improve-compositional-tool-calling",
+      "title": "Looped Language Models Improve Compositional Tool Calling",
+      "section": "quick",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 6.0,
+      "evidence": "循环模型提供类似记忆的循环状态提升多步工具调用",
+      "first_seen_at": "2026-08-22 20:32:51 UTC",
+      "updated_at": "2026-08-22 20:32:51 UTC"
+    }
+  ]
+}

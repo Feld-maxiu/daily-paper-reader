@@ -1,0 +1,39 @@
+{
+  "label": "2026-08-22",
+  "date": "2026-08-22",
+  "generated_at": "2026-08-22T20:33:04",
+  "count": 2,
+  "papers": [
+    {
+      "paper_id": "202608/22/2608.19652v1-can-agent-memory-systems-track-evolving-state",
+      "section": "deep",
+      "title_en": "Can Agent Memory Systems Track Evolving State?",
+      "authors": "Xinyi Fan, Miri Liu, Ruozhen Yang, Siru Ouyang, Jiawei Han",
+      "date": "2026-08-20",
+      "pdf": "https://arxiv.org/pdf/2608.19652v1",
+      "score": "9.0",
+      "evidence": "智能体记忆系统的状态跟踪基准",
+      "tldr": "现有LLM代理记忆基准多聚焦回忆型任务，忽视世界状态随时间演变，导致长程任务中答案可能基于过时信息。为此提出StateMemBench基准和状态优先记忆方法StateMem，显式跟踪取代关系与关系依赖。在StateMemBench上，StateMem将当前状态准确率相对最强基线最高提升1.8倍，作为包装器可为六个后端提升+32至+67个百分点。控制实验表明增益主要来自状态结构而非额外上下文，证明状态跟踪是长程记忆的关键改进方向。",
+      "tags": "query:agent-memory",
+      "abstract_en": "As LLM-based agents are deployed for longer and higher-stakes tasks, their memory systems continue to have crucial gaps. While existing memory benchmarks focus largely on recall-shaped tasks, we argue an effective memory system must track the evolving state of the world; as facts, constraints, and decisions are revised over a long interaction, answers must reflect the current state and not a superseded one. We define this capability as state tracking and instantiate it in StateMemBench, a benchmark of 234 multi-session scenarios spanning two conversation-length regimes. Its closed-pool grading scores whether an answer reflects the current state, the superseded state, or fails otherwise, separating state-tracking failures from other errors by construction. Our analysis shows that this task is challenging for existing memory systems, retrieval-augmented baselines, and long-context baselines. We then present StateMem, a state-first memory method that explicitly tracks supersession and relational dependencies, and show it improves current-state accuracy over the strongest same-backbone baseline by 1.8x (0.205 -> 0.363) on DeepSeek-V4-Flash and over the strongest memory system by 1.6x (0.149 -> 0.233) on Qwen-3.5-9B, while remaining competitive with the long-context baselines. Finally, we show the same state approach can be applied as a lightweight single-call wrapper over existing memory systems, lifting current-state accuracy by +32 to +67 points on StateMemBench across six memory and retrieval backends. A length- and cost-matched control attributes +15 to +32 of those points to state structure rather than added context.",
+      "source": "arxiv",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "paper_id": "202608/22/2608.18171v1-looped-language-models-improve-compositional-tool-calling",
+      "section": "quick",
+      "title_en": "Looped Language Models Improve Compositional Tool Calling",
+      "authors": "Andrei Cristian Popescu, Haitz Sáez de Ocáriz Borde, Pietro Liò",
+      "date": "2026-08-17",
+      "pdf": "https://arxiv.org/pdf/2608.18171v1",
+      "score": "6.0",
+      "evidence": "循环模型提供类似记忆的循环状态提升多步工具调用",
+      "tldr": "循环语言模型在推理任务中表现优异，但在智能体工具调用领域研究不足。针对组合工具调用场景，本文在三个公开基准上对比循环与非循环模型，采用匹配的监督微调配方并改变推理循环深度。实验表明循环计算能显著提升多步、依赖感知的工具调用准确性，对孤立API调用增益较小且依赖模型。自适应推理仅在需要时增加计算，获得更好的计算与性能权衡；该工作证明循环架构适合可靠规划与协调的智能体系统。",
+      "tags": "query:agent-memory",
+      "abstract_en": "Looped language models have shown promising results on reasoning benchmarks, yet their potential for agentic tool use remains largely unexplored. We study this question in compositional tool-calling settings, where models must coordinate multiple API calls, maintain intermediate state, and preserve dependencies across tool interactions. We evaluate native and retrofitted looped language models on API-Bank, BFCL, and NESTful, comparing looped and non-looped models trained under matched supervised fine-tuning recipes and varying recurrent depth at inference time. In controlled experiments, recurrent computation generally benefits compositional and dependency-aware tool use, while providing smaller and more model-dependent gains on isolated API invocation. Accuracy on multi-step tool use generally increases with recurrent depth; adaptive inference, however, achieves a more favorable compute-performance trade-off by allocating additional computation only when needed. Our results suggest that looped language models are a promising architecture for agentic systems that require reliable planning, coordination, and execution of compositional tool use workflows.",
+      "source": "arxiv",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "errors": []
+}
