@@ -1,0 +1,121 @@
+{
+  "date": "20260824",
+  "date_label": "",
+  "generated_at": "2026-08-24 20:23:21 UTC",
+  "recommend_exists": true,
+  "run_count": 1,
+  "papers": [
+    {
+      "paper_id": "2608.17528v1",
+      "route": "202608/24/2608.17528v1-agent-lightning-v10-towards-harnessed-agentic-rl",
+      "title": "Agent Lightning v1.0: Towards Harnessed Agentic RL",
+      "section": "deep",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 9.0,
+      "evidence": "提出将智能体框架与强化学习训练直接连接的harnessed agentic RL范式",
+      "first_seen_at": "2026-08-24 20:23:21 UTC",
+      "updated_at": "2026-08-24 20:23:21 UTC"
+    },
+    {
+      "paper_id": "2608.17605v1",
+      "route": "202608/24/2608.17605v1-multi-turn-conversational-ai-from-text-to-multimodal-interaction-data-models-evaluation-and-open-challenges",
+      "title": "Multi-turn Conversational AI from Text to Multimodal Interaction: Data, Models, Evaluation, and Open Challenges",
+      "section": "deep",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 9.0,
+      "evidence": "综述涵盖多模态对话AI在跨轮次和模态间的记忆维护",
+      "first_seen_at": "2026-08-24 20:23:21 UTC",
+      "updated_at": "2026-08-24 20:23:21 UTC"
+    },
+    {
+      "paper_id": "2608.19842v1",
+      "route": "202608/24/2608.19842v1-sapo-single-rollout-autoregressive-policy-optimization-for-agentic-reinforcement-learning",
+      "title": "SAPO: Single-Rollout Autoregressive Policy Optimization for Agentic Reinforcement Learning",
+      "section": "deep",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 9.0,
+      "evidence": "单次展开自回归策略优化用于智能体强化学习",
+      "first_seen_at": "2026-08-24 20:23:21 UTC",
+      "updated_at": "2026-08-24 20:23:21 UTC"
+    },
+    {
+      "paper_id": "2608.18840v1",
+      "route": "202608/24/2608.18840v1-beyond-placement-and-articulation-usage-driven-code-scenes-for-embodied-interaction",
+      "title": "Beyond Placement and Articulation: Usage-Driven Code Scenes for Embodied Interaction",
+      "section": "deep",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 8.0,
+      "evidence": "生成完全以代码表示的3D场景用于具身交互，支持环境模拟",
+      "first_seen_at": "2026-08-24 20:23:21 UTC",
+      "updated_at": "2026-08-24 20:23:21 UTC"
+    },
+    {
+      "paper_id": "2608.17975v1",
+      "route": "202608/24/2608.17975v1-adsl-agentic-3d-creation-via-joint-agent-program-design",
+      "title": "aDSL: Agentic 3D Creation via Joint Agent-Program Design",
+      "section": "quick",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 7.0,
+      "evidence": "联合设计以智能体为中心的领域特定语言和多智能体系统，用代码生成3D场景",
+      "first_seen_at": "2026-08-24 20:23:21 UTC",
+      "updated_at": "2026-08-24 20:23:21 UTC"
+    },
+    {
+      "paper_id": "2608.19880v1",
+      "route": "202608/24/2608.19880v1-envharness-awakening-static-worlds-for-agent-learning",
+      "title": "EnvHarness: Awakening Static Worlds for Agent Learning",
+      "section": "quick",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 6.0,
+      "evidence": "可编程层重塑静态环境以支持LLM智能体学习",
+      "first_seen_at": "2026-08-24 20:23:21 UTC",
+      "updated_at": "2026-08-24 20:23:21 UTC"
+    },
+    {
+      "paper_id": "2608.20975v1",
+      "route": "202608/24/2608.20975v1-belief-without-behavior-measuring-the-translation-of-theory-of-mind-into-coordinated-social-action-in-vision-language-models",
+      "title": "Belief Without Behavior: Measuring the Translation of Theory of Mind into Coordinated Social Action in Vision-Language Models",
+      "section": "quick",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 6.0,
+      "evidence": "具身智能体多模态社会心智理论基准",
+      "first_seen_at": "2026-08-24 20:23:21 UTC",
+      "updated_at": "2026-08-24 20:23:21 UTC"
+    }
+  ]
+}
