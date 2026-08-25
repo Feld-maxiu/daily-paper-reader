@@ -41,17 +41,17 @@
 <section class="dpr-home-dashboard-card dpr-home-report-card">
   <div class="dpr-home-dashboard-header">
     <div>
-      <span class="dpr-home-dashboard-kicker">2026-08-24</span>
+      <span class="dpr-home-dashboard-kicker">2026-08-25</span>
       <h3 class="dpr-home-dashboard-title">今日汇总</h3>
     </div>
-    <strong class="dpr-home-dashboard-count">共 7 篇</strong>
+    <strong class="dpr-home-dashboard-count">共 8 篇</strong>
   </div>
   <dl class="dpr-home-dashboard-stats">
     <div class="dpr-home-dashboard-stat"><dt>累计更新</dt><dd>1 次</dd></div>
-    <div class="dpr-home-dashboard-stat"><dt>精读</dt><dd>4</dd></div>
-    <div class="dpr-home-dashboard-stat"><dt>速读</dt><dd>3</dd></div>
+    <div class="dpr-home-dashboard-stat"><dt>精读</dt><dd>6</dd></div>
+    <div class="dpr-home-dashboard-stat"><dt>速读</dt><dd>2</dd></div>
   </dl>
-  <p class="dpr-home-dashboard-body">最近更新：2026-08-24 20:23:21 UTC<br>状态：成功</p>
+  <p class="dpr-home-dashboard-body">最近更新：2026-08-25 19:43:44 UTC<br>状态：成功</p>
 </section>
 <section class="dpr-home-dashboard-card dpr-home-brief-card">
   <div class="dpr-home-dashboard-header">
@@ -62,9 +62,9 @@
     <strong class="dpr-home-dashboard-count">AI</strong>
   </div>
   <div class="dpr-home-dashboard-body">
-<p>今日共生成 7 篇推荐（精读 4 篇，速读 3 篇）</p>
-<p>精读：《Agent Lightning v1.0: Towards Harnessed Agentic RL》（9.0/10）, 《Multi-turn Conversational AI from Text to Multimodal Interaction: Data, Models, Evaluation, and Open Challenges》（9.0/10）</p>
-<p>速读：《aDSL: Agentic 3D Creation via Joint Agent-Program Design》（7.0/10）, 《EnvHarness: Awakening Static Worlds for Agent Learning》（6.0/10）, 《Belief Without Behavior: Measuring the Translation of Theory of Mind into Coordinated Social Action in Vision-Language Models》（6.0/10）</p>
+<p>今日共生成 8 篇推荐（精读 6 篇，速读 2 篇）</p>
+<p>精读：《Context as an Environment: Programmatic Context Management for Long-Horizon Agents》（9.0/10）, 《Ludi${}_{\scriptscriptstyle 0.1}$: An Agentic System for Socially Intelligent Robots》（9.0/10）</p>
+<p>速读：《Training Needs Trustworthy Worlds: Verified Synthetic Web Environments for Agent Learning》（7.0/10）, 《Minimal Local Simulation Foundations for LLM- and VLM-Driven Agents in 2D and 3D Environments》（7.0/10）</p>
 <p>这些结果覆盖了当下较热的方向，建议先看精读区论文的关键问题与方法。</p>
   </div>
 </section>
@@ -74,12 +74,12 @@
       <span class="dpr-home-dashboard-kicker">今日累计</span>
       <h3 class="dpr-home-dashboard-title">精读推荐</h3>
     </div>
-    <strong class="dpr-home-dashboard-count">4 篇</strong>
+    <strong class="dpr-home-dashboard-count">6 篇</strong>
   </div>
   <div class="dpr-home-dashboard-body">
-<ul class="dpr-home-dashboard-paper-list"><li><span class="dpr-home-dashboard-paper-title" title="Agent Lightning v1.0: Towards Harnessed Agentic RL">Agent Lightning v1.0: Towards Harnessed Agentic RL</span></li><li><span class="dpr-home-dashboard-paper-title" title="Multi-turn Conversational AI from Text to Multimodal Interaction: Data, Models, Evaluation, and Open Challenges">Multi-turn Conversational AI from Text to Multimodal Interaction: Data, Models, Evaluation, and Open Challenges</span></li><li><span class="dpr-home-dashboard-paper-title" title="SAPO: Single-Rollout Autoregressive Policy Optimization for Agentic Reinforcement Learning">SAPO: Single-Rollout Autoregressive Policy Optimization for Agentic Reinforcement Learning</span></li></ul>
+<ul class="dpr-home-dashboard-paper-list"><li><span class="dpr-home-dashboard-paper-title" title="Context as an Environment: Programmatic Context Management for Long-Horizon Agents">Context as an Environment: Programmatic Context Management for Long-Horizon Agents</span></li><li><span class="dpr-home-dashboard-paper-title" title="Ludi${}_{\scriptscriptstyle 0.1}$: An Agentic System for Socially Intelligent Robots">Ludi${}_{\scriptscriptstyle 0.1}$: An Agentic System for Socially Intelligent Robots</span></li><li><span class="dpr-home-dashboard-paper-title" title="Coalition-Aware Skill Reliability for Self-Evolving Agents">Coalition-Aware Skill Reliability for Self-Evolving Agents</span></li></ul>
   </div>
-  <div class="dpr-home-dashboard-tags"><span class="dpr-home-dashboard-tag">agent-memory <strong>4</strong></span></div>
+  <div class="dpr-home-dashboard-tags"><span class="dpr-home-dashboard-tag">agent-memory <strong>6</strong></span></div>
 </section>
 <section class="dpr-home-dashboard-card dpr-home-skim-card">
   <div class="dpr-home-dashboard-header">
@@ -87,12 +87,12 @@
       <span class="dpr-home-dashboard-kicker">今日累计</span>
       <h3 class="dpr-home-dashboard-title">速读推荐</h3>
     </div>
-    <strong class="dpr-home-dashboard-count">3 篇</strong>
+    <strong class="dpr-home-dashboard-count">2 篇</strong>
   </div>
   <div class="dpr-home-dashboard-body">
-<ul class="dpr-home-dashboard-paper-list"><li><span class="dpr-home-dashboard-paper-title" title="aDSL: Agentic 3D Creation via Joint Agent-Program Design">aDSL: Agentic 3D Creation via Joint Agent-Program Design</span></li><li><span class="dpr-home-dashboard-paper-title" title="EnvHarness: Awakening Static Worlds for Agent Learning">EnvHarness: Awakening Static Worlds for Agent Learning</span></li><li><span class="dpr-home-dashboard-paper-title" title="Belief Without Behavior: Measuring the Translation of Theory of Mind into Coordinated Social Action in Vision-Language Models">Belief Without Behavior: Measuring the Translation of Theory of Mind into Coordinated Social Action in Vision-Language Models</span></li></ul>
+<ul class="dpr-home-dashboard-paper-list"><li><span class="dpr-home-dashboard-paper-title" title="Training Needs Trustworthy Worlds: Verified Synthetic Web Environments for Agent Learning">Training Needs Trustworthy Worlds: Verified Synthetic Web Environments for Agent Learning</span></li><li><span class="dpr-home-dashboard-paper-title" title="Minimal Local Simulation Foundations for LLM- and VLM-Driven Agents in 2D and 3D Environments">Minimal Local Simulation Foundations for LLM- and VLM-Driven Agents in 2D and 3D Environments</span></li></ul>
   </div>
-  <div class="dpr-home-dashboard-tags"><span class="dpr-home-dashboard-tag">agent-memory <strong>3</strong></span></div>
+  <div class="dpr-home-dashboard-tags"><span class="dpr-home-dashboard-tag">agent-memory <strong>2</strong></span></div>
 </section>
 </div>
 

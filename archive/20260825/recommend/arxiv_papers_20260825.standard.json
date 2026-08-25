@@ -1,0 +1,350 @@
+{
+  "mode": "standard",
+  "generated_at": "2026-08-25T19:30:55.620353+00:00",
+  "stats": {
+    "mode": "standard",
+    "tag_count": 1,
+    "deep_divecandidates": 6,
+    "deep_cap": 6,
+    "deep_selected": 6,
+    "quick_candidates": 2,
+    "quick_skim_target": 11,
+    "quick_selected": 2
+  },
+  "deep_dive": [
+    {
+      "id": "2608.21690v1",
+      "source": "arxiv",
+      "title": "Context as an Environment: Programmatic Context Management for Long-Horizon Agents",
+      "abstract": "LLM agents increasingly take on long-running tasks whose history grows far beyond a single model context window. Existing approaches compress earlier interactions or extract selected information into fixed memory representations, committing to what to preserve before future needs are known. We present Scroll, a context manager that treats each agent session as an executable Session Environment. The environment is backed by an append-only Event Log and a sandboxed, persistent Python kernel. The kernel maintains a typed namespace across model calls, allowing tool outputs, retrieved history, and derived state to be bound to variables rather than serialized into the prompt at each call. Model-written code searches, materializes, and transforms session state through exec; only explicitly printed projections enter the model's working view for the next call. Context management thus becomes a programming task that inherits the improving coding abilities of LLMs, while the Event Log preserves lossless historical ground truth. As the working view approaches its budget, stale spans are evicted but remain recoverable: an eviction index keeps compact landmarks tied to exact Event Log addresses, so that the agent navigates directly to evicted regions instead of searching the full log. With Qwen3.8-Max as the backbone, Scroll achieves 94.8% on LongMemEval_S; 73.1% on BEAM_10M, surpassing the best published memory system by 5.1 points; and 86.7% on LOCA_256K, exceeding the best published long-horizon agent by 37.4 points.",
+      "authors": [
+        "Yin Lin",
+        "Elaine Ang",
+        "Erkang Zhu",
+        "Bolin Ding",
+        "Jingren Zhou"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-08-21T23:39:19+00:00",
+      "link": "https://arxiv.org/pdf/2608.21690v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "programmatic context management for long-horizon agents with Session Environment",
+      "llm_evidence_cn": "面向长程智能体的可编程上下文管理与会话环境",
+      "llm_evidence": "面向长程智能体的可编程上下文管理与会话环境",
+      "canonical_evidence": "面向长程智能体的可编程上下文管理与会话环境",
+      "llm_tldr_en": "This paper addresses context window limits in long-horizon LLM agents by proposing Scroll, a context manager that treats each session as an executable environment with an event log and Python kernel, enabling dynamic state binding and programmatic retrieval.",
+      "llm_tldr_cn": "该论文针对长时间运行的LLM智能体历史信息超出上下文窗口的问题，提出Scroll上下文管理器，将会话视为可执行的会话环境，利用追加式事件日志和沙箱Python内核维护类型化命名空间，使模型可通过代码动态搜索、物化和转换历史状态。实验表明该方法优于固定记忆表示，能有效扩展智能体的长程任务能力。其贡献在于为智能体提供了一种程序化记忆机制。",
+      "llm_tldr": "该论文针对长时间运行的LLM智能体历史信息超出上下文窗口的问题，提出Scroll上下文管理器，将会话视为可执行的会话环境，利用追加式事件日志和沙箱Python内核维护类型化命名空间，使模型可通过代码动态搜索、物化和转换历史状态。实验表明该方法优于固定记忆表示，能有效扩展智能体的长程任务能力。其贡献在于为智能体提供了一种程序化记忆机制。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "memory mechanisms for intelligent agents",
+      "matched_requirement_id": "req-1",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2608.22035v1",
+      "source": "arxiv",
+      "title": "Ludi${}_{\\scriptscriptstyle 0.1}$: An Agentic System for Socially Intelligent Robots",
+      "abstract": "Robot foundation models have substantially advanced perception and control, but natural human-robot collaboration requires more than executing isolated commands. A robot must recognize ambiguity, maintain context across turns, communicate its intentions, and revise ongoing behavior as the user's intent changes. We present $\\scriptstyle\\mathsf{Ludi}_{\\scriptscriptstyle 0.1}$, an agentic system for socially intelligent robots that integrates interactive speech, multimodal reasoning, memory, navigation, and learned manipulation. Its decision-making core is a fine-tuned vision-language model trained on multi-turn interaction traces spanning ambiguous requests, clarifications, corrections, interruptions, mixed social and task dialogue, and multi-step tasks. A purpose-built harness manages the model-tool interaction loop, while specialized navigation and manipulation policies execute physical skills. Ludi${}_{\\scriptscriptstyle 0.1}$ demonstrates a practical path toward fluid human-robot collaboration today while producing the multimodal interaction traces needed to develop a more deeply integrated foundation model for robots and people.",
+      "authors": [
+        "Wooseong Chung",
+        "William Cong",
+        "Jakub Dworakowski",
+        "Ethan Ewer",
+        "Tri Wahyu Guntara",
+        "Yeonwoo Jeong",
+        "Tianchong Jiang",
+        "Chaewon Kim",
+        "Hyunseo Kim",
+        "Jinwoo Kim",
+        "Jinyeon Kim",
+        "Yea-Seul Kim",
+        "Jack Kunde",
+        "Kangwook Lee",
+        "Sangheon Lee",
+        "Robert Nowak",
+        "Junha Roh"
+      ],
+      "primary_category": "cs.RO",
+      "categories": [
+        "cs.RO"
+      ],
+      "published": "2026-08-22T16:38:59+00:00",
+      "link": "https://arxiv.org/pdf/2608.22035v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "integrates multimodal reasoning and memory for social robot agents",
+      "llm_evidence_cn": "集成多模态推理与记忆用于社交机器人智能体",
+      "llm_evidence": "集成多模态推理与记忆用于社交机器人智能体",
+      "canonical_evidence": "集成多模态推理与记忆用于社交机器人智能体",
+      "llm_tldr_en": "Ludi 0.1 is an agentic system for socially intelligent robots integrating speech, multimodal reasoning, memory, navigation, and manipulation.",
+      "llm_tldr_cn": "该论文针对自然人与机器人协作需要理解歧义、维持上下文并动态调整行为的挑战，提出一个面向社交智能机器人的智能体系统。系统集成交互式语音、多模态推理、记忆、导航与习得操控，核心是经过微调的视觉语言模型，基于多轮交互轨迹训练。实验表明机器人能够在歧义、澄清、修正与中断等复杂社交场景下维持上下文。该工作为多模态记忆增强的智能体机器人提供了整体解决方案。",
+      "llm_tldr": "该论文针对自然人与机器人协作需要理解歧义、维持上下文并动态调整行为的挑战，提出一个面向社交智能机器人的智能体系统。系统集成交互式语音、多模态推理、记忆、导航与习得操控，核心是经过微调的视觉语言模型，基于多轮交互轨迹训练。实验表明机器人能够在歧义、澄清、修正与中断等复杂社交场景下维持上下文。该工作为多模态记忆增强的智能体机器人提供了整体解决方案。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "agent that processes multiple modalities",
+      "matched_requirement_id": "req-2",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2608.22610v1",
+      "source": "arxiv",
+      "title": "Coalition-Aware Skill Reliability for Self-Evolving Agents",
+      "abstract": "Agent skills, structured artifacts distilled from interaction trajectories and dynamically reused from skill banks, have become a central mechanism for enabling large language model (LLM)-based self-evolving agents to learn from past experience. Yet existing work has largely focused on the operational aspects of skills, such as acquisition, evolution, and retrieval, while leaving a more fundamental reliability question unresolved: Do accumulated skills in an agent's skill bank actually make positive mechanistic contributions? We investigate this question through systematic skill-bank audits across alternative bank compositions and deployment domains, measuring the resulting changes in agent behavior. These audits reveal two recurring reliability failures: coalition pollution, where bank-level gains conceal negative coalition-level skill contributions, and cross-domain utility reversal, where source-beneficial skills reverse their effects after transfer. These findings motivate two reliability interventions: coalition-aware skill selection during skill accumulation and label-free skill masking after transfer. Coalition-Aware Skill Selection (CASS) selects more reliable candidate skills for the current bank using sampled Shapley marginals. Unsupervised Skill-Masked Coalition Optimizer (u-SMCO) masks transferred skills whose exclusion improves retrieval quality on unlabeled target-domain data. Agentic experiments on LoCoMo, LongMemEval, HotpotQA, and ALFWorld show that CASS and u-SMCO consistently improve task performance and cross-domain generalization over strong skill-based self-evolving agent baselines. Beyond accuracy, coalition-conditioned reliability modeling reduces sensitivity to noisy outcome-reward fluctuations during reinforcement learning and exposes the limits of isolation-based skill evaluation.",
+      "authors": [
+        "Qiyan Zhao",
+        "Xiaofeng Zhang",
+        "Bo Liu",
+        "Minda Chen",
+        "Wei Xiong",
+        "Jingyang Chen",
+        "Guanting Ye",
+        "Wenhao Yu",
+        "Xiaosong Yuan",
+        "Shijie Han",
+        "Da-Han Wang",
+        "Jianmin Ji",
+        "Fei Huang",
+        "Xu-Yao Zhang"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-08-23T21:35:22+00:00",
+      "link": "https://arxiv.org/pdf/2608.22610v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "skill bank audits for self-evolving agents' memory reliability",
+      "llm_evidence_cn": "对自进化智能体技能库记忆可靠性的审计",
+      "llm_evidence": "对自进化智能体技能库记忆可靠性的审计",
+      "canonical_evidence": "对自进化智能体技能库记忆可靠性的审计",
+      "llm_tldr_en": "This paper investigates reliability of accumulated skills in self-evolving agents, uncovering coalition failures through skill-bank audits, and proposes coalition-aware reliability measures to improve self-evolving agent memory.",
+      "llm_tldr_cn": "该论文针对自进化智能体技能库中积累的技能是否真正产生正向机制贡献这一可靠性问题，通过系统技能库审计测量行为变化，揭示联盟失效等两类可靠性故障。文章提出联盟感知的技能可靠性评估方法。实验表明审计能改善技能库质量。其贡献在于为智能体记忆增强提供了可靠性保障机制。",
+      "llm_tldr": "该论文针对自进化智能体技能库中积累的技能是否真正产生正向机制贡献这一可靠性问题，通过系统技能库审计测量行为变化，揭示联盟失效等两类可靠性故障。文章提出联盟感知的技能可靠性评估方法。实验表明审计能改善技能库质量。其贡献在于为智能体记忆增强提供了可靠性保障机制。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "agent with memory augmentation for better performance",
+      "matched_requirement_id": "req-6",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2608.22631v1",
+      "source": "arxiv",
+      "title": "Learning Generalizable Behaviors for Terminal Agents",
+      "abstract": "Terminal agents are a compelling application of large language models (LLMs), with the potential to integrate deeply into users' daily workflows. Reinforcement learning (RL) is a key technique for improving their capabilities, making scalable training environments a central challenge. Since public real-user interaction data are scarce, synthetic environments provide a practical alternative, but often suffer from domain gaps and limited fidelity, leading to poor generalization. Existing work mainly scales the quantity and diversity of synthetic environments, while reward-signal quality and the mechanisms governing generalization remain under-explored. We study how RL improves terminal agents and propose the Agentic Compositional Generalization hypothesis: rather than teaching new domain-specific skills from scratch, RL primarily shapes high-level decision-making behaviors that compose and route low-level skills acquired during pre-training and supervised fine-tuning (SFT). This account is consistent with our empirical results and suggests that verifier quality, which determines which behaviors are reinforced, is more important than simply increasing environment quantity or diversity. Motivated by this insight, we propose River, a simple training recipe that improves reward quality by filtering low-quality environments and augmenting outcome rewards with process-level behavior regularization. Using this recipe, our RL-trained agent achieves the best performance among evaluated open-source RL-trained 8B models across four terminal-agent benchmarks. River also generalizes across model families, scales, agent harnesses, and RL objectives. Using fewer than 30% of the TMax training environments, River improves RL gains by 106% and 30% on average for models ranging from 2B to 27B on Terminal-Bench-Lite and Terminal-Bench-v2.1, respectively.",
+      "authors": [
+        "Yihang Yao",
+        "Bo Pang",
+        "Xuan Phi Nguyen",
+        "Ding Zhao",
+        "Shafiq Joty",
+        "Semih Yavuz"
+      ],
+      "primary_category": "cs.LG",
+      "categories": [
+        "cs.LG"
+      ],
+      "published": "2026-08-23T22:34:40+00:00",
+      "link": "https://arxiv.org/pdf/2608.22631v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "RL for terminal agents and synthetic training environments",
+      "llm_evidence_cn": "针对终端智能体的强化学习与合成训练环境",
+      "llm_evidence": "针对终端智能体的强化学习与合成训练环境",
+      "canonical_evidence": "针对终端智能体的强化学习与合成训练环境",
+      "llm_tldr_en": "Explores RL for terminal agents and proposes an Agentic Compositional Generalization hypothesis to improve generalization in synthetic environments.",
+      "llm_tldr_cn": "该论文聚焦终端智能体在合成环境中训练时面临的可泛化性挑战，指出仅扩展环境数量与多样性不足以弥补领域差距。作者提出智能体组合泛化假设，研究强化学习如何提升终端智能体能力并改进奖励信号质量与泛化机制。实验通过合成环境评估终端智能体的任务完成与跨环境泛化表现。其贡献在于为终端智能体的强化学习训练提供新的理论视角和可泛化行为学习方法。",
+      "llm_tldr": "该论文聚焦终端智能体在合成环境中训练时面临的可泛化性挑战，指出仅扩展环境数量与多样性不足以弥补领域差距。作者提出智能体组合泛化假设，研究强化学习如何提升终端智能体能力并改进奖励信号质量与泛化机制。实验通过合成环境评估终端智能体的任务完成与跨环境泛化表现。其贡献在于为终端智能体的强化学习训练提供新的理论视角和可泛化行为学习方法。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "reinforcement learning applied to autonomous agents",
+      "matched_requirement_id": "req-3",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2608.22963v1",
+      "source": "arxiv",
+      "title": "Buried in Textual Debt: Context Pruning with Visual Evidence Preservation for MLLM Agents",
+      "abstract": "Multimodal Large Language Models (MLLMs) are increasingly deployed as multi-step agents, where explicit reasoning supports task decomposition and tool coordination but also accumulates self-generated text. Over long trajectories, this text can dominate the context and suppress visual evidence, creating textual debt. We observe that reasoning becomes redundant once task-relevant visual evidence is grounded, while stale hypotheses can misguide later inference when grounding remains uncertain. Pruning must therefore remove redundant text without discarding visual evidence. We propose SPARE, a Kullback--Leibler (KL)-guided framework for pruning accumulated reasoning in multimodal tool-use agents. SPARE uses a compact task-state summary as privileged diagnostic context. For each candidate segment, it replays the same model under the original and summary-conditioned contexts. Reverse-KL divergence from on-policy self-distillation (OPSD) then tests whether the summary sufficiently covers the segment without disrupting future reasoning. We further fine-tune the summarizer with supervised fine-tuning (SFT), enabling more compact summaries, broader coverage, and more aggressive pruning. Across multi-step visual tool-use benchmarks, SPARE achieves the highest average accuracy among pruning methods while removing 37.89--64.58\\% of reasoning tokens. This favorable accuracy--context trade-off shows that reducing textual dominance restores reliance on visual evidence and mitigates over-conditioning on self-generated language.",
+      "authors": [
+        "Yuchen Huang",
+        "Sijia Li",
+        "Jun Zhang",
+        "Yi R. Fung"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI",
+        "cs.CL"
+      ],
+      "published": "2026-08-24T08:29:17+00:00",
+      "link": "https://arxiv.org/pdf/2608.22963v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "KL-guided pruning of accumulated reasoning in multimodal tool-use agents preserves visual evidence",
+      "llm_evidence_cn": "对多模态工具智能体的累积推理进行KL引导剪枝并保留视觉证据",
+      "llm_evidence": "对多模态工具智能体的累积推理进行KL引导剪枝并保留视觉证据",
+      "canonical_evidence": "对多模态工具智能体的累积推理进行KL引导剪枝并保留视觉证据",
+      "llm_tldr_en": "This paper addresses textual debt in multi-step MLLM agents by proposing SPARE, a KL-guided context pruning framework that removes redundant reasoning while preserving task-critical visual evidence, improving multimodal tool-use performance.",
+      "llm_tldr_cn": "该论文针对多模态大语言模型智能体在多步任务中累积过多推理文本导致视觉证据被压制的问题，提出SPARE框架，利用KL散度引导剪枝冗余推理，同时保留关键视觉证据。实验表明该方法能有效管理上下文并维持多模态工具使用智能体的性能。其贡献在于提出一种视觉证据感知的记忆剪枝机制。",
+      "llm_tldr": "该论文针对多模态大语言模型智能体在多步任务中累积过多推理文本导致视觉证据被压制的问题，提出SPARE框架，利用KL散度引导剪枝冗余推理，同时保留关键视觉证据。实验表明该方法能有效管理上下文并维持多模态工具使用智能体的性能。其贡献在于提出一种视觉证据感知的记忆剪枝机制。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "memory mechanisms for intelligent agents",
+      "matched_requirement_id": "req-1",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2608.23552v1",
+      "source": "arxiv",
+      "title": "Prime Agent: A Self-Improving RLM Harness",
+      "abstract": "Language models are sequential processors, but long-horizon agency requires external information and computation beyond model weights and active context. Prime Agent is an open-source harness for long-horizon evaluation and coding-agent workflows. A persistent IPython REPL follows the Recursive Language Model abstraction for programmatic context processing and test-time compute, while Continual Harness preserves histories, memories, skills, prompts, and subagent specifications across trajectories. Recursive subagents coordinate through direct agent-to-agent communication, and the Agents View lets humans inspect and manage daemon-backed sessions. Prime Agent standardizes execution, recovery, verification, and resource accounting while leaving strategy construction to the model. This low-friction, expressive membrane prevents harness failures from becoming model failures and pushes measurement toward the model's true maximal underlying capability. Prime Agent raises ARC-AGI-3 RHAE Best@1 from 30% to 95.5% and matches or exceeds native and popular harnesses across long-context coding, GPU-kernel generation, emulator construction, and autonomous nanoGPT speedruns. On Factorio, we find refinement allows for continuous technology progression and dedicated subagents enable parallelized work. Code is available at https://github.com/PrimeIntellect-ai/prime-agent.",
+      "authors": [
+        "Seth Karten",
+        "Alex L. Zhang",
+        "Kevin Thomas",
+        "Sebastian Müller",
+        "Elie Bakouch",
+        "Daniel Auras",
+        "Mika Senghaas",
+        "Fares Obeid",
+        "Konstantin Dunas",
+        "Johannes Hagemann",
+        "Sami Jaghouar"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI",
+        "cs.CL",
+        "cs.SE"
+      ],
+      "published": "2026-08-24T17:54:19+00:00",
+      "link": "https://arxiv.org/pdf/2608.23552v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "preserves histories, memories, skills across trajectories for long-horizon agents",
+      "llm_evidence_cn": "跨轨迹保存历史、记忆、技能以支持长程智能体",
+      "llm_evidence": "跨轨迹保存历史、记忆、技能以支持长程智能体",
+      "canonical_evidence": "跨轨迹保存历史、记忆、技能以支持长程智能体",
+      "llm_tldr_en": "Prime Agent provides an open-source harness with persistent REPL and Continual Harness that preserves memories, skills, and prompts across trajectories, enabling long-horizon agent workflows and recursive subagent coordination.",
+      "llm_tldr_cn": "针对语言模型长程任务需要外部信息和计算的问题，本文提出Prime Agent开源框架。其持续执行器跨轨迹保存历史、记忆、技能与提示，并支持递归子智能体通信。该框架标准化执行、恢复、验证和资源核算，为长程编码智能体提供可扩展记忆增强基础设施。",
+      "llm_tldr": "针对语言模型长程任务需要外部信息和计算的问题，本文提出Prime Agent开源框架。其持续执行器跨轨迹保存历史、记忆、技能与提示，并支持递归子智能体通信。该框架标准化执行、恢复、验证和资源核算，为长程编码智能体提供可扩展记忆增强基础设施。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "agent with memory augmentation for better performance",
+      "matched_requirement_id": "req-6",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "quick_skim": [
+    {
+      "id": "2608.21898v1",
+      "source": "arxiv",
+      "title": "Training Needs Trustworthy Worlds: Verified Synthetic Web Environments for Agent Learning",
+      "abstract": "Web agents promise to automate complex digital workflows, but their training remains limited by synthetic environments that look plausible while hiding broken links, inconsistent states, or infeasible tasks. We address the gap between scalable environment generation and trustworthy agent learning by constructing synthetic web environments that are executable, auditable, and grounded in backend state. Our framework represents each generated website as a structured scaffold of pages, navigation links, database records, state-change markers, and task constraints, then verifies and repairs structural, semantic, consistency, and feasibility defects before policy training. During interaction, ordinary UI transitions are executed deterministically, while persistent backend updates are invoked only through validated state-change markers, enabling dense rewards compiled from verified task-progress predicates. Across 500 synthetic environments spanning six domains, our method reduces task-blocking defects and improves feasible-task rate from 48.6% to 94.8%, while producing stronger PPO policies and improving transfer to WebArena, WebShop, and MiniWoB++ without LLM calls at evaluation time. These results show that verified synthetic environments can serve as a scalable and reliable training substrate for compact web agents, shifting synthetic webagent learning from surface-level plausibility toward executable, state-grounded supervision.",
+      "authors": [
+        "Chenghao Zhang",
+        "Canran Xiao",
+        "SaiSai Hu",
+        "Dan Roth"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-08-22T10:18:45+00:00",
+      "link": "https://arxiv.org/pdf/2608.21898v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "constructing and verifying synthetic web environments for agent learning",
+      "llm_evidence_cn": "构建并验证用于智能体学习的合成网络环境",
+      "llm_evidence": "构建并验证用于智能体学习的合成网络环境",
+      "canonical_evidence": "构建并验证用于智能体学习的合成网络环境",
+      "llm_tldr_en": "This paper addresses unreliable synthetic web environments by generating verified, executable, backend-grounded websites as structured scaffolds, then repairing defects before policy training to improve web agent learning.",
+      "llm_tldr_cn": "该论文针对合成网络环境表面可信但内部存在断链、状态不一致等问题，提出构建可执行、可审计且基于后端状态的合成网络环境框架，将生成网站表示为页面、导航、数据库和任务约束的结构化脚手架，并在策略训练前验证和修复结构与语义缺陷。实验表明该框架能提升智能体训练的可信度。其贡献在于为智能体学习提供可信的文本化环境仿真。",
+      "llm_tldr": "该论文针对合成网络环境表面可信但内部存在断链、状态不一致等问题，提出构建可执行、可审计且基于后端状态的合成网络环境框架，将生成网站表示为页面、导航、数据库和任务约束的结构化脚手架，并在策略训练前验证和修复结构与语义缺陷。实验表明该框架能提升智能体训练的可信度。其贡献在于为智能体学习提供可信的文本化环境仿真。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "text-based world model for environment simulation",
+      "matched_requirement_id": "req-4",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2608.22833v1",
+      "source": "arxiv",
+      "title": "Minimal Local Simulation Foundations for LLM- and VLM-Driven Agents in 2D and 3D Environments",
+      "abstract": "Large language models (LLMs) and vision-language models (VLMs) are expanding the range of behaviors that can be represented in agent-based simulations, but many contemporary platforms are difficult to study, modify, or run on ordinary computers. We present two intentionally minimal simulation foundations for education and rapid prototyping. SD-AgentFoundry-2D provides a two-dimensional multi-agent environment in which locally hosted LLM agents move, communicate, respond to place occupancy, and encounter spatially localized fire events. SD-AgentFoundry-3D provides a three-dimensional digital-twin environment in which a locally hosted VLM receives first-person images and produces natural-language movement instructions. Both codebases are designed to run locally on macOS, Windows, and Linux and are deliberately left open to modification rather than developed as finished applications. Together, they offer accessible starting points for learning about generative social simulation and for building domain-specific extensions.",
+      "authors": [
+        "Ryuki Hyodo"
+      ],
+      "primary_category": "cs.MA",
+      "categories": [
+        "cs.MA",
+        "cs.AI"
+      ],
+      "published": "2026-08-24T05:56:22+00:00",
+      "link": "https://arxiv.org/pdf/2608.22833v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "VLM agent processes first-person images and natural-language movement instructions in 3D simulation",
+      "llm_evidence_cn": "VLM智能体在3D仿真中处理第一人称图像并生成自然语言指令",
+      "llm_evidence": "VLM智能体在3D仿真中处理第一人称图像并生成自然语言指令",
+      "canonical_evidence": "VLM智能体在3D仿真中处理第一人称图像并生成自然语言指令",
+      "llm_tldr_en": "Presents two minimal simulation foundations for locally hosted LLM and VLM agents, with 2D multi-agent fire events and 3D digital-twin image-based navigation, enabling study of multimodal agent behavior.",
+      "llm_tldr_cn": "针对现有智能体仿真平台难以在普通计算机上研究、修改和运行的问题，本文提出两个最小仿真基础：2D多智能体环境和3D数字孪生环境。3D环境中本地VLM智能体接收第一人称图像并输出自然语言运动指令，体现多模态处理。该框架支持教育和快速原型设计，降低多模态智能体仿真门槛。",
+      "llm_tldr": "针对现有智能体仿真平台难以在普通计算机上研究、修改和运行的问题，本文提出两个最小仿真基础：2D多智能体环境和3D数字孪生环境。3D环境中本地VLM智能体接收第一人称图像并输出自然语言运动指令，体现多模态处理。该框架支持教育和快速原型设计，降低多模态智能体仿真门槛。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "agent that processes multiple modalities",
+      "matched_requirement_id": "req-2",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    }
+  ]
+}

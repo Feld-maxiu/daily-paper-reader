@@ -1,0 +1,137 @@
+{
+  "date": "20260825",
+  "date_label": "",
+  "generated_at": "2026-08-25 19:43:44 UTC",
+  "recommend_exists": true,
+  "run_count": 1,
+  "papers": [
+    {
+      "paper_id": "2608.21690v1",
+      "route": "202608/25/2608.21690v1-context-as-an-environment-programmatic-context-management-for-long-horizon-agents",
+      "title": "Context as an Environment: Programmatic Context Management for Long-Horizon Agents",
+      "section": "deep",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 9.0,
+      "evidence": "面向长程智能体的可编程上下文管理与会话环境",
+      "first_seen_at": "2026-08-25 19:43:44 UTC",
+      "updated_at": "2026-08-25 19:43:44 UTC"
+    },
+    {
+      "paper_id": "2608.22035v1",
+      "route": "202608/25/2608.22035v1-ludiscriptscriptstyle-01-an-agentic-system-for-socially-intelligent-robots",
+      "title": "Ludi${}_{\\scriptscriptstyle 0.1}$: An Agentic System for Socially Intelligent Robots",
+      "section": "deep",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 9.0,
+      "evidence": "集成多模态推理与记忆用于社交机器人智能体",
+      "first_seen_at": "2026-08-25 19:43:44 UTC",
+      "updated_at": "2026-08-25 19:43:44 UTC"
+    },
+    {
+      "paper_id": "2608.22610v1",
+      "route": "202608/25/2608.22610v1-coalition-aware-skill-reliability-for-self-evolving-agents",
+      "title": "Coalition-Aware Skill Reliability for Self-Evolving Agents",
+      "section": "deep",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 8.0,
+      "evidence": "对自进化智能体技能库记忆可靠性的审计",
+      "first_seen_at": "2026-08-25 19:43:44 UTC",
+      "updated_at": "2026-08-25 19:43:44 UTC"
+    },
+    {
+      "paper_id": "2608.22631v1",
+      "route": "202608/25/2608.22631v1-learning-generalizable-behaviors-for-terminal-agents",
+      "title": "Learning Generalizable Behaviors for Terminal Agents",
+      "section": "deep",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 8.0,
+      "evidence": "针对终端智能体的强化学习与合成训练环境",
+      "first_seen_at": "2026-08-25 19:43:44 UTC",
+      "updated_at": "2026-08-25 19:43:44 UTC"
+    },
+    {
+      "paper_id": "2608.22963v1",
+      "route": "202608/25/2608.22963v1-buried-in-textual-debt-context-pruning-with-visual-evidence-preservation-for-mllm-agents",
+      "title": "Buried in Textual Debt: Context Pruning with Visual Evidence Preservation for MLLM Agents",
+      "section": "deep",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 8.0,
+      "evidence": "对多模态工具智能体的累积推理进行KL引导剪枝并保留视觉证据",
+      "first_seen_at": "2026-08-25 19:43:44 UTC",
+      "updated_at": "2026-08-25 19:43:44 UTC"
+    },
+    {
+      "paper_id": "2608.23552v1",
+      "route": "202608/25/2608.23552v1-prime-agent-a-self-improving-rlm-harness",
+      "title": "Prime Agent: A Self-Improving RLM Harness",
+      "section": "deep",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 8.0,
+      "evidence": "跨轨迹保存历史、记忆、技能以支持长程智能体",
+      "first_seen_at": "2026-08-25 19:43:44 UTC",
+      "updated_at": "2026-08-25 19:43:44 UTC"
+    },
+    {
+      "paper_id": "2608.21898v1",
+      "route": "202608/25/2608.21898v1-training-needs-trustworthy-worlds-verified-synthetic-web-environments-for-agent-learning",
+      "title": "Training Needs Trustworthy Worlds: Verified Synthetic Web Environments for Agent Learning",
+      "section": "quick",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 7.0,
+      "evidence": "构建并验证用于智能体学习的合成网络环境",
+      "first_seen_at": "2026-08-25 19:43:44 UTC",
+      "updated_at": "2026-08-25 19:43:44 UTC"
+    },
+    {
+      "paper_id": "2608.22833v1",
+      "route": "202608/25/2608.22833v1-minimal-local-simulation-foundations-for-llm--and-vlm-driven-agents-in-2d-and-3d-environments",
+      "title": "Minimal Local Simulation Foundations for LLM- and VLM-Driven Agents in 2D and 3D Environments",
+      "section": "quick",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 7.0,
+      "evidence": "VLM智能体在3D仿真中处理第一人称图像并生成自然语言指令",
+      "first_seen_at": "2026-08-25 19:43:44 UTC",
+      "updated_at": "2026-08-25 19:43:44 UTC"
+    }
+  ]
+}
