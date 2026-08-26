@@ -1,0 +1,89 @@
+{
+  "date": "20260826",
+  "date_label": "",
+  "generated_at": "2026-08-26 22:12:57 UTC",
+  "recommend_exists": true,
+  "run_count": 1,
+  "papers": [
+    {
+      "paper_id": "2608.22847v1",
+      "route": "202608/26/2608.22847v1-gsar-goal-state-anchor-rewards-for-mobile-gui-agents-with-self-evolving-data-synthesis",
+      "title": "GSAR: Goal-State-Anchor Rewards for Mobile GUI Agents with Self-Evolving Data Synthesis",
+      "section": "deep",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 9.0,
+      "evidence": "针对移动GUI智能体的强化学习奖励框架与自演化数据合成",
+      "first_seen_at": "2026-08-26 22:12:57 UTC",
+      "updated_at": "2026-08-26 22:12:57 UTC"
+    },
+    {
+      "paper_id": "2608.23268v1",
+      "route": "202608/26/2608.23268v1-dual-grained-agent-memory-and-shapley-context-attribution-for-multimodal-agentic-learner",
+      "title": "Dual-Grained Agent Memory and Shapley Context Attribution for Multimodal Agentic Learner",
+      "section": "deep",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 9.0,
+      "evidence": "DG-Mem：具有实例和模式记忆的双粒度智能体记忆框架",
+      "first_seen_at": "2026-08-26 22:12:57 UTC",
+      "updated_at": "2026-08-26 22:12:57 UTC"
+    },
+    {
+      "paper_id": "2608.21948v1",
+      "route": "202608/26/2608.21948v1-sparse-multi-stage-expert-agent-routing-for-complex-clinical-reasoning",
+      "title": "Sparse Multi-Stage Expert-Agent Routing for Complex Clinical Reasoning",
+      "section": "deep",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 8.0,
+      "evidence": "在临床推理中维持演化案例状态与专家特定记忆",
+      "first_seen_at": "2026-08-26 22:12:57 UTC",
+      "updated_at": "2026-08-26 22:12:57 UTC"
+    },
+    {
+      "paper_id": "2608.22591v1",
+      "route": "202608/26/2608.22591v1-worldtoken-time-first-sequence-modeling-for-robotic-imitation-learning",
+      "title": "WorldToken: Time-First Sequence Modeling for Robotic Imitation Learning",
+      "section": "deep",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 8.0,
+      "evidence": "将多视角图像、本体感觉和任务条件融合为世界令牌",
+      "first_seen_at": "2026-08-26 22:12:57 UTC",
+      "updated_at": "2026-08-26 22:12:57 UTC"
+    },
+    {
+      "paper_id": "2608.24214v1",
+      "route": "202608/26/2608.24214v1-metarag-belief-action-aligned-policy-optimization-for-agentic-rag",
+      "title": "MetaRAG: Belief-Action Aligned Policy Optimization for Agentic RAG",
+      "section": "deep",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 8.0,
+      "evidence": "针对智能体RAG的信念-行为对齐强化学习策略优化",
+      "first_seen_at": "2026-08-26 22:12:57 UTC",
+      "updated_at": "2026-08-26 22:12:57 UTC"
+    }
+  ]
+}

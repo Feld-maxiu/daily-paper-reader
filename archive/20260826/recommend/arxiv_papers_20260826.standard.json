@@ -1,0 +1,213 @@
+{
+  "mode": "standard",
+  "generated_at": "2026-08-26T22:03:59.149823+00:00",
+  "stats": {
+    "mode": "standard",
+    "tag_count": 1,
+    "deep_divecandidates": 5,
+    "deep_cap": 6,
+    "deep_selected": 5,
+    "quick_candidates": 0,
+    "quick_skim_target": 11,
+    "quick_selected": 0
+  },
+  "deep_dive": [
+    {
+      "id": "2608.22847v1",
+      "source": "arxiv",
+      "title": "GSAR: Goal-State-Anchor Rewards for Mobile GUI Agents with Self-Evolving Data Synthesis",
+      "abstract": "Vision-Language Models (VLMs) based GUI agents stand to benefit significantly from online reinforcement learning (RL). However, their training is bottlenecked by two fundamental issues: current data synthesis methods for GUI Agents rely on specific environments and struggle to generate diverse data, while existing evaluators either suffer from limited scalability or provide inaccurate and unreliable reward signals. To overcome these challenges, we introduce GSAR (Goal-State-Anchor Reward), a RL reward framework that supports scalable task generation and delivers reliable reward signals for stable and efficient policy optimization. Our approach features self-evolving data synthesis, which produces multiple environments through task execution and generates diverse tasks and goal states. Complementing this, a state-anchor mechanism automatically annotates task-relevant UI elements in successful goal states as reference anchors. During RL training, these reference anchors provide accurate, scalable reward signals that substantially enhance efficiency. Extensive evaluations demonstrate that our framework achieves over 90% accuracy on offline trajectory verification and performs closest to rule-based methods. Furthermore, agents trained using our reward framework exhibit strong performance on both AndroidWorld and our constructed benchmark, establishing a scalable approach for GUI agent training.",
+      "authors": [
+        "Long Zhang",
+        "Yuhan Chen",
+        "Chaoran Zhang",
+        "Wanxia Cao",
+        "Kun Huang",
+        "Pengzhi Gao",
+        "Wei Liu",
+        "Jian Luan",
+        "Chenliang Li",
+        "Lixin Zou"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-08-24T06:27:47+00:00",
+      "link": "https://arxiv.org/pdf/2608.22847v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "RL reward framework for mobile GUI agents with self-evolving data synthesis",
+      "llm_evidence_cn": "针对移动GUI智能体的强化学习奖励框架与自演化数据合成",
+      "llm_evidence": "针对移动GUI智能体的强化学习奖励框架与自演化数据合成",
+      "canonical_evidence": "针对移动GUI智能体的强化学习奖励框架与自演化数据合成",
+      "llm_tldr_en": "GSAR introduces a goal-state-anchor reward framework for RL on mobile GUI agents, enabling scalable task generation and reliable reward signals.",
+      "llm_tldr_cn": "GSAR提出目标状态锚奖励框架，结合自演化数据合成，为移动GUI智能体的在线强化学习提供可扩展的任务生成和可靠的奖励信号，以稳定策略优化。",
+      "llm_tldr": "GSAR提出目标状态锚奖励框架，结合自演化数据合成，为移动GUI智能体的在线强化学习提供可扩展的任务生成和可靠的奖励信号，以稳定策略优化。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "reinforcement learning applied to autonomous agents",
+      "matched_requirement_id": "req-3",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2608.23268v1",
+      "source": "arxiv",
+      "title": "Dual-Grained Agent Memory and Shapley Context Attribution for Multimodal Agentic Learner",
+      "abstract": "Frontier multimodal large language models (MLLMs) deliver impressive perception yet still falter on scientific and mathematical reasoning. Parameter-level adaptation is unavailable for closed-weight or on-device backbones, and stateless prompting forfeits any compounding benefit from problems already solved. We propose \\textbf{DG-Mem}, a dual-grained agentic memory framework that augments a frozen MLLM with a non-parametric, externally stored memory built once from training-time rollouts and consulted read-only at test time. Motivated by the Complementary Learning Systems (CLS) account of human memory, DG-Mem factors its store into an instance-grounded exemplar memory and a category-level schema memory of IF-THEN rules, with a transient reflection store mediating their construction so that schemas are synthesized only from abstract reflections, never from exemplar text. Two design choices distinguish DG-Mem: an online concept categorizer that grows the category space incrementally during training rather than committing to a predefined taxonomy, and a Shapley context attribution procedure that decomposes correctness across the entire retrieved rule set and yields a per-rule utility that re-weights retrieval at test time. The pipeline introduces no gradient updates and is deployable on closed-weight or on-device backbones. Across MathVista, MMMU, and MMMU-Pro on four open-weight and proprietary backbones (Qwen3.5-27B, Qwen3.5-122B-A10B, GPT-5-Nano, Gemini-3-Flash), DG-Mem improves consistently over no-memory and competitive memory baselines.",
+      "authors": [
+        "Jieke Wang",
+        "Tiancheng Shen",
+        "Yibo Yang",
+        "Ming-Hsuan Yang"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV"
+      ],
+      "published": "2026-08-24T13:56:01+00:00",
+      "link": "https://arxiv.org/pdf/2608.23268v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "DG-Mem: dual-grained agentic memory framework with exemplar and schema memory",
+      "llm_evidence_cn": "DG-Mem：具有实例和模式记忆的双粒度智能体记忆框架",
+      "llm_evidence": "DG-Mem：具有实例和模式记忆的双粒度智能体记忆框架",
+      "canonical_evidence": "DG-Mem：具有实例和模式记忆的双粒度智能体记忆框架",
+      "llm_tldr_en": "DG-Mem proposes a dual-grained agentic memory framework that augments frozen multimodal LLMs with non-parametric external memory, improving reasoning via instance-grounded and schema memories.",
+      "llm_tldr_cn": "本文针对冻结多模态大模型在科学推理上的不足，提出DG-Mem双粒度智能体记忆框架，通过外部存储的实例记忆和模式规则记忆，以只读方式在测试时增强模型推理能力，避免参数更新。",
+      "llm_tldr": "本文针对冻结多模态大模型在科学推理上的不足，提出DG-Mem双粒度智能体记忆框架，通过外部存储的实例记忆和模式规则记忆，以只读方式在测试时增强模型推理能力，避免参数更新。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "memory mechanisms for intelligent agents",
+      "matched_requirement_id": "req-1",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2608.21948v1",
+      "source": "arxiv",
+      "title": "Sparse Multi-Stage Expert-Agent Routing for Complex Clinical Reasoning",
+      "abstract": "Complex clinical reasoning requires models to update diagnostic hypotheses as new evidence emerges and to coordinate different medical specialities under limited consultation resources. Existing LLM-based clinical reasoning systems typically perform single-pass prediction or rely on fixed multi-agent workflows, making expert participation either static or unnecessarily exhaustive. We propose Sparse Multi-Stage Expert-Agent Routing, a language-based clinical reasoning framework that models diagnosis as a stage-wise routing process. Given progressively available clinical evidence derived from multiple modalities, the framework maintains an evolving case state and adaptively activates a sparse set of medical expert agents, supported by expert-specific memory across stages. To evaluate free-text diagnostic conclusions beyond surface similarity, we further introduce ClinFEScore, a fact-aware semantic evaluation protocol for clinical reasoning outputs. On reconstructed multi-stage cases from MAC and AgentClinic-NEJM, our framework reduces the average number of activated experts from 17.0 to 3.0 whilst maintaining strong fact-level diagnostic quality. On 200 real-world hospital MDT cases, ClinFEScore correlates strongly with clinician judgements (Spearman's $ρ=0.81$; Pearson's $r=0.87$), whilst our method achieves 91.5\\% clinician-verified diagnostic accuracy with approximately five expert-agent/LLM calls per case. These results support sparse stage-wise coordination as an efficient and clinically relevant approach to LLM-based clinical reasoning.",
+      "authors": [
+        "Sike Xiang",
+        "Shuang Chen",
+        "Qian sun",
+        "Jia Cheng",
+        "Yusi Wei",
+        "Amir Atapour-Abarghouei"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV"
+      ],
+      "published": "2026-08-22T13:23:30+00:00",
+      "link": "https://arxiv.org/pdf/2608.21948v1",
+      "tags": [
+        "keyword:agent-memory"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "maintains evolving case state and expert-specific memory in clinical reasoning",
+      "llm_evidence_cn": "在临床推理中维持演化案例状态与专家特定记忆",
+      "llm_evidence": "在临床推理中维持演化案例状态与专家特定记忆",
+      "canonical_evidence": "在临床推理中维持演化案例状态与专家特定记忆",
+      "llm_tldr_en": "This paper proposes Sparse Multi-Stage Expert-Agent Routing for clinical reasoning, which maintains an evolving case state and adaptively activates sparse expert agents using expert-specific memory for multi-modal clinical evidence.",
+      "llm_tldr_cn": "针对复杂临床推理需要更新诊断假设并协调多专科专家、但现有系统单遍预测或固定多智能体工作流的问题，该论文提出稀疏多阶段专家智能体路由框架。该语言化推理框架将诊断建模为阶段式路由，随多模态临床证据逐步更新案例状态，并自适应激活稀疏的医学专家智能体，专家智能体由特定记忆支撑。该方法在有限咨询资源下实现动态专家参与，改进了推理过程。",
+      "llm_tldr": "针对复杂临床推理需要更新诊断假设并协调多专科专家、但现有系统单遍预测或固定多智能体工作流的问题，该论文提出稀疏多阶段专家智能体路由框架。该语言化推理框架将诊断建模为阶段式路由，随多模态临床证据逐步更新案例状态，并自适应激活稀疏的医学专家智能体，专家智能体由特定记忆支撑。该方法在有限咨询资源下实现动态专家参与，改进了推理过程。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "memory mechanisms for intelligent agents",
+      "matched_requirement_id": "req-1",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2608.22591v1",
+      "source": "arxiv",
+      "title": "WorldToken: Time-First Sequence Modeling for Robotic Imitation Learning",
+      "abstract": "Robot policies receive heterogeneous observations at each decision step, yet sequence models differ in how they organize these inputs over time. We introduce WorldToken, a time-first policy instantiation that fuses multiview images, proprioception, and task conditioning within each policy timestep into one world token. A causal temporal Transformer models the resulting world-token sequence, and a diffusion action head generates action chunks. On 23 RoboCasa tasks, an 85.3M-parameter policy trained from scratch apart from a frozen pretrained CLIP text encoder achieves 59.45% mean closed-loop success using 2,900 generated demonstrations per task. A complete factorial sweep over five dataset sizes, five model sizes, and two training seeds shows consistent gains from additional target-domain data and diminishing returns beyond moderate model size. Under same-checkpoint history truncation, reducing visible history to one or two policy timesteps lowers closed-loop success for all 50 RoboCasa policies. On RMBench Blocks Ranking, reducing visible history from 146 to 8 seconds lowers evaluator success from 95% to 28%, while an exploratory extended rollout sustains the reference swap sequence for over 850 seconds. These results establish the empirical feasibility of the complete WorldToken instantiation and characterize its data-scaling and temporal-context behavior under the tested recipes. They do not establish superiority over alternative sequence organizations or isolate which components of the complete implementation drive the observed performance.",
+      "authors": [
+        "Chunkai Yang",
+        "Andong Yang",
+        "Chao Gao"
+      ],
+      "primary_category": "cs.RO",
+      "categories": [
+        "cs.RO"
+      ],
+      "published": "2026-08-23T20:56:29+00:00",
+      "link": "https://arxiv.org/pdf/2608.22591v1",
+      "tags": [
+        "keyword:agent-memory"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "fuses multiview images, proprioception, and task conditioning into one world token",
+      "llm_evidence_cn": "将多视角图像、本体感觉和任务条件融合为世界令牌",
+      "llm_evidence": "将多视角图像、本体感觉和任务条件融合为世界令牌",
+      "canonical_evidence": "将多视角图像、本体感觉和任务条件融合为世界令牌",
+      "llm_tldr_en": "The paper introduces WorldToken, a time-first sequence modeling approach for robotic imitation learning that fuses multimodal observations into a single token at each timestep, improving policy performance.",
+      "llm_tldr_cn": "针对机器人策略在决策步骤接收异构观测，但序列模型组织方式各异的问题，该论文提出WorldToken时间优先策略。它将多视角图像、本体感觉和任务条件在每个时间步融合为一个世界令牌，由因果时序Transformer建模，扩散动作头生成动作块。在23个RoboCasa任务上，85.3M参数策略在2900条生成演示下达到59.45%平均闭环成功率。该方法展示了多模态融合在机器人模仿学习中的有效性。",
+      "llm_tldr": "针对机器人策略在决策步骤接收异构观测，但序列模型组织方式各异的问题，该论文提出WorldToken时间优先策略。它将多视角图像、本体感觉和任务条件在每个时间步融合为一个世界令牌，由因果时序Transformer建模，扩散动作头生成动作块。在23个RoboCasa任务上，85.3M参数策略在2900条生成演示下达到59.45%平均闭环成功率。该方法展示了多模态融合在机器人模仿学习中的有效性。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "agent that processes multiple modalities",
+      "matched_requirement_id": "req-2",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2608.24214v1",
+      "source": "arxiv",
+      "title": "MetaRAG: Belief-Action Aligned Policy Optimization for Agentic RAG",
+      "abstract": "Agentic retrieval-augmented generation (RAG) requires language models to decide when to continue searching and when to answer. Existing RL-based methods rely on external supervision and overlook the agent's internal belief about whether the current evidence is sufficient. To address this problem, we reformulate the search decision quality as belief-action alignment and propose MetaRAG, a belief-action aligned policy optimization framework for agentic RAG. MetaRAG uses Verify-first Action Generation to elicit an explicit verification process before each actual action, and Internal Belief Probing to estimate the policy model's own answerability belief from the same question-history context. Based on these, MetaRAG derives a consistency reward that is further gated by answer correctness, avoiding reinforcement of internally consistent but incorrect trajectories. The belief probe is used only during training and introduces no inference-time overhead. Experiments on seven public QA benchmarks show that MetaRAG consistently improves the accuracy-efficiency trade-off over strong RL-based agentic RAG baselines, with gains that transfer to deep research settings, different optimizers, and multiple model backbones.",
+      "authors": [
+        "Qiuyi Qi",
+        "Tian Liang",
+        "Jiamu Wang",
+        "Jinjian Zhang",
+        "Wei Zhou",
+        "Pengcheng Zhu",
+        "Linjian Mo",
+        "Ming Kong",
+        "Jie Liu",
+        "Qiang Zhu"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-08-25T08:20:29+00:00",
+      "link": "https://arxiv.org/pdf/2608.24214v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "Belief-action aligned policy optimization for agentic RAG using RL",
+      "llm_evidence_cn": "针对智能体RAG的信念-行为对齐强化学习策略优化",
+      "llm_evidence": "针对智能体RAG的信念-行为对齐强化学习策略优化",
+      "canonical_evidence": "针对智能体RAG的信念-行为对齐强化学习策略优化",
+      "llm_tldr_en": "MetaRAG proposes a belief-action aligned policy optimization framework for agentic RAG, using internal belief probing and consistency rewards.",
+      "llm_tldr_cn": "MetaRAG重新定义搜索决策质量为信念-行为对齐，提出基于验证优先动作生成和内部信念探测的一致性奖励策略优化，提升智能体RAG的决策能力。",
+      "llm_tldr": "MetaRAG重新定义搜索决策质量为信念-行为对齐，提出基于验证优先动作生成和内部信念探测的一致性奖励策略优化，提升智能体RAG的决策能力。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "reinforcement learning applied to autonomous agents",
+      "matched_requirement_id": "req-3",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "quick_skim": []
+}
