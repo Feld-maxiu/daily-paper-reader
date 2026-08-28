@@ -1,0 +1,153 @@
+{
+  "date": "20260828",
+  "date_label": "",
+  "generated_at": "2026-08-28 03:51:59 UTC",
+  "recommend_exists": true,
+  "run_count": 1,
+  "papers": [
+    {
+      "paper_id": "2608.25927v1",
+      "route": "202608/28/2608.25927v1-code-world-model-coding-agent-as-world-brain",
+      "title": "Code World Model: Coding Agent as World Brain",
+      "section": "deep",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 9.0,
+      "evidence": "代码世界模型使用编码智能体作为世界大脑，实现语言世界建模",
+      "first_seen_at": "2026-08-28 03:51:59 UTC",
+      "updated_at": "2026-08-28 03:51:59 UTC"
+    },
+    {
+      "paper_id": "2608.26263v1",
+      "route": "202608/28/2608.26263v1-skillstate-scalable-long-horizon-agent-skills",
+      "title": "SKILL.state: Scalable Long-Horizon Agent Skills",
+      "section": "deep",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 9.0,
+      "evidence": "显式可变执行状态替代对话历史",
+      "first_seen_at": "2026-08-28 03:51:59 UTC",
+      "updated_at": "2026-08-28 03:51:59 UTC"
+    },
+    {
+      "paper_id": "2608.26895v1",
+      "route": "202608/28/2608.26895v1-when-memory-takes-gradients-collaborative-vector-memory-for-agentic-recommender-systems",
+      "title": "When Memory Takes Gradients: Collaborative Vector Memory for Agentic Recommender Systems",
+      "section": "deep",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 9.0,
+      "evidence": "智能体推荐系统的向量记忆",
+      "first_seen_at": "2026-08-28 03:51:59 UTC",
+      "updated_at": "2026-08-28 03:51:59 UTC"
+    },
+    {
+      "paper_id": "2608.26053v1",
+      "route": "202608/28/2608.26053v1-r3-training-robots-to-reason-in-natural-language-via-reinforcement-learning",
+      "title": "$R^3$: Training Robots to Reason in Natural Language via Reinforcement Learning",
+      "section": "deep",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 8.0,
+      "evidence": "强化学习后训练VLM机器人推理器",
+      "first_seen_at": "2026-08-28 03:51:59 UTC",
+      "updated_at": "2026-08-28 03:51:59 UTC"
+    },
+    {
+      "paper_id": "2608.26788v1",
+      "route": "202608/28/2608.26788v1-decoupling-planning-and-control-for-instructable-agents",
+      "title": "Decoupling Planning and Control for Instructable Agents",
+      "section": "deep",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 8.0,
+      "evidence": "结合VLM规划器与世界模型控制器处理视觉观测和文本指令",
+      "first_seen_at": "2026-08-28 03:51:59 UTC",
+      "updated_at": "2026-08-28 03:51:59 UTC"
+    },
+    {
+      "paper_id": "2608.27142v1",
+      "route": "202608/28/2608.27142v1-grain-bridging-name-and-narrative-shifts-in-real-world-graph-reasoning-through-invariance-rewarded-agentic-rl",
+      "title": "GRAIN: Bridging Name and Narrative Shifts in Real-World Graph Reasoning through Invariance-Rewarded Agentic RL",
+      "section": "deep",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 8.0,
+      "evidence": "提出 GRAIN，一种通过强化学习优化的单智能体框架，使用结构不变性奖励",
+      "first_seen_at": "2026-08-28 03:51:59 UTC",
+      "updated_at": "2026-08-28 03:51:59 UTC"
+    },
+    {
+      "paper_id": "2608.19794v1",
+      "route": "202608/28/2608.19794v1-towards-general-embodied-intelligence-integrating-large-language-models-knowledge-bases-and-reasoning-capabilities-to-build-the-next-generation-of-ai-agents",
+      "title": "Towards general embodied intelligence: integrating large language models, knowledge bases, and reasoning capabilities to build the next generation of AI agents",
+      "section": "quick",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 7.0,
+      "evidence": "综述整合大语言模型、知识库和推理以实现通用具身智能",
+      "first_seen_at": "2026-08-28 03:51:59 UTC",
+      "updated_at": "2026-08-28 03:51:59 UTC"
+    },
+    {
+      "paper_id": "2608.22294v1",
+      "route": "202608/28/2608.22294v1-beyond-instance-slots-semantically-rich-world-models-for-physical-interaction-planning",
+      "title": "Beyond Instance Slots: Semantically Rich World Models for Physical Interaction Planning",
+      "section": "quick",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 6.0,
+      "evidence": "具有功能角色的任务条件世界模型用于物理交互规划",
+      "first_seen_at": "2026-08-28 03:51:59 UTC",
+      "updated_at": "2026-08-28 03:51:59 UTC"
+    },
+    {
+      "paper_id": "2608.23283v2",
+      "route": "202608/28/2608.23283v2-apodex-11-scaling-agentic-intelligence-for-complex-work",
+      "title": "Apodex 1.1: Scaling Agentic Intelligence for Complex Work",
+      "section": "quick",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 6.0,
+      "evidence": "AgentOS 维护任务状态和溯源，为智能体提供记忆式状态维护",
+      "first_seen_at": "2026-08-28 03:51:59 UTC",
+      "updated_at": "2026-08-28 03:51:59 UTC"
+    }
+  ]
+}

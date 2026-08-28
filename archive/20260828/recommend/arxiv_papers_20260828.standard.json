@@ -1,0 +1,451 @@
+{
+  "mode": "standard",
+  "generated_at": "2026-08-28T03:37:28.417984+00:00",
+  "stats": {
+    "mode": "standard",
+    "tag_count": 1,
+    "deep_divecandidates": 6,
+    "deep_cap": 6,
+    "deep_selected": 6,
+    "quick_candidates": 3,
+    "quick_skim_target": 11,
+    "quick_selected": 3
+  },
+  "deep_dive": [
+    {
+      "id": "2608.25927v1",
+      "source": "arxiv",
+      "title": "Code World Model: Coding Agent as World Brain",
+      "abstract": "World models aim to simulate how complex environments evolve under actions and events, yet existing video-based world models primarily learn dynamics from visual observations, which reveal outcomes rather than the underlying knowledge, rules, and mechanisms governing world evolution. This makes it difficult to maintain persistent consequences and support coherent, open-ended evolution. We introduce Code World Model, a framework that separates world evolution from visual realization by combining the reasoning and coding capabilities of language models with the generative priors of video models. A coding agent serves as the world brain, reasoning about events and their consequences and generating executable code to maintain persistent world state and perform rule-consistent evolution. To connect executable state with visual generation, we introduce a proxy representation that encodes frame-wise spatiotemporal constraints and is compiled into a proxy video, which conditions a video model to render high-fidelity visual observations. We further develop data pipelines for constructing aligned proxy-observation pairs from gameplay and real-world videos. After fine-tuning on paired gameplay data, MiniMax-H3 follows proxy-based spatiotemporal specifications from simple interactive worlds built by the coding agent while preserving rich visual details and dynamics. These results demonstrate the potential of combining code for persistent world evolution with video models for flexible visual realization, providing a new path toward open-ended world models.",
+      "authors": [
+        "Yiwen Chen",
+        "Guosheng Lin",
+        "Chi Zhang"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV",
+        "cs.AI",
+        "cs.CL"
+      ],
+      "published": "2026-08-26T15:37:33+00:00",
+      "link": "https://arxiv.org/pdf/2608.25927v1",
+      "tags": [
+        "keyword:agent-memory"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "Code World Model uses coding agent as world brain for language-based world modeling",
+      "llm_evidence_cn": "代码世界模型使用编码智能体作为世界大脑，实现语言世界建模",
+      "llm_evidence": "代码世界模型使用编码智能体作为世界大脑，实现语言世界建模",
+      "canonical_evidence": "代码世界模型使用编码智能体作为世界大脑，实现语言世界建模",
+      "llm_tldr_en": "Code World Model separates world evolution from visual realization by using a coding agent to generate executable code, enabling persistent, coherent, language-based world modeling.",
+      "llm_tldr_cn": "针对现有视频世界模型主要从视觉观察学习动态、难以维护持久后果和开放演化的问题，提出Code World Model框架。它将世界演化与视觉实现分离，用编码智能体作为世界大脑，推理事件后果并生成可执行代码来维护世界状态和规则一致演化。该框架结合语言模型的推理编码能力与视频模型的生成先验，为智能体推理提供了可持久、连贯的语言世界模型。",
+      "llm_tldr": "针对现有视频世界模型主要从视觉观察学习动态、难以维护持久后果和开放演化的问题，提出Code World Model框架。它将世界演化与视觉实现分离，用编码智能体作为世界大脑，推理事件后果并生成可执行代码来维护世界状态和规则一致演化。该框架结合语言模型的推理编码能力与视频模型的生成先验，为智能体推理提供了可持久、连贯的语言世界模型。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "language-based world model for agent reasoning",
+      "matched_requirement_id": "req-5",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2608.26263v1",
+      "source": "arxiv",
+      "title": "SKILL.state: Scalable Long-Horizon Agent Skills",
+      "abstract": "Large Language Models (LLMs) increasingly act as autonomous agents executing complex, long-running procedural skills. Existing agent runtimes maintain execution by continually appending observations, actions, and intermediate reasoning traces to an ever-growing conversation history, causing latency degradation and context-poisoning failures over long horizons. We present SKILL.state, a runtime architecture that replaces append-only conversational history with an explicit, mutable execution state. At each execution step, the model receives only the immutable skill specification, the current structured execution state, and the latest observation. Intermediate reasoning is discarded immediately after producing a validated state update, preventing prompt growth with execution history. Across diverse datasets, models, and execution environments, SKILL.state improves task accuracy while substantially reducing cumulative token consumption. Our results demonstrate that explicit execution state is an effective and architecture-agnostic abstraction for scalable long-horizon agent skills.",
+      "authors": [
+        "Sanket Badhe",
+        "Priyanka Tiwari",
+        "Jonghyun Chung"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI",
+        "cs.MA"
+      ],
+      "published": "2026-08-26T18:00:06+00:00",
+      "link": "https://arxiv.org/pdf/2608.26263v1",
+      "tags": [
+        "keyword:agent-memory"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "explicit mutable execution state replaces conversation history",
+      "llm_evidence_cn": "显式可变执行状态替代对话历史",
+      "llm_evidence": "显式可变执行状态替代对话历史",
+      "canonical_evidence": "显式可变执行状态替代对话历史",
+      "llm_tldr_en": "Proposes SKILL.state, a runtime architecture replacing append-only conversation history with explicit mutable execution state to prevent context growth and long-horizon failures for LLM agents.",
+      "llm_tldr_cn": "针对LLM智能体执行长时程技能时对话历史不断增长导致延迟和上下文污染的问题，本文提出SKILL.state运行时架构，用显式可变执行状态取代追加式对话历史，每步只传入技能规范、当前状态和最新观察，中间推理即时丢弃。实验表明该架构可扩展且减少失败，提升长时程任务稳定性。",
+      "llm_tldr": "针对LLM智能体执行长时程技能时对话历史不断增长导致延迟和上下文污染的问题，本文提出SKILL.state运行时架构，用显式可变执行状态取代追加式对话历史，每步只传入技能规范、当前状态和最新观察，中间推理即时丢弃。实验表明该架构可扩展且减少失败，提升长时程任务稳定性。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "memory mechanisms for intelligent agents",
+      "matched_requirement_id": "req-1",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2608.26895v1",
+      "source": "arxiv",
+      "title": "When Memory Takes Gradients: Collaborative Vector Memory for Agentic Recommender Systems",
+      "abstract": "Agentic recommender systems ground each decision of a large language model (LLM) in a persistent memory of the user, and in existing agents that memory is text: a narrative written and maintained by further LLM calls. Text limits this memory in two ways. It is updated one rewrite at a time, so exploiting the full interaction history is prohibitively expensive; and collaborative evidence, graded similarity over an entire catalog, does not survive translation into sentences. We propose CoVeMem (Collaborative Vector Memory), which vectorizes the collaborative core of the agent's memory. Frozen LightGCN user and item states form the memory bank; at each decision, the candidate set itself retrieves the most relevant historical states, which enter the LLM's context as soft tokens alongside a light textual profile. Contrastive alignment to item-semantic anchors, followed by listwise co-training with masked candidates, teaches the model to read these states and to rank through them; a pointwise yes/no readout scores each candidate. Across four instruction-grounded recommendation benchmarks, CoVeMem matches or exceeds the strongest collaborative text-memory agent on 19 of 20 metric cells while requiring zero additional LLM calls for memory maintenance beyond the shared static profile, against per-interaction calls for text memory. The memory now takes gradients: the full interaction history, out of reach for text, becomes available as training data for what the agent remembers and for how it reads what it remembers.",
+      "authors": [
+        "Hanchong Chen",
+        "Xing Tang",
+        "Lingjie Li",
+        "Xiongfeng Shan",
+        "Xiuqiang He"
+      ],
+      "primary_category": "cs.IR",
+      "categories": [
+        "cs.IR",
+        "cs.AI"
+      ],
+      "published": "2026-08-27T09:51:18+00:00",
+      "link": "https://arxiv.org/pdf/2608.26895v1",
+      "tags": [
+        "keyword:agent-memory"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "vector memory for agentic recommender LLM",
+      "llm_evidence_cn": "智能体推荐系统的向量记忆",
+      "llm_evidence": "智能体推荐系统的向量记忆",
+      "canonical_evidence": "智能体推荐系统的向量记忆",
+      "llm_tldr_en": "Proposes CoVeMem, vectorizing collaborative memory with frozen LightGCN states to replace text memory in agentic recommender systems, enabling efficient use of full interaction history and collaborative evidence.",
+      "llm_tldr_cn": "针对智能体推荐系统中文本记忆更新低效且难以保留协同证据的问题，本文提出CoVeMem，将协同核心向量化为冻结的LightGCN用户与物品状态，作为记忆库在每次决策时检索相关历史。实验表明该方法比文本记忆更高效且能更好利用协同信息，提升了推荐性能。",
+      "llm_tldr": "针对智能体推荐系统中文本记忆更新低效且难以保留协同证据的问题，本文提出CoVeMem，将协同核心向量化为冻结的LightGCN用户与物品状态，作为记忆库在每次决策时检索相关历史。实验表明该方法比文本记忆更高效且能更好利用协同信息，提升了推荐性能。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "memory mechanisms for intelligent agents",
+      "matched_requirement_id": "req-1",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2608.26053v1",
+      "source": "arxiv",
+      "title": "$R^3$: Training Robots to Reason in Natural Language via Reinforcement Learning",
+      "abstract": "Reasoning in language allows foundation models to spend more test-time compute on hard problems, such as those requiring decomposition, constraint tracking, and prediction of future consequences. Whether this mechanism can improve robotic manipulation remains unclear, where long-horizon tasks require tracking partial progress, reasoning about object relations, recovering from mistakes, and steering noisy low-level policies. In this paper, we study whether VLMs can be trained to reason directly in natural language to guide low-level manipulation policies. We introduce $R^3$, a simple post-training recipe that turns off-the-shelf VLMs into robotic reasoners: it first mid-trains a VLM on expert-generated reasoning traces to initialize the desired reasoning style, then improves the reasoner with single-step rubric-based RL from offline action data. Unlike prior robotic reasoning methods that mostly use structured traces as auxiliary supervision, $R^3$ trains free-form language reasoning to produce test-time guidance for action. We instantiate $R^3$ on Language Table and simulated bimanual grocery packing, two controlled testbeds for studying robotic reasoning and long-horizon manipulation. $R^3$ improves exploration and generalization across unseen tasks and significantly outperforms instruction-only imitation learning baselines on both benchmarks. Our analyses suggest that free-form language reasoning can function as a test-time compute mechanism for steering low-level policies. Our project page is available at https://robotic-reasoner.github.io/.",
+      "authors": [
+        "Lehong Wu",
+        "Yuxiao Qu",
+        "Zheyuan Hu",
+        "Ivan Zhang",
+        "Limin Wei",
+        "Zackory Erickson",
+        "Aviral Kumar"
+      ],
+      "primary_category": "cs.RO",
+      "categories": [
+        "cs.RO",
+        "cs.AI",
+        "cs.CL",
+        "cs.LG"
+      ],
+      "published": "2026-08-26T17:25:10+00:00",
+      "link": "https://arxiv.org/pdf/2608.26053v1",
+      "tags": [
+        "keyword:agent-memory"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "RL post-training for VLM robotic reasoners",
+      "llm_evidence_cn": "强化学习后训练VLM机器人推理器",
+      "llm_evidence": "强化学习后训练VLM机器人推理器",
+      "canonical_evidence": "强化学习后训练VLM机器人推理器",
+      "llm_tldr_en": "Proposes R^3, a post-training recipe that uses mid-training on expert reasoning traces and RL to turn VLMs into robotic reasoners that guide manipulation policies via natural language.",
+      "llm_tldr_cn": "针对长时程机器人操作中需要推理与错误恢复的问题，本文提出R^3方法，先在大规模专家推理轨迹上中期训练VLM，再用强化学习进行后训练，使其能直接用自然语言推理来指导底层操作策略。实验表明该方法提升了机器人在复杂任务上的表现，证明了语言推理对机器人学习的价值。",
+      "llm_tldr": "针对长时程机器人操作中需要推理与错误恢复的问题，本文提出R^3方法，先在大规模专家推理轨迹上中期训练VLM，再用强化学习进行后训练，使其能直接用自然语言推理来指导底层操作策略。实验表明该方法提升了机器人在复杂任务上的表现，证明了语言推理对机器人学习的价值。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "reinforcement learning applied to autonomous agents",
+      "matched_requirement_id": "req-3",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2608.26788v1",
+      "source": "arxiv",
+      "title": "Decoupling Planning and Control for Instructable Agents",
+      "abstract": "Recent work shows that pre-trained, instruction-tuned vision-language models (VLMs) perform well at mapping from instructions and observations to high-level plans, but struggle to realize such plans as reliable low-latency action sequences in unfamiliar environments. At the same time, world-model controllers excel at fast observation-to-action control, but lack open-ended task guidance. In this work, we combine these strengths into a single system, Instruct-to-Act, where we train a world-model controller to act autonomously at high frequency when conditioned on sparse, higher-latency, and high-level text instructions generated by a VLM planner. To train controllers to be language-instructable, we relabel segments of controller policy rollouts with synthetic instructions and jointly optimize a behavior-cloning objective along with existing reward-maximizing and world-modeling objectives. We evaluate our proposed approach across seven embodied environments, including three multi-agent environments where VLM planners coordinate through language while trained controllers serve as their actuators. Under matched observation and action spaces, our decoupled approach consistently outperforms controller-only and direct VLM action-generation variants, preserves fast control, and lets us swap in different pretrained VLM planners without fine-tuning, while remaining competitive with strong vision-language-action and multi-agent RL baselines on six of seven tasks.",
+      "authors": [
+        "Zineng Tang",
+        "Kelsey R. Allen",
+        "Sjoerd van Steenkiste",
+        "Ishita Dasgupta",
+        "Alane Suhr"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI",
+        "cs.CL",
+        "cs.MA",
+        "cs.RO"
+      ],
+      "published": "2026-08-27T08:17:58+00:00",
+      "link": "https://arxiv.org/pdf/2608.26788v1",
+      "tags": [
+        "keyword:agent-memory"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "combines VLM planner with world-model controller to process visual observations and text instructions",
+      "llm_evidence_cn": "结合VLM规划器与世界模型控制器处理视觉观测和文本指令",
+      "llm_evidence": "结合VLM规划器与世界模型控制器处理视觉观测和文本指令",
+      "canonical_evidence": "结合VLM规划器与世界模型控制器处理视觉观测和文本指令",
+      "llm_tldr_en": "The paper addresses the gap between VLM high-level planning and low-level control by training a world-model controller conditioned on sparse text instructions from a VLM planner, enabling reliable instructable agents.",
+      "llm_tldr_cn": "针对视觉语言模型擅长高层规划但缺乏底层可靠控制、世界模型控制器缺乏任务引导的问题，提出Instruct-to-Act系统，将VLM规划器生成的稀疏文本指令作为条件，训练世界模型控制器自主执行高频动作。通过合成指令重标注策略片段实现语言可指令性。实验表明该方法能结合规划与控制优势，实现可指令智能体在陌生环境中的稳定动作执行，为多模态可指令智能体提供了有效框架。",
+      "llm_tldr": "针对视觉语言模型擅长高层规划但缺乏底层可靠控制、世界模型控制器缺乏任务引导的问题，提出Instruct-to-Act系统，将VLM规划器生成的稀疏文本指令作为条件，训练世界模型控制器自主执行高频动作。通过合成指令重标注策略片段实现语言可指令性。实验表明该方法能结合规划与控制优势，实现可指令智能体在陌生环境中的稳定动作执行，为多模态可指令智能体提供了有效框架。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "agent that processes multiple modalities",
+      "matched_requirement_id": "req-2",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2608.27142v1",
+      "source": "arxiv",
+      "title": "GRAIN: Bridging Name and Narrative Shifts in Real-World Graph Reasoning through Invariance-Rewarded Agentic RL",
+      "abstract": "Despite their potential in standardized graph tasks, Large Language Models (LLMs) remain brittle to real-world shifts in node identifiers and task formulation. While deterministic graph tools are invariant to such shifts, extracting topological structures from noisy text is highly fragile for LLMs, which often overfit to surface patterns. Moreover, mitigating these parsing failures via multi-agent systems incurs prohibitive latency. To address this, we propose GRAIN, a single-agent framework optimized via reinforcement learning. GRAIN models reasoning as a semantic parsing and tool-execution pipeline, guided by a Structure Invariance Reward. By validating extracted intermediate graphs against ground-truth topologies, this reward forces the LLM to learn robust text-to-structure mappings rather than memorizing linguistic artifacts. We also introduce GRIT, a benchmark evaluating sensitivity to such linguistic shifts. GRAIN outperforms multi-agent baselines by 16.45\\% in accuracy with approximately 24\\% lower latency. Furthermore, it demonstrates superior structural generalization, halving the out-of-distribution (OOD) gap of SFT models (from 15.77\\% to 7.80\\%) and maintaining robustness on large-scale graphs beyond the training distribution.",
+      "authors": [
+        "Zike Yuan",
+        "Han Zhang",
+        "Jianzhi Yan",
+        "Le Liu",
+        "Cai Ke",
+        "Huozhi Zhou",
+        "Jian Xie",
+        "Jiran Yin",
+        "Yukun Cao",
+        "Yue Yu",
+        "Hui Wang",
+        "Ming Liu",
+        "Bing Qin"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-08-27T13:53:52+00:00",
+      "link": "https://arxiv.org/pdf/2608.27142v1",
+      "tags": [
+        "keyword:agent-memory"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "proposes GRAIN, a single-agent framework optimized via reinforcement learning with structure invariance reward",
+      "llm_evidence_cn": "提出 GRAIN，一种通过强化学习优化的单智能体框架，使用结构不变性奖励",
+      "llm_evidence": "提出 GRAIN，一种通过强化学习优化的单智能体框架，使用结构不变性奖励",
+      "canonical_evidence": "提出 GRAIN，一种通过强化学习优化的单智能体框架，使用结构不变性奖励",
+      "llm_tldr_en": "GRAIN addresses LLM brittleness to name and narrative shifts in graph reasoning by using a single-agent framework optimized with reinforcement learning and a structure invariance reward, avoiding multi-agent latency.",
+      "llm_tldr_cn": "针对大语言模型在图推理中对节点标识和任务表述变化脆弱的限制，该文提出 GRAIN，一个通过强化学习优化的单智能体框架。GRAIN 将推理建模为语义解析与工具执行流水线，并使用结构不变性奖励引导训练。该方法可验证中间图与真实拓扑的一致性，旨在替代多智能体系统以降低延迟，提升现实世界图推理的鲁棒性。",
+      "llm_tldr": "针对大语言模型在图推理中对节点标识和任务表述变化脆弱的限制，该文提出 GRAIN，一个通过强化学习优化的单智能体框架。GRAIN 将推理建模为语义解析与工具执行流水线，并使用结构不变性奖励引导训练。该方法可验证中间图与真实拓扑的一致性，旨在替代多智能体系统以降低延迟，提升现实世界图推理的鲁棒性。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "reinforcement learning applied to autonomous agents",
+      "matched_requirement_id": "req-3",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "quick_skim": [
+    {
+      "id": "2608.19794v1",
+      "source": "arxiv",
+      "title": "Towards general embodied intelligence: integrating large language models, knowledge bases, and reasoning capabilities to build the next generation of AI agents",
+      "abstract": "The convergence of large language models (LLMs), structured knowledge bases (KBs), and reasoning ability (RA) presents a promising trajectory toward general embodied intelligence (GEI). This paper reviews the evolution of LLM-centered intelligent systems, emphasising their integration with knowledge representation, logical reasoning, and physical embodiment. We analyse LLM architectures, pre-training methods, and inference mechanisms, along with their interaction with external knowledge sources and structured reasoning frameworks. Furthermore, we examine embodied intelligence (EI) paradigms wherein agents learn and act in physical environments. To synthesise these dimensions, we present a conceptual framework that illustrates the synergy among LLMs, KBs, RA, and embodiment, serving as a guiding model for perception, reasoning, and action rather than an implemented engineering architecture. To advance toward GEI, we identify five key challenges: efficient LLM deployment, closed-loop knowledge integration, hybrid symbolic-neural reasoning, perception-action grounding, and continual learning. This survey provides a comprehensive roadmap for developing adaptive, multimodal agents capable of operating in complex, dynamic settings.",
+      "authors": [
+        "Fujiang Yuan",
+        "Xia Huang",
+        "Lusheng Wang",
+        "Jun Ding",
+        "Zhen Tian",
+        "Yuxin Wang",
+        "Shaojie Gu",
+        "Yuki Funabora",
+        "Yanhong Peng",
+        "Zebing Mao"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI",
+        "cs.RO"
+      ],
+      "published": "2026-08-20T08:45:51+00:00",
+      "link": "https://arxiv.org/pdf/2608.19794v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "review integrating LLMs, knowledge bases, and reasoning for general embodied intelligence",
+      "llm_evidence_cn": "综述整合大语言模型、知识库和推理以实现通用具身智能",
+      "llm_evidence": "综述整合大语言模型、知识库和推理以实现通用具身智能",
+      "canonical_evidence": "综述整合大语言模型、知识库和推理以实现通用具身智能",
+      "llm_tldr_en": "This survey reviews the convergence of LLMs, knowledge bases, and reasoning capabilities toward general embodied intelligence, covering architecture, interaction with knowledge, and embodied learning.",
+      "llm_tldr_cn": "本文综述了大语言模型、结构化知识库和推理能力三者融合以迈向通用具身智能的进展。文章分析LLM架构、预训练和推理机制，并探讨其与外部知识源和结构化推理框架的交互，同时考察具身智能范式中的智能体学习与物理环境交互。该综述为构建下一代AI智能体提供了整合多模态、记忆（知识库）和推理的宏观视角。",
+      "llm_tldr": "本文综述了大语言模型、结构化知识库和推理能力三者融合以迈向通用具身智能的进展。文章分析LLM架构、预训练和推理机制，并探讨其与外部知识源和结构化推理框架的交互，同时考察具身智能范式中的智能体学习与物理环境交互。该综述为构建下一代AI智能体提供了整合多模态、记忆（知识库）和推理的宏观视角。",
+      "llm_tags": [
+        "query:agent-memory:composite"
+      ],
+      "matched_query_tag": "query:agent-memory:composite",
+      "matched_query_text": "Papers central to 智能体记忆，多模态，智能体强化学习，文本世界模型，语言世界模型, especially work that connects or combines: memory mechanisms for intelligent agents; agent that processes multiple modalities; reinforcement learning applied to autonomous agents; text-based world model for environment simulation; language-based world model for agent reasoning; agent with memory augmentation for better performance; How do text world models support language based agent simulation?.",
+      "matched_requirement_id": "req-composite-agent-memory",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2608.22294v1",
+      "source": "arxiv",
+      "title": "Beyond Instance Slots: Semantically Rich World Models for Physical Interaction Planning",
+      "abstract": "World models for physical interaction are typically trained to predict future observations or latent features; however, a planning-oriented model must answer a fundamentally different question: whether a candidate action produces a task-consistent future while preserving essential relations.Monolithic state representations obscure the underlying entities, while standard instance-level object slots merely identify \\emph{what} is present without specifying \\emph{what role} each entity plays in the task context. To bridge this gap, we present the Semantically Rich World Model (SR-WM), a task-conditioned world model structured around five functional roles: gripper, target, goal, relation, and phase.Within SR-WM, a visual entity encoder extracts soft entity hypotheses from pretrained patch features, allowing segmentation masks to serve as optional proposal priors without mandating them as required state representations or inference inputs.A role binder subsequently maps these hypotheses to task-specific roles, while an action-conditioned dynamics model predicts role transitions alongside fine-grained semantics, including grasp/contact, predicate establishment, relation preservation, fixture state, and phase change.Crucially, this unified role state grounds downstream multi-candidate action generation, stage-aware reranking, and violation-aware suffix resampling.Our comprehensive evaluation protocol spans all four LIBERO simulation suites, cross-suite transfer, perception diagnostics, and action-sensitivity analysis.Ultimately, this formulation transforms object-centric prediction into a semantic interface linking visual dynamics with planning-oriented decision making.",
+      "authors": [
+        "Juntao Cheng",
+        "Jingkai Wang",
+        "Yijun Shen",
+        "Xiansheng Chen",
+        "Zhiwei Yu"
+      ],
+      "primary_category": "cs.RO",
+      "categories": [
+        "cs.RO"
+      ],
+      "published": "2026-08-23T08:37:59+00:00",
+      "link": "https://arxiv.org/pdf/2608.22294v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "task-conditioned world model with functional roles for physical interaction planning",
+      "llm_evidence_cn": "具有功能角色的任务条件世界模型用于物理交互规划",
+      "llm_evidence": "具有功能角色的任务条件世界模型用于物理交互规划",
+      "canonical_evidence": "具有功能角色的任务条件世界模型用于物理交互规划",
+      "llm_tldr_en": "SR-WM introduces a semantically rich world model with five functional roles to improve planning-oriented predictions for physical interaction.",
+      "llm_tldr_cn": "针对物理交互的世界模型通常仅预测未来观测而忽略任务一致性和实体关系的问题，提出语义丰富世界模型SR-WM。该模型围绕抓手、目标、目标点、关系和阶段五个功能角色构建，通过视觉实体编码器提取任务相关的结构化表示。实验表明SR-WM能更好地回答候选动作是否产生任务一致未来，从而支持物理交互规划。",
+      "llm_tldr": "针对物理交互的世界模型通常仅预测未来观测而忽略任务一致性和实体关系的问题，提出语义丰富世界模型SR-WM。该模型围绕抓手、目标、目标点、关系和阶段五个功能角色构建，通过视觉实体编码器提取任务相关的结构化表示。实验表明SR-WM能更好地回答候选动作是否产生任务一致未来，从而支持物理交互规划。",
+      "llm_tags": [
+        "query:agent-memory:composite"
+      ],
+      "matched_query_tag": "query:agent-memory:composite",
+      "matched_query_text": "Papers central to 智能体记忆，多模态，智能体强化学习，文本世界模型，语言世界模型, especially work that connects or combines: memory mechanisms for intelligent agents; agent that processes multiple modalities; reinforcement learning applied to autonomous agents; text-based world model for environment simulation; language-based world model for agent reasoning; agent with memory augmentation for better performance; How do text world models support language based agent simulation?.",
+      "matched_requirement_id": "req-composite-agent-memory",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2608.23283v2",
+      "source": "arxiv",
+      "title": "Apodex 1.1: Scaling Agentic Intelligence for Complex Work",
+      "abstract": "General-purpose language models can reason and synthesize knowledge, but complex work also requires sustained interaction with files, information sources, and executable code, together with state maintenance, failure recovery, and verifiable delivery. We call this \\emph{working capability}: sustained, verifiable progress toward a real-world objective. Apodex 1.1 develops this capability along two complementary dimensions. \\emph{Environment Scaling} expands the diversity and verifiability of executable file, search, and code environments, while \\emph{Agentic Coordination Scaling} trains agents to decompose long-horizon tasks, delegate parallel work, integrate asynchronous results, and replan. A shared execution harness and AgentOS maintain task state and provenance across tools and agents, and training turns environment trajectories and coordination traces into reliable behavior. Across complex professional work, finance, scientific research, mathematics, coding, and search, Apodex 1.1 reaches the leading performance band despite using a substantially smaller model than many frontier systems. The 35B-parameter Apodex 1.1 Mini further retains strong working capability in a locally deployable form. These results ground agentic intelligence in useful, verifiable work completed over time and advance our goal of building a \\emph{Heavy-Duty Solver} for ambitious, long-running tasks.",
+      "authors": [
+        "B. An",
+        "B. Li",
+        "B. Wang",
+        "B. Zhang",
+        "B. L. Wang",
+        "C. Feng",
+        "C. Wei",
+        "C. Xue",
+        "C. Zhang",
+        "D. Ng",
+        "D. Ye",
+        "E. Min",
+        "F. Chen",
+        "F. Liu",
+        "F. Yang",
+        "F. Ye",
+        "G. Sun",
+        "H. Ji",
+        "H. Xu",
+        "H. Yang",
+        "H. Ye",
+        "H. Zhang",
+        "H. Zhao",
+        "J. Li",
+        "J. Lin",
+        "J. Xia",
+        "K. Jin",
+        "K. Wang",
+        "K. Yang",
+        "L. Bing",
+        "L. Lei",
+        "L. Su",
+        "Le. Wang",
+        "Lu. Wang",
+        "N. Wang",
+        "Q. Ren",
+        "Q. Yang",
+        "R. Li",
+        "S. Bai",
+        "S. Du",
+        "S. Li",
+        "S. Lin",
+        "S. Nie",
+        "S. Wang",
+        "S. Zhang",
+        "S. Z. Wang",
+        "T. Ge",
+        "Ta. Q. Fang",
+        "Ti. Q. Fang",
+        "W. Fang",
+        "W. Li",
+        "W. Zhang",
+        "X. Chen",
+        "X. Li",
+        "X. Tang",
+        "X. Wang",
+        "X. Xu",
+        "X. Zhang",
+        "X. Q. Wang",
+        "X. Y. Wang",
+        "Y. Deng",
+        "Y. Gao",
+        "Y. Hu",
+        "Y. Li",
+        "Y. Sui",
+        "Y. Wang",
+        "Y. Xiao",
+        "Y. Zhang",
+        "Y. Zhou",
+        "Z. Chen",
+        "Z. Cheng",
+        "Z. Feng",
+        "Z. Liang",
+        "Z. Liu",
+        "Z. Zhang"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI",
+        "cs.CL",
+        "cs.LG"
+      ],
+      "published": "2026-08-24T14:07:24+00:00",
+      "link": "https://arxiv.org/pdf/2608.23283v2",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "AgentOS maintains task state and provenance, providing memory-like state maintenance for agents",
+      "llm_evidence_cn": "AgentOS 维护任务状态和溯源，为智能体提供记忆式状态维护",
+      "llm_evidence": "AgentOS 维护任务状态和溯源，为智能体提供记忆式状态维护",
+      "canonical_evidence": "AgentOS 维护任务状态和溯源，为智能体提供记忆式状态维护",
+      "llm_tldr_en": "Apodex 1.1 scales agentic intelligence through environment scaling and agentic coordination scaling, with AgentOS maintaining task state and provenance to enable sustained, verifiable progress on complex work.",
+      "llm_tldr_cn": "针对复杂工作需持续交互、状态维护和可验证交付的限制，该文提出 Apodex 1.1，通过环境扩展和智能体协调扩展提升工作能力。该方法训练智能体分解长时任务、委派并行工作、集成异步结果并重规划，并由共享执行框架和 AgentOS 维护任务状态与溯源。该系统支持状态维护、失败恢复和可验证交付，旨在实现持续可靠的现实目标推进。",
+      "llm_tldr": "针对复杂工作需持续交互、状态维护和可验证交付的限制，该文提出 Apodex 1.1，通过环境扩展和智能体协调扩展提升工作能力。该方法训练智能体分解长时任务、委派并行工作、集成异步结果并重规划，并由共享执行框架和 AgentOS 维护任务状态与溯源。该系统支持状态维护、失败恢复和可验证交付，旨在实现持续可靠的现实目标推进。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "memory mechanisms for intelligent agents",
+      "matched_requirement_id": "req-1",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    }
+  ]
+}
