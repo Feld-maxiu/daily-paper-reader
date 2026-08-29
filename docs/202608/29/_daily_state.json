@@ -1,10 +1,42 @@
 {
   "date": "20260829",
   "date_label": "",
-  "generated_at": "2026-08-29 03:30:22 UTC",
+  "generated_at": "2026-08-29 22:03:02 UTC",
   "recommend_exists": true,
-  "run_count": 1,
+  "run_count": 2,
   "papers": [
+    {
+      "paper_id": "2608.21969v1",
+      "route": "202608/29/2608.21969v1-tosca-leveraging-hierarchical-reinforcement-learning-on-temporal-and-strategic-abstractions-of-conversational-agents",
+      "title": "ToSCA: Leveraging Hierarchical Reinforcement Learning on Temporal and Strategic Abstractions of Conversational Agents",
+      "section": "deep",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 9.0,
+      "evidence": "提出用于对话代理的分层强化学习框架",
+      "first_seen_at": "2026-08-29 22:03:02 UTC",
+      "updated_at": "2026-08-29 22:03:02 UTC"
+    },
+    {
+      "paper_id": "2608.24275v1",
+      "route": "202608/29/2608.24275v1-repolicy-reinforcement-learning-for-safety-policy-invocation-in-agent-safeguards",
+      "title": "RePolicy: Reinforcement Learning for Safety-Policy Invocation in Agent Safeguards",
+      "section": "deep",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 9.0,
+      "evidence": "通过强化学习学习安全策略调用",
+      "first_seen_at": "2026-08-29 22:03:02 UTC",
+      "updated_at": "2026-08-29 22:03:02 UTC"
+    },
     {
       "paper_id": "2608.26190v1",
       "route": "202608/29/2608.26190v1-predicting-consequences-and-reinforcing-navigation-policies-with-latent-world-models",
@@ -16,10 +48,26 @@
           "label": "agent-memory"
         }
       ],
-      "score": 8.0,
-      "evidence": "潜在世界模型与策略强化用于机器人导航",
+      "score": 9.0,
+      "evidence": "使用动作条件潜在世界模型强化学习导航策略",
       "first_seen_at": "2026-08-29 03:30:22 UTC",
-      "updated_at": "2026-08-29 03:30:22 UTC"
+      "updated_at": "2026-08-29 22:03:02 UTC"
+    },
+    {
+      "paper_id": "2608.26849v1",
+      "route": "202608/29/2608.26849v1-livesim-simulating-environment-shaped-users-in-multi-agent-live-stream-ecosystems",
+      "title": "LiveSim: Simulating Environment-Shaped Users in Multi-Agent Live-Stream Ecosystems",
+      "section": "deep",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 8.0,
+      "evidence": "基于LLM的框架模拟直播多智能体生态系统中受环境塑造的用户，将用户表示为可通过交互细化的行为假设",
+      "first_seen_at": "2026-08-29 22:03:02 UTC",
+      "updated_at": "2026-08-29 22:03:02 UTC"
     },
     {
       "paper_id": "2608.19794v1",

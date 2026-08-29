@@ -1,9 +1,39 @@
 {
   "label": "2026-08-29",
   "date": "2026-08-29",
-  "generated_at": "2026-08-29T03:30:39",
-  "count": 2,
+  "generated_at": "2026-08-29T22:03:16",
+  "count": 5,
   "papers": [
+    {
+      "paper_id": "202608/29/2608.21969v1-tosca-leveraging-hierarchical-reinforcement-learning-on-temporal-and-strategic-abstractions-of-conversational-agents",
+      "section": "deep",
+      "title_en": "ToSCA: Leveraging Hierarchical Reinforcement Learning on Temporal and Strategic Abstractions of Conversational Agents",
+      "authors": "Xiaoyu Wang, Qingqing Gu, Yue Zhao, Teng Chen, Yuqi Cao, Xiaokai Chen, Hongyan Li, Luo Ji",
+      "date": "2026-08-22",
+      "pdf": "https://arxiv.org/pdf/2608.21969v1",
+      "score": "9.0",
+      "evidence": "提出用于对话代理的分层强化学习框架",
+      "tldr": "已有对话强化学习多局限于令牌级或话语级，缺乏人类多层次时间抽象。本文提出ToSCA两级分层强化学习框架：高层DQN规划显式文本策略，低层PPO以该策略为条件解码令牌级响应，并设计双粒度奖励机制缓解奖励稀疏。在日常生活与情感支持对话实验中，ToSCA在策略确定性与回复质量上均优于多个基线。该工作弥合了令牌级与话语级方法差距，为对话智能体的时间与策略抽象提供了有效方案。",
+      "tags": "query:agent-memory",
+      "abstract_en": "Humans have multiple levels of temporal abstractions on daily interaction and thinking, such as concept perception and strategic planning. Inspired by this nature, we propose a two-level hierarchical reinforcement learning (RL) framework for conversational agents, bridging the gap between previous token-level or utterance-level RL methods. Developed on a two-level MDP, the token-level response decoding is conditioned on the utterance-level action, the explicit textual strategies. Based on theoretical derivation and efficiency consideration, we use DQN to solve the high-level critic and PPO to solve the low-level actor-critic. To further alleviate the reward sparsity and facilitate the convergence, we also design the dual-granularity reward mechanism, in which the utterance-level satisfaction score is integrated with token-level intrinsic motivation and K-L penalty. Experiments on both daily and emotional support conversations show that our method outperforms versatile baselines in strategy determination and response quality. Our implementation is available at https://github.com/AaronJi/ToSCA.",
+      "source": "arxiv",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "paper_id": "202608/29/2608.24275v1-repolicy-reinforcement-learning-for-safety-policy-invocation-in-agent-safeguards",
+      "section": "deep",
+      "title_en": "RePolicy: Reinforcement Learning for Safety-Policy Invocation in Agent Safeguards",
+      "authors": "Houcheng Jiang, Boxuan Zhang, Qiyong Zhong, Junfeng Fang, Xiang Wang, Xiangnan He",
+      "date": "2026-08-25",
+      "pdf": "https://arxiv.org/pdf/2608.24275v1",
+      "score": "9.0",
+      "evidence": "通过强化学习学习安全策略调用",
+      "tldr": "现有策略感知防护依赖提示或监督微调，难以适应未见轨迹与变化策略上下文。RePolicy用强化学习学策略调用，基于轨迹与动态策略库调用适用策略，生成依据与判断。构建PolicyTraj-20K监督初始化，GRPO与策略扰动强化训练。在六个安全基准上取得强检测性能与稳健策略调用，提升智能体防护适应性。",
+      "tags": "query:agent-memory",
+      "abstract_en": "Safeguarding language model agents requires assessing complete execution trajectories under context-dependent safety policies. Existing policy-aware safeguards mainly rely on prompting or supervised fine-tuning, limiting their ability to adapt to unseen trajectories and changing policy contexts. We propose RePolicy, an agent safeguard that learns safety-policy invocation through reinforcement learning. Given an agent trajectory and a dynamic policy library, RePolicy invokes the applicable policy and uses its content to produce a policy-grounded rationale and safety judgment. We construct PolicyTraj-20K to support supervised initialization, followed by GRPO with verifiable rewards and policy-context perturbation. Experiments across six agent safety benchmarks show that RePolicy achieves strong overall safety-detection performance and robust policy invocation under varying policy contexts.",
+      "source": "arxiv",
+      "selection_source": "fresh_fetch"
+    },
     {
       "paper_id": "202608/29/2608.26190v1-predicting-consequences-and-reinforcing-navigation-policies-with-latent-world-models",
       "section": "deep",
@@ -16,6 +46,21 @@
       "tldr": "现有世界模型主要重建未来观测或特征，引入不必要复杂性并限制决策有效性。本文提出潜在世界模型LWM，预测动作条件潜在特征兼容性，利用空间接近与特征相似性关联，支持反事实训练。在多个真实机器人导航数据集上，LWM在预测精度、策略学习和真实导航性能方面显著超越先前方法。该想象驱动框架无需动作标注和额外环境交互，为导航策略学习提供高效新途径。",
       "tags": "query:agent-memory",
       "abstract_en": "World models enable agents to reason about future outcomes and learn policies from their knowledge of state transition, but existing approaches primarily focus on reconstructing future observations or features, which introduces unnecessary complexity and limits their effectiveness for decision making. In this work, we propose a compatibility prediction Latent World Model (LWM) for robot navigation that predicts action-conditioned latent feature compatibility rather than reconstructing observations. Our key insight is that spatial proximity correlates with latent feature similarity, enabling action consequences to be evaluated directly in latent space. To support counterfactual training, our model leverages action sequences sampled across trajectories and learns to predict which sequences lead closer to the goal. Furthermore, we demonstrate how the learned world model can supervise policy learning from unlabeled video data and further improve policies through reinforcement learning entirely within the world model. This imagination-driven framework eliminates the need for action annotations and additional environment interaction. Extensive experiments on multiple real-world robot navigation datasets show that our approach significantly outperforms prior world model and imitation learning methods in prediction accuracy, policy learning, and real-world navigation performance. The code, pretrained models, and additional materials are available at https://wzm206.github.io/latent-world-model-nav.",
+      "source": "arxiv",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "paper_id": "202608/29/2608.26849v1-livesim-simulating-environment-shaped-users-in-multi-agent-live-stream-ecosystems",
+      "section": "deep",
+      "title_en": "LiveSim: Simulating Environment-Shaped Users in Multi-Agent Live-Stream Ecosystems",
+      "authors": "Jiaqi Xu, Yiran Qiao, Jing Chen, Qiwei Zhong, Xiang Ao, Xueqi Cheng",
+      "date": "2026-08-27",
+      "pdf": "https://arxiv.org/pdf/2608.26849v1",
+      "score": "8.0",
+      "evidence": "基于LLM的框架模拟直播多智能体生态系统中受环境塑造的用户，将用户表示为可通过交互细化的行为假设",
+      "tldr": "直播等社交密集环境中，用户行为受交互动态持续重塑，传统静态画像模拟器难以应对。LiveSim将用户表示为可编辑行为假设，通过轨迹驱动交互逐步细化，并提取环境-行为模式存入集体记忆。在真实直播风控数据上，该方法提升了用户级行为保真度，支持生态系统级风险演化与平台干预分析。为社交密集场景的多智能体模拟提供了新框架，推动环境塑造效应的可迁移建模。",
+      "tags": "query:agent-memory",
+      "abstract_en": "User behavior simulation with large language models~(LLMs) is increasingly used to support multi-agent ecosystem simulation. Existing simulators typically rely on static user profiles inferred from historical observations, which become inadequate in socially intensive environments such as live streaming where interaction dynamics continuously reshape user behavior. We propose \\textbf{LiveSim}, an LLM-based framework for live-stream ecosystem simulation. It represents users as editable behavioral hypotheses and progressively refines them through trajectory-grounded interactions, where discrepancies between simulated and observed trajectories reveal missing environmental shaping effects. These signals are further extracted as transferable environment-behavior patterns and accumulated in a collective behavioral memory to improve user-level behavioral fidelity and support ecosystem-level simulation. Experiments on real-world live-stream risk-control data validate the effectiveness of LiveSim in improving user-level behavioral fidelity and enabling ecosystem-level analysis of risk evolution and platform intervention effects.",
       "source": "arxiv",
       "selection_source": "fresh_fetch"
     },
