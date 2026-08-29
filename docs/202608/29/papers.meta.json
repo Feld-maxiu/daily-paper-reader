@@ -1,0 +1,39 @@
+{
+  "label": "2026-08-29",
+  "date": "2026-08-29",
+  "generated_at": "2026-08-29T03:30:39",
+  "count": 2,
+  "papers": [
+    {
+      "paper_id": "202608/29/2608.26190v1-predicting-consequences-and-reinforcing-navigation-policies-with-latent-world-models",
+      "section": "deep",
+      "title_en": "Predicting Consequences and Reinforcing Navigation Policies with Latent World Models",
+      "authors": "Zengmao Wang, Wei Gao, Shuhan Shen",
+      "date": "2026-08-23",
+      "pdf": "https://arxiv.org/pdf/2608.26190v1",
+      "score": "8.0",
+      "evidence": "潜在世界模型与策略强化用于机器人导航",
+      "tldr": "现有世界模型主要重建未来观测或特征，引入不必要复杂性并限制决策有效性。本文提出潜在世界模型LWM，预测动作条件潜在特征兼容性，利用空间接近与特征相似性关联，支持反事实训练。在多个真实机器人导航数据集上，LWM在预测精度、策略学习和真实导航性能方面显著超越先前方法。该想象驱动框架无需动作标注和额外环境交互，为导航策略学习提供高效新途径。",
+      "tags": "query:agent-memory",
+      "abstract_en": "World models enable agents to reason about future outcomes and learn policies from their knowledge of state transition, but existing approaches primarily focus on reconstructing future observations or features, which introduces unnecessary complexity and limits their effectiveness for decision making. In this work, we propose a compatibility prediction Latent World Model (LWM) for robot navigation that predicts action-conditioned latent feature compatibility rather than reconstructing observations. Our key insight is that spatial proximity correlates with latent feature similarity, enabling action consequences to be evaluated directly in latent space. To support counterfactual training, our model leverages action sequences sampled across trajectories and learns to predict which sequences lead closer to the goal. Furthermore, we demonstrate how the learned world model can supervise policy learning from unlabeled video data and further improve policies through reinforcement learning entirely within the world model. This imagination-driven framework eliminates the need for action annotations and additional environment interaction. Extensive experiments on multiple real-world robot navigation datasets show that our approach significantly outperforms prior world model and imitation learning methods in prediction accuracy, policy learning, and real-world navigation performance. The code, pretrained models, and additional materials are available at https://wzm206.github.io/latent-world-model-nav.",
+      "source": "arxiv",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "paper_id": "202608/29/2608.19794v1-towards-general-embodied-intelligence-integrating-large-language-models-knowledge-bases-and-reasoning-capabilities-to-build-the-next-generation-of-ai-agents",
+      "section": "quick",
+      "title_en": "Towards general embodied intelligence: integrating large language models, knowledge bases, and reasoning capabilities to build the next generation of AI agents",
+      "authors": "Fujiang Yuan, Xia Huang, Lusheng Wang, Jun Ding, Zhen Tian, Yuxin Wang, Shaojie Gu, Yuki Funabora, Yanhong Peng, Zebing Mao",
+      "date": "2026-08-20",
+      "pdf": "https://arxiv.org/pdf/2608.19794v1",
+      "score": "6.0",
+      "evidence": "知识库作为记忆集成到具身智能体中",
+      "tldr": "通用具身智能需融合大语言模型、知识库与推理能力，但现存系统缺乏统一框架。本文系统综述大语言模型架构、预训练及推理机制，并分析其与外部知识源和结构化推理的交互。进而提出概念框架协同大语言模型、知识库、推理与具身，指导感知、推理和行动。识别高效部署、闭环知识集成、混合神经符号推理、感知行动接地、持续学习五大挑战，为构建自适应多模态智能体提供路线图。",
+      "tags": "query:agent-memory",
+      "abstract_en": "The convergence of large language models (LLMs), structured knowledge bases (KBs), and reasoning ability (RA) presents a promising trajectory toward general embodied intelligence (GEI). This paper reviews the evolution of LLM-centered intelligent systems, emphasising their integration with knowledge representation, logical reasoning, and physical embodiment. We analyse LLM architectures, pre-training methods, and inference mechanisms, along with their interaction with external knowledge sources and structured reasoning frameworks. Furthermore, we examine embodied intelligence (EI) paradigms wherein agents learn and act in physical environments. To synthesise these dimensions, we present a conceptual framework that illustrates the synergy among LLMs, KBs, RA, and embodiment, serving as a guiding model for perception, reasoning, and action rather than an implemented engineering architecture. To advance toward GEI, we identify five key challenges: efficient LLM deployment, closed-loop knowledge integration, hybrid symbolic-neural reasoning, perception-action grounding, and continual learning. This survey provides a comprehensive roadmap for developing adaptive, multimodal agents capable of operating in complex, dynamic settings.",
+      "source": "arxiv",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "errors": []
+}
