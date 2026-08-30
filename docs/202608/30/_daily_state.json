@@ -1,0 +1,25 @@
+{
+  "date": "20260830",
+  "date_label": "",
+  "generated_at": "2026-08-30 21:52:55 UTC",
+  "recommend_exists": true,
+  "run_count": 1,
+  "papers": [
+    {
+      "paper_id": "2608.21918v1",
+      "route": "202608/30/2608.21918v1-optimas-automatically-optimize-multi-agent-system",
+      "title": "OptiMAS: Automatically Optimize Multi-Agent System",
+      "section": "quick",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 7.0,
+      "evidence": "使用任务反馈作为损失信号进行多智能体系统持续优化",
+      "first_seen_at": "2026-08-30 21:52:55 UTC",
+      "updated_at": "2026-08-30 21:52:55 UTC"
+    }
+  ]
+}

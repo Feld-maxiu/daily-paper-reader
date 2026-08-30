@@ -1,6 +1,9 @@
 * <a class="dpr-sidebar-root-link" href="#/">首页</a>
 * <a class="dpr-sidebar-root-link dpr-sidebar-noactive-link" href="javascript:void(0)" data-dpr-hash="#/tutorial/README">使用教程</a>
 * Daily Papers
+  * 2026-08-30 <!--dpr-date:20260830-->
+    * 速读区
+      * <a class="dpr-sidebar-item-link dpr-sidebar-item-structured" href="#/202608/30/2608.21918v1-optimas-automatically-optimize-multi-agent-system" data-sidebar-item="{&quot;title&quot;: &quot;OptiMAS: Automatically Optimize Multi-Agent System&quot;, &quot;link&quot;: &quot;https://arxiv.org/abs/2608.21918v1-optimas-automatically-optimize-multi-agent-system&quot;, &quot;score&quot;: &quot;7.0&quot;, &quot;tags&quot;: [{&quot;kind&quot;: &quot;query&quot;, &quot;label&quot;: &quot;agent-memory&quot;}], &quot;evidence&quot;: &quot;使用任务反馈作为损失信号进行多智能体系统持续优化&quot;}">OptiMAS: Automatically Optimize Multi-Agent System</a>
   * 2026-08-29 <!--dpr-date:20260829-->
     * 精读区
       * <a class="dpr-sidebar-item-link dpr-sidebar-item-structured" href="#/202608/29/2608.21969v1-tosca-leveraging-hierarchical-reinforcement-learning-on-temporal-and-strategic-abstractions-of-conversational-agents" data-sidebar-item="{&quot;title&quot;: &quot;ToSCA: Leveraging Hierarchical Reinforcement Learning on Temporal and Strategic Abstractions of Conversational Agents&quot;, &quot;link&quot;: &quot;https://arxiv.org/abs/2608.21969v1-tosca-leveraging-hierarchical-reinforcement-learning-on-temporal-and-strategic-abstractions-of-conversational-agents&quot;, &quot;score&quot;: &quot;9.0&quot;, &quot;tags&quot;: [{&quot;kind&quot;: &quot;query&quot;, &quot;label&quot;: &quot;agent-memory&quot;}], &quot;evidence&quot;: &quot;提出用于对话代理的分层强化学习框架&quot;}">ToSCA: Leveraging Hierarchical Reinforcement Learning on Temporal and Strategic Abstractions of Conversational Agents</a>

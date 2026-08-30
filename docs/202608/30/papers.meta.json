@@ -1,0 +1,24 @@
+{
+  "label": "2026-08-30",
+  "date": "2026-08-30",
+  "generated_at": "2026-08-30T21:53:09",
+  "count": 1,
+  "papers": [
+    {
+      "paper_id": "202608/30/2608.21918v1-optimas-automatically-optimize-multi-agent-system",
+      "section": "quick",
+      "title_en": "OptiMAS: Automatically Optimize Multi-Agent System",
+      "authors": "Yuxin Cheng, Chang Liu, Hanxin Yu, Haochen Tan, Taiqiang Wu, Weiqiang Jin, Jie Ran, Kaibo Wang, Xiaoguang Li, Haoli Bai, Graziano Chesi, Ngai Wong",
+      "date": "2026-08-22",
+      "pdf": "https://arxiv.org/pdf/2608.21918v1",
+      "score": "7.0",
+      "evidence": "使用任务反馈作为损失信号进行多智能体系统持续优化",
+      "tldr": "手动设计多智能体系统成本高且现有搜索式优化面临扩大优化范围加剧演化不稳定、离散分支丢弃搜索隔离跨谱系见解的困境。OptiMAS提出基于统一ReAct基础设施的连续数据驱动优化范式，以文本交互轨迹和任务反馈为损失信号端到端自动演化MAS，并采用双轨记忆机制维持长期优化中的性能提升。在四个异构基准和三种不同规模与可访问性的LLM骨干上，OptiMAS准确率优于或匹配手工系统与现有演化方法。该工作为实现稳健自动化多智能体系统演化确立了实用里程碑。",
+      "tags": "query:agent-memory",
+      "abstract_en": "Automated evolution of Multi-Agent Systems (MAS) holds significant potential for reducing the manual effort required to design and optimize LLM-based agent architectures. However, extant search-based paradigms face a fundamental trade-off, where an expanded optimization scope exacerbates evolutionary instability, while discrete branch-and-discard search isolates insights across lineages. To address these limitations, we propose a continuous, data-driven optimization paradigm built upon a unified ReAct-based infrastructure that reconciles a broad optimization scope with operational stability. Under this paradigm, we present OptiMAS, a task-agnostic agentic optimizer that leverages textual interaction trajectories and task feedback as loss signals for end-to-end MAS evolution. Equipped with a novel dual-track memory mechanism, OptiMAS sustains performance improvement over extended optimization horizons. Evaluation on four heterogeneous agentic benchmarks with three varying scale and accessibility LLM backbones, demonstrates that OptiMAS consistently achieves competitive or superior accuracy relative to both domain-specialized hand-crafted systems and existing evolutionary methods. Our work establishes a practical milestone toward robust, automated MAS evolution.",
+      "source": "arxiv",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "errors": []
+}
