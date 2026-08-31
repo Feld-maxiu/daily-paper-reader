@@ -1,0 +1,153 @@
+{
+  "date": "20260831",
+  "date_label": "",
+  "generated_at": "2026-08-31 23:39:27 UTC",
+  "recommend_exists": true,
+  "run_count": 1,
+  "papers": [
+    {
+      "paper_id": "2608.27508v1",
+      "route": "202608/31/2608.27508v1-wm-r1-training-gui-agents-to-reason-and-leverage-world-models-with-reinforcement-learning",
+      "title": "WM-R1: Training GUI Agents to Reason and leverage World Models with Reinforcement Learning",
+      "section": "deep",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 9.0,
+      "evidence": "首个使用世界模型替代真实环境训练移动GUI智能体的强化学习框架",
+      "first_seen_at": "2026-08-31 23:39:27 UTC",
+      "updated_at": "2026-08-31 23:39:27 UTC"
+    },
+    {
+      "paper_id": "2608.28062v1",
+      "route": "202608/31/2608.28062v1-weagent-mmsearch-native-text-vision-interaction-for-multimodal-search-agents",
+      "title": "WeAgent-MMSearch: Native Text-Vision Interaction for Multimodal Search Agents",
+      "section": "deep",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 9.0,
+      "evidence": "支持多模态搜索智能体的原生文本-视觉交互和运行时恢复",
+      "first_seen_at": "2026-08-31 23:39:27 UTC",
+      "updated_at": "2026-08-31 23:39:27 UTC"
+    },
+    {
+      "paper_id": "2608.28476v1",
+      "route": "202608/31/2608.28476v1-contextpilot-teaching-agents-for-proactive-context-management-via-fine-grained-rl",
+      "title": "ContextPilot: Teaching Agents for Proactive Context Management via Fine-grained RL",
+      "section": "deep",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 9.0,
+      "evidence": "直接解决智能体的上下文管理问题，包含长期记忆、自适应压缩和全局规划，并使用RL进行训练。",
+      "first_seen_at": "2026-08-31 23:39:27 UTC",
+      "updated_at": "2026-08-31 23:39:27 UTC"
+    },
+    {
+      "paper_id": "2608.27549v1",
+      "route": "202608/31/2608.27549v1-code-as-worlds-agentic-discovery-of-executable-world-representations-for-physical-reasoning",
+      "title": "Code as Worlds: Agentic Discovery of Executable World Representations for Physical Reasoning",
+      "section": "deep",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 8.0,
+      "evidence": "可执行世界表征（代码）用于物理推理",
+      "first_seen_at": "2026-08-31 23:39:27 UTC",
+      "updated_at": "2026-08-31 23:39:27 UTC"
+    },
+    {
+      "paper_id": "2608.27796v1",
+      "route": "202608/31/2608.27796v1-retoolsql-agentic-reinforcement-learning-for-robust-text-to-sql",
+      "title": "ReToolSQL: Agentic Reinforcement Learning for Robust Text-to-SQL",
+      "section": "deep",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 8.0,
+      "evidence": "在文本到SQL任务中采用智能体强化学习与多轮工具使用轨迹",
+      "first_seen_at": "2026-08-31 23:39:27 UTC",
+      "updated_at": "2026-08-31 23:39:27 UTC"
+    },
+    {
+      "paper_id": "2608.27866v1",
+      "route": "202608/31/2608.27866v1-iron-intent-aligned-and-retrospective-dual-learning-framework-for-enhancing-generalist-virtual-agents",
+      "title": "Iron: Intent-Aligned and Retrospective Dual Learning Framework for Enhancing Generalist Virtual Agents",
+      "section": "deep",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 8.0,
+      "evidence": "使用双重学习和逐步循环一致性奖励训练多模态GUI智能体以实现意图对齐",
+      "first_seen_at": "2026-08-31 23:39:27 UTC",
+      "updated_at": "2026-08-31 23:39:27 UTC"
+    },
+    {
+      "paper_id": "2608.27259v1",
+      "route": "202608/31/2608.27259v1-making-latent-evolution-explicit-operator-structured-transitions-for-world-action-models",
+      "title": "Making Latent Evolution Explicit: Operator-Structured Transitions for World Action Models",
+      "section": "quick",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 6.0,
+      "evidence": "引入LEON以算子结构化转移建模世界动作模型中的潜在演化",
+      "first_seen_at": "2026-08-31 23:39:27 UTC",
+      "updated_at": "2026-08-31 23:39:27 UTC"
+    },
+    {
+      "paper_id": "2608.28266v1",
+      "route": "202608/31/2608.28266v1-cocobench-a-cooperative-coordination-benchmark-for-embodied-multi-agent-task-planning",
+      "title": "CoCoBench: A Cooperative Coordination Benchmark for Embodied Multi-Agent Task Planning",
+      "section": "quick",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 6.0,
+      "evidence": "多模态大语言模型具身多智能体协同基准",
+      "first_seen_at": "2026-08-31 23:39:27 UTC",
+      "updated_at": "2026-08-31 23:39:27 UTC"
+    },
+    {
+      "paper_id": "2608.28491v1",
+      "route": "202608/31/2608.28491v1-acrossvam10-particle-world-modeling-for-text-assisted-robot-video-prediction",
+      "title": "AcrossVAM1.0: Particle World Modeling for Text-Assisted Robot Video Prediction",
+      "section": "quick",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 6.0,
+      "evidence": "文本辅助世界模型将机器人视频预测分解为目标中心运动和外观",
+      "first_seen_at": "2026-08-31 23:39:27 UTC",
+      "updated_at": "2026-08-31 23:39:27 UTC"
+    }
+  ]
+}

@@ -1,0 +1,385 @@
+{
+  "mode": "standard",
+  "generated_at": "2026-08-31T23:26:54.811375+00:00",
+  "stats": {
+    "mode": "standard",
+    "tag_count": 1,
+    "deep_divecandidates": 6,
+    "deep_cap": 6,
+    "deep_selected": 6,
+    "quick_candidates": 3,
+    "quick_skim_target": 11,
+    "quick_selected": 3
+  },
+  "deep_dive": [
+    {
+      "id": "2608.27508v1",
+      "source": "arxiv",
+      "title": "WM-R1: Training GUI Agents to Reason and leverage World Models with Reinforcement Learning",
+      "abstract": "GUI agents trained with reinforcement learning (RL) have showcased strong environment learning capabilities on mobile platforms. However, RL typically demands extensive real-environment interactions, leading to high resource costs and instability, especially in GUI scenarios. To address these, we propose WM-R1, the first reinforcement learning framework that trains mobile GUI agents with world models instead of real environments. Specifically, world models serve as the source of state transitions during all rollouts, replacing the real Android environment within the training loop. WM-R1 also embeds world models directly into the thinking process, enabling agents to reason about the consequences of candidate actions before committing to the final action. Crucially, WM-R1 eliminates the need for real-environment interaction, supports massively parallelized and step-level granularized trajectory generation grounded in world models, and introduces a multi-dimensional rule-based reward that jointly optimizes task success, trajectory efficiency, and world model utilization. For efficient training, we curate a high-quality dataset of 2000 challenging tasks. Experiments on Android mobile benchmarks demonstrate that WM-R1-trained agents significantly outperform GRPO-only baselines and inference-time simulation methods. Code is available at https://github.com/genalyu/WM-R1 .",
+      "authors": [
+        "Yu Han",
+        "Tianwen Qian"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-08-27T07:09:28+00:00",
+      "link": "https://arxiv.org/pdf/2608.27508v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "First RL framework training mobile GUI agents with world models instead of real environments",
+      "llm_evidence_cn": "首个使用世界模型替代真实环境训练移动GUI智能体的强化学习框架",
+      "llm_evidence": "首个使用世界模型替代真实环境训练移动GUI智能体的强化学习框架",
+      "canonical_evidence": "首个使用世界模型替代真实环境训练移动GUI智能体的强化学习框架",
+      "llm_tldr_en": "Addresses high cost and instability of RL in GUI by using world models for state transitions during rollouts and embedding them in the thinking process, reducing real-environment dependence.",
+      "llm_tldr_cn": "针对GUI场景中强化学习需要大量真实环境交互导致成本高和稳定性差的问题，论文提出WM-R1框架，用世界模型替代真实安卓环境提供状态转移，并将世界模型嵌入思考过程，使智能体在动作前推理后果，从而降低资源消耗并提升训练稳定性。",
+      "llm_tldr": "针对GUI场景中强化学习需要大量真实环境交互导致成本高和稳定性差的问题，论文提出WM-R1框架，用世界模型替代真实安卓环境提供状态转移，并将世界模型嵌入思考过程，使智能体在动作前推理后果，从而降低资源消耗并提升训练稳定性。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "reinforcement learning applied to autonomous agents",
+      "matched_requirement_id": "req-3",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2608.28062v1",
+      "source": "arxiv",
+      "title": "WeAgent-MMSearch: Native Text-Vision Interaction for Multimodal Search Agents",
+      "abstract": "Multimodal search agents extend parametric knowledge with newly emerging and long-tail evidence from the open web. Yet many existing agentic search environments often expose retrieved evidence only as text and omit tool-returned images from subsequent context, reducing visually grounded trajectories to text-only reasoning. Long-horizon interaction also compounds tool-call, response-length, timeout, and budget failures, which can discard salvageable trajectories, waste rollout computation, and disturb policy updates. To address these issues, we introduce WeAgent-Harness, a multimodal agentic harness that supports native text-vision interaction and runtime recovery. Retrieved images receive persistent disk references, allowing the model to inspect, process, and cite them throughout the trajectory. Based on this harness, we develop WeAgent-MMSearch, an integrated system spanning data construction, agentic post-training, and multimodal rollout. For data construction, a strong MLLM uses WeAgent-Harness to discover, synthesize, and verify MMSearch-style tasks and collect expert trajectories. During post-training, our Failure-Aware GSPO (FA-GSPO) recovers salvageable abnormal rollouts and filters invalid ones to improve bounded multimodal planning and search.We also introduce VisTarget-Bench, a 150-task human-verified benchmark that pairs each question with a held-out target image, distinguishing image-retrieval failures from visual-perception failures. Evaluation on VisTarget-Bench and seven public benchmarks shows that agentic post-training improves the average score by 19.22 points, enabling our model to outperform similarly sized open-source models and rival models with roughly ten times its parameter count.",
+      "authors": [
+        "Zongkai Liu",
+        "Hui Zhang",
+        "Liqiang Niu",
+        "Zhen Cao",
+        "Han Li",
+        "Juntao Liu",
+        "Wenchao Chen",
+        "Chengduo Zhao",
+        "Chao Yu",
+        "Fandong Meng"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-08-28T08:28:43+00:00",
+      "link": "https://arxiv.org/pdf/2608.28062v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "Supports native text-vision interaction and runtime recovery for multimodal search agents",
+      "llm_evidence_cn": "支持多模态搜索智能体的原生文本-视觉交互和运行时恢复",
+      "llm_evidence": "支持多模态搜索智能体的原生文本-视觉交互和运行时恢复",
+      "canonical_evidence": "支持多模态搜索智能体的原生文本-视觉交互和运行时恢复",
+      "llm_tldr_en": "Proposes WeAgent-Harness to address image omission and trajectory failures in multimodal search agents by providing persistent image references and runtime recovery, improving visually grounded reasoning.",
+      "llm_tldr_cn": "现有多模态搜索智能体常将检索到的图像降级为文本，且长时程交互易失败导致轨迹丢弃。论文提出WeAgent-Harness，支持原生文本-视觉交互和运行时恢复，为检索图像提供持久磁盘引用，使模型可检查视觉证据，从而保留可挽救轨迹并改善策略更新。",
+      "llm_tldr": "现有多模态搜索智能体常将检索到的图像降级为文本，且长时程交互易失败导致轨迹丢弃。论文提出WeAgent-Harness，支持原生文本-视觉交互和运行时恢复，为检索图像提供持久磁盘引用，使模型可检查视觉证据，从而保留可挽救轨迹并改善策略更新。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "agent that processes multiple modalities",
+      "matched_requirement_id": "req-2",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2608.28476v1",
+      "source": "arxiv",
+      "title": "ContextPilot: Teaching Agents for Proactive Context Management via Fine-grained RL",
+      "abstract": "Long-horizon agentic tasks require large language models (LLMs) to iteratively retrieve, integrate, and maintain dispersed information across multi-turn interactions, but preserving all interaction histories leads to a continuously growing working context. Recent proactive context management methods allow models to edit their own working context with specialized tools, yet they still face three key limitations: (1) a limited toolset restricted to search, deletion, and summarization, with no support for global planning, long-term memory, and adaptive compression; (2) inefficient exploration that treats context management actions uniformly despite their heterogeneous impacts on final outcomes; and (3) coarse-grained credit assignment that assigns the final trajectory-level reward to all intermediate context editing actions during RL. To bridge these gaps, we introduce ContextPilot, a proactive context management framework for long-horizon agentic reasoning. Our approach systematically augments the toolset with planning, long-term memory, and soft context offloading tools. We further propose an RL method tailored for context management, which uses context and entropy variation to identify critical editing decisions for branch sampling and estimates action-level advantages from all branched trajectories that pass through the corresponding context editing action. Experiments on long-context QA and deep search tasks show that ContextPilot achieves stronger performance with a more compact working context, consistently outperforming existing baselines across various base models and benchmarks. Code is available at https://github.com/Tencent/ContextPilot.",
+      "authors": [
+        "Zhuoshi Pan",
+        "Qizhi Pei",
+        "Junru Lu",
+        "Honglin Lin",
+        "H. Vicky Zhao",
+        "Di Yin",
+        "Xing Sun"
+      ],
+      "primary_category": "cs.CL",
+      "categories": [
+        "cs.CL"
+      ],
+      "published": "2026-08-28T16:01:08+00:00",
+      "link": "https://arxiv.org/pdf/2608.28476v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "Directly addresses proactive context management with long-term memory, adaptive compression, and global planning via RL.",
+      "llm_evidence_cn": "直接解决智能体的上下文管理问题，包含长期记忆、自适应压缩和全局规划，并使用RL进行训练。",
+      "llm_evidence": "直接解决智能体的上下文管理问题，包含长期记忆、自适应压缩和全局规划，并使用RL进行训练。",
+      "canonical_evidence": "直接解决智能体的上下文管理问题，包含长期记忆、自适应压缩和全局规划，并使用RL进行训练。",
+      "llm_tldr_en": "Proposes ContextPilot, which teaches LLM agents to proactively manage their working context via fine-grained RL, supporting global planning, long-term memory, and adaptive compression, improving long-horizon task performance.",
+      "llm_tldr_cn": "针对长时程智能体任务中工作上下文不断增长的问题，提出ContextPilot框架，通过细粒度强化学习训练智能体主动编辑工作上下文，支持全局规划、长期记忆和自适应压缩等操作。实验表明该方法在长时程任务上优于现有上下文管理方法。该工作为智能体记忆管理提供了新的强化学习方案。",
+      "llm_tldr": "针对长时程智能体任务中工作上下文不断增长的问题，提出ContextPilot框架，通过细粒度强化学习训练智能体主动编辑工作上下文，支持全局规划、长期记忆和自适应压缩等操作。实验表明该方法在长时程任务上优于现有上下文管理方法。该工作为智能体记忆管理提供了新的强化学习方案。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "memory mechanisms for intelligent agents",
+      "matched_requirement_id": "req-1",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2608.27549v1",
+      "source": "arxiv",
+      "title": "Code as Worlds: Agentic Discovery of Executable World Representations for Physical Reasoning",
+      "abstract": "Physical understanding and reasoning depend on forming compact and generalizable representations of the world. While modern vision-language models can recognize and explain diverse physical events, they often lack explicit representations of the underlying mechanisms-such as object states, physical parameters, and governing dynamics-needed for reliably reasoning how the world evolves and responds to interventions. In this work, we introduce Code-as-World, a paradigm that represents physical worlds through executable world representations. By expressing physical composition, dynamic evolution, and visual appearance as executable code, Code-as-World provides a compact, quantitatively grounded, and controllable abstraction of the physical world. To construct such representations from multimodal observations, such as natural-language descriptions or real-world videos, we develop an agentic discovery loop inspired by abductive reasoning, where an agent proposes, executes, renders, verifies, and iteratively refines executable world hypotheses. As a concrete application, we use verified executable worlds to provide scalable physical supervision for training vision-language models on quantitative physical reasoning. Experiments show that Code-as-World-VL achieves state-of-the-art performance on QuantiPhy and surpasses leading proprietary models, highlighting the potential of executable world representations as a scalable foundation for physical intelligence.",
+      "authors": [
+        "Hanyang Wang",
+        "Yimo Cai",
+        "Weiliang Chen",
+        "Jiawei Chi",
+        "Haowen Sun",
+        "Qiyu Dai",
+        "Yi-Hsin Hung",
+        "Xingzhuo Guo",
+        "Jinshan Ren",
+        "Runmao Yao",
+        "Ziwei Liu",
+        "Mingsheng Long",
+        "Yueqi Duan",
+        "Jun Gao",
+        "Jiangran Lyu",
+        "Fangfu Liu",
+        "Jialong Wu"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV"
+      ],
+      "published": "2026-08-27T17:57:25+00:00",
+      "link": "https://arxiv.org/pdf/2608.27549v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "Executable world representations (code) for physical reasoning",
+      "llm_evidence_cn": "可执行世界表征（代码）用于物理推理",
+      "llm_evidence": "可执行世界表征（代码）用于物理推理",
+      "canonical_evidence": "可执行世界表征（代码）用于物理推理",
+      "llm_tldr_en": "Introduces Code-as-World, representing physical worlds as executable code to provide compact, controllable world models for physical reasoning.",
+      "llm_tldr_cn": "针对视觉语言模型缺乏显式物理机制表征的问题，本文提出Code-as-World范式，将物理组成、动态演化和视觉外观表示为可执行代码，作为紧凑、定量且可控的世界表征。该范式使智能体能够推理物理世界如何演化并对干预作出反应，为物理推理和世界建模提供了新途径。",
+      "llm_tldr": "针对视觉语言模型缺乏显式物理机制表征的问题，本文提出Code-as-World范式，将物理组成、动态演化和视觉外观表示为可执行代码，作为紧凑、定量且可控的世界表征。该范式使智能体能够推理物理世界如何演化并对干预作出反应，为物理推理和世界建模提供了新途径。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "language-based world model for agent reasoning",
+      "matched_requirement_id": "req-5",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2608.27796v1",
+      "source": "arxiv",
+      "title": "ReToolSQL: Agentic Reinforcement Learning for Robust Text-to-SQL",
+      "abstract": "Recent work has shown that reinforcement learning from execution feedback can substantially improve text-to-SQL performance, often enabling smaller models to match or exceed much larger systems. However, most existing approaches treat SQL generation as a single-turn task, limiting the model's ability to recover from errors through iterative refinement. We present ReToolSQL, a two-stage training framework for text-to-SQL that combines (i) a supervised warm-start on rejection-sampled reasoning traces with (ii) agentic reinforcement fine-tuning (RFT) over multi-turn tool-use trajectories. The key insight is that the two stages act on complementary axes, the supervised fine-tuning (SFT) on verified privileged-teacher traces expands the set of solvable questions (raising pass@k coverage on the hardest cases), while RFT converts that expanded capability into higher single-pass accuracy by teaching the model when to verify, what evidence to retrieve, and how to repair faulty SQL from execution feedback. Applied to Gemma 4 instruction-tuned (31B), RFT alone achieves 73.66% execution accuracy (EX) on the BIRD-SQL development benchmark (74.12% EX with self-consistency). Initializing RFT from the SFT checkpoint (SFT$\\to$RFT) yields our strongest model at 74.32% EX single-pass and 74.77% EX with self-consistency. At the time of writing, this ranked first on the BIRD single-model development-set leaderboard. The approach uses composite rewards anchored on execution correctness, requires no human annotation beyond the benchmark itself, and operates within a single dense 31B model, showing that a properly designed SFT$\\to$RFT pipeline over tool-use trajectories is a practical path toward robust enterprise-grade text-to-SQL.",
+      "authors": [
+        "Pratik Kakkar",
+        "Chandra Dhir",
+        "Ravi Shankar",
+        "Pareekshit Reddy Gaddam",
+        "Anup Shirgaonkar"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-08-28T00:23:31+00:00",
+      "link": "https://arxiv.org/pdf/2608.27796v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "agentic reinforcement learning over multi-turn tool-use trajectories for text-to-SQL",
+      "llm_evidence_cn": "在文本到SQL任务中采用智能体强化学习与多轮工具使用轨迹",
+      "llm_evidence": "在文本到SQL任务中采用智能体强化学习与多轮工具使用轨迹",
+      "canonical_evidence": "在文本到SQL任务中采用智能体强化学习与多轮工具使用轨迹",
+      "llm_tldr_en": "ReToolSQL trains text-to-SQL models with supervised warm-start on verified reasoning traces followed by agentic reinforcement fine-tuning over multi-turn tool-use trajectories, enabling iterative error recovery and robustness.",
+      "llm_tldr_cn": "针对文本到SQL任务中现有方法多为单轮生成、难以从执行错误中恢复的局限，该论文提出ReToolSQL两阶段训练框架。第一阶段利用拒绝采样的验证推理轨迹进行监督热启动，以扩大可解问题集合；第二阶段在多轮工具使用轨迹上进行智能体强化微调，使模型能够迭代修正错误。实验结果表明两个阶段在互补轴上起作用，提升了文本到SQL的鲁棒性，并展示了强化学习在自主智能体工具调用任务中的应用潜力。",
+      "llm_tldr": "针对文本到SQL任务中现有方法多为单轮生成、难以从执行错误中恢复的局限，该论文提出ReToolSQL两阶段训练框架。第一阶段利用拒绝采样的验证推理轨迹进行监督热启动，以扩大可解问题集合；第二阶段在多轮工具使用轨迹上进行智能体强化微调，使模型能够迭代修正错误。实验结果表明两个阶段在互补轴上起作用，提升了文本到SQL的鲁棒性，并展示了强化学习在自主智能体工具调用任务中的应用潜力。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "reinforcement learning applied to autonomous agents",
+      "matched_requirement_id": "req-3",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2608.27866v1",
+      "source": "arxiv",
+      "title": "Iron: Intent-Aligned and Retrospective Dual Learning Framework for Enhancing Generalist Virtual Agents",
+      "abstract": "Achieving virtual agents capable of automating tasks across diverse digital environments remains a pivotal challenge in Embodied AI. While Multimodal Large Language Models (MLLMs) offer enhanced visual perception and reasoning, their agentic deployment faces three challenges: costly data annotation, imprecise action-intent alignment, and inefficient exploration from discarded failed trajectories. To address these, we introduce Iron, an intent-aligned, self-improved, and annotation-efficient framework for training GUI agents. Iron employs a novel dual learning strategy that utilizes a stepwise cycle-consistent (SCC) reward to achieve fine-grained alignment between low-level actions and high-level intents, thereby improving instruction grounding and intent understanding. Concurrently, Iron introduces a hindsight reproduction mechanism to repurpose failed trajectories for training, improving both learning efficiency and task diversity. Extensive experiments demonstrate that Iron-trained generalist agents consistently improve performance on cross-environment and cross-device tasks, outperforming models trained with three times more data. Iron also achieves a substantial 25.06% relative improvement on unseen web tasks, with further gains observed on inherently complex tasks, demonstrating the feasibility of building more capable virtual agents.",
+      "authors": [
+        "Jiahe Ying",
+        "Wendong Bu",
+        "Kaihang Pan",
+        "Bingchen Miao",
+        "Siyu Chen",
+        "Wen Wang",
+        "Xueming Jiang",
+        "Juncheng Li",
+        "Siliang Tang"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV"
+      ],
+      "published": "2026-08-28T03:15:11+00:00",
+      "link": "https://arxiv.org/pdf/2608.27866v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "Trains multimodal GUI agents with dual learning and stepwise cycle-consistent reward for intent alignment",
+      "llm_evidence_cn": "使用双重学习和逐步循环一致性奖励训练多模态GUI智能体以实现意图对齐",
+      "llm_evidence": "使用双重学习和逐步循环一致性奖励训练多模态GUI智能体以实现意图对齐",
+      "canonical_evidence": "使用双重学习和逐步循环一致性奖励训练多模态GUI智能体以实现意图对齐",
+      "llm_tldr_en": "Addresses costly annotation, imprecise intent alignment, and inefficient exploration in MLLM-based GUI agents by proposing Iron, a dual learning framework with stepwise cycle-consistent reward for fine-grained action-intent alignment.",
+      "llm_tldr_cn": "针对多模态大型语言模型在GUI智能体部署中数据标注昂贵、动作意图对齐不精确和失败轨迹利用不足的问题，论文提出Iron框架，采用双重学习策略和逐步循环一致性奖励，实现低层动作与高层意图的细粒度对齐，提升通用虚拟智能体的自改进能力和标注效率。",
+      "llm_tldr": "针对多模态大型语言模型在GUI智能体部署中数据标注昂贵、动作意图对齐不精确和失败轨迹利用不足的问题，论文提出Iron框架，采用双重学习策略和逐步循环一致性奖励，实现低层动作与高层意图的细粒度对齐，提升通用虚拟智能体的自改进能力和标注效率。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "agent that processes multiple modalities",
+      "matched_requirement_id": "req-2",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "quick_skim": [
+    {
+      "id": "2608.27259v1",
+      "source": "arxiv",
+      "title": "Making Latent Evolution Explicit: Operator-Structured Transitions for World Action Models",
+      "abstract": "World Action Models (WAMs) augment robot policies by predicting how task-relevant scene states may evolve under interaction. Recent WAMs increasingly perform such prediction in latent representation spaces, avoiding full appearance-level generation while preserving control-relevant information. Yet latent transitions are commonly realized with Transformer-based predictors whose inductive structure is centered on token interaction rather than temporal evolution. We study transition realization as an architectural choice distinct from predictive representation and prediction-policy coupling. We introduce the Latent Evolution Operator Network (LEON), which models latent evolution in a learned observable space through context-modulated operator-based propagation and additive forcing. Grounded in the controlled Koopman generator view of evolution, LEON organizes context-dependent transition variation around a shared evolution-operator structure while retaining a complementary path for additive change. Controlled dynamical systems verify the resulting evolution-specific inductive bias and the complementary roles of operator propagation and forcing. Across two WAM formulations that integrate latent prediction into the policy differently, LEON improves closed-loop performance and robustness while remaining effective under full transition replacement. These results establish transition realization as a consequential architectural choice in latent WAMs.",
+      "authors": [
+        "Xiaoxiao Lu",
+        "Yunlong Dong",
+        "Jiahao Shi",
+        "Ye Yuan"
+      ],
+      "primary_category": "cs.LG",
+      "categories": [
+        "cs.LG"
+      ],
+      "published": "2026-08-27T15:43:44+00:00",
+      "link": "https://arxiv.org/pdf/2608.27259v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "Introduces LEON to model latent evolution with operator-structured transitions for world action models",
+      "llm_evidence_cn": "引入LEON以算子结构化转移建模世界动作模型中的潜在演化",
+      "llm_evidence": "引入LEON以算子结构化转移建模世界动作模型中的潜在演化",
+      "canonical_evidence": "引入LEON以算子结构化转移建模世界动作模型中的潜在演化",
+      "llm_tldr_en": "Addresses limitation of Transformer-based predictors in world action models by introducing LEON, which models latent evolution in a learned observable space through context-modulated operators, improving transition learning for robot policies.",
+      "llm_tldr_cn": "世界动作模型中的潜在转移通常使用Transformer预测器，其归纳偏置集中于token交互而非时间演化。论文提出潜在演化算子网络LEON，在可学习的观测空间中通过上下文调制算子建模潜在演化，改进了机器人策略中世界模型的转移预测能力，为世界模型设计提供新思路。",
+      "llm_tldr": "世界动作模型中的潜在转移通常使用Transformer预测器，其归纳偏置集中于token交互而非时间演化。论文提出潜在演化算子网络LEON，在可学习的观测空间中通过上下文调制算子建模潜在演化，改进了机器人策略中世界模型的转移预测能力，为世界模型设计提供新思路。",
+      "llm_tags": [
+        "query:agent-memory:composite"
+      ],
+      "matched_query_tag": "query:agent-memory:composite",
+      "matched_query_text": "Papers central to 智能体记忆，多模态，智能体强化学习，文本世界模型，语言世界模型, especially work that connects or combines: memory mechanisms for intelligent agents; agent that processes multiple modalities; reinforcement learning applied to autonomous agents; text-based world model for environment simulation; language-based world model for agent reasoning; agent with memory augmentation for better performance; How do text world models support language based agent simulation?.",
+      "matched_requirement_id": "req-composite-agent-memory",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2608.28266v1",
+      "source": "arxiv",
+      "title": "CoCoBench: A Cooperative Coordination Benchmark for Embodied Multi-Agent Task Planning",
+      "abstract": "Agent systems powered by multimodal large language models (MLLMs) have advanced rapidly in recent years, yet existing embodied-agent benchmarks still lack fine-grained diagnostics for multi-agent coordination. Most benchmarks either focus on single-agent task completion or summarize multi-agent behavior with overall task success rates, which can obscure coordination failures such as duplicated work, violations of ordering constraints, resource contention, and desynchronized handoffs. In this paper, we introduce CoCoBench, a construct-level benchmark for evaluating multi-agent embodied coordination in executable household tasks. CoCoBench contains 897 oracle-validated instances organized around four recurring coordination constructs: task allocation, sequential ordering, mutual exclusion, and handoff coordination. In addition to task success rate, CoCoBench provides construct-level scores that measure whether agents coordinate effectively. We evaluate 11 leading MLLMs across different coordination modes, observation inputs, and numbers of agents. The results show that coordination ability is highly construct-specific: strong overall performance does not imply balanced competence across different coordination types. These findings point to new directions for designing targeted model architectures and improving multi-agent coordination ability.",
+      "authors": [
+        "Yang Chen",
+        "Ye-Xin Xie",
+        "Lirong Che",
+        "Danyang Peng",
+        "Yuzhe Yang",
+        "Peiwen Lin",
+        "Xu Cao",
+        "Chuang Wang",
+        "Lei Yuan",
+        "Jian Su",
+        "Lan-Zhe Guo"
+      ],
+      "primary_category": "cs.RO",
+      "categories": [
+        "cs.RO"
+      ],
+      "published": "2026-08-28T12:29:23+00:00",
+      "link": "https://arxiv.org/pdf/2608.28266v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "Benchmark for multimodal LLM-based embodied multi-agent coordination",
+      "llm_evidence_cn": "多模态大语言模型具身多智能体协同基准",
+      "llm_evidence": "多模态大语言模型具身多智能体协同基准",
+      "canonical_evidence": "多模态大语言模型具身多智能体协同基准",
+      "llm_tldr_en": "CoCoBench is a benchmark for evaluating fine-grained coordination in embodied multi-agent tasks using multimodal LLMs, providing diagnostics for failures like duplicated work and resource contention.",
+      "llm_tldr_cn": "针对现有多智能体基准缺乏细粒度诊断、只能概括总体成功率的问题，本文提出CoCoBench基准，基于多模态大语言模型，包含897个经验证的实例，围绕四个协调结构组织，可识别重复工作、顺序违规、资源争用和交接不同步等失败。该基准为具身多智能体任务规划提供了更精细的评估手段，有助于改进协调能力。",
+      "llm_tldr": "针对现有多智能体基准缺乏细粒度诊断、只能概括总体成功率的问题，本文提出CoCoBench基准，基于多模态大语言模型，包含897个经验证的实例，围绕四个协调结构组织，可识别重复工作、顺序违规、资源争用和交接不同步等失败。该基准为具身多智能体任务规划提供了更精细的评估手段，有助于改进协调能力。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "agent that processes multiple modalities",
+      "matched_requirement_id": "req-2",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2608.28491v1",
+      "source": "arxiv",
+      "title": "AcrossVAM1.0: Particle World Modeling for Text-Assisted Robot Video Prediction",
+      "abstract": "Predicting robot videos requires both precise motion reasoning and preservation of high-frequency appearance, yet monolithic pixel models entangle these objectives and often conceal their progress behind a strong last-frame baseline. We present AcrossVAM1.0, a lightweight, text-assisted video action model that factorizes future prediction into object-centric motion and dense appearance. A frozen SAM3-DLP codec decomposes four context frames into semantic particles for the robot, arm, and gripper, together with a background latent. A 0.28M-parameter spatio-temporal Transformer aligns particle identities, rolls their states forward, and is modulated by a frozen OpenCLIP instruction embedding through FiLM. A causal dual-stream decoder combines particle-rendered motion with appearance encoded exclusively from the last observed frame; a residual refiner and learned delivery mask produce five future frames without access to future appearance. On our VRS benchmark constructed from diverse real-robot trajectories, particle dynamics reduce trajectory error by 21.0\\% over persistence. Across three delivery-mask seeds, AcrossVAM1.0 improves future-frame PSNR/SSIM from 19.97/0.796 to 20.573/0.8004, while raw particle generation improves motion-region PSNR from 11.89 to 13.23. The delivered model does not yet beat persistence in LPIPS, and correct-versus- shuffled language changes trajectory error by only 2.8--3.1%. We report these limitations alongside oracle, negative-control, multi-seed, and per-robot analyses. The results show that explicit particle dynamics are a promising low-dimensional interface for robot video prediction, while robust language grounding and appearance delivery remain the principal open challenges.",
+      "authors": [
+        "Yafei Zhang",
+        "Nan Wu"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI",
+        "cs.RO"
+      ],
+      "published": "2026-08-28T16:19:24+00:00",
+      "link": "https://arxiv.org/pdf/2608.28491v1",
+      "tags": [
+        "keyword:agent-memory"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "Text-assisted world model factorizes robot video prediction into object-centric motion and appearance",
+      "llm_evidence_cn": "文本辅助世界模型将机器人视频预测分解为目标中心运动和外观",
+      "llm_evidence": "文本辅助世界模型将机器人视频预测分解为目标中心运动和外观",
+      "canonical_evidence": "文本辅助世界模型将机器人视频预测分解为目标中心运动和外观",
+      "llm_tldr_en": "Proposes AcrossVAM1.0, a lightweight text-assisted video action model that decomposes prediction into semantic particles and appearance, using frozen codecs and Transformers to improve motion reasoning and appearance fidelity.",
+      "llm_tldr_cn": "现有机器人视频预测模型将精确运动推理和高频外观保持纠缠，且常被末帧基线掩盖进展。论文提出AcrossVAM1.0，将未来预测分解为目标中心运动和密集外观，利用冻结的SAM3-DLP编码器分解语义粒子，通过时空Transformer和FiLM调制文本指令，实现轻量高效的机器人视频预测。",
+      "llm_tldr": "现有机器人视频预测模型将精确运动推理和高频外观保持纠缠，且常被末帧基线掩盖进展。论文提出AcrossVAM1.0，将未来预测分解为目标中心运动和密集外观，利用冻结的SAM3-DLP编码器分解语义粒子，通过时空Transformer和FiLM调制文本指令，实现轻量高效的机器人视频预测。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "language-based world model for agent reasoning",
+      "matched_requirement_id": "req-5",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    }
+  ]
+}
