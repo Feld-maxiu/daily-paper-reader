@@ -41,17 +41,17 @@
 <section class="dpr-home-dashboard-card dpr-home-report-card">
   <div class="dpr-home-dashboard-header">
     <div>
-      <span class="dpr-home-dashboard-kicker">2026-08-31</span>
+      <span class="dpr-home-dashboard-kicker">2026-09-01</span>
       <h3 class="dpr-home-dashboard-title">今日汇总</h3>
     </div>
-    <strong class="dpr-home-dashboard-count">共 9 篇</strong>
+    <strong class="dpr-home-dashboard-count">共 3 篇</strong>
   </div>
   <dl class="dpr-home-dashboard-stats">
     <div class="dpr-home-dashboard-stat"><dt>累计更新</dt><dd>1 次</dd></div>
-    <div class="dpr-home-dashboard-stat"><dt>精读</dt><dd>6</dd></div>
-    <div class="dpr-home-dashboard-stat"><dt>速读</dt><dd>3</dd></div>
+    <div class="dpr-home-dashboard-stat"><dt>精读</dt><dd>3</dd></div>
+    <div class="dpr-home-dashboard-stat"><dt>速读</dt><dd>0</dd></div>
   </dl>
-  <p class="dpr-home-dashboard-body">最近更新：2026-08-31 23:39:27 UTC<br>状态：成功</p>
+  <p class="dpr-home-dashboard-body">最近更新：2026-09-01 22:58:18 UTC<br>状态：成功</p>
 </section>
 <section class="dpr-home-dashboard-card dpr-home-brief-card">
   <div class="dpr-home-dashboard-header">
@@ -62,7 +62,9 @@
     <strong class="dpr-home-dashboard-count">AI</strong>
   </div>
   <div class="dpr-home-dashboard-body">
-<p>今日精读6篇、速读3篇，聚焦GUI智能体与多模态搜索两条高分主线。</p>
+<p>今日共生成 3 篇推荐（精读 3 篇，速读 0 篇）</p>
+<p>精读：《When History Is Multimodal: Rethinking Context Management for Long-Horizon Agents》（9.0/10）, 《Agents in the Large: Perception-Centered Architecture for Persistent Agents》（9.0/10）</p>
+<p>这些结果覆盖了当下较热的方向，建议先看精读区论文的关键问题与方法。</p>
   </div>
 </section>
 <section class="dpr-home-dashboard-card dpr-home-deep-card">
@@ -71,12 +73,12 @@
       <span class="dpr-home-dashboard-kicker">今日累计</span>
       <h3 class="dpr-home-dashboard-title">精读推荐</h3>
     </div>
-    <strong class="dpr-home-dashboard-count">6 篇</strong>
+    <strong class="dpr-home-dashboard-count">3 篇</strong>
   </div>
   <div class="dpr-home-dashboard-body">
-<ul class="dpr-home-dashboard-paper-list"><li><span class="dpr-home-dashboard-paper-title" title="WM-R1: Training GUI Agents to Reason and leverage World Models with Reinforcement Learning">WM-R1: Training GUI Agents to Reason and leverage World Models with Reinforcement Learning</span></li><li><span class="dpr-home-dashboard-paper-title" title="WeAgent-MMSearch: Native Text-Vision Interaction for Multimodal Search Agents">WeAgent-MMSearch: Native Text-Vision Interaction for Multimodal Search Agents</span></li><li><span class="dpr-home-dashboard-paper-title" title="ContextPilot: Teaching Agents for Proactive Context Management via Fine-grained RL">ContextPilot: Teaching Agents for Proactive Context Management via Fine-grained RL</span></li></ul>
+<ul class="dpr-home-dashboard-paper-list"><li><span class="dpr-home-dashboard-paper-title" title="When History Is Multimodal: Rethinking Context Management for Long-Horizon Agents">When History Is Multimodal: Rethinking Context Management for Long-Horizon Agents</span></li><li><span class="dpr-home-dashboard-paper-title" title="Agents in the Large: Perception-Centered Architecture for Persistent Agents">Agents in the Large: Perception-Centered Architecture for Persistent Agents</span></li><li><span class="dpr-home-dashboard-paper-title" title="MNIST-PRO: MNIST is Back as a Partially Observable World for AI Agents">MNIST-PRO: MNIST is Back as a Partially Observable World for AI Agents</span></li></ul>
   </div>
-  <div class="dpr-home-dashboard-tags"><span class="dpr-home-dashboard-tag">agent-memory <strong>6</strong></span></div>
+  <div class="dpr-home-dashboard-tags"><span class="dpr-home-dashboard-tag">agent-memory <strong>3</strong></span></div>
 </section>
 <section class="dpr-home-dashboard-card dpr-home-skim-card">
   <div class="dpr-home-dashboard-header">
@@ -84,12 +86,12 @@
       <span class="dpr-home-dashboard-kicker">今日累计</span>
       <h3 class="dpr-home-dashboard-title">速读推荐</h3>
     </div>
-    <strong class="dpr-home-dashboard-count">3 篇</strong>
+    <strong class="dpr-home-dashboard-count">0 篇</strong>
   </div>
   <div class="dpr-home-dashboard-body">
-<ul class="dpr-home-dashboard-paper-list"><li><span class="dpr-home-dashboard-paper-title" title="Making Latent Evolution Explicit: Operator-Structured Transitions for World Action Models">Making Latent Evolution Explicit: Operator-Structured Transitions for World Action Models</span></li><li><span class="dpr-home-dashboard-paper-title" title="CoCoBench: A Cooperative Coordination Benchmark for Embodied Multi-Agent Task Planning">CoCoBench: A Cooperative Coordination Benchmark for Embodied Multi-Agent Task Planning</span></li><li><span class="dpr-home-dashboard-paper-title" title="AcrossVAM1.0: Particle World Modeling for Text-Assisted Robot Video Prediction">AcrossVAM1.0: Particle World Modeling for Text-Assisted Robot Video Prediction</span></li></ul>
+<p class="dpr-home-dashboard-empty">今日暂无推荐。</p>
   </div>
-  <div class="dpr-home-dashboard-tags"><span class="dpr-home-dashboard-tag">agent-memory <strong>3</strong></span></div>
+
 </section>
 </div>
 
