@@ -1,0 +1,137 @@
+{
+  "date": "20260902",
+  "date_label": "",
+  "generated_at": "2026-09-02 23:03:30 UTC",
+  "recommend_exists": true,
+  "run_count": 1,
+  "papers": [
+    {
+      "paper_id": "2609.00455v1",
+      "route": "202609/02/2609.00455v1-towards-a-belief-based-world-model-for-llm-agents",
+      "title": "Towards a Belief-Based World Model for LLM Agents",
+      "section": "deep",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 9.0,
+      "evidence": "提出基于信念的世界模型，用于LLM智能体部分可观测下的决策",
+      "first_seen_at": "2026-09-02 23:03:30 UTC",
+      "updated_at": "2026-09-02 23:03:30 UTC"
+    },
+    {
+      "paper_id": "2609.01067v1",
+      "route": "202609/02/2609.01067v1-world-model-guided-reinforcement-learning-via-counterfactual-user-engagement-simulation",
+      "title": "World Model-Guided Reinforcement Learning via Counterfactual User Engagement Simulation",
+      "section": "deep",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 9.0,
+      "evidence": "世界模型引导的强化学习，利用冻结用户模拟器提供奖励监督",
+      "first_seen_at": "2026-09-02 23:03:30 UTC",
+      "updated_at": "2026-09-02 23:03:30 UTC"
+    },
+    {
+      "paper_id": "2609.01167v1",
+      "route": "202609/02/2609.01167v1-classic-ai-scaffolding-for-llm-social-agents",
+      "title": "Classic AI Scaffolding for LLM Social Agents",
+      "section": "deep",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 9.0,
+      "evidence": "世界主控以自然语言控制状态支撑基于LLM的社交模拟",
+      "first_seen_at": "2026-09-02 23:03:30 UTC",
+      "updated_at": "2026-09-02 23:03:30 UTC"
+    },
+    {
+      "paper_id": "2608.29880v1",
+      "route": "202609/02/2608.29880v1-perceive-to-hypothesize-verify-to-ground-an-agentic-reasoning-framework-for-open-world-geo-localization",
+      "title": "Perceive to Hypothesize, Verify to Ground: An Agentic Reasoning Framework for Open-World Geo-Localization",
+      "section": "deep",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 8.0,
+      "evidence": "面向地理定位的双层智能体框架，具备多模态推理与证据锚定",
+      "first_seen_at": "2026-09-02 23:03:30 UTC",
+      "updated_at": "2026-09-02 23:03:30 UTC"
+    },
+    {
+      "paper_id": "2609.00048v1",
+      "route": "202609/02/2609.00048v1-gui-cc-benchmarking-contextual-consistency-of-gui-world-models-as-agent-environments",
+      "title": "GUI-CC: Benchmarking Contextual Consistency of GUI World Models as Agent Environments",
+      "section": "quick",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 7.0,
+      "evidence": "评估GUI世界模型作为多步智能体环境时上下文一致性的基准",
+      "first_seen_at": "2026-09-02 23:03:30 UTC",
+      "updated_at": "2026-09-02 23:03:30 UTC"
+    },
+    {
+      "paper_id": "2609.01056v1",
+      "route": "202609/02/2609.01056v1-worldbench-culturally-grounded-benchmark-for-multilingual-agents",
+      "title": "WorldBench: Culturally Grounded Benchmark for Multilingual Agents",
+      "section": "quick",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 7.0,
+      "evidence": "测试多语言智能体跨多步任务状态保持能力的基准",
+      "first_seen_at": "2026-09-02 23:03:30 UTC",
+      "updated_at": "2026-09-02 23:03:30 UTC"
+    },
+    {
+      "paper_id": "2609.01597v1",
+      "route": "202609/02/2609.01597v1-the-rise-of-verbal-reinforcement-learning",
+      "title": "The Rise of Verbal Reinforcement Learning",
+      "section": "quick",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 7.0,
+      "evidence": "言语强化学习使用自然语言反馈改进智能体",
+      "first_seen_at": "2026-09-02 23:03:30 UTC",
+      "updated_at": "2026-09-02 23:03:30 UTC"
+    },
+    {
+      "paper_id": "2609.00184v1",
+      "route": "202609/02/2609.00184v1-synthetic-worlds-for-temporal-evaluation-and-knowledge-updating-in-llms",
+      "title": "Synthetic Worlds for Temporal Evaluation and Knowledge Updating in LLMs",
+      "section": "quick",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 6.0,
+      "evidence": "合成模拟驱动的框架生成一致事件轨迹用于受控LLM评估",
+      "first_seen_at": "2026-09-02 23:03:30 UTC",
+      "updated_at": "2026-09-02 23:03:30 UTC"
+    }
+  ]
+}
