@@ -1,0 +1,57 @@
+{
+  "date": "20260903",
+  "date_label": "",
+  "generated_at": "2026-09-03 22:59:55 UTC",
+  "recommend_exists": true,
+  "run_count": 1,
+  "papers": [
+    {
+      "paper_id": "2609.02350v1",
+      "route": "202609/03/2609.02350v1-lookstep-efficient-vision-language-navigation-with-linguistic-foresight-and-event-driven-memory",
+      "title": "LookStep: Efficient Vision-Language Navigation with Linguistic Foresight and Event Driven Memory",
+      "section": "deep",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 9.0,
+      "evidence": "事件驱动滚动记忆用于高效视觉语言导航",
+      "first_seen_at": "2026-09-03 22:59:55 UTC",
+      "updated_at": "2026-09-03 22:59:55 UTC"
+    },
+    {
+      "paper_id": "2609.02885v1",
+      "route": "202609/03/2609.02885v1-discriminative-world-models-for-web-agents",
+      "title": "Discriminative World Models for Web Agents",
+      "section": "deep",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 9.0,
+      "evidence": "训练世界模型预测判别性Web状态用于Web智能体动作选择",
+      "first_seen_at": "2026-09-03 22:59:55 UTC",
+      "updated_at": "2026-09-03 22:59:55 UTC"
+    },
+    {
+      "paper_id": "2608.30396v1",
+      "route": "202609/03/2608.30396v1-scaffolding-foundation-models-into-physical-world-agents-pushes-the-frontier-of-long-horizon-navigation",
+      "title": "Scaffolding Foundation Models into Physical-World Agents Pushes the Frontier of Long-Horizon Navigation",
+      "section": "deep",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 8.0,
+      "evidence": "视觉语言模型与导航基础模型结合处理多模态导航",
+      "first_seen_at": "2026-09-03 22:59:55 UTC",
+      "updated_at": "2026-09-03 22:59:55 UTC"
+    }
+  ]
+}

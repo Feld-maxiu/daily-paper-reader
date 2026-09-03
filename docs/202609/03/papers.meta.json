@@ -1,0 +1,54 @@
+{
+  "label": "2026-09-03",
+  "date": "2026-09-03",
+  "generated_at": "2026-09-03T23:00:09",
+  "count": 3,
+  "papers": [
+    {
+      "paper_id": "202609/03/2609.02350v1-lookstep-efficient-vision-language-navigation-with-linguistic-foresight-and-event-driven-memory",
+      "section": "deep",
+      "title_en": "LookStep: Efficient Vision-Language Navigation with Linguistic Foresight and Event Driven Memory",
+      "authors": "Kun-Yang Yu, Yingzhe Li, Hongyu Xu, Shi-Yu Tian, Zhi Zhou, Yang Chen, Ming Yang, Sheng Wang, Qing Yu, Lan-Zhe Guo, Yu-Feng Li",
+      "date": "2026-09-02",
+      "pdf": "https://arxiv.org/pdf/2609.02350v1",
+      "score": "9.0",
+      "evidence": "事件驱动滚动记忆用于高效视觉语言导航",
+      "tldr": "现有视觉语言导航方法依赖大量专家动作标注数据，且需维护认知地图或历史帧，导致计算与内存开销高。LookStep提出端到端统一框架，结合语言中心未来状态建模与事件驱动滚动记忆，利用语言标签生成粗粒度导航进展和每个候选动作的未来状态，并自主决定是否将观察写入有界滚动记忆。在R2R-CE Val-Unseen上达到49.7%成功率，优于同等训练设置下的现有方法，同时实现更低数据用量和更高内存效率。",
+      "tags": "query:agent-memory",
+      "abstract_en": "Vision-Language Navigation (VLN) requires an embodied agent to follow natural-language instructions in unseen environments. Recent progress has been largely driven by Multimodal Large Language Models (MLLMs). Existing methods follow a next-step action prediction paradigm, supervising only the expert action, which requires a high quantity of data for training. They also rely on cognitive maps, accumulated historical frames, or external 3D tools to maintain states, leading to high computational and memory overhead. To realize resource efficiency VLN, we propose LookStep, a unified end-to-end framework that combines Language Centric Future State Modeling and Event Driven Rolling Memory that uses language labels to generate coarse-grained navigation progress and future states for each candidate action, while autonomously deciding whether to write each observation into a bounded rolling memory with a semantic role. We validate LookStep empirically. On VLN-CE tasks, LookStep outperforms existing methods under the same training settings, achieving a 49.7\\% success rate on R2R-CE Val-Unseen with better memory efficiency and less data usage. Code and model is available at https://github.com/kunyang-YU/LookStep.",
+      "source": "arxiv",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "paper_id": "202609/03/2609.02885v1-discriminative-world-models-for-web-agents",
+      "section": "deep",
+      "title_en": "Discriminative World Models for Web Agents",
+      "authors": "Kelvin Li, Dhruv Pendharkar, Anish Pahilajani, Chuyi Shang, Leon Oks, Leonid Karlinsky, Rogerio Feris, Trevor Darrell, Roei Herzig",
+      "date": "2026-09-02",
+      "pdf": "https://arxiv.org/pdf/2609.02885v1",
+      "score": "9.0",
+      "evidence": "训练世界模型预测判别性Web状态用于Web智能体动作选择",
+      "tldr": "现有世界模型采用监督下一状态预测训练，生成固定表示用于动作排序，但该目标与下游判别需求不一致。本文提出预测状态匹配目标，强制预测表示区分真实结果与替代动作结果。实验在预测状态匹配基准、WebPRMBench动作排序和WebArena-Lite任务成功率上均超越基线。该工作为构建判别式世界模型提供新思路，提升测试时动作选择效果。",
+      "tags": "query:agent-memory",
+      "abstract_en": "Recent web agents use world models for test-time action selection by sampling candidate actions, predicting the resulting web states, and ranking them with a ranker model or a Process Reward Model (PRM). These world models are typically trained via supervised next-state prediction to generate fixed representations like HTML or AXTree snapshots. However, this objective is misaligned with the downstream ranker, which relies on predicted states being discriminative across candidates to accurately score them. To address this, we introduce predicted-state matching, a training objective where the predicted representation must distinguish the true resulting state from those reached by alternative actions. We train these models using a branching web-agent dataset derived from WebArena Go-Browse trajectories, where every decision point contains multiple alternative actions and their resulting states. Experiments on our held-out predicted-state matching benchmark show that our approach outperforms world models trained with supervised next-state prediction. We further show that our approach improves PRM-style action ranking on WebPRMBench compared with action-only PRMs and PRMs augmented with supervised-next-state world models. Finally, on WebArena-Lite, using our world model for test-time action selection improves end-to-end task success. Our project page is available at: https://dhruvpendharkar.github.io/dwm/.",
+      "source": "arxiv",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "paper_id": "202609/03/2608.30396v1-scaffolding-foundation-models-into-physical-world-agents-pushes-the-frontier-of-long-horizon-navigation",
+      "section": "deep",
+      "title_en": "Scaffolding Foundation Models into Physical-World Agents Pushes the Frontier of Long-Horizon Navigation",
+      "authors": "Zixing Lei, Gengze Zhou, Xiong-Hui Chen, Jiazhao Zhang, Yiyang Huang, Hang Yin, Haoqi Yuan, Qi Wu, Weixin Li, Siheng Chen",
+      "date": "2026-08-31",
+      "pdf": "https://arxiv.org/pdf/2608.30396v1",
+      "score": "8.0",
+      "evidence": "视觉语言模型与导航基础模型结合处理多模态导航",
+      "tldr": "长期物理世界智能体须同时具备远距离目标推理与可靠闭环执行，但视觉语言模型和导航基础模型各只擅长其一。NavMCP利用意图、观测、记忆三通道将VLM高层推理与NFM闭环导航解耦式耦合，把孤立导航 rollout 变为持续具身交互，且无需重训。在多个具身问答基准上取得最优，并在真实机器人上成功率显著提升，优势随任务时长扩大。这证明脚手架式组合互补基础模型能有效推进长期导航智能体前沿。",
+      "tags": "query:agent-memory",
+      "abstract_en": "Long-horizon physical-world agents must reason over distant goals while grounding decisions in reliable closed-loop behavior. Today's foundation models split these capabilities: vision-language models (VLMs) infer missing information and adapt high-level plans but remain brittle and inefficient at repeated navigation grounding, while navigation foundation models (NFMs) robustly execute semantic goals but operate as bounded episodes without persistent task-level reasoning. We introduce NavMCP, an agentic scaffolding framework that couples a VLM reasoning agent with an NFM executor for long-horizon exploration. The VLM decides what evidence to seek, where to search, and when to stop, while the NFM grounds each semantic sub-goal into closed-loop navigation. Three channels structure their collaboration: intent translates evidence needs into navigation calls, observation converts rollouts into source-grounded trajectory evidence, and memory accumulates findings, negative evidence, and unresolved goals across calls. This design turns isolated navigation rollouts into persistent embodied interaction without retraining either model. On Embodied Question Answering, NavMCP achieves state-of-the-art results on HM-EQA, MT-HM3D, and EXPRESS-Bench. Under matched agent and executor backbones, it outperforms an episodic interface by 14.9 percentage points on HM-EQA. On a Unitree Go2, NavMCP reaches 78.3% success, with its margin over the strongest baseline growing from 10 to 45 points as the task horizon increases. These results demonstrate the potential of scaffolding complementary foundation models into long-horizon physical-world agents.",
+      "source": "arxiv",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "errors": []
+}

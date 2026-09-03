@@ -1,0 +1,149 @@
+{
+  "mode": "standard",
+  "generated_at": "2026-09-03T22:53:57.167835+00:00",
+  "stats": {
+    "mode": "standard",
+    "tag_count": 1,
+    "deep_divecandidates": 3,
+    "deep_cap": 6,
+    "deep_selected": 3,
+    "quick_candidates": 0,
+    "quick_skim_target": 11,
+    "quick_selected": 0
+  },
+  "deep_dive": [
+    {
+      "id": "2609.02350v1",
+      "source": "arxiv",
+      "title": "LookStep: Efficient Vision-Language Navigation with Linguistic Foresight and Event Driven Memory",
+      "abstract": "Vision-Language Navigation (VLN) requires an embodied agent to follow natural-language instructions in unseen environments. Recent progress has been largely driven by Multimodal Large Language Models (MLLMs). Existing methods follow a next-step action prediction paradigm, supervising only the expert action, which requires a high quantity of data for training. They also rely on cognitive maps, accumulated historical frames, or external 3D tools to maintain states, leading to high computational and memory overhead. To realize resource efficiency VLN, we propose LookStep, a unified end-to-end framework that combines Language Centric Future State Modeling and Event Driven Rolling Memory that uses language labels to generate coarse-grained navigation progress and future states for each candidate action, while autonomously deciding whether to write each observation into a bounded rolling memory with a semantic role. We validate LookStep empirically. On VLN-CE tasks, LookStep outperforms existing methods under the same training settings, achieving a 49.7\\% success rate on R2R-CE Val-Unseen with better memory efficiency and less data usage. Code and model is available at https://github.com/kunyang-YU/LookStep.",
+      "authors": [
+        "Kun-Yang Yu",
+        "Yingzhe Li",
+        "Hongyu Xu",
+        "Shi-Yu Tian",
+        "Zhi Zhou",
+        "Yang Chen",
+        "Ming Yang",
+        "Sheng Wang",
+        "Qing Yu",
+        "Lan-Zhe Guo",
+        "Yu-Feng Li"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV",
+        "cs.RO"
+      ],
+      "published": "2026-09-02T09:24:08+00:00",
+      "link": "https://arxiv.org/pdf/2609.02350v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "event driven rolling memory for efficient vision-language navigation",
+      "llm_evidence_cn": "事件驱动滚动记忆用于高效视觉语言导航",
+      "llm_evidence": "事件驱动滚动记忆用于高效视觉语言导航",
+      "canonical_evidence": "事件驱动滚动记忆用于高效视觉语言导航",
+      "llm_tldr_en": "LookStep combines language-centric future state modeling and event-driven rolling memory to reduce computational and memory overhead in VLN agents.",
+      "llm_tldr_cn": "现有VLN方法依赖认知地图、历史帧或外部3D工具维持状态，计算和内存开销高，且仅监督专家动作需要大量数据。LookStep提出统一端到端框架，结合语言中心未来状态建模和事件驱动滚动记忆，使用语言标签生成粗略未来状态并仅保留关键事件。该方法实现资源高效的视觉语言导航，降低计算和内存开销，为多模态具身智能体的记忆机制提供了新思路。",
+      "llm_tldr": "现有VLN方法依赖认知地图、历史帧或外部3D工具维持状态，计算和内存开销高，且仅监督专家动作需要大量数据。LookStep提出统一端到端框架，结合语言中心未来状态建模和事件驱动滚动记忆，使用语言标签生成粗略未来状态并仅保留关键事件。该方法实现资源高效的视觉语言导航，降低计算和内存开销，为多模态具身智能体的记忆机制提供了新思路。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "memory mechanisms for intelligent agents",
+      "matched_requirement_id": "req-1",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2609.02885v1",
+      "source": "arxiv",
+      "title": "Discriminative World Models for Web Agents",
+      "abstract": "Recent web agents use world models for test-time action selection by sampling candidate actions, predicting the resulting web states, and ranking them with a ranker model or a Process Reward Model (PRM). These world models are typically trained via supervised next-state prediction to generate fixed representations like HTML or AXTree snapshots. However, this objective is misaligned with the downstream ranker, which relies on predicted states being discriminative across candidates to accurately score them. To address this, we introduce predicted-state matching, a training objective where the predicted representation must distinguish the true resulting state from those reached by alternative actions. We train these models using a branching web-agent dataset derived from WebArena Go-Browse trajectories, where every decision point contains multiple alternative actions and their resulting states. Experiments on our held-out predicted-state matching benchmark show that our approach outperforms world models trained with supervised next-state prediction. We further show that our approach improves PRM-style action ranking on WebPRMBench compared with action-only PRMs and PRMs augmented with supervised-next-state world models. Finally, on WebArena-Lite, using our world model for test-time action selection improves end-to-end task success. Our project page is available at: https://dhruvpendharkar.github.io/dwm/.",
+      "authors": [
+        "Kelvin Li",
+        "Dhruv Pendharkar",
+        "Anish Pahilajani",
+        "Chuyi Shang",
+        "Leon Oks",
+        "Leonid Karlinsky",
+        "Rogerio Feris",
+        "Trevor Darrell",
+        "Roei Herzig"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI",
+        "cs.LG"
+      ],
+      "published": "2026-09-02T17:59:40+00:00",
+      "link": "https://arxiv.org/pdf/2609.02885v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "trains world models to predict discriminative web states for action selection in web agents",
+      "llm_evidence_cn": "训练世界模型预测判别性Web状态用于Web智能体动作选择",
+      "llm_evidence": "训练世界模型预测判别性Web状态用于Web智能体动作选择",
+      "canonical_evidence": "训练世界模型预测判别性Web状态用于Web智能体动作选择",
+      "llm_tldr_en": "Proposes predicted-state matching objective for training discriminative web world models, aligning next-state prediction with downstream action ranking.",
+      "llm_tldr_cn": "针对Web智能体世界模型常以生成固定Web状态为目标、与动作排序器的判别需求不一致的问题，提出预测状态匹配训练目标。该目标强制预测表示能够区分真实交互结果与替代动作产生的状态，使世界模型更加判别化。在基于WebArena Go构建的分支数据集上训练和评估，表明该方法提升了候选动作排序的准确性。这项工作为文本型世界模型在智能体推理中的应用提供了新思路。",
+      "llm_tldr": "针对Web智能体世界模型常以生成固定Web状态为目标、与动作排序器的判别需求不一致的问题，提出预测状态匹配训练目标。该目标强制预测表示能够区分真实交互结果与替代动作产生的状态，使世界模型更加判别化。在基于WebArena Go构建的分支数据集上训练和评估，表明该方法提升了候选动作排序的准确性。这项工作为文本型世界模型在智能体推理中的应用提供了新思路。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "language-based world model for agent reasoning",
+      "matched_requirement_id": "req-5",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2608.30396v1",
+      "source": "arxiv",
+      "title": "Scaffolding Foundation Models into Physical-World Agents Pushes the Frontier of Long-Horizon Navigation",
+      "abstract": "Long-horizon physical-world agents must reason over distant goals while grounding decisions in reliable closed-loop behavior. Today's foundation models split these capabilities: vision-language models (VLMs) infer missing information and adapt high-level plans but remain brittle and inefficient at repeated navigation grounding, while navigation foundation models (NFMs) robustly execute semantic goals but operate as bounded episodes without persistent task-level reasoning. We introduce NavMCP, an agentic scaffolding framework that couples a VLM reasoning agent with an NFM executor for long-horizon exploration. The VLM decides what evidence to seek, where to search, and when to stop, while the NFM grounds each semantic sub-goal into closed-loop navigation. Three channels structure their collaboration: intent translates evidence needs into navigation calls, observation converts rollouts into source-grounded trajectory evidence, and memory accumulates findings, negative evidence, and unresolved goals across calls. This design turns isolated navigation rollouts into persistent embodied interaction without retraining either model. On Embodied Question Answering, NavMCP achieves state-of-the-art results on HM-EQA, MT-HM3D, and EXPRESS-Bench. Under matched agent and executor backbones, it outperforms an episodic interface by 14.9 percentage points on HM-EQA. On a Unitree Go2, NavMCP reaches 78.3% success, with its margin over the strongest baseline growing from 10 to 45 points as the task horizon increases. These results demonstrate the potential of scaffolding complementary foundation models into long-horizon physical-world agents.",
+      "authors": [
+        "Zixing Lei",
+        "Gengze Zhou",
+        "Xiong-Hui Chen",
+        "Jiazhao Zhang",
+        "Yiyang Huang",
+        "Hang Yin",
+        "Haoqi Yuan",
+        "Qi Wu",
+        "Weixin Li",
+        "Siheng Chen"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI",
+        "cs.RO"
+      ],
+      "published": "2026-08-31T07:50:16+00:00",
+      "link": "https://arxiv.org/pdf/2608.30396v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "VLM reasoning agent paired with NFM executor processes vision and language for navigation",
+      "llm_evidence_cn": "视觉语言模型与导航基础模型结合处理多模态导航",
+      "llm_evidence": "视觉语言模型与导航基础模型结合处理多模态导航",
+      "canonical_evidence": "视觉语言模型与导航基础模型结合处理多模态导航",
+      "llm_tldr_en": "Proposes NavMCP, an agentic scaffolding framework coupling a VLM reasoning agent with an NFM executor to improve long-horizon physical navigation.",
+      "llm_tldr_cn": "针对视觉语言模型高层规划能力强但导航闭环效率低、导航基础模型执行稳健但缺乏持续任务推理的问题，提出NavMCP代理脚手架。该框架耦合VLM推理智能体和NFM执行器，前者决定寻找哪些证据、搜索哪里以及何时停止，后者负责语义子目标的可靠闭环导航。实验表明该分工显著推进了长程物理世界导航的前沿性能，展示了多模态基础模型组合的潜力。",
+      "llm_tldr": "针对视觉语言模型高层规划能力强但导航闭环效率低、导航基础模型执行稳健但缺乏持续任务推理的问题，提出NavMCP代理脚手架。该框架耦合VLM推理智能体和NFM执行器，前者决定寻找哪些证据、搜索哪里以及何时停止，后者负责语义子目标的可靠闭环导航。实验表明该分工显著推进了长程物理世界导航的前沿性能，展示了多模态基础模型组合的潜力。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "agent that processes multiple modalities",
+      "matched_requirement_id": "req-2",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "quick_skim": []
+}
