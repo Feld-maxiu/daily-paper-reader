@@ -1,0 +1,357 @@
+{
+  "mode": "standard",
+  "generated_at": "2026-09-04T22:24:12.146629+00:00",
+  "stats": {
+    "mode": "standard",
+    "tag_count": 1,
+    "deep_divecandidates": 5,
+    "deep_cap": 6,
+    "deep_selected": 5,
+    "quick_candidates": 3,
+    "quick_skim_target": 11,
+    "quick_selected": 3
+  },
+  "deep_dive": [
+    {
+      "id": "2609.01567v2",
+      "source": "arxiv",
+      "title": "Selective Agent Guidance via Entropy: Learning Autonomous Policies from Imperfect VLM Teachers",
+      "abstract": "Vision-Language Models (VLMs) provide useful priors for interactive decision-making, but using them directly as policies is expensive and brittle: they must be queried at every step, do not improve from environment interaction, and can repeat systematic errors. We study how to learn a cheap autonomous policy from an online, expensive, and imperfect but informative VLM teacher. We propose SAGE (Selective Agent Guidance via Entropy), a framework that queries a VLM only when the learner is uncertain, executes the suggested action during training, and distills guidance into a lightweight Reinforcement Learning (RL) policy. Because VLM advice is not always reliable, SAGE can weight teacher-action distillation using environment-derived advantages rather than treating all suggestions as equally useful. Across sparse-reward visual reasoning and navigation tasks, SAGE learns policies that act without VLM guidance at evaluation time and improves over unguided RL in several environments, including settings where the learned policy exceeds its VLM teacher. The results show that selective guidance is most beneficial when the VLM can help the agent discover high-reward trajectories, and less useful when unguided exploration already succeeds or teacher actions do not lead to informative experience. SAGE also reduces VLM usage by prompting the teacher only on a fraction of training steps and requiring no VLM calls at deployment. Overall, our results suggest that VLMs don't need to be used as fixed policies to be useful; they can instead act as temporary, imperfect sources of guidance whose value is tested and internalized through interaction.",
+      "authors": [
+        "Giovanni Bonetta",
+        "Matteo Merler",
+        "Davide Zago",
+        "Rossella Cancelliere",
+        "Bernardo Magnini"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI",
+        "cs.CL",
+        "cs.LG"
+      ],
+      "published": "2026-09-01T17:33:41+00:00",
+      "link": "https://arxiv.org/pdf/2609.01567v2",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "RL policy learned from VLM teacher for autonomous decision-making",
+      "llm_evidence_cn": "从VLM教师学习强化学习策略用于自主决策",
+      "llm_evidence": "从VLM教师学习强化学习策略用于自主决策",
+      "canonical_evidence": "从VLM教师学习强化学习策略用于自主决策",
+      "llm_tldr_en": "The paper addresses costly, brittle direct VLM policies. SAGE selectively queries a VLM teacher based on learner uncertainty, distills guidance into a lightweight RL policy with environment-derived weighting. It learns cheap, robust autonomous policies from imperfect teachers.",
+      "llm_tldr_cn": "论文解决直接使用视觉语言模型作为交互决策策略代价高且脆弱的问题。提出SAGE框架，在学习者不确定时才查询VLM教师，在训练中执行建议动作，并将指导蒸馏到轻量级强化学习策略中；利用环境反馈对教师动作蒸馏进行加权。实验表明能够从不完美教师学习到廉价的自主策略。",
+      "llm_tldr": "论文解决直接使用视觉语言模型作为交互决策策略代价高且脆弱的问题。提出SAGE框架，在学习者不确定时才查询VLM教师，在训练中执行建议动作，并将指导蒸馏到轻量级强化学习策略中；利用环境反馈对教师动作蒸馏进行加权。实验表明能够从不完美教师学习到廉价的自主策略。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "reinforcement learning applied to autonomous agents",
+      "matched_requirement_id": "req-3",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2609.03201v1",
+      "source": "arxiv",
+      "title": "MemoryLACE: Memory Lifecycle-Aware Consolidation and Evidence Retrieval",
+      "abstract": "Long-term LLM agents must preserve information across interactions while distinguishing repeated evidence, historical states, updates, and unresolved contradictions. Existing textual memory systems retrieve semantically relevant memories efficiently but often leave these relationships implicit, whereas richer structured approaches model them through global graphs, hierarchical abstractions, or reflection at greater complexity. We introduce MemoryLACE (MemLACE), a lightweight memory framework that explicitly models the lifecycle of textual evidence through sparse merge, supersession, and contradiction relations while preserving atomic natural-language memories and their provenance. Rather than retrieving memories independently, MemLACE reconstructs relation-aware evidence units that expose current, historical, supporting, and conflicting evidence for downstream reasoning. Across BEAM and StructMemEval, using open-weight and proprietary LLM backbones, MemLACE achieves the highest overall performance in same-backbone comparisons while reducing end-to-end runtime on BEAM by 66.6% relative to Hindsight, the strongest reported reflective-memory baseline. Ablation studies identify lifecycle expansion and temporal awareness as the principal contributors to these gains. Together, the results demonstrate that explicitly modeling the local lifecycle of textual evidence is sufficient to substantially improve long-term memory reasoning without requiring comprehensive knowledge graphs or global reflection.",
+      "authors": [
+        "Meriem Yacoubi",
+        "Pia Schmidt",
+        "Nenad Petrovic",
+        "Ahmed Frikha",
+        "Martin Kirchhoff",
+        "Alois Knoll"
+      ],
+      "primary_category": "cs.CL",
+      "categories": [
+        "cs.CL",
+        "cs.LG"
+      ],
+      "published": "2026-09-02T22:33:51+00:00",
+      "link": "https://arxiv.org/pdf/2609.03201v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "explicitly models lifecycle of textual evidence for LLM agent memory",
+      "llm_evidence_cn": "显式建模文本证据生命周期以支持智能体记忆",
+      "llm_evidence": "显式建模文本证据生命周期以支持智能体记忆",
+      "canonical_evidence": "显式建模文本证据生命周期以支持智能体记忆",
+      "llm_tldr_en": "MemoryLACE introduces a lightweight framework that models merge, supersession, and contradiction relations among textual memories, enabling LLM agents to handle evolving evidence and reconstruct coherent memory with provenance.",
+      "llm_tldr_cn": "针对长时程 LLM 智能体需要区分重复证据、更新与矛盾的问题，提出 MemoryLACE 框架，通过稀疏的合并、取代和矛盾关系显式建模文本证据的生命周期。该框架在保留原子自然语言记忆及来源的同时，支持重建相关记忆集合，从而提升智能体对历史信息的利用效率与准确性。",
+      "llm_tldr": "针对长时程 LLM 智能体需要区分重复证据、更新与矛盾的问题，提出 MemoryLACE 框架，通过稀疏的合并、取代和矛盾关系显式建模文本证据的生命周期。该框架在保留原子自然语言记忆及来源的同时，支持重建相关记忆集合，从而提升智能体对历史信息的利用效率与准确性。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "memory mechanisms for intelligent agents",
+      "matched_requirement_id": "req-1",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2609.01281v1",
+      "source": "arxiv",
+      "title": "EmbodiedSkills: A Unified Framework for Orchestrating, Training, and Deploying VLA Agents",
+      "abstract": "Vision-language-action (VLA) models map visual observations and language instructions directly to robot actions, but long-horizon tasks require more than action prediction. An agent must coordinate perception, planning, execution, progress verification, and recovery as the physical state evolves. An action prediction or a model-generated skill decision does not, by itself, guarantee that the proposed operation is valid in the current state or that its outcome will be verified. We propose EmbodiedSkills, a unified framework that treats each skill decision as an execution proposal: the runtime checks its prerequisites before execution and verifies the outcome afterward. A shared executable-skill interface connects high-level skill selection, bounded low-level VLA execution, and post-action verification within a single agent loop. Because this interface remains fixed, low-level VLA policies can be replaced or adapted without changing the agent loop. The interface also records planning, execution, verification, and recovery events as structured trajectories, which provide supervision for individual components and can support optional online adaptation when interactive feedback is available. We instantiate EmbodiedSkills with Qwen3-VL and OpenPI/pi0.5 on RoboTwin 2.0 and LIBERO. Task-adapted low-level VLA policies achieve an average success rate of 86.20% across 50 RoboTwin 2.0 tasks and 97.40% across the four LIBERO suites. These results establish the execution performance of the task-adapted low-level VLA policies used in EmbodiedSkills. On four memory-dependent RMBench tasks, the same task-adapted execution approach achieves 12.5% average success. The framework provides a trainable and inspectable agent layer for turning these policies into closed-loop embodied systems.",
+      "authors": [
+        "Wei Wang",
+        "Wenqiao Zhang",
+        "Yutong Lin",
+        "Yuqian Yuan",
+        "Tianwei Lin",
+        "Jinhao Mao",
+        "Zhenxuan Fan",
+        "Mingjian Gao",
+        "Yang Dai",
+        "Wentong Li",
+        "Zheqi Lv",
+        "Zheng Dong",
+        "Yingjie Niu",
+        "Jiaqi Zhu",
+        "Jun Xiao",
+        "Chao Li",
+        "Yueting Zhuang"
+      ],
+      "primary_category": "cs.RO",
+      "categories": [
+        "cs.RO",
+        "cs.AI"
+      ],
+      "published": "2026-09-01T14:14:47+00:00",
+      "link": "https://arxiv.org/pdf/2609.01281v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "VLA agents coordinating perception planning and execution",
+      "llm_evidence_cn": "视觉语言动作智能体协调感知规划与执行",
+      "llm_evidence": "视觉语言动作智能体协调感知规划与执行",
+      "canonical_evidence": "视觉语言动作智能体协调感知规划与执行",
+      "llm_tldr_en": "EmbodiedSkills treats skill decisions as execution proposals with runtime prerequisite checks and outcome verification, providing a unified executable-skill interface for VLA agents to coordinate perception, planning, and recovery.",
+      "llm_tldr_cn": "视觉语言动作模型仅做动作预测难以应对长程任务中的感知、规划、执行验证与恢复。本文提出EmbodiedSkills统一框架，将每个技能决策视为执行提案，在运行时检查前置条件并验证执行结果，通过共享可执行技能接口连接高层选择与底层控制。该框架提升了VLA智能体在物理环境中的操作有效性与长程任务成功率，为机器人技能编排提供了系统方案。",
+      "llm_tldr": "视觉语言动作模型仅做动作预测难以应对长程任务中的感知、规划、执行验证与恢复。本文提出EmbodiedSkills统一框架，将每个技能决策视为执行提案，在运行时检查前置条件并验证执行结果，通过共享可执行技能接口连接高层选择与底层控制。该框架提升了VLA智能体在物理环境中的操作有效性与长程任务成功率，为机器人技能编排提供了系统方案。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "agent that processes multiple modalities",
+      "matched_requirement_id": "req-2",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2609.03753v1",
+      "source": "arxiv",
+      "title": "SimSkill: A Lifelong Learning AI Agent for Autonomous Mastery of Traffic Simulation",
+      "abstract": "As large language models (LLMs) become increasingly capable, the long-term value of AI systems depends not only on solving individual requests, but also on transforming experience and accumulated knowledge into durable, reusable competence. We introduce SimSkill, a self-evolving agent built around the Simulation of Urban MObility (SUMO) traffic simulator. SimSkill identifies capability gaps, generates and solves environment-grounded tasks, verifies solutions through an action--critic loop, and consolidates experience into episodic, procedural, and semantic memory without updating the backbone model. Through autonomous exploration, it builds a reusable library spanning the traffic-simulation workflow. We evaluate SimSkill on two held-out benchmarks with three backbone LLMs and independent artifact-based verification. SimSkill improves verified completion by up to 25 percentage points, while ablations show complementary contributions from procedural and semantic memory. Its benefits remain backbone- and budget-dependent: memory does not improve every model or uniformly reduce inference cost. More broadly, SimSkill illustrates a design paradigm in which natural language preserves and composes computational capabilities, while executable tools and code provide precise and reproducible execution. All code and experimental data are publicly available at https://github.com/qiliuchn/SimSkill-V1.",
+      "authors": [
+        "Qi Liu",
+        "Qinzheng Wang",
+        "Yiming Bie"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI",
+        "cs.MA"
+      ],
+      "published": "2026-09-03T12:23:56+00:00",
+      "link": "https://arxiv.org/pdf/2609.03753v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "consolidates experience into episodic, procedural, and semantic memory for lifelong learning",
+      "llm_evidence_cn": "将经验整合为情景、程序和语义记忆实现终身学习",
+      "llm_evidence": "将经验整合为情景、程序和语义记忆实现终身学习",
+      "canonical_evidence": "将经验整合为情景、程序和语义记忆实现终身学习",
+      "llm_tldr_en": "Introduces SimSkill, a self-evolving agent on SUMO that consolidates experience into episodic, procedural, and semantic memory to autonomously master traffic simulation workflows.",
+      "llm_tldr_cn": "针对AI系统难以将经验转化为持久能力的问题，本文提出SimSkill，一个围绕SUMO交通仿真器的自进化智能体。SimSkill识别能力缺口、生成并解决环境任务，通过行动-批判循环验证方案，并将经验整合为情景、程序和语义记忆，不更新骨干模型。实验表明其能自主构建可复用工作流库并在留出基准上提升表现。",
+      "llm_tldr": "针对AI系统难以将经验转化为持久能力的问题，本文提出SimSkill，一个围绕SUMO交通仿真器的自进化智能体。SimSkill识别能力缺口、生成并解决环境任务，通过行动-批判循环验证方案，并将经验整合为情景、程序和语义记忆，不更新骨干模型。实验表明其能自主构建可复用工作流库并在留出基准上提升表现。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "agent with memory augmentation for better performance",
+      "matched_requirement_id": "req-6",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2609.03834v1",
+      "source": "arxiv",
+      "title": "Semantic Bayesian World Models",
+      "abstract": "Knowledge graphs describe reality in crisp assertions, while the systems now consuming them, foundation models and autonomous agents, reason natively in probabilities. We argue that this mismatch is why the integration of language models and knowledge graphs remains a data-feeding pipeline rather than a unified reasoning architecture. We envision Semantic Bayesian World Models (SBWMs): a Web that describes the world not as a database of facts but as a shared, evolving fabric of beliefs over knowledge graphs, where ontological axioms constrain priors, observations update beliefs by Bayesian conditioning, and actions intervene upon the world. We work through what an agent gains from such a model: a home-security agent deciding whether the figure at the gate is a courier or a burglar, an actuarial estimate aggregated by entailment rather than by string frequency, a planning task that language models reliably fail, and the estimation of quantities that no document has ever stated. We then set out what the community must build to make them possible: belief annotation over RDF~1.2, probabilistic entailment regimes, semantic calibration layers, and protocols by which agents that have never met can exchange, and disagree over, calibrated beliefs.",
+      "authors": [
+        "Tommaso Soru"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI",
+        "cs.DB",
+        "cs.LG"
+      ],
+      "published": "2026-09-03T13:35:11+00:00",
+      "link": "https://arxiv.org/pdf/2609.03834v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "world model over probabilistic knowledge graphs for agent reasoning",
+      "llm_evidence_cn": "基于概率知识图谱的世界模型用于智能体推理",
+      "llm_evidence": "基于概率知识图谱的世界模型用于智能体推理",
+      "canonical_evidence": "基于概率知识图谱的世界模型用于智能体推理",
+      "llm_tldr_en": "The paper argues for Semantic Bayesian World Models as a shared evolving fabric of beliefs over knowledge graphs, with ontological priors and Bayesian updates, unifying LMs and KGs for agent reasoning.",
+      "llm_tldr_cn": "知识图谱以确定事实描述世界，而基础模型与自主智能体以概率方式推理，二者整合多停留在数据管道。本文提出语义贝叶斯世界模型：将Web视为知识图谱上的共享信念网络，通过本体公理约束先验、贝叶斯条件更新信念、行动干预世界。以家庭安防智能体为例展示其推理能力。该模型为语言模型与知识图谱的统一推理架构提供了蓝图，推动智能体世界建模发展。",
+      "llm_tldr": "知识图谱以确定事实描述世界，而基础模型与自主智能体以概率方式推理，二者整合多停留在数据管道。本文提出语义贝叶斯世界模型：将Web视为知识图谱上的共享信念网络，通过本体公理约束先验、贝叶斯条件更新信念、行动干预世界。以家庭安防智能体为例展示其推理能力。该模型为语言模型与知识图谱的统一推理架构提供了蓝图，推动智能体世界建模发展。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "language-based world model for agent reasoning",
+      "matched_requirement_id": "req-5",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "quick_skim": [
+    {
+      "id": "2608.31100v1",
+      "source": "arxiv",
+      "title": "S3Gym: Can LLMs Turn Self-Testing and Self-Judging into Self-Improvement?",
+      "abstract": "Large language models (LLMs) increasingly interact with external environments and accumulate substantial behavioral experience, yet existing agent benchmarks largely evaluate them as fixed policies. It therefore remains unclear whether an agent can actively test its behavior, judge the resulting experience, and use that experience to improve future decisions. We introduce \\textbf{S\\textsuperscript{3}Gym}, an interactive benchmark for evaluating LLM self-improvement through three coupled capabilities: \\textbf{Self-Testing}, \\textbf{Self-Judging}, and \\textbf{Self-Improvement}. S$^3$Gym separates permissive exploration from strict held-out evaluation and instantiates this protocol in seven text-based games with executable environment verifiers. We evaluate three pathways for incorporating interaction experience: direct History ICL, score-conditioned Summary Memory, and parameter Training.   Our experiments reveal that self-improvement is neither automatic nor uniform. Context-level experience improves performance for several model--game pairs, but the most effective pathway depends strongly on the task structure: summaries are beneficial when experience can be compressed into reusable strategic rules, yet often underperform raw history when success depends on precise, state-contingent information. Parameter training produces substantial gains on some tasks, but also exhibits unstable improvement and severe negative transfer on others. These findings show that recognizing successful actions is insufficient; agents must also transform feedback into executable and transferable policies. S$^3$Gym provides a unified framework for diagnosing this process and identifying the bottlenecks that prevent agents from translating interaction experience into reliable self-improvement.",
+      "authors": [
+        "Jiajun Shi",
+        "Siyuan Tao",
+        "Yuhao Wu",
+        "Zexuan Wang",
+        "Jingyuan Zhang",
+        "Jiaheng Liu",
+        "Xinping Lei",
+        "Xinrong Zhang",
+        "Siyuan Fang",
+        "Zhewen Tan",
+        "Tianle Cai",
+        "Junhao Fang",
+        "Jiameng Huang",
+        "Yueyang Wang",
+        "Jinkai Liu",
+        "Yuxuan Zhang",
+        "Jian Yang",
+        "Zhoujun Li",
+        "Shen Yan",
+        "Wenhao Huang",
+        "Ge Zhang"
+      ],
+      "primary_category": "cs.CL",
+      "categories": [
+        "cs.CL"
+      ],
+      "published": "2026-08-31T17:05:41+00:00",
+      "link": "https://arxiv.org/pdf/2608.31100v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "benchmark for LLM self-improvement in text-based games, RL-like experience",
+      "llm_evidence_cn": "文本游戏中LLM自我改进基准，类似RL经验",
+      "llm_evidence": "文本游戏中LLM自我改进基准，类似RL经验",
+      "canonical_evidence": "文本游戏中LLM自我改进基准，类似RL经验",
+      "llm_tldr_en": "S3Gym is an interactive benchmark that evaluates LLM self-improvement through self-testing, self-judging, and self-improvement in seven text-based games, separating exploration from held-out evaluation to assess experience-driven policy improvement.",
+      "llm_tldr_cn": "现有智能体基准大多将LLM视为固定策略，无法判断其能否主动自测、自评并利用经验改进。本文提出S3Gym交互基准，在七个带执行验证器的文本游戏中分离探索与严格评估，系统评价自测、自评、自改进三项耦合能力。实验揭示LLM将行为经验转化为策略改进的潜力与局限。该基准为智能体在交互环境中的自我提升研究提供了标准化测试平台。",
+      "llm_tldr": "现有智能体基准大多将LLM视为固定策略，无法判断其能否主动自测、自评并利用经验改进。本文提出S3Gym交互基准，在七个带执行验证器的文本游戏中分离探索与严格评估，系统评价自测、自评、自改进三项耦合能力。实验揭示LLM将行为经验转化为策略改进的潜力与局限。该基准为智能体在交互环境中的自我提升研究提供了标准化测试平台。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "reinforcement learning applied to autonomous agents",
+      "matched_requirement_id": "req-3",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2609.00474v2",
+      "source": "arxiv",
+      "title": "Exploring Collaboration between a language and a non-language agent",
+      "abstract": "LLMs are increasingly deployed as orchestrators that coordinate specialized subagents to solve complex tasks through natural language. However, in many important domains like game playing and robotics, the strongest available agents are not language models. Integrating non-language agents with LLMs would require \\emph{verbalization}: compressing their rich continuous representations into sparse textual summaries at each interaction step. To study whether verbalization constitutes a bottleneck, we introduce \\textsc{LLAMIA-Bench}, a suite of six diverse collaborative chess tasks spanning three facets: behavioral imitation, state assessment, and natural-language explanation. Each task instantiates a well-established chess problem that neither the LLM nor the chess engine can solve alone. To solve LLM collaboration with non-language agents, we introduce \\emph{latent state internalization}, which projects the subagent's continuous representations directly into the LLM's token stream as learned state tokens, with dynamic re-encoding as actions advance the environment state. Comparing internalization to verbalized integration, our experiments reveal a consistent \\emph{verbalization debt}: the performance gap widens throughout training and persists as the LLM scales from 4B to 14B parameters. A single 14B model, \\textsc{LLAMIA}, trained with latent state internalization, matches or exceeds task specialists and frontier models including GPT-5.1 with tool access across all benchmark tasks, and generalizes out-of-distribution where task-specific finetunes collapse",
+      "authors": [
+        "Harini S",
+        "Somesh Singh",
+        "Yaman K Singla",
+        "Rajiv Ratn Shah",
+        "David Doermann",
+        "Balaji Krishnamurthy"
+      ],
+      "primary_category": "cs.CL",
+      "categories": [
+        "cs.CL",
+        "cs.AI"
+      ],
+      "published": "2026-08-31T23:25:10+00:00",
+      "link": "https://arxiv.org/pdf/2609.00474v2",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "studies collaboration between language and non-language agents through verbalization",
+      "llm_evidence_cn": "通过语言化研究语言与非语言智能体的协作",
+      "llm_evidence": "通过语言化研究语言与非语言智能体的协作",
+      "canonical_evidence": "通过语言化研究语言与非语言智能体的协作",
+      "llm_tldr_en": "Proposes LLAMIA-Bench, six collaborative chess tasks to study whether verbalizing continuous non-language agent representations into text bottlenecks LLM collaboration.",
+      "llm_tldr_cn": "针对LLM与非语言智能体协作时需将连续表示口头化为稀疏文本的问题，本文提出LLAMIA-Bench，包含六项协作国际象棋任务。该基准从行为模仿、状态评估和自然语言解释三个维度考察语言化是否构成瓶颈，为评估混合智能体协作提供了新工具。",
+      "llm_tldr": "针对LLM与非语言智能体协作时需将连续表示口头化为稀疏文本的问题，本文提出LLAMIA-Bench，包含六项协作国际象棋任务。该基准从行为模仿、状态评估和自然语言解释三个维度考察语言化是否构成瓶颈，为评估混合智能体协作提供了新工具。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "agent that processes multiple modalities",
+      "matched_requirement_id": "req-2",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2609.03774v1",
+      "source": "arxiv",
+      "title": "Rethinking World Models for Safety-Critical Embodied Systems",
+      "abstract": "World models have progressed from compact latent dynamics to generative, controllable, and interactive simulators of embodied environments. However, high predictive likelihood and visual fidelity do not necessarily ensure that a model preserves the evidence required for safe decision-making. This perspective identifies three structural mismatches in current world modeling: likelihood versus risk, prediction versus intervention, and finite-horizon prediction versus accumulated consequences. We propose the Risk-Informed World Model (RIWM) as a decision-centric research direction for safety-critical embodied systems. RIWM organizes world modeling around consequences, intervention, epistemic uncertainty, and recoverability, and integrates four interdependent capabilities: decision-relevant representation, counterfactual reasoning, safety-critical episodic memory, and runtime safety assurance. It distinguishes physical, social, and operational consequences while using epistemic uncertainty to qualify the evidence supporting action. We further discuss open challenges in identifying consequential futures, validating counterfactual reasoning, maintaining revisable safety memories, translating learned consequences into executable constraints, and determining when evidence is sufficient to act. This perspective argues that future world models should move beyond predicting likely futures toward identifying which futures matter, revising judgments through experience, and recognizing when to act, revise, sense, defer, or abstain.",
+      "authors": [
+        "Kailang Ma",
+        "Heye Huang",
+        "Inhi Kim",
+        "Kitae Jang"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI",
+        "cs.RO"
+      ],
+      "published": "2026-09-03T12:44:44+00:00",
+      "link": "https://arxiv.org/pdf/2609.03774v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "risk-informed world model direction for safety-critical embodied agents",
+      "llm_evidence_cn": "面向安全关键具身智能体的风险知情世界模型方向",
+      "llm_evidence": "面向安全关键具身智能体的风险知情世界模型方向",
+      "canonical_evidence": "面向安全关键具身智能体的风险知情世界模型方向",
+      "llm_tldr_en": "This perspective identifies mismatches in current world models for safety-critical embodied systems and proposes the Risk-Informed World Model, organizing modeling around consequences, intervention, and uncertainty.",
+      "llm_tldr_cn": "针对当前世界模型在高风险具身系统中可能忽略安全决策所需证据的问题，提出风险知情世界模型研究方向，围绕后果、干预、认知不确定性和可恢复性组织建模。该视角为具身智能体的世界模型设计提供了安全导向的框架，对智能体推理环境具有借鉴意义。",
+      "llm_tldr": "针对当前世界模型在高风险具身系统中可能忽略安全决策所需证据的问题，提出风险知情世界模型研究方向，围绕后果、干预、认知不确定性和可恢复性组织建模。该视角为具身智能体的世界模型设计提供了安全导向的框架，对智能体推理环境具有借鉴意义。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "language-based world model for agent reasoning",
+      "matched_requirement_id": "req-5",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    }
+  ]
+}

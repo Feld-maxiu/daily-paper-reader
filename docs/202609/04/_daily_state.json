@@ -1,0 +1,137 @@
+{
+  "date": "20260904",
+  "date_label": "",
+  "generated_at": "2026-09-04 22:32:52 UTC",
+  "recommend_exists": true,
+  "run_count": 1,
+  "papers": [
+    {
+      "paper_id": "2609.01567v2",
+      "route": "202609/04/2609.01567v2-selective-agent-guidance-via-entropy-learning-autonomous-policies-from-imperfect-vlm-teachers",
+      "title": "Selective Agent Guidance via Entropy: Learning Autonomous Policies from Imperfect VLM Teachers",
+      "section": "deep",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 9.0,
+      "evidence": "从VLM教师学习强化学习策略用于自主决策",
+      "first_seen_at": "2026-09-04 22:32:52 UTC",
+      "updated_at": "2026-09-04 22:32:52 UTC"
+    },
+    {
+      "paper_id": "2609.03201v1",
+      "route": "202609/04/2609.03201v1-memorylace-memory-lifecycle-aware-consolidation-and-evidence-retrieval",
+      "title": "MemoryLACE: Memory Lifecycle-Aware Consolidation and Evidence Retrieval",
+      "section": "deep",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 9.0,
+      "evidence": "显式建模文本证据生命周期以支持智能体记忆",
+      "first_seen_at": "2026-09-04 22:32:52 UTC",
+      "updated_at": "2026-09-04 22:32:52 UTC"
+    },
+    {
+      "paper_id": "2609.01281v1",
+      "route": "202609/04/2609.01281v1-embodiedskills-a-unified-framework-for-orchestrating-training-and-deploying-vla-agents",
+      "title": "EmbodiedSkills: A Unified Framework for Orchestrating, Training, and Deploying VLA Agents",
+      "section": "deep",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 8.0,
+      "evidence": "视觉语言动作智能体协调感知规划与执行",
+      "first_seen_at": "2026-09-04 22:32:52 UTC",
+      "updated_at": "2026-09-04 22:32:52 UTC"
+    },
+    {
+      "paper_id": "2609.03753v1",
+      "route": "202609/04/2609.03753v1-simskill-a-lifelong-learning-ai-agent-for-autonomous-mastery-of-traffic-simulation",
+      "title": "SimSkill: A Lifelong Learning AI Agent for Autonomous Mastery of Traffic Simulation",
+      "section": "deep",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 8.0,
+      "evidence": "将经验整合为情景、程序和语义记忆实现终身学习",
+      "first_seen_at": "2026-09-04 22:32:52 UTC",
+      "updated_at": "2026-09-04 22:32:52 UTC"
+    },
+    {
+      "paper_id": "2609.03834v1",
+      "route": "202609/04/2609.03834v1-semantic-bayesian-world-models",
+      "title": "Semantic Bayesian World Models",
+      "section": "deep",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 8.0,
+      "evidence": "基于概率知识图谱的世界模型用于智能体推理",
+      "first_seen_at": "2026-09-04 22:32:52 UTC",
+      "updated_at": "2026-09-04 22:32:52 UTC"
+    },
+    {
+      "paper_id": "2608.31100v1",
+      "route": "202609/04/2608.31100v1-s3gym-can-llms-turn-self-testing-and-self-judging-into-self-improvement",
+      "title": "S3Gym: Can LLMs Turn Self-Testing and Self-Judging into Self-Improvement?",
+      "section": "quick",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 6.0,
+      "evidence": "文本游戏中LLM自我改进基准，类似RL经验",
+      "first_seen_at": "2026-09-04 22:32:52 UTC",
+      "updated_at": "2026-09-04 22:32:52 UTC"
+    },
+    {
+      "paper_id": "2609.00474v2",
+      "route": "202609/04/2609.00474v2-exploring-collaboration-between-a-language-and-a-non-language-agent",
+      "title": "Exploring Collaboration between a language and a non-language agent",
+      "section": "quick",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 6.0,
+      "evidence": "通过语言化研究语言与非语言智能体的协作",
+      "first_seen_at": "2026-09-04 22:32:52 UTC",
+      "updated_at": "2026-09-04 22:32:52 UTC"
+    },
+    {
+      "paper_id": "2609.03774v1",
+      "route": "202609/04/2609.03774v1-rethinking-world-models-for-safety-critical-embodied-systems",
+      "title": "Rethinking World Models for Safety-Critical Embodied Systems",
+      "section": "quick",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 6.0,
+      "evidence": "面向安全关键具身智能体的风险知情世界模型方向",
+      "first_seen_at": "2026-09-04 22:32:52 UTC",
+      "updated_at": "2026-09-04 22:32:52 UTC"
+    }
+  ]
+}

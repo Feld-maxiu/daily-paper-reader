@@ -41,17 +41,17 @@
 <section class="dpr-home-dashboard-card dpr-home-report-card">
   <div class="dpr-home-dashboard-header">
     <div>
-      <span class="dpr-home-dashboard-kicker">2026-09-03</span>
+      <span class="dpr-home-dashboard-kicker">2026-09-04</span>
       <h3 class="dpr-home-dashboard-title">今日汇总</h3>
     </div>
-    <strong class="dpr-home-dashboard-count">共 3 篇</strong>
+    <strong class="dpr-home-dashboard-count">共 8 篇</strong>
   </div>
   <dl class="dpr-home-dashboard-stats">
     <div class="dpr-home-dashboard-stat"><dt>累计更新</dt><dd>1 次</dd></div>
-    <div class="dpr-home-dashboard-stat"><dt>精读</dt><dd>3</dd></div>
-    <div class="dpr-home-dashboard-stat"><dt>速读</dt><dd>0</dd></div>
+    <div class="dpr-home-dashboard-stat"><dt>精读</dt><dd>5</dd></div>
+    <div class="dpr-home-dashboard-stat"><dt>速读</dt><dd>3</dd></div>
   </dl>
-  <p class="dpr-home-dashboard-body">最近更新：2026-09-03 22:59:55 UTC<br>状态：成功</p>
+  <p class="dpr-home-dashboard-body">最近更新：2026-09-04 22:32:52 UTC<br>状态：成功</p>
 </section>
 <section class="dpr-home-dashboard-card dpr-home-brief-card">
   <div class="dpr-home-dashboard-header">
@@ -62,8 +62,9 @@
     <strong class="dpr-home-dashboard-count">AI</strong>
   </div>
   <div class="dpr-home-dashboard-body">
-<p>今日共生成 3 篇推荐（精读 3 篇，速读 0 篇）</p>
-<p>精读：《LookStep: Efficient Vision-Language Navigation with Linguistic Foresight and Event Driven Memory》（9.0/10）, 《Discriminative World Models for Web Agents》（9.0/10）</p>
+<p>今日共生成 8 篇推荐（精读 5 篇，速读 3 篇）</p>
+<p>精读：《Selective Agent Guidance via Entropy: Learning Autonomous Policies from Imperfect VLM Teachers》（9.0/10）, 《MemoryLACE: Memory Lifecycle-Aware Consolidation and Evidence Retrieval》（9.0/10）</p>
+<p>速读：《S3Gym: Can LLMs Turn Self-Testing and Self-Judging into Self-Improvement?》（6.0/10）, 《Exploring Collaboration between a language and a non-language agent》（6.0/10）, 《Rethinking World Models for Safety-Critical Embodied Systems》（6.0/10）</p>
 <p>这些结果覆盖了当下较热的方向，建议先看精读区论文的关键问题与方法。</p>
   </div>
 </section>
@@ -73,12 +74,12 @@
       <span class="dpr-home-dashboard-kicker">今日累计</span>
       <h3 class="dpr-home-dashboard-title">精读推荐</h3>
     </div>
-    <strong class="dpr-home-dashboard-count">3 篇</strong>
+    <strong class="dpr-home-dashboard-count">5 篇</strong>
   </div>
   <div class="dpr-home-dashboard-body">
-<ul class="dpr-home-dashboard-paper-list"><li><span class="dpr-home-dashboard-paper-title" title="LookStep: Efficient Vision-Language Navigation with Linguistic Foresight and Event Driven Memory">LookStep: Efficient Vision-Language Navigation with Linguistic Foresight and Event Driven Memory</span></li><li><span class="dpr-home-dashboard-paper-title" title="Discriminative World Models for Web Agents">Discriminative World Models for Web Agents</span></li><li><span class="dpr-home-dashboard-paper-title" title="Scaffolding Foundation Models into Physical-World Agents Pushes the Frontier of Long-Horizon Navigation">Scaffolding Foundation Models into Physical-World Agents Pushes the Frontier of Long-Horizon Navigation</span></li></ul>
+<ul class="dpr-home-dashboard-paper-list"><li><span class="dpr-home-dashboard-paper-title" title="Selective Agent Guidance via Entropy: Learning Autonomous Policies from Imperfect VLM Teachers">Selective Agent Guidance via Entropy: Learning Autonomous Policies from Imperfect VLM Teachers</span></li><li><span class="dpr-home-dashboard-paper-title" title="MemoryLACE: Memory Lifecycle-Aware Consolidation and Evidence Retrieval">MemoryLACE: Memory Lifecycle-Aware Consolidation and Evidence Retrieval</span></li><li><span class="dpr-home-dashboard-paper-title" title="EmbodiedSkills: A Unified Framework for Orchestrating, Training, and Deploying VLA Agents">EmbodiedSkills: A Unified Framework for Orchestrating, Training, and Deploying VLA Agents</span></li></ul>
   </div>
-  <div class="dpr-home-dashboard-tags"><span class="dpr-home-dashboard-tag">agent-memory <strong>3</strong></span></div>
+  <div class="dpr-home-dashboard-tags"><span class="dpr-home-dashboard-tag">agent-memory <strong>5</strong></span></div>
 </section>
 <section class="dpr-home-dashboard-card dpr-home-skim-card">
   <div class="dpr-home-dashboard-header">
@@ -86,12 +87,12 @@
       <span class="dpr-home-dashboard-kicker">今日累计</span>
       <h3 class="dpr-home-dashboard-title">速读推荐</h3>
     </div>
-    <strong class="dpr-home-dashboard-count">0 篇</strong>
+    <strong class="dpr-home-dashboard-count">3 篇</strong>
   </div>
   <div class="dpr-home-dashboard-body">
-<p class="dpr-home-dashboard-empty">今日暂无推荐。</p>
+<ul class="dpr-home-dashboard-paper-list"><li><span class="dpr-home-dashboard-paper-title" title="S3Gym: Can LLMs Turn Self-Testing and Self-Judging into Self-Improvement?">S3Gym: Can LLMs Turn Self-Testing and Self-Judging into Self-Improvement?</span></li><li><span class="dpr-home-dashboard-paper-title" title="Exploring Collaboration between a language and a non-language agent">Exploring Collaboration between a language and a non-language agent</span></li><li><span class="dpr-home-dashboard-paper-title" title="Rethinking World Models for Safety-Critical Embodied Systems">Rethinking World Models for Safety-Critical Embodied Systems</span></li></ul>
   </div>
-
+  <div class="dpr-home-dashboard-tags"><span class="dpr-home-dashboard-tag">agent-memory <strong>3</strong></span></div>
 </section>
 </div>
 
