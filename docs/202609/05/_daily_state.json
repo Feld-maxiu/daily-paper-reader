@@ -1,0 +1,73 @@
+{
+  "date": "20260905",
+  "date_label": "",
+  "generated_at": "2026-09-05 21:55:53 UTC",
+  "recommend_exists": true,
+  "run_count": 1,
+  "papers": [
+    {
+      "paper_id": "2608.30067v1",
+      "route": "202609/05/2608.30067v1-how-do-world-models-and-policies-compose-in-llm-agents-a-joint-spectral-and-behavioral-account",
+      "title": "How do World Models and Policies Compose in LLM Agents? A Joint Spectral and Behavioral Account",
+      "section": "deep",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 8.0,
+      "evidence": "LLM智能体中的世界模型训练与策略训练",
+      "first_seen_at": "2026-09-05 21:55:53 UTC",
+      "updated_at": "2026-09-05 21:55:53 UTC"
+    },
+    {
+      "paper_id": "2609.00845v1",
+      "route": "202609/05/2609.00845v1-towards-generalizable-visually-grounded-exploration-of-household-devices",
+      "title": "Towards Generalizable Visually Grounded Exploration of Household Devices",
+      "section": "deep",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 8.0,
+      "evidence": "视觉语言模型用于智能体的视觉基础探索",
+      "first_seen_at": "2026-09-05 21:55:53 UTC",
+      "updated_at": "2026-09-05 21:55:53 UTC"
+    },
+    {
+      "paper_id": "2608.29483v1",
+      "route": "202609/05/2608.29483v1-geoagent-evaluating-vlm-geolocalization-through-embodied-navigation",
+      "title": "GeoAgent: Evaluating VLM Geolocalization Through Embodied Navigation",
+      "section": "quick",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 7.0,
+      "evidence": "多模态智能体在街景环境中导航以优化地理定位",
+      "first_seen_at": "2026-09-05 21:55:53 UTC",
+      "updated_at": "2026-09-05 21:55:53 UTC"
+    },
+    {
+      "paper_id": "2609.02459v1",
+      "route": "202609/05/2609.02459v1-civbench-a-long-horizon-benchmark-for-tool-mediated-agents-in-civilization-vi",
+      "title": "CivBench: A Long-Horizon Benchmark for Tool-Mediated Agents in Civilization VI",
+      "section": "quick",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 6.0,
+      "evidence": "叙述层将视觉游戏状态转化为结构化文本",
+      "first_seen_at": "2026-09-05 21:55:53 UTC",
+      "updated_at": "2026-09-05 21:55:53 UTC"
+    }
+  ]
+}

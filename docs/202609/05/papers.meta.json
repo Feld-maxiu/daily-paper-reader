@@ -1,0 +1,69 @@
+{
+  "label": "2026-09-05",
+  "date": "2026-09-05",
+  "generated_at": "2026-09-05T21:56:06",
+  "count": 4,
+  "papers": [
+    {
+      "paper_id": "202609/05/2608.30067v1-how-do-world-models-and-policies-compose-in-llm-agents-a-joint-spectral-and-behavioral-account",
+      "section": "deep",
+      "title_en": "How do World Models and Policies Compose in LLM Agents? A Joint Spectral and Behavioral Account",
+      "authors": "Ruize Xu, Xiao Yu, Yujin Tang, Chenming Shang, Nikhil Singh",
+      "date": "2026-08-30",
+      "pdf": "https://arxiv.org/pdf/2608.30067v1",
+      "score": "8.0",
+      "evidence": "LLM智能体中的世界模型训练与策略训练",
+      "tldr": "大型语言模型智能体需同时理解环境并掌握任务，但二者如何组合尚不清楚。本研究通过联合训练世界模型与策略，剖析参数更新发现二者几何互补：低秩世界模型更新与策略共享输入子空间但输出近正交。顺序训练带来更强鲁棒性与更广探索，且基于输入子空间的免训练合并与在线世界模型损失均提升性能。这表明世界知识与任务能力可互补学习，为后训练管道设计提供方向。",
+      "tags": "query:agent-memory",
+      "abstract_en": "How do LLM agents come to both understand environments they act in and master tasks set within them? Through controlled experiments combining world-model training (next-state prediction) and policy training (reward maximization), we investigate this question. We dissect the resulting models through their additive parameter updates. Geometrically, we find effective world-model updates are low-rank and share an input-feature subspace with policy updates while writing to nearly orthogonal output directions, whether trained separately or sequentially. However, we find that, in projection interventions, the sequential update induces more robustness than separate policy RL when removing the world model's leading input directions, suggesting that it has learned alternative input pathways. Behaviorally, we find the sequentially trained agent explores a wider range of states and actions. Based on this, we ask: does policy training preserve world knowledge as well as it could? We probe this with training-free merging built on the geometrically motivated input basis plus an online world-model loss during policy RL, and show both improve over the untreated baseline. Our findings suggest world knowledge and task-directed ability can be learned in geometrically complementary forms, and that future post-training pipelines should consider how best to engineer the interface between them.",
+      "source": "arxiv",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "paper_id": "202609/05/2609.00845v1-towards-generalizable-visually-grounded-exploration-of-household-devices",
+      "section": "deep",
+      "title_en": "Towards Generalizable Visually Grounded Exploration of Household Devices",
+      "authors": "Linhao Zheng, Zeming Liu, Wangke Chen, Li Zeng, Wanxiang Che, Heyan Huang, Yuhang Guo",
+      "date": "2026-09-01",
+      "pdf": "https://arxiv.org/pdf/2609.00845v1",
+      "score": "8.0",
+      "evidence": "视觉语言模型用于智能体的视觉基础探索",
+      "tldr": "现有具身智能体主要依赖人类标注轨迹的模仿学习，泛化能力受限；其核心挑战在于通用视觉接地探索，即无需手册或专门训练，通过主动将抽象知识落地到细粒度视觉可供性来操作新设备。针对现有基准忽略动态假设-交互-修正过程的问题，本文提出 VGEBench 基准，构建逻辑驱动状态机框架模拟多轮交互循环。实验表明，当前视觉语言模型在将语义知识转化为物理执行和维持长时状态追踪方面仍面临显著困难。该基准为评估和提升具身智能体的通用探索能力提供了重要测试平台。",
+      "tags": "query:agent-memory",
+      "abstract_en": "Recent advancements in Vision-Language Models (VLMs) have demonstrated impressive capabilities in static visual recognition and high-level semantic reasoning. However, current embodied exploration paradigms still heavily rely on imitation learning from human-annotated trajectories, which severely limits agents' generalization ability. The key bottleneck of realizing general autonomous embodied agents lies in Generalizable Visually Grounded Exploration: the ability to operate novel devices without manuals or specific training by actively grounding abstract world knowledge into fine-grained visual affordances. Yet, existing benchmarks fail to evaluate this capability: they generally rely on explicit documents and annotated trajectories, neglecting the dynamic Hypothesis-Interaction-Refinement process essential for functional device operation. To bridge this gap, we introduce VGEBench, a comprehensive benchmark designed to evaluate the generalizable visually grounded exploration capabilities of VLMs. Unlike static datasets, we construct a Logic-Driven State Machine framework. This framework simulates multi-turn interaction loops, compelling agents to achieve goals by active visual perception and feedback-driven correction. Experimental results demonstrate that existing VLMs face significant challenges in translating semantic knowledge into physical execution and maintaining long-horizon state tracking.",
+      "source": "arxiv",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "paper_id": "202609/05/2608.29483v1-geoagent-evaluating-vlm-geolocalization-through-embodied-navigation",
+      "section": "quick",
+      "title_en": "GeoAgent: Evaluating VLM Geolocalization Through Embodied Navigation",
+      "authors": "Arka Mukherjee, Soham Roy, Kartikeya Trivedi, Shreya Ghosh",
+      "date": "2026-08-30",
+      "pdf": "https://arxiv.org/pdf/2608.29483v1",
+      "score": "7.0",
+      "evidence": "多模态智能体在街景环境中导航以优化地理定位",
+      "tldr": "现代视觉语言模型在静态图像地理定位上已超过人类，但真实任务需自主探索环境，现有研究多局限于检索分类与预测。GeoAgent基准引入具身导航，要求智能体在街景环境中自主移动、收集多视角观察并顺序推理后再定位。实验表明导航能显著提升定位精度，然而模型在区域级模式识别、发达/发展中地区偏差以及错误先验自纠上表现不佳。该工作确立了具身地理空间推理的新挑战，并公开代码与环境以供研究。",
+      "tags": "query:agent-memory",
+      "abstract_en": "Modern Vision-Language Models (VLMs) perform well above the human baseline in image geolocalization, a task critically important in disaster response, OSINT verification, and location privacy. However, most efforts to study AI behavior on the task remain limited to static image-based retrieval, classification, and predictions. We argue that faithful recreation of the task should involve embodied navigation, where a multimodal agent autonomously explores its surroundings to gather observations before submitting a prediction. To this end, we introduce \\textbf{GeoAgent}, an agentic environment-based benchmark that requires agents to navigate Street View environments to refine their geolocalization through sequential reasoning. Our analysis shows that modern VLMs struggle to discern regional patterns while succeeding at country- and continent-level predictions. When compared to static image-based baselines, agentic navigation significantly improves accuracy across established metrics. We also note severe bias in a developed/developing region context across frontier model architectures and poor self-improvement capabilities given incorrect priors. Overall, our work establishes the challenges of embodied navigation and geospatial reasoning. We publicly release our code and the GeoAgent environment: https://geoagent-benchmark.github.io",
+      "source": "arxiv",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "paper_id": "202609/05/2609.02459v1-civbench-a-long-horizon-benchmark-for-tool-mediated-agents-in-civilization-vi",
+      "section": "quick",
+      "title_en": "CivBench: A Long-Horizon Benchmark for Tool-Mediated Agents in Civilization VI",
+      "authors": "Austin Tudor David Andrews, Liam Wilkinson, Jamie Heagerty, Harry Coppock, Jakob Nicolaus Foerster, Rui Ponte Costa",
+      "date": "2026-09-02",
+      "pdf": "https://arxiv.org/pdf/2609.02459v1",
+      "score": "6.0",
+      "evidence": "叙述层将视觉游戏状态转化为结构化文本",
+      "tldr": "长周期、工具中介环境中语言模型智能体的评估缺乏可操作的开放基准。本文提出CivBench，在文明VI中通过MCP暴露76个工具，单回合超过300轮并产生数千次工具调用。在23次可接受运行中，尽管有剧本指导每20回合查询胜利进度，智能体平均每30至75回合才查询，且7/20次失败前20回合内未查询；自身规划承诺执行率仅48.2%至65.8%。该基准与PMR、RAG@10指标揭示了指令下的执行偏差，并已开源。",
+      "tags": "query:agent-memory",
+      "abstract_en": "We present CivBench, an open-source benchmark for evaluating language model agents in long-horizon, tool-mediated environments through the Model Context Protocol (MCP). A single episode spans 300+ turns and produces thousands of tool calls over a large action space, requiring sustained planning, state monitoring, and execution under partial observability. The environment exposes 76 MCP tools and a narration layer that converts visual game state into structured text.   We use CivBench to characterise agent behaviour across four model families in 23 admissible runs. The sample is a pilot, not a model ranking: aggregate outcomes do not reliably discriminate models at this scale. Instead, we introduce two interface-level metrics that the environment makes measurable: Proactive Monitoring Rate (PMR), capturing whether agents actively query latent strategic state, and RAG@10, capturing whether commitments stated in structured planning reflections are executed within ten subsequent turns.   Across runs we observe two consistent patterns under a shared playbook protocol. Agents under-monitor strategically relevant state that is available but requires explicit querying: despite playbook guidance to query victory progress every 20 turns, agents do so only every 30 to 75 turns, and in 7 of 20 detectable defeats they failed to query within the 20 turn warning window before game end. Agents also frequently fail to execute near-term commitments stated in their own planning reflections (RAG@10 between 48.2% and 65.8% across models). Both patterns arise despite tool access and explicit guidance, and we interpret them as deviations under instruction rather than absences of capability.   We release the environment, scenarios, logs, metrics, and analysis pipeline at https://github.com/lmwilki/civ6-mcp",
+      "source": "arxiv",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "errors": []
+}
