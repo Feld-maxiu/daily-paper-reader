@@ -1,0 +1,69 @@
+{
+  "label": "2026-09-06",
+  "date": "2026-09-06",
+  "generated_at": "2026-09-06T21:38:55",
+  "count": 4,
+  "papers": [
+    {
+      "paper_id": "202609/06/2608.30428v1-lies-we-can-see-joint-verbal-and-non-verbal-deception-by-vlm-agents-in-embodied-social-interactions",
+      "section": "deep",
+      "title_en": "Lies We Can See: Joint Verbal and Non-Verbal Deception by VLM Agents in Embodied Social Interactions",
+      "authors": "Jaewoo Ahn, Junseo Kim, Hyunseo Kim, Heeseung Yun, Jaehyeon Son, Zsolt Kira, Gunhee Kim",
+      "date": "2026-08-31",
+      "pdf": "https://arxiv.org/pdf/2608.30428v1",
+      "score": "9.0",
+      "evidence": "用于VLM智能体的3D多模态Among Us沙盒，支持言语与非言语欺骗",
+      "tldr": "现有社会推理欺骗测试平台仅支持纯文本且配置固定，无法涵盖非语言感知运动通道。本文提出3D多模态 Among Us 沙盒 MineAmongUs，使冒充者智能体需通过联合语言和非语言行为欺骗船员；同时提出可配置 VLM 智能体框架 ARIA 及基于欺骗分类学的原子/弧级注释方案。实验表明，VLM 智能体确实使用联合欺骗策略，且非语言通道在消融和跨模型评估中贡献更关键。该工作为具身 VLM 智能体对齐与安全研究开辟新路径。",
+      "tags": "query:agent-memory",
+      "abstract_en": "Strategic deception by LLM and VLM agents has emerged as a central AI alignment and safety concern. Social-deduction games (where each player holds a hidden role and communicates with others to deduce identities) serve as the canonical testbed, particularly in multi-agent settings. Existing testbeds, however, are text-only and run on a single fixed agent configuration, missing the non-verbal sensorimotor channels treated as core by deception taxonomies and leaving it ambiguous whether an observed behavior reflects the underlying model or the surrounding harness. We introduce MineAmongUs, a 3D multimodal Among Us sandbox where imposter agents must deceive crewmates through joint verbal and non-verbal action. We also propose ARIA, a configurable VLM-agent harness that exposes five cognitive-component ablation axes; and an atom- and arc-level annotation scheme grounded in deception taxonomies and operationalized at scale by an LLM-as-a-Judge reaching near-human atom-labeling agreement. Empirical results show that VLM agents pursue imposter wins through joint verbal and non-verbal deception, with non-verbal channels emerging as the more decisive winning contributors across both harness ablation and cross-VLM evaluation. Taken together, our work opens a new path for embodied VLM-agent alignment research.",
+      "source": "arxiv",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "paper_id": "202609/06/2608.30760v1-practice-from-experience-to-expertise-in-self-evolving-embodied-agents",
+      "section": "deep",
+      "title_en": "PRACTICE: From Experience to Expertise in Self-Evolving Embodied Agents",
+      "authors": "Ziyi Bai, Siqi Li, Tinglei Huang, Börje F. Karlsson",
+      "date": "2026-08-31",
+      "pdf": "https://arxiv.org/pdf/2608.30760v1",
+      "score": "9.0",
+      "evidence": "技能学习器从过去交互轨迹发现并维护持久技能库作为记忆",
+      "tldr": "具身智能体在持续交互中提升技能仍面临挑战，现有基于经验的方法依赖手动提示流程，难以从多样经验中更新技能。PRACTICE 训练技能学习者从历史轨迹中发现和维护技能库，通过结构化批量编辑增删改并合并技能，同时冻结任务执行器。采用两阶段课程与在线技能编辑蒸馏，学习无效模式与恢复策略。在 EB-ALFRED 和 EB-Habitat 上，PRACTICE 持续提升多个冻结执行器并超越最强基于经验基线。",
+      "tags": "query:agent-memory",
+      "abstract_en": "Recent studies have shown that multimodal large language models (MLLMs) can serve as embodied agents, translating language instructions and visual observations into executable plans. However, building agents that can continually improve through interaction and rapidly adapt to their environments remains challenging. Summing up experience from past interaction trajectories provides a promising solution, but existing experience-based methods often rely on manually designed prompting workflows to extract and update skills. Such fixed procedures may struggle to learn updated skills from new and diverse experiences. We introduce PRACTICE, which trains a skill learner to discover and maintain a persistent skill library from past interaction trajectories while keeping the task executor frozen. Given the historical accumulated skills and incoming trajectories, the skill learner produces structured batch-edits that add, refine, merge, or remove skills, and then hierarchical consolidate all collected edits into a consistent updated skill library. We train the learner with a two-stage curriculum. First, it learns basic skill generation and library maintenance from oracle trajectories. Then, by contrasting successful and failed trajectories from heterogeneous executors on the same tasks, it learn to identify invalid action patterns and recovery strategies. Finally, we apply online skill-edit distillation to align the skill learner with a stronger teacher on its current edit distribution to further improves the policy. Experiments demonstrate that a compact skill learner delivers consistent performance improvements across successive library-update rounds for multiple frozen executors. On EB-ALFRED and EB-Habitat, PRACTICE further outperforms the strongest experience-based baselines. Project resources are publicly available at: https://baai-agents.github.io/PRACTICE",
+      "source": "arxiv",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "paper_id": "202609/06/2608.29967v1-training-free-action-correction-for-vla-model-failures-via-language-feedback",
+      "section": "deep",
+      "title_en": "Training-Free Action Correction for VLA Model Failures via Language Feedback",
+      "authors": "Owen Kwon, Pablo Ortega-Kral, Arthur Bucker, Jean Oh",
+      "date": "2026-08-30",
+      "pdf": "https://arxiv.org/pdf/2608.29967v1",
+      "score": "8.0",
+      "evidence": "视觉-语言-动作模型通过语言反馈校正；处理多模态",
+      "tldr": "VLA模型虽具强语义理解，但部署中常出现执行错位失败，且能否无重训练纠正尚不明确。针对此问题，提出CorrectVLA，将任务级语言纠正转化为加性动作幅度调整，无需修改策略权重。在仿真和真实机器人实验中，该方法恢复执行错位失败，在环境偏移下从接近崩溃恢复到接近完美成功，并泛化到不同物体位置与身份。基于LIBERO-90失败模式分类，明确该方法仅适用于策略具备战略正确性但动作幅度失准的场景，为推理时纠正划定了实用边界。",
+      "tags": "query:agent-memory",
+      "abstract_en": "Vision-Language-Action (VLA) models demonstrate strong semantic understanding yet exhibit systematic failures during deployment. The conditions under which these failures occur, and whether they can be corrected without retraining, remain poorly understood. In this paper, we take steps toward addressing this gap. We present CorrectVLA, a framework that translates task-level natural language corrections into additive action magnitude adjustments without modifying policy weights. A human provides a single task-level correction, applied uniformly across all rollouts without per-episode intervention. In simulation, CorrectVLA recovers execution misalignment failures across both in-distribution and OOD tasks. In real-robot experiments on a UFactory xArm7 under environment shift, CorrectVLA restores near-perfect success where the base policy almost entirely breaks down, generalizing across object locations and identities. Through a taxonomy of failure modes on LIBERO-90, we find that execution misalignment failures, where the policy reaches the correct target but miscalibrates action magnitudes, represent the correctable subset, while other failure modes where semantic comprehension itself breaks down are not amenable to this approach. The approach succeeds when policies possess strategic correctness and fails when fundamental comprehension is absent, establishing a practical operational boundary for inference-time correction.",
+      "source": "arxiv",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "paper_id": "202609/06/2609.02322v1-what-is-worth-representing-representational-empowerment-for-continual-model-construction",
+      "section": "quick",
+      "title_en": "What Is Worth Representing? Representational Empowerment for Continual Model Construction",
+      "authors": "Fei Dai, Hanqi Zhou, Alison Gopnik, Charley Wu",
+      "date": "2026-09-02",
+      "pdf": "https://arxiv.org/pdf/2609.02322v1",
+      "score": "7.0",
+      "evidence": "维护可重用表征元素的持久库作为智能体记忆",
+      "tldr": "面对开放世界建模，首要问题并非拟合参数或因果结构，而是决定哪些内容值得被表示。本文提出表征赋权（RepEmp），以候选元素未来扩展建模与规划能力的程度进行评分，从而指导持续模型构建中表征库的维护。在因果学习、迁移和开放词汇规划三个实验中，RepEmp 比信息增益等基线更贴合人类抽象粒度选择，并显著提升结构恢复、跨任务迁移与符号库泛化。该研究确立了有界资源下如何决定构建、保留与重用表征要素的核心原则。",
+      "tags": "query:agent-memory",
+      "abstract_en": "The first problem of modeling the world is not just estimating the right parameters or causal structure, but deciding what should be represented at all. We frame this problem as continual model construction: an agent maintains an environment-specific model M of an inaccessible world W and curates a persistent library L of reusable representational elements across environments. We propose Representational Empowerment (RepEmp) to score candidate elements by how much they expand the agent's future capacity to model and plan, complementing the classic definition of empowerment, but redefined as control over internal representations instead of external states. We realize the framework as a hierarchical Curator-Actor architecture and test it across three experiments. In a closed-vocabulary causal-learning task, human participants construct causal models at varying abstraction granularities to maximize goal reachability rather than fidelity to the world, a signature better predicted by RepEmp than by information-gain alternatives. Matched simulations reveal that RepEmp-guided construction contributes more than exploration to sufficient structure recovery and cross-task transfer. Finally, in an open-vocabulary planning domain, an LLM-augmented Curator builds more compact symbolic libraries, which also generalize better than baselines. Ablating RepEmp eliminates these benefits. Together, these results identify RepEmp as a key principle for continual model construction: deciding what to build, retain, and reuse under bounded resources.",
+      "source": "arxiv",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "errors": []
+}
