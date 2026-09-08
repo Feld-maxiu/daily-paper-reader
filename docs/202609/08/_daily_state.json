@@ -1,0 +1,89 @@
+{
+  "date": "20260908",
+  "date_label": "",
+  "generated_at": "2026-09-08 22:53:14 UTC",
+  "recommend_exists": true,
+  "run_count": 1,
+  "papers": [
+    {
+      "paper_id": "2609.01466v1",
+      "route": "202609/08/2609.01466v1-parsing-the-stream-a-live-trace-model-for-long-horizon-agents-and-their-observers",
+      "title": "Parsing the Stream: A Live Trace Model for Long-Horizon Agents and Their Observers",
+      "section": "deep",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 9.0,
+      "evidence": "实时跟踪模型将事件账本折叠为类型化运行状态以适应智能体有限上下文",
+      "first_seen_at": "2026-09-08 22:53:14 UTC",
+      "updated_at": "2026-09-08 22:53:14 UTC"
+    },
+    {
+      "paper_id": "2609.04802v1",
+      "route": "202609/08/2609.04802v1-linguistic-trajectory-encoding-for-efficient-long-horizon-spatial-memory-in-embodied-agents",
+      "title": "Linguistic Trajectory Encoding for Efficient Long-Horizon Spatial Memory in Embodied Agents",
+      "section": "deep",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 9.0,
+      "evidence": "语言轨迹编码压缩动态对象运动，实现可语言查询的空间记忆",
+      "first_seen_at": "2026-09-08 22:53:14 UTC",
+      "updated_at": "2026-09-08 22:53:14 UTC"
+    },
+    {
+      "paper_id": "2609.04894v1",
+      "route": "202609/08/2609.04894v1-from-language-models-to-world-acting-systems-progress-and-limits-of-agentic-ai-across-digital-social-virtual-and-physical-environments",
+      "title": "From Language Models to World-Acting Systems: Progress and Limits of Agentic AI across Digital, Social, Virtual, and Physical Environments",
+      "section": "deep",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 8.0,
+      "evidence": "综述分析LLM智能体的时间持久性与状态保持",
+      "first_seen_at": "2026-09-08 22:53:14 UTC",
+      "updated_at": "2026-09-08 22:53:14 UTC"
+    },
+    {
+      "paper_id": "2609.05133v1",
+      "route": "202609/08/2609.05133v1-a-schema-bounded-language-model-for-refining-robot-policies-without-destabilizing-local-learning",
+      "title": "A Schema Bounded Language Model for Refining Robot Policies Without Destabilizing Local Learning",
+      "section": "quick",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 7.0,
+      "evidence": "在去中心化机器人中结合LLM策略智能体、UCB赌博机和双重DQN",
+      "first_seen_at": "2026-09-08 22:53:14 UTC",
+      "updated_at": "2026-09-08 22:53:14 UTC"
+    },
+    {
+      "paper_id": "2609.05171v1",
+      "route": "202609/08/2609.05171v1-weagent-mmgenedit-a-full-stack-recipe-for-multimodal-agentic-image-generation-and-editing",
+      "title": "WeAgent-MMGenEdit: A Full-Stack Recipe for Multimodal Agentic Image Generation and Editing",
+      "section": "quick",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 7.0,
+      "evidence": "提出多模态智能体图像生成与编辑的全栈方案，包含检索与视觉验证",
+      "first_seen_at": "2026-09-08 22:53:14 UTC",
+      "updated_at": "2026-09-08 22:53:14 UTC"
+    }
+  ]
+}
