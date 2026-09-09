@@ -1,0 +1,418 @@
+{
+  "mode": "standard",
+  "generated_at": "2026-09-09T22:06:15.781222+00:00",
+  "stats": {
+    "mode": "standard",
+    "tag_count": 1,
+    "deep_divecandidates": 8,
+    "deep_cap": 6,
+    "deep_selected": 6,
+    "quick_candidates": 4,
+    "quick_skim_target": 11,
+    "quick_selected": 4
+  },
+  "deep_dive": [
+    {
+      "id": "2609.05576v1",
+      "source": "arxiv",
+      "title": "EnvCraft: Synthesizing Executable Environments in Agentic RL for Claw-like Agent",
+      "abstract": "The paradigm of LLMs has rapidly shifted from passive language interfaces to autonomous Claw-like agents that execute long-horizon tasks across stateful workspaces. While Agentic Reinforcement Learning (Agentic RL) provides a promising path to optimize these agents, its scaling is heavily bottlenecked by the severe scarcity of interactive training environments. Existing synthetic environments are strictly limited to tool-calling endpoints, rendering them insufficient for accommodating the end-to-end real-world demands of claw-like agents. To bridge this gap, we introduce EnvCraft, an automated framework for synthesizing executable environments and scalable training data. Specifically, EnvCraft employs an environment synthesis engine to build sandbox-isolated workspaces, alongside a topology-aware data generation engine to produce coherent task trajectories. Overall, we synthesize 139 interactive environments comprising approximately 20K complex tasks for Agentic RL training. Experiments on Qwen3/3.5 models (8B-32B) show that our method yields gains of up to +11.9% on Claw-style benchmarks and +8.0% on general tool-use benchmarks, with concurrent reductions in inference token cost. The results confirm that synthesized executable environments provide robust and generalizable learning signals for training.",
+      "authors": [
+        "Yirong Zeng",
+        "Shen You",
+        "Jinhang Feng",
+        "Yufei Liu",
+        "Xiao Ding",
+        "Yutai Hou",
+        "Hao Cong",
+        "Yuxian Wang",
+        "Wu Ning",
+        "Wang Xu",
+        "Bibo Cai"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI",
+        "cs.CL"
+      ],
+      "published": "2026-09-04T10:13:41+00:00",
+      "link": "https://arxiv.org/pdf/2609.05576v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "Synthesizes executable environments for agentic reinforcement learning of claw-like agents",
+      "llm_evidence_cn": "为爪式智能体的智能体强化学习合成可执行环境",
+      "llm_evidence": "为爪式智能体的智能体强化学习合成可执行环境",
+      "canonical_evidence": "为爪式智能体的智能体强化学习合成可执行环境",
+      "llm_tldr_en": "Proposes EnvCraft, an automated framework for synthesizing executable environments and training data to scale agentic RL for autonomous claw-like agents beyond tool-calling endpoints.",
+      "llm_tldr_cn": "论文针对智能体强化学习（Agentic RL）因交互训练环境稀缺而难以扩展的问题，提出EnvCraft框架。该框架自动合成可执行环境和规模化训练数据，突破了现有合成环境仅支持工具调用端点的局限。实验表明EnvCraft能支撑爪式智能体的端到端长时程任务训练，为Agentic RL提供了可扩展的环境解决方案。",
+      "llm_tldr": "论文针对智能体强化学习（Agentic RL）因交互训练环境稀缺而难以扩展的问题，提出EnvCraft框架。该框架自动合成可执行环境和规模化训练数据，突破了现有合成环境仅支持工具调用端点的局限。实验表明EnvCraft能支撑爪式智能体的端到端长时程任务训练，为Agentic RL提供了可扩展的环境解决方案。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "reinforcement learning applied to autonomous agents",
+      "matched_requirement_id": "req-3",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2609.06647v1",
+      "source": "arxiv",
+      "title": "SerenAI: State-transition system inspired by text-based world AI models",
+      "abstract": "Although professional workflows leverage large language models widely, the interpretation for auditing unconstrained free-text generation is usually intractable if such generation demands legal, operational or financial workflow. We hereby demonstrate a text based system called SerenAI - inspired by world-models, it is a state transition system that outputs verifiable predictions rather than merely text: Provided with a description of the environment, state, and actions, the generated output contains 4 items: causal deltas that causally effect the given state, a next state that can logically follow from the given state and action, a validity reward, and a termination signal. For the released proto-model, we employ 2 steps of adaptation training, namely parameter efficient fine-tuning followed by verifier based RL over 50,000 exampled cause and effects in 12 environments spanning 10 reasoning domains. Compared to an initial internal evaluation of an 8B open-weight baseline, SerenAI increased JSON validity from 85.0% to 93.2%, schema validity from 55.0% to 84.0%, exact structured-output match from 0.0% to 41.5%, causal-delta exact match from 0.0% to 41.5%, resulting-state exact match from 0.0% to 42.0%, reward exact match from 1.0% to 80.5%, and termination exact match from 38.0% to 81.5%. These support the narrower claim that verifier-compatible adaptation can improve structured transition prediction. They do not yet establish legal-grade reliability. Accordingly, the paper also specifies a validation protocol for evidence-grounded legal workflows, calibration, human oversight, and sovereign on-premise deployment.",
+      "authors": [
+        "Elvin Babayev",
+        "Artem Sinitsa",
+        "Arash Hajisharifi",
+        "Kabir Bakhshaei"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI",
+        "cs.CL"
+      ],
+      "published": "2026-09-06T14:57:18+00:00",
+      "link": "https://arxiv.org/pdf/2609.06647v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "text-based world model inspired state transition system outputs verifiable next states, causal deltas, validity reward",
+      "llm_evidence_cn": "受文本世界模型启发的状态转移系统，输出可验证的下一状态、因果增量、有效性奖励",
+      "llm_evidence": "受文本世界模型启发的状态转移系统，输出可验证的下一状态、因果增量、有效性奖励",
+      "canonical_evidence": "受文本世界模型启发的状态转移系统，输出可验证的下一状态、因果增量、有效性奖励",
+      "llm_tldr_en": "SerenAI is a text-based state transition system inspired by world models that, given environment description, state, and actions, generates causal deltas, next state, validity reward, and termination signal, directly supporting text-based environment simulation.",
+      "llm_tldr_cn": "该论文针对专业工作流中自由文本生成难以审计的问题，提出文本世界模型启发的状态转移系统SerenAI。给定环境描述、状态和动作，模型输出因果增量、逻辑下一状态、有效性奖励和终止信号，而非仅生成文本。释放的原型模型采用两步适应训练，旨在提供可验证、可审计的预测。该工作直接对应于基于文本的世界模型环境仿真需求，具有高专注度。",
+      "llm_tldr": "该论文针对专业工作流中自由文本生成难以审计的问题，提出文本世界模型启发的状态转移系统SerenAI。给定环境描述、状态和动作，模型输出因果增量、逻辑下一状态、有效性奖励和终止信号，而非仅生成文本。释放的原型模型采用两步适应训练，旨在提供可验证、可审计的预测。该工作直接对应于基于文本的世界模型环境仿真需求，具有高专注度。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "text-based world model for environment simulation",
+      "matched_requirement_id": "req-4",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2609.07471v1",
+      "source": "arxiv",
+      "title": "MEMO: Multimodal Evidence Memory Organization for Long-Horizon LLM Agents",
+      "abstract": "Long-running LLM agents rely on external memory to store and reuse information beyond a single context window, yet there is a fundamental tension between the continuous accumulation of interaction trajectories and the limited context capacity. The key challenge in agent memory is therefore not only to retrieve relevant records, but also to select necessary evidence under a given budget and organize it in an appropriate modality. Existing memory readout methods mainly use textual or visual forms. Text preserves high fidelity, but its linear token representation makes contents with different importance compete for the limited context at nearly uniform unit cost. Visual readout renders text into document-like images, which can use two-dimensional layouts to expose structure and emphasize key information, but it may lose fine-grained details during rendering and compression. To address this issue, we propose MEMO, a multimodal evidence memory organization method for LLM agents. MEMO first uses a trained evidence extractor to select relevant memory blocks and form evidence units with source information and presentation requirements. A trained query-conditioned memory manager assigns each unit to a textual, visual, or dual-channel carrier and selects a layout that matches the evidence structure. A deterministic memory construction module then generates the textual package and visual pages. The memory manager is trained with feedback from an offline reader that measures the utility of the guided memory plan, so that retention and presentation decisions align with downstream usage. We evaluate MEMO on four benchmarks, HotpotQA, 2WikiMultiHopQA, LoCoMo, and ALFWorld, with multiple reader backends. The results show that MEMO presents memory more efficiently with fewer memory tokens, improves downstream task performance, and builds more effective working memory under constrained budgets.",
+      "authors": [
+        "Xian Gao",
+        "Jinpeng Wang",
+        "Jiacheng Ruan",
+        "Guangyu Cao",
+        "Ting Liu",
+        "Yuzhuo Fu"
+      ],
+      "primary_category": "cs.CL",
+      "categories": [
+        "cs.CL"
+      ],
+      "published": "2026-09-07T13:24:40+00:00",
+      "link": "https://arxiv.org/pdf/2609.07471v1",
+      "tags": [
+        "keyword:agent-memory"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "Multimodal evidence memory organization for long-horizon LLM agents",
+      "llm_evidence_cn": "长时程LLM智能体的多模态证据记忆组织",
+      "llm_evidence": "长时程LLM智能体的多模态证据记忆组织",
+      "canonical_evidence": "长时程LLM智能体的多模态证据记忆组织",
+      "llm_tldr_en": "Proposes MEMO, a multimodal memory organization method that selects necessary evidence under budget and organizes it in appropriate modality (text or visual) to improve long-horizon LLM agents.",
+      "llm_tldr_cn": "论文针对长时程LLM智能体外部记忆持续增长与上下文容量有限之间的张力，提出多模态证据记忆组织方法MEMO。该方法在预算约束下选择必要证据，并根据内容特点以文本或视觉形式组织，缓解了线性文本表征导致的上下文竞争。实验验证了其在长时程任务中的有效性，为智能体记忆管理提供了新思路。",
+      "llm_tldr": "论文针对长时程LLM智能体外部记忆持续增长与上下文容量有限之间的张力，提出多模态证据记忆组织方法MEMO。该方法在预算约束下选择必要证据，并根据内容特点以文本或视觉形式组织，缓解了线性文本表征导致的上下文竞争。实验验证了其在长时程任务中的有效性，为智能体记忆管理提供了新思路。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "agent with memory augmentation for better performance",
+      "matched_requirement_id": "req-6",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2609.08025v1",
+      "source": "arxiv",
+      "title": "Eliciting Self-Verification in Multimodal Reasoning Agents with Reinforcement Learning",
+      "abstract": "Reasoning agents increasingly rely on external tools such as web search to answer complex queries. Reinforcement learning (RL) finetuning algorithms such as GRPO have improved long-form reasoning in text-only language models, particularly for coding and mathematics. Reliable tool use in multimodal agents, however, remains challenging because models must interpret text and images while integrating noisy retrieved evidence, often under sparse outcome-level supervision without explicit verification signals. We present Self-Verification via Reinforcement Learning (SVRL), an RL-only finetuning framework that trains multimodal agents to verify and filter retrieved evidence within their own reasoning traces, reducing reliance on external verifiers at inference time. SVRL also introduces a search-aware penalty that discourages unnecessary tool calls and a query-diversity reward that encourages diverse, well-formed search queries, providing fine-grained feedback on when and what to search. Finetuning Qwen-2.5-VL-7B with SVRL on only 5{,}000 visual question answering examples yields consistent gains in multi-hop VQA generalization and tool efficiency across benchmarks. Overall, SVRL narrows the gap between compact agents and much larger proprietary models while requiring substantially lower training and inference cost.",
+      "authors": [
+        "Vishwas Sathish",
+        "Viresh Ranjan",
+        "Xinliang Zhu",
+        "Arnab Dhua",
+        "Douglas Gray"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI",
+        "cs.CL",
+        "cs.CV"
+      ],
+      "published": "2026-09-07T22:15:47+00:00",
+      "link": "https://arxiv.org/pdf/2609.08025v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "RL finetuning framework for multimodal reasoning agents to self-verify retrieved evidence",
+      "llm_evidence_cn": "用于多模态推理智能体自我验证的强化学习微调框架",
+      "llm_evidence": "用于多模态推理智能体自我验证的强化学习微调框架",
+      "canonical_evidence": "用于多模态推理智能体自我验证的强化学习微调框架",
+      "llm_tldr_en": "The paper presents SVRL, an RL-only finetuning framework that trains multimodal reasoning agents to verify and filter retrieved evidence within their own reasoning traces, reducing reliance on external verifiers under sparse supervision.",
+      "llm_tldr_cn": "针对多模态推理智能体在工具使用中缺乏验证信号的问题，本文提出SVRL框架。该框架仅使用强化学习（如GRPO）进行微调，训练智能体在自身推理轨迹中验证并过滤检索到的证据。实验表明，SVRL提升了多模态智能体的可靠工具使用能力，无需额外外部验证器，在稀疏结果监督下表现良好。",
+      "llm_tldr": "针对多模态推理智能体在工具使用中缺乏验证信号的问题，本文提出SVRL框架。该框架仅使用强化学习（如GRPO）进行微调，训练智能体在自身推理轨迹中验证并过滤检索到的证据。实验表明，SVRL提升了多模态智能体的可靠工具使用能力，无需额外外部验证器，在稀疏结果监督下表现良好。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "reinforcement learning applied to autonomous agents",
+      "matched_requirement_id": "req-3",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2609.08444v1",
+      "source": "arxiv",
+      "title": "Safe Task Planning with Long-Term Graph Memory for Embodied Agents",
+      "abstract": "Large language models (LLMs) and vision-language models (VLMs) have significantly advanced zero-shot task planning for embodied agents. However, most LLM- and VLM-driven methods struggle to generate safe high-level actions due to a lack of physical risk awareness, particularly under partial observability, where hazards lie outside the immediate field of view. To address this challenge, we propose a novel safe task-planning framework, SafeMem, which constructs and maintains a long-term semantic graph memory of the open and dynamic environment. Based on egocentric observations, the proposed framework incrementally accumulates knowledge about surrounding objects and their relationships with a graph. Then, an LLM-based risk predictor evaluates candidate actions using the graph memory, triggering a conservatism-modulated replanning loop with explanations for detected hazards. Extensive experiments on the IS-Bench benchmark and a real-world robot platform demonstrate that the SafeMem framework substantially improves safe success rates compared to state-of-the-art VLM-driven task planners. Video results are available on our webpage: https://sites.google.com/view/safemem.",
+      "authors": [
+        "Siyuan Li",
+        "Taiyan Lang",
+        "Aoqi Yan",
+        "Jia Yu",
+        "Feifan Liu",
+        "Yihan Du",
+        "Yu Zheng",
+        "Xun Wang",
+        "Peng Liu"
+      ],
+      "primary_category": "cs.RO",
+      "categories": [
+        "cs.RO"
+      ],
+      "published": "2026-09-08T08:49:50+00:00",
+      "link": "https://arxiv.org/pdf/2609.08444v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "long-term semantic graph memory for safe task planning in embodied agents",
+      "llm_evidence_cn": "具身智能体安全任务规划中的长期语义图记忆",
+      "llm_evidence": "具身智能体安全任务规划中的长期语义图记忆",
+      "canonical_evidence": "具身智能体安全任务规划中的长期语义图记忆",
+      "llm_tldr_en": "The paper proposes SafeMem, which constructs a long-term semantic graph memory from egocentric observations to enable embodied agents to plan safe actions under partial observability, using an LLM-based risk predictor.",
+      "llm_tldr_cn": "针对具身智能体在部分可观测环境下缺乏物理风险意识的问题，本文提出SafeMem框架。该框架基于自我中心观察增量构建长期语义图记忆，积累物体及其关系知识。利用大语言模型风险预测器评估候选动作，从而生成安全的高层动作。实验表明，该记忆机制显著提升了任务规划的安全性。",
+      "llm_tldr": "针对具身智能体在部分可观测环境下缺乏物理风险意识的问题，本文提出SafeMem框架。该框架基于自我中心观察增量构建长期语义图记忆，积累物体及其关系知识。利用大语言模型风险预测器评估候选动作，从而生成安全的高层动作。实验表明，该记忆机制显著提升了任务规划的安全性。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "memory mechanisms for intelligent agents",
+      "matched_requirement_id": "req-1",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2609.05596v1",
+      "source": "arxiv",
+      "title": "Time-Aware Assistive Navigation",
+      "abstract": "Can interactive vision-and-language agents learn not just what to say but also \\textbf{\\textit{when}} to say it? Current language models rarely plan over whether and when to realize a real-time response to a user. However, providing accurate and timely support for human decision-making, such as when guiding visually impaired individuals through urban environments, requires careful real-time responsiveness--poorly timed responses can distract users or add unnecessary cognitive load. As a machine intelligence challenge for Multimodal Large Language Model (MLLM)-based agents, we introduce a large-scale multimodal benchmark for an egocentric, assistive navigation task in complex outdoor environments. Using this benchmark, we uncover a fundamental limitation of off-the-shelf MLLMs in delivering safe and time-sensitive navigation instructions, even with model fine-tuning on substantial amounts of data. We then demonstrate that a simple yet effective modification of the model, including direct supervision to predict the underlying reason for each instruction, yields significant performance gains across open-loop, closed-loop, and sim-to-real generalization settings. However, our analysis highlights persistent challenges in temporal reasoning, safety-critical object awareness, and relational and distance understanding. To advance the development of scalable assistive agents, we will release our simulation, benchmark, and code (available at the project website: https://timeli-icra.github.io/).",
+      "authors": [
+        "Masaki Kuribayashi",
+        "Zhongkai Shangguan",
+        "Eshed Ohn-Bar"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV",
+        "cs.RO"
+      ],
+      "published": "2026-09-04T17:59:47+00:00",
+      "link": "https://arxiv.org/pdf/2609.05596v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "large-scale multimodal benchmark for MLLM-based assistive navigation agents",
+      "llm_evidence_cn": "面向MLLM辅助导航智能体的大规模多模态基准",
+      "llm_evidence": "面向MLLM辅助导航智能体的大规模多模态基准",
+      "canonical_evidence": "面向MLLM辅助导航智能体的大规模多模态基准",
+      "llm_tldr_en": "The paper introduces a large-scale multimodal benchmark for egocentric assistive navigation, evaluating whether vision-language agents can time their responses appropriately, and uncovers limitations of off-the-shelf MLLMs in timely interaction.",
+      "llm_tldr_cn": "针对交互式视觉语言智能体在实时辅助导航中何时响应的问题，本文构建了一个大规模多模态基准。该基准聚焦于复杂室外环境下的自我中心辅助导航任务，评估多模态大语言模型智能体的实时响应能力。实验发现现有MLLM智能体在及时性方面存在根本局限，为多模态智能体的时间规划研究提供了新方向。",
+      "llm_tldr": "针对交互式视觉语言智能体在实时辅助导航中何时响应的问题，本文构建了一个大规模多模态基准。该基准聚焦于复杂室外环境下的自我中心辅助导航任务，评估多模态大语言模型智能体的实时响应能力。实验发现现有MLLM智能体在及时性方面存在根本局限，为多模态智能体的时间规划研究提供了新方向。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "agent that processes multiple modalities",
+      "matched_requirement_id": "req-2",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "quick_skim": [
+    {
+      "id": "2609.08162v1",
+      "source": "arxiv",
+      "title": "WorldAgen: Unified State-Action Prediction with Test-Time World Model Training",
+      "abstract": "How can vision-language-action (VLA) models adapt to new environments where world dynamics shift? While recent research has combined world modeling and action prediction to improve VLA performance, existing methods largely rely on pretraining on static datasets, without mechanisms for active adaptation at deployment time. As a result, these models often fail to generalize when deployed in unseen scenarios with novel object configurations or dynamics. We present WorldAgen, a unified framework that jointly learns world modeling and action prediction while enabling Test-Time Training (TTT) to adapt to new environments. WorldAgen employs a shared Transformer backbone with two heads: (1) a world model head that predicts future states from past state-action trajectories, and (2) an agent model head that predicts actions conditioned on task instructions. We design a Mixed Unidirectional Attention Mask to separate these two models. During test time, WorldAgen samples exploratory actions, collects ground-truth state transitions, and performs lightweight TTT updates to refine its world model. This adaptation improves the model's understanding of the environment and leads to more accurate action predictions. Experiments on the CALVIN and LIBERO benchmarks demonstrate that our baseline model achieves comparable, and in some cases superior, performance to current state-of-the-art approaches. Moreover, with TTT on a small number of samples, our method surpasses existing state-of-the-art models, highlighting the effectiveness of adapting world models at inference time.",
+      "authors": [
+        "Chi Wan",
+        "Kangrui Wang",
+        "Yuan Si",
+        "Pingyue Zhang",
+        "Manling Li"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-09-08T02:46:13+00:00",
+      "link": "https://arxiv.org/pdf/2609.08162v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "Unified world model and action prediction with test-time training for VLA adaptation",
+      "llm_evidence_cn": "VLA适应中的统一世界模型与动作预测及测试时训练",
+      "llm_evidence": "VLA适应中的统一世界模型与动作预测及测试时训练",
+      "canonical_evidence": "VLA适应中的统一世界模型与动作预测及测试时训练",
+      "llm_tldr_en": "Presents WorldAgen, a framework jointly learning world modeling and action prediction with test-time training to adapt vision-language-action models to unseen environments with novel dynamics.",
+      "llm_tldr_cn": "论文针对VLA模型难以泛化到新环境动态的问题，提出WorldAgen框架。该框架共享Transformer骨干，同时预测未来状态和执行动作，并在测试时通过训练世界模型进行自适应。实验表明该方法能有效适应未见场景中的新颖物体配置和动态，提升VLA模型的部署泛化能力。",
+      "llm_tldr": "论文针对VLA模型难以泛化到新环境动态的问题，提出WorldAgen框架。该框架共享Transformer骨干，同时预测未来状态和执行动作，并在测试时通过训练世界模型进行自适应。实验表明该方法能有效适应未见场景中的新颖物体配置和动态，提升VLA模型的部署泛化能力。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "language-based world model for agent reasoning",
+      "matched_requirement_id": "req-5",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "8plus"
+    },
+    {
+      "id": "2609.09153v1",
+      "source": "arxiv",
+      "title": "Procedural Graphs: Self-Evolving Execution Structures for LLM Agents",
+      "abstract": "Large language models are increasingly deployed as agents that plan over long horizons and act through external tools. Most agents select actions through unconstrained generation over an accumulating history, leaving implicit the procedural knowledge of what to do, in what order, and under which conditions. As trajectories lengthen, agents can lose track of their objectives, invoke tools out of order, and repeat unproductive actions. We introduce the Procedural Graph: just as a knowledge graph organizes factual knowledge into (entity, relation, entity) triplets for what-is questions, a Procedural Graph organizes procedural knowledge into (procedure, relation, procedure) triplets for what-to-do questions. At each decision step, the framework localizes the agent's active node, and a guidance model translates the surrounding subgraph into step-level situational guidance that biases the solver's next action without dictating it. The graph is self-evolving: an LLM refiner contrasts failed trajectories with successful ones and edits the graph's topology and attributes, committing edits that preserve or improve held-out validation performance while retaining rejected ones to discourage repetition. Starting from a minimal skeleton, the loop builds graphs that match or surpass hand-designed ones. It can also repair a flawed expert prior. Across multiple datasets, task types, and LLMs, the Procedural Graph delivers consistent gains over memory-based baselines, and self-evolution further improves performance without manual engineering.",
+      "authors": [
+        "Yuxing Lu",
+        "Yicheng Chen",
+        "Shanchan Wu",
+        "Sercan Ö. Arık"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI",
+        "cs.CL",
+        "cs.MA"
+      ],
+      "published": "2026-09-08T17:59:41+00:00",
+      "link": "https://arxiv.org/pdf/2609.09153v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "organizes procedural knowledge into graphs to augment agent execution, preventing loss of objectives and repetitive actions, serving as memory augmentation",
+      "llm_evidence_cn": "将过程知识组织成图以增强智能体执行，防止目标丢失和重复动作，作为记忆增强",
+      "llm_evidence": "将过程知识组织成图以增强智能体执行，防止目标丢失和重复动作，作为记忆增强",
+      "canonical_evidence": "将过程知识组织成图以增强智能体执行，防止目标丢失和重复动作，作为记忆增强",
+      "llm_tldr_en": "Procedural Graph organizes procedural knowledge into (procedure, relation, procedure) triplets, localizing relevant procedures at each decision step to augment LLM agents' long-horizon execution and memory, improving performance.",
+      "llm_tldr_cn": "该论文注意到LLM智能体在长程规划和工具调用中依赖无约束生成，易丢失目标、乱序调用工具和重复无效动作。论文提出过程图，类似知识图谱组织事实知识，以（过程，关系，过程）三元组组织过程知识，并在每一步决策时定位相关过程。该方法将隐式过程知识显式化，增强智能体的执行结构和记忆。实验表明其能减少目标偏差和重复动作，提升长程任务表现。该工作为智能体提供记忆增强的过程表示。",
+      "llm_tldr": "该论文注意到LLM智能体在长程规划和工具调用中依赖无约束生成，易丢失目标、乱序调用工具和重复无效动作。论文提出过程图，类似知识图谱组织事实知识，以（过程，关系，过程）三元组组织过程知识，并在每一步决策时定位相关过程。该方法将隐式过程知识显式化，增强智能体的执行结构和记忆。实验表明其能减少目标偏差和重复动作，提升长程任务表现。该工作为智能体提供记忆增强的过程表示。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "agent with memory augmentation for better performance",
+      "matched_requirement_id": "req-6",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2609.07255v1",
+      "source": "arxiv",
+      "title": "SkillAlign: Aligning Skill Interfaces for LLM-based Agents",
+      "abstract": "Language-model agents increasingly rely on skills: reusable procedural knowledge for reasoning, tool use, and interaction. Existing work studies how skills are acquired, retrieved, compressed, or composed, but often assumes that once a skill is selected, its interface to the agent is fixed. We argue that this overlooks a key source of skill utility: the same skill can help, distract, or mislead depending on how it is exposed. We propose SkillAlign, a provider-agnostic framework that represents candidate skills as multi-view procedural cards and renders them through alternative exposure interfaces, including full instructions, hints, compressed summaries, workflows, or no exposure. This enables counterfactual evaluation where the task, agent, and candidate skills are fixed while only the exposure interface varies. Across ALFWorld and SkillsBench, we show that exposure form substantially affects task success and rendered context cost, and that compact top-k exposure can outperform full-library injection. We further conduct a replay-based policy-learning analysis on ALFWorld, showing that adaptive exposure contains learnable signal but remains far from oracle selection. Our results suggest that skill-augmented agents should optimize not only which skills to use, but also how those skills are presented.",
+      "authors": [
+        "Shuo Ren",
+        "Xiaomian Kang",
+        "Jiajun Zhang"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-09-07T09:11:03+00:00",
+      "link": "https://arxiv.org/pdf/2609.07255v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "skills as reusable procedural knowledge; aligning exposure interfaces affects agent utility, relevant to memory mechanisms for procedural knowledge",
+      "llm_evidence_cn": "技能作为可重用过程知识，对齐暴露接口影响智能体效用，与过程记忆机制相关",
+      "llm_evidence": "技能作为可重用过程知识，对齐暴露接口影响智能体效用，与过程记忆机制相关",
+      "canonical_evidence": "技能作为可重用过程知识，对齐暴露接口影响智能体效用，与过程记忆机制相关",
+      "llm_tldr_en": "SkillAlign addresses the overlooked role of skill exposure interfaces in LLM-based agents; it represents skills as multi-view procedural cards and renders them through alternative interfaces to evaluate counterfactual impact, contributing to procedural memory interface design.",
+      "llm_tldr_cn": "该论文指出现有技能研究往往假设技能选定后其接口固定，而忽视暴露方式对技能效用的影响。论文提出SkillAlign框架，将候选技能表示为多视图过程卡片，并通过完整指令、提示、压缩摘要、工作流或不暴露等替代接口呈现。该框架支持反事实评估，揭示同一技能在不同暴露方式下可能帮助、分散或误导。这项工作为智能体过程中的技能记忆接口设计提供了方法学桥接。",
+      "llm_tldr": "该论文指出现有技能研究往往假设技能选定后其接口固定，而忽视暴露方式对技能效用的影响。论文提出SkillAlign框架，将候选技能表示为多视图过程卡片，并通过完整指令、提示、压缩摘要、工作流或不暴露等替代接口呈现。该框架支持反事实评估，揭示同一技能在不同暴露方式下可能帮助、分散或误导。这项工作为智能体过程中的技能记忆接口设计提供了方法学桥接。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "memory mechanisms for intelligent agents",
+      "matched_requirement_id": "req-1",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2609.08919v1",
+      "source": "arxiv",
+      "title": "Experience Funnel: A State-Policy Alternating Loop for Self-Evolving Agents",
+      "abstract": "Autonomous agents powered by large language models (LLMs) continuously accumulate experience through interaction, creating an opportunity to improve future behavior through self-evolution. A fundamental challenge is how to transform abundant, task-specific interaction experience into reusable model competence without sacrificing the ability to adapt rapidly to newly observed evidence. Explicit textual states, such as skills and agent harnesses, provide fast, human-readable and editable adaptation, but incur persistent dependence on external context; parametric policies provide compact and reusable competence, but are substantially slower to update. We present \\textit{Experience Funnel}, a self-evolving framework that couples fast state adaptation with slow policy consolidation in an alternating loop. Interaction trajectories are first distilled into an explicit textual state, where newly acquired experience can be rapidly incorporated and validated. The framework then selectively identifies state-enabled behavior that remains useful across state revisions and consolidates it into the policy through transition-aware distillation. The updated state--policy pair subsequently generates new rollouts, providing fresh evidence for the next round of state adaptation and policy consolidation. Experiments across diverse agent benchmarks show that \\textit{Experience Funnel} consistently improves agent capability over state-only evolution and policy-internalization approaches, while progressively converting useful explicit experience into autonomous policy competence.",
+      "authors": [
+        "Wenbo Gao",
+        "Zhaomou Song",
+        "Zhiyuan Ji",
+        "Renxi Liu",
+        "Xing Li",
+        "Xianzhi Yu",
+        "Xiaoguang Li",
+        "James Chung-wai Cheung",
+        "Weizhe Lin",
+        "Yaoyuan Wang"
+      ],
+      "primary_category": "cs.CL",
+      "categories": [
+        "cs.CL"
+      ],
+      "published": "2026-09-08T15:48:11+00:00",
+      "link": "https://arxiv.org/pdf/2609.08919v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "accumulates interaction experience and alternates fast state adaptation with parametric policy updates, forming a memory mechanism for self-evolving agents",
+      "llm_evidence_cn": "积累交互经验并在快速状态适应与参数策略更新间交替，构成自进化智能体的记忆机制",
+      "llm_evidence": "积累交互经验并在快速状态适应与参数策略更新间交替，构成自进化智能体的记忆机制",
+      "canonical_evidence": "积累交互经验并在快速状态适应与参数策略更新间交替，构成自进化智能体的记忆机制",
+      "llm_tldr_en": "Experience Funnel addresses the challenge of converting task-specific interaction experience into reusable competence; it couples fast explicit state adaptation with slower parametric policy updates in an alternating loop, serving as a memory mechanism for self-evolving agents.",
+      "llm_tldr_cn": "该论文针对自主智能体如何将大量任务特定交互经验转化为可重用能力同时保持快速适应新证据的挑战，提出经验漏斗框架。该方法在快速显式状态适应与较慢的参数策略更新之间交替循环，既保留文本状态的可读可编辑性，又获得策略的紧凑重用性。实验表明这种状态-策略交替能够平衡适应速度与能力积累。该工作直接贡献于智能体记忆机制需求。",
+      "llm_tldr": "该论文针对自主智能体如何将大量任务特定交互经验转化为可重用能力同时保持快速适应新证据的挑战，提出经验漏斗框架。该方法在快速显式状态适应与较慢的参数策略更新之间交替循环，既保留文本状态的可读可编辑性，又获得策略的紧凑重用性。实验表明这种状态-策略交替能够平衡适应速度与能力积累。该工作直接贡献于智能体记忆机制需求。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "memory mechanisms for intelligent agents",
+      "matched_requirement_id": "req-1",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "8plus"
+    }
+  ]
+}
