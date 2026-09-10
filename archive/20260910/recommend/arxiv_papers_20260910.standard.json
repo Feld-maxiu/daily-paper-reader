@@ -1,0 +1,269 @@
+{
+  "mode": "standard",
+  "generated_at": "2026-09-10T21:50:37.580923+00:00",
+  "stats": {
+    "mode": "standard",
+    "tag_count": 1,
+    "deep_divecandidates": 2,
+    "deep_cap": 6,
+    "deep_selected": 2,
+    "quick_candidates": 4,
+    "quick_skim_target": 11,
+    "quick_selected": 4
+  },
+  "deep_dive": [
+    {
+      "id": "2609.09778v1",
+      "source": "arxiv",
+      "title": "ROAM: Robust Organization of Atomic Memories for Agents through Semantic Relations",
+      "abstract": "Long-term language-model agents rely on external memory across interactions. Atomic memories are particularly useful: their fine-grained semantic boundaries enable precise retrieval and direct comparison between observations. Yet accumulating atoms inevitably become redundant, overlapping, or conflicting. Existing methods often ask an LLM manager to add, update, delete, or rewrite memories directly, coupling semantic interpretation, storage decisions, and content generation in one error-prone operation. We introduce ROAM, a relation-guided framework that uses atomicity for management while allowing richer answer-time representations. ROAM classifies incoming--stored atom pairs as independent, equivalent, directionally subsuming, or conflicting, then organizes observations into active Primary and supporting Evidence roles. Fusion subsequently combines complementary details and temporal changes into compact, potentially non-atomic views. Only Primary views are retrieved for answering, preventing redundant or outdated atoms from competing independently. Across models and evaluation settings, ROAM improves answer accuracy by up to 29.8 percentage points. Ablations show complementary benefits from different relations and consistent gains from fusion beyond role organization. Mechanism analysis further finds 15.6-point higher answer-critical source recall and an 11.5-point lower confounder-token share. ROAM remains robust across manager scales.",
+      "authors": [
+        "Jianjie Zheng",
+        "Peng Lai",
+        "Sijie Cheng",
+        "Jiehui Zhao",
+        "Lei Yang",
+        "Guanhua Chen"
+      ],
+      "primary_category": "cs.CL",
+      "categories": [
+        "cs.CL"
+      ],
+      "published": "2026-09-09T06:29:38+00:00",
+      "link": "https://arxiv.org/pdf/2609.09778v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "relation-guided framework for organizing atomic memories in agents",
+      "llm_evidence_cn": "基于语义关系组织智能体原子记忆的框架",
+      "llm_evidence": "基于语义关系组织智能体原子记忆的框架",
+      "canonical_evidence": "基于语义关系组织智能体原子记忆的框架",
+      "llm_tldr_en": "ROAM classifies semantic relations between atomic memories to manage redundancy and conflict, improving memory organization for long-term agents.",
+      "llm_tldr_cn": "针对长期语言模型智能体外部记忆中原子记忆累积产生的冗余、重叠和冲突问题，本文提出ROAM框架。ROAM利用原子性进行管理，同时允许更丰富的答案时表示，将输入-存储原子对分类为独立、等价、方向性包含或冲突等关系。实验表明该方法能稳健地组织原子记忆，提高检索精度和后续任务性能。",
+      "llm_tldr": "针对长期语言模型智能体外部记忆中原子记忆累积产生的冗余、重叠和冲突问题，本文提出ROAM框架。ROAM利用原子性进行管理，同时允许更丰富的答案时表示，将输入-存储原子对分类为独立、等价、方向性包含或冲突等关系。实验表明该方法能稳健地组织原子记忆，提高检索精度和后续任务性能。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "memory mechanisms for intelligent agents",
+      "matched_requirement_id": "req-1",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2609.08832v1",
+      "source": "arxiv",
+      "title": "Closing the Consistency Gap: Self-Evolving Agents That Learn to Stay on Course",
+      "abstract": "Large language model (LLM)-powered agents can be accurate on average yet unreliable in production, a discrepancy that has been observed but remains largely unaddressed. When given the same task five times, a ReAct agent on the AppWorld benchmark using GPT-4.1 succeeds in all five runs only 53% of the time, even though its per-run pass rate averages 77%. We call this 24-point shortfall the consistency gap, and we argue that addressing it is a precondition for trustworthy AI agent deployment. We present a self-evolving agent framework that reduces this gap by identifying unstable, low-consistency steps in agent trajectories and converting them into episodic memory the agent can draw on in future runs. At its core is a Consistency Analyzer that pinpoints where and why a trajectory is likely to flip across executions, and a Guideline Generator that converts the diagnosis into targeted guidelines, committed to memory and injected into future agent executions on similar tasks. On AppWorld with ReAct/GPT-4.1, our framework raises the fraction of tasks that succeed in all five runs by +16 points on same-task evaluation and +13 points on similar-task generalization.",
+      "authors": [
+        "Evelyn Duesterwald",
+        "Benjamin Elder",
+        "Lilian Ngweta",
+        "Shashanka Ubaru",
+        "Malgorzata Zimon"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-09-08T14:53:43+00:00",
+      "link": "https://arxiv.org/pdf/2609.08832v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "converts unstable steps into episodic memory to improve agent consistency",
+      "llm_evidence_cn": "将不稳定步骤转化为情景记忆以提高智能体一致性",
+      "llm_evidence": "将不稳定步骤转化为情景记忆以提高智能体一致性",
+      "canonical_evidence": "将不稳定步骤转化为情景记忆以提高智能体一致性",
+      "llm_tldr_en": "Self-evolving agent framework identifies low-consistency steps and stores them as episodic memory to close the consistency gap in LLM agents.",
+      "llm_tldr_cn": "针对大语言模型智能体在重复任务中表现不一致的问题，本文提出一种自进化智能体框架。该框架通过一致性分析器识别轨迹中不稳定、低一致性的步骤，并将其转化为情景记忆供后续运行使用。在AppWorld基准上的实验表明，该方法显著缩小了平均通过率与全通过率之间的一致性差距，提高了智能体的可靠性。",
+      "llm_tldr": "针对大语言模型智能体在重复任务中表现不一致的问题，本文提出一种自进化智能体框架。该框架通过一致性分析器识别轨迹中不稳定、低一致性的步骤，并将其转化为情景记忆供后续运行使用。在AppWorld基准上的实验表明，该方法显著缩小了平均通过率与全通过率之间的一致性差距，提高了智能体的可靠性。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "agent with memory augmentation for better performance",
+      "matched_requirement_id": "req-6",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "quick_skim": [
+    {
+      "id": "2609.06059v1",
+      "source": "arxiv",
+      "title": "DAREBench: Deployment-Aware and Reliable Evaluation of Models as Agents",
+      "abstract": "As large language models evolve from question-answering systems into general-purpose agents, evaluation must move beyond static answer correctness to assess multimodal perception, multi-step execution, tool use, and artifact delivery. However, existing benchmarks are often tied to specific task types, execution environments, or scoring protocols, limiting their comparability, interpretability, and reliability for deployment decisions. We introduce DAREBench (Deployment-Aware and Reliable Evaluation of Models as Agents), a benchmark designed to capture workload variation and support reliable agent evaluation. Built on a shared OpenClaw execution environment, DAREBench organizes 233 tasks selected and adapted from 22 source benchmarks into a $2\\times3$ workload matrix defined by input modality and execution form, and evaluates them under a unified contract-based protocol with evidence-based score auditing. We evaluate 23 commercial API models and 12 locally deployed open-weight models over 7,587 model--task runs, reporting accuracy and token consumption alongside reference costs for API models. Results show that no single model dominates all workload groups, text and multimodal tasks exhibit distinct accuracy--cost trade-offs, and local open-weight models are competitive in several groups but still trail frontier commercial models overall. These findings suggest that agent deployment and model selection should consider workload profiles, deployment mode, and accuracy--cost trade-offs rather than rely on a single aggregate score.",
+      "authors": [
+        "Yu Liu",
+        "Zhilin Liu",
+        "Zhiwei Yang",
+        "Shaojie Zhang",
+        "Zheyuan Deng",
+        "Tingwei Huang",
+        "Zhenbo Luo",
+        "Lei Jiang",
+        "Yanbing Liu",
+        "Pei Fu"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-09-05T12:36:59+00:00",
+      "link": "https://arxiv.org/pdf/2609.06059v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "assesses multimodal perception, multi-step execution, tool use",
+      "llm_evidence_cn": "评估多模态感知、多步执行与工具使用",
+      "llm_evidence": "评估多模态感知、多步执行与工具使用",
+      "canonical_evidence": "评估多模态感知、多步执行与工具使用",
+      "llm_tldr_en": "DAREBench is a benchmark for evaluating LLM-based agents across deployments, standardized tasks, and scoring, focusing on multimodal perception, execution, and tool use.",
+      "llm_tldr_cn": "DAREBench针对现有LLM代理基准缺乏部署可比性与可靠性的问题，提出统一基于OpenClaw执行环境的233个任务基准，源自22个源基准，按2x3维度组织，涵盖多模态感知、多步执行、工具使用与工件交付。该框架通过标准化任务与评分捕获工作负载变化，支持面向部署的可靠评估，促进多模态智能体的落地选择。",
+      "llm_tldr": "DAREBench针对现有LLM代理基准缺乏部署可比性与可靠性的问题，提出统一基于OpenClaw执行环境的233个任务基准，源自22个源基准，按2x3维度组织，涵盖多模态感知、多步执行、工具使用与工件交付。该框架通过标准化任务与评分捕获工作负载变化，支持面向部署的可靠评估，促进多模态智能体的落地选择。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "agent that processes multiple modalities",
+      "matched_requirement_id": "req-2",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2609.07311v1",
+      "source": "arxiv",
+      "title": "Can Agents Win the Video Browser Showdown?",
+      "abstract": "Searching large video collections is typically an interactive process in which users play two roles. First, they hold the search intent: the underlying goal that determines what content they seek and why. Second, users must operationalize this intent through an iterative search loop. Users translate their intent into queries, browse the retrieved candidates, and refine their queries based on the results. In this paper, we investigate the capabilities of modern Vision Language Models (VLM) and agentic approaches to reach search goals interactively and fully autonomously. Specifically, we study whether a provided initial specification of a search goal might be sufficient to solve traditionally interactive search tasks with an agentic system. Provided that the involved VLMs are not aware of the whole large video dataset in advance, the key challenge lies in the effective combination of an existing interactive video search system and a smart VLM agent controlling the system. While the search system provides indexing and efficient querying, the VLM-based agents analyze top-ranked items and make decisions about next actions. Our results show that modern agents can autonomously operate interactive video retrieval systems to solve many search tasks from an initial intent description, achieving performance competitive with strong historical expert-operated systems in several settings.",
+      "authors": [
+        "Bastian Jäckl",
+        "Zuzana Vopálková",
+        "Daniel A. Keim",
+        "Jakub Lokoč"
+      ],
+      "primary_category": "cs.MM",
+      "categories": [
+        "cs.MM"
+      ],
+      "published": "2026-09-07T10:28:26+00:00",
+      "link": "https://arxiv.org/pdf/2609.07311v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "VLM agents autonomously search video collections, processing visual and textual modalities",
+      "llm_evidence_cn": "VLM智能体自主搜索视频集，处理视觉和文本模态",
+      "llm_evidence": "VLM智能体自主搜索视频集，处理视觉和文本模态",
+      "canonical_evidence": "VLM智能体自主搜索视频集，处理视觉和文本模态",
+      "llm_tldr_en": "Investigates whether VLM-based agents can autonomously solve interactive video search tasks using only an initial query, exploring agentic multimodal search capabilities.",
+      "llm_tldr_cn": "论文研究基于视觉语言模型(VLM)的智能体能否仅凭初始查询自主完成交互式视频搜索。该工作探索智能体在视频检索中的多模态与自主决策能力，分析VLM和agentic方法在真实视频浏览任务中的表现。实验旨在评估当前VLM智能体在视频搜索中的有效性，为多模态智能体检索提供见解。",
+      "llm_tldr": "论文研究基于视觉语言模型(VLM)的智能体能否仅凭初始查询自主完成交互式视频搜索。该工作探索智能体在视频检索中的多模态与自主决策能力，分析VLM和agentic方法在真实视频浏览任务中的表现。实验旨在评估当前VLM智能体在视频搜索中的有效性，为多模态智能体检索提供见解。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "agent that processes multiple modalities",
+      "matched_requirement_id": "req-2",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2609.10522v1",
+      "source": "arxiv",
+      "title": "Show-Harness: Just a VLM Agent Can Play Robots",
+      "abstract": "Foundation vision-language models (VLMs) exhibit broad intelligence about the world, yet translating this intelligence into robot control remains challenging. We present Show-Harness, an Embodied Harness that enables VLMs to \"play\" robots through a compact semantic interface linking intent to action. Show-Harness exposes discrete semantic action units that VLMs can naturally reason over, while embodiment-specific interpreters deterministically ground them into local robot actions, keeping the VLM directly responsible for fine-grained physical decisions. Through the same interface, Show-Harness demonstrates the feasibility of (1) directly unlocking closed-source frontier VLMs for zero-shot robot control, and (2) adapting small-scale open-source VLMs for low-cost deployment with just a few GPU-hours of fine-tuning. We further develop GUMI (GUI Manipulation Interface), which extends the same semantic action space to GUI-based demonstration collection, allowing humans and agents to \"play\" robots across embodiments without specialized teleoperation hardware. Extensive experiments show that Show-Harness-equipped VLM agents generalize robustly across tasks, embodiments, and environments, outperforming representative agentic and VLA paradigms. These results suggest that the right interface can unlock substantial embodied capability from foundation VLMs, without requiring additional model capacity or costly embodiment-specific pretraining.",
+      "authors": [
+        "Yanzhe Chen",
+        "Zechen Bai",
+        "Zhijun Cao",
+        "Wenzheng Zeng",
+        "Kevin Qinghong Lin",
+        "Yiqi Lin",
+        "Guoqiang Liang",
+        "Kevin Yuchen Ma",
+        "Qiming Huang",
+        "Mike Zheng Shou"
+      ],
+      "primary_category": "cs.RO",
+      "categories": [
+        "cs.RO",
+        "cs.AI",
+        "cs.CV",
+        "cs.MM"
+      ],
+      "published": "2026-09-09T17:53:38+00:00",
+      "link": "https://arxiv.org/pdf/2609.10522v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "VLM agent controls robots through compact semantic interface, processing visual and language modalities",
+      "llm_evidence_cn": "VLM智能体通过紧凑语义接口控制机器人，处理视觉和语言模态",
+      "llm_evidence": "VLM智能体通过紧凑语义接口控制机器人，处理视觉和语言模态",
+      "canonical_evidence": "VLM智能体通过紧凑语义接口控制机器人，处理视觉和语言模态",
+      "llm_tldr_en": "Presents Show-Harness, an embodied harness enabling VLMs to control robots via discrete semantic action units, unlocking zero-shot robot control for VLMs.",
+      "llm_tldr_cn": "论文提出Show-Harness，一个具身智能体接口，使视觉语言模型(VLM)能通过离散语义动作单元控制机器人。该接口将VLM意图转换为具体动作，实现零样本机器人控制。实验表明，该方法可直接使用闭源前沿VLM和适配小型开源VLM，验证了多模态智能体在机器人控制中的可行性。",
+      "llm_tldr": "论文提出Show-Harness，一个具身智能体接口，使视觉语言模型(VLM)能通过离散语义动作单元控制机器人。该接口将VLM意图转换为具体动作，实现零样本机器人控制。实验表明，该方法可直接使用闭源前沿VLM和适配小型开源VLM，验证了多模态智能体在机器人控制中的可行性。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "agent that processes multiple modalities",
+      "matched_requirement_id": "req-2",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2609.10540v1",
+      "source": "arxiv",
+      "title": "Programmable World Model",
+      "abstract": "Recent video world models generate increasingly realistic and interactive visual experiences, yet lack reliable mechanisms for maintaining persistent world state and enforcing programmable rules over extended interactions. We introduce Programmable World Model, a framework that decouples world-state evolution from visual observation generation. An agent translates natural-language instructions into executable programs that specify entity states and state-transition rules, enabling direct control over individual entities and their interactions. A lightweight engine executes these programs to update and maintain an explicit, persistent global world state, including off-screen entities and non-visual attributes. To connect world state with visual generation, we introduce state-augmented 3D oriented bounding boxes (OBBs) as an intermediate representation. This representation, together with the target camera trajectory, is deterministically compiled into pixel-aligned spatiotemporal conditioning signals for a pretrained video model serving as the generative renderer. This design allows users to create playable games with predefined mechanics, direct control over individual entities, and persistent world state throughout gameplay. We further introduce CombatStateBench, a benchmark for evaluating programmable world models. On CombatStateBench, our method achieves 94% Count Accuracy and 98% State Accuracy, substantially outperforming existing interactive video world models while supporting coherent long-horizon generation. These results demonstrate the effectiveness of separating explicit state evolution from generative rendering for building persistent, programmable worlds.",
+      "authors": [
+        "Zheng-Hui Huang",
+        "Guixu Lin",
+        "Jiacheng Lin",
+        "Yi-Chuan Huang",
+        "Ruihan Yu",
+        "Muyao Niu",
+        "Siqi Yang",
+        "Yu-Lun Liu",
+        "Yung-Yu Chuang",
+        "Kaipeng Zhang",
+        "Zhixiang Wang"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV"
+      ],
+      "published": "2026-09-09T17:59:32+00:00",
+      "link": "https://arxiv.org/pdf/2609.10540v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "decouples world-state evolution from visual generation via programmatic rules",
+      "llm_evidence_cn": "通过程序化规则解耦世界状态演化与视觉生成",
+      "llm_evidence": "通过程序化规则解耦世界状态演化与视觉生成",
+      "canonical_evidence": "通过程序化规则解耦世界状态演化与视觉生成",
+      "llm_tldr_en": "Programmable World Model uses natural language programs to define entity states and transitions, maintaining persistent world state for video generation, enabling controlled and interactive worlds.",
+      "llm_tldr_cn": "该论文针对视频世界模型缺乏持久世界状态与可编程规则的问题，提出可编程世界模型框架，将世界状态演化与视觉观察生成解耦。智能体将自然语言指令转换为可执行程序，定义实体状态与转移规则，由轻量引擎维护持久全局状态，并通过状态增强的3D定向表示连接视觉生成。该方法实现了对个体实体的直接控制与长时程交互的一致性。",
+      "llm_tldr": "该论文针对视频世界模型缺乏持久世界状态与可编程规则的问题，提出可编程世界模型框架，将世界状态演化与视觉观察生成解耦。智能体将自然语言指令转换为可执行程序，定义实体状态与转移规则，由轻量引擎维护持久全局状态，并通过状态增强的3D定向表示连接视觉生成。该方法实现了对个体实体的直接控制与长时程交互的一致性。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "language-based world model for agent reasoning",
+      "matched_requirement_id": "req-5",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    }
+  ]
+}

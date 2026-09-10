@@ -1,0 +1,105 @@
+{
+  "date": "20260910",
+  "date_label": "",
+  "generated_at": "2026-09-10 21:56:44 UTC",
+  "recommend_exists": true,
+  "run_count": 1,
+  "papers": [
+    {
+      "paper_id": "2609.09778v1",
+      "route": "202609/10/2609.09778v1-roam-robust-organization-of-atomic-memories-for-agents-through-semantic-relations",
+      "title": "ROAM: Robust Organization of Atomic Memories for Agents through Semantic Relations",
+      "section": "deep",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 9.0,
+      "evidence": "基于语义关系组织智能体原子记忆的框架",
+      "first_seen_at": "2026-09-10 21:56:44 UTC",
+      "updated_at": "2026-09-10 21:56:44 UTC"
+    },
+    {
+      "paper_id": "2609.08832v1",
+      "route": "202609/10/2609.08832v1-closing-the-consistency-gap-self-evolving-agents-that-learn-to-stay-on-course",
+      "title": "Closing the Consistency Gap: Self-Evolving Agents That Learn to Stay on Course",
+      "section": "deep",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 8.0,
+      "evidence": "将不稳定步骤转化为情景记忆以提高智能体一致性",
+      "first_seen_at": "2026-09-10 21:56:44 UTC",
+      "updated_at": "2026-09-10 21:56:44 UTC"
+    },
+    {
+      "paper_id": "2609.06059v1",
+      "route": "202609/10/2609.06059v1-darebench-deployment-aware-and-reliable-evaluation-of-models-as-agents",
+      "title": "DAREBench: Deployment-Aware and Reliable Evaluation of Models as Agents",
+      "section": "quick",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 7.0,
+      "evidence": "评估多模态感知、多步执行与工具使用",
+      "first_seen_at": "2026-09-10 21:56:44 UTC",
+      "updated_at": "2026-09-10 21:56:44 UTC"
+    },
+    {
+      "paper_id": "2609.07311v1",
+      "route": "202609/10/2609.07311v1-can-agents-win-the-video-browser-showdown",
+      "title": "Can Agents Win the Video Browser Showdown?",
+      "section": "quick",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 7.0,
+      "evidence": "VLM智能体自主搜索视频集，处理视觉和文本模态",
+      "first_seen_at": "2026-09-10 21:56:44 UTC",
+      "updated_at": "2026-09-10 21:56:44 UTC"
+    },
+    {
+      "paper_id": "2609.10522v1",
+      "route": "202609/10/2609.10522v1-show-harness-just-a-vlm-agent-can-play-robots",
+      "title": "Show-Harness: Just a VLM Agent Can Play Robots",
+      "section": "quick",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 7.0,
+      "evidence": "VLM智能体通过紧凑语义接口控制机器人，处理视觉和语言模态",
+      "first_seen_at": "2026-09-10 21:56:44 UTC",
+      "updated_at": "2026-09-10 21:56:44 UTC"
+    },
+    {
+      "paper_id": "2609.10540v1",
+      "route": "202609/10/2609.10540v1-programmable-world-model",
+      "title": "Programmable World Model",
+      "section": "quick",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 7.0,
+      "evidence": "通过程序化规则解耦世界状态演化与视觉生成",
+      "first_seen_at": "2026-09-10 21:56:44 UTC",
+      "updated_at": "2026-09-10 21:56:44 UTC"
+    }
+  ]
+}
