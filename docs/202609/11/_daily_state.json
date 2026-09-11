@@ -1,0 +1,121 @@
+{
+  "date": "20260911",
+  "date_label": "",
+  "generated_at": "2026-09-11 22:15:39 UTC",
+  "recommend_exists": true,
+  "run_count": 1,
+  "papers": [
+    {
+      "paper_id": "2609.08404v1",
+      "route": "202609/11/2609.08404v1-environments-as-scaffold-enriching-feedback-to-bootstrap-self-evolving-agents-in-long-horizon-tasks",
+      "title": "Environments as Scaffold: Enriching Feedback to Bootstrap Self-Evolving Agents in Long-Horizon Tasks",
+      "section": "deep",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 9.0,
+      "evidence": "提出面向基于强化学习的自进化智能体的反馈丰富环境",
+      "first_seen_at": "2026-09-11 22:15:39 UTC",
+      "updated_at": "2026-09-11 22:15:39 UTC"
+    },
+    {
+      "paper_id": "2609.05552v1",
+      "route": "202609/11/2609.05552v1-an-agent-model-abstraction-for-human-ai-teaming-cognitive-coupling",
+      "title": "An Agent Model Abstraction for Human-AI Teaming Cognitive Coupling",
+      "section": "quick",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 7.0,
+      "evidence": "包含记忆与世界模型组件的概念智能体模型用于认知耦合",
+      "first_seen_at": "2026-09-11 22:15:39 UTC",
+      "updated_at": "2026-09-11 22:15:39 UTC"
+    },
+    {
+      "paper_id": "2609.09565v1",
+      "route": "202609/11/2609.09565v1-multi-agent-agentic-graph-learning-via-structural-signatures",
+      "title": "Multi-Agent Agentic Graph Learning via Structural Signatures",
+      "section": "quick",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 7.0,
+      "evidence": "多智能体拥有不同记忆并协作进行图推理",
+      "first_seen_at": "2026-09-11 22:15:39 UTC",
+      "updated_at": "2026-09-11 22:15:39 UTC"
+    },
+    {
+      "paper_id": "2609.05571v1",
+      "route": "202609/11/2609.05571v1-grounded-skill-synthesis-from-code-at-scale-for-agentic-intelligence",
+      "title": "Grounded Skill Synthesis from Code at Scale for Agentic Intelligence",
+      "section": "quick",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 6.0,
+      "evidence": "将代码转化为可复用技能，作为智能体的程序性记忆",
+      "first_seen_at": "2026-09-11 22:15:39 UTC",
+      "updated_at": "2026-09-11 22:15:39 UTC"
+    },
+    {
+      "paper_id": "2609.07782v1",
+      "route": "202609/11/2609.07782v1-trajectorydb-a-new-database-for-agent-trajectories",
+      "title": "TrajectoryDB: A New Database for Agent Trajectories",
+      "section": "quick",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 6.0,
+      "evidence": "轨迹数据库支持智能体记忆提取",
+      "first_seen_at": "2026-09-11 22:15:39 UTC",
+      "updated_at": "2026-09-11 22:15:39 UTC"
+    },
+    {
+      "paper_id": "2609.08944v1",
+      "route": "202609/11/2609.08944v1-skilladam-stable-and-efficient-skill-evolution-for-agents",
+      "title": "SkillAdam: Stable and Efficient Skill Evolution for Agents",
+      "section": "quick",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 6.0,
+      "evidence": "智能体技能作为可复用程序性知识；通过执行反馈自进化提升技能记忆",
+      "first_seen_at": "2026-09-11 22:15:39 UTC",
+      "updated_at": "2026-09-11 22:15:39 UTC"
+    },
+    {
+      "paper_id": "2609.09233v1",
+      "route": "202609/11/2609.09233v1-subagents-vs-agent-skills-executing-reusable-knowledge-for-long-horizon-agentic-tasks",
+      "title": "Subagents vs Agent Skills: Executing Reusable Knowledge for Long-Horizon Agentic Tasks",
+      "section": "quick",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 6.0,
+      "evidence": "智能体技能作为可复用知识包；比较长时程任务中加载技能指令与子智能体调用方式",
+      "first_seen_at": "2026-09-11 22:15:39 UTC",
+      "updated_at": "2026-09-11 22:15:39 UTC"
+    }
+  ]
+}

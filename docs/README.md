@@ -41,17 +41,17 @@
 <section class="dpr-home-dashboard-card dpr-home-report-card">
   <div class="dpr-home-dashboard-header">
     <div>
-      <span class="dpr-home-dashboard-kicker">2026-09-10</span>
+      <span class="dpr-home-dashboard-kicker">2026-09-11</span>
       <h3 class="dpr-home-dashboard-title">今日汇总</h3>
     </div>
-    <strong class="dpr-home-dashboard-count">共 6 篇</strong>
+    <strong class="dpr-home-dashboard-count">共 7 篇</strong>
   </div>
   <dl class="dpr-home-dashboard-stats">
     <div class="dpr-home-dashboard-stat"><dt>累计更新</dt><dd>1 次</dd></div>
-    <div class="dpr-home-dashboard-stat"><dt>精读</dt><dd>2</dd></div>
-    <div class="dpr-home-dashboard-stat"><dt>速读</dt><dd>4</dd></div>
+    <div class="dpr-home-dashboard-stat"><dt>精读</dt><dd>1</dd></div>
+    <div class="dpr-home-dashboard-stat"><dt>速读</dt><dd>6</dd></div>
   </dl>
-  <p class="dpr-home-dashboard-body">最近更新：2026-09-10 21:56:44 UTC<br>状态：成功</p>
+  <p class="dpr-home-dashboard-body">最近更新：2026-09-11 22:15:39 UTC<br>状态：成功</p>
 </section>
 <section class="dpr-home-dashboard-card dpr-home-brief-card">
   <div class="dpr-home-dashboard-header">
@@ -62,9 +62,9 @@
     <strong class="dpr-home-dashboard-count">AI</strong>
   </div>
   <div class="dpr-home-dashboard-body">
-<p>今日共生成 6 篇推荐（精读 2 篇，速读 4 篇）</p>
-<p>精读：《ROAM: Robust Organization of Atomic Memories for Agents through Semantic Relations》（9.0/10）, 《Closing the Consistency Gap: Self-Evolving Agents That Learn to Stay on Course》（8.0/10）</p>
-<p>速读：《DAREBench: Deployment-Aware and Reliable Evaluation of Models as Agents》（7.0/10）, 《Can Agents Win the Video Browser Showdown?》（7.0/10）, 《Show-Harness: Just a VLM Agent Can Play Robots》（7.0/10）</p>
+<p>今日共生成 7 篇推荐（精读 1 篇，速读 6 篇）</p>
+<p>精读：《Environments as Scaffold: Enriching Feedback to Bootstrap Self-Evolving Agents in Long-Horizon Tasks》（9.0/10）</p>
+<p>速读：《An Agent Model Abstraction for Human-AI Teaming Cognitive Coupling》（7.0/10）, 《Multi-Agent Agentic Graph Learning via Structural Signatures》（7.0/10）, 《Grounded Skill Synthesis from Code at Scale for Agentic Intelligence》（6.0/10）</p>
 <p>这些结果覆盖了当下较热的方向，建议先看精读区论文的关键问题与方法。</p>
   </div>
 </section>
@@ -74,12 +74,12 @@
       <span class="dpr-home-dashboard-kicker">今日累计</span>
       <h3 class="dpr-home-dashboard-title">精读推荐</h3>
     </div>
-    <strong class="dpr-home-dashboard-count">2 篇</strong>
+    <strong class="dpr-home-dashboard-count">1 篇</strong>
   </div>
   <div class="dpr-home-dashboard-body">
-<ul class="dpr-home-dashboard-paper-list"><li><span class="dpr-home-dashboard-paper-title" title="ROAM: Robust Organization of Atomic Memories for Agents through Semantic Relations">ROAM: Robust Organization of Atomic Memories for Agents through Semantic Relations</span></li><li><span class="dpr-home-dashboard-paper-title" title="Closing the Consistency Gap: Self-Evolving Agents That Learn to Stay on Course">Closing the Consistency Gap: Self-Evolving Agents That Learn to Stay on Course</span></li></ul>
+<ul class="dpr-home-dashboard-paper-list"><li><span class="dpr-home-dashboard-paper-title" title="Environments as Scaffold: Enriching Feedback to Bootstrap Self-Evolving Agents in Long-Horizon Tasks">Environments as Scaffold: Enriching Feedback to Bootstrap Self-Evolving Agents in Long-Horizon Tasks</span></li></ul>
   </div>
-  <div class="dpr-home-dashboard-tags"><span class="dpr-home-dashboard-tag">agent-memory <strong>2</strong></span></div>
+  <div class="dpr-home-dashboard-tags"><span class="dpr-home-dashboard-tag">agent-memory <strong>1</strong></span></div>
 </section>
 <section class="dpr-home-dashboard-card dpr-home-skim-card">
   <div class="dpr-home-dashboard-header">
@@ -87,12 +87,12 @@
       <span class="dpr-home-dashboard-kicker">今日累计</span>
       <h3 class="dpr-home-dashboard-title">速读推荐</h3>
     </div>
-    <strong class="dpr-home-dashboard-count">4 篇</strong>
+    <strong class="dpr-home-dashboard-count">6 篇</strong>
   </div>
   <div class="dpr-home-dashboard-body">
-<ul class="dpr-home-dashboard-paper-list"><li><span class="dpr-home-dashboard-paper-title" title="DAREBench: Deployment-Aware and Reliable Evaluation of Models as Agents">DAREBench: Deployment-Aware and Reliable Evaluation of Models as Agents</span></li><li><span class="dpr-home-dashboard-paper-title" title="Can Agents Win the Video Browser Showdown?">Can Agents Win the Video Browser Showdown?</span></li><li><span class="dpr-home-dashboard-paper-title" title="Show-Harness: Just a VLM Agent Can Play Robots">Show-Harness: Just a VLM Agent Can Play Robots</span></li></ul>
+<ul class="dpr-home-dashboard-paper-list"><li><span class="dpr-home-dashboard-paper-title" title="An Agent Model Abstraction for Human-AI Teaming Cognitive Coupling">An Agent Model Abstraction for Human-AI Teaming Cognitive Coupling</span></li><li><span class="dpr-home-dashboard-paper-title" title="Multi-Agent Agentic Graph Learning via Structural Signatures">Multi-Agent Agentic Graph Learning via Structural Signatures</span></li><li><span class="dpr-home-dashboard-paper-title" title="Grounded Skill Synthesis from Code at Scale for Agentic Intelligence">Grounded Skill Synthesis from Code at Scale for Agentic Intelligence</span></li></ul>
   </div>
-  <div class="dpr-home-dashboard-tags"><span class="dpr-home-dashboard-tag">agent-memory <strong>4</strong></span></div>
+  <div class="dpr-home-dashboard-tags"><span class="dpr-home-dashboard-tag">agent-memory <strong>6</strong></span></div>
 </section>
 </div>
 

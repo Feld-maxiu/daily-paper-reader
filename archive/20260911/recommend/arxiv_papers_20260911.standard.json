@@ -1,0 +1,296 @@
+{
+  "mode": "standard",
+  "generated_at": "2026-09-11T22:08:14.957092+00:00",
+  "stats": {
+    "mode": "standard",
+    "tag_count": 1,
+    "deep_divecandidates": 1,
+    "deep_cap": 6,
+    "deep_selected": 1,
+    "quick_candidates": 6,
+    "quick_skim_target": 11,
+    "quick_selected": 6
+  },
+  "deep_dive": [
+    {
+      "id": "2609.08404v1",
+      "source": "arxiv",
+      "title": "Environments as Scaffold: Enriching Feedback to Bootstrap Self-Evolving Agents in Long-Horizon Tasks",
+      "abstract": "Large Language Models demonstrate remarkable proficiency in static reasoning, yet training them as autonomous agents through Reinforcement Learning (RL) for long-horizon tasks is often hindered by severe reward sparsity. While conventional \\textit{agent-side warming} up via supervised fine-tuning (SFT) can alleviate this, it is frequently limited by data scarcity and constrained exploration. To address this, we propose a paradigm shift to \\textit{environment-side adaptation} by constructing \\textbf{F}eedback-\\textbf{E}nriched \\textbf{E}nvironments (\\textbf{FEEs}). Through a pilot study, we establish a feedback design strategy that reformulates environments by transitioning from action guidance to observation enrichment during the later stages of both intra-episode exploration and inter-episode evolution. Large-scale experiments on SciWorld and BFCL benchmarks using various Qwen3 model scales and RL algorithms such as GRPO, GSPO, and DAPO demonstrate that FEEs consistently yield performance improvements over standard settings. Furthermore, our analysis reveals that training with FEEs \\textbf{(1)} stabilizes training dynamics by reducing entropy volatility, \\textbf{(2)} facilitates proactive state-space exploration in difficult tasks, \\textbf{(3) }ensures the internalization of environmental guidance into policy weights rather than acting as a mere inference-time prior, and \\textbf{(4) }identifies intra-group feedback consistency as a critical boundary for stable optimization.",
+      "authors": [
+        "Hongbang Yuan",
+        "Zhuoran Jin",
+        "Yixin Cao"
+      ],
+      "primary_category": "cs.LG",
+      "categories": [
+        "cs.LG",
+        "cs.AI",
+        "cs.CL"
+      ],
+      "published": "2026-09-08T08:14:25+00:00",
+      "link": "https://arxiv.org/pdf/2609.08404v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "proposes feedback-enriched environments for RL-based self-evolving agents",
+      "llm_evidence_cn": "提出面向基于强化学习的自进化智能体的反馈丰富环境",
+      "llm_evidence": "提出面向基于强化学习的自进化智能体的反馈丰富环境",
+      "canonical_evidence": "提出面向基于强化学习的自进化智能体的反馈丰富环境",
+      "llm_tldr_en": "Training LLM agents with RL for long-horizon tasks suffers from sparse rewards. This paper shifts from agent-side warming to environment-side adaptation, constructing Feedback-Enriched Environments (FEEs) that enrich observations during RL. Pilot studies show improved exploration and self-evolution.",
+      "llm_tldr_cn": "使用强化学习训练长时程任务的LLM智能体面临奖励稀疏问题。本文提出环境侧适应范式，构建反馈丰富环境（FEE），在强化学习过程中将动作引导转变为观察丰富。初步研究表明，该方法改善了探索并引导自进化智能体训练，为长时程任务中的强化学习提供了新思路。",
+      "llm_tldr": "使用强化学习训练长时程任务的LLM智能体面临奖励稀疏问题。本文提出环境侧适应范式，构建反馈丰富环境（FEE），在强化学习过程中将动作引导转变为观察丰富。初步研究表明，该方法改善了探索并引导自进化智能体训练，为长时程任务中的强化学习提供了新思路。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "reinforcement learning applied to autonomous agents",
+      "matched_requirement_id": "req-3",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "quick_skim": [
+    {
+      "id": "2609.05552v1",
+      "source": "arxiv",
+      "title": "An Agent Model Abstraction for Human-AI Teaming Cognitive Coupling",
+      "abstract": "Industrial environments increasingly rely on collaboration between humans and AI-enabled agents. Effective teamwork requires aligning how agents perceive situations, plan actions to pursue goals, and adapt to changing conditions, yet existing systems lack mechanisms for cross-agent cognitive processes coupling. This paper presents a conceptual cognitive agent model that formalises cognitive coupling through eight components: Input, Process, Output, State, Value, Memory, World Model, and Goal. The model abstracts how agents coordinate and co-regulate their cognitive cycles, providing a basis for analysing distributed cognition and designing cognitively interoperable human-AI systems.",
+      "authors": [
+        "Kolitha Kottagaha W. M",
+        "Jos A. C. Bokhorst",
+        "Ben Gaffinet",
+        "Christos Emmanouilidis"
+      ],
+      "primary_category": "cs.HC",
+      "categories": [
+        "cs.HC",
+        "cs.AI",
+        "cs.MA"
+      ],
+      "published": "2026-09-03T11:01:02+00:00",
+      "link": "https://arxiv.org/pdf/2609.05552v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "conceptual agent model including memory and world model components for cognitive coupling",
+      "llm_evidence_cn": "包含记忆与世界模型组件的概念智能体模型用于认知耦合",
+      "llm_evidence": "包含记忆与世界模型组件的概念智能体模型用于认知耦合",
+      "canonical_evidence": "包含记忆与世界模型组件的概念智能体模型用于认知耦合",
+      "llm_tldr_en": "Presents a conceptual cognitive agent model for human-AI teaming, formalizing cognitive coupling through eight components including memory and world model. It abstracts coordination of cognitive cycles, providing basis for distributed cognition analysis and interoperable systems.",
+      "llm_tldr_cn": "工业环境的人机协作需要对齐智能体的认知过程，但现有系统缺乏跨智能体认知耦合机制。本文提出概念认知智能体模型，包含输入、过程、输出、状态、价值、记忆、世界模型和目标八个组件，抽象智能体如何协调和共同调节认知循环。该模型为分析分布式认知和设计认知互操作的人机系统提供了理论基础。",
+      "llm_tldr": "工业环境的人机协作需要对齐智能体的认知过程，但现有系统缺乏跨智能体认知耦合机制。本文提出概念认知智能体模型，包含输入、过程、输出、状态、价值、记忆、世界模型和目标八个组件，抽象智能体如何协调和共同调节认知循环。该模型为分析分布式认知和设计认知互操作的人机系统提供了理论基础。",
+      "llm_tags": [
+        "query:agent-memory:composite"
+      ],
+      "matched_query_tag": "query:agent-memory:composite",
+      "matched_query_text": "Papers central to 智能体记忆，多模态，智能体强化学习，文本世界模型，语言世界模型, especially work that connects or combines: memory mechanisms for intelligent agents; agent that processes multiple modalities; reinforcement learning applied to autonomous agents; text-based world model for environment simulation; language-based world model for agent reasoning; agent with memory augmentation for better performance; How do text world models support language based agent simulation?.",
+      "matched_requirement_id": "req-composite-agent-memory",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2609.05571v1",
+      "source": "arxiv",
+      "title": "Grounded Skill Synthesis from Code at Scale for Agentic Intelligence",
+      "abstract": "Reusable skills give agents transferable procedural knowledge, making scalable acquisition essential for extending agents beyond prior experience. Existing methods face two limitations: trajectory-based synthesis requires interactions with specific environments, while document-derived skills may lack executable evidence and verification. Source code offers a complementary path: it requires no prior agent experience yet provides executable evidence for grounding abstractions. We present Code2Skill, a fully automated pipeline that transforms selected code units into implementation-anchored records of atomic operations, composite workflows, and recurring patterns, then verifies each record through source-body-blind reconstruction and source-aware comparison. Applied to 19,769 popular, actively maintained GitHub repositories, Code2Skill produces CodeSkillBank, a grounded bank of 1,006,822 accepted records with workflow, boundary, provenance, and source-evidence metadata. Across 72 protocol-matched evaluations covering nine model settings and eight benchmarks, models augmented with retrieved CodeSkillBank skills improve by 11.7% on average over matched baselines and outperform them in 57 cases. Under a unified downstream interface, Code2Skill also outperforms trajectory-derived skill banks on all seven shared benchmarks, showing that repository-derived skills can provide useful procedural knowledge before agents accumulate sufficient interaction experience. Skills synthesized from tested AI-generated code achieve a 93.50% pass rate, compared with 93.00% for human-written code, providing initial evidence that the pipeline can expand with the growing volume of AI-generated software. Overall, Code2Skill transforms procedural knowledge embedded in repositories into grounded, verifiable, and transferable agent skills.",
+      "authors": [
+        "Yongqi Tong",
+        "Pan Wang",
+        "Hang Wang",
+        "Jianshe Li",
+        "Xin Zhang",
+        "Jiang-Ming Yang",
+        "Wei Wu"
+      ],
+      "primary_category": "cs.SE",
+      "categories": [
+        "cs.SE",
+        "cs.CL"
+      ],
+      "published": "2026-09-04T03:37:06+00:00",
+      "link": "https://arxiv.org/pdf/2609.05571v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "Transforms code into reusable skills as procedural memory for agents",
+      "llm_evidence_cn": "将代码转化为可复用技能，作为智能体的程序性记忆",
+      "llm_evidence": "将代码转化为可复用技能，作为智能体的程序性记忆",
+      "canonical_evidence": "将代码转化为可复用技能，作为智能体的程序性记忆",
+      "llm_tldr_en": "Addresses the limitation of trajectory- and document-based skill acquisition by using source code; presents Code2Skill, an automated pipeline that converts code units into verified implementation-anchored skill records. These reusable skills augment agents' procedural knowledge without prior environment interaction.",
+      "llm_tldr_cn": "针对轨迹合成需环境交互、文档技能缺乏可执行验证的局限，提出Code2Skill全自动流水线，将代码单元转化为实现锚定的原子操作、复合工作流与反复模式记录，并通过源码主体盲重建与源码感知比较进行验证。该方法为智能体提供了可复用的程序性知识，无需预先环境经验即可规模化扩展技能库，从而增强智能体的任务执行能力。",
+      "llm_tldr": "针对轨迹合成需环境交互、文档技能缺乏可执行验证的局限，提出Code2Skill全自动流水线，将代码单元转化为实现锚定的原子操作、复合工作流与反复模式记录，并通过源码主体盲重建与源码感知比较进行验证。该方法为智能体提供了可复用的程序性知识，无需预先环境经验即可规模化扩展技能库，从而增强智能体的任务执行能力。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "agent with memory augmentation for better performance",
+      "matched_requirement_id": "req-6",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2609.09565v1",
+      "source": "arxiv",
+      "title": "Multi-Agent Agentic Graph Learning via Structural Signatures",
+      "abstract": "Agentic graph learning (AGL) has recently achieved promising results on graph reasoning tasks, where an agent powered by a large language model (LLM) sequentially samples the graph as evidence to support its final prediction. Existing methods either employ a single agent or orchestrate multiple role-based agents to reason and learn over the entire graph, but both essentially rely on a shared reasoning policy across different graph regions, which can be suboptimal for graphs with heterogeneous structural and semantic patterns. Inspired by the progress of multi-agent collaboration on complex reasoning tasks, a natural remedy is to let multiple agents own different memory and collaborate; however, applying this paradigm to graphs directly faces two challenges. First, existing AGL methods typically verbalize graph structures into natural-language descriptions for LLM agents, making the reasoning process sensitive to the ordering of structural information and thereby breaking the permutation-invariant nature of graphs. Second, incorporating increasingly large sampled neighborhoods leads to rapidly growing contexts. To address these challenges, this paper introduces a multi-agent agentic graph learning (i.e., MAAGL) framework. MAAGL partitions the graph into communities and assigns an independent agent to each community for region-specific specialization. MAAGL represents structural and semantic evidence separately. Structural evidence is summarized by a dynamically updated structural signature that is permutation-invariant and fixed in size, while semantic evidence is filtered to the top-k nodes ranked by relevance. Based on historical trajectories with similar signatures, agents estimate their confidence and trigger debate-style collaboration when needed. Extensive experiments on four benchmark datasets show that MAAGL outperforms SOTA AGL methods.",
+      "authors": [
+        "Liang Qu",
+        "Jianxin Li",
+        "Hua Wang"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-09-09T00:43:45+00:00",
+      "link": "https://arxiv.org/pdf/2609.09565v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "multiple agents own different memory and collaborate for graph reasoning",
+      "llm_evidence_cn": "多智能体拥有不同记忆并协作进行图推理",
+      "llm_evidence": "多智能体拥有不同记忆并协作进行图推理",
+      "canonical_evidence": "多智能体拥有不同记忆并协作进行图推理",
+      "llm_tldr_en": "Existing agentic graph learning uses a shared reasoning policy across graph regions, suboptimal for heterogeneous graphs. This paper proposes multi-agent collaboration where each agent has its own memory, using structural signatures to share evidence. The method improves graph reasoning by leveraging diverse memories.",
+      "llm_tldr_cn": "现有智能体图学习方法在整个图上共享推理策略，对异构结构不够理想。本文提出多智能体协作框架，每个智能体拥有独立记忆，利用结构签名进行证据共享与协作推理。该方法通过多样记忆提升图推理性能，解决了智能体图学习中记忆与协作的挑战。",
+      "llm_tldr": "现有智能体图学习方法在整个图上共享推理策略，对异构结构不够理想。本文提出多智能体协作框架，每个智能体拥有独立记忆，利用结构签名进行证据共享与协作推理。该方法通过多样记忆提升图推理性能，解决了智能体图学习中记忆与协作的挑战。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "memory mechanisms for intelligent agents",
+      "matched_requirement_id": "req-1",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2609.07782v1",
+      "source": "arxiv",
+      "title": "TrajectoryDB: A New Database for Agent Trajectories",
+      "abstract": "AI agents generate rich execution trajectories that capture their interactions with large language models, tools, and external environments. These trajectories are increasingly valuable for downstream tasks such as memory extraction, model fine-tuning, runtime optimization, and security and cost monitoring. Yet trajectory data today is fragmented across files, databases, and observability systems, with no persistent data management system designed around its unique structure and access patterns.   We argue that trajectories should be treated as a distinct data type. A trajectory combines hierarchical execution structure, large volumes of text whose analysis often requires semantic reasoning, and rich dependencies and lineage among events, intermediate states, and derived artifacts. These properties introduce new requirements throughout the data lifecycle. Ingestion must reconstruct and preserve execution structure and lineage; storage must efficiently organize large but highly redundant contexts while maintaining relationships among records; and query processing must jointly reason over structure, temporal order, semantics, and lineage.   We therefore envision TrajectoryDB, a trajectory-native data management system that co-designs ingestion, storage, and query processing to efficiently manage and analyze agent execution trajectories.",
+      "authors": [
+        "Yunjia Zheng",
+        "Juncheng Yang"
+      ],
+      "primary_category": "cs.DB",
+      "categories": [
+        "cs.DB"
+      ],
+      "published": "2026-09-07T17:29:17+00:00",
+      "link": "https://arxiv.org/pdf/2609.07782v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "trajectory database enables memory extraction for agents",
+      "llm_evidence_cn": "轨迹数据库支持智能体记忆提取",
+      "llm_evidence": "轨迹数据库支持智能体记忆提取",
+      "canonical_evidence": "轨迹数据库支持智能体记忆提取",
+      "llm_tldr_en": "Agent trajectories are valuable for memory extraction but currently fragmented. TrajectoryDB treats trajectories as a distinct data type, providing persistent management with hierarchical structure and semantic query support. This database enables downstream tasks like memory extraction, model fine-tuning, and optimization.",
+      "llm_tldr_cn": "智能体轨迹对记忆提取等下游任务很有价值，但目前数据分散、缺乏专门管理。TrajectoryDB将轨迹视为独特数据类型，提供持久化数据管理系统，支持层次化执行结构、语义分析和依赖血缘。该数据库为记忆提取、模型微调和运行时优化提供基础，直接支撑智能体记忆机制的发展。",
+      "llm_tldr": "智能体轨迹对记忆提取等下游任务很有价值，但目前数据分散、缺乏专门管理。TrajectoryDB将轨迹视为独特数据类型，提供持久化数据管理系统，支持层次化执行结构、语义分析和依赖血缘。该数据库为记忆提取、模型微调和运行时优化提供基础，直接支撑智能体记忆机制的发展。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "memory mechanisms for intelligent agents",
+      "matched_requirement_id": "req-1",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2609.08944v1",
+      "source": "arxiv",
+      "title": "SkillAdam: Stable and Efficient Skill Evolution for Agents",
+      "abstract": "Agent skills provide a lightweight way to equip frozen language-model agents with domain knowledge and procedural guidance, yet obtaining high-quality skills remains costly and difficult to scale. Expert-written skills require substantial human effort. Recent skill self-evolution methods automate an iterative loop that uses execution feedback to revise skills, but their heuristic update strategies often yield unstable optimization and low iteration efficiency. We identify two challenges in realizing stable and efficient skill self-evolution. Direction Stability requires effective corrections to accumulate rather than be overwritten by iteration-local feedback. Update Adaptivity requires the scope of each revision to reflect the consistency of recent case-level improvements. We introduce SkillAdam, an Adam-inspired framework for optimizing discrete and non-differentiable skill documents. As a functional analogue of Adam's first moment, an optimization memory records identified problems and the outcomes of prior solution attempts to stabilize the update direction. As a functional analogue of Adam's second moment, a volatility-driven edit budget tracks the history-weighted variation of recent case-level improvements and adaptively controls the update magnitude. Across seven benchmarks that span short- and long-horizon tasks, SkillAdam achieves state-of-the-art performance with more stable optimization dynamics. It also obtains stronger skills with substantially fewer optimization iterations and lower cost than prior methods. Code repository: https://github.com/ruc-datalab/SkillAdam",
+      "authors": [
+        "Gaoyuan Li",
+        "Meihao Fan",
+        "Yizhe Liu",
+        "Shaolei Zhang",
+        "Ju Fan",
+        "Siyi Wang",
+        "Jiaheng Hou",
+        "Xudong Weng",
+        "Honghan Tian",
+        "Zang Li"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-09-08T16:04:45+00:00",
+      "link": "https://arxiv.org/pdf/2609.08944v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "Agent skills as reusable procedural knowledge; self-evolution loop with execution feedback for skill memory improvement",
+      "llm_evidence_cn": "智能体技能作为可复用程序性知识；通过执行反馈自进化提升技能记忆",
+      "llm_evidence": "智能体技能作为可复用程序性知识；通过执行反馈自进化提升技能记忆",
+      "canonical_evidence": "智能体技能作为可复用程序性知识；通过执行反馈自进化提升技能记忆",
+      "llm_tldr_en": "Addresses unstable and inefficient skill self-evolution for language-model agents; proposes SkillAdam to enforce direction stability and update adaptivity in skill revision loops, leading to better task performance.",
+      "llm_tldr_cn": "针对 LLM 智能体技能自进化不稳定、迭代效率低的问题，提出 SkillAdam 优化器，通过在技能修订中引入方向稳定性和更新自适应性，利用执行反馈实现稳定高效的技能演化。实验表明该方法显著提升技能演化质量，使冻结语言模型智能体在多个任务上表现更优。其贡献在于降低了高质量技能的获取成本，为智能体记忆增强提供了有效手段。",
+      "llm_tldr": "针对 LLM 智能体技能自进化不稳定、迭代效率低的问题，提出 SkillAdam 优化器，通过在技能修订中引入方向稳定性和更新自适应性，利用执行反馈实现稳定高效的技能演化。实验表明该方法显著提升技能演化质量，使冻结语言模型智能体在多个任务上表现更优。其贡献在于降低了高质量技能的获取成本，为智能体记忆增强提供了有效手段。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "agent with memory augmentation for better performance",
+      "matched_requirement_id": "req-6",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2609.09233v1",
+      "source": "arxiv",
+      "title": "Subagents vs Agent Skills: Executing Reusable Knowledge for Long-Horizon Agentic Tasks",
+      "abstract": "How can language model agents effectively leverage libraries of reusable knowledge to solve long-horizon tasks? Recent work has increasingly focused on agent skills: reusable capabilities represented as skill packages, i.e., multi-file bundles containing instructions, scripts, and other resources that help agents perform specific tasks. Agent skills are typically executed by loading their skill instructions into an agent's context and relying on the agent to follow them. As task horizons grow, however, this approach becomes increasingly brittle, because reasoning quality degrades as more information accumulates in the context window. We investigate an alternative approach in which skill packages are instead invoked as subagents. Rather than loading skill instructions into the main context, subagent execution spawns fresh context windows dedicated to solving individual subtasks. We show that subagent execution outperforms agent-skill execution when skill packages expose clear input-output contracts and their instructions encode the procedural knowledge needed to fulfill those contracts. The tradeoff is additional communication overhead, as extra tokens are required to coordinate between the main agent and its subagents. Our results show that the benefit of reusable knowledge depends not only on its content, but also on how it is organized and invoked.",
+      "authors": [
+        "Wasu Top Piriyakulkij",
+        "Rachel Lawrence",
+        "Alicia Curth",
+        "Sushrut Karmalkar",
+        "Niranjani Prasad"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI",
+        "cs.CL",
+        "cs.LG"
+      ],
+      "published": "2026-09-07T20:14:11+00:00",
+      "link": "https://arxiv.org/pdf/2609.09233v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "Agent skills as reusable knowledge packages; compares loading skill instructions vs invoking skills as subagents for long-horizon tasks",
+      "llm_evidence_cn": "智能体技能作为可复用知识包；比较长时程任务中加载技能指令与子智能体调用方式",
+      "llm_evidence": "智能体技能作为可复用知识包；比较长时程任务中加载技能指令与子智能体调用方式",
+      "canonical_evidence": "智能体技能作为可复用知识包；比较长时程任务中加载技能指令与子智能体调用方式",
+      "llm_tldr_en": "Investigates how to execute reusable skill packages in long-horizon agentic tasks; compares context-loading skills vs invoking them as subagents, showing subagents improve robustness.",
+      "llm_tldr_cn": "针对长时程智能体任务中技能指令随上下文累积导致推理质量下降的问题，比较了将技能作为子智能体调用与直接加载到上下文的两种执行方式。实验表明子智能体调用方式能更有效地利用可复用技能知识，提高长时程任务的成功率。该方法为智能体记忆增强和可复用知识执行提供了更稳健的设计。",
+      "llm_tldr": "针对长时程智能体任务中技能指令随上下文累积导致推理质量下降的问题，比较了将技能作为子智能体调用与直接加载到上下文的两种执行方式。实验表明子智能体调用方式能更有效地利用可复用技能知识，提高长时程任务的成功率。该方法为智能体记忆增强和可复用知识执行提供了更稳健的设计。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "agent with memory augmentation for better performance",
+      "matched_requirement_id": "req-6",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    }
+  ]
+}
