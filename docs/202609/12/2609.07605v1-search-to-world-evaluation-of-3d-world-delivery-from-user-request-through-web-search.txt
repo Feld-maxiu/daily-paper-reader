@@ -1,0 +1,1675 @@
+Title: Search-to-World: Evaluation of 3D World Delivery from User Request through Web Search
+
+URL Source: https://arxiv.org/pdf/2609.07605v1
+
+Published Time: Wed, 09 Sep 2026 02:52:32 GMT
+
+Number of Pages: 40
+
+Markdown Content:
+Search-to-World: Evaluation of 3D World Delivery from User Request through Web Search 
+
+Zixiao Gu 1,2,3,4, Yabo Chen 1,†, Xunzhi Xiang 1,5, Yu He 3,4,6, Haibin Huang 1, Chi Zhang 1,
+
+Yunbo Wang 2,∗, Xuelong Li 1,∗
+
+> 1
+
+Institute of Artificial Intelligence, China Telecom (TeleAI), 2Shanghai Jiao Tong University, 
+
+> 3
+
+Shanghai Innovation Institution, 4ActiMind, 5Nanjing University, 6Fudan University 
+
+> †
+
+Project Leader , ∗Corresponding Authors. 
+
+Agentic systems can understand user requests, search the live web, and use external tools to complete complex tasks, yet whether they can carry a user request through relevant content web retrieval to a usable 3D world has not been systematically evaluated. Both an established end-to-end pipeline and benchmark for evaluating it are missing. The core problem is bridging the gap from retrieval to delivery: relevant web-sourced visual content must be successfully turned into a request-aligned and perceptually acceptable 3D world. We address these gaps separately. First, we introduce Search-to-World, an evaluation task that defines an end-to-end pipeline from a user request through web-sourced visual content retrieval to the delivery of a usable 3D world. Observed Retrieval Rate (ORR) and World Delivery Rate (WDR) are proposed as two metrics to distinguish observing relevant web-sourced visual content from successfully delivering a 3D world. Second, we present WorldSearcher, a reuse-then-reconstruction harness system that connects existing search agent systems to 3D world delivery. It first seeks available 3D worlds for reuse, and then falls back to video-based reconstruction when no reusable worlds are retrieved. We also design a structured recovery control in WorldSearcher to revise temporal grounding, replace source videos, or reformulate queries for failure recovery. We benchmark several widely used models on the Search-to-World task using WorldSearcher and conduct an ablation study of supervised fine-tuning (SFT) for the core models used by recovery subagents, thereby validating the recovery control of WorldSearcher. Our results reveal that Search-to-World delivery varies with the model used by the agentic system and that observing relevant web-sourced visual content alone does not guarantee successful delivery. More importantly, joint training of the recovery agents improves both delivery success and action efficiency. Overall, Search-to-World makes the capability of 3D world delivery by an agentic system measurable, while WorldSearcher provides an effective harness system with complementary recovery components. 
+
+Keywords: 3D World Delivery; Agentic Systems; Web Search; Evaluation Benchmark; 3D Reconstruction. 
+
+Correspondence: Yunbo Wang ( yunbow@sjtu.edu.cn ); Xuelong Li ( xuelong li@ieee.org )
+
+Date: September 9, 2026 
+
+# 1 Introduction 
+
+Whether an agentic system can turn a user request into a usable 3D world is an end-to-end capability question, not merely a retrieval question. As Figure 1 illustrates, the requested outcome is not a web state, an answer, or relevant visual content, but a delivered 3D world that preserves request alignment and perceptual quality across the complete execution pipeline. Accomplishing this outcome requires the system to discover accessible visual content on the live web, identify the requested content, and then reuse or reconstruct a world that satisfies the request. As summarized in Figure 2, prior evaluation families cover partial stages or endpoints of the whole pipeline. Web-agent and deep-research benchmarks evaluate web interaction and answer or report produc-tion Zhou et al. [2024], Koh et al. [2024], Wei et al. [2025], Yoran et al. [2024], Gou et al. [2025], Wang et al. 1arXiv:2609.07605v1 [cs.CV] 7 Sep 2026 What to Evaluate  Opportunity  → D elivery 
+
+WorldSearcher  Why  Opportunity ≠ Delivery 
+
+# Search -to -World                                
+
+> cloister with central courtyard
+> and stone arcade
+> Alignment
+> Quality
+> Web -sourced Visual Content / Raw Views
+> Observed Visual Content / Query + Context
+> cloister interior with a
+> central courtyard and
+> stone arcade
+> Delivered 3D World
+> Request → Visual Content → World
+> plant beds of a
+> botanical garden
+> Execution Trace / Query → Delivered World
+> plant beds in a
+> botanical garden
+> a glacial valley
+> with mountain
+> walls
+> Request Search Assess Deliver
+> Recovery Trace
+> Request Aligned
+> Quality Gate Passed
+> Evidence o pportunity cannot lead to world delivery .
+> breaking scene
+> continuity
+> Request / Raw Text
+> Live Web |Resource Video Clip | Located Clip
+> Request | Query Live Web | Context
+> Live Web | Web -Agent Endpoint 3D World | 3D Evaluation Endpoint
+> Request | Original Text Live Web | Resource 3D World | Accepted
+> Request | Actual Query Video Clip | Located 3D World | Delivery Request Web Content 3D World
+> Live Web | Resource 3D World | Reuse / Reconstruct
+> Video Clip | Initial Candidate
+> Video Clip | Sibling Clip
+> Criterion | Rejected
+> 3D World | Reconstruct
+> Compression | State
+> Criterion | Accepted
+> Policy Selection | Action
+> 3D World | Delivery
+> Relevant Video Rejected Clip Alternative World
+> Opportunity | Relevant Video
+> Scene Transition Failed Delivery | Rejected
+> Try Sibling Video
+> Clip
+> Video Quality below
+> Predefined VQA
+> Threshold
+> {
+> "status" :"rejected" ,
+> "reason" :"…" ,
+> "suggestion" :"…"
+> }
+
+Figure 1 Search-to-World evaluates whether an agentic system can turn web-sourced visual content into usable 3D worlds. The evaluation connects the user request and its observed web-sourced resources to the delivered 3D world, requiring both request alignment and perceptual quality. We evaluate not only the relevant content web retrieval, i.e., the “Opportunity”, but also whether the whole system produces an acceptable world, noted as “Delivery”. We propose WorldSearcher which models this task as a reuse-then-reconstruction harness system with structured recovery control. When a candidate fails the delivery assessment, WorldSearcher records a compact failure state and uses it to guide the next attempt toward an accepted world. An “Opportunity” is only a starting point: relevant content may lack sufficient coverage or perceptual quality for the requested world, or reuse and reconstruction may fail. By tracing each attempt to the final world, Search-to-World identifies the path from “Opportunity” to “Delivery” 
+
+[2026b], while multimodal web-search benchmarks evaluate multimodal content acquisition and ground-ing Jiang et al. [2025], Tao et al. [2025], Du et al. [2026], Liang et al. [2025], Liu et al. [2026], Yu et al. [2026]. 3D reconstruction and world-generation benchmarks evaluate scene recovery or world synthesis from supplied inputs Jensen et al. [2014], Sch¨ ops et al. [2017], Knapitsch et al. [2017], Liang et al. [2024], Martin et al. [2025], He et al. [2023], Duggal et al. [2025], Tam et al. [2026], Duan et al. [2025], Lu et al. [2026], Fan and Favaro [2026], while interactive-world benchmarks assume an already instantiated world and evaluate behavior within it Ding et al. [2026], Ying et al. [2026], Xu et al. [2026], Yang et al. [2026], Zhao et al. [2026], Chen et al. [2026b]. Together, these works cover important parts of the pipeline, but, to our knowledge, none evaluates the complete process from a user request through live web search to the delivery of a usable 3D world. The resulting capability is relevant to applications such as virtual tourism and remote presence, site-specific embodied-agent training, cultural-heritage visualization, and AR/VR content creation, where a system must connect web evidence to a spatially coherent 3D or dynamic world. Recent work provides complementary building blocks: system-level intelligence flow across heterogeneous resources An et al. [2025], Shao and Li [2025], single-image 3D lifting and metric scene recovery Chen et al. [2024a,b], Wen et al. [2025], video generation and control Chen et al. [2025], Xiang et al. [2025, 2026b], Xiang and Fan [2025], Huang 2Web -Agent / Deep Research           
+
+> Web State /Answer / Report
+> Web Navigation and Browsing
+> User Request
+> Multimodal Web Search
+> Grounded Answer / Video
+> Retrieval and Grounding
+> Text Query MM Information
+> 3D Reconstruction
+> 3D Scene
+> 3D Reconstruction
+> Images / Video
+> 3D / World Generation
+> Static
+> Scene / Word
+> Dynamic
+> Scene / World
+> 3D or World Generation
+> Text / Condition
+> Interactive World Model
+> World Behavior, Interactivity
+> Closed -Loop Rollout
+> World State Action / Camera
+> Search -to -World
+> Delivered 3D World
+> Retrieving and Reconstruction
+> User Request
+> User Task Browse +
+> Act
+> Traceable
+> States
+> Research summary
+> Synthesized
+> Answer
+> Image +
+> Question
+> Ranked
+> Images
+> Source
+> Context
+> LM
+> M
+> Deadpool &
+> Wolverine
+> Grounded
+> Answer
+> Multi -View
+> Input
+> Reconstructed 3D
+> Scene
+> Geometry /
+> Appearance
+> Image / Text
+> Generate world
+> from this image
+> Generated World World state -> Action -> Next View User Request
+> “the hotel
+> lobby”
+> Visual Content 3D World
+
+Figure 2 Representative evaluation families use different inputs and outputs. Web-agent and deep research bench-marks start from a user request and terminate at a web state, answer, or report. Multimodal web search benchmarks combine a text query with multimodal information as input and terminate at a grounded answer or multimodal outputs e.g. images, videos. 3D reconstruction benchmarks assume supplied images or video and terminate at a 3D scene. 3D / world generation benchmarks assess generated static or dynamic scene / worlds, while interactive world model benchmarks assess behavior and stability over closed-loop rollouts. Search-to-World connects a user request and web-sourced visual content acquisition to the delivered 3D world, while the other families cover only parts of this end-to-end process. 
+
+et al. [2025, 2024], Zhang et al. [2026a], and 4D/world generation Chen et al. [2026a], Zhang et al. [2026d,c], Wang et al. [2026a], Xiang et al. [2026a], Huang et al. [2026]. These capabilities motivate evaluating whether there exists a complete pipeline can turn a user request into a delivered 3D world. This process motivates three coupled questions. First, how can an agentic system reliably transform relevant and accessible web-sourced visual content into a usable 3D world? Second, how should success be evaluated at different stages, distinguishing relevant retrieval from delivery of a request-aligned and perceptually acceptable world? Third, how can we resolve bottlenecks happened in the pipeline, such as visual mismatch, grounding failure, unsuitable clips for reconstruction, and the reconstructed 3D world of poor quality, as illustrated in Figure 3? To answer the first two questions, we introduce Search-to-World, an evaluation task that defines an end-to-end pipeline from a user request through web-sourced visual content retrieval to the delivery of a usable 3D world. Then, we design two metrics: Observed Retrieval Rate (ORR) measures whether a relevant 3D world resource or corresponding video resource is retrieved during the process, while World Delivery Rate (WDR) measures end-to-end 3D world delivery fulfillment. Together, ORR and WDR distinguish observed relevant retrieval opportunity from successful world delivery. To address the third question, we propose WorldSearcher, a reuse-then-reconstruction harness system with structured recovery control. It first seeks an acceptable reusable 3D world. If no such 3D world is found, it retrieves a source video, grounds a request-relevant temporal interval, and reconstructs a 3D world. When reconstruction fails, the harness can call subagents to revise the temporal grounding, substitute the source video, or reformulate the search and grounding queries. This design helps to solve the bottlenecks, that may be encountered in the whole pipeline. With these modules, WorldSearcher combines efficient world reuse with controlled reconstruction fallback and recovery within a single execution. 3Bottleneck 1                             
+
+> Request Alignment
+> Bottleneck 2
+> Construction and Quality
+> 3D R etrieval
+> Relevant title,
+> wrong asset
+> ×
+> Input Query
+> "bar with bottle shelves"
+> Retrieved 3D World Title: Bar
+> Retrieved 3D World
+> Visual Mismatch
+> No bottle shelves
+> Temporal Grounding
+> Relevant video,
+> wrong moment
+> ×
+> Input Query
+> "the yoga studio"
+> Video → Grounded Clip
+> ↓
+> Retrieved Video
+> Grounded Moment
+> Grounding Failure
+> Shrine hall, not a yoga
+> studio
+> Clip Suitability
+> Relevant clip,
+> not reconstructable
+> ×
+> Input Query
+> "town hall with windows"
+> Grounded town hall clip
+> ↓
+> Exterior
+> Interior / D issolve
+> Unsuitable Clip
+> Scene transition breaks
+> geometry
+> 3D Reconstruction
+> Good clip,
+> degraded rendering
+> ×
+> Input Query
+> "wood floor of a dance studio"
+> Accepted Clip → 3D Rendering
+> ↓
+> Accepted Clip
+> Rejected Rendering
+> Poor Quality
+> Large opaque splat blobs
+> SUCCESS
+> Every Intermediate Stage Pass ed
+> Request → Video → Clip → 3D World
+> Video Clip 3D World
+> ✓Relevant Source V ideo
+> ✓Clean Grounded Video C lip
+> ✓Coherent 3D World
+> Input Query
+> "the hotel lobby"
+> Candidate
+> Hotel Interior Walkthrough
+> ✓All Quality and Alignment Checks Passed
+> 3D Rendering VQA 0.8086
+> BOTTLENECKS
+
+Figure 3 Intermediate-stage bottlenecks and a successful Search-to-World path. The left side shows how incorrect 3D retrieval, temporal grounding, clip suitability, or reconstruction quality can prevent usable 3D world delivery. The right side shows a successful path from a relevant video through a clean grounded clip to a coherent 3D world that satisfies the request. 
+
+We evaluate the mainstream models under the same WorldSearcher setting on 300 scored requests span-ning 20 fine-grained semantic domains, indoor and outdoor environments, and 5 spatial scales. A separate pool of 8,900 requests generated by the same data engine supports teacher-driven trajectory generation and supervised fine-tuning of the recovery agents. The results show that the agent model affect the overall per-formance of Search-to-World task, that observing relevant visual content does not ensure successful world delivery, and that jointly training the recovery agents improves delivery and action efficiency. The contributions of this paper are summarized as follows: 
+
+• We introduce the Search-to-World task, which defines an end-to-end pipeline from a user request through web-sourced visual content acquisition to usable 3D world delivery. 
+
+• We design two metrics for Search-to-World task, ORR and WDR, to distinguish observed retrieval opportunity from successful world delivery. 
+
+• We present WorldSearcher, a reuse-then-reconstruction harness system with structured recovery con-trol that enables efficient completion of the Search-to-World task while robustly handling failures encountered during execution. 
+
+# 2 Related Work 
+
+The works most relevant to Search-to-World fall into three lines: web content retrieval and acquisition, 3D reconstruction and generation, and interactive world model evaluation. Figure 2 organizes these lines by their starting inputs, used actions, and terminal outputs. Web-agent and multimodal search evaluation reaches web states, answers, reports, or grounded content. 3D reconstruction and generation evaluation begins from supplied visual content, conditioning signals, or candidate outputs, and interactive world model evaluation begins with an already instantiated world. These lines provide complementary capabilities, while Search-to-World connects a user request, web-sourced visual content acquisition, and usable 3D world delivery within one request-level execution pipeline. This connection is why direct 3D / world generation or evaluation within an already instantiated world does not replace Search-to-World studied here. Table 1 provides a comparison of the evaluation families. It distinguishes whether each evaluation family covers web-sourced visual content, delivered 3D worlds, or interactive world rollouts, making the boundary between web-sourced visual content acquisition, world delivery, and behavior within a world explicit. 4Table 1 Evaluation boundary for representative evaluation families. We compare starting points and whether a benchmark evaluates web-sourced visual content, delivered 3D worlds, or interactive world rollouts. For Search-to-World, the evaluated dimensions follow the request-level execution pipeline from a user request, through web-sourced visual content, to usable 3D world delivery. Interactive-world rollout provides a complementary boundary by evaluating behavior after a world has already been instantiated. ✓, ∼, and ×indicate core, partial, and no coverage, respectively.                      
+
+> Evaluation family Starting Point Live-Web Content Delivered World eval. Interactive World Rollout
+> Web Agent eval. Zhou et al. [2024], Koh et al. [2024], Wei et al. [2025], Yoran et al. [2024], Gou et al. [2025], Wang et al. [2026b], Gao et al. [2026] Request + Live Web ✓××
+> Multimodal Search eval. Jiang et al. [2025], Tao et al. [2025], Du et al. [2026], Liang et al. [2025], Liu et al. [2026], Yu et al. [2026], Zhang et al. [2025], Chen et al. [2026c], Xie et al. [2026] Request + Multimodal Information + Live Web ✓××
+> 3D Reconstruction eval. Jensen et al. [2014], Sch¨ ops et al. [2017], Knapitsch et al. [2017], Liang et al. [2024], Martin et al. [2025] Multi-View Images / Video ×✓×
+> 3D / World Gen eval. He et al. [2023], Duggal et al. [2025], Maiti et al. [2025], Wu et al. [2024], Tam et al. [2026], Fan and Favaro [2026], Li et al. [2025], Duan et al. [2025], Qin et al. [2025], Lu et al. [2026] Text / Condition ×✓∼
+> Interactive-World eval. Ying et al. [2026], Xu et al. [2026], Yang et al. [2026], Zhao et al. [2026], Ding et al. [2026], Chen et al. [2026b] World State + Action / Camera ×∼✓
+> Search-to-World (Ours) Request + Live Web ✓✓×
+
+## 2.1 Web Content Retrieval and Acquisition Evaluation 
+
+Web-agent and deep-research benchmarks make the user request the unit of evaluation while measuring web interaction, information seeking, and answer or report production. WebArena Zhou et al. [2024] and VisualWebArena Koh et al. [2024] evaluate agents on realistic interactive web tasks. BrowseComp Wei et al. [2025], AssistantBench Yoran et al. [2024], and Mind2Web 2 Gou et al. [2025] evaluate browsing and citation-backed information seeking. LiveResearchBench Wang et al. [2026b] and DR-Arena Gao et al. [2026] evaluate user-centric deep-research reports over fresh or current sources. Their terminal outcomes are web states, verified answers, or reports. Multimodal search benchmarks extend web retrieval to multimodal content information retrieval across images, text, and video. MMSearch Jiang et al. [2025], MMSearch-Plus Tao et al. [2025], and the long-horizon multimodal search benchmark Du et al. [2026] evaluate provenance-aware browsing and cross-modal reasoning. Video-Browser Liang et al. [2025], Video Deep Research Liu et al. [2026], RVMS Yu et al. [2026], and Deep Video Discovery Zhang et al. [2025] evaluate open-web video browsing, video reasoning, and temporal or moment localization, while BrowseComp-Plus Chen et al. [2026c] and DR 3-Eval Xie et al. [2026] provide controlled web settings. These benchmarks characterize web-sourced visual content acquisition through endpoints such as grounded answers, videos, and video moments. Search-to-World carries the request beyond these endpoints by assessing whether the acquired visual content becomes a usable 3D world that fulfills the request. 
+
+## 2.2 3D Reconstruction and Generation Evaluation 
+
+3D reconstruction and generation evaluation typically begins once visual content, a conditioning signal, or a candidate output is available. Tanks and Temples Knapitsch et al. [2017] evaluates large-scale reconstruction from supplied multi-view imagery. Output-oriented benchmarks assess generated 3D content: T 3Bench He et al. [2023], Eval3D Duggal et al. [2025], Gen3DEval, GPT-4V(ision), and SceneEval cover text alignment, perceptual quality, geometric consistency, semantic coherence, and spatial plausibility He et al. [2023], Duggal et al. [2025], Maiti et al. [2025], Wu et al. [2024], Tam et al. [2026]. GeoT2V-Bench and GS-QA focus on reconstruction-based video consistency and Gaussian-splat view quality Fan and Favaro [2026], Martin et al. [2025], while WorldModelBench, WorldScore, WorldSimBench, and 4DWorldBench extend evaluation to controllability, dynamics, simulation behavior, and 3D/4D consistency Li et al. [2025], Duan et al. [2025], Qin et al. [2025], Lu et al. [2026]. These benchmarks evaluate the reconstruction or generated world after the required visual content, 5conditioning signal, or candidate output has been supplied. Search-to-World defines a completely different task: it starts with a user request, performs web-sourced visual content acquisition, and evaluates whether the complete execution produces a usable 3D world. Direct 3D / world generation therefore assesses a different starting condition and outcome rather than replacing the web-sourced visual content acquisition and delivery boundary measured by Search-to-World. 
+
+## 2.3 Interactive World Model Evaluation 
+
+Interactive world model benchmarks evaluate behavior once a world has already been instantiated. WBench and WorldRoamBench study multi-turn interaction, consistency, memory, and long-horizon stability from supplied starting conditions Ying et al. [2026], Xu et al. [2026]. WorldExam and WorldOlympiad organize evaluation around appearance, reactivity, physical and geometric consistency, and interaction fidelity Yang et al. [2026], Zhao et al. [2026]. PlayWorld uses a high-level objective and an agent player to drive a closed-loop rollout Ding et al. [2026], while HarnessEval-W uses an agentified evaluator to diagnose existing visual-world rollouts Chen et al. [2026b]. Despite these different uses of agents, their starting point is a world state, interaction interface, or generated rollout, and their endpoint is an interactive rollout. This line provides a complementary boundary around behavior within an already instantiated world, while Search-to-World measures the end-to-end execution pipeline from web-sourced visual content acquisition to 3D world delivery. To sum up, prior benchmarks assess web-sourced visual content acquisition, 3D reconstruction or gen-eration from supplied inputs, or behavior within an already instantiated world. Search-to-World defines an end-to-end pipeline: it starts from a user request, acquires web-sourced visual content, and assesses the re-sulting 3D world. By reporting ORR and WDR, it separates observed retrieval opportunity from successful world delivery. 
+
+# 3 Search-to-World 
+
+Search-to-World propose an end-to-end execution pipeline from a user request to a usable 3D world and an evaluation benchmark upon it. It separates visual content retrieval opportunity from final delivery fulfillment: Observed Retrieval Rate (ORR) records whether relevant candidate web-sourced visual content is observed during acquisition, whereas World Delivery Rate (WDR) counts a request as delivered only when the resulting 3D world satisfies both request alignment and perceptual quality. Figure 4 provides an overview of the Search-to-World task workflow and illustrates representative examples. 
+
+## 3.1 Task Definition 
+
+Search-to-World asks whether an agentic system can turn request-aligned visual content discovered on the live web into a deliverable 3D world for a user request. The task begins with the request and ends only when the system produces a world that matches the requested content and spatial extent and meets the perceptual-quality criterion. Each execution searches the live web for visual content needed for world delivery rather than querying a fixed knowledge base. Delivery from web-sourced visual content matters when a user request refers to specific real-world content that must be reflected in the delivered 3D world. Unlike 3D / world generation from a supplied condition, the evaluated system must discover corresponding visual content on the live web and carry it through to 3D world delivery. This correspondence supports downstream settings tied to specific real environments. Let F denote the system, q denote the request, and π denote the complete system configuration. Let W
+
+denote the space of usable 3D worlds, and let W∅ /∈ W denotes a failure of the task. The system output is 
+
+wout = Fπ (q), wout ∈ W ∪ {W ∅}, (1) where wout is either a candidate world in W or W∅. The system separately records an execution trace, which supports metric computation and trajectory replay but does not enter the delivery label. 6Request  Candidate World  Evaluators 
+
+> Alignment
+> Judgement
+> Perceptual
+> Quality
+> Delivered
+> WDR
+> Failed
+> Severe
+> artifacts
+> Failed
+> Missing
+> item
+> “street”
+> living
+> room
+> with a
+> floor -
+> to -
+> ceiling
+> window
+> View 3 View 1
+> View 2
+> View 3 View 1
+> View 2
+> View 3 View 1
+> View 2
+> Alignment
+> Judgement
+> Perceptual
+> Quality
+> Alignment
+> Judgement
+> Perceptual
+> Quality
+> Result Live Web Retrieval
+> ORR
+> street
+> lined
+> with
+> brick
+> houses
+> store
+> with
+> stocked
+> shelves
+> ORR
+
+Figure 4 Overview of the Search-to-World task workflow and typical examples. Search-to-World defines an end-to-end execution pipeline from a user request through web-sourced visual content acquisition and candidate 3D world delivery to automatic judgments of request alignment and perceptual quality. Observed Retrieval Rate (ORR) records whether relevant candidate web-sourced visual content is observed during acquisition, whereas World Delivery Rate (WDR) counts a request as delivered only when the resulting world satisfies both criteria. 
+
+## 3.2 Execution Pipeline 
+
+Figure 4 operationalizes the task as an end-to-end execution pipeline from user request to 3D world. Given a user request, an agentic system performs web-sourced visual content acquisition and produces a candidate 3D world. The candidate may be obtained as a reusable 3D world discovered during web-sourced visual content acquisition or reconstructed from a corresponding video resource after temporal grounding. The candidate then enters the automatic world delivery assessment, and the execution is delivered only when the world satisfies both request alignment and perceptual quality. Executing these stages end-to-end requires more than observing relevant visual content. As Figure 3 shows, intermediate-stage bottlenecks arising from incorrect 3D retrieval, temporal grounding, clip suit-ability, or reconstruction quality can interrupt the execution before world delivery. Section 4 introduces WorldSearcher to address these bottlenecks through a reuse-then-reconstruction harness system with struc-tured recovery control. 
+
+## 3.3 Automatic World Delivery Assessment 
+
+The automatic world delivery assessment applies two Vision-Language Model (VLM)-based evaluators to multiview renderings of each candidate world, following previous output-oriented 3D evaluation benchmarks that assess textual alignment, perceptual quality, and rendered-view quality He et al. [2023], Duggal et al. [2025], Maiti et al. [2025], Wu et al. [2024], Martin et al. [2025]. The alignment evaluator assigns Palign (w, q ) ∈{0, 1} to assess the relevance between the request q and the renderings of world w. The quality evaluator first gives Qqual (w) ∈ R from the rendered visual content alone to assess the visual quality of world w and then assigns 
+
+Pqual (w) = 1{Qqual (w) ≥ τqual }. (2) 7Together, the two labels define the world delivery indicator. Specifically, for a world w, the world delivery indicator can be denoted as 
+
+Ydelivery (q) = 
+
+(
+
+Palign (w, q ) Pqual (w), w ∈ W ,
+
+0, w = W∅, (3) The system output Fπ (q) is therefore 
+
+Fπ (q) = w · Ydelivery (q). (4) Thus, a run receives a positive delivery label only when there exists a final world output aligning with the request and surpassing the perceptual-quality threshold. Implementation details of the automatic world delivery assessment are in the Harness Configurations part of Section 5.1. 
+
+## 3.4 Evaluation Metrics 
+
+Request-level task success is a standard outcome in agent evaluation because it measures whether the com-plete execution fulfills the request Zhou et al. [2024], Koh et al. [2024], Ma et al. [2024], Kapoor et al. [2024]. Search-to-World adopts this end-to-end outcome through World Delivery Rate (WDR), the rate of posi-tive delivery labels assigned by the automatic world delivery assessment. It additionally reports Observed Retrieval Rate (ORR), the proportion of runs that retrieve at least one relevant candidate item of visual content, which can be either a 3D world resource or a grounded video clip. Let C denote the set of candidate web-sourced visual content retrieved, and let R(c, q ) ∈ { 0, 1} denote the relevance assessment for candidate web-sourced visual content c ∈ C and request q, also given by a VLM evaluator. The retrieval indicator is 
+
+O(q) = 1{∃ c ∈ C : R(c, q ) = 1 } . (5) Let Q be the evaluation set and N = |Q| . For configuration π, the metrics are WDR( π) = 1
+
+N
+
+X
+
+> q∈Q
+
+Ydelivery (q), (6) ORR( π) = 1
+
+N
+
+X
+
+> q∈Q
+
+O(q). (7) WDR measures successful world delivery, whereas ORR measures observed retrieval opportunity. This task-specific separation distinguishes observing relevant visual content from fulfilling the world request. 
+
+# 4 WorldSearcher: Reuse-Then-Reconstruction 
+
+The Search-to-World task defined in Section 3.2 exposes intermediate-stage bottlenecks in 3D retrieval, temporal grounding, clip suitability, and reconstruction quality, as illustrated in Figure 3. To address these bottlenecks, WorldSearcher realizes the Search-to-World task as a reuse-then-reconstruction harness system with structured recovery control. Given a user request, the harness first seeks a reusable 3D world and invokes video-based reconstruction when no reusable world is accepted. Within the reconstruction branch, the recovery compressor agent updates a compressed recovery state after an observed runtime failure, and the recovery policy agent selects a state-admissible recovery action. Figure 5 summarizes the WorldSearcher execution flow, including the reuse branch, reconstruction branch, and recovery control loop. 
+
+## 4.1 Reuse-Then-Reconstruction 
+
+Inspired by the reuse-before-recomputation principle underlying cache design in computer architecture, WorldSearcher organizes world acquisition as a reuse-then-reconstruction system. Rather than reconstruct-ing every 3D world from raw web-sourced visual content, which is expensive, it first seeks an existing 3D world and accepts it as reusable only when it passes the automatic world delivery assessment. It invokes 8FAILURE  
+
+> Rejected
+> Candidate
+> SUCCESS
+> Accepted
+> 3D World
+> Recovery
+> Policy
+> Compact
+> State
+> Recovery
+> Compressor
+> Scene
+> Request
+> 3D Retrieval
+> & Matching
+> Reusable
+> World
+> World
+> Assessment
+> Video
+> Retrieval
+> Temporal
+> Grounding
+> 3D
+> Reconstruction
+> Reconstructed
+> World
+> Reuse
+> Action Set
+> Temporal Revision
+> Source Substitution
+> Query Reformulation
+> Reconstruction Recovery Control
+> reuse fail
+
+Figure 5 WorldSearcher harness system. The system first seeks a reusable 3D world and falls back to the recon-struction branch when no reusable world is accepted. The reconstruction branch executes video retrieval, temporal grounding, and 3D reconstruction to fulfill the final 3D world delivery. When the reconstruction branch encounters a failure, the recovery compressor agent updates a compact recovery state, and the recovery policy agent selects a temporal-revision, source-substitution, or query-reformulation action. The action set enumerates these three recovery-action types. At step t, the harness restricts them to the feasible set A(xt), from which the policy selects at ∈ A (xt). Red arrows denote failure-triggered transitions. 
+
+video-based reconstruction when no candidate reusable 3D world is accepted, which is the visual mismatch bottleneck shown in Figure 3. In the reconstruction branch, WorldSearcher retrieves web video, locates a request-relevant temporal interval, and reconstructs a 3D world. Thus, the reuse branch provides the first world-acquisition route, while the reconstruction branch supplies the fallback for world delivery. 
+
+## 4.2 Structured Recovery Control 
+
+As illustrated in Figure 3, bottlenecks like grounding failure, unsuitable clips for reconstruction, and the reconstructed 3D world of poor quality may happen during runtime of the reconstruction branch. Therefore, we design a structured recovery control to convert observed runtime failures into state-admissible recovery decisions. It comprises a recovery compressor agent, a compressed recovery state, a harness-enforced feasible action set, and a recovery policy agent. The recovery compressor agent updates mt from the observed failure and prior guidance, while the recovery policy agent selects the next action at from the feasible action set 
+
+A(xt). 
+
+Recovery Action Set. Within the reconstruction branch, the WorldSearcher harness defines three actions that determine the scope of recovery after a failure. Each action specifies the portion of the current trajectory retained during recovery: the harness can try another clip within the same video, switch to another video under the same query, or reformulate the search and temporal grounding queries. These actions operate at three levels of the visual-content-to-world process. The temporal revision action, 
+
+atemporal , explores an alternative temporally grounded clip within the same video. The source substitution action, asource , moves to another video supporting the same query. The query reformulation action, aquery ,revises the search and temporal grounding queries while preserving the requested world semantics. Together, the three actions provide temporal-, source-, and query-level recovery without imposing a fixed selection order. Let xt denote the recovery state maintained by the harness at step t. From this state, the harness derives 9the feasible action set: 
+
+A(xt) = {a ∈ { atemporal , a source , a query } : ρa(xt) = 1 }, (8) where ρa(xt) indicates whether action a is compatible with state xt. The feasible action set A(xt) is an input constraint to the recovery policy rather than an output generated by it. This separation keeps recovery feasibility under harness control, while the recovery policy agent selects only from the admissible alternatives. 
+
+Recovery Policy and Compressor. The WorldSearcher harness coordinates the recovery compressor agent and recovery policy agent with complementary roles. Let ft denote the failure observed at recovery step t.The recovery compressor agent first updates the compressed recovery state, after which the recovery policy agent selects the next action from A(xt): 
+
+mt = Φ( q, x t, m t−1, f t), m0 = minit , (9) 
+
+at = Π( q, m t; A(xt)) . (10) Here, Φ and Π denote the recovery compressor agent and recovery policy agent, respectively. The variable 
+
+mt denotes the compressed recovery state at step t, with m0 = minit specifying the empty initial state, while 
+
+at ∈ A (xt) denotes the selected action. Accordingly, the recovery policy selects temporal revision, source substitution, or query reformulation only when that action is admissible in the current harness state. The compressed state mt encodes prior guidance and the current failure in a fixed schema that summarizes the failure and records concepts to avoid, visual targets to preserve, and guidance for the next query. This representation provides the recovery policy agent with a compact recovery context without requiring replay of the full trajectory history, consistent with prior work on structured search states and compact iterative memory Zhu et al. [2026], Yuan et al. [2026]. 
+
+# 5 Experiments 
+
+## 5.1 Evaluation Settings 
+
+Evaluation Models. For the full model comparison, we evaluate eight open-weight models: four models of different parameter sizes from the Qwen3.5 series Qwen Team [2026], two models from the DeepSeek-V4 series DeepSeek-AI [2026], GLM-5.2 Z.ai [2026], and Kimi K3 Moonshot AI [2026]. We also evaluate four closed-source models: GPT-5.6 Sol and GPT-5.6 Terra from the GPT-5.6 series OpenAI [2026], Claude Fable 5 Anthropic [2026a], and Claude Opus 5 Anthropic [2026b]. Within each full-model configuration, the query generation, query refinement, recovery policy, and recovery compressor agents all use the same evaluation model. For the recovery ablation, we use Qwen3.5-9B as the base model and train separate LoRA adapters for the recovery policy and recovery compressor agents with supervised fine-tuning (SFT). 
+
+Evaluation Protocols. For each evaluation case, every configuration receives the same user request and is evaluated on the same 300-request evaluation set. The remaining harness components, auxiliary models, and video-path action cap are fixed within each comparison. We use the same frozen alignment and quality evaluator instances described in Section 3.3 for all world-delivery labels; both evaluator instances use GPT-5.6 Sol. We report ORR, WDR, and mean actions used as primary outcomes. The sealed evaluation inventory, fixed harness interfaces, and comparison design are documented in the supplementary materials. 
+
+Harness Configurations. The WorldSearcher harness coordinates four primary agents: query generation, query refinement, recovery policy, and recovery compression. It also uses the following auxiliary components: the Serper Serper [2026] search engine, the Qwen3-VL-Reranker Li et al. [2026], the TimeLens temporal grounder Zhang et al. [2026b], the Q-ReAlign quality model Q-Future [2026], and a GPT-5.6 Sol semantic matcher. The video-reconstruction branch uses an action cap of B = 36. We report the Q-ReAlign score and the CLIP score of delivered 3D worlds in the supplementary materials to verify the effectiveness of the Q-ReAlign quality model and the GPT-5.6 Sol semantic matcher. 
+
+## 5.2 Data Engine 
+
+To support controlled generation of SFT trajectories and end-to-end evaluation, we construct a data engine for request dataset generation. The engine starts from manually audited reference requests paired with scene 10 Templates  Drafter                  
+
+> reject
+> Request
+> Pool
+> Input Drafting
+> Reviser Inspector
+> Polishing Verification
+> •Audited Reference
+> •Scene Templates
+> •Initialization
+> •Use Lighter Model
+> •Initial Request Draft
+> •Vary from Templates
+> •Use Larger Model
+> •Polish Phrase
+> •Final Output
+> •Schema Compliance
+> •Element Preservation
+> •Duplicate Control
+> Training
+> (8900)
+> Evaluation
+> (300) Figure 6 Data construction pipeline. Audited reference requests and paired scene templates provide initialization, which is then transformed into a controlled natural-language request dataset through drafting, polishing, and verifi-cation. Accepted requests form an 8,900-request training-source pool for teacher-driven SFT data generation and a 300-request evaluation set.
+
+templates and generates natural-language variants constrained to preserve the requested scene semantics. The construction pipeline separates drafting, polishing, and rubric-based verification into three functional roles: 
+
+• Drafter. Apply a lighter model to quickly generate an initial request draft conditioned on the audited request and its associated scene template, while introducing controlled wording variation. 
+
+• Reviser. Apply a larger model for fine-grained linguistic refinement, rewriting each draft as a concise natural-language request while preserving the requested scene semantics. 
+
+• Inspector. Combine predefined rule-based checks with LLM verification to assess compliance with the request schema, preservation of required scene elements, and duplicate control. In our implementation, GPT-5.6 Luna instantiates the Drafter, while GPT-5.6 Sol instantiates both the Reviser and the Inspector. Only candidates that pass the Judge’s rubric enter the final request collection, as illustrated in Figure 6. 
+
+Data Composition. The resulting request collection contains an 8,900-request training-source pool for generating teacher trajectories used for SFT and a 300-request evaluation set. Both subsets cover 20 fine-grained semantic domains, grouped into 5 higher-level semantic domains. They also span indoor and outdoor environments and 5 spatial scales. Figure 7 shows the distribution of the two subsets across the semantic, environmental, and spatial dimensions. The 8,900-request training-source pool contains 445 requests in each of 20 fine-grained domains, 4,450 indoor and 4,450 outdoor requests, and 3,115 room-level, 1,335 building-level, 1,335 site-level, 1,335 street-level, and 1,780 landscape-level requests. The 300-request evaluation set contains 13–23 requests per domain across all 20 domains, 141 indoor and 159 outdoor requests, and 98 room-level, 51 building-level, 56 site-level, 41 street-level, and 54 landscape-level requests. More details of the dataset and the complete evaluation set are shown in the supplementary materials. 
+
+## 5.3 Full Model Comparison 
+
+For the full model comparison experiment, we apply each candidate model to the four agents while keeping the harness configuration, delivery gates, and action budget fixed. This design measures how the model assignment affects the complete Search-to-World task rather than an isolated agent stage. Results are shown in Table 2. The results separate three useful operating profiles. DeepSeek-V4-Flash achieves the highest ORR (88.3%) and WDR (78.7%) across the evaluated configurations, while also using only 17.3 mean video-path actions. GLM-5.2 uses the fewest actions overall (13.9) and reaches 52.7% WDR, showing a distinct efficiency-oriented profile. Within the closed-source group, GPT-5.6 Sol attains the highest WDR (53.0%) with 23.2 mean actions, while GPT-5.6 Terra attains the highest ORR in that group (72.7%). The variation between ORR and WDR across models shows that observing relevant visual content and completing an ac-cepted world are complementary outcomes: model choice affects visual content acquisition from the live web, downstream delivery, and interaction cost together. The qualitative cases in Figure 8 make this distinction concrete by tracing where model-specific trajectories reach or leave the delivery path. 11 Environments  Spatial Scales                              
+
+> Indoor
+> Outdoor
+> Domain Distribution
+> Indoor
+> Outdoor
+> Training
+> Evaluation
+> Training
+> Evaluation
+> Training
+> Evaluation
+> 35%
+> 15%
+> 15%
+> 15%
+> 20%
+> 0% 5% 10% 15% 20% 25% 30% 35% 40%
+> Room
+> Building
+> Site
+> Street
+> Landscape
+> 32.7%
+> 17.0%
+> 18.7%
+> 13.7%
+> 18.0%
+> 0% 5% 10% 15% 20% 25% 30% 35%
+> Room
+> Building
+> Site
+> Street
+> Landscape
+> 20%
+> 20%
+> 15%
+> 15%
+> 30%
+> 0% 5% 10% 15% 20% 25% 30% 35%
+> Infrastructure
+> Facilities
+> Civic
+> Residential
+> Landmark
+> 19%
+> 18.7%
+> 19%
+> 14.3%
+> 29%
+> 0% 5% 10% 15% 20% 25% 30% 35%
+> Infrastructure
+> Facilities
+> Civic
+> Residential
+> Landmark
+
+Figure 7 Composition of the dataset. Distribution of the 8,900-request training-source pool and the 300-request evaluation set across various environments, spatial scales, and 5 higher-level semantic domains that aggregate the 20 fine-grained domains. 
+
+Table 2 Full model comparison. We apply each model to the four primary agents and keep the other configurations fixed. All models use the same 300-request evaluation set. We compare eight open-weight models: Qwen3.5 series, DeepSeek-V4 series, GLM-5.2, and Kimi K3. We also compare four closed-source models: GPT-5.6 Sol, GPT-5.6 Terra, Claude Fable 5, and Claude Opus 5. ORR (Observed Retrieval Rate) is the percentage of runs that retrieve at least one relevant direct 3D scene or corresponding video clip candidate. WDR (World Delivery Rate) is the percentage of runs that satisfy request alignment, spatial extent, and perceptual quality at the delivery endpoint. Mean Actions is the mean number of video-path actions used per run. ORR and WDR are reported as percentages; Mean Actions is reported as actions per run. Bold : best observed value. Underline: second-best observed value. 
+
+Model ORR (%) ↑ WDR (%) ↑ Mean Actions ↓
+
+Open-weight models 
+
+Qwen3.5-4B 42.7 38.0 24.9 Qwen3.5-9B 34.0 29.3 26.6 Qwen3.5-35B-A3B 49.3 39.7 24.0 Qwen3.5-397B-A17B 68.7 44.0 25.4 DeepSeek-V4-Flash 88.3 78.7 17.3 DeepSeek-V4-Pro 63.7 48.3 22.0 GLM-5.2 66.0 52.7 13.9 
+
+Kimi K3 54.0 52.7 19.9 
+
+Closed-source models 
+
+GPT-5.6 Sol 68.0 53.0 23.2 GPT-5.6 Terra 72.7 51.0 24.1 Claude Fable 5 41.0 29.3 29.1 Claude Opus 5 23.7 16.0 32.8 
+
+## 5.4 Recovery Ablation 
+
+Teacher-Trajectory Generation. We use the data engine in Section 5.2 to construct the 8,900-request training-source pool, which matches the evaluation set in semantic, environmental, and spatial-scale coverage. For each request in this pool, we execute the WorldSearcher harness with GPT-5.6 Sol as the teacher model and record the resulting runtime trajectory. 
+
+SFT Training. Using these teacher-generated trajectories, we train two independent LoRA adapters initial-ized from Qwen3.5-9B with MS-Swift Zhao et al. [2024]: one for the recovery policy agent and one for the recovery compressor agent. The training targets follow the output schemas used at inference; policy targets are additionally restricted to the state-conditioned admissible action set. For policy SFT, we retain examples from trajectories whose final output receives a positive world-delivery label. For compressor SFT, we retain state-update examples whose outputs conform to the fixed recovery-state schema and faithfully encode the observed runtime failure and relevant recovery context. This role-specific filtering aligns the supervision with each agent’s inference-time contract. For the recovery ablation, we evaluate three SFT variants that isolate the individual and joint contribu-12 Request 
+
+Find a coastal 
+
+boardwalk 
+
+surrounded by dune 
+
+vegetation. 
+
+Model  / Web -sourced Visual Content  → 3D  World 
+
+Qwen3.5 -4B  Qwen3.5 -9B  Qwen3.5 -35B -A3B  Qwen3.5 -397B -A17B 
+
+DeepSeek -V4 -Flash  DeepSeek -V4 -Pro  GLM -5.2  Kimi K3 
+
+GPT -5.6 Sol  GPT -5.6 Terra  Claude Fable 5  Claude Opus 5 
+
+Find a redwood 
+
+grove with giant 
+
+trunks and a fern 
+
+understory. 
+
+Qwen3.5 -4B  Qwen3.5 -9B  Qwen3.5 -35B -A3B  Qwen3.5 -397B -A17B 
+
+DeepSeek -V4 -Flash  DeepSeek -V4 -Pro  GLM -5.2  Kimi K3 
+
+GPT -5.6 Sol  GPT -5.6 Terra  Claude Fable 5  Claude Opus 5 
+
+Find a funicular 
+
+station with a 
+
+boarding platform. 
+
+Qwen3.5 -4B  Qwen3.5 -9B  Qwen3.5 -35B -A3B  Qwen3.5 -397B -A17B 
+
+DeepSeek -V4 -Flash  DeepSeek -V4 -Pro  GLM -5.2  Kimi K3 
+
+GPT -5.6 Sol  GPT -5.6 Terra  Claude Fable 5  Claude Opus 5 
+
+Find Smederevo 
+
+Fortress in Serbia. 
+
+Qwen3.5 -4B  Qwen3.5 -9B  Qwen3.5 -35B -A3B  Qwen3.5 -397B -A17B 
+
+DeepSeek -V4 -Flash  DeepSeek -V4 -Pro  GLM -5.2  Kimi K3 
+
+GPT -5.6 Sol  GPT -5.6 Terra  Claude Fable 5  Claude Opus 5 
+
+Find the equipment 
+
+shelves and work 
+
+benches in a 
+
+laboratory. 
+
+Qwen3.5 -4B  Qwen3.5 -9B  Qwen3.5 -35B -A3B  Qwen3.5 -397B -A17B 
+
+DeepSeek -V4 -Flash  DeepSeek -V4 -Pro  GLM -5.2  Kimi K3 
+
+GPT -5.6 Sol  GPT -5.6 Terra  Claude Fable 5  Claude Opus 5 
+
+×
+
+× NOT FOUND  
+
+> NOT FOUND NOT FOUND
+
+× NOT FOUND  
+
+> NOT FOUND NOT FOUND
+
+×
+
+× NOT FOUND 
+
+× NOT FOUND  NOT FOUND  NOT FOUND  
+
+> NOT FOUND NOT FOUND
+
+× ×
+
+× × ×
+
+× NOT FOUND  NOT FOUND  NOT FOUND Figure 8 Qualitative comparison across full-model configurations. Each case block shows one request through the web-sourced visual content to 3D world for all evaluated models, tracing how model-specific trajectories propagate from request through web-sourced visual content retrieval to delivery. Successful result pairs retrieve video clips with the delivered 3D worlds, while stage-specific failures are shown in place. NOT FOUND denotes an unavailable stage, and the red cross denotes a stage result rejected by its corresponding quality gate. More visualizations of results generated by the reuse and reconstruction branch will be exhibited in the supplementary materials. 
+
+13 Table 3 Recovery ablation. All variants use the same configurations. Only the recovery-policy and recovery-compressor model assignments vary. Policy-SFT and Compressor-SFT denote supervised fine-tuning for the corre-sponding recovery agent, while Both SFT uses both adapters.                      
+
+> Model ORR (%) ↑WDR (%) ↑Mean Actions ↓
+> Teacher Model 68.0 53.0 23.2
+> Base Model 49.0 40.3 26.6 Policy-SFT Only 57.0 44.3 25.8 Compressor-SFT Only 52.3 42.0 26.2 Both SFT 64.0 49.7 24.5
+
+tions of the two adapters. 
+
+• Policy-SFT Only. The recovery policy agent uses the Policy-SFT adapter, while the recovery compres-sor and all other primary agents use GPT-5.6 Sol. 
+
+• Compressor-SFT Only. The recovery compressor agent uses the Compressor-SFT adapter, while the recovery policy and all other primary agents use GPT-5.6 Sol. 
+
+• Both SFT. The recovery policy agent and recovery compressor agent use the Policy-SFT and Compressor-SFT adapters, respectively. All other primary agents use GPT-5.6 Sol. We additionally report two reference configurations. One uses GPT-5.6 Sol for both recovery agents, whereas the other uses the Qwen3.5-9B base model for both. Results are reported in Table 3. This recovery ablation evaluates the recovery control design of WorldSearcher by isolating its two struc-tured recovery subagents and quantifying the benefits of role-specific SFT. Relative to the base model, the Policy-SFT Only variant raises ORR from 49.0% to 57.0% and WDR from 40.3% to 44.3%, while reducing the mean actions used from 26.6 to 25.8, consistent with more effective selection of admissible recovery ac-tions. The Compressor-SFT Only variant likewise raises ORR from 49.0% to 52.3% and WDR from 40.3% to 42.0%, consistent with improved compliance with the recovery-state schema and more faithful preserva-tion of decision-relevant failure information. Using both adapters yields the strongest SFT configuration, reaching 64.0% ORR, 49.7% WDR, and a mean action count of 24.5. These joint gains support the intended complementary control structure: compressor SFT improves the fidelity of the structured recovery state, while policy SFT improves the selection of an admissible recovery action conditioned on that state. 
+
+# 6 Conclusion 
+
+We introduce Search-to-World, an evaluation task that defines an end-to-end pipeline that can turn a user request into a usable 3D world through web-sourced visual content. By using two separate metrics, ORR and SDR, Search-to-World makes visible the gap between retrieving relevant visual content from the live web and completing accepted world delivery. We also present WorldSearcher, a reuse-then-reconstruction harness system that combines direct 3D reuse, video-based reconstruction, and structured recovery. Across 300 requests used in the evaluation experiment, our results show that the agent model affects retrieval, delivery, and action cost. Jointly adapting the recovery policy and compressor yields the strongest SFT recovery variant, demonstrating their complementary roles. Together, Search-to-World and WorldSearcher establish a measurable and effective path from user requests to 3D world delivery. 14 Supplementary Materials 
+
+# A Visualization and metrics of Delivered 3D World 
+
+## A.1 Reuse 3D World Delivery 
+
+Figure 9 shows several representative deliveries from the reuse branch. Each row pairs the user request with the retrieved 3D resource and several multi-view renderings. 
+
+## A.2 Reconstruction 3D World Delivery 
+
+Figure 10 shows several representative deliveries from the reconstruction branch. Each row pairs the user request with the retrieved video resource and several multi-view renderings. 
+
+## A.3 Metrics of Delivered 3D World 
+
+We report some additional metrics to evaluate the quality and alignment of the delivered 3D worlds, including PSNR Hore and Ziou [2010], LPIPS Zhang et al. [2018], SSIM Wang et al. [2004], CLIP Score Hessel et al. [2021], and Q-ReAlign Q-Future [2026]. Table 4 reports metrics of the delivered 3D world using GPT-5.6 Sol.  
+
+> Table 4 Additional metrics of delivered 3D world.
+
+Metric PSNR LPIPS SSIM CLIP Score Q-ReAlign VQA 
+
+Case mean 25.36 0.30 0.66 26.37 0.64 
+
+# B Harness Settings 
+
+The harness coordinates four primary agents: query generation, query refinement, recovery compression, and recovery policy. Auxiliary retrieval, temporal grounding, reconstruction, and quality-gate components are held fixed within each comparison.  
+
+> Table 5 Harness configuration.
+
+Component Configuration Comparison role 
+
+Search engine Serper Fixed within each comparison 
+
+Retrieval Qwen3-VL-Reranker-8B and TimeLens-8B Fixed within each comparison 
+
+Evaluation Q-ReAlign-Pro-9B and GPT-5.6 Sol Common quality gates 
+
+Reconstruction Depth Anything 3 Video-reconstruction path 
+
+Budget Video-path action cap B = 36 Fixed within each comparison 
+
+## B.1 Recovery SFT/LoRA Configuration 
+
+The recovery components use the Qwen3.5-9B base model with role-specific LoRA adapters. Both adapters target all linear layers with rank 8, alpha 32, and dropout 0.05; the vision encoder and aligner remain frozen. 
+
+## B.2 Recovery SFT/LoRA Training Data 
+
+For each adapter, we attached a subset of training data as toy examples, which are ”toy compressor sft.jsonl” and ”toy policy sft.jsonl”, respectively. 15 Request  Evidence  3D Rendering  Multi -View Rendering 
+
+> Case 01
+> Case 02
+> Case 03
+> Case 04
+> Case 05
+
+Find a post mill in the 
+
+wild. 
+
+Find the spa reception 
+
+with indoor plants. 
+
+Find a white house 
+
+surrounding with trees. 
+
+Find Smederevo 
+
+Fortress in Serbia. 
+
+Find  a formal public 
+
+garden with  a statue .
+
+> Case 06
+
+Find the bell tower of 
+
+Vilnius Cathedral. 
+
+> Case 07
+
+Find a wooden bridge 
+
+with ceiling. Figure 9 Visualization of Reuse Result. 
+
+16 Request  Evidence  3D Rendering  Multi -View Rendering 
+
+> Case 01
+> Case 02
+> Case 03
+> Case 04
+> Case 05
+
+Find a coastal 
+
+boardwalk surrounded 
+
+by dune vegetation. 
+
+Find a redwood grove 
+
+with giant trunks and a 
+
+fern understory. 
+
+Find a funicular station 
+
+with a boarding 
+
+platform. 
+
+Find Smederevo 
+
+Fortress in Serbia. 
+
+Find the equipment 
+
+shelves and work 
+
+benches in a 
+
+laboratory. 
+
+> Case 06
+
+Find a meadow trail 
+
+with a tree line. 
+
+> Case 07
+
+Find a canal towpath 
+
+with stone locks. Figure 10 Visualization of Reconstruction Result. 
+
+17 Table 6 Primary agent assignments. 
+
+Primary role Assignment Interface 
+
+Query generation GPT-5.6 Sol Search-query JSON contract 
+
+Query refinement GPT-5.6 Sol Refined video/grounding query JSON 
+
+Recovery compres-sor 
+
+Qwen3.5-9B with a role-specific adapter Compresses failure context to mt
+
+Recovery policy Qwen3.5-9B with a role-specific adapter Selects one admissible action 
+
+Table 7 Recovery adapter configuration. 
+
+Adapter Core setting Frozen components 
+
+Compressor adapter Qwen3.5-9B; all-linear target; rank 8; alpha 32; dropout 0.05 Vision encoder and aligner frozen 
+
+Policy adapter Qwen3.5-9B; all-linear target; rank 8; alpha 32; dropout 0.05 Vision encoder and aligner frozen 
+
+## B.3 Recovery State and Action Schema 
+
+At step t, the recovery state retains the request target, web-sourced visual content assessment, observed failure, compressed context, admissible actions, selected action, and remaining budget. The conceptual action labels used in the case records map to the runtime values below. 
+
+Listing 1 Recovery state schema 
+
+> request: natural-language scene request evidence: {kind, source_id, uri_or_local_id, relevance_status} assessment: {alignment, extent, quality, accepted} failure: {stage, reason, observed_artifact} recovery_state: {m_t, prior_guidance, concepts_to_avoid, visual_targets_to_preserve, next_query_guidance} admissible_actions: [try_next_valid_clip, try_next_valid_video, refine_query] selected_action: one element of admissible_actions budget: {video_actions_used, video_action_cap: 36}
+
+Table 8 Recovery action mapping. 
+
+Conceptual action Runtime value Meaning 
+
+Temporal Revision try next valid clip Retry a sibling grounded clip during reconstruction/render recovery. 
+
+Source Substitution try next valid video Select another video source under the current query direction. 
+
+Query Reformulation refine query Repair search and grounding queries, then begin a new downstream chain. The admissible set is state-conditioned. The compressor passes failure information, retained visual targets, and next-query guidance to the subsequent policy decision. 
+
+# C Prompt Registry 
+
+The registry identifies each interface by role and records the information needed to interpret its prompt: model assignment, input/output schema, parsing rule, stopping rule, and retry behavior. The complete prompt text is shown below, with system and user messages shown in separate boxes. 18 Table 9 Prompt registry. 
+
+Role Status Model Interface record 
+
+query generation available gpt-5.6-sol input: see source; output: strict JSON contract in prompt 
+
+query refinement available configured query-repair model input: see source; output: strict JSON contract in prompt 
+
+recovery compressor available configured compressor model input: see source; output: strict JSON contract in prompt 
+
+recovery policy available configured policy model input: see source; output: strict JSON contract in prompt 
+
+semantic matcher available gpt-5.6-sol input: see source; output: strict JSON contract in prompt 19 query generation Interface. Model: gpt-5.6-sol; input: see source; output: strict JSON contract in prompt; parsing: strict JSON/schema validation; stopping: not specified in the source material; retries: bounded transport/valida-tion retries. 
+
+System prompt (1/2) 
+
+You are the WorldSearcher VLM query generation agent. Convert the user’s text and/or image into compact search queries for a pipeline that first searches downloadable 3D / 3DGS scene resources and only falls back to downloadable YouTube videos if no 3D resource is found. Return only a strict JSON object with keys search_query, video_search_query, grounding_query, hints, and rationale. Output format example: ‘‘‘json {"search_query":"...","video_search_query":"...","grounding_query":"...","hints":["..."],"rationale":"..."} ‘‘‘ Treat the user’s original input_text and query reference image as the only semantic authority for the requested target. A target fact may be copied from the original text or derived from clear visible evidence in the reference image; it must not come from model assumptions. Never add unsupported hard target conditions, including people or identities, locations or proper names, objects, actions, counts , attributes, spatial relationships, times or weather, brands, or any other required scene detail. Use search_query for 3D resource discovery. It should combine scene, object, and environment terms with compact 3D resource-shape terms such as 3D, 3DGS, or 3D Gaussian Splat when helpful. Those 3D/3DGS format terms are retrieval metadata only and must not alter the visual target. Do not include site: superspl.at, SuperSplat, YouTube, site:youtube.com, or other provider or site-filter terms; the 3D search client adds the authoritative SuperSplat site restriction downstream. Use video_search_query as one single primary video-source search query for retrieving candidate videos that can later be sliced into short clips for 3D reconstruction. Do not include site:youtube.com in video_search_query. The configured search engine (‘serper‘) applies the authoritative video-source restriction downstream. 
+
+System prompt (2/2) 
+
+Keep video_search_query compact and retain only the core scene type and elements necessary to identify the requested visual target. You may infer a small number of context-appropriate source-video characteristics when they improve the chance of retrieving continuous multi-view coverage with usable parallax for later reconstruction. Choose that wording freely for the scene; do not append a fixed suffix or follow a stock list of search terms. These inferred search-supporting characteristics must not change the visual target or invent unsupported attributes, locations, brands, objects, layouts, or scene types. Use grounding_query as a separate pure visual description for TimeLens temporal grounding after a video has already been retrieved; it should describe what must visibly appear inside the target video segment, not how to search for source videos. grounding_query may only preserve, delete, or rephrase semantics supported by the original request; it must never expand the target with a new hard condition. grounding_query must not include walking tour, walkthrough, POV, footage, YouTube, SuperSplat, 3DGS, 3D Gaussian Splat, site filters, or provider/format terms. Avoid host, presenter, interview, reaction, vlog, talking head, news, review, slideshow, trailer, compilation, or montage style wording unless the user explicitly asks for it. Keep search_query, video_search_query, and grounding_query at or below 80 characters each, using complete words only. Keep all queries compact and deterministic. 
+
+User prompt 
+
+[{’type’: ’text’, ’text’: ’mode: text-only query\ninput_text: {{input_text}}\n\nGenerate WorldSearcher queries from the provided text. Preserve concrete places, objects, activities, mood, and camera intent if present.\n\nReturn the strict JSON object described by the system prompt.’}] 
+
+query refinement Interface. Model: configured query-repair model; input: see source; output: strict JSON contract in prompt; parsing: strict JSON/schema validation; stopping: not specified in the source material; retries: bounded transport/validation retries. 20 System prompt 
+
+You are WorldSearcher RepairedQueryGenerator. Read the JSON block in the user message and produce improved plain-text video_search_query and grounding_query values for YouTube source videos and clips. Return strict JSON with exactly one key: refined_query, matching this output format: ‘‘‘json {"refined_query":{"video_search_query":"...","grounding_query":"..."}} ‘‘‘ Treat request.input_text and the user’s actual query reference image, when inspectable, as the only semantic authority for the target. An input_image_path or input_image_url string is only a reference locator and must not be interpreted as a semantic description. Never add unsupported hard target conditions, including people or identities, locations or proper names, objects, actions, counts, attributes, spatial relationships, times or weather, brands, or any other required scene detail. The prior request.video_search_query, prior request.grounding_query, failure_advice, and attempted_video_search_queries may guide retrieval strategy only; they are not sources of target facts . Do not include avoid terms in either repaired query. Keep video_search_query compact and retain only the core scene type and elements necessary to identify the requested visual target. For video_search_query, you may infer a small number of context-appropriate source-video characteristics when they improve the chance of retrieving continuous multi-view coverage with usable parallax for later reconstruction. Choose that wording freely for the scene; do not append a fixed suffix or follow a stock list of search terms. These inferred characteristics must not change the visual target or invent unsupported attributes, locations, brands, objects, layouts, or scene types. Keep grounding_query as a pure visual description of what must appear in the clip, without source-search or acquisition wording. It may only delete or rephrase target semantics supported by the original request and must never expand the target. Keep video_search_query and grounding_query at or below 80 characters each and use complete words only. The video_search_query must differ from every attempted_video_search_queries entry supplied by the user. Do not output rationale, candidate ids, URLs, domains, site: filters, download targets, tool parameters, alternate queries, or any extra keys. 
+
+User prompt 
+
+Please repair the next video search and grounding queries using only the request, compact failure advice, and previously attempted video search queries below. Use failure advice and prior queries only to change retrieval strategy, never to add target facts. Keep both queries plain-text and focused on the retained original visual target. Do not include any avoid terms in either query. Choose a video_search_query that does not repeat any attempted_video_search_queries entry. ‘‘‘json {"attempted_video_search_queries": ["{{previous_query}}"], "failure_advice": {"avoid_terms": [], " next_query_guidance": "{{guidance}}", "retain_visual_targets": [], "summary": "{{summary}}"}, "request ": {"grounding_query": "{{grounding_query}}", "input_text": "{{input_text}}", "video_search_query": "{{video_search_query}}"}} ‘‘‘ 
+
+recovery compressor Interface. Model: configured compressor model; input: see source; output: strict JSON contract in prompt; parsing: strict JSON/schema validation; stopping: not specified in the source material; retries: bounded transport/validation retries. 
+
+System prompt 
+
+WorldSearcher searches videos from the user’s text/image request, grounds usable clips, and uses those clips for 3D Gaussian reconstruction and render-quality judgment. The compression model preserves what later fallback and continuation steps need to know after a failure, without carrying noisy candidate-local trace details forward. You are WorldSearcher failure advice compressor. Your task is to maintain compact failure_advice that helps later policy action selection and query repair continue after failures. Read request, previous_failure_advice, and current_failure, then update the compact failure_advice. Use request to preserve the user’s target query and visual intent. Update responsibilities: 
+
+21 - Rewrite summary as transferable failure modes, not a pile of candidate-local details. - Never copy, lightly rewrite, translate, or refer to a particular candidate title, proper name, or candidate-local scene label. Abstract rejected content into reusable classes such as wrong room type, outdoor scene, or presenter-led content; do not preserve title fragments in any output field. - Update, edit, or remove avoid_terms so they contain only concepts or words future query repair should avoid. Return at most 12 avoid_terms, merge overlapping or synonymous terms, remove stale terms, and order the most important terms first rather than continually appending to the previous list. - Update, edit, or remove retain_visual_targets so they contain only the scene, object, layout, viewpoint, motion, and continuity requirements that should remain in future queries. Return at most 12 retain_visual_targets, merge overlapping or synonymous targets, remove stale targets, and order the most important targets first. - Rewrite next_query_guidance as a short strategy that can directly guide video_search_query and grounding_query repair. - After whitespace normalization, summary must contain at most 1200 characters, next_query_guidance at most 480 characters, and every avoid_terms or retain_visual_targets item at most 160 characters. - Keep useful previous advice, but remove or weaken candidate ids, scores, one-off details, and information that will not improve later search, grounding, or reconstruction. Safe wording from previous advice or the current failure may be retained, repeated, or paraphrased; textual similarity is not a violation. Return only strict JSON matching this output format: ‘‘‘json {"failure_advice":{"summary":"...","avoid_terms":["..."],"retain_visual_targets":["..."]," next_query_guidance":"..."}} ‘‘‘ Do not output extra top-level keys. Do not output evidence ids, candidate ids, candidate titles, URLs, domains, paths, site: filters, download targets, scores, ranking positions, or tool parameters. 
+
+User prompt 
+
+Update the compact failure advice from the request, previous advice, and current concrete failure. Use request to keep the query target clear. Rewrite summary and next_query_guidance; update, edit, or remove avoid_terms and retain_visual_targets as needed. Structured context template: ‘‘‘json {"current_failure": {}, "previous_failure_advice": {}, "request": {}} ‘‘‘ Return only the strict JSON object required by the system prompt. 
+
+recovery policy Interface. Model: configured policy model; input: see source; output: strict JSON contract in prompt; parsing: strict JSON/schema validation; stopping: not specified in the source material; retries: bounded transport/validation retries. 
+
+System prompt (1/4) 
+
+WorldSearcher builds a 3D result for the user’s text/image request through a video-to-3D path. The system searches for a suitable video candidate, grounds a usable clip, and must use that clip for native DA3 Gaussian Splatting reconstruction, native GS rendering, render filtering, and render-quality scoring. A successful video-to-3D path requires a semantically aligned, visually clear, temporally continuous clip and a final render that passes the render quality gates. Video-to-3D flow: - video search/selection -> download and temporal grounding -> clip ranking, filtering, quality scoring, and semantic match -> native DA3 GS reconstruction -> native GS render -> render filtering and quality scoring. - Harness rules run deterministic search, download, temporal grounding, clip scoring, reconstruction, and render-scoring stages. 
+
+22 - The policy model does not run tools, rank candidates, or invent tool parameters; it only chooses one allowed video-to-3D action from allowed_actions. Budget fields in the user message: - max_video_logical_actions is the total logical-action allowance for the video branch. - video_logical_actions_used is the logical-action budget already consumed. - Remaining logical budget equals max_video_logical_actions minus video_logical_actions_used. - Video selection, clip-stage, and reconstruction attempts consume logical budget. - A listed query-repair action itself does not consume logical budget, but its repaired query is immediately followed by a video-search attempt that does. - Treat the remaining budget as the opportunity to finish the mandatory downstream clip, native DA3 GS reconstruction, render, and render-scoring path after the chosen action. 
+
+System prompt (2/4) 
+
+Recovery availability contract: - Harness rules dynamically construct allowed_actions only from actions executable in this exact recovery state. The list can contain one, two, or three actions. - The dynamically supplied allowed_actions list is authoritative even when anonymous candidate summaries suggest otherwise. An omitted action is unavailable and must not be inferred. You are WorldSearcher video_recovery policy reasoner. The user message supplies the exact allowed_actions list for the current recovery state. Choose exactly one value from that list. The list is the sole legal menu; never add an action or infer that an omitted action is available. Failure-context definitions: - current_failure describes the immediate failure from the latest video-branch action that directly triggered this recovery decision. Use it to understand what just failed and why recovery is needed now .- observation.failure_advice is the compact cumulative summary of lessons from earlier failed attempts. Use it as historical guidance about recurring failure patterns, terms to avoid, visual targets to retain, and the next-query strategy; do not treat it as a replacement for the direct current_failure. - If the two contexts emphasize different facts, interpret current_failure as the immediate cause and failure_advice as prior accumulated experience. 
+
+System prompt (3/4) 
+
+Action meanings and budget guidance: - try_next_valid_video keeps the current query and tries another remaining video when the query direction may still be useful; it usually still needs budget for clip stage and reconstruction. - try_next_valid_clip keeps the current video and tries another accepted reconstructable sibling clip only during reconstruction/render recovery; it is not a recovery action for ordinary clip-stage failures and usually needs budget for another reconstruction/render path. - refine_query repairs video_search_query and grounding_query when the current query/candidate direction is systematically bad. It starts a new search/select/clip/reconstruction chain, so compare that downstream cost with the quality of candidates already available. Decision guidance: - Treat the allowed_actions list and the positive recovery-situation statements in the user message as authoritative. Do not infer an omitted action from anonymous candidate summaries. - Compare anonymous video matching_scores, clip quality_scores, and downstream cost only among candidate-recovery actions that the user message says are currently legal. Candidate score-field contract: - visible_video_candidates.matching_scores contains numeric relevance scores output by Qwen3-VL-Reranker. Higher values indicate stronger query/candidate matching. Use them only as reference signals when choosing among currently legal recovery actions: they have no pass/fail threshold, do not accept or reject a video, and do not make an action legal. Video acceptance remains the responsibility of the separate VLM semantic-match gate. - visible_clip_candidates.quality_scores contains perceptual-quality scores output by Q-ReAlign. These scores have direct quality-gate meaning: a clip passes only when quality_score > the configured 
+
+23 clip_vqa_threshold; quality_score equal to or below that threshold fails. The configured threshold is authoritative and defaults to 0.5. The following Q-ReAlign reference anchors describe score meaning; they do not replace the configured threshold: - excellent = 1.0 - good = 0.75 - fair = 0.5 - poor = 0.25 - bad = 0.0 - Prefer spending as little logical budget as possible. Usually try an already available higher-quality candidate before refining because query refinement starts a new search and downstream chain. This is a preference, not a rigid rule: when budget is limited, trying a medium-quality candidate may still be more viable than paying for a new query chain, while systematically bad candidate directions may still justify refinement. 
+
+System prompt (4/4) 
+
+Return only strict JSON with exactly one key: action_type. Valid output examples are shown below; an example action is legal only when it appears in the user-provided allowed_actions list. Try next valid video example: ‘‘‘json {"action_type":"try_next_valid_video"} ‘‘‘ Try next valid clip example: ‘‘‘json {"action_type":"try_next_valid_clip"} ‘‘‘ Refine query example: ‘‘‘json {"action_type":"refine_query"} ‘‘‘ The action_type value must be one of the user-provided allowed_actions. Do not output rationale, candidate ids, URLs, domains, site: filters, download targets, or tool parameters. 
+
+User prompt 
+
+Choose the next video-to-3D action using only the allowed actions and the compact model-visible state below . Candidate summaries contain anonymous counts and stage-appropriate score lists only: video matching_scores come from the reranker, while clip quality_scores come from Q-ReAlign. Do not infer hidden candidate ids or tool parameters. Request fields: - input_text (the user’s requested scene or object): {{input_text}} - video_search_query (the current source-video search): {{video_search_query}} - grounding_query (the visual target sought inside a video): {{grounding_query}} - input_image_path (an optional local reference image): <empty> - input_image_url (an optional remote reference image): <empty> Budget fields: - max_video_logical_actions (the run’s video-branch limit): 36 - video_logical_actions_used (logical actions already spent): {{used}} Current recovery situation: - Query repair is available, so refine_query is legal. "allowed_actions": - "refine_query" You must choose exactly one action from the "allowed_actions" list above. Do not infer or output any action that is not listed. Remaining structured context: ‘‘‘json 
+
+24 {"current_failure": {}, "observation": {"failure_advice": {"avoid_terms": [], "next_query_guidance": "{{ guidance}}", "retain_visual_targets": [], "summary": "{{summary}}"}, "stage": "render_filter", " visible_video_candidates": {"matching_scores": [], "remaining_count": "{{video_count}}"}}} ‘‘‘ Return only the strict JSON object required by the system prompt. 
+
+semantic matcher Interface. Model: gpt-5.6-sol; input: see source; output: strict JSON contract in prompt; parsing: strict JSON/schema validation; stopping: not specified in the source material; retries: bounded transport/valida-tion retries. 
+
+System prompt 
+
+You are the WorldSearcher clip semantic match gate. Judge one Q-ReAlign VQA-passing clip at a time. Do not rank and do not score. Accept only when the ordered sampled frames visibly contain the requested target scene, place, object, activity, or viewpoint from the user’s original request text and/or query reference image. These original request inputs are the sole semantic authority; do not use a generated search or grounding query. Reject clips where the target is absent, only briefly incidental, mostly occluded, a wrong location/object, or contradicted by the user’s input image. For text-only requests, judge against the original request text. For requests with an input image, use the image for coarse visual grounding: accept clips whose core scene type, spatial category, and primary object(s) broadly match the input image and remain visible across the sampled frames. Do not reject solely because colors, materials, exact shapes, decor, lighting style, or small layout details differ, unless a detail is explicitly requested as the core target. Still reject obvious wrong scenes, wrong objects , missing targets, mostly occluded targets, weak visual evidence, or clips that conflict with the image’s core target. accept must be a JSON boolean true or false, not a string. Do not default to true ; use accept=false when visual evidence is missing, weak, ambiguous, generic, or contradicted by the query/input image. rationale is one concise natural-language sentence explaining the visual evidence. rejection_reason is a short snake_case code for rejected candidates and must be empty when accept=true . Return only strict JSON with accept, rationale, and rejection_reason. Output examples: Accepted example: ‘‘‘json {"accept":true,"rejection_reason":"","rationale":"..."} ‘‘‘ Rejected missing-target example: ‘‘‘json {"accept":false,"rejection_reason":"missing_target","rationale":"..."} ‘‘‘ Rejected occluded-target example: ‘‘‘json {"accept":false,"rejection_reason":"occluded_target","rationale":"..."} ‘‘‘ 
+
+User prompt 
+
+[{’type’: ’text’, ’text’: ’original_request_text:\n{{input_text}}\nsampled_clip_frames:\nOnly the image_url attachments after this marker are fixed-count temporal frame positions used for Q-ReAlign VQA, ordered chronologically. Judge whether the VQA-passing clip visually matches the original request text and/or query reference image.\nReturn the strict JSON object described by the system prompt. Do not include clip_id, numeric scores, or ranking positions.\n’}] 
+
+# D Data Engine and Verification Standard 
+
+The data engine is reported using paired implementation and manuscript terminology: Generator/Drafter, Naturalizer/Reviser, Judge/Inspector, and deterministic Validator. This mapping clarifies functional roles without conflating implementation names with the manuscript’s terminology. 25 Table 10 Data-engine terminology and model mapping. 
+
+Implementation Manuscript Model Input Output Generator Drafter GPT-5.6 Luna Catalog blueprints and re-quest ids 
+
+rich text and 
+
+feature ids JSON Naturalizer Reviser GPT-5.6 Sol Rich records and blueprint controls concise text and 
+
+feature ids JSON Judge Inspector GPT-5.6 Sol Blueprint and candidate text Boolean accept decisions Static audit Validator Deterministic Python Export records and metadata Audit counts and rejection reasons 
+
+## D.1 Data-Engine Prompts 
+
+The following blocks reproduce the data-engine prompts used for drafting, revision, and inspection. The validator is deterministic and is specified by its interface and checks rather than by an LLM prompt. 
+
+Generator/Drafter and Naturalizer/Reviser 
+
+System prompt 
+
+You create grounded English source descriptions for a real-world scene-search dataset. Every item is controlled by a catalog blueprint. Rules: - Return exactly one item for every requested id and preserve each id. - Write a rich but compact description of 6 to 24 English words and at most 160 characters. - Copy one supplied anchor term exactly, ignoring only letter case. - Copy every feature phrase named by required_feature_ids exactly. Do not use another listed feature. - Return feature_ids exactly equal to required_feature_ids, without duplicates. - Keep the environment common, static, spatially coherent, generic, and physically plausible. - Do not add weather, time, lighting, occupancy, people, events, proper names, addresses, styles, platforms, URLs, search instructions, or capture and movement language such as POV, tours, walkthroughs, drones, flyovers, cameras, or first-person views. - The text is a semantic source for a later naturalizer, not a photography prompt. Return only strict JSON in this format: ‘‘‘json {"items":[{"id":"...","rich_text":"...","feature_ids":["..."]}]} ‘‘‘ 
+
+User prompt 
+
+Return one item for every requested id. ‘‘‘json [{"id":"{{id}}","candidate_text":"{{candidate_text}}"}] ‘‘‘ 
+
+Judge/Inspector 
+
+System prompt 
+
+You are the final independent quality gate for concise real-world scene descriptions. Judge each item independently. Accept only when the candidate is a natural English noun phrase, faithfully identifies the supplied scene, is spatially understandable and useful as a prior for finding a real static 3D scene or reconstructable environmental video, contains no 
+
+26 unsupported scene constraint, and contains no request, search, photography, capture, movement, style, weather, time, occupancy, event, person, address, proper-name, platform, or URL language. Reject awkward grammar, keyword stuffing, vague fragments, and phrases that merely describe a camera path. Return no score, rationale, rewrite, or extra key. Accepted output example: ‘‘‘json {"items":[{"id":"...","accept":true}]} ‘‘‘ Rejected output example: ‘‘‘json {"items":[{"id":"...","accept":false}]} ‘‘‘ 
+
+User prompt 
+
+Return one item for every requested id. ‘‘‘json [{"id":"{{id}}","candidate_text":"{{candidate_text}}"}] ‘‘‘ 
+
+Validator interface 
+
+System prompt 
+
+The validator is deterministic. Apply the schema, identifier/source, required-element, length/content, and duplicate-request checks listed below; report only outcomes defined by those checks. 
+
+User prompt 
+
+Validate the supplied record against the stated data specification and return only the requested check results. 
+
+## D.2 Judge Output and Deterministic Checks 
+
+The Judge emits an identifier and a Boolean acceptance decision for each item. The output contract contains no score or auxiliary field. 27 Listing 2 Judge output schema 
+
+> {"additionalProperties": false, "notes": "Actual LLM judge emits boolean decisions only; check fields are deterministic audit categories.", "parser_rule": "parse_model_items accepts optional fenced JSON and requires exactly items; judge items require exactly id and boolean accept.", "properties": { "items": { "items": { "additionalProperties": false, "properties": { "accept": { "type": "boolean" }, "id": { "type": "string" }}, "required": [ "id", "accept" ], "type": "object" }, "type": "array" }}, "requested_check_fields": [ "schema_compliance", "identifier_source_consistency", "required_scene_elements", "length_content_constraints", "duplicate_requests" ], "required": [ "items" ], "type": "object" }
+
+Deterministic validation covers schema compliance, identifier/source consistency, required scene elements, length and content constraints, and duplicate requests. The checks follow the source specification; no un-stated threshold is introduced. 
+
+Table 11 Deterministic verification standard. 
+
+Validation family Acceptance condition 
+
+Schema compliance Required fields and object type conform to the source schema 
+
+Identifier/source consis-tency 
+
+Request identifiers and source feature identifiers agree 
+
+Required scene elements Required anchors are present and unrequested features are not added 
+
+Length/content constraints Source-defined language, length, character, and content rules pass 
+
+Duplicate requests Normalized requests are unique within the applicable source scope 
+
+# E Evaluation Set Inventory 
+
+The sealed evaluation set contains 300 rows. The complete row-level inventory uses the fixed fields: ID, request text, semantic domain, environment, and spatial scale. The evaluation rows are held out from the 8,900-request training-source pool. 
+
+## E.1 Distribution Check 
+
+28 Table 12 Evaluation-set composition. 
+
+Dimension Category Count 
+
+Environment Indoor 141 
+
+Environment Outdoor 159 
+
+Spatial scale Room 98 
+
+Spatial scale Building 51 
+
+Spatial scale Site 56 
+
+Spatial scale Street 41 
+
+Spatial scale Landscape 54 
+
+Semantic coverage Fine-grained domains 20 arid, 15 coastal, 14 culture_ 
+
+civic, 20 
+
+food_ drink, 14 forest, 14 health_ science, 14 heritage, 23 hospitality, 15 industrial, 15 mountain, 14 parks_ water, 15 recreation, 14 residential, 14 residential_ outdoor, 14 retail, 13 rural, 15 transit, 13 transport_ outdoor, 15 urban_ core, 15 work_ education, 14 
+
+Figure 11 Fine-grained semantic domain counts for the 300-request evaluation set. The 20 domains contain 13–23 requests each. 
+
+29 E.2 Row-Level Inventory 
+
+The following table enumerates all 300 requests. 
+
+Table 13 Complete 300-row evaluation inventory. 
+
+ID Request Text Semantic Domain Environment Scale 
+
+EVAL-001 airport dropoff road with curb lanes beneath pedestrian bridges transport outdoor outdoor street 
+
+EVAL-002 housing district with detached homes and a sidewalk network residential outdoor outdoor street 
+
+EVAL-003 Fort walls enclosing an inner yard and gate passage heritage outdoor site 
+
+EVAL-004 shopping mall with multiple levels and central atrium retail indoor room 
+
+EVAL-005 control room with wall panels behind console rows industrial indoor building 
+
+EVAL-006 railway depot with brick station and track siding heritage outdoor site 
+
+EVAL-007 housing district with detached homes and front gardens residential outdoor outdoor street 
+
+EVAL-008 railway depot with platform canopy and track siding heritage outdoor site 
+
+EVAL-009 business district with wide sidewalks and glass towers urban core outdoor street 
+
+EVAL-010 train carriage with luggage racks transit indoor building 
+
+EVAL-011 rocky badlands with eroded ridges bordering a stone trail arid outdoor landscape 
+
+EVAL-012 archaeological site with visitor path beside excavated walls heritage outdoor site 
+
+EVAL-013 cafe interior with exposed brick food drink indoor room 
+
+EVAL-014 lakefront path bordered by a tree line parks water outdoor site 
+
+EVAL-015 woodland boardwalk with wood railings through dense trees forest outdoor landscape 
+
+EVAL-016 resort lounge with woven seating hospitality indoor room 
+
+EVAL-017 botanical garden with plant beds parks water outdoor site 
+
+EVAL-018 country road linking farm entrances and rolling fields rural outdoor landscape 
+
+EVAL-019 exhibition space beneath a high ceiling culture civic indoor building 
+
+EVAL-020 museum gallery with an arched doorway culture civic indoor building 
+
+EVAL-021 lighthouse grounds with a stone tower coastal outdoor site 
+
+EVAL-022 vineyard with gravel path rural outdoor landscape 
+
+EVAL-023 suburban street with tree lined sidewalks and detached houses residential outdoor outdoor street 
+
+EVAL-024 museum gallery with display cases culture civic indoor building 
+
+EVAL-025 airport concourse with glass walls transit indoor building 
+
+EVAL-026 airport dropoff road with parallel curb lanes transport outdoor outdoor street 
+
+EVAL-027 oasis edge with a palm grove beside mud brick walls arid outdoor landscape 
+
+EVAL-028 sauna lounge with wood benches and tiled floor recreation indoor room 
+
+EVAL-029 sunroom with glass walls residential indoor room 
+
+EVAL-030 city bus stop with route kiosk transport outdoor outdoor street 
+
+EVAL-031 redwood grove with giant trunks and fern understory forest outdoor landscape 
+
+EVAL-032 living room with wood floor and large windows residential indoor room 
+
+EVAL-033 control room with console rows industrial indoor building 
+
+EVAL-034 cleanroom with equipment racks health science indoor room 
+
+EVAL-035 pine clearing with rocky ground and a tree ring forest outdoor landscape 
+
+EVAL-036 city plaza with stone paving and surrounding buildings urban core outdoor street 
+
+EVAL-037 working harbor with dock cranes coastal outdoor site 
+
+EVAL-038 stone pasture with grassy path rural outdoor landscape 
+
+EVAL-039 mountain lodge interior with stone hearth and loft balcony hospitality indoor room 
+
+EVAL-040 residential hallway with multiple doorways residential indoor room 
+
+EVAL-041 sea cliff overlook with guard railing and stone ledges coastal outdoor site 
+
+EVAL-042 country road between stone walls and rolling fields rural outdoor landscape 
+
+EVAL-043 alpine lakeshore with rocky shore mountain outdoor landscape 
+
+EVAL-044 open plan office with desk clusters beside glass meeting rooms work education indoor room 
+
+EVAL-045 riverside promenade along the water’s edge parks water outdoor site 
+
+EVAL-046 railway depot centered on a brick station heritage outdoor site 
+
+EVAL-047 graffiti alley with brick walls and a paved walkway urban core outdoor street 
+
+EVAL-048 downtown street with crosswalks and mid rise buildings urban core outdoor street 
+
+EVAL-049 cleanroom with sealed workstations health science indoor room 
+
+EVAL-050 country road between stone walls rural outdoor landscape 
+
+EVAL-051 small town main street with local storefronts residential outdoor outdoor street 
+
+EVAL-052 living room with wood floor and stone fireplace residential indoor room 
+
+EVAL-053 dance studio with a mirror wall and wood floor recreation indoor room 
+
+EVAL-054 bakery interior with display counter and tiled walls food drink indoor room 
+
+EVAL-055 bookstore with reading tables retail indoor room 
+
+EVAL-056 shopping mall with multiple levels retail indoor room 
+
+EVAL-057 lecture hall with acoustic panels work education indoor room 
+
+EVAL-058 rocky coast with coastal vegetation coastal outdoor site 
+
+EVAL-059 bamboo grove with stone path along wooden fence forest outdoor landscape 
+
+EVAL-060 forest waterfall beyond a woodland path and rock basin forest outdoor landscape 
+
+EVAL-061 research laboratory with a central aisle health science indoor room 
+
+EVAL-062 A bathroom with a double sink residential indoor room 
+
+EVAL-063 stone valley beneath layered cliffs arid outdoor landscape 
+
+EVAL-064 beach with a wooden boardwalk coastal outdoor site 
+
+EVAL-065 tunnel entrance with concrete portal transport outdoor outdoor street 
+
+EVAL-066 exhibition space with concrete floor and display partitions culture civic indoor building 
+
+EVAL-067 arcade hall with a prize counter recreation indoor room 
+
+EVAL-068 maintenance depot with tool cabinets and service bays industrial indoor building 
+
+EVAL-069 airport baggage hall with carousel rows and support columns transit indoor building 
+
+EVAL-070 wetland boardwalk through reed beds to an observation platform parks water outdoor site 
+
+EVAL-071 bowling alley with lane rows and ball racks recreation indoor room 
+
+EVAL-072 coworking space with shared desks and phone booths work education indoor room 
+
+EVAL-073 an art studio interior work education indoor room 
+
+EVAL-074 coffee roastery with brick walls and roasting machines food drink indoor room 
+
+EVAL-075 summit plateau with stone outcrops mountain outdoor landscape 
+
+EVAL-076 bus terminal with departure bays transit indoor building 
+
+EVAL-077 woodworking shop with timber racks industrial indoor building 
+
+EVAL-078 science classroom with lab benches work education indoor room Continued on next page 
+
+30 Table 13 – continued ID Request Text Semantic Domain Environment Scale 
+
+EVAL-079 riverside promenade with bridge views parks water outdoor site 
+
+EVAL-080 resort lounge with woven seating and stone walls hospitality indoor room 
+
+EVAL-081 bakery interior with tiled walls food drink indoor room 
+
+EVAL-082 pharmacy with medicine shelves health science indoor room 
+
+EVAL-083 exhibition space divided by display partitions culture civic indoor building 
+
+EVAL-084 summit plateau with stone outcrops around a survey marker mountain outdoor landscape 
+
+EVAL-085 ferry cabin with wide windows beside seat rows transit indoor building 
+
+EVAL-086 imaging suite with scanner bay health science indoor room 
+
+EVAL-087 hotel guest room with a seating nook hospitality indoor room 
+
+EVAL-088 arena concourse with concession counters recreation indoor room 
+
+EVAL-089 bakery interior with bread shelves and display counter food drink indoor room 
+
+EVAL-090 rocky badlands with eroded ridges around dry gullies arid outdoor landscape 
+
+EVAL-091 suburban street with driveways and tree lined sidewalks residential outdoor outdoor street 
+
+EVAL-092 aircraft hangar with maintenance bays beneath steel trusses industrial indoor building 
+
+EVAL-093 mountain pass between rocky slopes mountain outdoor landscape 
+
+EVAL-094 indoor flower market with plant stalls beneath a metal roof retail indoor room 
+
+EVAL-095 spa reception with indoor plants hospitality indoor room 
+
+EVAL-096 pedestrian lane with stone paving urban core outdoor street 
+
+EVAL-097 hardware store with tool displays and storage racks retail indoor room 
+
+EVAL-098 arched entrances of the amphitheater heritage outdoor site 
+
+EVAL-099 a therapy room with treatment table and an exercise area health science indoor room 
+
+EVAL-100 the rocky desert trail with scrub vegetation and stone markers arid outdoor landscape 
+
+EVAL-101 hostel common room with sofa area hospitality indoor room 
+
+EVAL-102 steel tanks and service walkways of a bottling plant industrial indoor building 
+
+EVAL-103 mountain path and cliffside overlook mountain outdoor landscape 
+
+EVAL-104 a narrow trail of the mossy ravine forest outdoor landscape 
+
+EVAL-105 cooking line and stainless counters of a commercial kitchen food drink indoor room 
+
+EVAL-106 a cinema auditorium with stepped aisles and seat rows culture civic indoor building 
+
+EVAL-107 the conference room with display screen work education indoor room 
+
+EVAL-108 the housing district of front gardens and detached homes residential outdoor outdoor street 
+
+EVAL-109 a fitness center and mirror wall recreation indoor room 
+
+EVAL-110 residential hallway with multiple doorways and a wood floor residential indoor room 
+
+EVAL-111 a coastal trail and sea cliff coastal outdoor site 
+
+EVAL-112 a rocky desert trail and ridge crossing arid outdoor landscape 
+
+EVAL-113 vendor stalls with a market lane urban core outdoor street 
+
+EVAL-114 ticket counters and a bus terminal transit indoor building 
+
+EVAL-115 the market lane with vendor stalls and stone walkway urban core outdoor street 
+
+EVAL-116 dry riverbed with canyon walls and the gravel channel arid outdoor landscape 
+
+EVAL-117 timber beams and a mountain lodge interior hospitality indoor room 
+
+EVAL-118 stone arcade and monastery cloister interior culture civic indoor building 
+
+EVAL-119 bedroom and a large bed residential indoor room 
+
+EVAL-120 the wood floor of the hallway residential indoor room 
+
+EVAL-121 covered market with the iron columns retail indoor room 
+
+EVAL-122 window alcove and a home office residential indoor room 
+
+EVAL-123 loading doors and cold storage industrial indoor building 
+
+EVAL-124 woodland path with a forest waterfall and mossy ledges forest outdoor landscape 
+
+EVAL-125 stone paving with street planters of a pedestrian lane urban core outdoor street 
+
+EVAL-126 stone paving and traditional houses of a rural village square residential outdoor outdoor street 
+
+EVAL-127 the library reading room with long tables work education indoor room 
+
+EVAL-128 the survey marker and summit plateau mountain outdoor landscape 
+
+EVAL-129 the rainforest trail with broadleaf canopy forest outdoor landscape 
+
+EVAL-130 the supermarket aisle with freezer cases and stocked shelves retail indoor room 
+
+EVAL-131 a graffiti alley with service doors and paved walkway urban core outdoor street 
+
+EVAL-132 stone wall with a sauna relaxation room recreation indoor room 
+
+EVAL-133 the oasis edge with a palm grove arid outdoor landscape 
+
+EVAL-134 an historic inn parlor with arched windows and wood paneling hospitality indoor room 
+
+EVAL-135 marked bays and perimeter buildings of a parking lot transport outdoor outdoor street 
+
+EVAL-136 veterinary clinic interior and exam tables health science indoor room 
+
+EVAL-137 traditional village lane with cobbled path and wood balconies heritage outdoor site 
+
+EVAL-138 the meadow trail with rock clusters and the tree line rural outdoor landscape 
+
+EVAL-139 fitness center interior with exercise machines and rubber floor recreation indoor room 
+
+EVAL-140 funicular station and a boarding platform transit indoor building 
+
+EVAL-141 breakfast room of a guesthouse hospitality indoor room 
+
+EVAL-142 large desk and the home office residential indoor room 
+
+EVAL-143 a meadow trail and the tree line rural outdoor landscape 
+
+EVAL-144 desk clusters of an open plan office work education indoor room 
+
+EVAL-145 a market cafe with tiled floor and produce stalls food drink indoor room 
+
+EVAL-146 a wood footbridge with the pond path parks water outdoor site 
+
+EVAL-147 stone steps of the rocky mountain trail mountain outdoor landscape 
+
+EVAL-148 a control room with console rows industrial indoor building 
+
+EVAL-149 a canal towpath with stone locks parks water outdoor site 
+
+EVAL-150 tiled floor of the sauna lounge recreation indoor room 
+
+EVAL-151 the security booth of a gated entrance residential outdoor outdoor street 
+
+EVAL-152 the hallway with multiple doorways residential indoor room 
+
+EVAL-153 the woodland path with stone steps and tree lined route forest outdoor landscape 
+
+EVAL-154 concrete columns and the parking garage transit indoor building 
+
+EVAL-155 a shipyard workshop with fabrication tables and steel beams industrial indoor building 
+
+EVAL-156 the formal garden with a stone fountain parks water outdoor site 
+
+EVAL-157 dry riverbed with gravel channel and stone banks arid outdoor landscape 
+
+EVAL-158 paved walkway and a beachfront promenade coastal outdoor site 
+
+EVAL-159 the brick station with a railway depot heritage outdoor site 
+
+EVAL-160 mirror wall and storage cubbies of the yoga studio recreation indoor room 
+
+EVAL-161 the traditional village with stone houses heritage outdoor site 
+
+EVAL-162 equipment shelves and work benches of the laboratory health science indoor room 
+
+EVAL-163 track lines with railway platform transport outdoor outdoor street 
+
+EVAL-164 glass towers and crosswalks of a business district urban core outdoor street Continued on next page 
+
+31 Table 13 – continued ID Request Text Semantic Domain Environment Scale 
+
+EVAL-165 mountain meadow and wooden fence with rock clusters mountain outdoor landscape 
+
+EVAL-166 the warehouse row with a harbor coastal outdoor site 
+
+EVAL-167 service structures and metal railings of a rooftop terrace urban core outdoor street 
+
+EVAL-168 the stone valley and layered cliffs arid outdoor landscape 
+
+EVAL-169 mountain meadow and rock clusters mountain outdoor landscape 
+
+EVAL-170 a community hall with raised stage and wood floor culture civic indoor building 
+
+EVAL-171 lakefront path and a rocky shore parks water outdoor site 
+
+EVAL-172 stone walls and a resort lounge hospitality indoor room 
+
+EVAL-173 a traditional village lane with wood balconies heritage outdoor site 
+
+EVAL-174 a laboratory and work benches health science indoor room 
+
+EVAL-175 banquet hall with coffered ceiling and a raised stage food drink indoor room 
+
+EVAL-176 medicine shelves and the pharmacy health science indoor room 
+
+EVAL-177 equipment cabinets and control window of an imaging suite health science indoor room 
+
+EVAL-178 a historic inn parlor with a brick fireplace hospitality indoor room 
+
+EVAL-179 a housing district and sidewalk network residential outdoor outdoor street 
+
+EVAL-180 wood fence and tree rows of the orchard rural outdoor landscape 
+
+EVAL-181 a coastal neighborhood of stone walls and stucco houses residential outdoor outdoor street 
+
+EVAL-182 spa reception and the indoor plants hospitality indoor room 
+
+EVAL-183 the market cafe with counter seating and produce stalls food drink indoor room 
+
+EVAL-184 storage racks and tool displays of the hardware store retail indoor room 
+
+EVAL-185 lodge interior with timber beams and a loft balcony hospitality indoor room 
+
+EVAL-186 the waterside walkway and a marina coastal outdoor site 
+
+EVAL-187 shopping mall interior of multiple levels with central atrium retail indoor room 
+
+EVAL-188 the pond side path and reed beds parks water outdoor site 
+
+EVAL-189 reed beds and stone edging of the pond side path parks water outdoor site 
+
+EVAL-190 a parking lot with access lanes and marked bays transport outdoor outdoor street 
+
+EVAL-191 mossy ravine and the narrow trail forest outdoor landscape 
+
+EVAL-192 the classroom with whiteboard wall and desk rows work education indoor room 
+
+EVAL-193 gym interior with the mirror wall recreation indoor room 
+
+EVAL-194 traditional village with the cobbled path heritage outdoor site 
+
+EVAL-195 a bus stop and a glass shelter transport outdoor outdoor street 
+
+EVAL-196 the research lab with sample cabinets health science indoor room 
+
+EVAL-197 foothill hiking path and rock borders mountain outdoor landscape 
+
+EVAL-198 a record shop with listening station and album bins retail indoor room 
+
+EVAL-199 stone shelves and cliff path of the rocky coast coastal outdoor site 
+
+EVAL-200 exposed brick and cafe interior food drink indoor room 
+
+EVAL-201 bus stop with a glass shelter and route kiosk transport outdoor outdoor street 
+
+EVAL-202 the storage cabinets and whiteboard wall of a classroom work education indoor room 
+
+EVAL-203 museum gallery interior with stone floor culture civic indoor building 
+
+EVAL-204 a coworking space and phone booths work education indoor room 
+
+EVAL-205 pedestrian lane with storefront rows and the street planters urban core outdoor street 
+
+EVAL-206 turbine rows and service roads of a wind farm rural outdoor landscape 
+
+EVAL-207 subway station platform and track edge transit indoor building 
+
+EVAL-208 theater foyer interior with grand staircase and ornate columns culture civic indoor building 
+
+EVAL-209 narrow paths and rice terraces with stone walls rural outdoor landscape 
+
+EVAL-210 the dry riverbed with stone banks arid outdoor landscape 
+
+EVAL-211 the bookstore with central aisle and tall shelves retail indoor room 
+
+EVAL-212 arched roof and ticket counters of a station waiting hall transit indoor building 
+
+EVAL-213 tatami floor and tea house interior food drink indoor room 
+
+EVAL-214 excavated walls with visitor path and archaeological site heritage outdoor site 
+
+EVAL-215 the vineyard with wooden posts and gravel path rural outdoor landscape 
+
+EVAL-216 wooden footpath of a redwood grove forest outdoor landscape 
+
+EVAL-217 maintenance depot with a concrete floor industrial indoor building 
+
+EVAL-218 a beach with coastal dunes and the wooden boardwalk coastal outdoor site 
+
+EVAL-219 the wheat field path and tractor tracks rural outdoor landscape 
+
+EVAL-220 row house street with brick facades and front steps residential outdoor outdoor street 
+
+EVAL-221 listening station and wall shelves of the record shop retail indoor room 
+
+EVAL-222 a mirror wall of the dance studio recreation indoor room 
+
+EVAL-223 a dance studio and a ballet barre recreation indoor room 
+
+EVAL-224 a bus stop with curbside lane and route kiosk transport outdoor outdoor street 
+
+EVAL-225 boarding platform and a funicular station transit indoor building 
+
+EVAL-226 a dental room with dental chair and sink counter health science indoor room 
+
+EVAL-227 airport dropoff road with the terminal canopy and pedestrian bridges transport outdoor outdoor street 
+
+EVAL-228 a bus terminal and bench rows transit indoor building 
+
+EVAL-229 model shelves and a drafting room work education indoor room 
+
+EVAL-230 ferry passenger cabin with stairwell and seat rows transit indoor building 
+
+EVAL-231 the open plan office with desk clusters work education indoor room 
+
+EVAL-232 city bus stop and a route kiosk transport outdoor outdoor street 
+
+EVAL-233 the wall panels of a control room industrial indoor building 
+
+EVAL-234 the built in wardrobe of a bedroom residential indoor room 
+
+EVAL-235 a central well and the rural village square residential outdoor outdoor street 
+
+EVAL-236 central courtyard of a cloister interior culture civic indoor building 
+
+EVAL-237 the open highway with distant hills and lane markings transport outdoor outdoor street 
+
+EVAL-238 coastal boardwalk with the dune vegetation coastal outdoor site 
+
+EVAL-239 surrounding buildings and stone paving of the city plaza urban core outdoor street 
+
+EVAL-240 grassy path of a stone pasture rural outdoor landscape 
+
+EVAL-241 reservoir overlook with an access path parks water outdoor site 
+
+EVAL-242 cinema auditorium interior and stepped aisles culture civic indoor building 
+
+EVAL-243 fabrication tables and steel beams of shipyard workshop interior industrial indoor building 
+
+EVAL-244 the forest trail and tree canopy forest outdoor landscape 
+
+EVAL-245 bakery interior with the display counter food drink indoor room 
+
+EVAL-246 stone valley of rock pillars and sandy path arid outdoor landscape 
+
+EVAL-247 historic railway depot and the brick station heritage outdoor site 
+
+EVAL-248 steel trusses of the river bridge transport outdoor outdoor street 
+
+EVAL-249 small tables and bay windows of the breakfast room hospitality indoor room 
+
+EVAL-250 a department store with an escalator bank and display islands retail indoor room Continued on next page 
+
+32 Table 13 – continued ID Request Text Semantic Domain Environment Scale 
+
+EVAL-251 layered cliffs of stone valley arid outdoor landscape 
+
+EVAL-252 commercial kitchen with a tiled floor and stainless counters food drink indoor room 
+
+EVAL-253 dirt roads and weathered buildings of the mining settlement arid outdoor landscape 
+
+EVAL-254 the coastal path and the lighthouse grounds coastal outdoor site 
+
+EVAL-255 the formal public garden with geometric paths parks water outdoor site 
+
+EVAL-256 the alpine lakeshore with mountain backdrop and rocky shore mountain outdoor landscape 
+
+EVAL-257 the town hall with ceremonial stairs and arched windows culture civic indoor building 
+
+EVAL-258 overhead cranes and shipyard workshop industrial indoor building 
+
+EVAL-259 an alpine lakeshore with rocky shore and footpath mountain outdoor landscape 
+
+EVAL-260 surrounding buildings and city plaza urban core outdoor street 
+
+EVAL-261 storage cabinets and lab benches of the science classroom work education indoor room 
+
+EVAL-262 laboratory and work benches with fume hoods health science indoor room 
+
+EVAL-263 redwood grove and fern understory forest outdoor landscape 
+
+EVAL-264 the forest waterfall with rock basin and mossy ledges forest outdoor landscape 
+
+EVAL-265 the housing district and sidewalk network residential outdoor outdoor street 
+
+EVAL-266 hallway with multiple doorways and the stair landing residential indoor room 
+
+EVAL-267 the rocky slopes and mountain pass mountain outdoor landscape 
+
+EVAL-268 wood floor of the bedroom residential indoor room 
+
+EVAL-269 the reservoir overlook and a guard railing parks water outdoor site 
+
+EVAL-270 wood pews and central nave of a church interior culture civic indoor building 
+
+EVAL-271 walton village hall school lane west yorkshire culture civic outdoor building 
+
+EVAL-272 art museum culture civic indoor building 
+
+EVAL-273 table tennis room recreation indoor room 
+
+EVAL-274 chatsworth house heritage outdoor site 
+
+EVAL-275 bell tower of vilnius cathedral heritage outdoor building 
+
+EVAL-276 toronto first fire hall heritage outdoor building 
+
+EVAL-277 knock community hall culture civic outdoor building 
+
+EVAL-278 felton california bridge transport outdoor outdoor site 
+
+EVAL-279 capitoline museum courtyard culture civic outdoor site 
+
+EVAL-280 leake street graffiti tunnel urban core indoor site 
+
+EVAL-281 st nicholas church in roxby heritage outdoor building 
+
+EVAL-282 sunnyvale heritage park museum heritage outdoor site 
+
+EVAL-283 a garden house in provence residential outdoor outdoor site 
+
+EVAL-284 national maritime museum of korea culture civic outdoor building 
+
+EVAL-285 english garden parks water outdoor site 
+
+EVAL-286 norman constables house heritage outdoor building 
+
+EVAL-287 christchurch castle heritage outdoor site 
+
+EVAL-288 toronto roundhouse train yard industrial outdoor site 
+
+EVAL-289 cochem imperial castle germany heritage outdoor site 
+
+EVAL-290 dining room food drink indoor room 
+
+EVAL-291 cactus garden arid outdoor site 
+
+EVAL-292 a high-detail garage workshop interior industrial indoor room 
+
+EVAL-293 grand courts art gallery of nsw culture civic indoor building 
+
+EVAL-294 schiller lookout tower kryry czech republic mountain outdoor site 
+
+EVAL-295 smederevo fortress serbia heritage outdoor site 
+
+EVAL-296 avoncroft museum postmill rural outdoor site 
+
+EVAL-297 country hotel le querce italy hospitality outdoor building 
+
+EVAL-298 freilicht museum molfsee wind mill rural outdoor site 
+
+EVAL-299 point lowly lighthouse south australia coastal outdoor site 
+
+EVAL-300 regina coeli church heritage outdoor building 
+
+33 References 
+
+Hongjun An, Wenhan Hu, Sida Huang, Siqi Huang, Ruanjun Li, Yuanzhi Liang, Jiawei Shao, Yiliang Song, Zihan Wang, Cheng Yuan, Chi Zhang, Hongyuan Zhang, Wenhao Zhuang, and Xuelong Li. Ai flow: Perspectives, scenarios, and approaches, 2025. URL https://arxiv.org/abs/2506.12479 .Anthropic. Claude Fable 5 & Claude Mythos 5 System Card. https://anthropic.com/ claude-fable-5-mythos-5-system-card , 2026a. Anthropic. Claude Opus 5 System Card. https://anthropic.com/claude-opus-5-system-card , 2026b. Tingxi Chen, Ke Hao, Yabo Chen, Zhengxue Cheng, Rong Xie, Li Song, Haibin Huang, Chi Zhang, and Xuelong Li. Full-4d: Generating full-scope 4d scenes from a single-view video, 2026a. URL https: //arxiv.org/abs/2605.25500 .Weiliang Chen, Haowen Sun, Jun Gao, Jiawei Chi, Hanyang Wang, Qiyu Dai, Yihao Li, Hao Li, Jingnan Gao, Yi-Hsin Hung, Xingzhuo Guo, Shangchen Miao, Zhiyuan Shi, Xiang Li, Fengrui Tian, Weihua Du, Ziqi Huang, Shenyuan Gao, Siqiao Huang, Mingyu Liu, Yifei Li, Shizun Wang, Xi Wang, Tianqi Zhang, Xue Luo, Xiyin Ren, Jinshan Ren, Xiaoyang Shen, Xiaobo Hu, Zhiyang Dou, Mingyu Ding, Yichao Yan, Xinchao Wang, Yizhou Wang, Shilong Liu, Wenzhao Zheng, Yueqi Duan, Yuan Gong, Ziwei Liu, Ming-Yu Liu, Jiangran Lyu, and Fangfu Liu. HarnessEval-W: Agentifying the evaluation of visual worlds, 2026b. URL https://arxiv.org/abs/2608.16859 .Yabo Chen, Jiemin Fang, Yuyang Huang, Taoran Yi, Xiaopeng Zhang, Lingxi Xie, Xinggang Wang, Wenrui Dai, Hongkai Xiong, and Qi Tian. Cascade-zero123: One image to highly consistent 3d with self-prompted nearby views, 2024a. URL https://arxiv.org/abs/2312.04424 .Yabo Chen, Chen Yang, Jiemin Fang, Xiaopeng Zhang, Lingxi Xie, Wei Shen, Wenrui Dai, Hongkai Xiong, and Qi Tian. Liftimage3d: Lifting any single image to 3d gaussians with video generation priors, 2024b. URL https://arxiv.org/abs/2412.09597 .Yabo Chen, Yuanzhi Liang, Jiepeng Wang, Tingxi Chen, Junfei Cheng, Zixiao Gu, Yuyang Huang, Zicheng Jiang, Wei Li, Tian Li, Weichen Li, Zuoxin Li, Guangce Liu, Jialun Liu, Junqi Liu, Haoyuan Wang, Qizhen Weng, Xuan’er Wu, Xunzhi Xiang, Xiaoyan Yang, Xin Zhang, Shiwen Zhang, Junyu Zhou, Chengcheng Zhou, Haibin Huang, Chi Zhang, and Xuelong Li. Teleworld: Towards dynamic multimodal synthesis with a 4d world model, 2025. URL https://arxiv.org/abs/2601.00051 .Zijian Chen, Xueguang Ma, Shengyao Zhuang, Ping Nie, Kai Zou, Sahel Sharifymoghaddam, Andrew Liu, Joshua Green, Kshama Patel, Ruoxi Meng, Mingyi Su, Yanxi Li, Haoran Hong, Xinyu Shi, Xuye Liu, Hosna Oyarhoseini, Nandan Thakur, Crystina Zhang, Luyu Gao, Wenhu Chen, and Jimmy Lin. BrowseComp-plus: A fair and disentangled evaluation benchmark for deep search agents. In Proceedings of the 64th Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers) , pages 22349– 22370. Association for Computational Linguistics, July 2026c. doi: 10.18653/v1/2026.acl-long.1023. URL 
+
+https://aclanthology.org/2026.acl-long.1023/ .DeepSeek-AI. DeepSeek-V4: Towards highly efficient million-token context intelligence. Official model card and technical report, 2026. URL https://huggingface.co/deepseek-ai/DeepSeek-V4-Pro . Technical report arXiv:2606.19348; accessed 2026-08-25. Kaixin Ding, Xi Chen, Minghong Cai, Zhiyuan Xu, Yiyang Wang, Yuxiang Lu, Junyi Li, Shuyang Chen, Yuan Gao, Xin Tao, Pengfei Wan, and Hengshuang Zhao. PlayWorld: Benchmarking world models with agent players over long-horizon objectives, 2026. URL https://arxiv.org/abs/2608.13552 .Yifan Du, Zikang Liu, Jinbiao Peng, Jie Wu, Junyi Li, Jinyang Li, Wayne Xin Zhao, and Ji-Rong Wen. Towards long-horizon agentic multimodal search. arXiv preprint arXiv:2604.12890 , 2026. URL https: //arxiv.org/abs/2604.12890 .34 Haoyi Duan, Hong-Xing Yu, Sirui Chen, Li Fei-Fei, and Jiajun Wu. WorldScore: A unified evaluation benchmark for world generation. In Proceedings of the IEEE/CVF International Conference on Com-puter Vision , pages 27713–27724, October 2025. URL https://openaccess.thecvf.com/content/ ICCV2025/html/Duan_WorldScore_A_Unified_Evaluation_Benchmark_for_World_Generation_ICCV_ 2025_paper.html .Shivam Duggal, Yushi Hu, Oscar Michel, Aniruddha Kembhavi, William T. Freeman, Noah A. Smith, Ranjay Krishna, Antonio Torralba, Ali Farhadi, and Wei-Chiu Ma. Eval3D: Inter-pretable and fine-grained evaluation for 3D generation. In Proceedings of the IEEE/CVF Con-ference on Computer Vision and Pattern Recognition , pages 13326–13336, June 2025. URL 
+
+https://openaccess.thecvf.com/content/CVPR2025/html/Duggal_Eval3D_Interpretable_and_ Fine-grained_Evaluation_for_3D_Generation_CVPR_2025_paper.html .Chenrui Fan and Paolo Favaro. GeoT2V-Bench: Benchmarking 3D consistency in text-to-video models via 3D reconstruction. arXiv preprint arXiv:2606.24829 , 2026. URL https://arxiv.org/abs/2606.24829 .Yiwen Gao, Ruochen Zhao, Yang Deng, and Wenxuan Zhang. DR-Arena: an automated evaluation frame-work for deep research agents. In Proceedings of the 64th Annual Meeting of the Association for Com-putational Linguistics (Volume 1: Long Papers) , pages 27130–27152. Association for Computational Lin-guistics, 2026. doi: 10.18653/v1/2026.acl-long.1249. URL https://aclanthology.org/2026.acl-long. 1249/ .Boyu Gou, Zanming Huang, Yuting Ning, Yu Gu, Michael Lin, Weijian Qi, Andrei Kopanev, Bo-tao Yu, Bernal Jim´ enez Guti´ errez, Yiheng Shu, Chan Hee (Luke) Song, Jiaman Wu, Shijie Chen, Hanane Moussa, Tianshu Zhang, Jian Xie, Yifei Li, Tianci Xue, Zeyi Liao, Kai Zhang, Boyuan Zheng, Zhaowei Cai, Viktor Rozgic, Morteza Ziyadi, Huan Sun, and Yu Su. Mind2Web 2: Evaluating agentic search with agent-as-a-judge. In Advances in Neural Information Processing Systems , volume 38. Cur-ran Associates, Inc., 2025. URL https://proceedings.neurips.cc/paper_files/paper/2025/hash/ fdcec9f5b99aa4fc8f4fb8487802d737-Abstract-Datasets_and_Benchmarks_Track.html .Yuze He, Yushi Bai, Matthieu Lin, Wang Zhao, Yubin Hu, Jenny Sheng, Ran Yi, Juanzi Li, and Yong-Jin Liu. T 3Bench: Benchmarking current progress in text-to-3D generation, 2023. URL https://arxiv.org/ abs/2310.02977 .Jack Hessel, Ari Holtzman, Maxwell Forbes, Ronan Le Bras, and Yejin Choi. CLIPScore: A reference-free evaluation metric for image captioning. In Proceedings of the 2021 Conference on Empirical Methods in Natural Language Processing , pages 7514–7528, 2021. Alain Hore and Djemel Ziou. Image quality metrics: PSNR vs. SSIM. In 2010 20th International Conference on Pattern Recognition , pages 2366–2369, 2010. doi: 10.1109/ICPR.2010.579. Yuyang Huang, Yabo Chen, Yuchen Liu, Xiaopeng Zhang, Wenrui Dai, Hongkai Xiong, and Qi Tian. Do-mainfusion: Generalizing to unseen domains with latent diffusion models. In European conference on computer vision , pages 480–498. Springer, 2024. Yuyang Huang, Yabo Chen, Li Ding, Xiaopeng Zhang, Wenrui Dai, Junni Zou, Hongkai Xiong, and Qi Tian. Im-zero: Instance-level motion controllable video generation in a zero-shot manner. In 2025 IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR) , pages 7265–7275. IEEE, 2025. Yuyang Huang, Yabo Chen, Wenrui Dai, Ziyang Zheng, Haibin Huang, Chi Zhang, Junni Zou, Hongkai Xiong, and Xuelong Li. Cineweaver: Training-free reference-controllable multi-shot long video generation for cinematic storytelling, 2026. URL https://arxiv.org/abs/2607.26529 .Rasmus Ramsbøl Jensen, Anders Lindbjerg Dahl, George Vogiatzis, Engin Tola, and Henrik Aanæs. Large scale multi-view stereopsis evaluation. In Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition , pages 406–413, 2014. doi: 10.1109/CVPR.2014.59. URL https://openaccess. thecvf.com/content_cvpr_2014/html/Jensen_Large_Scale_Multi-view_2014_CVPR_paper.html .35 Dongzhi Jiang, Renrui Zhang, Ziyu Guo, Yanmin Wu, Jiayi Lei, Pengshuo Qiu, Pan Lu, Zehui Chen, Guan-glu Song, Peng Gao, Yu Liu, Chunyuan Li, and Hongsheng Li. MMSearch: Unveiling the potential of large models as multi-modal search engines. In International Conference on Learning Representa-tions , pages 1662–1699, 2025. URL https://proceedings.iclr.cc/paper_files/paper/2025/hash/ 04e6525463afaa460b5a2e6868b18f18-Abstract-Conference.html .Sayash Kapoor, Benedikt Stroebl, Zachary S. Siegel, Nitya Nadgir, and Arvind Narayanan. AI agents that matter. arXiv preprint arXiv:2407.01502 , 2024. doi: 10.48550/arXiv.2407.01502. URL https: //arxiv.org/abs/2407.01502 .Arno Knapitsch, Jaesik Park, Qian-Yi Zhou, and Vladlen Koltun. Tanks and Temples: Benchmarking large-scale scene reconstruction. ACM Transactions on Graphics , 36(4):1–13, 2017. doi: 10.1145/3072959. 3073599. URL https://doi.org/10.1145/3072959.3073599 .Jing Yu Koh, Robert Lo, Lawrence Jang, Vikram Duvvur, Ming Lim, Po-Yu Huang, Graham Neubig, Shuyan Zhou, Russ Salakhutdinov, and Daniel Fried. VisualWebArena: Evaluating multimodal agents on realistic visual Web tasks. In Proceedings of the 62nd Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers) , pages 881–905. Association for Computational Linguistics, August 2024. doi: 10.18653/v1/2024.acl-long.50. URL https://aclanthology.org/2024.acl-long.50/ .Dacheng Li, Yunhao Fang, Yukang Chen, Shuo Yang, Shiyi Cao, Justin Wong, Michael Luo, Xiaolong Wang, Hongxu Yin, Joseph E. Gonzalez, Ion Stoica, Song Han, and Yao Lu. WorldModelBench: Judging video generation models as world models. In Advances in Neural Information Processing Systems , vol-ume 38. Curran Associates, Inc., 2025. URL https://proceedings.neurips.cc/paper_files/paper/ 2025/hash/4ec03ed08a3fcb59e1c815b5598beff1-Abstract-Datasets_and_Benchmarks_Track.html .Mingxin Li, Yanzhao Zhang, Dingkun Long, Keqin Chen, Sibo Song, Shuai Bai, Zhibo Yang, Pengjun Xie, An Yang, Dayiheng Liu, Jingren Zhou, and Junyang Lin. Qwen3-VL-Embedding and Qwen3-VL-Reranker: A unified framework for state-of-the-art multimodal retrieval and ranking. arXiv preprint arXiv:2601.04720 , 2026. doi: 10.48550/arXiv.2601.04720. URL https://arxiv.org/abs/2601.04720 .Hanxue Liang, Tianhao Wu, Param Hanji, Francesco Banterle, Hongyun Gao, Rafal Mantiuk, and Cengiz ¨Oztireli. Perceptual quality assessment of NeRF and neural view synthesis methods for front-facing views. 
+
+Computer Graphics Forum , 43(2), 2024. doi: 10.1111/cgf.15036. URL https://doi.org/10.1111/cgf. 15036 .Zhengyang Liang, Yan Shu, Xiangrui Liu, Minghao Qin, Kaixin Liang, Nicu Sebe, Zheng Liu, and Lizi Liao. Video-Browser: Towards agentic open-Web video browsing. arXiv preprint arXiv:2512.23044 , 2025. URL 
+
+https://arxiv.org/abs/2512.23044 .Chengwen Liu, Xiaomin Yu, Zhuoyue Chang, Zhe Huang, Shuo Zhang, Heng Lian, Jisheng Dang, Rui Xu, Sen Hu, Jianheng Hou, Chengwei Qin, Xiaobin Hu, Kunyi Wang, Zhi Yang, Hao Peng, Hong Peng, Ronghao Chen, and Huacan Wang. Watching, reasoning, and searching: A video deep research benchmark on open Web for agentic video reasoning. arXiv preprint arXiv:2601.06943 , 2026. URL https://arxiv. org/abs/2601.06943 .Yiting Lu, Wei Luo, Peiyan Tu, Haoran Li, Hanxin Zhu, Zihao Yu, Xingrui Wang, Xinyi Chen, Xinge Peng, Xin Li, and Zhibo Chen. 4DWorldBench: A comprehensive evaluation framework for 3D/4D world generation models. In Proceedings of the IEEE/CVF Confer-ence on Computer Vision and Pattern Recognition , pages 34322–34332, June 2026. URL 
+
+https://openaccess.thecvf.com/content/CVPR2026/html/Lu_4DWorldBench_A_Comprehensive_ Evaluation_Framework_for_3D4D_World_Generation_Models_CVPR_2026_paper.html .Chang Ma, Junlei Zhang, Zhihao Zhu, Cheng Yang, Yujiu Yang, Yaohui Jin, Zhenzhong Lan, Lingpeng Kong, and Junxian He. AgentBoard: An analytical evaluation board of multi-turn LLM agents. arXiv preprint arXiv:2401.13178 , 2024. URL https://arxiv.org/abs/2401.13178 .36 Shalini Maiti, Lourdes Agapito, and Filippos Kokkinos. Gen3DEval: Using vLLMs for au-tomatic evaluation of generated 3D objects. In Proceedings of the IEEE/CVF Confer-ence on Computer Vision and Pattern Recognition , pages 18552–18562, June 2025. URL 
+
+https://openaccess.thecvf.com/content/CVPR2025/html/Maiti_Gen3DEval_Using_vLLMs_for_ Automatic_Evaluation_of_Generated_3D_Objects_CVPR_2025_paper.html .Pedro Martin, Ant´ onio Rodrigues, Jo˜ ao Ascenso, and Maria Paula Queluz. GS-QA: Comprehensive quality assessment benchmark for Gaussian splatting view synthesis. In 2025 17th International Conference on Quality of Multimedia Experience , pages 1–7. IEEE, 2025. doi: 10.1109/QoMEX65720.2025.11219925. URL https://doi.org/10.1109/QoMEX65720.2025.11219925 .Moonshot AI. Kimi K3 model card and weights. Hugging Face, 2026. URL https://huggingface.co/ moonshotai/Kimi-K3 . Published 2026-07-27; accessed 2026-08-04; official open-weight model repository. OpenAI. GPT-5.6 System Card. https://deploymentsafety.openai.com/gpt-5-6 , 2026. Q-Future. Q-ReAlign—Pro (9B) model card. Hugging Face, 2026. URL https://huggingface.co/ q-future/Q-ReAlign-Pro-9B . Accessed 2026-07-22; model card, not a peer-reviewed paper. Yiran Qin, Zhelun Shi, Jiwen Yu, Xijun Wang, Enshen Zhou, Lijun Li, Zhenfei Yin, Xihui Liu, Lu Sheng, Jing Shao, Lei Bai, and Ruimao Zhang. WorldSimBench: Towards video generation models as world simulators. In Proceedings of the 42nd International Conference on Machine Learning , volume 267 of Proceedings of Machine Learning Research , pages 50338–50362. PMLR, 2025. URL https://proceedings.mlr.press/ v267/qin25f.html .Qwen Team. Qwen3.5 model collection. Hugging Face, 2026. URL https://huggingface.co/collections/ Qwen/qwen35 . Accessed 2026-07-22. Thomas Sch¨ ops, Johannes L. Sch¨ onberger, Silvano Galliani, Torsten Sattler, Konrad Schindler, Marc Polle-feys, and Andreas Geiger. A multi-view stereo benchmark with high-resolution images and multi-camera videos. In Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition , pages 3260– 3269, 2017. doi: 10.1109/CVPR.2017.272. URL https://openaccess.thecvf.com/content_cvpr_2017/ html/Schops_A_Multi-View_Stereo_CVPR_2017_paper.html .Serper. Serper: Google search api. Official website, 2026. URL https://serper.dev/ . Accessed 2026-08-29. Jiawei Shao and Xuelong Li. Ai flow at the network edge, 2025. URL https://arxiv.org/abs/2411.12469 .Hou In Ivan Tam, Hou In Derek Pun, Austin T. Wang, Angel X. Chang, and Manolis Savva. Sce-neEval: Evaluating semantic coherence in text-conditioned 3D indoor scene synthesis. In Proceedings of the IEEE/CVF Winter Conference on Applications of Computer Vision , pages 7355–7365, March 2026. URL https://openaccess.thecvf.com/content/WACV2026/html/Tam_SceneEval_Evaluating_ Semantic_Coherence_in_Text-Conditioned_3D_Indoor_Scene_Synthesis_WACV_2026_paper.html .Xijia Tao, Yihua Teng, Xinxing Su, Xinyu Fu, Jihao Wu, Chaofan Tao, Ziru Liu, Haoli Bai, Rui Liu, and Lingpeng Kong. MMSearch-Plus: Benchmarking provenance-aware search for multimodal browsing agents. arXiv preprint arXiv:2508.21475 , 2025. doi: 10.48550/arXiv.2508.21475. URL https://arxiv. org/abs/2508.21475 .Haoyuan Wang, Yabo Chen, Haibin Huang, Chi Zhang, and Xuelong Li. Directing the world: Fast autore-gressive video generation with compositional human-camera control, 2026a. URL https://arxiv.org/ abs/2606.27964 .Jiayu Wang, Yifei Ming, Riya Dulepet, Qinglin Chen, Austin Xu, Zixuan Ke, Frederic Sala, Aws Albarghouthi, Caiming Xiong, and Shafiq Joty. LiveResearchBench: A live benchmark for user-centric deep research in the wild. In International Conference on Learning Representations ,pages 95096–95143, 2026b. URL https://proceedings.iclr.cc/paper_files/paper/2026/hash/ 998f8d8ff2697da2eae5f87143668754-Abstract-Conference.html .37 Zhou Wang, Alan C. Bovik, Hamid R. Sheikh, and Eero P. Simoncelli. Image quality assessment: From error visibility to structural similarity. IEEE Transactions on Image Processing , 13(4):600–612, 2004. doi: 10.1109/TIP.2003.819861. Jason Wei, Zhiqing Sun, Spencer Papay, Scott McKinney, Jeffrey Han, Isa Fulford, Hyung Won Chung, Alex Tachard Passos, William Fedus, and Amelia Glaese. BrowseComp: A simple yet challenging bench-mark for browsing agents. arXiv preprint arXiv:2504.12516 , 2025. doi: 10.48550/arXiv.2504.12516. URL 
+
+https://arxiv.org/abs/2504.12516 .Tao Wen, Jiepeng Wang, Yabo Chen, Shugong Xu, Chi Zhang, and Xuelong Li. Metric-solver: Sliding anchored metric depth estimation from a single image, 2025. URL https://arxiv.org/abs/2504.12103 .Tong Wu, Guandao Yang, Zhibing Li, Kai Zhang, Ziwei Liu, Leonidas Guibas, Dahua Lin, and Gor-don Wetzstein. GPT-4V(ision) is a human-aligned evaluator for text-to-3D generation. In Proceed-ings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition , pages 22227–22238, June 2024. URL https://openaccess.thecvf.com/content/CVPR2024/html/Wu_GPT-4Vision_is_a_ Human-Aligned_Evaluator_for_Text-to-3D_Generation_CVPR_2024_paper.html .Xunzhi Xiang and Qi Fan. Make it efficient: Dynamic sparse attention for autoregressive image generation, 2025. URL https://arxiv.org/abs/2506.18226 .Xunzhi Xiang, Yabo Chen, Guiyu Zhang, Zhongyu Wang, Zhe Gao, Quanming Xiang, Gonghu Shang, Junqi Liu, Haibin Huang, Yang Gao, Chi Zhang, Qi Fan, and Xuelong Li. Macro-from-micro planning for high-quality and parallelized autoregressive long video generation, 2025. URL https://arxiv.org/abs/2508. 03334 .Xunzhi Xiang, Zixuan Duan, Yabo Chen, Zhengxuan Wei, Guiyu Zhang, Zixiao Gu, Zhe Gao, Haibin Huang, Chi Zhang, Qi Fan, and Xuelong Li. Videoweave: Unlocking geometric consistency in video generation via joint geometry-video modeling, 2026a. URL https://arxiv.org/abs/2606.14162 .Xunzhi Xiang, Zixuan Duan, Guiyu Zhang, Haiyu Zhang, Zhe Gao, Junta Wu, Shaofeng Zhang, Tengfei Wang, Qi Fan, and Chunchao Guo. Pathwise test-time correction for autoregressive long video generation, 2026b. URL https://arxiv.org/abs/2602.05871 .Qianqian Xie, Qingheng Xiong, He Zhu, Tiantian Xia, Xueming Han, Fanyu Meng, Jiakai Wang, Zhiqi Bai, Chengkang Jiang, Zhaohui Wang, Yubin Guo, Yuqing Wen, Jiayang Mao, Zijie Zhang, Shihao Li, Yanghai Wang, Yuxiang Ren, Junlan Feng, and Jiaheng Liu. DR 3-Eval: Towards realistic and reproducible deep research evaluation. arXiv preprint arXiv:2604.14683 , 2026. URL https://arxiv.org/abs/2604.14683 .Ting-Bing Xu, Jiacheng Sui, Zhe Gao, Kewei Shi, Wenjin Yang, Zhicheng Liu, Zhaoxu Sun, Mingchao Sun, Hongyu Pan, Fan Jiang, Mu Xu, Qi Fan, Yang Gao, Yong Li, and Baoquan Chen. WorldRoamBench: An open-world benchmark for long-horizon stability of interactive world models, 2026. URL https: //arxiv.org/abs/2606.31672 .Yuxue Yang, Shuyao Shang, Jiahe Wang, Zitong Zhou, Liang Tan, Junhan Zeng, Ruizhi Li, Junyan Li, Yu Liu, Xiao Yang, Yong Li, Jun Zhu, Hongsheng Li, Tieniu Tan, Lue Fan, and Zhaoxiang Zhang. WorldExam: Benchmarking world models from apparent appearance to inherent reactivity, 2026. URL 
+
+https://arxiv.org/abs/2608.02603 .Kaining Ying, Hengrui Hu, Siyu Ren, Jiamu Li, Fengjiao Chen, Ziwen Wang, Xuezhi Cao, Xunliang Cai, and Henghui Ding. WBench: A comprehensive multi-turn benchmark for interactive video world model evaluation, 2026. URL https://arxiv.org/abs/2605.25874 .Ori Yoran, Samuel Joseph Amouyal, Chaitanya Malaviya, Ben Bogin, Ofir Press, and Jonathan Be-rant. AssistantBench: Can Web agents solve realistic and time-consuming tasks? In Proceedings of the 2024 Conference on Empirical Methods in Natural Language Processing , pages 8938–8968. As-sociation for Computational Linguistics, 2024. doi: 10.18653/v1/2024.emnlp-main.505. URL https: //aclanthology.org/2024.emnlp-main.505/ .38 Tao Yu, Yujia Yang, Haopeng Jin, Junhao Gong, Xinlong Chen, Yuxuan Zhou, Shanbin Zhang, Jiabing Yang, Xinming Wang, Hongzhu Yi, Ping Nie, Kai Zou, Zhang Zhang, Yan Huang, Liang Wang, Yeshani, Ruiwen Tao, Jin Ma, Haijin Liang, and Jinwen Luo. Beyond closed-pool video retrieval: A benchmark and agent framework for real-world video search and moment localization. arXiv preprint arXiv:2602.10159 ,2026. URL https://arxiv.org/abs/2602.10159 .Qianhao Yuan, Jie Lou, Zichao Li, Jiawei Chen, Yaojie Lu, Hongyu Lin, Le Sun, Debing Zhang, and Xi-anpei Han. MemSearcher: Iterative memory integration for search agent via end-to-end reinforcement learning. In Findings of the Association for Computational Linguistics: ACL 2026 , pages 14965–14977. Association for Computational Linguistics, July 2026. doi: 10.18653/v1/2026.findings-acl.736. URL 
+
+https://aclanthology.org/2026.findings-acl.736/ .Z.ai. GLM-5.2: Built for long-horizon tasks. Official technical blog, 2026. URL https://z.ai/blog/glm-5. 2. Published 2026-06-16; accessed 2026-08-25. Guiyu Zhang, Yabo Chen, Xunzhi Xiang, Junchao Huang, Zhongyu Wang, and Li Jiang. Symphomotion: Joint control of camera motion and object dynamics for coherent video generation. In Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR) , pages 11127–11137, June 2026a. Jun Zhang, Teng Wang, Yuying Ge, Yixiao Ge, Xinhao Li, and Limin Wang. Time-Lens: Rethinking video temporal grounding with multimodal LLMs. In Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition , pages 10419–10429, June 2026b. URL https://openaccess.thecvf.com/content/CVPR2026/html/Zhang_TimeLens_ Rethinking_Video_Temporal_Grounding_with_Multimodal_LLMs_CVPR_2026_paper.html .Richard Zhang, Phillip Isola, Alexei A. Efros, Eli Shechtman, and Oliver Wang. The unreasonable effective-ness of deep features as a perceptual metric. In 2018 IEEE/CVF Conference on Computer Vision and Pattern Recognition , pages 586–595, 2018. doi: 10.1109/CVPR.2018.00068. Xiaoyi Zhang, Zhaoyang Jia, Zongyu Guo, Jiahao Li, Bin Li, Houqiang Li, and Yan Lu. Deep video discovery: Agentic search with tool use for long-form video understanding. In Ad-vances in Neural Information Processing Systems , volume 38, pages 89863–89895. Curran As-sociates, Inc., 2025. URL https://proceedings.neurips.cc/paper_files/paper/2025/hash/ 8190b210e9808e54ee16263b673a847d-Abstract-Conference.html .Xin Zhang, Yabo Chen, Zixuan Duan, Haibin Huang, Chi Zhang, Feng Xu, and Xuelong Li. Tourphysics: Bringing physics to world models for exploration and manipulation from a single image, 2026c. URL 
+
+https://arxiv.org/abs/2609.04911 .Xin Zhang, Yabo Chen, Yijie Fang, Wanying Qu, Haibin Huang, Chi Zhang, Feng Xu, and Xuelong Li. Physomni: Physics-grounded multi-object scene generation from a single image with real-time interaction, 2026d. URL https://arxiv.org/abs/2605.20290 .Yuke Zhao, Wangbo Zhao, Weijie Wang, Zeyu Zhang, Dakai An, Akide Liu, Yinghao Yu, Jiasheng Tang, Fan Wang, Wei Wang, and Bohan Zhuang. WorldOlympiad: Can your world model survive a triathlon?, 2026. URL https://arxiv.org/abs/2606.11129 .Yuze Zhao, Jintao Huang, Jinghan Hu, Xingjun Wang, Yunlin Mao, Daoze Zhang, Zeyinzi Jiang, Zhikai Wu, Baole Ai, Ang Wang, Wenmeng Zhou, and Yingda Chen. Swift:a scalable lightweight infrastructure for fine-tuning, 2024. URL https://arxiv.org/abs/2408.05517 .Shuyan Zhou, Frank F. Xu, Hao Zhu, Xuhui Zhou, Robert Lo, Abishek Sridhar, Xianyi Cheng, Tianyue Ou, Yonatan Bisk, Daniel Fried, Uri Alon, and Graham Neubig. WebArena: A realistic Web en-vironment for building autonomous agents. In International Conference on Learning Representa-tions , pages 15585–15606, 2024. URL https://proceedings.iclr.cc/paper_files/paper/2024/hash/ 4410c0711e9154a7a2d26f9b3816d1ef-Abstract-Conference.html .39 Jialiang Zhu, Gongrui Zhang, Xiaolong Ma, Lin Xu, Miaosen Zhang, Ruiqi Yang, Song Wang, Kai Qiu, Zhirong Wu, Qi Dai, Ruichun Ma, Bei Liu, Yifan Yang, Chong Luo, Zhengyuan Yang, Linjie Li, Lijuan Wang, Weizhu Chen, Xin Geng, and Baining Guo. RE-TRAC: REcursive TRAjectory Compression for deep search agents. In International Conference on Machine Learning , 2026. URL https://openreview. net/forum?id=wjNTbZKIvC .40

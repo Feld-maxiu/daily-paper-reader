@@ -1,0 +1,54 @@
+{
+  "label": "2026-09-12",
+  "date": "2026-09-12",
+  "generated_at": "2026-09-12T21:50:39",
+  "count": 3,
+  "papers": [
+    {
+      "paper_id": "202609/12/2609.08599v1-graph-based-personalized-memory-for-llm-agents-representation-evolution-retrieval-and-evaluation",
+      "section": "deep",
+      "title_en": "Graph-Based Personalized Memory for LLM Agents: Representation, Evolution, Retrieval, and Evaluation",
+      "authors": "Dac Duy Anh Nguyen, Zhangchi Qiu, Shigeng Chen, Alan Wee-Chung Liew",
+      "date": "2026-09-08",
+      "pdf": "https://arxiv.org/pdf/2609.08599v1",
+      "score": "10.0",
+      "evidence": "基于图的个性化记忆通过关系和时间上下文建模LLM智能体中的用户信息",
+      "tldr": "大语言模型智能体正从单次会话工具演变为长期个人助理，个性化记忆成为核心需求，但用户偏好、目标与关系动态变化且相互关联。本调查采用生命周期视角，围绕记忆表示、演化、检索与评估四个阶段系统梳理基于图的个性化记忆研究。通过比较关键设计选择，揭示现有工作分散于个性化智能体与通用图记忆框架，缺乏统一设计空间。该工作为构建自适应、可控、用户中心的长期个性化智能体提供了清晰框架，并指出开放挑战。",
+      "tags": "query:agent-memory",
+      "abstract_en": "Large Language Model (LLM) agents are evolving from single-session tools toward long-term personal assistants that must adapt to individual users across tasks, contexts, and interactions. This shift makes memory a core requirement for personalization, since user preferences, goals, constraints, relationships, and past experiences are accumulated gradually and often change over time. Graph-based personalized memory provides a structured way to model such user information through explicit relations, temporal context, and evidence links. Such representations can model not only what an agent remembers about a user but also how memories are connected, revised, and retrieved to support personalized decisions. However, existing work remains fragmented across personalized agents and generic graph memory frameworks, making it difficult to understand the design space as a whole. This survey develops a lifecycle-oriented view of graph-based personalized memory for LLM agents. We organize existing studies around memory representation, memory evolution, memory retrieval, and memory evaluation. We further compare key design choices, discuss current evaluation practices, and open challenges in building reliable long-term personalized agents. This survey aims to clarify how graph-based memory can support adaptive, controllable, and user-centric LLM agents.",
+      "source": "arxiv",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "paper_id": "202609/12/2609.11561v1-memory-as-plans-world-action-modeling-with-memory-grounded-planning",
+      "section": "deep",
+      "title_en": "Memory as Plans: World-Action Modeling with Memory-Grounded Planning",
+      "authors": "Sizhe Zhao, Haozhe Xie, Weiyu Zhao, Chenchu Zhang, Huan Wang, Chenyang Wang, Qinglin Liu, Shengping Zhang",
+      "date": "2026-09-10",
+      "pdf": "https://arxiv.org/pdf/2609.11561v1",
+      "score": "9.0",
+      "evidence": "用于机器人操作的长时记忆框架MaP-WAM",
+      "tldr": "复杂机器人操作任务本质非马尔可夫，需要长时记忆，但现有方法或丢失细粒度视觉证据，或需在历史覆盖与执行效率间权衡。MaP-WAM提出Memory-as-Plans框架，将记忆依赖的世界-动作建模分解为记忆基础规划和计划条件执行，把情景记忆转化为紧凑计划，包括语言计划和视觉引导。在RMBench上成功率83.3%，真实机器人78.0%，且执行推理延迟随历史增长近似恒定。该框架有效平衡长期记忆利用与推理效率，为长时操作任务提供新方案。",
+      "tags": "query:agent-memory",
+      "abstract_en": "Mainstream robotic policies often adopt a Markovian formulation, but many complex real-world manipulation tasks are inherently non-Markovian, requiring long-horizon memory beyond the current observation. Existing memory mechanisms often rely on language summaries, growing visual windows, or their combinations, and may therefore lose fine-grained visual evidence or face a trade-off between history coverage and execution efficiency. We introduce MaP-WAM, a Memory-as-Plans framework that decomposes memory-dependent world-action modeling into memory-grounded planning and plan-conditioned execution, and uses long-term multimodal episodic context as planning-time evidence rather than repeatedly conditioning the executor on the full history. MaP-WAM represents memory as completed segment records containing language instructions and sparse visual context, and converts this episodic memory into compact plans comprising the next segment-level language plan and corresponding visual guidance. A World-Action-Progress (WAP) model executes each plan over an unknown duration by jointly predicting action chunks and corresponding execution progress at inference time, calibrating predicted progress through plan-observation alignment for adaptive segment transitions and closed-loop context updates. MaP-WAM keeps the executor context length fixed, while structured attention further enables key-value caching in both planning and execution. MaP-WAM achieves state-of-the-art performance on RMBench with an 83.3% success rate and attains 78.0% success on real-robot tasks, while maintaining approximately constant executor inference latency as task history grows.",
+      "source": "arxiv",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "paper_id": "202609/12/2609.07605v1-search-to-world-evaluation-of-3d-world-delivery-from-user-request-through-web-search",
+      "section": "quick",
+      "title_en": "Search-to-World: Evaluation of 3D World Delivery from User Request through Web Search",
+      "authors": "Zixiao Gu, Yabo Chen, Xunzhi Xiang, Yu He, Haibin Huang, Chi Zhang, Yunbo Wang, Xuelong Li",
+      "date": "2026-09-07",
+      "pdf": "https://arxiv.org/pdf/2609.07605v1",
+      "score": "6.0",
+      "evidence": "智能体管线检索网络视觉内容并交付3D世界，处理多模态信息",
+      "tldr": "现有智能体系统能执行网络搜索，但将检索内容转化为可用3D世界的能力缺乏系统评估。本文提出Search-to-World端到端评测任务，并开发WorldSearcher框架，定义观察检索率与世界交付率指标。基准实验显示交付成功取决于底层模型，观察相关内容不保证交付；联合微调恢复子代理可提升成功率与行动效率。该工作使代理式3D世界交付可衡量，并提供实用评测工具。",
+      "tags": "query:agent-memory",
+      "abstract_en": "Agentic systems can interpret user requests, search the live web, and use external tools, but their ability to transform retrieved web content into a usable 3D world has not been systematically evaluated. No established end-to-end pipeline or benchmark exists for this capability. We introduce Search-to-World, an end-to-end evaluation task covering request understanding, web visual-content retrieval, and 3D-world delivery. We define Observed Retrieval Rate (ORR) and World Delivery Rate (WDR) to distinguish observing relevant content from successfully delivering a request-aligned, perceptually acceptable world. We also present WorldSearcher, a reuse-then-reconstruction harness that connects existing search agents to world delivery: it first retrieves reusable 3D worlds and, when none are available, reconstructs a world from video. A structured recovery controller revises temporal grounding, replaces source videos, or reformulates queries after failure. Using WorldSearcher, we benchmark representative models on Search-to-World and study supervised fine-tuning (SFT) for recovery subagents. Results show that delivery depends on the underlying agentic model, and that relevant-content observation does not ensure world delivery. Jointly training recovery agents improves delivery success and action efficiency. Search-to-World makes agentic 3D-world delivery measurable, while WorldSearcher provides a practical evaluation harness with recovery capabilities.",
+      "source": "arxiv",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "errors": []
+}

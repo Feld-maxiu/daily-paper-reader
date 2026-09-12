@@ -1,0 +1,57 @@
+{
+  "date": "20260912",
+  "date_label": "",
+  "generated_at": "2026-09-12 21:50:30 UTC",
+  "recommend_exists": true,
+  "run_count": 1,
+  "papers": [
+    {
+      "paper_id": "2609.08599v1",
+      "route": "202609/12/2609.08599v1-graph-based-personalized-memory-for-llm-agents-representation-evolution-retrieval-and-evaluation",
+      "title": "Graph-Based Personalized Memory for LLM Agents: Representation, Evolution, Retrieval, and Evaluation",
+      "section": "deep",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 10.0,
+      "evidence": "基于图的个性化记忆通过关系和时间上下文建模LLM智能体中的用户信息",
+      "first_seen_at": "2026-09-12 21:50:30 UTC",
+      "updated_at": "2026-09-12 21:50:30 UTC"
+    },
+    {
+      "paper_id": "2609.11561v1",
+      "route": "202609/12/2609.11561v1-memory-as-plans-world-action-modeling-with-memory-grounded-planning",
+      "title": "Memory as Plans: World-Action Modeling with Memory-Grounded Planning",
+      "section": "deep",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 9.0,
+      "evidence": "用于机器人操作的长时记忆框架MaP-WAM",
+      "first_seen_at": "2026-09-12 21:50:30 UTC",
+      "updated_at": "2026-09-12 21:50:30 UTC"
+    },
+    {
+      "paper_id": "2609.07605v1",
+      "route": "202609/12/2609.07605v1-search-to-world-evaluation-of-3d-world-delivery-from-user-request-through-web-search",
+      "title": "Search-to-World: Evaluation of 3D World Delivery from User Request through Web Search",
+      "section": "quick",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 6.0,
+      "evidence": "智能体管线检索网络视觉内容并交付3D世界，处理多模态信息",
+      "first_seen_at": "2026-09-12 21:50:30 UTC",
+      "updated_at": "2026-09-12 21:50:30 UTC"
+    }
+  ]
+}

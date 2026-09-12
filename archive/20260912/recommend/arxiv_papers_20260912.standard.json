@@ -1,0 +1,138 @@
+{
+  "mode": "standard",
+  "generated_at": "2026-09-12T21:44:17.338227+00:00",
+  "stats": {
+    "mode": "standard",
+    "tag_count": 1,
+    "deep_divecandidates": 2,
+    "deep_cap": 6,
+    "deep_selected": 2,
+    "quick_candidates": 1,
+    "quick_skim_target": 11,
+    "quick_selected": 1
+  },
+  "deep_dive": [
+    {
+      "id": "2609.08599v1",
+      "source": "arxiv",
+      "title": "Graph-Based Personalized Memory for LLM Agents: Representation, Evolution, Retrieval, and Evaluation",
+      "abstract": "Large Language Model (LLM) agents are evolving from single-session tools toward long-term personal assistants that must adapt to individual users across tasks, contexts, and interactions. This shift makes memory a core requirement for personalization, since user preferences, goals, constraints, relationships, and past experiences are accumulated gradually and often change over time. Graph-based personalized memory provides a structured way to model such user information through explicit relations, temporal context, and evidence links. Such representations can model not only what an agent remembers about a user but also how memories are connected, revised, and retrieved to support personalized decisions. However, existing work remains fragmented across personalized agents and generic graph memory frameworks, making it difficult to understand the design space as a whole. This survey develops a lifecycle-oriented view of graph-based personalized memory for LLM agents. We organize existing studies around memory representation, memory evolution, memory retrieval, and memory evaluation. We further compare key design choices, discuss current evaluation practices, and open challenges in building reliable long-term personalized agents. This survey aims to clarify how graph-based memory can support adaptive, controllable, and user-centric LLM agents.",
+      "authors": [
+        "Dac Duy Anh Nguyen",
+        "Zhangchi Qiu",
+        "Shigeng Chen",
+        "Alan Wee-Chung Liew"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-09-08T11:34:04+00:00",
+      "link": "https://arxiv.org/pdf/2609.08599v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 10.0,
+      "llm_evidence_en": "Graph-based personalized memory for LLM agents models user information through relations and temporal context",
+      "llm_evidence_cn": "基于图的个性化记忆通过关系和时间上下文建模LLM智能体中的用户信息",
+      "llm_evidence": "基于图的个性化记忆通过关系和时间上下文建模LLM智能体中的用户信息",
+      "canonical_evidence": "基于图的个性化记忆通过关系和时间上下文建模LLM智能体中的用户信息",
+      "llm_tldr_en": "Addresses the need for long-term personalization in LLM agents by using graph-based memory to represent, evolve, retrieve, and evaluate user preferences and experiences across tasks.",
+      "llm_tldr_cn": "LLM智能体从单会话工具向长期个人助理演进，记忆成为个性化核心。图基个性化记忆通过显式关系、时间上下文和证据链接建模用户信息。该表示支持记忆的连接、修订与检索，以支撑个性化决策。论文综述了此类记忆的表示、演化、检索与评估方法。",
+      "llm_tldr": "LLM智能体从单会话工具向长期个人助理演进，记忆成为个性化核心。图基个性化记忆通过显式关系、时间上下文和证据链接建模用户信息。该表示支持记忆的连接、修订与检索，以支撑个性化决策。论文综述了此类记忆的表示、演化、检索与评估方法。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "memory mechanisms for intelligent agents",
+      "matched_requirement_id": "req-1",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2609.11561v1",
+      "source": "arxiv",
+      "title": "Memory as Plans: World-Action Modeling with Memory-Grounded Planning",
+      "abstract": "Mainstream robotic policies often adopt a Markovian formulation, but many complex real-world manipulation tasks are inherently non-Markovian, requiring long-horizon memory beyond the current observation. Existing memory mechanisms often rely on language summaries, growing visual windows, or their combinations, and may therefore lose fine-grained visual evidence or face a trade-off between history coverage and execution efficiency. We introduce MaP-WAM, a Memory-as-Plans framework that decomposes memory-dependent world-action modeling into memory-grounded planning and plan-conditioned execution, and uses long-term multimodal episodic context as planning-time evidence rather than repeatedly conditioning the executor on the full history. MaP-WAM represents memory as completed segment records containing language instructions and sparse visual context, and converts this episodic memory into compact plans comprising the next segment-level language plan and corresponding visual guidance. A World-Action-Progress (WAP) model executes each plan over an unknown duration by jointly predicting action chunks and corresponding execution progress at inference time, calibrating predicted progress through plan-observation alignment for adaptive segment transitions and closed-loop context updates. MaP-WAM keeps the executor context length fixed, while structured attention further enables key-value caching in both planning and execution. MaP-WAM achieves state-of-the-art performance on RMBench with an 83.3% success rate and attains 78.0% success on real-robot tasks, while maintaining approximately constant executor inference latency as task history grows.",
+      "authors": [
+        "Sizhe Zhao",
+        "Haozhe Xie",
+        "Weiyu Zhao",
+        "Chenchu Zhang",
+        "Huan Wang",
+        "Chenyang Wang",
+        "Qinglin Liu",
+        "Shengping Zhang"
+      ],
+      "primary_category": "cs.RO",
+      "categories": [
+        "cs.RO"
+      ],
+      "published": "2026-09-10T13:52:51+00:00",
+      "link": "https://arxiv.org/pdf/2609.11561v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "MaP-WAM framework for long-horizon memory in robotic manipulation",
+      "llm_evidence_cn": "用于机器人操作的长时记忆框架MaP-WAM",
+      "llm_evidence": "用于机器人操作的长时记忆框架MaP-WAM",
+      "canonical_evidence": "用于机器人操作的长时记忆框架MaP-WAM",
+      "llm_tldr_en": "This paper proposes MaP-WAM, a Memory-as-Plans framework that decomposes memory-dependent world-action modeling into memory-grounded planning and plan-conditioned execution, using long-term multimodal episodic context as planning-time evidence for non-Markovian robotic tasks.",
+      "llm_tldr_cn": "现有机器人策略多采用马尔可夫假设，无法处理需要长时记忆的非马尔可夫操作任务。本文提出MaP-WAM框架，将记忆依赖的世界-动作建模分解为基于记忆的规划和基于计划的执行两个阶段。它利用长期多模态情景上下文作为规划时期的证据，而不是反复让执行器处理全部历史，从而在保持细粒度视觉信息的同时提高执行效率。实验表明该框架在复杂操作任务中优于基于语言摘要或增长视觉窗口的记忆方法。",
+      "llm_tldr": "现有机器人策略多采用马尔可夫假设，无法处理需要长时记忆的非马尔可夫操作任务。本文提出MaP-WAM框架，将记忆依赖的世界-动作建模分解为基于记忆的规划和基于计划的执行两个阶段。它利用长期多模态情景上下文作为规划时期的证据，而不是反复让执行器处理全部历史，从而在保持细粒度视觉信息的同时提高执行效率。实验表明该框架在复杂操作任务中优于基于语言摘要或增长视觉窗口的记忆方法。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "memory mechanisms for intelligent agents",
+      "matched_requirement_id": "req-1",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "quick_skim": [
+    {
+      "id": "2609.07605v1",
+      "source": "arxiv",
+      "title": "Search-to-World: Evaluation of 3D World Delivery from User Request through Web Search",
+      "abstract": "Agentic systems can interpret user requests, search the live web, and use external tools, but their ability to transform retrieved web content into a usable 3D world has not been systematically evaluated. No established end-to-end pipeline or benchmark exists for this capability. We introduce Search-to-World, an end-to-end evaluation task covering request understanding, web visual-content retrieval, and 3D-world delivery. We define Observed Retrieval Rate (ORR) and World Delivery Rate (WDR) to distinguish observing relevant content from successfully delivering a request-aligned, perceptually acceptable world. We also present WorldSearcher, a reuse-then-reconstruction harness that connects existing search agents to world delivery: it first retrieves reusable 3D worlds and, when none are available, reconstructs a world from video. A structured recovery controller revises temporal grounding, replaces source videos, or reformulates queries after failure. Using WorldSearcher, we benchmark representative models on Search-to-World and study supervised fine-tuning (SFT) for recovery subagents. Results show that delivery depends on the underlying agentic model, and that relevant-content observation does not ensure world delivery. Jointly training recovery agents improves delivery success and action efficiency. Search-to-World makes agentic 3D-world delivery measurable, while WorldSearcher provides a practical evaluation harness with recovery capabilities.",
+      "authors": [
+        "Zixiao Gu",
+        "Yabo Chen",
+        "Xunzhi Xiang",
+        "Yu He",
+        "Haibin Huang",
+        "Chi Zhang",
+        "Yunbo Wang",
+        "Xuelong Li"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV"
+      ],
+      "published": "2026-09-07T15:13:50+00:00",
+      "link": "https://arxiv.org/pdf/2609.07605v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "agent pipeline retrieves web visual content and delivers 3D worlds, processing multiple modalities",
+      "llm_evidence_cn": "智能体管线检索网络视觉内容并交付3D世界，处理多模态信息",
+      "llm_evidence": "智能体管线检索网络视觉内容并交付3D世界，处理多模态信息",
+      "canonical_evidence": "智能体管线检索网络视觉内容并交付3D世界，处理多模态信息",
+      "llm_tldr_en": "This paper introduces Search-to-World, a benchmark for evaluating agentic transformation of web-retrieved visual content into usable 3D worlds, including metrics ORR and WDR and a reuse-then-reconstruction harness WorldSearcher.",
+      "llm_tldr_cn": "智能体系统能够理解用户请求并搜索网络，但将检索到的网页视觉内容转换为可用的3D世界尚缺乏端到端评估。该论文提出Search-to-World评估任务，同时定义观察检索率（ORR）和世界交付率（WDR）两个指标，以区分观察到相关内容与成功交付符合请求、感知可接受的3D世界。论文还设计了WorldSearcher框架，采用先重用后重建的机制连接现有搜索智能体与3D世界交付，填补了多模态智能体世界构建基准的空白。",
+      "llm_tldr": "智能体系统能够理解用户请求并搜索网络，但将检索到的网页视觉内容转换为可用的3D世界尚缺乏端到端评估。该论文提出Search-to-World评估任务，同时定义观察检索率（ORR）和世界交付率（WDR）两个指标，以区分观察到相关内容与成功交付符合请求、感知可接受的3D世界。论文还设计了WorldSearcher框架，采用先重用后重建的机制连接现有搜索智能体与3D世界交付，填补了多模态智能体世界构建基准的空白。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "agent that processes multiple modalities",
+      "matched_requirement_id": "req-2",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    }
+  ]
+}
