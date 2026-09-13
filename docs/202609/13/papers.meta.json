@@ -1,0 +1,39 @@
+{
+  "label": "2026-09-13",
+  "date": "2026-09-13",
+  "generated_at": "2026-09-13T22:05:10",
+  "count": 2,
+  "papers": [
+    {
+      "paper_id": "202609/13/2609.08977v2-omni-interaction-agent-technical-report",
+      "section": "deep",
+      "title_en": "Omni Interaction Agent Technical Report",
+      "authors": "Orantqing, Shengpeng Ji, Junlong Tong, Jialong Zuo, Dongjie Fu, Di Cao, Yangzhuo Li, Shangda Wu, Franz, Evan, Theron Veyra, Changhao Pan, Jingyu Lu, Dongchao Yang, Zhifei Xie, Yang Tan, Xiaoyu Shen, Xiaoda Yang, Wenfu Wang, Teddy Sun, Steve Yves, Zhou Zhao",
+      "date": "2026-09-08",
+      "pdf": "https://arxiv.org/pdf/2609.08977v2",
+      "score": "9.0",
+      "evidence": "端到端智能体处理流式视频、语音和文本多模态",
+      "tldr": "当前交互系统多为轮次式，难以支持多模态流式输入与实时打断。Gander 提出小脑-大脑协作框架，小脑负责实时全模态对话，大脑负责复杂推理与代理任务，并通过流式 Thinker-Talker 架构统一 token 流。在四个维度评估中保持开源 SOTA 对话水平，并在噪声、多方等场景表现鲁棒。模型、代码和数据全面开源，推动实时交互智能研究。",
+      "tags": "query:agent-memory",
+      "abstract_en": "In this work, we present Gander, an end-to-end model that unifies omni perception, realtime interaction, and agentic capabilities within a single framework. In contrast to turn-based conventional paradigms, Gander continuously receives streaming inputs across multiple modalities, including video, speech, and text, enabling natural full-duplex interaction in both everyday conversations and complex workflow-oriented agent scenarios. Users can interrupt the model at any time, while the model can also proactively provide intermediate feedback or ask follow up questions. To natively support these capabilities, Gander adopts two key architectural designs: 1) It employs a Cerebellum-Brain collaborative framework, in which the Cerebellum is responsible for realtime interaction and omni conversational capabilities, while the Brain handles complex reasoning and higher-level agentic tasks. The two components interact continuously through tool calling and the agent orchestration runtime. 2) The Cerebellum is built upon a streaming Thinker-Talker architecture, user inputs and model outputs are further flattened into an ordered token stream at the chunk level, providing a unified representation for low latency, continuous interaction. We conduct comprehensive evaluations of Gander across four dimensions: conversational ability, omni understanding, interactive capability, and agentic intelligence. Internal human evaluations demonstrate that Gander maintains the natural and expressive spoken dialogue capabilities of SOTA open source models while achieving competitive performance in omni interaction. Gander also demonstrates robustness in challenging real-world scenarios, including background noise interference, multi-party interactions, and backchannel communication. We release Gander together with its models, code, and data to facilitate further research and development in the community.",
+      "source": "arxiv",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "paper_id": "202609/13/2609.10155v1-from-retrieval-to-weights-parametric-individualization-of-small-language-models-with-individual-text-corpora",
+      "section": "quick",
+      "title_en": "From Retrieval to Weights: Parametric Individualization of Small Language Models with Individual Text Corpora",
+      "authors": "Christoph Wigbels, Ali Abusaleh, Markus T. Jansen, Alexander Mehler, Markus J. Hofmann",
+      "date": "2026-09-09",
+      "pdf": "https://arxiv.org/pdf/2609.10155v1",
+      "score": "6.0",
+      "evidence": "通过检索增强与DoRA微调模拟情景和语义记忆",
+      "tldr": "语言模型缺乏个体化记忆模拟能力。本研究收集150名参与者的搜索历史作为个人文本语料，用DoRA适配器微调小型语言模型，将语料写入权重。适配器对自身参与者的留出文本拟合显著优于他人（dz=1.27），且效应随语料量递增；但在泛化知识测试中仅提升通用知识而非个体对齐，检索无增益。这证明个人语料可参数化整合进SLM，为个体化辅导代理奠定基础。",
+      "tags": "query:agent-memory",
+      "abstract_en": "We approach a cognitive simulation perspective on episodic and semantic memory in multiple-choice question answering by incorporating text from individual text corpora (ITC) into retrieval-augmented generation and DoRA fine-tuning. We web-crawl the search histories of 515 participants who answered 36 multiple-choice knowledge items and analyze a stratified subsample of 150 participants. For each participant, one DoRA adapter consolidates their ITC into a small language model (SLM) whose baseline correctness falls below the participants' lowest quartile. The adapter measurably writes the ITC into the weights: it fits its own participant's held-out text better than other participants' texts (dz =1.27), an individuality effect that increases with ITC size in rank order. On the generalized knowledge test, however, the adapter adds knowledge rather than alignment with the individual: log-loss match improves, whereas match accuracy under a bias-corrected PMI readout does not, and retrieval adds nothing on top. Our results demonstrate that ITCs can be consolidated into the weights of SLMs, an encouraging basis for individualized tutoring agents, and we discuss how to move from there toward a realistic simulation of episodic and semantic memory at the individual level.",
+      "source": "arxiv",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "errors": []
+}

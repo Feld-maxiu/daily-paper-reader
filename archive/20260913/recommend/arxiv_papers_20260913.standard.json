@@ -1,0 +1,117 @@
+{
+  "mode": "standard",
+  "generated_at": "2026-09-13T22:02:03.843484+00:00",
+  "stats": {
+    "mode": "standard",
+    "tag_count": 1,
+    "deep_divecandidates": 1,
+    "deep_cap": 6,
+    "deep_selected": 1,
+    "quick_candidates": 1,
+    "quick_skim_target": 11,
+    "quick_selected": 1
+  },
+  "deep_dive": [
+    {
+      "id": "2609.08977v2",
+      "source": "arxiv",
+      "title": "Omni Interaction Agent Technical Report",
+      "abstract": "In this work, we present Gander, an end-to-end model that unifies omni perception, realtime interaction, and agentic capabilities within a single framework. In contrast to turn-based conventional paradigms, Gander continuously receives streaming inputs across multiple modalities, including video, speech, and text, enabling natural full-duplex interaction in both everyday conversations and complex workflow-oriented agent scenarios. Users can interrupt the model at any time, while the model can also proactively provide intermediate feedback or ask follow up questions. To natively support these capabilities, Gander adopts two key architectural designs: 1) It employs a Cerebellum-Brain collaborative framework, in which the Cerebellum is responsible for realtime interaction and omni conversational capabilities, while the Brain handles complex reasoning and higher-level agentic tasks. The two components interact continuously through tool calling and the agent orchestration runtime. 2) The Cerebellum is built upon a streaming Thinker-Talker architecture, user inputs and model outputs are further flattened into an ordered token stream at the chunk level, providing a unified representation for low latency, continuous interaction. We conduct comprehensive evaluations of Gander across four dimensions: conversational ability, omni understanding, interactive capability, and agentic intelligence. Internal human evaluations demonstrate that Gander maintains the natural and expressive spoken dialogue capabilities of SOTA open source models while achieving competitive performance in omni interaction. Gander also demonstrates robustness in challenging real-world scenarios, including background noise interference, multi-party interactions, and backchannel communication. We release Gander together with its models, code, and data to facilitate further research and development in the community.",
+      "authors": [
+        "Orantqing",
+        "Shengpeng Ji",
+        "Junlong Tong",
+        "Jialong Zuo",
+        "Dongjie Fu",
+        "Di Cao",
+        "Yangzhuo Li",
+        "Shangda Wu",
+        "Franz",
+        "Evan",
+        "Theron Veyra",
+        "Changhao Pan",
+        "Jingyu Lu",
+        "Dongchao Yang",
+        "Zhifei Xie",
+        "Yang Tan",
+        "Xiaoyu Shen",
+        "Xiaoda Yang",
+        "Wenfu Wang",
+        "Teddy Sun",
+        "Steve Yves",
+        "Zhou Zhao"
+      ],
+      "primary_category": "eess.AS",
+      "categories": [
+        "eess.AS",
+        "cs.AI",
+        "cs.LG",
+        "cs.MM",
+        "cs.SD"
+      ],
+      "published": "2026-09-08T16:22:23+00:00",
+      "link": "https://arxiv.org/pdf/2609.08977v2",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "end-to-end agent processing streaming video, speech, and text modalities",
+      "llm_evidence_cn": "端到端智能体处理流式视频、语音和文本多模态",
+      "llm_evidence": "端到端智能体处理流式视频、语音和文本多模态",
+      "canonical_evidence": "端到端智能体处理流式视频、语音和文本多模态",
+      "llm_tldr_en": "Presents Gander, an end-to-end model unifying omni perception, realtime interaction, and agentic capabilities. It processes streaming video, speech, text, enabling full-duplex interaction. Uses Cerebellum-Brain collaborative architecture for realtime and complex workflow agents.",
+      "llm_tldr_cn": "该论文提出了Gander，一个统一全感知、实时交互和智能体能力的端到端模型。它持续接收视频、语音和文本等多模态流输入，实现自然全双工交互。采用小脑-大脑协同架构，支持日常对话和复杂工作流场景，具备中断和主动反馈能力。",
+      "llm_tldr": "该论文提出了Gander，一个统一全感知、实时交互和智能体能力的端到端模型。它持续接收视频、语音和文本等多模态流输入，实现自然全双工交互。采用小脑-大脑协同架构，支持日常对话和复杂工作流场景，具备中断和主动反馈能力。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "agent that processes multiple modalities",
+      "matched_requirement_id": "req-2",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "quick_skim": [
+    {
+      "id": "2609.10155v1",
+      "source": "arxiv",
+      "title": "From Retrieval to Weights: Parametric Individualization of Small Language Models with Individual Text Corpora",
+      "abstract": "We approach a cognitive simulation perspective on episodic and semantic memory in multiple-choice question answering by incorporating text from individual text corpora (ITC) into retrieval-augmented generation and DoRA fine-tuning. We web-crawl the search histories of 515 participants who answered 36 multiple-choice knowledge items and analyze a stratified subsample of 150 participants. For each participant, one DoRA adapter consolidates their ITC into a small language model (SLM) whose baseline correctness falls below the participants' lowest quartile. The adapter measurably writes the ITC into the weights: it fits its own participant's held-out text better than other participants' texts (dz =1.27), an individuality effect that increases with ITC size in rank order. On the generalized knowledge test, however, the adapter adds knowledge rather than alignment with the individual: log-loss match improves, whereas match accuracy under a bias-corrected PMI readout does not, and retrieval adds nothing on top. Our results demonstrate that ITCs can be consolidated into the weights of SLMs, an encouraging basis for individualized tutoring agents, and we discuss how to move from there toward a realistic simulation of episodic and semantic memory at the individual level.",
+      "authors": [
+        "Christoph Wigbels",
+        "Ali Abusaleh",
+        "Markus T. Jansen",
+        "Alexander Mehler",
+        "Markus J. Hofmann"
+      ],
+      "primary_category": "cs.CL",
+      "categories": [
+        "cs.CL",
+        "cs.IR"
+      ],
+      "published": "2026-09-09T13:32:04+00:00",
+      "link": "https://arxiv.org/pdf/2609.10155v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "episodic and semantic memory simulation via RAG and DoRA fine-tuning",
+      "llm_evidence_cn": "通过检索增强与DoRA微调模拟情景和语义记忆",
+      "llm_evidence": "通过检索增强与DoRA微调模拟情景和语义记忆",
+      "canonical_evidence": "通过检索增强与DoRA微调模拟情景和语义记忆",
+      "llm_tldr_en": "Uses individual text corpora to simulate episodic and semantic memory in multiple-choice QA by combining retrieval-augmented generation with DoRA fine-tuning on small language models, showing parametric individualization that writes personal text into weights.",
+      "llm_tldr_cn": "本文从认知模拟角度研究情景与语义记忆在选择题问答中的作用，收集515名参与者的个人文本语料，将检索增强生成与DoRA微调结合，用小语言模型实现个体化。实验表明，每个参与者的适配器能更好地拟合其个人语料，实现参数化个体记忆。该方法为个性化语言模型中的记忆机制提供了新视角，有助于构建具备个体化记忆的智能体。",
+      "llm_tldr": "本文从认知模拟角度研究情景与语义记忆在选择题问答中的作用，收集515名参与者的个人文本语料，将检索增强生成与DoRA微调结合，用小语言模型实现个体化。实验表明，每个参与者的适配器能更好地拟合其个人语料，实现参数化个体记忆。该方法为个性化语言模型中的记忆机制提供了新视角，有助于构建具备个体化记忆的智能体。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "memory mechanisms for intelligent agents",
+      "matched_requirement_id": "req-1",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    }
+  ]
+}
