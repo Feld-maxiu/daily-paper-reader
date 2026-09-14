@@ -1,0 +1,54 @@
+{
+  "label": "2026-09-14",
+  "date": "2026-09-14",
+  "generated_at": "2026-09-14T22:41:06",
+  "count": 3,
+  "papers": [
+    {
+      "paper_id": "202609/14/2609.12278v1-amortized-low-rank-adaptation-for-model-based-reinforcement-learning",
+      "section": "deep",
+      "title_en": "Amortized Low-Rank Adaptation for Model-Based Reinforcement Learning",
+      "authors": "Fernando Palafox, David Fridovich-Keil",
+      "date": "2026-09-10",
+      "pdf": "https://arxiv.org/pdf/2609.12278v1",
+      "score": "9.0",
+      "evidence": "基于模型的强化学习，使用可适应世界模型。",
+      "tldr": "世界模型在测试环境变化时准确性下降，需用少量交互数据快速适应未知环境。CLAW提出用超网络在测试时生成低秩（LoRA）适配器，预训练时联合优化超网络与基础模型。在运动和操作环境族中，CLAW仅用几秒数据在线适应，性能优于梯度适应和上下文学习，并避免过拟合。该工作表明摊销低秩适应有效平衡表达性与计算成本，为模型基强化学习提供高效适应方案。",
+      "tags": "query:agent-memory",
+      "abstract_en": "World models let agents plan by predicting the consequences of their actions, but changes in the environment can make them inaccurate. We study the problem of adapting a world model to an unknown test-time environment, drawn from a known environment family, using only a few episodes of interaction. Existing approaches trade off computational cost against expressivity, i.e., the range of models a method can produce. For example, in-context learning is computationally cheap but limited in expressivity, and gradient-based adaptation is expressive but computationally expensive. We present CLAW (Context-conditioned Low-rank Adaptation of World models), which addresses this tradeoff by using a hypernetwork to generate low-rank (LoRA) adapters at test time. During pretraining, we simulate adaptation to a variety of environments and jointly train the hypernetwork and base world model. At test time, we freeze the base model and use a forward pass of the hypernetwork to generate adapters from a small batch of test-time transitions. We evaluate CLAW in locomotion and manipulation environment families that vary in dynamics, embodiment, and reward. We show that, using only seconds of test-time data, CLAW outperforms gradient-based adaptation and in-context learning during online adaptation. We also show that CLAW avoids overfitting in data-scarce regimes, that its advantage comes from the expressive adapters rather than context conditioning, and that pretraining the hypernetwork jointly with the base model outperforms training it post hoc.",
+      "source": "arxiv",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "paper_id": "202609/14/2609.12404v1-vrl-bench-benchmarking-agents-on-computer-control-tasks-under-finite-trial-budgets",
+      "section": "deep",
+      "title_en": "VRL-Bench: Benchmarking agents on computer control tasks under finite trial budgets",
+      "authors": "Yu Bai, Yukai Miao, Dawei Wang, Li Chen, Yanyu Ren, Yuqian Shi, Dan Li, Ying Xiong, Chengqiu Tan, Run Zhou, Li Li",
+      "date": "2026-09-11",
+      "pdf": "https://arxiv.org/pdf/2609.12404v1",
+      "score": "9.0",
+      "evidence": "在有限试验预算下评测计算机控制智能体的言语强化学习方法",
+      "tldr": "语言代理在计算机控制任务中通过试错学习提升表现，但现有言语记忆方法在有限试验预算下效果参差不齐，甚至降低成功率。为此提出 VRL-Bench 基准，在 MiniWoB 和 WebShop 上公平评估三类模型的多种更新方法，并揭示反思利用与探索间的权衡。进一步提出 VEX^2 言语探索-利用调度器，由语言模型联合选择策略并分配剩余试验预算。实验表明 VEX^2 是唯一在所有六个设置中均取得正观察成功率增益的方法，为可靠试错学习提供了新基准与调度策略。",
+      "tags": "query:agent-memory",
+      "abstract_en": "Learning from trial and error is a promising way to improve language agents on complex tasks such as computer control. Reflexion introduced verbal reinforcement learning, which turns failed trials into text that guides later attempts without updating model parameters. We introduce VRL-Bench, a harness for fair evaluation of trial-and-error learning under finite trial budgets. Across three models on MiniWoB and WebShop, we evaluate updates from several prominent verbal-memory methods spanning Reflexion and later work: each improves observed success over memory-free retry in some settings but reduces it in others. Replay experiments show that using reflection can reduce success rates, revealing a trade-off between exploiting experience and continued exploration. We propose VEX$^2$, a verbal exploration--exploitation scheduler that uses a language model to jointly select policies and allocate the remaining trial budget. VEX$^2$ is the only evaluated update to achieve positive observed success-rate gains over retry in all six settings.",
+      "source": "arxiv",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "paper_id": "202609/14/2609.12422v1-hierarchical-belief-modeling-for-zero-shot-opponent-adaptation-in-partially-observable-multi-agent-navigation",
+      "section": "deep",
+      "title_en": "Hierarchical Belief Modeling for Zero-Shot Opponent Adaptation in Partially Observable Multi-Agent Navigation",
+      "authors": "Kowei Shih, Lu Cheng, Zeyu Wang, Yeyun Xu, Kejian Tong",
+      "date": "2026-09-11",
+      "pdf": "https://arxiv.org/pdf/2609.12422v1",
+      "score": "9.0",
+      "evidence": "使用PPO、双重记忆信念追踪与世界模型目标的分层智能体用于多智能体导航",
+      "tldr": "Lux AI Season 3 要求智能体在部分可观测、随机动态环境中兼顾战术执行与快速适应。HORIZON 采用分层架构，融合对称空间感知、双记忆信念追踪、遗迹中心图注意力与信息增益探索，分离短期控制与跨局元推理。经 PPO 大规模训练后，HORIZON 在比赛胜率、单局胜率、适应增益和联赛评分上均优于强基线。该工作为零样本对手适应提供了可扩展的分层信念建模方案。",
+      "tags": "query:agent-memory",
+      "abstract_en": "Lux AI Season 3 requires agents to act under partial observability, randomized episode level dynamics, and a best of five match structure that rewards both tactical execution and fast adaptation. We present HORIZON, a hierarchical agent that combines symmetry aware spatial perception, dual memory belief tracking, relic centric graph attention, information gain driven exploration, and an opponent conditioned policy mixture. HORIZON separates short horizon control from cross match meta reasoning, while auxiliary belief and world model objectives stabilize learning. Trained with PPO in a large scale JAX simulator, the resulting agent explicitly infers hidden game parameters and opponent style. Experiments show consistent gains in match win rate, episode win rate, adaptation gain, and league rating over strong recurrent and feed forward baselines.",
+      "source": "arxiv",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "errors": []
+}

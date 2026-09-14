@@ -1,0 +1,57 @@
+{
+  "date": "20260914",
+  "date_label": "",
+  "generated_at": "2026-09-14 22:40:58 UTC",
+  "recommend_exists": true,
+  "run_count": 1,
+  "papers": [
+    {
+      "paper_id": "2609.12278v1",
+      "route": "202609/14/2609.12278v1-amortized-low-rank-adaptation-for-model-based-reinforcement-learning",
+      "title": "Amortized Low-Rank Adaptation for Model-Based Reinforcement Learning",
+      "section": "deep",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 9.0,
+      "evidence": "基于模型的强化学习，使用可适应世界模型。",
+      "first_seen_at": "2026-09-14 22:40:58 UTC",
+      "updated_at": "2026-09-14 22:40:58 UTC"
+    },
+    {
+      "paper_id": "2609.12404v1",
+      "route": "202609/14/2609.12404v1-vrl-bench-benchmarking-agents-on-computer-control-tasks-under-finite-trial-budgets",
+      "title": "VRL-Bench: Benchmarking agents on computer control tasks under finite trial budgets",
+      "section": "deep",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 9.0,
+      "evidence": "在有限试验预算下评测计算机控制智能体的言语强化学习方法",
+      "first_seen_at": "2026-09-14 22:40:58 UTC",
+      "updated_at": "2026-09-14 22:40:58 UTC"
+    },
+    {
+      "paper_id": "2609.12422v1",
+      "route": "202609/14/2609.12422v1-hierarchical-belief-modeling-for-zero-shot-opponent-adaptation-in-partially-observable-multi-agent-navigation",
+      "title": "Hierarchical Belief Modeling for Zero-Shot Opponent Adaptation in Partially Observable Multi-Agent Navigation",
+      "section": "deep",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 9.0,
+      "evidence": "使用PPO、双重记忆信念追踪与世界模型目标的分层智能体用于多智能体导航",
+      "first_seen_at": "2026-09-14 22:40:58 UTC",
+      "updated_at": "2026-09-14 22:40:58 UTC"
+    }
+  ]
+}
