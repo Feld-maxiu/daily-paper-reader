@@ -1,0 +1,245 @@
+{
+  "mode": "standard",
+  "generated_at": "2026-09-15T22:15:30.215689+00:00",
+  "stats": {
+    "mode": "standard",
+    "tag_count": 1,
+    "deep_divecandidates": 3,
+    "deep_cap": 6,
+    "deep_selected": 3,
+    "quick_candidates": 2,
+    "quick_skim_target": 11,
+    "quick_selected": 2
+  },
+  "deep_dive": [
+    {
+      "id": "2609.14615v1",
+      "source": "arxiv",
+      "title": "Open-UniMo: Towards Unified Motion-Language Understanding and Generation in the Open World",
+      "abstract": "Unified motion generation and understanding is crucial for embodied AI systems that can both synthesize and interpret human actions in open-world environments. Existing motion-language models often treat motion as an auxiliary modality of a language model, leading to text-dominated representations and limited cross-modal interaction. Moreover, the next-token prediction paradigm is not naturally suited to long motion sequences, where autoregressive generation may accumulate prediction errors. To address these challenges, we propose Open-UniMo, a unified Large Motion-Language Model (LMLM) trained on million-scale open-world motion-language data. Open-UniMo promotes modality parity by extending Qwen's vocabulary of about 150K text tokens with 64K motion tokens, enabling motion and language to share a unified token space. We further introduce motion-consistent Chain-of-Thought reasoning as an intermediate representation to bridge language semantics and motion dynamics. Open-UniMo is trained with a two-stage pipeline, where supervised fine-tuning establishes CoT-guided bidirectional motion-language mapping and Group Relative Policy Optimization (GRPO) improves semantic alignment while mitigating cumulative errors in autoregressive motion-token generation. To support comprehensive evaluation, we propose Open-MoBench, a VLM-guided benchmark for assessing text-to-motion (T2M) generation, motion-to-text (M2T) understanding, and bidirectional consistency. Extensive experiments show that Open-UniMo achieves state-of-the-art performance on both conventional metrics and Open-MoBench. Furthermore, ablation studies reveal that M2T understanding is not primarily limited by motion-token vocabulary size; instead, coupling M2T with the learnable T2M generation path yields stronger cross-modal representations, demonstrating that generation can facilitate understanding in AR-based motion-language modeling.",
+      "authors": [
+        "Guocun Wang",
+        "Kenkun Liu",
+        "Guorui Song",
+        "Jing Lin",
+        "Zhe Huang",
+        "Luyuan Zhang",
+        "Dake Zhong",
+        "Choo Sin Wai",
+        "Xiaoguang Han",
+        "Haoqian Wang"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV",
+        "cs.AI"
+      ],
+      "published": "2026-09-13T15:46:41+00:00",
+      "link": "https://arxiv.org/pdf/2609.14615v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "unified motion-language understanding and generation for embodied AI",
+      "llm_evidence_cn": "统一的运动-语言理解与生成支持具身智能",
+      "llm_evidence": "统一的运动-语言理解与生成支持具身智能",
+      "canonical_evidence": "统一的运动-语言理解与生成支持具身智能",
+      "llm_tldr_en": "Open-UniMo is a unified large motion-language model trained on million-scale open-world data, promoting modality parity between motion and text to enable robust motion understanding and generation for embodied agents.",
+      "llm_tldr_cn": "针对现有运动-语言模型文本占主导、跨模态交互受限以及长序列自回归误差累积的问题，Open-UniMo提出一个统一的大型运动-语言模型，在百万级开放世界运动-语言数据上训练。该模型通过扩展Qwen词汇表促进运动与文本的模态对等。实验表明其在运动理解和生成任务上均取得优异效果。其贡献在于为具身智能体提供了统一的运动-语言多模态基础模型。",
+      "llm_tldr": "针对现有运动-语言模型文本占主导、跨模态交互受限以及长序列自回归误差累积的问题，Open-UniMo提出一个统一的大型运动-语言模型，在百万级开放世界运动-语言数据上训练。该模型通过扩展Qwen词汇表促进运动与文本的模态对等。实验表明其在运动理解和生成任务上均取得优异效果。其贡献在于为具身智能体提供了统一的运动-语言多模态基础模型。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "agent that processes multiple modalities",
+      "matched_requirement_id": "req-2",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2609.15066v1",
+      "source": "arxiv",
+      "title": "Salesforce Koa: An Enterprise Language Model for Agentic Tool Use",
+      "abstract": "We present Salesforce Koa, an enterprise language model built by post-training the open-weight Nemotron-3-Super-120B foundation model with reinforcement learning using Group Relative Policy Optimization (GRPO). Salesforce Koa is trained on public and synthetically generated data, with no customer data, to improve tool use and agentic capabilities while preserving strong general-purpose performance. Its distinctive component is a simulation-to-reward pipeline that expands workflow specifications into persona-conditioned multi-turn tasks with task-resolution rewards grounded in successful tool use for data-dependent requests. For enterprise domains, these specifications are written in Agent Script, Salesforce's declarative language for building Agentforce agents; for public tool-use domains, we synthesize the workflow structure directly. The same simulation and grounded-reward machinery drives GRPO across both. Across public tool-use, agentic-reasoning, and enterprise Customer Relationship Management (CRM) benchmarks, Salesforce Koa improves over its open-weight base, with the clearest gains on multi-turn tool use, and surpasses a strong proprietary baseline while remaining below the strongest frontier models. These results show that specification-driven reinforcement learning is a practical path to specializing open-weight foundation models for enterprise agentic tasks.",
+      "authors": [
+        "Zixiang Chen",
+        "Sufeng Niu",
+        "Yingchi Liu",
+        "Wenting Zhao",
+        "Akshara Prabhakar",
+        "Shubham Mehrotra",
+        "Bin Bi",
+        "Zhujun Lan",
+        "Katherine Tan",
+        "Mohammad Ramezanali",
+        "Tulika Manoj Awalgaonkar",
+        "Monojit Banerjee",
+        "Jielin Qiu",
+        "Shiva Kumar Pentyala",
+        "Zhepeng Cen",
+        "Anupam Tripathi",
+        "Ali Ziaei",
+        "Regunathan Radhakrishnan",
+        "Darvish Lee Shadravan",
+        "Shelby Heinecke",
+        "Sitaram Asur",
+        "Silvio Savarese",
+        "James Zhu",
+        "Phil Mui",
+        "Huan Wang"
+      ],
+      "primary_category": "cs.CL",
+      "categories": [
+        "cs.CL",
+        "cs.AI",
+        "cs.LG"
+      ],
+      "published": "2026-09-14T05:30:28+00:00",
+      "link": "https://arxiv.org/pdf/2609.15066v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "reinforcement learning with GRPO for agentic tool use",
+      "llm_evidence_cn": "使用GRPO强化学习训练智能体工具使用",
+      "llm_evidence": "使用GRPO强化学习训练智能体工具使用",
+      "canonical_evidence": "使用GRPO强化学习训练智能体工具使用",
+      "llm_tldr_en": "Salesforce Koa post-trains a 120B foundation model with reinforcement learning (GRPO) and a simulation-to-reward pipeline to improve enterprise agentic tool use while preserving general performance.",
+      "llm_tldr_cn": "针对企业场景中智能体工具使用能力不足的问题，Salesforce Koa基于Nemotron-3-Super-120B模型，采用GRPO强化学习进行后训练。论文提出仿真到奖励的流水线，从工作流规范生成角色条件化的多轮任务，并以成功工具使用为奖励信号。实验表明该模型在智能体工具使用和通用任务上表现均衡。其贡献在于展示了强化学习与仿真奖励相结合可有效提升企业级智能体能力。",
+      "llm_tldr": "针对企业场景中智能体工具使用能力不足的问题，Salesforce Koa基于Nemotron-3-Super-120B模型，采用GRPO强化学习进行后训练。论文提出仿真到奖励的流水线，从工作流规范生成角色条件化的多轮任务，并以成功工具使用为奖励信号。实验表明该模型在智能体工具使用和通用任务上表现均衡。其贡献在于展示了强化学习与仿真奖励相结合可有效提升企业级智能体能力。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "reinforcement learning applied to autonomous agents",
+      "matched_requirement_id": "req-3",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2609.15364v1",
+      "source": "arxiv",
+      "title": "RSIAgent: Autonomous Exploration for Recursive Self-improvement in New Environments",
+      "abstract": "Digital agents must often adapt to new environments whose interfaces, tools, and failure modes are not fully captured by pretrained models. We introduce \\textbf{RSIAgent}, a training-free multi-agent framework for recursive self-improvement through autonomous memory construction. RSIAgent coordinates curriculum, actor, and verifier agents to continually explore the environment, validate outcomes, and retain environment-specific knowledge, including reusable causal relationships between actions, conditions, and consequences. It further adopts a \\textbf{broad-then-deep} exploration strategy, combining parallel broad recursive self-exploration for discovering diverse environment structures with focused deep self-exploration for uncovering hard cases, hidden constraints, boundary conditions, and previously unknown causal dependencies. The resulting memory is frozen and can be directly reused for downstream tasks without updating model parameters. Experiments on OSWorld-v2 and Agent's Last Exam show that RSIAgent substantially improves strong open-source models, enabling Kimi-K3 and GLM-5.3 to outperform frontier closed-source models including GPT-6.",
+      "authors": [
+        "Sibo Zhu",
+        "Shicheng Fan",
+        "Xinyue Wang",
+        "Wenyi Wu",
+        "Kun Zhou",
+        "Biwei Huang"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI",
+        "cs.CL",
+        "cs.CV"
+      ],
+      "published": "2026-09-14T10:46:40+00:00",
+      "link": "https://arxiv.org/pdf/2609.15364v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "autonomous memory construction for recursive self-improvement in agents",
+      "llm_evidence_cn": "智能体的自主记忆构建与递归自我改进",
+      "llm_evidence": "智能体的自主记忆构建与递归自我改进",
+      "canonical_evidence": "智能体的自主记忆构建与递归自我改进",
+      "llm_tldr_en": "RSIAgent is a training-free multi-agent framework that uses autonomous memory construction and broad-then-deep exploration to enable recursive self-improvement in new environments by retaining environment-specific knowledge and causal relationships.",
+      "llm_tldr_cn": "针对数字代理在预训练模型未覆盖的新环境中适应性不足的问题，RSIAgent提出一种免训练多智能体框架，通过课程、行动者和验证者智能体的协同实现自主记忆构建。该框架采用先广后深的探索策略，并行发现多样环境结构并深入挖掘隐含规律，保留环境特定知识和可复用的动作-条件-结果因果关系。实验表明该框架能显著提升代理在新环境中的递归自我改进能力。其贡献在于为智能体提供了一种无需参数更新即可构建自适应记忆的通用方法。",
+      "llm_tldr": "针对数字代理在预训练模型未覆盖的新环境中适应性不足的问题，RSIAgent提出一种免训练多智能体框架，通过课程、行动者和验证者智能体的协同实现自主记忆构建。该框架采用先广后深的探索策略，并行发现多样环境结构并深入挖掘隐含规律，保留环境特定知识和可复用的动作-条件-结果因果关系。实验表明该框架能显著提升代理在新环境中的递归自我改进能力。其贡献在于为智能体提供了一种无需参数更新即可构建自适应记忆的通用方法。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "memory mechanisms for intelligent agents",
+      "matched_requirement_id": "req-1",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "quick_skim": [
+    {
+      "id": "2609.08342v1",
+      "source": "arxiv",
+      "title": "VeriScene: Reconstructing Crime Scenes from Legal Evidence via World-Model Agent",
+      "abstract": "World models take multimodal inputs like text, photos, and diagrams to generate dynamic scenes in accordance with the laws of physics, thus opening a compelling application: fusing multimodal legal evidence to re-create a crime scene and re-enact how an offence could have been committed. However, feeding the raw, unorganized evidence into a world model fails in forensic use: it silently drops evidence, glosses over contradictory testimony, and produces motion that violates the evidentiary record. This paper presents VeriScene, an agent that orchestrates the world model: it reconstructs crime scenes from forensic photographs and witness statements of varying reliability, keeping every claim traceable to evidence and every motion physically plausible. VeriScene iteratively fuses the evidence into a cited narrative under an auditing loop, verifies the hypothesized dynamics via probe rollouts in the world model with corrective constraint injection, and renders the offence as a re-enactment video from a fused keyframe. On a benchmark of 25 crime scenarios across 7 physically-driven case types (139 forensic-style photographs and 65 statements with planted unreliability), VeriScene attains 0.9014 evidence coverage and 0.7217 factual consistency (0-1 scale) on the 20 test scenes, outperforming an end-to-end multimodal-LLM baseline by 20.35% in factual consistency and 34.88% in temporal coherence, while generalizing across four LLM orchestration backends at USD 1.82 per scene.",
+      "authors": [
+        "Kevin Chuanpu Fu",
+        "Yongsen Zheng",
+        "Zee Kin Yeong",
+        "Kwok-Yan Lam"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV",
+        "cs.CR"
+      ],
+      "published": "2026-09-08T07:14:44+00:00",
+      "link": "https://arxiv.org/pdf/2609.08342v1",
+      "tags": [
+        "keyword:agent-memory"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "Uses world-model agent to fuse multimodal legal evidence for crime scene reconstruction",
+      "llm_evidence_cn": "利用世界模型智能体融合多模态法律证据重建犯罪现场",
+      "llm_evidence": "利用世界模型智能体融合多模态法律证据重建犯罪现场",
+      "canonical_evidence": "利用世界模型智能体融合多模态法律证据重建犯罪现场",
+      "llm_tldr_en": "Presents VeriScene, an agent that orchestrates a world model to reconstruct crime scenes from forensic photos and witness statements, ensuring evidence traceability and physical plausibility.",
+      "llm_tldr_cn": "针对直接使用世界模型处理原始法律证据会导致证据丢失、矛盾证词被忽略和运动违反证据记录等问题，本文提出VeriScene智能体。该智能体协调世界模型，从法医照片和可靠度不同的证人证词中重建犯罪现场，确保每项声明可追溯至证据且运动物理合理。实验证明该方法能产生忠实于证据的场景重建。该工作展示了世界模型智能体在多模态推理和模拟中的潜力。",
+      "llm_tldr": "针对直接使用世界模型处理原始法律证据会导致证据丢失、矛盾证词被忽略和运动违反证据记录等问题，本文提出VeriScene智能体。该智能体协调世界模型，从法医照片和可靠度不同的证人证词中重建犯罪现场，确保每项声明可追溯至证据且运动物理合理。实验证明该方法能产生忠实于证据的场景重建。该工作展示了世界模型智能体在多模态推理和模拟中的潜力。",
+      "llm_tags": [
+        "query:agent-memory:composite"
+      ],
+      "matched_query_tag": "query:agent-memory:composite",
+      "matched_query_text": "Papers central to 智能体记忆，多模态，智能体强化学习，文本世界模型，语言世界模型, especially work that connects or combines: memory mechanisms for intelligent agents; agent that processes multiple modalities; reinforcement learning applied to autonomous agents; text-based world model for environment simulation; language-based world model for agent reasoning; agent with memory augmentation for better performance; How do text world models support language based agent simulation?.",
+      "matched_requirement_id": "req-composite-agent-memory",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2609.15195v1",
+      "source": "arxiv",
+      "title": "HarnessVLN: Unifying Training-Free Embodied Navigation through an Agent Harness",
+      "abstract": "Embodied navigation requires agents to interpret visual observations, accumulate spatial knowledge, and execute actions to follow instructions or locate objects. Training-based methods face generalization challenges, while training-free methods exploit multimodal large language models (MLLMs) but often lack mechanisms to reconcile proposed actions with spatial evidence, task progress, and execution failures. We present HarnessVLN, a zero-shot, training-free framework whose Agent Harness coordinates perception, retrieval, grounding, navigation, recovery, and termination through a unified tool interface. The Harness validates planner proposals against spatial evidence, geometric feasibility, and subgoal consistency, incorporating structured tool feedback into subsequent decisions. Hierarchical event memory tracks task progress and execution history, while a persistent Spatiotemporal Graph maintains reusable spatial evidence and failure annotations for verification and recovery. A replaceable Navigation Executor converts validated targets into executable motions, allowing the same Harness protocol to support instruction-following and object-goal navigation. HarnessVLN achieves success rates of 60.8%, 53.9%, 76.0%, and 59.3% on R2R, RxR, HM3D-v2, and HM3D-OVON, respectively, surpassing prior training-free SOTA results. Humanoid deployment further demonstrates its applicability to both tasks in real-world environments. The project page is: https://harnessvln.netlify.app/.",
+      "authors": [
+        "Yang Chen",
+        "Lirong Che",
+        "Zhenyu Huang",
+        "Wenbo Fu",
+        "Chuang Wang",
+        "Xu Cao",
+        "Daqi Liu",
+        "Yuzhe Yang",
+        "Jian Su",
+        "Lan-Zhe Guo"
+      ],
+      "primary_category": "cs.RO",
+      "categories": [
+        "cs.RO"
+      ],
+      "published": "2026-09-14T08:15:56+00:00",
+      "link": "https://arxiv.org/pdf/2609.15195v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "Training-free embodied navigation using multimodal large language models with spatial memory accumulation",
+      "llm_evidence_cn": "使用多模态大语言模型和空间记忆积累的无训练具身导航",
+      "llm_evidence": "使用多模态大语言模型和空间记忆积累的无训练具身导航",
+      "canonical_evidence": "使用多模态大语言模型和空间记忆积累的无训练具身导航",
+      "llm_tldr_en": "Proposes HarnessVLN, a zero-shot framework that coordinates perception, retrieval, and navigation for embodied agents using MLLMs, validating actions against spatial evidence.",
+      "llm_tldr_cn": "针对具身导航中训练方法泛化性差、无训练方法缺乏空间证据协调机制的问题，本文提出HarnessVLN框架。该框架通过统一的工具接口协调感知、检索、定位、导航、恢复和终止，并用Agent Harness验证规划器提议与空间证据的一致性。实验表明该零样本框架能有效提升导航成功率和可靠性。该工作展示了多模态大语言模型在具身导航中通过结构化工具协调实现稳健表现。",
+      "llm_tldr": "针对具身导航中训练方法泛化性差、无训练方法缺乏空间证据协调机制的问题，本文提出HarnessVLN框架。该框架通过统一的工具接口协调感知、检索、定位、导航、恢复和终止，并用Agent Harness验证规划器提议与空间证据的一致性。实验表明该零样本框架能有效提升导航成功率和可靠性。该工作展示了多模态大语言模型在具身导航中通过结构化工具协调实现稳健表现。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "agent that processes multiple modalities",
+      "matched_requirement_id": "req-2",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    }
+  ]
+}

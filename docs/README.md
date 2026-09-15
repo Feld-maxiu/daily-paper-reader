@@ -41,17 +41,17 @@
 <section class="dpr-home-dashboard-card dpr-home-report-card">
   <div class="dpr-home-dashboard-header">
     <div>
-      <span class="dpr-home-dashboard-kicker">2026-09-14</span>
+      <span class="dpr-home-dashboard-kicker">2026-09-15</span>
       <h3 class="dpr-home-dashboard-title">今日汇总</h3>
     </div>
-    <strong class="dpr-home-dashboard-count">共 3 篇</strong>
+    <strong class="dpr-home-dashboard-count">共 5 篇</strong>
   </div>
   <dl class="dpr-home-dashboard-stats">
     <div class="dpr-home-dashboard-stat"><dt>累计更新</dt><dd>1 次</dd></div>
     <div class="dpr-home-dashboard-stat"><dt>精读</dt><dd>3</dd></div>
-    <div class="dpr-home-dashboard-stat"><dt>速读</dt><dd>0</dd></div>
+    <div class="dpr-home-dashboard-stat"><dt>速读</dt><dd>2</dd></div>
   </dl>
-  <p class="dpr-home-dashboard-body">最近更新：2026-09-14 22:40:58 UTC<br>状态：成功</p>
+  <p class="dpr-home-dashboard-body">最近更新：2026-09-15 22:21:03 UTC<br>状态：成功</p>
 </section>
 <section class="dpr-home-dashboard-card dpr-home-brief-card">
   <div class="dpr-home-dashboard-header">
@@ -62,9 +62,10 @@
     <strong class="dpr-home-dashboard-count">AI</strong>
   </div>
   <div class="dpr-home-dashboard-body">
-<p>今天精读3篇论文，聚焦强化学习效率优化与智能体评测。</p>
-<p>最值得看的是低秩适配（LoRA）用于基于模型的强化学习，以及VRL-Bench在有限试验预算下评测计算机控制智能体。</p>
-<p>建议普通读者从这两篇高分工作入手，关注参数高效强化学习和真实计算机操作任务的评估方法。</p>
+<p>今日共生成 5 篇推荐（精读 3 篇，速读 2 篇）</p>
+<p>精读：《Open-UniMo: Towards Unified Motion-Language Understanding and Generation in the Open World》（9.0/10）, 《Salesforce Koa: An Enterprise Language Model for Agentic Tool Use》（9.0/10）</p>
+<p>速读：《VeriScene: Reconstructing Crime Scenes from Legal Evidence via World-Model Agent》（7.0/10）, 《HarnessVLN: Unifying Training-Free Embodied Navigation through an Agent Harness》（7.0/10）</p>
+<p>这些结果覆盖了当下较热的方向，建议先看精读区论文的关键问题与方法。</p>
   </div>
 </section>
 <section class="dpr-home-dashboard-card dpr-home-deep-card">
@@ -76,7 +77,7 @@
     <strong class="dpr-home-dashboard-count">3 篇</strong>
   </div>
   <div class="dpr-home-dashboard-body">
-<ul class="dpr-home-dashboard-paper-list"><li><span class="dpr-home-dashboard-paper-title" title="Amortized Low-Rank Adaptation for Model-Based Reinforcement Learning">Amortized Low-Rank Adaptation for Model-Based Reinforcement Learning</span></li><li><span class="dpr-home-dashboard-paper-title" title="VRL-Bench: Benchmarking agents on computer control tasks under finite trial budgets">VRL-Bench: Benchmarking agents on computer control tasks under finite trial budgets</span></li><li><span class="dpr-home-dashboard-paper-title" title="Hierarchical Belief Modeling for Zero-Shot Opponent Adaptation in Partially Observable Multi-Agent Navigation">Hierarchical Belief Modeling for Zero-Shot Opponent Adaptation in Partially Observable Multi-Agent Navigation</span></li></ul>
+<ul class="dpr-home-dashboard-paper-list"><li><span class="dpr-home-dashboard-paper-title" title="Open-UniMo: Towards Unified Motion-Language Understanding and Generation in the Open World">Open-UniMo: Towards Unified Motion-Language Understanding and Generation in the Open World</span></li><li><span class="dpr-home-dashboard-paper-title" title="Salesforce Koa: An Enterprise Language Model for Agentic Tool Use">Salesforce Koa: An Enterprise Language Model for Agentic Tool Use</span></li><li><span class="dpr-home-dashboard-paper-title" title="RSIAgent: Autonomous Exploration for Recursive Self-improvement in New Environments">RSIAgent: Autonomous Exploration for Recursive Self-improvement in New Environments</span></li></ul>
   </div>
   <div class="dpr-home-dashboard-tags"><span class="dpr-home-dashboard-tag">agent-memory <strong>3</strong></span></div>
 </section>
@@ -86,12 +87,12 @@
       <span class="dpr-home-dashboard-kicker">今日累计</span>
       <h3 class="dpr-home-dashboard-title">速读推荐</h3>
     </div>
-    <strong class="dpr-home-dashboard-count">0 篇</strong>
+    <strong class="dpr-home-dashboard-count">2 篇</strong>
   </div>
   <div class="dpr-home-dashboard-body">
-<p class="dpr-home-dashboard-empty">今日暂无推荐。</p>
+<ul class="dpr-home-dashboard-paper-list"><li><span class="dpr-home-dashboard-paper-title" title="VeriScene: Reconstructing Crime Scenes from Legal Evidence via World-Model Agent">VeriScene: Reconstructing Crime Scenes from Legal Evidence via World-Model Agent</span></li><li><span class="dpr-home-dashboard-paper-title" title="HarnessVLN: Unifying Training-Free Embodied Navigation through an Agent Harness">HarnessVLN: Unifying Training-Free Embodied Navigation through an Agent Harness</span></li></ul>
   </div>
-
+  <div class="dpr-home-dashboard-tags"><span class="dpr-home-dashboard-tag">agent-memory <strong>2</strong></span></div>
 </section>
 </div>
 
