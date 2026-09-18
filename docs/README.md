@@ -41,17 +41,17 @@
 <section class="dpr-home-dashboard-card dpr-home-report-card">
   <div class="dpr-home-dashboard-header">
     <div>
-      <span class="dpr-home-dashboard-kicker">2026-09-17</span>
+      <span class="dpr-home-dashboard-kicker">2026-09-18</span>
       <h3 class="dpr-home-dashboard-title">今日汇总</h3>
     </div>
-    <strong class="dpr-home-dashboard-count">共 10 篇</strong>
+    <strong class="dpr-home-dashboard-count">共 7 篇</strong>
   </div>
   <dl class="dpr-home-dashboard-stats">
     <div class="dpr-home-dashboard-stat"><dt>累计更新</dt><dd>1 次</dd></div>
-    <div class="dpr-home-dashboard-stat"><dt>精读</dt><dd>6</dd></div>
-    <div class="dpr-home-dashboard-stat"><dt>速读</dt><dd>4</dd></div>
+    <div class="dpr-home-dashboard-stat"><dt>精读</dt><dd>4</dd></div>
+    <div class="dpr-home-dashboard-stat"><dt>速读</dt><dd>3</dd></div>
   </dl>
-  <p class="dpr-home-dashboard-body">最近更新：2026-09-17 22:39:21 UTC<br>状态：成功</p>
+  <p class="dpr-home-dashboard-body">最近更新：2026-09-18 22:16:57 UTC<br>状态：成功</p>
 </section>
 <section class="dpr-home-dashboard-card dpr-home-brief-card">
   <div class="dpr-home-dashboard-header">
@@ -62,10 +62,9 @@
     <strong class="dpr-home-dashboard-count">AI</strong>
   </div>
   <div class="dpr-home-dashboard-body">
-<p>今日共生成 10 篇推荐（精读 6 篇，速读 4 篇）</p>
-<p>精读：《Interactive Memory Learning for Long-Term Conversations》（10.0/10）, 《ThinkFlow: Self-Evolving Probabilistic Latent Memory for Lifelong Conversational Agents》（9.0/10）</p>
-<p>速读：《Self-Emergence Agent Architecture:Behavior-Inertia HMM, Reflexive Metacognition,and Social-Contrastive Self-Modeling》（8.0/10）, 《Bridging Learned Visual Perception and Symbolic Belief-Space Planning》（7.0/10）, 《FluxVLA Engine: A One-Stop VLA Engineering Platform for Embodied Intelligence》（6.0/10）</p>
-<p>这些结果覆盖了当下较热的方向，建议先看精读区论文的关键问题与方法。</p>
+<p>今日精读聚焦多智能体记忆与长程智能体架构：一篇提出隐私感知的跨智能体/多用户记忆框架 AIM，一篇用“层级、时钟与级联智能”拆解长期任务。</p>
+<p>最值得关注的是让多个 AI 在保护隐私前提下共享记忆，以及用分层时间节奏驱动长程任务执行。</p>
+<p>普通读者可先从“AI 如何长期记住你又不泄露隐私”切入，跟进 AIM 框架与级联智能体的落地案例。</p>
   </div>
 </section>
 <section class="dpr-home-dashboard-card dpr-home-deep-card">
@@ -74,12 +73,12 @@
       <span class="dpr-home-dashboard-kicker">今日累计</span>
       <h3 class="dpr-home-dashboard-title">精读推荐</h3>
     </div>
-    <strong class="dpr-home-dashboard-count">6 篇</strong>
+    <strong class="dpr-home-dashboard-count">4 篇</strong>
   </div>
   <div class="dpr-home-dashboard-body">
-<ul class="dpr-home-dashboard-paper-list"><li><span class="dpr-home-dashboard-paper-title" title="Interactive Memory Learning for Long-Term Conversations">Interactive Memory Learning for Long-Term Conversations</span></li><li><span class="dpr-home-dashboard-paper-title" title="ThinkFlow: Self-Evolving Probabilistic Latent Memory for Lifelong Conversational Agents">ThinkFlow: Self-Evolving Probabilistic Latent Memory for Lifelong Conversational Agents</span></li><li><span class="dpr-home-dashboard-paper-title" title="Zing-0.5: Toward Playable Worlds with Real-Time Joint Action and Text Control">Zing-0.5: Toward Playable Worlds with Real-Time Joint Action and Text Control</span></li></ul>
+<ul class="dpr-home-dashboard-paper-list"><li><span class="dpr-home-dashboard-paper-title" title="AIM: A Privacy-Aware Interoperable Memory Framework for Multi-Agent Multi-User LLM Systems">AIM: A Privacy-Aware Interoperable Memory Framework for Multi-Agent Multi-User LLM Systems</span></li><li><span class="dpr-home-dashboard-paper-title" title="An Architecture for Long-Horizon Agents: Levels, Ticks and Cascaded Intelligence">An Architecture for Long-Horizon Agents: Levels, Ticks and Cascaded Intelligence</span></li><li><span class="dpr-home-dashboard-paper-title" title="DeliveryGym: An RL Environment for Long-Horizon Embodied Agent Planning with Adaptive Curriculum">DeliveryGym: An RL Environment for Long-Horizon Embodied Agent Planning with Adaptive Curriculum</span></li></ul>
   </div>
-  <div class="dpr-home-dashboard-tags"><span class="dpr-home-dashboard-tag">agent-memory <strong>6</strong></span></div>
+  <div class="dpr-home-dashboard-tags"><span class="dpr-home-dashboard-tag">agent-memory <strong>4</strong></span></div>
 </section>
 <section class="dpr-home-dashboard-card dpr-home-skim-card">
   <div class="dpr-home-dashboard-header">
@@ -87,12 +86,12 @@
       <span class="dpr-home-dashboard-kicker">今日累计</span>
       <h3 class="dpr-home-dashboard-title">速读推荐</h3>
     </div>
-    <strong class="dpr-home-dashboard-count">4 篇</strong>
+    <strong class="dpr-home-dashboard-count">3 篇</strong>
   </div>
   <div class="dpr-home-dashboard-body">
-<ul class="dpr-home-dashboard-paper-list"><li><span class="dpr-home-dashboard-paper-title" title="Self-Emergence Agent Architecture:Behavior-Inertia HMM, Reflexive Metacognition,and Social-Contrastive Self-Modeling">Self-Emergence Agent Architecture:Behavior-Inertia HMM, Reflexive Metacognition,and Social-Contrastive Self-Modeling</span></li><li><span class="dpr-home-dashboard-paper-title" title="Bridging Learned Visual Perception and Symbolic Belief-Space Planning">Bridging Learned Visual Perception and Symbolic Belief-Space Planning</span></li><li><span class="dpr-home-dashboard-paper-title" title="FluxVLA Engine: A One-Stop VLA Engineering Platform for Embodied Intelligence">FluxVLA Engine: A One-Stop VLA Engineering Platform for Embodied Intelligence</span></li></ul>
+<ul class="dpr-home-dashboard-paper-list"><li><span class="dpr-home-dashboard-paper-title" title="FluxVLA Engine: A One-Stop VLA Engineering Platform for Embodied Intelligence">FluxVLA Engine: A One-Stop VLA Engineering Platform for Embodied Intelligence</span></li><li><span class="dpr-home-dashboard-paper-title" title="Lexara-RF: Reference-Free Metrics for Evaluating Conversational Visual Analytics Agents">Lexara-RF: Reference-Free Metrics for Evaluating Conversational Visual Analytics Agents</span></li><li><span class="dpr-home-dashboard-paper-title" title="Clueing up LLMs with Tool-Augmented Deductive Reasoning">Clueing up LLMs with Tool-Augmented Deductive Reasoning</span></li></ul>
   </div>
-  <div class="dpr-home-dashboard-tags"><span class="dpr-home-dashboard-tag">agent-memory <strong>4</strong></span></div>
+  <div class="dpr-home-dashboard-tags"><span class="dpr-home-dashboard-tag">agent-memory <strong>3</strong></span></div>
 </section>
 </div>
 

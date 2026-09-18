@@ -1,0 +1,121 @@
+{
+  "date": "20260918",
+  "date_label": "",
+  "generated_at": "2026-09-18 22:16:57 UTC",
+  "recommend_exists": true,
+  "run_count": 1,
+  "papers": [
+    {
+      "paper_id": "2609.12320v1",
+      "route": "202609/18/2609.12320v1-aim-a-privacy-aware-interoperable-memory-framework-for-multi-agent-multi-user-llm-systems",
+      "title": "AIM: A Privacy-Aware Interoperable Memory Framework for Multi-Agent Multi-User LLM Systems",
+      "section": "deep",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 9.0,
+      "evidence": "多智能体多用户隐私感知记忆框架",
+      "first_seen_at": "2026-09-18 22:16:57 UTC",
+      "updated_at": "2026-09-18 22:16:57 UTC"
+    },
+    {
+      "paper_id": "2609.19519v1",
+      "route": "202609/18/2609.19519v1-an-architecture-for-long-horizon-agents-levels-ticks-and-cascaded-intelligence",
+      "title": "An Architecture for Long-Horizon Agents: Levels, Ticks and Cascaded Intelligence",
+      "section": "deep",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 9.0,
+      "evidence": "使用跨时间尺度的有界文件摘要来防止长期智能体遗忘的分层架构",
+      "first_seen_at": "2026-09-18 22:16:57 UTC",
+      "updated_at": "2026-09-18 22:16:57 UTC"
+    },
+    {
+      "paper_id": "2609.19801v1",
+      "route": "202609/18/2609.19801v1-deliverygym-an-rl-environment-for-long-horizon-embodied-agent-planning-with-adaptive-curriculum",
+      "title": "DeliveryGym: An RL Environment for Long-Horizon Embodied Agent Planning with Adaptive Curriculum",
+      "section": "deep",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 9.0,
+      "evidence": "具身智能体强化学习环境，含多模态工具和轨迹奖励",
+      "first_seen_at": "2026-09-18 22:16:57 UTC",
+      "updated_at": "2026-09-18 22:16:57 UTC"
+    },
+    {
+      "paper_id": "2609.19315v1",
+      "route": "202609/18/2609.19315v1-gavel-graph-world-models-for-verified-and-efficient-long-horizon-llm-task-planning",
+      "title": "GAVEL: Graph World Models for Verified and Efficient Long-Horizon LLM Task Planning",
+      "section": "deep",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 8.0,
+      "evidence": "用于预测LLM生成动作后果和修复违规的图世界模型",
+      "first_seen_at": "2026-09-18 22:16:57 UTC",
+      "updated_at": "2026-09-18 22:16:57 UTC"
+    },
+    {
+      "paper_id": "2609.17210v1",
+      "route": "202609/18/2609.17210v1-fluxvla-engine-a-one-stop-vla-engineering-platform-for-embodied-intelligence",
+      "title": "FluxVLA Engine: A One-Stop VLA Engineering Platform for Embodied Intelligence",
+      "section": "quick",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 6.0,
+      "evidence": "集成VLA模型、世界动作模型和离线强化学习的具身智能平台",
+      "first_seen_at": "2026-09-18 22:16:57 UTC",
+      "updated_at": "2026-09-18 22:16:57 UTC"
+    },
+    {
+      "paper_id": "2609.17842v1",
+      "route": "202609/18/2609.17842v1-lexara-rf-reference-free-metrics-for-evaluating-conversational-visual-analytics-agents",
+      "title": "Lexara-RF: Reference-Free Metrics for Evaluating Conversational Visual Analytics Agents",
+      "section": "quick",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 6.0,
+      "evidence": "用于多模态对话式视觉分析智能体的无参考评估指标",
+      "first_seen_at": "2026-09-18 22:16:57 UTC",
+      "updated_at": "2026-09-18 22:16:57 UTC"
+    },
+    {
+      "paper_id": "2609.18736v1",
+      "route": "202609/18/2609.18736v1-clueing-up-llms-with-tool-augmented-deductive-reasoning",
+      "title": "Clueing up LLMs with Tool-Augmented Deductive Reasoning",
+      "section": "quick",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 6.0,
+      "evidence": "基于文本的多智能体演绎推理环境",
+      "first_seen_at": "2026-09-18 22:16:57 UTC",
+      "updated_at": "2026-09-18 22:16:57 UTC"
+    }
+  ]
+}

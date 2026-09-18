@@ -1,0 +1,314 @@
+{
+  "mode": "standard",
+  "generated_at": "2026-09-18T22:11:53.026923+00:00",
+  "stats": {
+    "mode": "standard",
+    "tag_count": 1,
+    "deep_divecandidates": 4,
+    "deep_cap": 6,
+    "deep_selected": 4,
+    "quick_candidates": 3,
+    "quick_skim_target": 11,
+    "quick_selected": 3
+  },
+  "deep_dive": [
+    {
+      "id": "2609.12320v1",
+      "source": "arxiv",
+      "title": "AIM: A Privacy-Aware Interoperable Memory Framework for Multi-Agent Multi-User LLM Systems",
+      "abstract": "Traditional large language models (LLMs) are scoped to individual user sessions, limiting their knowledge to a single conversation and preventing them from learning user preferences that evolve over time. Existing agentic memory systems address this limitation but generally operate at the individual-user level, restricting the public knowledge that could be shared across users to improve downstream responses. We introduce AIM (Agentic Interoperable Memory), a unified, privacy-aware memory framework that enables multi-agent, multi-user LLM systems to persistently manage private and shared memory. AIM dynamically classifies information as private, scoped to one user and inaccessible to others, or public, accessible to all users. It enforces index-level access controls so that private memories are retrievable only by their owner, protecting sensitive data while allowing beneficial shared knowledge to improve coordination and consistency. We also introduce MUMBench (Multi-User Memory Benchmark), a dataset of multi-user interactions containing private and shareable information across four domains. To our knowledge, MUMBench is the first public dataset designed to evaluate multiple memory operations, including retrieval, creation, update, and deletion, in a multi-user environment. Across three independent runs on MUMBench, AIM achieves 96.0% visibility classification accuracy, 58.8% strict operation accuracy, and 70.5% state-aware operation accuracy.",
+      "authors": [
+        "Zachary Johnson",
+        "Nigel Boachie Kumankumah",
+        "Somya Chatterjee",
+        "Tejas Sathyamurthi",
+        "Min Chen",
+        "Xinyi Alice Li",
+        "Xiao Wang",
+        "Emily Morgan Gelchie",
+        "Jessica Lin",
+        "Sadid A. Hasan",
+        "Sulaiman Vesal"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI",
+        "cs.LG"
+      ],
+      "published": "2026-09-11T01:00:09+00:00",
+      "link": "https://arxiv.org/pdf/2609.12320v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "multi-agent multi-user privacy-aware memory framework",
+      "llm_evidence_cn": "多智能体多用户隐私感知记忆框架",
+      "llm_evidence": "多智能体多用户隐私感知记忆框架",
+      "canonical_evidence": "多智能体多用户隐私感知记忆框架",
+      "llm_tldr_en": "Proposes AIM, a privacy-aware interoperable memory framework that dynamically classifies private and public information for multi-agent multi-user LLM systems.",
+      "llm_tldr_cn": "该文针对现有LLM会话范围有限、智能体记忆系统仅支持单用户的问题，提出AIM框架，实现多智能体多用户系统中的持久私有与共享记忆管理。框架动态将信息分类为私有或公共，并强制隐私边界。实验预期显示该框架能提升跨用户知识共享与个性化响应。该工作为智能体记忆机制在多方场景下的应用提供了新方案。",
+      "llm_tldr": "该文针对现有LLM会话范围有限、智能体记忆系统仅支持单用户的问题，提出AIM框架，实现多智能体多用户系统中的持久私有与共享记忆管理。框架动态将信息分类为私有或公共，并强制隐私边界。实验预期显示该框架能提升跨用户知识共享与个性化响应。该工作为智能体记忆机制在多方场景下的应用提供了新方案。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "memory mechanisms for intelligent agents",
+      "matched_requirement_id": "req-1",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2609.19519v1",
+      "source": "arxiv",
+      "title": "An Architecture for Long-Horizon Agents: Levels, Ticks and Cascaded Intelligence",
+      "abstract": "Language-model agents are increasingly asked to carry out work spanning days or weeks, such as an operations remediation or a research programme. Such a task outlives any context window, any process and any interval at which a person can attend. In this paper, we argue that a long-horizon agent must run continually without forgetting before it can learn continually. This ability lies in the harness around the model rather than in the model itself. We derive seven bottlenecks from the long-horizon setting and answer them with a hierarchical architecture of three parts: (i) levels indexed by time scale, each keeping a bounded file summarising the level below; (ii) a clocked tick as the unit of autonomous action; and (iii) cascaded intelligence, where work is escalated to a more capable model only after failing review. We report on a ten-day campaign in which an agent built on this architecture reproduced a published reinforcement-learning result with a human attending once a day, and show (1) the agent kept the thread across every context reset and session boundary of the campaign, (2) operating knowledge written early changed later behaviour with no change to model weights, and (3) where learned components would enter such a system. Overall, our experience suggests continual learning for these agents needs a substrate outliving every context and process, and the checks the harness already runs are where a learner belongs.",
+      "authors": [
+        "Erik Nijkamp",
+        "Anurag Koul",
+        "Egor Pakhomov",
+        "Bo Pang"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI",
+        "cs.LG"
+      ],
+      "published": "2026-09-17T00:15:24+00:00",
+      "link": "https://arxiv.org/pdf/2609.19519v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "hierarchical architecture using bounded file summarization across time scales to prevent forgetting in long-horizon agents",
+      "llm_evidence_cn": "使用跨时间尺度的有界文件摘要来防止长期智能体遗忘的分层架构",
+      "llm_evidence": "使用跨时间尺度的有界文件摘要来防止长期智能体遗忘的分层架构",
+      "canonical_evidence": "使用跨时间尺度的有界文件摘要来防止长期智能体遗忘的分层架构",
+      "llm_tldr_en": "This paper addresses long-horizon agents that must run continually without forgetting. It proposes a hierarchical architecture with levels indexed by time scale, each keeping a bounded file summarizing the level below, a clocked tick for autonomous action, and cascaded intelligence. The approach argues that continual learning ability lies in the harness around the model rather than the model itself, providing a solution to context window and process limits.",
+      "llm_tldr_cn": "该论文针对长期智能体需要持续运行而不遗忘的问题，提出了一种分层架构。架构包括按时间尺度划分的层级，每个层级保存一个有界文件以总结下层信息，以及作为自主行动单位的时钟滴答和级联智能。作者认为持续学习能力在于模型外部的框架而非模型本身，为解决上下文窗口和进程限制提供了方案。",
+      "llm_tldr": "该论文针对长期智能体需要持续运行而不遗忘的问题，提出了一种分层架构。架构包括按时间尺度划分的层级，每个层级保存一个有界文件以总结下层信息，以及作为自主行动单位的时钟滴答和级联智能。作者认为持续学习能力在于模型外部的框架而非模型本身，为解决上下文窗口和进程限制提供了方案。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "memory mechanisms for intelligent agents",
+      "matched_requirement_id": "req-1",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2609.19801v1",
+      "source": "arxiv",
+      "title": "DeliveryGym: An RL Environment for Long-Horizon Embodied Agent Planning with Adaptive Curriculum",
+      "abstract": "Executable environments enable LLM agents to learn from the consequences of their actions. For embodied agents, those consequences extend beyond whether the current task succeeds: completing a delivery can consume the time, energy, or money needed for later work. Learning to plan therefore requires environments that preserve these dependencies and turn them into feedback across a complete trajectory. We introduce DeliveryGym, a 3D environment for evaluating and training agents on continuous courier shifts. It couples multimodal tool interaction with persistent world dynamics and computes trajectory rewards from simulator events, making the costs of an agent's decisions available for reinforcement learning (RL). The environment also adapts future training shifts to the policy's observed weaknesses while keeping evaluation fixed. Across six models and 13 city maps, evaluation exposes a gap between reliably executing assigned deliveries and choosing and sequencing work over a shift. On the fixed test suite, RL improves Qwen3-VL-4B's net income by 54.3%, showing that learning from complete shifts improves performance under these coupled constraints. Adapting the training environment improves test income by 16.5% over uniform sampling at the same rollout budget, indicating that which situations an agent practices also matters. DeliveryGym provides an executable setting for studying how agents learn to coordinate deliveries and preserve resources for later orders within an episode.",
+      "authors": [
+        "Haoqiang Kang",
+        "Yiming Zhang",
+        "Yiyang Guo",
+        "Chuying Li",
+        "Jianzhi Shen",
+        "Tianruo Rose Xu",
+        "Xiaokang Ye",
+        "Lianhui Qin"
+      ],
+      "primary_category": "cs.LG",
+      "categories": [
+        "cs.LG"
+      ],
+      "published": "2026-09-17T07:13:55+00:00",
+      "link": "https://arxiv.org/pdf/2609.19801v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "RL environment for embodied agents with multimodal tools and trajectory rewards",
+      "llm_evidence_cn": "具身智能体强化学习环境，含多模态工具和轨迹奖励",
+      "llm_evidence": "具身智能体强化学习环境，含多模态工具和轨迹奖励",
+      "canonical_evidence": "具身智能体强化学习环境，含多模态工具和轨迹奖励",
+      "llm_tldr_en": "DeliveryGym is a 3D RL environment for long-horizon embodied agents, featuring multimodal tool interaction, persistent world dynamics, and simulator-based trajectory rewards to enable reinforcement learning.",
+      "llm_tldr_cn": "该论文针对具身智能体在长时间连续任务中缺乏全局成本反馈的问题，提出DeliveryGym三维强化学习环境。该环境模拟快递配送轮班，保留任务间的时间、能量和金钱依赖，通过模拟器事件计算轨迹奖励，使智能体决策的成本可用于强化学习。该环境支持多模态工具交互和持久世界动态，为长时程具身规划提供了训练与评估平台。",
+      "llm_tldr": "该论文针对具身智能体在长时间连续任务中缺乏全局成本反馈的问题，提出DeliveryGym三维强化学习环境。该环境模拟快递配送轮班，保留任务间的时间、能量和金钱依赖，通过模拟器事件计算轨迹奖励，使智能体决策的成本可用于强化学习。该环境支持多模态工具交互和持久世界动态，为长时程具身规划提供了训练与评估平台。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "reinforcement learning applied to autonomous agents",
+      "matched_requirement_id": "req-3",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2609.19315v1",
+      "source": "arxiv",
+      "title": "GAVEL: Graph World Models for Verified and Efficient Long-Horizon LLM Task Planning",
+      "abstract": "Large language models (LLMs) provide a flexible interface for long-horizon robot planning, but generated plans often fail to respect embodiment constraints, recover from planning errors, or reason effectively under partial observability. We present GAVEL, a framework for verifying and repairing long-horizon LLM planning built around an explicit graph world model. The graph represents relevant object-relations, action pre-conditions and effects, and probabilistic beliefs over unobserved object locations. This model can predict the consequences of LLM-generated actions before execution, detect violations, and repair those whose corrections follow directly from the world model. This method also reserves LLM replanning solely for errors requiring semantic reasoning. For multi-task instructions, GAVEL reasons over distributions of possible object locations to reorder remaining subtasks and minimize expected search cost. We evaluate GAVEL on BEHAVIOR-1K across 100 single long-horizon tasks and 500 multi-task instructions. With Qwen3-8B, GAVEL improves single-task success from 41.2% to 91.8% and multi-task success from 19.9% to 92.6%. Distributional belief reasoning also reduces travel distance by approximately 5.4% compared with a static variant. These improvements show that an explicit graph world model harness can substantially improve the reliability and efficiency of long-horizon embodied planning across compact and frontier hosted LLM capabilities.",
+      "authors": [
+        "Ruiyang Wang",
+        "Hao-Lun Hsu",
+        "Swarajh Mehta",
+        "Jiwoo Kim",
+        "Zhihao Dou",
+        "Miroslav Pajic"
+      ],
+      "primary_category": "cs.RO",
+      "categories": [
+        "cs.RO",
+        "cs.AI"
+      ],
+      "published": "2026-09-16T18:25:58+00:00",
+      "link": "https://arxiv.org/pdf/2609.19315v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "Graph world model for predicting consequences of LLM-generated actions and repairing violations",
+      "llm_evidence_cn": "用于预测LLM生成动作后果和修复违规的图世界模型",
+      "llm_evidence": "用于预测LLM生成动作后果和修复违规的图世界模型",
+      "canonical_evidence": "用于预测LLM生成动作后果和修复违规的图世界模型",
+      "llm_tldr_en": "Presents GAVEL, a framework using an explicit graph world model to verify and repair long-horizon LLM robot plans, reducing replanning and improving plan reliability under partial observability.",
+      "llm_tldr_cn": "该论文针对LLM生成的长程机器人计划常违反具身约束、难以从规划错误中恢复的问题，提出GAVEL框架。GAVEL构建显式图世界模型，表示对象关系、动作前提效果和未观测位置的信念，用于在动作执行前预测后果、检测违规并直接修复可修复的错误。该方法仅在需要时调用LLM重新规划，提高了长程计划的验证效率和可靠性。实验表明图世界模型能有效增强LLM规划的鲁棒性。",
+      "llm_tldr": "该论文针对LLM生成的长程机器人计划常违反具身约束、难以从规划错误中恢复的问题，提出GAVEL框架。GAVEL构建显式图世界模型，表示对象关系、动作前提效果和未观测位置的信念，用于在动作执行前预测后果、检测违规并直接修复可修复的错误。该方法仅在需要时调用LLM重新规划，提高了长程计划的验证效率和可靠性。实验表明图世界模型能有效增强LLM规划的鲁棒性。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "language-based world model for agent reasoning",
+      "matched_requirement_id": "req-5",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "quick_skim": [
+    {
+      "id": "2609.17210v1",
+      "source": "arxiv",
+      "title": "FluxVLA Engine: A One-Stop VLA Engineering Platform for Embodied Intelligence",
+      "abstract": "Vision-language-action (VLA) models, world-action models (WAMs), and offline reinforcement learning methods are rapidly expanding the design space of embodied policies, yet turning these algorithms into reliable robot systems remains constrained by fragmented data formats, training stacks, evaluation protocols, inference runtimes, and embodiment-specific interfaces. We present $\\mathrm{FluxVLA}$ Engine, an open, configuration-driven platform that turns heterogeneous embodied-policy components into a reproducible data-to-deployment workflow. Rather than introducing another policy model, $\\mathrm{FluxVLA}$ standardizes interfaces for datasets, visual-language and world models, action heads, reward- or advantage-weighted learning, distributed training, simulation evaluation, optimized inference, and robot operators. The engine further integrates compositional dual-arm simulation, scalable automatic data generation, and model-decoupled human-in-the-loop rollout, takeover, correction collection, and reward annotation. For responsive physical execution, it combines Real-Time Chunking (RTC) with accelerated inference backends, lightweight remote GPU serving, and configurable trajectory post-processing. Together, these capabilities connect offline learning, simulation validation, online correction, and real-robot execution through shared and auditable contracts. $\\mathrm{FluxVLA}$ therefore targets the engineering bottlenecks separating promising embodied-learning algorithms from reproducible evaluation and dependable deployment. Code is available at https://github.com/FluxVLA/FluxVLA",
+      "authors": [
+        "Yinhao Li",
+        "Weixin Mao",
+        "Zihan Lan",
+        "Jikun Rong",
+        "Qirui Hu",
+        "Yiming Zhang",
+        "Weipeng Deng",
+        "Bowen Shen",
+        "Minzhao Zhu",
+        "Yiming Mao",
+        "Yan Yang",
+        "Chenguang Cui",
+        "Hongyuan Chen",
+        "Xu Huang",
+        "Zheyi Zhao",
+        "Pinxi Shen",
+        "Bozhen He",
+        "Zhen Fu",
+        "Yifan Wang",
+        "Zexin Zhang",
+        "Ang Gao",
+        "Haoyu Chen",
+        "Chengqi Shi",
+        "Hua Chen"
+      ],
+      "primary_category": "cs.RO",
+      "categories": [
+        "cs.RO",
+        "cs.AI"
+      ],
+      "published": "2026-09-15T13:59:09+00:00",
+      "link": "https://arxiv.org/pdf/2609.17210v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "Platform integrating VLA models, world-action models, and offline reinforcement learning for embodied intelligence",
+      "llm_evidence_cn": "集成VLA模型、世界动作模型和离线强化学习的具身智能平台",
+      "llm_evidence": "集成VLA模型、世界动作模型和离线强化学习的具身智能平台",
+      "canonical_evidence": "集成VLA模型、世界动作模型和离线强化学习的具身智能平台",
+      "llm_tldr_en": "Presents FluxVLA Engine, an open configuration-driven platform that unifies heterogeneous embodied-policy components, including VLA models, world-action models, and offline RL, into a reproducible data-to-deployment workflow.",
+      "llm_tldr_cn": "该论文针对具身智能中数据格式、训练栈、评估协议等碎片化、难以构建可靠机器人系统的问题，提出FluxVLA Engine平台。该平台采用配置驱动方式，标准化数据集、视觉-语言与世界模型、动作头、奖励或优势加权学习等接口，形成从数据到部署的可复现工作流。它整合了VLA模型、世界动作模型和离线强化学习方法，降低了构建多模态、强化学习驱动具身智能系统的工程门槛。",
+      "llm_tldr": "该论文针对具身智能中数据格式、训练栈、评估协议等碎片化、难以构建可靠机器人系统的问题，提出FluxVLA Engine平台。该平台采用配置驱动方式，标准化数据集、视觉-语言与世界模型、动作头、奖励或优势加权学习等接口，形成从数据到部署的可复现工作流。它整合了VLA模型、世界动作模型和离线强化学习方法，降低了构建多模态、强化学习驱动具身智能系统的工程门槛。",
+      "llm_tags": [
+        "query:agent-memory:composite"
+      ],
+      "matched_query_tag": "query:agent-memory:composite",
+      "matched_query_text": "Papers central to 智能体记忆，多模态，智能体强化学习，文本世界模型，语言世界模型, especially work that connects or combines: memory mechanisms for intelligent agents; agent that processes multiple modalities; reinforcement learning applied to autonomous agents; text-based world model for environment simulation; language-based world model for agent reasoning; agent with memory augmentation for better performance; How do text world models support language based agent simulation?.",
+      "matched_requirement_id": "req-composite-agent-memory",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2609.17842v1",
+      "source": "arxiv",
+      "title": "Lexara-RF: Reference-Free Metrics for Evaluating Conversational Visual Analytics Agents",
+      "abstract": "Conversational visual analytics (CVA) agents powered by large language models generate visualizations and natural-language explanations from open-ended queries. Evaluating these multimodal outputs is challenging: curated reference benchmarks are costly to author, cannot comprehensively capture the space of valid responses, and are unavailable in production. Building on the Lexara evaluation framework, we introduce Lexara-RF, a reference-free set of metrics that scores CVA outputs using only the prompt, data, and model response. We reformulate evaluation as verification: 13 metrics operationalize visualization design theory and Gricean cooperative principles as computable consistency, intent-alignment, and design validity checks. On a human-rated corpus of CVA test-cases, Lexara-RF achieves alignment comparable to reference-based formulations, outperforms surface-similarity NLG baselines, and localizes structurally grounded failures with high accuracy.",
+      "authors": [
+        "Srishti Palani",
+        "Vidya Setlur"
+      ],
+      "primary_category": "cs.HC",
+      "categories": [
+        "cs.HC",
+        "cs.AI"
+      ],
+      "published": "2026-09-15T21:02:24+00:00",
+      "link": "https://arxiv.org/pdf/2609.17842v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "reference-free evaluation metrics for multimodal conversational visual analytics agents",
+      "llm_evidence_cn": "用于多模态对话式视觉分析智能体的无参考评估指标",
+      "llm_evidence": "用于多模态对话式视觉分析智能体的无参考评估指标",
+      "canonical_evidence": "用于多模态对话式视觉分析智能体的无参考评估指标",
+      "llm_tldr_en": "Lexara-RF introduces reference-free metrics to evaluate conversational visual analytics agents, which generate visualizations and explanations from open-ended queries. It reformulates evaluation as verification, operationalizing visualization design theory and Gricean principles into 13 computable checks. The approach reduces reliance on costly reference benchmarks and supports production evaluation of multimodal agent outputs.",
+      "llm_tldr_cn": "Lexara-RF提出了一套无参考评估指标，用于评估多模态对话式视觉分析智能体的输出（可视化与自然语言解释）。该方法将评估转化为验证，将可视化设计理论和格莱斯合作原则转化为13项可计算的检查。这减少了对昂贵参考基准的依赖，支持在生产环境中评估多模态智能体输出，对多模态智能体评价具有贡献。",
+      "llm_tldr": "Lexara-RF提出了一套无参考评估指标，用于评估多模态对话式视觉分析智能体的输出（可视化与自然语言解释）。该方法将评估转化为验证，将可视化设计理论和格莱斯合作原则转化为13项可计算的检查。这减少了对昂贵参考基准的依赖，支持在生产环境中评估多模态智能体输出，对多模态智能体评价具有贡献。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "agent that processes multiple modalities",
+      "matched_requirement_id": "req-2",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2609.18736v1",
+      "source": "arxiv",
+      "title": "Clueing up LLMs with Tool-Augmented Deductive Reasoning",
+      "abstract": "Despite recent advances in large language models (LLMs), performing logically consistent deductive reasoning over extended interactions remains challenging. Tasks that require integrating evidence across multiple reasoning steps, maintaining consistency with prior inferences, and updating beliefs under new constraints can surface limitations in current models while providing a useful testbed for evaluating reasoning enhancements. In this paper, we implement a text-based, multi-agent version of the classic board game Clue as an environment to evaluate multi-step, agentic deductive reasoning. In this setting, agents must infer hidden information from a sequence of observations, maintain consistency across turns, and reason over an evolving set of logical constraints. We instantiate six LLM-based agents (GPT-4o-mini and Gemini-2.5-Flash) as players that engage in turn-based gameplay; using three agents per model family, we establish baseline performance across repeated games. We then introduce a tool-augmented approach in which a structured possibility matrix converts implicit game state from generated reasoning logs into an explicit representation of remaining possibilities. The possibility matrix encodes extended-turn memory and deductive constraints, offloading these tasks from the agent. We compare this approach against the baseline to evaluate how tool augmentation supports reasoning quality and task success for autonomous agents in a strategic reasoning environment.",
+      "authors": [
+        "Rebecca Ansell",
+        "Autumn Toney-Wails"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-09-16T14:32:11+00:00",
+      "link": "https://arxiv.org/pdf/2609.18736v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "Text-based multi-agent game environment for deductive reasoning",
+      "llm_evidence_cn": "基于文本的多智能体演绎推理环境",
+      "llm_evidence": "基于文本的多智能体演绎推理环境",
+      "canonical_evidence": "基于文本的多智能体演绎推理环境",
+      "llm_tldr_en": "Implements a text-based multi-agent Clue game environment to evaluate LLM agents' multi-step deductive reasoning, serving as a testbed for language-based agent simulation.",
+      "llm_tldr_cn": "该论文针对LLM在扩展交互中进行多步演绎推理时难以保持逻辑一致性的问题，实现了一个基于文本的多智能体Clue游戏环境。在该环境中，智能体需要从观察序列中推断隐藏信息，并在不断演化的逻辑约束下保持一致。该环境为评估智能体的多步推理能力提供了可测试平台，并可用于语言基座智能体的模拟研究。",
+      "llm_tldr": "该论文针对LLM在扩展交互中进行多步演绎推理时难以保持逻辑一致性的问题，实现了一个基于文本的多智能体Clue游戏环境。在该环境中，智能体需要从观察序列中推断隐藏信息，并在不断演化的逻辑约束下保持一致。该环境为评估智能体的多步推理能力提供了可测试平台，并可用于语言基座智能体的模拟研究。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "How do text world models support language based agent simulation?",
+      "matched_requirement_id": "req-7",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    }
+  ]
+}
