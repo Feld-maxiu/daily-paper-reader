@@ -1,0 +1,167 @@
+{
+  "mode": "standard",
+  "generated_at": "2026-09-19T21:10:26.743348+00:00",
+  "stats": {
+    "mode": "standard",
+    "tag_count": 1,
+    "deep_divecandidates": 1,
+    "deep_cap": 6,
+    "deep_selected": 1,
+    "quick_candidates": 2,
+    "quick_skim_target": 11,
+    "quick_selected": 2
+  },
+  "deep_dive": [
+    {
+      "id": "2609.18243v1",
+      "source": "arxiv",
+      "title": "Acting in Meters: Learning Metric Interactions for Precise Robotic Manipulation",
+      "abstract": "Vision-Language-Action models and World-Action Models have advanced language-conditioned robotic manipulation, yet often leave metric relations among actions, objects, and scene geometry implicit. Human manipulation combines semantic understanding of task-relevant objects with spatial feedback that guides hand motion relative to objects and their surroundings. Inspired by this, we introduce a metric interaction framework that models object-level and scene-level interactions in physical Cartesian space at a shared metric scale. At the object level, Interaction-Centric Tokens (ICTs) explicitly represent end-effector pose trajectories relative to manipulated objects and are jointly denoised with actions, providing physically grounded interaction supervision. At the scene level, the Metric Action Interaction Field (MAIF) uses action and ICT queries to attend to metric scene point-cloud features and learns geometry-conditioned action corrections. Through two-stage adaptation, our framework improves diverse VLA and WAM baselines with a small number of additional parameters and training steps. Experiments demonstrate average success-rate gains of 0.80 and 3.59 percentage points on LIBERO and RoboTwin~2.0, respectively, alongside gains of 6.80 percentage points on real-world tasks and 7.45 percentage points on their out-of-distribution variants.",
+      "authors": [
+        "Lijie Wang",
+        "Zheng Lu",
+        "Yiming Wang",
+        "Heyang Yu",
+        "Kenghou Hoi",
+        "Bowen Hu",
+        "Di Cui",
+        "Tianyu Xin",
+        "Haoran Liao",
+        "Wanqi Zhong",
+        "Xingjie Fan",
+        "Yizhao Xu",
+        "Ziliang Wang",
+        "Fei Gao",
+        "Yiming Li"
+      ],
+      "primary_category": "cs.RO",
+      "categories": [
+        "cs.RO",
+        "cs.LG"
+      ],
+      "published": "2026-09-16T07:20:18+00:00",
+      "link": "https://arxiv.org/pdf/2609.18243v1",
+      "tags": [
+        "keyword:agent-memory"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "Vision-Language-Action and World-Action models process multiple modalities for robot manipulation",
+      "llm_evidence_cn": "视觉-语言-动作与世界-动作模型处理多模态，用于机器人操作",
+      "llm_evidence": "视觉-语言-动作与世界-动作模型处理多模态，用于机器人操作",
+      "canonical_evidence": "视觉-语言-动作与世界-动作模型处理多模态，用于机器人操作",
+      "llm_tldr_en": "Proposes a metric interaction framework with Interaction-Centric Tokens to explicitly model object and scene metric relations for language-conditioned robotic manipulation.",
+      "llm_tldr_cn": "现有视觉-语言-动作模型在机器人操作中常忽略动作、物体与场景几何间的度量关系。该论文提出度量交互框架，在物体级别用Interaction-Centric Tokens显式表示末端执行器相对物体的位姿轨迹，并在场景级别学习度量交互。该方法使机器人操作能够结合语义理解和空间反馈，提高在物理空间中的精确性。",
+      "llm_tldr": "现有视觉-语言-动作模型在机器人操作中常忽略动作、物体与场景几何间的度量关系。该论文提出度量交互框架，在物体级别用Interaction-Centric Tokens显式表示末端执行器相对物体的位姿轨迹，并在场景级别学习度量交互。该方法使机器人操作能够结合语义理解和空间反馈，提高在物理空间中的精确性。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "agent that processes multiple modalities",
+      "matched_requirement_id": "req-2",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "quick_skim": [
+    {
+      "id": "2609.17210v1",
+      "source": "arxiv",
+      "title": "FluxVLA Engine: A One-Stop VLA Engineering Platform for Embodied Intelligence",
+      "abstract": "Vision-language-action (VLA) models, world-action models (WAMs), and offline reinforcement learning methods are rapidly expanding the design space of embodied policies, yet turning these algorithms into reliable robot systems remains constrained by fragmented data formats, training stacks, evaluation protocols, inference runtimes, and embodiment-specific interfaces. We present $\\mathrm{FluxVLA}$ Engine, an open, configuration-driven platform that turns heterogeneous embodied-policy components into a reproducible data-to-deployment workflow. Rather than introducing another policy model, $\\mathrm{FluxVLA}$ standardizes interfaces for datasets, visual-language and world models, action heads, reward- or advantage-weighted learning, distributed training, simulation evaluation, optimized inference, and robot operators. The engine further integrates compositional dual-arm simulation, scalable automatic data generation, and model-decoupled human-in-the-loop rollout, takeover, correction collection, and reward annotation. For responsive physical execution, it combines Real-Time Chunking (RTC) with accelerated inference backends, lightweight remote GPU serving, and configurable trajectory post-processing. Together, these capabilities connect offline learning, simulation validation, online correction, and real-robot execution through shared and auditable contracts. $\\mathrm{FluxVLA}$ therefore targets the engineering bottlenecks separating promising embodied-learning algorithms from reproducible evaluation and dependable deployment. Code is available at https://github.com/FluxVLA/FluxVLA",
+      "authors": [
+        "Yinhao Li",
+        "Weixin Mao",
+        "Zihan Lan",
+        "Jikun Rong",
+        "Qirui Hu",
+        "Yiming Zhang",
+        "Weipeng Deng",
+        "Bowen Shen",
+        "Minzhao Zhu",
+        "Yiming Mao",
+        "Yan Yang",
+        "Chenguang Cui",
+        "Hongyuan Chen",
+        "Xu Huang",
+        "Zheyi Zhao",
+        "Pinxi Shen",
+        "Bozhen He",
+        "Zhen Fu",
+        "Yifan Wang",
+        "Zexin Zhang",
+        "Ang Gao",
+        "Haoyu Chen",
+        "Chengqi Shi",
+        "Hua Chen"
+      ],
+      "primary_category": "cs.RO",
+      "categories": [
+        "cs.RO",
+        "cs.AI"
+      ],
+      "published": "2026-09-15T13:59:09+00:00",
+      "link": "https://arxiv.org/pdf/2609.17210v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "offline reinforcement learning methods and world-action models",
+      "llm_evidence_cn": "离线强化学习方法与世界行动模型",
+      "llm_evidence": "离线强化学习方法与世界行动模型",
+      "canonical_evidence": "离线强化学习方法与世界行动模型",
+      "llm_tldr_en": "FluxVLA Engine is an open platform that standardizes heterogeneous embodied-policy components including vision-language-action models, world-action models, and offline RL into a reproducible data-to-deployment workflow.",
+      "llm_tldr_cn": "该工作针对具身策略研究中数据格式、训练栈、评估协议和推理运行时碎片化问题，提出FluxVLA引擎，一个开放、配置驱动的平台，将异构具身策略组件标准化为可复现的数据到部署工作流。平台统一了数据集、视觉语言与世界模型、动作头、奖励或优势加权学习、分布式训练等接口。它不是提出新策略模型，而是标准化接口，促进VLAM、世界行动模型和离线强化学习方法的整合。该平台为具身智能体中的强化学习与多模态方法提供了工程基础。",
+      "llm_tldr": "该工作针对具身策略研究中数据格式、训练栈、评估协议和推理运行时碎片化问题，提出FluxVLA引擎，一个开放、配置驱动的平台，将异构具身策略组件标准化为可复现的数据到部署工作流。平台统一了数据集、视觉语言与世界模型、动作头、奖励或优势加权学习、分布式训练等接口。它不是提出新策略模型，而是标准化接口，促进VLAM、世界行动模型和离线强化学习方法的整合。该平台为具身智能体中的强化学习与多模态方法提供了工程基础。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "reinforcement learning applied to autonomous agents",
+      "matched_requirement_id": "req-3",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2609.19527v1",
+      "source": "arxiv",
+      "title": "AURORA: A Natural Language-Driven Agentic Framework for Understanding, Reasoning, and Orchestrating Reliable Air-Ground Co-Simulation",
+      "abstract": "Air-ground transportation research increasingly relies on co-simulation, yet constructing scenarios remains labor-intensive and difficult to validate. More importantly, a generated scenario may execute successfully while failing to realize the spatial, temporal, communication, or behavioral relationships requested by the user. This paper presents AURORA, a natural-language-driven agentic framework that treats air-ground scenario generation as a process of compilation with verification. Central to AURORA is the Air-Ground Scenario Graph (AGSG), a typed intermediate representation that explicitly connects agents, aerial missions, events, communication links, success conditions, and their cross-domain dependencies. This shared representation enables simulator-grounded parsing, joint road-airspace grounding, temporal planning, pre-execution feasibility checking, trace-based runtime verification, failure localization, and bounded repair within a unified workflow. We further introduce AURORA-Bench to evaluate not only whether generated scenarios execute, but whether they faithfully realize the requested interactions. Experiments across multiple language models show that structured execution substantially improves reliability, while runtime verification exposes silent failures that completion-based evaluation overlooks. Localized repair further resolves many violations without regenerating the entire scenario. The results show that reliable scenario generation requires verifying realized behavior, not merely executable code, and demonstrate the value of explicit intermediate representations for verifiable and repairable language-driven co-simulation.",
+      "authors": [
+        "Keshu Wu",
+        "Hao Zhang",
+        "Rui Gan",
+        "Xiangbo Gao",
+        "Xiaopeng Li",
+        "Zhengzhong Tu",
+        "Yang Zhou"
+      ],
+      "primary_category": "cs.RO",
+      "categories": [
+        "cs.RO",
+        "cs.AI"
+      ],
+      "published": "2026-09-17T00:41:46+00:00",
+      "link": "https://arxiv.org/pdf/2609.19527v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "natural-language-driven agentic framework for air-ground co-simulation scenario generation with verification",
+      "llm_evidence_cn": "自然语言驱动的空地协同仿真场景生成智能体框架，具有验证机制",
+      "llm_evidence": "自然语言驱动的空地协同仿真场景生成智能体框架，具有验证机制",
+      "canonical_evidence": "自然语言驱动的空地协同仿真场景生成智能体框架，具有验证机制",
+      "llm_tldr_en": "AURORA uses typed intermediate representation Air-Ground Scenario Graph and compilation-with-verification to generate reliable co-simulation scenarios from natural language.",
+      "llm_tldr_cn": "空地交通研究依赖协同仿真，但场景构建费时且难以验证语义关系。AURORA提出自然语言驱动的智能体框架，将场景生成视为带验证的编译过程。其核心是Air-Ground Scenario Graph类型化中间表示，显式连接智能体、任务、事件和通信链路。该框架确保生成场景满足用户指定的空间、时间和行为关系，提升了仿真的可靠性。",
+      "llm_tldr": "空地交通研究依赖协同仿真，但场景构建费时且难以验证语义关系。AURORA提出自然语言驱动的智能体框架，将场景生成视为带验证的编译过程。其核心是Air-Ground Scenario Graph类型化中间表示，显式连接智能体、任务、事件和通信链路。该框架确保生成场景满足用户指定的空间、时间和行为关系，提升了仿真的可靠性。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "text-based world model for environment simulation",
+      "matched_requirement_id": "req-4",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    }
+  ]
+}
