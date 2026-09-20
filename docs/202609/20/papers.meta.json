@@ -1,0 +1,39 @@
+{
+  "label": "2026-09-20",
+  "date": "2026-09-20",
+  "generated_at": "2026-09-20T21:41:47",
+  "count": 2,
+  "papers": [
+    {
+      "paper_id": "202609/20/2609.16760v1-turn-level-multiscale-density-ratio-estimation-for-llm-agents",
+      "section": "deep",
+      "title_en": "Turn-level Multiscale Density Ratio Estimation for LLM Agents",
+      "authors": "Zishuo Zhao, Kai Chen, Ao Li, Yuan Liu",
+      "date": "2026-09-15",
+      "pdf": "https://arxiv.org/pdf/2609.16760v1",
+      "score": "8.0",
+      "evidence": "用于多轮LLM智能体的密度比估计对齐方法",
+      "tldr": "现有对齐方法如PPO、DPO等主要针对单轮任务，难以应对多轮智能体交互中的复杂依赖，尤其是多步思考与工具调用场景。本文提出tlm-DRE，通过轮次级多尺度密度比估计为不同轮次分配差异化权重，并基于正负空间差距进行非对称token级训练。在多个智能体基准上，该方法取得与传统对齐方法具有竞争力的效果。该训练策略提升了LLM在多轮推理任务中的域内与域外稳健性。",
+      "tags": "query:agent-memory",
+      "abstract_en": "With the rapid development of Large language model (LLM), agent systems enhanced by LLMs show huge potential in being able to deal with complex tasks, especially involving multi-step thinking or interaction with tools. For applying LLM techniques with a well-designed agent paradigm, post-training of LLM in multiple agent scenarios is necessary to achieve better performance. Among the variable post-training techniques, alignment methods such as PPO, DPO, DIL, and GRPO become popular because many papers show a significant positive impact on the model's performance by punishing negative samples while keeping acceptable training complexity. However, most alignment methods address simple single-turn tasks, and there remains room for improvement for complex multi-turn tasks. We propose Turn-level Multiscale Density Ratio Estimation (tlm-DRE), which assigns different weights on corresponding turns and proposes asymmetric token-level training based on the positive-negative space gaps across multiple turns of tasks. The results of the experiment on a wide range of agent benchmarks show that the proposed method performs competitively compared to traditional alignment methods. The proposed training method enables LLMs to perform robustly in multi-turn reasoning tasks with both in-domain and out-of-domain conditions.",
+      "source": "arxiv",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "paper_id": "202609/20/2609.16074v1-world-action-models-for-robot-learning-and-control-a-survey",
+      "section": "quick",
+      "title_en": "World-Action Models for Robot Learning and Control: A Survey",
+      "authors": "Zuxing Lu, Hongjia Zhai, Guanzhi Wang, Huajian Zeng, Jiaqi Yang, Jingyu Liu, Lei Cheng, Yuantai Zhang, Yuheng Qiu, Zezhou Cheng, Ivan Laptev, Danfei Xu, Benjamin Riviere, Giuseppe Loianno, Eric Xing, Xingxing Zuo",
+      "date": "2026-09-13",
+      "pdf": "https://arxiv.org/pdf/2609.16074v1",
+      "score": "7.0",
+      "evidence": "世界-动作模型综述，耦合世界预测与动作生成，涵盖语言条件VLA",
+      "tldr": "机器人需在部分可观测、受物理约束的动态环境中行动，仅映射观察与指令到动作是不够的，必须预测候选动作的未来影响。本综述梳理了世界-动作模型（WAM），这类模型将未来世界预测与可执行动作生成相耦合。通过统一分类法，文章系统回顾了表征、转移建模、动作接口、架构、训练、数据模态和扩展策略，并总结了在操作、导航、自动驾驶中的应用及评测基准。最后指出动作对齐、时空一致性、长时记忆和高效推理等挑战，为构建可靠的具身智能提供基础。",
+      "tags": "query:agent-memory",
+      "abstract_en": "Robots operating in open environments act under partial observability, physical constraints, and dynamic task contexts. Beyond mapping observations and language instructions to actions, they must anticipate how candidate actions may affect future states and task-relevant outcomes. Recent advances in world models, video generation, and Vision-Language-Action (VLA) policies have motivated the development of World-Action Models (WAMs), which couple future world prediction with executable action generation. This survey provides a robotics-oriented review of WAMs. We clarify their scope relative to conventional world models, model-based reinforcement learning, action-conditioned video generation, and reactive VLA policies, and organize existing methods through a unified taxonomy covering representations, transition modeling, action interfaces, architectures, training pipelines, data modalities, and scaling strategies. We further review applications of WAMs in manipulation, navigation, and autonomous driving, and we summarize the datasets, benchmarks, metrics, and protocols used to evaluate WAM systems. Finally, we discuss key challenges in action alignment, world-action factorization, spatial and multi-view consistency, long-horizon memory, neural simulation for closed-loop policy learning, and efficient inference. Taken together, this survey aims to provide a concise technical foundation for integrating predictive world modeling with action generation, toward more reliable embodied robot intelligence. Project page: https://rcl-robotics.github.io/Awesome-World-Action-Models.",
+      "source": "arxiv",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "errors": []
+}
