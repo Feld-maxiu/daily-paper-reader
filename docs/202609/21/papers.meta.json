@@ -1,0 +1,54 @@
+{
+  "label": "2026-09-21",
+  "date": "2026-09-21",
+  "generated_at": "2026-09-21T22:34:12",
+  "count": 3,
+  "papers": [
+    {
+      "paper_id": "202609/21/2609.20887v1-birdsongchat-a-hybrid-multi-agent-framework-for-multimodal-embodied-behavior-simulation",
+      "section": "deep",
+      "title_en": "BirdsongChat: A Hybrid Multi-Agent Framework for Multimodal Embodied Behavior Simulation",
+      "authors": "Callie C. Liao, Duoduo Liao, Ellie L. Zhang",
+      "date": "2026-09-16",
+      "pdf": "https://arxiv.org/pdf/2609.20887v1",
+      "score": "9.0",
+      "evidence": "混合多智能体框架将多模态输入转换为统一参数表示以实现同步行为模拟",
+      "tldr": "多模态具身系统需将人类意图转化为跨模态协调行为，但现有方法依赖隐式表示，导致可控性和跨模态一致性不足。本文提出混合多智能体框架，LLM推理智能体将文本/图像等多模态输入转换为统一参数表示UPR，仿真智能体据此生成同步3D运动、空间化音景和环境行为。以BirdsongChat鸟类行为仿真为原型，在多种场景下实现跨模态一致性94.4%、情感一致性100%、生成一致性92.6%。实验证明显式中间表示有效桥接语义推理与物理执行，为具身AI提供通用设计原则。",
+      "tags": "query:agent-memory",
+      "abstract_en": "Multimodal embodied systems require translating human intentions into interpretable and coordinated behaviors across heterogeneous modalities. However, existing multimodal agents often rely on implicit representations, limiting controllability and cross-modal consistency. We present a hybrid multi-agent framework for interactive multimodal behavior simulation that bridges semantic reasoning and physical execution through a Unified Parameter Representation (UPR). LLM-based reasoning agents transform multimodal inputs into UPR, which encodes behavioral states and interpretable control parameters for simulation agents generating synchronized 3D motion, spatialized soundscapes, and environmental behaviors. We develop BirdsongChat as a prototype implementation of the proposed framework, using interactive avian behavior simulation as a testbed that tightly couples motion, vocalization, and environmental context. BirdsongChat is evaluated on text- and image-guided scenarios involving species, behaviors, affective states, environments, and multi-bird interactions. The system achieves normalized scores of 94.4\\% for cross-modal coherence, 100% for affective consistency, and 92.6% for generation consistency. These results demonstrate that an explicit intermediate representation effectively bridges semantic reasoning and physical execution, improving controllability and multimodal synchronization. The proposed framework thus offers a generalizable design principle for embodied AI systems requiring interpretable semantic-to-physical coordination across modalities, with potential applications in bio-inspired ecoacoustics, swarm robotics, virtual environments, and creative multimedia.",
+      "source": "arxiv",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "paper_id": "202609/21/2609.22083v1-mintact-a-unified-visual-agent-for-digital-environments",
+      "section": "deep",
+      "title_en": "MintAct: A Unified Visual Agent for Digital Environments",
+      "authors": "Mingfei Gao, Rui Tian, Haiming Gang, Bohan Zhai, Le Zhang, Yuanzheng Gong, Di Feng, Ege Özsoy, Kaixin Ma, Vishwesh Kirthivasan, Oğuzhan Fatih Kar, Roman Bachmann, Anders Boesen Lindbo Larsen, Afshin Dehghan",
+      "date": "2026-09-18",
+      "pdf": "https://arxiv.org/pdf/2609.22083v1",
+      "score": "9.0",
+      "evidence": "构建可扩展环境和强化学习基础设施来训练视觉智能体",
+      "tldr": "数字环境中的视觉智能体需要同时具备UI接地、多步导航和视觉工具使用能力，但现有方法多为每领域专家，缺乏统一模型。MintAct系列视觉语言模型通过精心设计环境、数据和训练配方，并开发可扩展的异步强化学习框架，统一训练2B至8B模型。在OSWorld-Verified等广泛基准上取得48.9分的最先进性能，匹配每领域专家表现。这为跨移动、桌面和网页的数字任务提供了统一且可扩展的智能体方案。",
+      "tags": "query:agent-memory",
+      "abstract_en": "We present MintAct, a family of vision-language models that unifies UI grounding, multi-step navigation across mobile, desktop, and web, and visual tool use, trained at 2B, 4B, and 8B scales. Through careful design of our environments, data, and training recipes, MintAct models match the performance of per-domain specialists across all of these capabilities. To enable this, we develop a scalable environment and reinforcement learning (RL) infrastructure. On the environment side, we host hundreds of concurrent instances across heterogeneous per-domain backends, serving both trajectory data collection and online RL. To enable efficient and scalable RL training, an asynchronous framework keeps explicit control over the cross-domain training distribution and remains stable under noisy environment feedback and off-policy drift. Experimental results show that MintAct achieves state-of-the-art performance (48.9 on OSWorld-Verified) across a wide range of benchmarks at comparable model sizes.",
+      "source": "arxiv",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "paper_id": "202609/21/2609.21386v1-agentvidbench-a-multi-hop-video-question-answering-benchmark-for-evaluating-mllm-agents",
+      "section": "deep",
+      "title_en": "AgentVidBench: A Multi-Hop Video Question Answering Benchmark for Evaluating MLLM Agents",
+      "authors": "Seoyeon An, Hyeonseo Jang, Minsu Kim, Chanho Lee, Younghan Park, Kangwook Lee",
+      "date": "2026-09-18",
+      "pdf": "https://arxiv.org/pdf/2609.21386v1",
+      "score": "8.0",
+      "evidence": "面向多模态智能体评估的多跳视频问答基准",
+      "tldr": "现有视频理解基准多局限于单步推理的简单场景查询，难以评估真实世界所需的多跳多模态推理能力。AgentVidBench针对空间、时间和因果推理构建多跳视频问答基准，并额外提供逐步解答轨迹以支持证据获取评估。实验覆盖12个专有与开源MLLM，单轮性能有限，但集成到主流agentic工作流可同时提升准确率与轨迹分数。该基准为未来智能体视频理解研究提供了系统性测试平台。",
+      "tags": "query:agent-memory",
+      "abstract_en": "Comprehensive video understanding is crucial for advancing artificial intelligence toward the intricate dynamics of the physical world. While recent advances in Multimodal Large Language Models (MLLMs) have demonstrated remarkable capabilities in video understanding, existing benchmarks remain confined to simple scene-level queries or global summaries that require only single-step inference. Real-world video understanding involves more challenging tasks that require multi-hop multimodal reasoning, and there is a critical absence of video benchmarks equipped to rigorously evaluate these agentic capabilities. To bridge this gap, we introduce AgentVidBench, a multi-hop video question answering benchmark focused on evaluating the spatial, temporal, and causal reasoning capabilities of MLLM agents. Beyond standard question-answer pairs, AgentVidBench provides step-by-step solution traces to support trajectory evaluation that assesses whether agents explicitly acquire the evidence needed to justify their answers. Experiments with 12 proprietary and open-source MLLMs show that single-turn performance remains limited on AgentVidBench, while integrating these models into state-of-the-art agentic workflows generally improves performance with respect to both accuracy and trajectory scores. We further present a simple yet effective agentic strategy that serves as a competitive baseline on AgentVidBench, establishing our benchmark as a holistic testbed for future research on agentic video understanding. Code and datasets are available at https://github.com/krafton-ai/agentvidbench and https://huggingface.co/datasets/agentvidbench/agentvidbench.",
+      "source": "arxiv",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "errors": []
+}

@@ -1,0 +1,57 @@
+{
+  "date": "20260921",
+  "date_label": "",
+  "generated_at": "2026-09-21 22:34:04 UTC",
+  "recommend_exists": true,
+  "run_count": 1,
+  "papers": [
+    {
+      "paper_id": "2609.20887v1",
+      "route": "202609/21/2609.20887v1-birdsongchat-a-hybrid-multi-agent-framework-for-multimodal-embodied-behavior-simulation",
+      "title": "BirdsongChat: A Hybrid Multi-Agent Framework for Multimodal Embodied Behavior Simulation",
+      "section": "deep",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 9.0,
+      "evidence": "混合多智能体框架将多模态输入转换为统一参数表示以实现同步行为模拟",
+      "first_seen_at": "2026-09-21 22:34:04 UTC",
+      "updated_at": "2026-09-21 22:34:04 UTC"
+    },
+    {
+      "paper_id": "2609.22083v1",
+      "route": "202609/21/2609.22083v1-mintact-a-unified-visual-agent-for-digital-environments",
+      "title": "MintAct: A Unified Visual Agent for Digital Environments",
+      "section": "deep",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 9.0,
+      "evidence": "构建可扩展环境和强化学习基础设施来训练视觉智能体",
+      "first_seen_at": "2026-09-21 22:34:04 UTC",
+      "updated_at": "2026-09-21 22:34:04 UTC"
+    },
+    {
+      "paper_id": "2609.21386v1",
+      "route": "202609/21/2609.21386v1-agentvidbench-a-multi-hop-video-question-answering-benchmark-for-evaluating-mllm-agents",
+      "title": "AgentVidBench: A Multi-Hop Video Question Answering Benchmark for Evaluating MLLM Agents",
+      "section": "deep",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 8.0,
+      "evidence": "面向多模态智能体评估的多跳视频问答基准",
+      "first_seen_at": "2026-09-21 22:34:04 UTC",
+      "updated_at": "2026-09-21 22:34:04 UTC"
+    }
+  ]
+}
