@@ -1,0 +1,532 @@
+{
+  "mode": "standard",
+  "generated_at": "2026-09-22T22:16:52.938263+00:00",
+  "stats": {
+    "mode": "standard",
+    "tag_count": 1,
+    "deep_divecandidates": 8,
+    "deep_cap": 6,
+    "deep_selected": 6,
+    "quick_candidates": 7,
+    "quick_skim_target": 11,
+    "quick_selected": 7
+  },
+  "deep_dive": [
+    {
+      "id": "2609.23466v1",
+      "source": "arxiv",
+      "title": "RPMem: Learning Long-Term Recurrent Parametric Memory Across Sessions for LLM Agents",
+      "abstract": "Long-running LLM agents require memory that persists and evolves across sessions. Text-based memory retrieves and reconstructs past interactions at every query, making long-horizon performance increasingly dependent on retrieval quality and contextual reasoning as histories grow. Parametric memory encodes experience directly into model computation, but existing approaches provide limited support for cross-session memory evolution. Their coupling to a specific backbone further restricts memory reuse after model replacement. We introduce RPMem, a two-stage architecture that compiles each session into a model-independent latent memory through forward computation and selectively integrates it with retained memory via a task-trained recurrent gate. The consolidated memory is then mapped to backbone-specific low-rank adaptation (LoRA) parameters, allowing the encoding capability to transfer when the backbone is replaced. Evaluation across three long-term memory benchmarks and five diverse backbones demonstrates broad generalization with near-constant update cost and memory footprint. With Qwen3-8B on PERMA, RPMem reaches 85.52%, outperforming the strongest parametric and text-based baselines by 5.32 and 12.98 percentage points, respectively. Ablations validate the complementary roles of session compilation and cross-session consolidation, while dynamics analyses reveal that the gate acquires task-specific memory integration strategies. These results establish RPMem as a lifecycle-independent parametric memory framework that maintains evolving cross-session memory that remains reusable across backbone replacements. Our implementation is available at https://github.com/Quark-Medical/rpmem/tree/main.",
+      "authors": [
+        "Fanyu Zhao",
+        "Ruike Cao",
+        "Liang Dong",
+        "Fugen Yao",
+        "Jian Xu",
+        "Guanjun Jiang",
+        "Han Zhang",
+        "Yifei Zhao",
+        "Yinsheng Li"
+      ],
+      "primary_category": "cs.CL",
+      "categories": [
+        "cs.CL",
+        "cs.AI"
+      ],
+      "published": "2026-09-20T08:51:10+00:00",
+      "link": "https://arxiv.org/pdf/2609.23466v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 10.0,
+      "llm_evidence_en": "parametric memory across sessions for long-running LLM agents",
+      "llm_evidence_cn": "跨会话参数记忆用于长运行LLM智能体",
+      "llm_evidence": "跨会话参数记忆用于长运行LLM智能体",
+      "canonical_evidence": "跨会话参数记忆用于长运行LLM智能体",
+      "llm_tldr_en": "RPMem introduces a two-stage architecture that compiles sessions into model-independent latent memory and uses a task-trained recurrent mechanism to selectively integrate it, enabling cross-session parametric memory evolution and reuse for LLM agents.",
+      "llm_tldr_cn": "该论文指出长运行LLM智能体的记忆需要跨会话持续演化，但文本记忆检索开销大且依赖上下文，现有参数记忆缺乏跨会话演化能力并与特定模型绑定。作者提出RPMem，一种两阶段架构，将每个会话编译为与模型无关的潜在记忆，并通过任务训练的循环机制选择性整合到保留记忆中。该方法支持跨会话记忆更新和模型替换后的记忆复用。实验表明RPMem能有效提升长视界智能体的记忆性能，为参数化长期记忆提供了新方向。",
+      "llm_tldr": "该论文指出长运行LLM智能体的记忆需要跨会话持续演化，但文本记忆检索开销大且依赖上下文，现有参数记忆缺乏跨会话演化能力并与特定模型绑定。作者提出RPMem，一种两阶段架构，将每个会话编译为与模型无关的潜在记忆，并通过任务训练的循环机制选择性整合到保留记忆中。该方法支持跨会话记忆更新和模型替换后的记忆复用。实验表明RPMem能有效提升长视界智能体的记忆性能，为参数化长期记忆提供了新方向。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "memory mechanisms for intelligent agents",
+      "matched_requirement_id": "req-1",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2609.22592v1",
+      "source": "arxiv",
+      "title": "AutoGym: Blueprint-First Generation of Verifiable Agent Gyms",
+      "abstract": "Training agents with reinforcement learning requires a gym, comprising a task, an executable environment in which the task can be attempted, and a verifier that reliably distinguishes success from failure. Constructing such gyms remains manual, expensive, and static. Task sets saturate as models improve and are increasingly exposed to contamination. Synthetic generation offers scale, but single-pass synthesis produces tasks whose difficulty is largely cosmetic. Models comparable in capability solve them despite convoluted phrasing, and correctness must be adjudicated post-hoc by unreliable LLM judges. We present AutoGym, a framework that generates complete gyms (tasks, executable environments, and verifiers) from a minimal domain seed or prior model trajectories. AutoGym introduces three mechanisms. (1) Blueprint-first generation specifies the valid solution space, environment requirements, and verification criteria before the environment is materialized, making solvability a construction prerequisite rather than a property verified after the fact. (2) Explicit generation parameters control task topology, interaction depth, capability axes, question obfuscation, and distractor composition, enabling fine-grained difficulty steering. (3) Active curriculum synthesis uses performance-informed calibration to adjust the distribution over these parameters as model capabilities evolve. Across productivity and temporal-reasoning settings, AutoGym generates gyms spanning the capability spectrum, including instances that challenge frontier models.",
+      "authors": [
+        "Aarati Andrea Noronha",
+        "Kavya Ravikumar",
+        "Carly Xiaoyu Lin"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI",
+        "cs.LG",
+        "cs.MA"
+      ],
+      "published": "2026-09-18T21:18:49+00:00",
+      "link": "https://arxiv.org/pdf/2609.22592v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "AutoGym generates tasks, environments, and verifiers for reinforcement learning of agents",
+      "llm_evidence_cn": "AutoGym为智能体强化学习生成任务、环境和验证器",
+      "llm_evidence": "AutoGym为智能体强化学习生成任务、环境和验证器",
+      "canonical_evidence": "AutoGym为智能体强化学习生成任务、环境和验证器",
+      "llm_tldr_en": "AutoGym automatically generates complete RL gyms (tasks, environments, verifiers) from domain seeds or trajectories, addressing scalability and difficulty saturation in agent training.",
+      "llm_tldr_cn": "该论文针对强化学习训练智能体时环境构建成本高、任务易饱和的问题，提出AutoGym框架，能够从最小领域种子或已有模型轨迹自动生成包含任务、可执行环境和验证器的完整训练环境。该方法避免了单次合成导致的任务难度表面化，并减少了对不可靠LLM裁判的依赖。实验表明生成的环境可扩展且难度真实，为大规模智能体强化学习训练提供了关键基础设施。",
+      "llm_tldr": "该论文针对强化学习训练智能体时环境构建成本高、任务易饱和的问题，提出AutoGym框架，能够从最小领域种子或已有模型轨迹自动生成包含任务、可执行环境和验证器的完整训练环境。该方法避免了单次合成导致的任务难度表面化，并减少了对不可靠LLM裁判的依赖。实验表明生成的环境可扩展且难度真实，为大规模智能体强化学习训练提供了关键基础设施。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "reinforcement learning applied to autonomous agents",
+      "matched_requirement_id": "req-3",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2609.24352v1",
+      "source": "arxiv",
+      "title": "Few-Shot Demonstrations Elicit the Use of In-Context World Representations in LLMs",
+      "abstract": "Large language models (LLMs), when acting as agents, are expected to take observed data in context, infer the latent state space underlying the world, and leverage it for downstream prediction. However, prior work demonstrated that LLMs struggle to use representations learned in context on a graph tracking task, where the model needs to construct a representation of the graph governing data generation process and use it for subsequent predictions. In this paper, we show that extending this to few-shot settings, where each demonstration is generated from a different world with either the same or different graph topologies, enhances its prediction on 6 models from 4 model families. To understand this improvement, we linearly probe a low-dimensional world representation that encodes graph information in the hidden states. Notably, we find that few-shot demonstrations relocate the world representation and increase its predictive use. Specifically, for each model, these world representations shift in directions nearly orthogonal to their original subspace, and interventions on these representations selectively impair performance more than interventions on other subspaces. Consistent with this insight, we show that few-shot demonstrations with observations from different worlds improve performance on ARC-AGI-1&2, web agent tasks, and Othello. Our findings elucidate the role and internal mechanisms of few-shot demonstrations in in-context world modeling. More broadly, our work advances our understanding of how LLM agents learn from in-context observations and provides implications for their further improvement.",
+      "authors": [
+        "Kohsei Matsutani",
+        "Gouki Minegishi",
+        "Core Francisco Park",
+        "Takeshi Kojima",
+        "Yusuke Iwasawa",
+        "Yutaka Matsuo"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-09-21T09:44:24+00:00",
+      "link": "https://arxiv.org/pdf/2609.24352v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "LLMs use in-context world representations for prediction in few-shot graph tracking tasks",
+      "llm_evidence_cn": "大语言模型在少样本图跟踪任务中使用上下文世界表征进行预测",
+      "llm_evidence": "大语言模型在少样本图跟踪任务中使用上下文世界表征进行预测",
+      "canonical_evidence": "大语言模型在少样本图跟踪任务中使用上下文世界表征进行预测",
+      "llm_tldr_en": "Shows that few-shot demonstrations from different worlds improve LLMs' ability to infer and use in-context world representations on graph tracking, evidenced by linear probing across 6 model families.",
+      "llm_tldr_cn": "此前研究表明大语言模型在作为智能体时难以从上下文数据中推断潜在世界状态并用其进行预测。本文通过将图形跟踪任务扩展到少样本设置，让每个演示来自相同或不同拓扑的不同世界，考察6个模型家族中的多款模型。结果表明少样本演示能增强模型对图结构世界表征的构建与使用，线性探查进一步揭示了低维内部表示。该工作为语言模型基于上下文世界模型的智能体推理提供了实证支持。",
+      "llm_tldr": "此前研究表明大语言模型在作为智能体时难以从上下文数据中推断潜在世界状态并用其进行预测。本文通过将图形跟踪任务扩展到少样本设置，让每个演示来自相同或不同拓扑的不同世界，考察6个模型家族中的多款模型。结果表明少样本演示能增强模型对图结构世界表征的构建与使用，线性探查进一步揭示了低维内部表示。该工作为语言模型基于上下文世界模型的智能体推理提供了实证支持。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "language-based world model for agent reasoning",
+      "matched_requirement_id": "req-5",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2609.24526v1",
+      "source": "arxiv",
+      "title": "ME-VLM:A Unified VLM for Embodied Cognition and Agent Coordination",
+      "abstract": "Physical AI requires models to ground visual and linguistic understanding in real-world environments while accounting for environmental constraints and execution feedback. We introduce MachEmbodied-VLM (ME-VLM), a unified vision-language model with two variants, 4B and 35B-A3B, that brings together embodied cognition and multimodal agent capabilities. Our work emphasizes physical perception and spatiotemporal reasoning, together with planning, interaction, and outcome assessment in both digital and physical environments. We construct training data spanning embodied and multimodal agent tasks, including execution observations and feedback to support outcome assessment and decision refinement. The training pipeline comprises embodied capability injection, separate reinforcement learning of embodied and multimodal-agent experts, and multi-teacher on-policy distillation that consolidates their complementary capabilities into a single model. Experiments show competitive performance on both embodied and agent benchmarks, as well as on autonomous-driving and embodied-navigation tasks. For edge deployment, visual token compression, W4A8 quantization, and hardware--software co-optimization enable on-device inference of the 4B variant on the M100, reducing prefill latency from 400 ms to 188 ms.   Project Page: https://machembodied.com/ME-Brain/ME-VLM.html Code Repository: https://github.com/MachEmbodied/ME-VLM",
+      "authors": [
+        "Foundation Model",
+        "Li Auto Inc"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV"
+      ],
+      "published": "2026-09-21T12:59:59+00:00",
+      "link": "https://arxiv.org/pdf/2609.24526v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "unified VLM for embodied multimodal agent coordination and physical perception",
+      "llm_evidence_cn": "统一视觉语言模型，支持具身多模态智能体协调与物理感知",
+      "llm_evidence": "统一视觉语言模型，支持具身多模态智能体协调与物理感知",
+      "canonical_evidence": "统一视觉语言模型，支持具身多模态智能体协调与物理感知",
+      "llm_tldr_en": "ME-VLM is a unified vision-language model for embodied cognition and agent coordination, with two sizes, trained on embodied and multimodal agent tasks including execution feedback to support planning, interaction, and outcome assessment.",
+      "llm_tldr_cn": "该文提出ME-VLM，一个用于具身认知和智能体协调的统一视觉语言模型，包含4B和35B-A3B两个版本。模型在具身与多模态智能体任务上训练，融合执行观察与反馈，以支持规划、交互和结果评估。实验表明该模型能在数字和物理环境中实现物理感知、时空推理和决策优化，为多模态智能体提供基础能力。",
+      "llm_tldr": "该文提出ME-VLM，一个用于具身认知和智能体协调的统一视觉语言模型，包含4B和35B-A3B两个版本。模型在具身与多模态智能体任务上训练，融合执行观察与反馈，以支持规划、交互和结果评估。实验表明该模型能在数字和物理环境中实现物理感知、时空推理和决策优化，为多模态智能体提供基础能力。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "agent that processes multiple modalities",
+      "matched_requirement_id": "req-2",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2609.24744v1",
+      "source": "arxiv",
+      "title": "World State Generator",
+      "abstract": "Language agents solve complex tasks through plans and actions. A single step the world refuses puts the goal out of reach, and what the agent does next decides the task. Prompted planners fail at exactly this point, rewriting the refused step in new words, meeting the same refusal, and burning the attempt budget without moving. They fail because the plan was never tied to the world, so a refusal has nothing in the plan to attach to. A world is where a task runs, and it has its own rules, its own admissible actions, and its own constraints. We build synthetic worlds across 7 domains and extract training data from them. A program enforces each world's rules and grades its goal, and every world is admitted only if its goal is reachable from its initial state. Agents run inside and leave verified failures paired with repairs that carried the run to a state the world certified, a record of about 226K trajectories. On this record we train the World State Generator, a model that writes a plan as checkable states of the world and keeps that plan aligned with the world it runs in. That alignment is what a plan written in language lacks, since the world it runs in has physical limits, logical dependencies, and required orders the language never states, and the plan encounters these rules only when a state fails. WSG takes that failure as the rule the world has stated and rewrites the remaining states to obey it, so the plan bends to the world as the run goes on. Across 7 public benchmarks, WSG raises end-to-end success for two open models near 30B parameters over prompting and brings to the level of proprietary model.",
+      "authors": [
+        "Sungheon Jeong",
+        "Sanggeon Yun",
+        "Ryozo Masukawa",
+        "Haleh Alimohamadi",
+        "Mahdi Imani",
+        "Mohsen Imani"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-09-21T15:13:14+00:00",
+      "link": "https://arxiv.org/pdf/2609.24744v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "Program-enforced synthetic worlds generate verified training data for language agents' world-conditioned planning",
+      "llm_evidence_cn": "程序强制的合成世界为语言智能体生成可验证的世界条件规划训练数据",
+      "llm_evidence": "程序强制的合成世界为语言智能体生成可验证的世界条件规划训练数据",
+      "canonical_evidence": "程序强制的合成世界为语言智能体生成可验证的世界条件规划训练数据",
+      "llm_tldr_en": "World State Generator builds program-enforced synthetic worlds across 7 domains with reachable goals; language agents act inside and leave verified traces, enabling training of planners that tie plans to world state.",
+      "llm_tldr_cn": "语言智能体在计划执行时因计划与世界脱节，容易在一步被拒绝后反复改写同一步骤而耗尽预算。本文构建世界状态生成器，在7个领域建立程序强制规则与可达目标的合成世界，让智能体在其中运行并留下验证过的成功或失败轨迹。从这些轨迹提取训练数据，可训练出将计划与世界状态绑定的规划器。该方法为文本世界模型驱动的语言智能体仿真提供了可验证的环境和训练信号。",
+      "llm_tldr": "语言智能体在计划执行时因计划与世界脱节，容易在一步被拒绝后反复改写同一步骤而耗尽预算。本文构建世界状态生成器，在7个领域建立程序强制规则与可达目标的合成世界，让智能体在其中运行并留下验证过的成功或失败轨迹。从这些轨迹提取训练数据，可训练出将计划与世界状态绑定的规划器。该方法为文本世界模型驱动的语言智能体仿真提供了可验证的环境和训练信号。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "text-based world model for environment simulation",
+      "matched_requirement_id": "req-4",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2609.23578v1",
+      "source": "arxiv",
+      "title": "AR-WAM: A Visual-Conditioned Agent-Ready World Action Model for Robotic Manipulation",
+      "abstract": "As AI agents become increasingly capable, agent-driven robotic control is emerging as a compelling paradigm. However, prevailing vision-language-action (VLA) models and world action models (WAMs) still rely on natural-language instructions to specify manipulation tasks, an ill-suited interface for agent-driven control: referentially ambiguous, spatially imprecise, redundant with the agent's inherent language understanding, and entangling intent with execution. We present AR-WAM, a visual-conditioned, agent-ready world action model that replaces language with two complementary conditions: a visual grounding prompt (a bounding box of the target) denoting the interaction object and location, and a learnable operation token dictating the atomic skill to execute. Our compact 0.5B-parameter model, with a frozen pretrained visual encoder and no language encoder, predicts scene evolution within compact latent states while decoding actions, exposing the policy's intent through explicit, supervisable reasoning signals. A model-agnostic compatibility layer provides three primitives (detect, execute, and query) so that local VLMs or online agent APIs can drive the policy directly, with long-horizon memory and closed-loop error recovery delegated to the agent side. On RoboTwin 2.0, RMBench, and a real Astribot S1 dual-arm platform, AR-WAM matches the strongest baselines on standard manipulation (87.2% average success) and outperforms them on memory-dependent and real-robot long-horizon tasks, improving success rates by 5.9% and 36.7%, respectively, while maintaining the lowest inference latency (14.1 ms).",
+      "authors": [
+        "Yicheng Jiang",
+        "Zesen Gan",
+        "Xiaobo Wang",
+        "Tianlun He",
+        "Chenxu Zhao",
+        "Minghui Wu",
+        "Xinyue Wang",
+        "Jiaxu Wang",
+        "Junhao He",
+        "Jianan Wang",
+        "Qiming Shao"
+      ],
+      "primary_category": "cs.RO",
+      "categories": [
+        "cs.RO"
+      ],
+      "published": "2026-09-20T11:55:26+00:00",
+      "link": "https://arxiv.org/pdf/2609.23578v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "visual-conditioned world action model for agent-driven robotic manipulation, replacing language",
+      "llm_evidence_cn": "视觉条件的世界动作模型用于智能体驱动机器人操作，替代语言",
+      "llm_evidence": "视觉条件的世界动作模型用于智能体驱动机器人操作，替代语言",
+      "canonical_evidence": "视觉条件的世界动作模型用于智能体驱动机器人操作，替代语言",
+      "llm_tldr_en": "AR-WAM replaces natural language with visual grounding prompts and learnable operation tokens in a world action model, enabling agent-driven robotic manipulation with precise multimodal control.",
+      "llm_tldr_cn": "该论文指出基于自然语言的视觉-语言-动作模型在智能体驱动机器人控制中存在指代模糊和空间不精确等缺陷。作者提出AR-WAM，一种视觉条件的世界动作模型，使用目标边界框和可学习操作token来替代语言指令。这种设计将视觉接地与操作意图分离，使智能体能够以更准确和灵活的方式控制机器人。该工作为多模态智能体在物理世界中的操作提供了新范式，强调了非语言条件的重要性。",
+      "llm_tldr": "该论文指出基于自然语言的视觉-语言-动作模型在智能体驱动机器人控制中存在指代模糊和空间不精确等缺陷。作者提出AR-WAM，一种视觉条件的世界动作模型，使用目标边界框和可学习操作token来替代语言指令。这种设计将视觉接地与操作意图分离，使智能体能够以更准确和灵活的方式控制机器人。该工作为多模态智能体在物理世界中的操作提供了新范式，强调了非语言条件的重要性。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "agent that processes multiple modalities",
+      "matched_requirement_id": "req-2",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "quick_skim": [
+    {
+      "id": "2609.20034v1",
+      "source": "arxiv",
+      "title": "Astronex-World 1.0: Real-Time Interactive World Model Foundation",
+      "abstract": "We present Astronex-World 1.0, an open controllable video world-model foundation. Given a text prompt (text-to-video) or an initial observation (image-to-video), the model predicts future visual states under frame-aligned camera trajectories, continuous actions, and an embodiment identifier, and accepts text events inserted at a specified position of a rollout. The family provides a bidirectional model for full-context generation and a causal model with block-causal attention and cross-block KV caching for persistent generation, both built on the Wan2.2-TI2V-5B prior. PRoPE injects camera intrinsics and extrinsics, while a 64-dimensional action stream modulates every Transformer layer. A five-stage training path develops bidirectional camera and action control, converts the backbone to block-causal generation, distills a few-step student, restores mixed-domain dynamics, and applies asymmetric DMD/DMD2 distribution matching. The causal model generates 832x480 video at 24 fps. All five training stages run on two NVIDIA L20 48 GB GPUs, and the causal model streams in real time on one. It scores 73.5 on WBench Navi and 70.0 on WBench Full. On Full, this 5B model is above the 13.6B LongCat-Video and the 14B Helios, within one point of the 22B LTX-2.3, and above YUME 1.5, which is post-trained from the same 5B prior on NVIDIA A100 GPUs. The reserved action input and output interfaces allow post-training for embodied intelligence and autonomous driving.",
+      "authors": [
+        "Xin Zhou",
+        "Cong Miao"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV",
+        "cs.AI",
+        "cs.RO"
+      ],
+      "published": "2026-09-17T10:38:22+00:00",
+      "link": "https://arxiv.org/pdf/2609.20034v1",
+      "tags": [
+        "keyword:agent-memory"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "Controllable video world model foundation with text and action conditioning",
+      "llm_evidence_cn": "可控视频世界模型基础，支持文本和动作条件",
+      "llm_evidence": "可控视频世界模型基础，支持文本和动作条件",
+      "canonical_evidence": "可控视频世界模型基础，支持文本和动作条件",
+      "llm_tldr_en": "Astronex-World 1.0 provides an open controllable video world-model foundation that generates future visual states from text prompts, actions, and camera trajectories, supporting interactive simulation.",
+      "llm_tldr_cn": "针对现有世界模型缺乏实时交互和可控性的问题，提出Astronex-World 1.0，一个开放的可控视频世界模型基础，能够根据文本提示、连续动作和相机轨迹预测未来视觉状态，支持实时交互仿真，为具身智能和环境模拟提供了有力基础。",
+      "llm_tldr": "针对现有世界模型缺乏实时交互和可控性的问题，提出Astronex-World 1.0，一个开放的可控视频世界模型基础，能够根据文本提示、连续动作和相机轨迹预测未来视觉状态，支持实时交互仿真，为具身智能和环境模拟提供了有力基础。",
+      "llm_tags": [
+        "query:agent-memory:composite"
+      ],
+      "matched_query_tag": "query:agent-memory:composite",
+      "matched_query_text": "Papers central to 智能体记忆，多模态，智能体强化学习，文本世界模型，语言世界模型, especially work that connects or combines: memory mechanisms for intelligent agents; agent that processes multiple modalities; reinforcement learning applied to autonomous agents; text-based world model for environment simulation; language-based world model for agent reasoning; agent with memory augmentation for better performance; How do text world models support language based agent simulation?.",
+      "matched_requirement_id": "req-composite-agent-memory",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "8plus"
+    },
+    {
+      "id": "2609.22641v1",
+      "source": "arxiv",
+      "title": "ConsistWorld: Evidence Routing for Consistent Multi-Agent World Models",
+      "abstract": "Autoregressive video world models enable temporally coherent generation for a single observer. Extending them to multiple agents requires consistency across independently controlled views and temporal gaps under causal streaming. We present ConsistWorld, a multi-agent world model that generates camera-controlled video streams of a static scene from one shared image. We formulate consistency as routing evidence from committed multi-agent history and concurrently generated peer views to the tokens being generated. Pose Conditioned Memory Retrieval selects relevant historical observations from all agents, recovering evidence beyond the recent context window. Visibility-Gated Peer Sharing regulates current peer information according to estimated historical coverage and current-view overlap. Together, they determine which historical observations enter the context and where concurrent peer information contributes, supporting long-term recall and coordinated exploration. Both mechanisms use camera geometry and maintain a bounded active context for a fixed agent count and retrieval budget. Experiments on evidence sharing cases and video length and agent number generalizations show that ConsistWorld achieves a strong cross-time and cross-agent consistency while preserving competitive generation quality.",
+      "authors": [
+        "Qianxun Xu",
+        "Xianfang Zeng",
+        "Xinyao Liao",
+        "Wei Cheng",
+        "Gang Yu",
+        "Chi Zhang"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV"
+      ],
+      "published": "2026-09-18T23:31:01+00:00",
+      "link": "https://arxiv.org/pdf/2609.22641v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "Pose Conditioned Memory Retrieval recovers historical multi-agent observations for consistent world models",
+      "llm_evidence_cn": "姿态条件记忆检索恢复多智能体历史观测以实现世界模型一致性",
+      "llm_evidence": "姿态条件记忆检索恢复多智能体历史观测以实现世界模型一致性",
+      "canonical_evidence": "姿态条件记忆检索恢复多智能体历史观测以实现世界模型一致性",
+      "llm_tldr_en": "ConsistWorld routes evidence from committed multi-agent history and concurrent peer views to generated tokens via Pose Conditioned Memory Retrieval and Visibility-Gated Peer Sharing, enabling consistent camera-controlled multi-agent video generation.",
+      "llm_tldr_cn": "自回归视频世界模型在单观察者场景下能保持时间一致性，但扩展到多智能体时面临独立视角与时间间隙下的一致性挑战。本文提出ConsistWorld，通过证据路由将已提交的多智能体历史与并发生成的对等视图信息传递到当前令牌。其姿态条件记忆检索能恢复超出上下文窗口的历史观测，可见性门控对等共享则根据估计遮挡调节当前对等信息。实验表明该方法可生成相机控制的多智能体一致视频流。",
+      "llm_tldr": "自回归视频世界模型在单观察者场景下能保持时间一致性，但扩展到多智能体时面临独立视角与时间间隙下的一致性挑战。本文提出ConsistWorld，通过证据路由将已提交的多智能体历史与并发生成的对等视图信息传递到当前令牌。其姿态条件记忆检索能恢复超出上下文窗口的历史观测，可见性门控对等共享则根据估计遮挡调节当前对等信息。实验表明该方法可生成相机控制的多智能体一致视频流。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "memory mechanisms for intelligent agents",
+      "matched_requirement_id": "req-1",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2609.23064v1",
+      "source": "arxiv",
+      "title": "FireWorldBench: Benchmarking Complex Physical World Intelligence through Coupled-Field Fire Dynamics",
+      "abstract": "Understanding the physical world requires more than object recognition, scene description, and short-term visual prediction, as real-world physical systems involve multiple continuous fields, latent causal mechanisms, partial observations, and intervention-sensitive dynamics. We propose FireWorldBench, a benchmark for evaluating complex physical world intelligence in multimodal large language models and agents through coupled-field fire dynamics. Fire provides a canonical stress-test environment, where multiple interacting physical fields jointly shape observable states and temporal dynamics. FireWorldBench is organized along two complementary axes, a physical capability axis and a fire scenario task axis, jointly covering physical-state understanding, temporal dynamics, causal mechanisms, and intervention reasoning. The benchmark comprises 520 fire-world entries, including 494 controlled simulation worlds and 26 real-world-aligned event groups, spanning 47 scene archetypes across 7 environment families. These entries combine structured textual observations, multiple 2D physical-field visualizations, and 3D event-level scene modeling, yielding 9,074 text-image interleaved question-answer pairs across choice-based and open-ended report-generation formats. FireWorldBench evaluates whether models can infer latent physical states, explain underlying mechanisms, forecast coupled-field evolution, and assess intervention consequences from multimodal partial observations, providing a challenging testbed for complex physical world intelligence.",
+      "authors": [
+        "Qiang Chen",
+        "Hao Guo",
+        "Huatai Zhu",
+        "Tairan Huang",
+        "Yichao Cao",
+        "Hongyan Xu",
+        "Keke Huang",
+        "Haifeng Li",
+        "Yi Chen",
+        "Xiu Su"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-09-19T14:50:42+00:00",
+      "link": "https://arxiv.org/pdf/2609.23064v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "Benchmark for multimodal physical world intelligence in agents",
+      "llm_evidence_cn": "评估多模态智能体物理世界智能的基准",
+      "llm_evidence": "评估多模态智能体物理世界智能的基准",
+      "canonical_evidence": "评估多模态智能体物理世界智能的基准",
+      "llm_tldr_en": "FireWorldBench uses coupled-field fire dynamics to benchmark complex physical world intelligence in multimodal LLMs and agents.",
+      "llm_tldr_cn": "现有基准难以评估多物理场耦合下的世界智能；提出FireWorldBench，以火灾动力学为压力测试环境，从物理能力和场景任务两个轴评估多模态大型语言模型和智能体的复杂物理世界智能。",
+      "llm_tldr": "现有基准难以评估多物理场耦合下的世界智能；提出FireWorldBench，以火灾动力学为压力测试环境，从物理能力和场景任务两个轴评估多模态大型语言模型和智能体的复杂物理世界智能。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "agent that processes multiple modalities",
+      "matched_requirement_id": "req-2",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2609.23841v1",
+      "source": "arxiv",
+      "title": "Structured World-State Reasoning for Agentic Robotic Search",
+      "abstract": "Long-horizon robotic search must resolve natural language against heterogeneous, incomplete, and often ambiguous evidence: textual information, prior maps, and observations arriving over time. The core challenge is to contextualize these streams and decide where to gather evidence before selecting a target. We present WORLDS: World-state Observation and Reasoning for Language-guided Discovery and Search, a framework that grounds reasoning in a persistent graph initialized from geospatial priors and updated by perception. Parallel Reasoners maintain competing candidate interpretations and request evidence to distinguish between them. We collect and process the requested observations with a multimodal Examiner, after which a Judge selects a grounded target or requests another pass. WORLDS achieves 51.8% navigation success across all 5,311 CityNav test episodes, the highest reported success rate, exceeding the previous published best by 15.7 percentage points under an OSM-only, high-resolution orthographic protocol. On 1,000 shared episodes, it achieves 50.0% versus 27.9% for the strongest adapted baseline using the same model, prior, sensing stack, and movement budget. Observation-based verification by the Examiner contributes 5.9 points of this success, and at a reduced reasoning-effort setting WORLDS still exceeds the adapted GeoNav baseline by 18.8 points while generating fewer tokens. We also demonstrate WORLDS on a quadrotor, which flies the generated sensing waypoints and grounds three language targets, including a vehicle absent from the map, from its onboard imagery.",
+      "authors": [
+        "Finley R. Holt",
+        "Luis A. Pabon",
+        "John Irvin Alora",
+        "Jonas Frey",
+        "Marco Pavone"
+      ],
+      "primary_category": "cs.RO",
+      "categories": [
+        "cs.RO"
+      ],
+      "published": "2026-09-20T19:47:46+00:00",
+      "link": "https://arxiv.org/pdf/2609.23841v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "Persistent graph world state and multimodal Examiner process text, maps, and observations for language-guided search",
+      "llm_evidence_cn": "持久图世界状态与多模态审查器处理文本、地图和观测以进行语言引导搜索",
+      "llm_evidence": "持久图世界状态与多模态审查器处理文本、地图和观测以进行语言引导搜索",
+      "canonical_evidence": "持久图世界状态与多模态审查器处理文本、地图和观测以进行语言引导搜索",
+      "llm_tldr_en": "WORLDS grounds robotic search in a persistent graph world state updated by perception; parallel reasoners request evidence, a multimodal Examiner processes heterogeneous observations, and a Judge selects targets, improving evidence contextualization.",
+      "llm_tldr_cn": "长时程机器人搜索需在文本、先验地图和流式观测之间进行上下文整合，证据常异构且不完备。本文提出WORLDS框架，将推理建立在由地理空间先验初始化并由感知更新的持久图世界状态上；并行推理器维护竞争性候选解释并请求证据，多模态审查器收集和处理观测，最终由判定器选择目标。该框架解决了语言引导搜索中的证据融合与决策归属问题，提升了复杂环境下的目标定位能力。",
+      "llm_tldr": "长时程机器人搜索需在文本、先验地图和流式观测之间进行上下文整合，证据常异构且不完备。本文提出WORLDS框架，将推理建立在由地理空间先验初始化并由感知更新的持久图世界状态上；并行推理器维护竞争性候选解释并请求证据，多模态审查器收集和处理观测，最终由判定器选择目标。该框架解决了语言引导搜索中的证据融合与决策归属问题，提升了复杂环境下的目标定位能力。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "agent that processes multiple modalities",
+      "matched_requirement_id": "req-2",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "8plus"
+    },
+    {
+      "id": "2609.22925v1",
+      "source": "arxiv",
+      "title": "\"Dear LLaVA, Please Drive\": A Depth-Aware Vision-Language Agent for Closed-Loop Robotic Control",
+      "abstract": "Vision-language models (VLMs) provide a compelling foundation for reasoning-driven mobile navigation, offering rich contextual understanding and strong generalization from large-scale pretraining. Most existing navigation frameworks rely on imitation learning and therefore require substantial labeled trajectory data, limiting their scalability and robustness. In this work, we propose a parameter-efficient approach to fine-tune a pretrained VLM for autonomous navigation using an Imperative Learning paradigm. By optimizing against differentiable geometric cost fields rather than labeled trajectories, our model learns to generate collision-free paths exclusively from stereoscopic depth observations. We introduce a unified end-to-end navigation pipeline for natural-language-driven robotic control. This system leverages a shared VLM backbone with task-specific Low-Rank Adaptation (LoRA) modules, effectively bridging the gap from semantic target selection to low-level trajectory planning. Our approach achieves competitive Success weighted by Path Length (SPL) in unseen environments while updating less than 1% of the model's total parameters. Qualitative real-world experiments validate sim-to-real generalization and stable path planning without fine-tuning on real-world data. These results highlight a practical approach for deploying VLM-based agents on mobile robots, enabling high-level semantic navigation without the prohibitive requirement for large-scale, labeled trajectory data.",
+      "authors": [
+        "Sebastian Berger",
+        "Katharina Winter",
+        "Fabian B. Flohr"
+      ],
+      "primary_category": "cs.RO",
+      "categories": [
+        "cs.RO"
+      ],
+      "published": "2026-09-19T10:12:55+00:00",
+      "link": "https://arxiv.org/pdf/2609.22925v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "Vision-language model for autonomous navigation",
+      "llm_evidence_cn": "用于自主导航的视觉语言模型",
+      "llm_evidence": "用于自主导航的视觉语言模型",
+      "canonical_evidence": "用于自主导航的视觉语言模型",
+      "llm_tldr_en": "The paper proposes to fine-tune a VLM for autonomous navigation via imperative learning against differentiable geometric cost fields, avoiding labeled trajectory data.",
+      "llm_tldr_cn": "针对现有导航框架依赖标注轨迹数据的问题，提出基于命令学习的参数高效微调方法，利用立体深度观测和可微几何代价场优化预训练视觉语言模型以生成无碰撞路径。实验表明模型能够仅从立体深度观测中学习生成碰撞自由路径，无需标注轨迹数据。该工作展示了视觉语言模型在闭环机器人控制中的潜力，并提供了参数高效的训练范式。",
+      "llm_tldr": "针对现有导航框架依赖标注轨迹数据的问题，提出基于命令学习的参数高效微调方法，利用立体深度观测和可微几何代价场优化预训练视觉语言模型以生成无碰撞路径。实验表明模型能够仅从立体深度观测中学习生成碰撞自由路径，无需标注轨迹数据。该工作展示了视觉语言模型在闭环机器人控制中的潜力，并提供了参数高效的训练范式。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "agent that processes multiple modalities",
+      "matched_requirement_id": "req-2",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2609.23371v1",
+      "source": "arxiv",
+      "title": "Machine-Interpretable Information: Compiling Documents into Searchable and Readable Protocol States",
+      "abstract": "Long-context language models interface with external knowledge through raw natural language. In retrieval-augmented systems, this creates a persistent index-payload schism: dense vectors enable searchable routing, but models must re-ingest lengthy text payloads for reasoning at O(N^2) attention cost. Existing compression methods further produce private states tied to specific architectures. We introduce Machine-Interpretable Information (MII), the first agent-to-agent (A2A) document-to-state protocol. A dual-timescale state-space Writer compiles documents into a canonical, fixed-bandwidth state (56 tokens), and a lightweight Translator maps it into any frozen Reader's embedding space, reducing query-time cost to O(K). The resulting .mii artifact unifies Retrieval (searchable geometry), Reasoning (global memory), and Reconstruction (grounded details) in a single transferable medium. We demonstrate strong cross-model interoperability across heterogeneous LLMs (e.g., Llama, Qwen, Mistral) -- despite the Writer using a legacy GPT-2 vocabulary, forcing genuine semantic translation rather than token-level memorization. Mechanistic probes reveal modular latent structure: entity representations can be causally traced and zero-shot transplanted between unrelated document states while remaining decodable. To address lexical reconstruction under fixed bandwidth, we propose Residual-MII, a cache hierarchy combining compiled global memory with sparse local evidence. On HotpotQA (7,405 queries), Residual-MII exceeds full-context Exact Match at approximately 7% of the attention FLOPs, suggesting a paradigm shift toward compiled, transferable neural document formats.",
+      "authors": [
+        "Yifan Wang",
+        "Dejing Dou"
+      ],
+      "primary_category": "cs.CL",
+      "categories": [
+        "cs.CL",
+        "cs.LG"
+      ],
+      "published": "2026-09-20T05:43:16+00:00",
+      "link": "https://arxiv.org/pdf/2609.23371v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "compiles documents into fixed states for retrieval, potential memory augmentation for agents",
+      "llm_evidence_cn": "将文档编译为固定状态用于检索，可作为智能体记忆增强",
+      "llm_evidence": "将文档编译为固定状态用于检索，可作为智能体记忆增强",
+      "canonical_evidence": "将文档编译为固定状态用于检索，可作为智能体记忆增强",
+      "llm_tldr_en": "MII compiles documents into a fixed-bandwidth 56-token state via a dual-timescale Writer and a Translator for frozen Readers, reducing RAG query cost to O(K) and enabling agent memory reuse.",
+      "llm_tldr_cn": "该论文针对检索增强系统中长文本推理计算开销大、压缩状态与特定架构绑定的问题，提出机器可解释信息（MII）协议。MII使用双时间尺度状态空间Writer将文档编译为固定带宽状态（56个token），并通过轻量Translator将其映射到任意冻结Reader的嵌入空间，将查询时成本降至O(K)。该方法实现了文档到状态的代理间协议，为构建高效可复用的智能体记忆组件提供了技术基础。",
+      "llm_tldr": "该论文针对检索增强系统中长文本推理计算开销大、压缩状态与特定架构绑定的问题，提出机器可解释信息（MII）协议。MII使用双时间尺度状态空间Writer将文档编译为固定带宽状态（56个token），并通过轻量Translator将其映射到任意冻结Reader的嵌入空间，将查询时成本降至O(K)。该方法实现了文档到状态的代理间协议，为构建高效可复用的智能体记忆组件提供了技术基础。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "agent with memory augmentation for better performance",
+      "matched_requirement_id": "req-6",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2609.24094v1",
+      "source": "arxiv",
+      "title": "WidgetVA: A Widget-Centric Framework and Benchmark for Agentic Visual Analytics",
+      "abstract": "Visual analytics (VA) enables sensemaking through interactive visualization, but effective analysis often requires experts to translate high-level intents into long sequences of interface operations and iteratively interpret visual feedback. We study whether modern vision-language models (VLMs) can take on this role as autonomous VA operators that observe the interface, plan multi-step exploration, execute interactions, and adapt based on intermediate visual feedback. To support systematic development and evaluation, we first introduce WidgetVA, a widget-centric agentic VA framework that standardizes interactive components as structured widgets with unified action (e.g., filter and zoom) and perception-query (e.g., selection summaries) APIs. This standardization supports two modes of system construction: wrapping an existing VA system to make it agent-operable without rebuilding it, and composing a new system from widgets as modular building blocks. To help agents coordinate across widgets rather than plan each interaction from scratch, each widget further packages reusable analytical workflows, giving agents more than a bare set of callable functions to plan over. Building on this framework, we present WidgetVABench, a benchmark of single- and multi-widget VA tasks that require agents to perform multi-step interactions to uncover evidence and produce verifiable results. Each task also provides fine-grained reference annotations so that WidgetVABench can score Answer, Reference Trace Similarity, and State separately rather than collapsing agent performance into one success score. Experiments across multiple VLMs show that our framework provides an effective scaffold for agentic VA, while the diagnostic measures expose persistent limitations for future work. The WidgetVA framework and WidgetVABench have been released in https://github.com/Hiverwin/widgetva.",
+      "authors": [
+        "Yutong Chen",
+        "Zhike Tang",
+        "Zhihao Mai",
+        "Zhihao Shuai",
+        "Danli Luo",
+        "Jing Xu",
+        "Weikai Yang"
+      ],
+      "primary_category": "cs.HC",
+      "categories": [
+        "cs.HC",
+        "cs.AI"
+      ],
+      "published": "2026-09-21T04:27:36+00:00",
+      "link": "https://arxiv.org/pdf/2609.24094v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "Agentic visual analytics with VLMs",
+      "llm_evidence_cn": "基于视觉语言模型的智能体可视分析",
+      "llm_evidence": "基于视觉语言模型的智能体可视分析",
+      "canonical_evidence": "基于视觉语言模型的智能体可视分析",
+      "llm_tldr_en": "WidgetVA proposes a widget-centric framework and benchmark that enables VLMs to operate as autonomous visual analytics agents through standardized widgets and APIs.",
+      "llm_tldr_cn": "可视分析需要专家将高层意图转化为界面操作；提出WidgetVA框架，将交互组件标准化为结构化小部件，提供统一动作和感知查询API，使视觉语言模型能够作为自主可视分析智能体进行多步探索，并构建基准进行评估。",
+      "llm_tldr": "可视分析需要专家将高层意图转化为界面操作；提出WidgetVA框架，将交互组件标准化为结构化小部件，提供统一动作和感知查询API，使视觉语言模型能够作为自主可视分析智能体进行多步探索，并构建基准进行评估。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "agent that processes multiple modalities",
+      "matched_requirement_id": "req-2",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    }
+  ]
+}

@@ -1,0 +1,2816 @@
+Title: Few-Shot Demonstrations Elicit the Use of In-Context World Representations in LLMs
+
+URL Source: https://arxiv.org/pdf/2609.24352v1
+
+Published Time: Tue, 22 Sep 2026 03:03:13 GMT
+
+Number of Pages: 42
+
+Markdown Content:
+Preprint 
+
+## FEW -S HOT DEMONSTRATIONS ELICIT THE USE OF IN-CONTEXT WORLD REPRESENTATIONS IN LLM S
+
+Kohsei Matsutani 1 † Gouki Minegishi 1 Core Francisco Park 2 3 
+
+Takeshi Kojima 1 Yusuke Iwasawa 1 Yutaka Matsuo 11The University of Tokyo 2Harvard University 3Prior Computers 
+
+> †
+
+kohsei.matsutani@weblab.t.u-tokyo.ac.jp 
+
+ABSTRACT 
+
+Large language models (LLMs), when acting as agents, are expected to take ob-served data in context, infer the latent state space underlying the world, and lever-age it for downstream prediction. However, prior work demonstrated that LLMs struggle to use representations learned in context on a graph tracking task, where the model needs to construct a representation of the graph governing data gener-ation process and use it for subsequent predictions. In this paper, we show that extending this to few-shot settings, where each demonstration is generated from a different world with either the same or different graph topologies, enhances its prediction on 6 models from 4 model families. To understand this improvement, we linearly probe a low-dimensional world representation that encodes graph in-formation in the hidden states. Notably, we find that few-shot demonstrations relocate the world representation and increase its predictive use. Specifically, for each model, these world representations shift in directions nearly orthogonal to their original subspace, and interventions on these representations selectively im-pair performance more than interventions on other subspaces. Consistent with this insight, we show that few-shot demonstrations with observations from differ-ent worlds improve performance on ARC-AGI-1&2, web agent tasks, and Othello. Our findings elucidate the role and internal mechanisms of few-shot demonstra-tions in in-context world modeling. More broadly, our work advances our un-derstanding of how LLM agents learn from in-context observations and provides implications for their further improvement. 
+
+1 INTRODUCTION 
+
+As large language models (LLMs) are increasingly deployed as agents in open-ended environments, they must infer previously unseen world, such as the semantics of entities and the rules governing the data generation process, from observations, and take optimal actions based on their inferred model of the world (Andreas, 2024; Li et al., 2025). For example, in coding, an agent may need to infer the structure of unfamiliar codebases and the semantics of their APIs from the surrounding code and execution feedback (Jimenez et al., 2024; Yang et al., 2024). In-context learning (ICL) (Brown et al., 2020), which enables adaptation to the world from observed data without updating any parameters, is important to understand especially from a continual learning perspective (Wang et al., 2024). We refer to this general problem setting—inferring a world from observations and performing a potentially different task over the inferred world—as in-context world modeling .One possible mechanism underlying in-context world modeling is the formation of in-context rep-resentations . Park et al. (2025) showed that scaling the context length enables LLMs to construct in-context representations with novel semantics. Specifically, LLMs are given, in context, a one-step random walk generated from a latent graph (a 4 × 4 Lattice Grid in Figure 1 (a)) and exhibit energy minimization that reflects the topology in their intermediate states. However, (Lepori et al., 2026) argued that even when such representations are successfully constructed, LLMs still fail to solve subsequent next-token prediction tasks defined over the graph. Concretely, after observing the random walk generated from a latent graph, LLMs are given few-shot examples of predicting the node two steps to the right of a given node and are then asked to make the same prediction for a 1arXiv:2609.24352v1 [cs.AI] 21 Sep 2026 Preprint 
+
+Figure 1: (a) Conceptual Framework of In-Context World Modeling. An LLM is provided with random walks generated on a graph topology, where each node is assigned a fruit, and instructed to move two steps to the right. We probe the internal representations to determine whether the model has constructed the latent graph. A linearly decodable subspace of these representations is termed a world representation. See Figure 11 for the actual prompt. In this paper, we treat cucumbers as fruits. (b) LLMs Learned to Use World Representation with Few Shot Demonstrations. Few shot demonstrations consisting of random walks, task instructions, and answers from worlds with the same topology but different assignments of fruits to nodes improve task performance. Interven-tions on the world representation subspace cause larger performance degradation in the few shot setting than in the zero shot setting relative to interventions in random directions. The results are from Qwen3-4B-Base on a 4 × 4 Lattice Grid. (c) Few-Shot Demonstrations Shift World Rep-resentations. As the number of shots increases, the graph representation shifts orthogonally to the representation subspace. The left shows a 3D PCA of hidden states of the nodes, and the right shows a 2D PCA of mean hidden states over the random walks in the test set. The results are from Figure 6. new node. They showed that both open-source and closed-source models fail on this task. This gap between world representation construction and predictive use of the representation exposes a fun-damental limitation of LLM agents that rely on in-context memory without explicit state tracking (Lepori et al., 2025; Baldelli et al., 2026; Mozer et al., 2026), raising the question of when they can overcome this limitation and why. In this paper, we show that extending the zero-shot setting of Lepori et al. (2026) with few-shot demonstrations enables LLMs to solve this in-context world modeling task, as shown in Figure 1 (b). Each demonstration contains a random walk from a different world that shares the same or different topology and assigns a different vocabulary to its nodes (see Figure 2 for the prompt illustration). Motivated by these findings, we use linear probing to analyze a low-dimensional subspace encoding the latent world topology. We find that increasing the number of few-shot demonstrations improves task performance, while both probing accuracy and the Dirichlet Energy (DE) computed from the raw hidden states remain unchanged. This suggests that LLMs construct the world representation equally well regardless of the number of shots (demonstrations). Instead, we find that these repre-sentations occupy different subspaces, which influences how they are read out. As the number of shots increases, the representation shifts toward directions roughly orthogonal to itself and progres-sively converges (Figure 1 (c)). We further intervene on the world representation and find that such interventions degrade predictions more with few-shot demonstrations than in the zero-shot setting. This provides causal evidence that world representations contribute more strongly to prediction with few-shot demonstrations, alongside their systematic relocation across subspaces. Finally, we show that providing observations from different worlds coupled with their task instructions as few-shot demonstrations improves task performance on ARC-AGI-1&2, web agent tasks, and Othello, using Qwen, Gemma, and Ministral models. In contrast to conventional few-shot learning, where each demonstration typically specifies an input-output mapping, as in regression (Garg et al., 2022; Von Oswald et al., 2023) and classification (Min et al., 2022b), where a canonical example is predicting ”red” from ”apple” (Hendel et al., 2023), we consider an in-context world modeling setting for LLM agents, where each demonstration consists of observations from a world and a task defined over its latent structure. Crucially, our analysis reveals 2Preprint that successful prediction is associated not with improved construction of the world representation itself, but with its relocation to a subspace that elicits downstream readout. More broadly, we hope that our findings provide support for a growing paradigm of agentic training that leverages ICL (Song et al., 2026b; H¨ ubotter et al., 2026; Zhao et al., 2026; Shi et al., 2026; Ye et al., 2026b;a; Lin et al., 2026; Song et al., 2026a), in which agents condition on observations, trajectories, and outcomes collected through interactions with the environment and generate further rollouts, enabling reinforcement learning (RL) or self-distillation (Shenfeld et al., 2026) without relying on an external teacher model. Our results may also help clarify the mechanisms underlying such transfer of capabilities acquired in context into model weights. This paper is organized as follows. In Section 2, we explain in-context world modeling, introduce the graph tracking task, and describe the probing, representation analysis, and intervention methods used throughout the paper. In Section 4.1, we show that LLMs construct representations of the latent topology regardless of the number of shots. In Section 4.2, we show that the world representation subspace shifts as the number of shots increases. In Section 5.1, we perform interventions on world representations across different numbers of shots. In Section 5.2, we show that these few-shot demonstrations improve performance on ARC-AGI-1&2, web agent tasks, and Othello. Finally, in Section 6, we discuss broader connections to related work, limitations, and directions for future work. We cover related work in Appendix A. The code is available at kohseim/icwm. 
+
+2 PRELIMINARIES 
+
+2.1 WORLD REPRESENTATION IN LLM S
+
+In-Context World Modeling. As written in Appendix A, the definition of a “world model” varies across the literature. In this paper, following (Li et al., 2025), we say that an LLM contains a world model if a relevant property of the underlying world from which the data are generated can be recovered from its internal representations and those representations causally contribute to the model’s predictions. We refer to such internal representations as world representations . From this perspective, we define in-context world modeling as inferring a world from contextual observations and performing a different task over it. See Figure 1 (a) for the illustration. We identify world representations using linear probing (Alain & Bengio, 2016; Belinkov, 2022) and test whether they are causally used for prediction by intervening on them and measuring the resulting change in pre-diction (Elazar et al., 2021). We refer to the former as representation construction and the latter as 
+
+predictive use of representation . See Appendix B for a detailed explanation. 
+
+Graph Tracking. We adapt the adaptive world modeling task of Lepori et al. (2026), a variant of the in-context graph tracing task introduced by Park et al. (2025). As illustrated in Figure 1 (a), each node in a graph topology, specifically 4 × 4 Lattice Grid, 5 × 5 Lattice Grid, 3 × 5 Lattice Grid, 4 × 4
+
+Triangle Grid, and 4 × 4 Torus Grid is assigned a fruit vocabulary item such as ”apple” or ”orange”. We regard each such assignment as a world. Even with the same topology, different assignments of fruit to the nodes define different worlds. The model is then given, as observations, a comma-separated sequence of fruit tokens generated by a one-step random walk over the graph. Following these observations, the model receives few-shot examples consisting of node pairs that specify a two-step movement to the right on the graph, such as ”lime” to ”fig”. Although this transformation could instead be specified in natural language as ”move two steps to the right,” the meaning of ”right” changes under rotations or reflections of the topology. We therefore follow Lepori et al. (2026) and specify the task through few-shot node pair examples. We view this setting as in-context world modeling , where a model infers a graph topology from observations provided in-context and performs a task on that graph. Typical ICL as in Park et al. (2025) is a special case where the task providing information about the world is identical to the task being tested. The length of random walk is sampled uniformly from 48 to 80. See Appendix C.1 for the detailed setup and Figure 11 for an example prompt. 2.2 EXPERIMENTAL DESIGN 
+
+Few-Shot Prompting. As illustrated in Figure 2, each few-shot demonstration consists of obser-vation data and a task instruction, namely a random walk generated from a latent graph and a 3Preprint set of node pairs specifying a two-step movement to the right. Note that these few-shot demon-strations are distinct from the few-shot node pairs used to specify the task instruction. We re-fer to each demonstration as one shot. All shots share the same graph topology but are gen-erated from different worlds, with different assignments of fruits to the nodes. Across dif-ferent shot settings, we keep the final query fixed to enable a controlled comparison. The zero-shot setting corresponds to Lepori et al. (2026). See the prompt example in Figure 11. [random walk] 
+
+> [task instruction]
+> [answer]
+> [random walk]
+> [task instruction]
+> [answer]
+> ...
+> [random walk]
+> [task instruction]
+> [answer]
+> [random walk]
+> [task instruction]
+> Demo 1
+> Demo 2
+> Demo N
+> Query
+> Probe
+> Prompt
+
+Figure 2: Illustration of Few-Shot Prompt. See Figure 11 for the prompt example. 
+
+Probe. We use linear probing to quantify how well LLMs construct the latent topology from the observed random walk in the query (Fig-ure 2). For each node (i, j ), we obtain its layer l hidden state h(l) 
+
+> i,j
+
+∈ Rd
+
+by averaging the activations over its subtokens and all occurrences in the random walk of the query. We train a probe W (l) ∈ Rd×r
+
+on 500 samples and use disjoint 100 samples for validation. Assum-ing that each graph topology admits a low-dimensional representation (Shai et al., 2024; Tigges et al., 2024; Engels et al., 2025), we set 
+
+r = 2 , 2, 2, 2, 4 for 4 × 4 Lattice Grid, 5 × 5 Lattice Grid, 3 × 5
+
+Lattice Grid, 4 × 4 Triangle Grid, and 4 × 4 Torus Grid, respectively. The probe maps each hidden state to z(l) 
+
+> i,j
+
+= W (l)⊤h(l) 
+
+> i,j
+
+∈ Rr . For each pair of nodes u = ( i, j ) and v = ( i′, j ′), we predict their adjacency as p(l) 
+
+> u,v
+
+= σ(β(l) − ∥ z(l) 
+
+> u
+
+− z(l) 
+
+> v
+
+∥22), where σ(x) = (1 + exp( −x)) −1
+
+and β(l) is a trainable scalar offset. We evaluate the probe using the AUROC for predicting whether pairs of graph nodes are adjacent, com-puted by sweeping the decision threshold and integrating the resulting ROC curve with the trapezoidal rule. Intuitively, the probe learns to project high-dimensional hidden states into two-dimensional coordinates from which the adjacency matrix of the lattice grid can be recovered. See Appendix C.2 for the detailed explanation and the ra-tionale behind the experimental setup. Park et al. (2025) used Dirichlet Energy (DE) as a measure of representation construction, computed directly from raw hidden states without probing. We instead introduce probing to enable more detailed representation analyses and intervention experiments. For completeness, we also report DE in Section 4.1. 
+
+Causal Intervention. To test whether the probed world representations are causally used for predic-tion, we perform intervention experiments comparing zero-shot and few-shot settings. We measure how much prediction degrades when graph information is removed from the rank-r world represen-tation subspace, relative to an intervention on an unrelated rank-r random subspace orthogonal to it. To remove graph information, we first center each node representation by subtracting the mean rep-resentation ¯h(l) across all nodes. We then intervene at each layer as h(l) 
+
+> i,j
+
+← h(l) 
+
+> i,j
+
+− Π(l) 
+
+> W
+
+(h(l) 
+
+> i,j
+
+− ¯h(l)),where W(l) is the subspace spanned by the left singular vectors by the singular vector decomposition (SVD) of W (l), which we call world representation subspace , and Π(l) 
+
+> W
+
+is the orthogonal projection matrix onto W(l). Intuitively, this isolates variation across nodes that captures their relative posi-tions and edge structure. Following Elazar et al. (2021), we iteratively retrain the probe and apply the intervention. This is necessary because the intervened subspace is extremely low-dimensional, with r = 2 , 4 compared with ambient dimensions d = 2560 , 4096 , 5120 , so a single projection may leave graph information outside the identified subspace that can be repaired (McGrath et al., 2023). To establish a matched baseline for subspace intervention, we compare interventions on the probed world representation subspace with interventions on orthogonal random subspaces of the same di-mension. For brevity, we refer to the former as the graph intervention and the latter as the random intervention . This comparison isolates the causal contribution of the probed world representations while accounting for differences in baseline task performance across different numbers of shots. We emphasize that this comparison controls for nonspecific random subspace removal, rather than for interventions on other task-relevant structured representations. See Appendix C.2 for the detailed explanation, Appendix E.2 for the experiments on different rank-
+
+r, and Appendix E.3 the sensitivity to seeds. 4Preprint 0% 10% 20% 30% 40% 50% 0 1 2 4 8 16 32    
+
+> Random: 6.2%
+> Number of Shots Accuracy Qwen3-4B-Base Qwen3-8B-Base Qwen3-14B-Base Random Guessing
+
+● ■ ▲         
+
+> 4 × 4 Lattice Grid
+> 0% 10% 20% 30% 40% 50% 0124816 32
+> Random: 4.0%
+> Number of Shots Accuracy Qwen3-4B-Base Qwen3-8B-Base Qwen3-14B-Base Random Guessing
+
+● ■ ▲         
+
+> 5 × 5 Lattice Grid
+> 0% 10% 20% 30% 40% 50% 0124816 32
+> Random: 6.7%
+> Number of Shots Accuracy Qwen3-4B-Base Qwen3-8B-Base Qwen3-14B-Base Random Guessing
+
+● ■ ▲         
+
+> 3 × 5 Lattice Grid
+> 0% 10% 20% 30% 40% 50% 0124816 32
+> Random: 6.2%
+> Number of Shots Accuracy Qwen3-4B-Base Qwen3-8B-Base Qwen3-14B-Base Random Guessing
+
+● ■ ▲         
+
+> 4 × 4 Triangle Grid
+> 0% 10% 20% 30% 40% 50% 0124816 32
+> Random: 6.2%
+> Number of Shots Accuracy Qwen3-4B-Base Qwen3-8B-Base Qwen3-14B-Base Random Guessing
+
+● ■ ▲
+
+> 4 × 4 Torus Grid
+
+Figure 3: Few-Shot Performance. Accuracy of three Qwen3 models on the two-step-right predic-tion task across five graph topologies. Each point reports accuracy on 300 test samples with 0, 1, 2, 4, 8, 16, or 32 few-shot demonstrations. Dotted gray lines indicate random guessing over the candidate nodes for each topology. Lepori et al. (2026) corresponds to the zero-shot case. 
+
+3 FEW -S HOT DEMONSTRATIONS IMPROVE DOWNSTREAM PREDICTIONS 
+
+In this section, we show that, in the graph tracking task, increasing the number of demonstrations im-proves downstream performance in predicting the node two steps to the right. We evaluate Qwen3-4B-Base, Qwen3-8B-Base, and Qwen3-14B-Base (Yang et al., 2025a) on the 4 × 4 Lattice Grid, 
+
+5 × 5 Lattice Grid, 3 × 5 Lattice Grid, 4 × 4 Triangle Grid, and 4 × 4 Torus Grid using 300 samples per graph. We consider 0, 1, 2, 4, 8, 16, and 32-shot settings while keeping the query fixed across settings. Predictions are scored by selecting the node with the highest logit among the candidate node set. See Appendix C.1 for details. Figure 3 shows performance across different numbers of shots. Across all models and topologies, increasing the number of few-shot examples improves performance relative to the 0-shot setting. The performance gains gradually saturate as the number of shots increases, consistent with prior observations in many-shot ICL (Yuan et al., 2024; Zhang et al., 2025b). Note that the Metalearning AWM Prompt of Lepori et al. (2026) uses up to three demonstrations with the same topology and identical node assignments, which might allow copying or elimination across shots. In contrast, our demonstrations come from different worlds that share the same topology but use different node assignments. See Appendix E.1 for the results from the Llama-3 (Grattafiori et al., 2024), Gemma-4 (Team et al., 2026), and Ministral-3 (Liu et al., 2026a) models. More strikingly, in Appendix D.1, we further show that few-shot demonstrations improve perfor-mance even when the graph which generate their random walks differ from that of the query. 
+
+4 FEW -S HOT DEMONSTRATIONS SHIFT WORLD REPRESENTATIONS 
+
+4.1 LLM S CONSTRUCT WORLD REPRESENTATIONS AUROC Number of Shots               
+
+> 0.50 0.60 0.70 0.80 0124816 32
+> Qwen3-4B-Base Normalized DE Number of Shots
+> 0.10 0.15 0.20 0.25 0124816 32 4 × 4 Lattice Grid 5 × 5 Lattice Grid 3 × 5 Lattice Grid 4 × 4 Triangle Grid 4 × 4 Torus Grid Random Feature Baseline
+
+Figure 4: Probe Performance and Normalized Dirichlet Energy (DE). Probe AUROC and nor-malized DE of hidden states across shots and five graph topologies for layer 20 of Qwen3-4B-Base. Gray lines show random feature probe baselines. We first show through linear probing that LLMs construct the graph topology underlying the random walk equally well regardless of the number of shots. As described in Section 2.2, we measure whether LLMs construct the graph by evaluating graph adjacency prediction with AUROC. We also report Dirichlet Energy (DE) (Park et al., 2025), which measures the align-ment between node representations and the graph structure. At layer l, DE is computed as 
+
+P
+
+u
+
+P
+
+v Au,v ∥h(l)
+
+u − h(l)
+
+v ∥22, where u = ( i, j ),
+
+v = ( i′, j ′), and Au,v denotes the adjacency matrix entry between nodes u and v. We re-port normalized DE by dividing this quantity by the sum of squared Euclidean distances be-tween the hidden states of all node pairs. 5Preprint Evaluation Prompt Shots Probe Training Shots                                                                                      
+
+> 0.75 0.71 0.70 0.69 0.69 0.69 0.68 0.69 0.74 0.73 0.72 0.71 0.70 0.69 0.68 0.73 0.74 0.74 0.73 0.72 0.71 0.67 0.73 0.74 0.75 0.74 0.74 0.73 0.67 0.72 0.73 0.74 0.75 0.74 0.74 0.66 0.71 0.73 0.74 0.74 0.74 0.74 0.66 0.71 0.72 0.74 0.74 0.74 0.75 0124816 32 0124816 32 0.62 0.64 0.66 0.68 0.70 0.72 0.74 0.76
+> AUROC (a) Cross Probe Performance Probe Training Shots Probe Training Shots
+> 1.00 0.32 1.00 0.29 0.57 1.00 0.22 0.42 0.71 1.00 0.20 0.34 0.54 0.81 1.00 0.17 0.27 0.38 0.58 0.78 1.00 0.16 0.22 0.30 0.48 0.66 0.87 1.00 0124816 32 0124816 32 00.2 0.4 0.6 0.8 1
+> Overlap (b) Representation Subspace Overlap Angle Number of Shots
+> 4 × 4 Lattice Grid 5 × 5 Lattice Grid 3 × 5 Lattice Grid 4 × 4 Triangle Grid 4 × 4 Torus Grid 60° 65° 70° 75° 80° 85° 90° 124816 32
+> (c) Angle between Representation Subspace and Shot Vector Distance from Previous Shots Number of Shots
+> 4 × 4 Lattice Grid 5 × 5 Lattice Grid 3 × 5 Lattice Grid 4 × 4 Triangle Grid 4 × 4 Torus Grid 0.0 0.2 0.4 0.6 0.8 1.0 012 4 816 32
+> (d) Distance Between Representation Subspaces
+
+Figure 5: (a) Cross Probe Performance. AUROC of probes trained at one shot count and evaluated at another, averaged over five topologies. (b) World Representation Subspace Overlap. Overlap between probe subspaces across shot counts, averaged over the five topologies. (c) Angle Between Shot Vectors and the World Representation Subspace. Angles to the corresponding probe sub-spaces, shown separately for each topology. (d) Distance between Representation Subspaces across Shots. Normalized projection distance between probe subspaces at consecutive tested shot counts, shown separately for each topology. All results are from layer 36 of Qwen3-4B-Base. Figure 4 shows that probing AUROC and normalized DE remain largely unchanged across different numbers of shots for all three models and four topologies. As a random feature baseline, we replace the activations with isotropic Gaussian over five random seeds, which yields AUROC values around 0.5. The clearly higher AUROC indicates that the latent graph topology is recoverable from their internal states. Together, these results suggest that LLMs construct an internal representation of the world behind the random walk in the query regardless of the number of shots. We additionally show in Figure 17 that the relative positions of nodes in the graph representation of a query do not change much as the number of shots increases. 4.2 FEW -S HOT DEMONSTRATIONS RELOCATE WORLD REPRESENTATIONS -400 -200 0200 -400 -200 0200 400 -400 -200 0200 400        
+
+> PC1 (49.2%) PC2 (7.2%) PC3 (5.6%) PCA of Hidden States
+> 0-shot 1-shot 2-shot 4-shot 8-shot 16-shot 32-shot
+> PC2 (1.9%) PC1 (4.3%)
+> 0-shot 1-shot 2-shot 4-shot 8-shot 16-shot 32-shot -20 -15 -10 -5 0510 15 20 -15 -10 -5 0510 15 20
+
+Figure 6: (Left) PCA of Shift in Hidden States of a Random Walk. PCA of 4 × 4 Lattice Grid at layer 36 of Qwen3-8B-Base (Right) PCA of Shifts in Hidden-State Centroids across Random Walks. PCA of 300 test samples per shot for 4×4 Lattice Grid at layer 20 of Qwen3-8B-Base. Points represent individual random walks and triangles indicate their means. In each panel, PCA is fit jointly to all activations shown. Here, we provide lines of evidence that the world representation shifts as the number of shots increases. For three Qwen3 models, we train probes at three layers under 0, 1, 2, 4, 8, 16, and 32-shot settings, using 500 samples for training and 100 for validation. We then evaluate cross-shot probing on a 300 sample test set and report the AUROC in Figure 5 (a). Probes trained on few-shot representations fail to correctly de-code graphs from zero-shot representa-tions, and decoding performance also de-grades as the gap between the numbers of shots increases. This indicates that chang-ing the number of shots changes the probe readout space, at least in part, toward dif-ferent directions even for the same query. See Figure 18 for the full results. We further measure the overlap between world representation subspaces W(l) and W′(l) learned by probes trained with different numbers of shots, by computing tr(Π (l)
+
+W Π′(l)
+
+W′ )/r. As shown in Figure 5 (b), the subspace overlap decreases as the number of shots changes, with a particularly large discrepancy between zero-shot and few-shot settings. This suggests that the linearly decodable graph representation subspace shifts as the number of shots increases. See Figure 19 for the full results. Then, we compute the mean shift ∆¯h(l) between corresponding few-shot and zero-shot hidden states, averaged over all nodes in the test set. We then measure its angle to the world representation subspace W(l) as θ(l) = arccos( ∥Π(l)
+
+W ∆¯h(l)∥2/∥∆¯h(l)∥2). As shown in Figure 5 (c), the hidden 6Preprint -15 -10 -5 0510                
+
+> 4 × 4 Lattice Grid 5 × 5 Lattice Grid 3 × 5 Lattice Grid 4 × 4 Triangle Grid 4 × 4 Torus Grid Qwen3-4B-Base Mean Relative Degradation Di ff erence (%) 0-shot 16-shot
+> -15 -10 -5 0510
+> 4 × 4 Lattice Grid 5 × 5 Lattice Grid 3 × 5 Lattice Grid 4 × 4 Triangle Grid 4 × 4 Torus Grid Qwen3-8B-Base 0-shot 16-shot
+> -15 -10 -5 0510
+> 4 × 4 Lattice Grid 5 × 5 Lattice Grid 3 × 5 Lattice Grid 4 × 4 Triangle Grid 4 × 4 Torus Grid Qwen3-14B-Base 0-shot 16-shot Graph Subspace More Important Graph Subspace Less Important
+
+Figure 7: Intervention Results. Graph subspace erasure at iteration 20 in three Qwen3 models. Interventions target node subtokens in the query’s random walk at every Transformer block output. The random intervention uses an orthogonal subspace with matched rank and perturbation norm per node. Points show the mean difference in the probability of correct answer token reduction between graph and random interventions, normalized by each query’s unperturbed probability, across 300 test samples. Probabilities are normalized over candidate answer sequence likelihoods. Positive values indicate greater degradation from graph erasure. Horizontal bars show 95% bootstrap confidence intervals obtained by resampling test samples 5000 times. states shift induced by increasing number of shots, where we refer to the shift ∆¯h(l) as the Shot Vector , is nearly orthogonal to the world representation subspace. See Figure 22 for the full results. Importantly, this interpretation relies not only on near-orthogonality in the high-dimensional activa-tion space, but also on changes in cross probe performance and subspace overlap, which suggests that few-shot demonstrations alter the geometry of representations rather than simply shifting hidden states along existing subspace directions, with the Shot Vector capturing only this displacement. Figure 6 visualizes the hidden states of nodes in a random walk for one sample, and the mean hidden states of random walks across 300 test samples, using PCA. As the number of shots increases, the representations systematically shift. The line segments connecting corresponding points, which form part of the Shot Vector, are also aligned in a similar direction. More visualizations are provided in Figures 20 and 21. Note that Task Vector (Hendel et al., 2023) is extracted as the hidden state at the final token of a few-shot prompt, whereas Function Vector (Todd et al., 2024) is constructed by averaging the final token of causally important attention heads across multiple few-shot prompts and summing them. In contrast, our Shot Vector is defined as the difference between the centroids of the hidden states corresponding to observation inputs under few-shot and zero-shot settings. We show that the Shot Vector is different from the Task Vector in Appendix D.3. We further compute the distance between world representation subspaces for adjacent shot settings among 0, 1, 2, 4, 8, 16, and 32 shots as ∥Π(l) 
+
+> W
+
+− Π′(l) 
+
+> W′
+
+∥F/√2r. As shown in Figure 5 (d), this distance decreases as the number of shots increases, which indicates that the world representation subspace gradually converges in distance. See Figure 24 for the full results. All in all, these results suggest that increasing the number of shots induces a shift in the hidden states of the random walk, which we call the Shot Vector. This shift occurs approximately orthogonally to the rank-r world representation subspace, corresponding to a change in the readout space of the world representation. See Appendix E.1 for the results from the Llama-3, Gemma-4, and Ministral-3 models. 
+
+5 PREDICTIVE USE OF WORLD REPRESENTATIONS 
+
+5.1 INTERVENTION EXPERIMENTS 
+
+Having shown that few-shot demonstrations shift the world representation, we next test whether the shifted representation contributes to subsequent predictions. Following Ravfogel et al. (2020); Elazar et al. (2021), we eliminate graph information from the world representation subspace, from which graph topology can be decoded. To compare graph interventions across zero-shot and few-shot settings, we measure the reduction in the probability assigned to the correct token relative to a intervention in the random orthogonal subspace. This control accounts for differences in baseline 7Preprint Demo 1 
+
+Demo 2 
+
+Demo N 
+
+Query 
+
+Different Worlds across Shots  
+
+> Fill green-outlined
+> black area yellow
+> Uniform rows
+> grey, mixed
+> rows black
+> Add border, extend
+> edges, black corners
+> Pink XOR cells,
+> others black
+> ?
+> × (number of examples)
+> × (number of examples)
+> × (number of examples)
+> × (number of examples)
+
+ARC-AGI  Othello  
+
+> ....
+> .... ....
+
+Prompt 
+
+(a) 35 40 45 50 55 60 65 70 0 1 2 4           
+
+> Pixel Accuracy@2 (%) Number of Shots
+> Qwen3-14B-Base Gemma-4-26B-A4B Gemma-4-31B Ministral-3-14B-Base
+> ARC-AGI-1
+> 10 20 30 40 50 60 0124
+> Pixel Accuracy@2 (%) Number of Shots
+> Qwen3-14B-Base Gemma-4-26B-A4B Gemma-4-31B Ministral-3-14B-Base
+> ARC-AGI-2
+> 010 20 30 01248
+> Step Success Rate (%) Number of Shots
+> Qwen3-4B-Base Qwen3-8B-Base Gemma-4-E2B Ministral-3-14B-Base
+> Mind2Web (Cross-Website)
+> 010 20 30 40 50 0124
+> Legal@1 (%) Number of Shots
+> Qwen3-4B-Base Qwen3-8B-Base Gemma-4-E2B Ministral-3-14B-Base
+> Othello
+
+(b) 
+
+Figure 8: (a) ARC-AGI and Othello with Different Worlds across Shots. In ARC-AGI, the world is the rule that maps inputs to outputs. In Othello, the world is the board state. (b) Performance across Different Numbers of Shots on ARC-AGI-1&2, Mind2Web, and Othello. 
+
+task performance and is matched to the graph intervention in the number of activation dimensions perturbed and all other intervention settings. Figure 7 shows the difference in the degradation of the probability assigned to the correct token between the graph intervention and the random intervention. Larger values indicate that interven-ing on the world representation subspace causes greater degradation than the random intervention. Compared with the zero-shot setting, this difference increases when few-shot demonstrations are provided. Because representational repair can occur under both interventions, their difference cap-tures the additional degradation from intervening on the graph representation subspace. This result provides evidence that few-shot demonstrations elicit greater, though still partial, predictive use of world representations that encode graph information. See Appendix D.4 for the detailed results and Appendix E.1 for the results from the Llama-3, Gemma-4, and Ministral-3 models. 5.2 EXPERIMENTS ON PRACTICAL TASKS 
+
+Finally, we demonstrate that the effectiveness of few-shot demonstrations generalizes beyond graph tracking to ARC-AGI-1&2, web agent tasks, and Othello. The ARC-AGI-1 (Chollet, 2019) test set consists of 400 tasks and 419 test pairs, while ARC-AGI-2 (Chollet et al., 2025) consists of 120 tasks and 167 test pairs. Each task provides input–output pairs labeled as ”Examples.” These pairs constitute observations from which the model must infer the un-derlying rule and apply it to a new input. Here, the underlying rule corresponds to the world, which determines the input–output data generation process. For each query in the test set, we provide few-shot demonstrations from different rules (worlds), randomly sampled from the training set. Because the task is challenging for the models evaluated here, exact-match accuracy (pass@2) is sparse. We therefore use pixel-level accuracy@2 as a more sensitive measure of partial task performance. For the web agent task, we use the Mind2Web dataset (Deng et al., 2023), which contains 1373 action steps across 177 Cross-Website tasks. Step success rate is computed for each task and then averaged across tasks. Given a website’s HTML, an interaction trajectory, and a task instruction, the model must infer the appropriate action. Here, the states and structure of the website underlying the HTML correspond to the world. We randomly sample few-shot demonstrations from the train set and use the test set for queries. By using cross-website subset, we ensure that the websites (worlds) differ from those in the few-shot demonstrations. For the Othello task, following Li et al. (2023); Nanda et al. (2023), we represent a game as a sequence of between 8 and 52 moves over the 64 board squares, alternating between the two players. The model predicts the next move, which is consid-ered correct if legal, with each few-shot demonstration and query corresponding to a different board position (world). We evaluate on 300 samples using Qwen3, Gemma-4, and Ministral-3, selecting 8Preprint model sizes appropriate to the difficulty of each task. See Figure 8a for the prompt illustration and Appendix C.3 for the detailed setup. Figure 8b shows few-shot performance on four benchmarks, where performance improves as the number of demonstrations increases compared with zero-shot settings, despite demonstrations and queries being drawn from different worlds. This consistency across diverse tasks suggests that the benefit of few-shot demonstrations extends beyond graph tracking. 
+
+6 DISCUSSION 
+
+In this work, we investigated how LLMs construct an internal representation of the underlying world from observations and use it for prediction. While such predictive use is difficult in the zero-shot set-ting (Lepori et al., 2026), we showed that few-shot demonstrations containing observations from dif-ferent worlds enhance downstream predictions, both in graph tracking, ARC-AGI-1&2, web agent tasks, and Othello. In the graph tracking setting, our representation analyses and intervention experi-ments further provide evidence that increasing the number of shots relocates the world representation into a subspace from which it can be more effectively read out for prediction. 
+
+Intelligence as Skill-Acquisition. At a higher level, an important milestone of AI is efficient skill acquisition and adaptation (Legg & Hutter, 2007; Chollet, 2019; Goldfeder et al., 2026) rather than merely maximizing fixed benchmarks. This work offers a mechanistic account of how LLM agents use in-context observations to perform tasks in novel environments. 
+
+ICL in the Era of Agents. Previous research on ICL has focused on settings where ground truth input–output pairs are provided, without considering agentic interaction with an environment. This work instead studies a more agentic setting, which we call in-context world modeling, asking how demonstrations composed of observations, task instructions, and outcomes shape both LLM behav-ior and its internal mechanisms. 
+
+LLMs Know but Cannot Say. Prior work has shown that LLMs can internally represent truth even when it is not decodable (Kadavath et al., 2022; Burns et al., 2023; Azaria & Mitchell, 2023), and that interventions can make such information decodable (Li et al., 2024). In line with these findings, this work provides evidence for a gap between representation construction and its predictive use. LLMs can construct representations of world structure from observations yet fail to use them for downstream tasks, but few shot demonstrations can bridge this gap through prompting alone. 
+
+Task (Function) Vectors in ICL. We observe that increasing the number of shots shifts the centroid of the hidden states of the same observed token sequence, and we refer to the direction of this shift as the Shot Vector . While Task Vectors (Hendel et al., 2023) and Function Vectors (Todd et al., 2024) encode input–output mappings (Yang et al., 2025b), our Shot Vector instead shifts the representations of observed tokens that is associated with greater predictive use of the world representation. 
+
+Meta-In-Context-Learning. Meta-in-context learning (Coda-Forno et al., 2023) uses sequential linear regression and two-armed bandit tasks with task-specific demonstrations, showing that LLMs can infer priors over task distributions, such as linearity, from context. In contrast, our few-shot setting examines how LLMs infer how to use world representations for prediction from observations generated in different worlds under the same task. 
+
+Limitations and Future Work. In this work, we define an LLM’s world model in terms of its representation of the static structure of the world (Li et al., 2023; Nanda et al., 2023; Li et al., 2025). State transitions, temporal dynamics, and more general forms of causal dynamics (Andreas, 2024) are beyond the scope of this definition. We emphasize that performance gains from few-shot demonstrations are not solely due to increased predictive use of world representations, which is only one contributing factor. Further work could help disentangle these factors. Additionally, we studied the construction and predictive use of world representations by changing model activations through prompting. Future work should examine how RL and SFT affect these processes (Chu et al., 2025; Matsutani et al., 2026b), their relation to generalization, and how in-context tuning (Min et al., 2022a; Chen et al., 2022) differs from fine-tuning. Our demonstrations used ground-truth answers, but it is also interesting to study in-context reinforcement learning (ICRL) (Laskin et al., 2023; Monea et al., 2025; Song et al., 2026a), where environmental rewards are provided instead. 9Preprint AI USE STATEMENT 
+
+In this work, we used generative AI tools to design or provide feedback on research methodology or experiments, implement methods, and assist with translation. We did not use generative AI tools to help develop theoretical models or conceptual frameworks, provide critical ingredients for proving mathematical claims, propose or refine hypotheses, support qualitative and thematic data analysis, or interpret results. Generating synthetic datasets, formulating mathematical claims, assisting in the writing of proofs, and cleaning or reformatting datasets were not applicable to this work. Additionally, we used generative AI tools to create or modify scientific figures or images, suggest experimental parameters, create or edit software code, summarize or analyze existing literature, brainstorm research ideas, source or search for information, edit the paper to improve readability, identify relevant literature, and propose a title or keywords for the paper. We reviewed all AI-assisted work. AI-assisted method implementations and software code were manually reviewed and tested. Suggestions concerning research methodology, experiments, and experimental parameters were independently evaluated by the authors before being incorporated into the work. AI-assisted figures and images were checked for consistency with the underlying data and intended scientific content. Translations and language edits were reviewed by the authors to ensure that they preserved the intended meaning. We take responsibility for the final content of this work, including text, claims, or artifacts produced with the aid of generative AI. 
+
+REFERENCES 
+
+Ekin Aky¨ urek, Mehul Damani, Adam Zweiger, Linlu Qiu, Han Guo, Jyothish Pari, Yoon Kim, and Jacob Andreas. The surprising effectiveness of test-time training for few-shot learning. In Forty-second International Conference on Machine Learning , 2025. URL https://openreview .net/forum?id=asgBo3FNdg .Guillaume Alain and Yoshua Bengio. Understanding intermediate layers using linear classifier probes. arXiv preprint arXiv:1610.01644 , 2016. Jacob Andreas. Language models, world models, and human model-building, 2024. URL https: //lingo.csail.mit.edu/blog/world_models/ .Amos Azaria and Tom Mitchell. The internal state of an LLM knows when it’s lying. In Houda Bouamor, Juan Pino, and Kalika Bali (eds.), Findings of the Association for Compu-tational Linguistics: EMNLP 2023 , pp. 967–976, Singapore, December 2023. Association for Computational Linguistics. doi: 10.18653/v1/2023.findings- emnlp.68. URL https: //aclanthology.org/2023.findings-emnlp.68/ .Davide Baldelli, Ali Parviz, Amal Zouaq, and Sarath Chandar. Llms can’t play hangman: On the necessity of a private working memory for language agents. arXiv preprint arXiv:2601.06973 ,2026. Timothy E. J. Behrens, Timothy H. Muller, James C. R. Whittington, Shirley Mark, Alon B. Baram, Kimberly L. Stachenfeld, and Zeb Kurth-Nelson. What is a cognitive map? organizing knowledge for flexible behavior. Neuron , 100(2):490–509, 2018. doi: 10.1016/j.neuron.2018.10.002. Yonatan Belinkov. Probing classifiers: Promises, shortcomings, and advances. Computational Linguistics , 48(1):207–219, March 2022. doi: 10.1162/coli a 00422. URL https://aclant hology.org/2022.cl-1.7/ .Tom Brown, Benjamin Mann, Nick Ryder, Melanie Subbiah, Jared D Kaplan, Prafulla Dhariwal, Arvind Neelakantan, Pranav Shyam, Girish Sastry, Amanda Askell, Sandhini Agarwal, Ariel Herbert-Voss, Gretchen Krueger, Tom Henighan, Rewon Child, Aditya Ramesh, Daniel Ziegler, Jeffrey Wu, Clemens Winter, Chris Hesse, Mark Chen, Eric Sigler, Mateusz Litwin, Scott Gray, Benjamin Chess, Jack Clark, Christopher Berner, Sam McCandlish, Alec Radford, Ilya Sutskever, and Dario Amodei. Language models are few-shot learners. In H. Larochelle, M. Ranzato, R. Hadsell, M.F. Balcan, and H. Lin (eds.), Advances in Neural Information Processing Systems ,volume 33, pp. 1877–1901. Curran Associates, Inc., 2020. URL https://proceedings. neurips.cc/paper_files/paper/2020/file/1457c0d6bfcb4967418bfb8ac 142f64a-Paper.pdf .10 Preprint Jake Bruce, Michael D Dennis, Ashley Edwards, Jack Parker-Holder, Yuge Shi, Edward Hughes, Matthew Lai, Aditi Mavalankar, Richie Steigerwald, Chris Apps, Yusuf Aytar, Sarah Maria Elis-abeth Bechtle, Feryal Behbahani, Stephanie C.Y. Chan, Nicolas Heess, Lucy Gonzalez, Simon Osindero, Sherjil Ozair, Scott Reed, Jingwei Zhang, Konrad Zolna, Jeff Clune, Nando de Freitas, Satinder Singh, and Tim Rockt¨ aschel. Genie: Generative interactive environments. In Forty-first International Conference on Machine Learning , 2024. URL https://openreview.net/f orum?id=bJbSbJskOS .Collin Burns, Haotian Ye, Dan Klein, and Jacob Steinhardt. Discovering latent knowledge in lan-guage models without supervision. In The Eleventh International Conference on Learning Rep-resentations , 2023. URL https://openreview.net/forum?id=ETKGuby0hcs .Stephanie C.Y. Chan, Adam Santoro, Andrew Kyle Lampinen, Jane X Wang, Aaditya K Singh, Pierre Harvey Richemond, James McClelland, and Felix Hill. Data distributional properties drive emergent in-context learning in transformers. In Alice H. Oh, Alekh Agarwal, Danielle Belgrave, and Kyunghyun Cho (eds.), Advances in Neural Information Processing Systems , 2022. URL 
+
+https://openreview.net/forum?id=lHj-q9BSRjF .Aviral Chawla, Galen Hall, and Juniper L Lovato. Metaothello: A controlled study of multiple world models in transformers. In Forty-third International Conference on Machine Learning , 2026. Yanda Chen, Ruiqi Zhong, Sheng Zha, George Karypis, and He He. Meta-learning via language model in-context tuning. In Smaranda Muresan, Preslav Nakov, and Aline Villavicencio (eds.), 
+
+Proceedings of the 60th Annual Meeting of the Association for Computational Linguistics (Vol-ume 1: Long Papers) , pp. 719–730, Dublin, Ireland, May 2022. Association for Computational Linguistics. doi: 10.18653/v1/2022.acl-long.53. URL https://aclanthology.org/202 2.acl-long.53/ .Francois Chollet, Mike Knoop, Gregory Kamradt, Bryan Landers, and Henry Pinkard. Arc-agi-2: A new challenge for frontier ai reasoning systems. arXiv preprint arXiv:2505.11831 , 2025. Franc ¸ois Chollet. On the measure of intelligence. arXiv preprint arXiv:1911.01547 , 2019. Tianzhe Chu, Yuexiang Zhai, Jihan Yang, Shengbang Tong, Saining Xie, Dale Schuurmans, Quoc V Le, Sergey Levine, and Yi Ma. SFT memorizes, RL generalizes: A comparative study of founda-tion model post-training. In Forty-second International Conference on Machine Learning , 2025. URL https://openreview.net/forum?id=dYur3yabMj .Julian Coda-Forno, Marcel Binz, Zeynep Akata, Matthew Botvinick, Jane X Wang, and Eric Schulz. Meta-in-context learning in large language models. In Thirty-seventh Conference on Neural In-formation Processing Systems , 2023. URL https://openreview.net/forum?id=sx 0xpaO0za .Xiang Deng, Yu Gu, Boyuan Zheng, Shijie Chen, Samuel Stevens, Boshi Wang, Huan Sun, and Yu Su. Mind2web: Towards a generalist agent for the web. arXiv preprint arXiv:2306.06070 ,2023. Yanai Elazar, Shauli Ravfogel, Alon Jacovi, and Yoav Goldberg. Amnesic probing: Behavioral explanation with amnesic counterfactuals. arXiv preprint arXiv:2006.00995 , 2021. Joshua Engels, Eric J Michaud, Isaac Liao, Wes Gurnee, and Max Tegmark. Not all language model features are one-dimensionally linear. In The Thirteenth International Conference on Learning Representations , 2025. URL https://openreview.net/forum?id=d63a4AM4hb .Daniel Franzen, Jan Disselhoff, and David Hartmann. Product of experts with LLMs: Boosting performance on ARC is a matter of perspective. In Forty-second International Conference on Machine Learning , 2025. URL https://openreview.net/forum?id=dsBjxI6l8W .Shivam Garg, Dimitris Tsipras, Percy Liang, and Gregory Valiant. What can transformers learn in-context? a case study of simple function classes. In Alice H. Oh, Alekh Agarwal, Danielle Belgrave, and Kyunghyun Cho (eds.), Advances in Neural Information Processing Systems , 2022. URL https://openreview.net/forum?id=flNZJ2eOet .11 Preprint Jonas Geiping, Sean Michael McLeish, Neel Jain, John Kirchenbauer, Siddharth Singh, Brian R. Bartoldson, Bhavya Kailkhura, Abhinav Bhatele, and Tom Goldstein. Scaling up test-time com-pute with latent reasoning: A recurrent depth approach. In The Thirty-ninth Annual Conference on Neural Information Processing Systems , 2025. URL https://openreview.net/for um?id=S3GhJooWIC .Judah Goldfeder, Philippe Wyder, Yann LeCun, and Ravid Shwartz Ziv. AI must embrace special-ization via superhuman adaptable intelligence. arXiv preprint arXiv:2602.23643 , 2026. Aaron Grattafiori, Abhimanyu Dubey, Abhinav Jauhri, Abhinav Pandey, Abhishek Kadian, Ahmad Al-Dahle, Aiesha Letman, Akhil Mathur, Alan Schelten, Alex Vaughan, Amy Yang, Angela Fan, Anirudh Goyal, Anthony Hartshorn, Aobo Yang, Archi Mitra, Archie Sravankumar, Artem Ko-renev, Arthur Hinsvark, Arun Rao, Aston Zhang, Aurelien Rodriguez, Austen Gregerson, Ava Spataru, Baptiste Roziere, Bethany Biron, Binh Tang, Bobbie Chern, Charlotte Caucheteux, Chaya Nayak, Chloe Bi, Chris Marra, Chris McConnell, Christian Keller, Christophe Touret, Chunyang Wu, Corinne Wong, Cristian Canton Ferrer, Cyrus Nikolaidis, Damien Allonsius, Daniel Song, Danielle Pintz, Danny Livshits, Danny Wyatt, David Esiobu, Dhruv Choudhary, Dhruv Mahajan, Diego Garcia-Olano, Diego Perino, Dieuwke Hupkes, Egor Lakomkin, Ehab AlBadawy, Elina Lobanova, Emily Dinan, Eric Michael Smith, Filip Radenovic, Francisco Guzm´ an, Frank Zhang, Gabriel Synnaeve, Gabrielle Lee, Georgia Lewis Anderson, Govind That-tai, Graeme Nail, Gregoire Mialon, Guan Pang, Guillem Cucurell, Hailey Nguyen, Hannah Kore-vaar, Hu Xu, Hugo Touvron, Iliyan Zarov, Imanol Arrieta Ibarra, Isabel Kloumann, Ishan Misra, Ivan Evtimov, Jack Zhang, Jade Copet, Jaewon Lee, Jan Geffert, Jana Vranes, Jason Park, Jay Ma-hadeokar, Jeet Shah, Jelmer van der Linde, Jennifer Billock, Jenny Hong, Jenya Lee, Jeremy Fu, Jianfeng Chi, Jianyu Huang, Jiawen Liu, Jie Wang, Jiecao Yu, Joanna Bitton, Joe Spisak, Jong-soo Park, Joseph Rocca, Joshua Johnstun, Joshua Saxe, Junteng Jia, Kalyan Vasuden Alwala, Karthik Prasad, Kartikeya Upasani, Kate Plawiak, Ke Li, Kenneth Heafield, Kevin Stone, Khalid El-Arini, Krithika Iyer, Kshitiz Malik, Kuenley Chiu, Kunal Bhalla, Kushal Lakhotia, Lauren Rantala-Yeary, Laurens van der Maaten, Lawrence Chen, Liang Tan, Liz Jenkins, Louis Martin, Lovish Madaan, Lubo Malo, Lukas Blecher, Lukas Landzaat, Luke de Oliveira, Madeline Muzzi, Mahesh Pasupuleti, Mannat Singh, Manohar Paluri, Marcin Kardas, Maria Tsimpoukelli, Mathew Oldham, Mathieu Rita, Maya Pavlova, Melanie Kambadur, Mike Lewis, Min Si, Mitesh Ku-mar Singh, Mona Hassan, Naman Goyal, Narjes Torabi, Nikolay Bashlykov, Nikolay Bogoy-chev, Niladri Chatterji, Ning Zhang, Olivier Duchenne, Onur C ¸ elebi, Patrick Alrassy, Pengchuan Zhang, Pengwei Li, Petar Vasic, Peter Weng, Prajjwal Bhargava, Pratik Dubal, Praveen Krishnan, Punit Singh Koura, Puxin Xu, Qing He, Qingxiao Dong, Ragavan Srinivasan, Raj Ganapathy, Ra-mon Calderer, Ricardo Silveira Cabral, Robert Stojnic, Roberta Raileanu, Rohan Maheswari, Ro-hit Girdhar, Rohit Patel, Romain Sauvestre, Ronnie Polidoro, Roshan Sumbaly, Ross Taylor, Ruan Silva, Rui Hou, Rui Wang, Saghar Hosseini, Sahana Chennabasappa, Sanjay Singh, Sean Bell, Seohyun Sonia Kim, Sergey Edunov, Shaoliang Nie, Sharan Narang, Sharath Raparthy, Sheng Shen, Shengye Wan, Shruti Bhosale, Shun Zhang, Simon Vandenhende, Soumya Batra, Spencer Whitman, Sten Sootla, Stephane Collot, Suchin Gururangan, Sydney Borodinsky, Tamar Herman, Tara Fowler, Tarek Sheasha, Thomas Georgiou, Thomas Scialom, Tobias Speckbacher, Todor Mi-haylov, Tong Xiao, Ujjwal Karn, Vedanuj Goswami, Vibhor Gupta, Vignesh Ramanathan, Viktor Kerkez, Vincent Gonguet, Virginie Do, Vish Vogeti, V´ ıtor Albiero, Vladan Petrovic, Weiwei Chu, Wenhan Xiong, Wenyin Fu, Whitney Meers, Xavier Martinet, Xiaodong Wang, Xiaofang Wang, Xiaoqing Ellen Tan, Xide Xia, Xinfeng Xie, Xuchao Jia, Xuewei Wang, Yaelle Gold-schlag, Yashesh Gaur, Yasmine Babaei, Yi Wen, Yiwen Song, Yuchen Zhang, Yue Li, Yuning Mao, Zacharie Delpierre Coudert, Zheng Yan, Zhengxing Chen, Zoe Papakipos, Aaditya Singh, Aayushi Srivastava, Abha Jain, Adam Kelsey, Adam Shajnfeld, Adithya Gangidi, Adolfo Victoria, Ahuva Goldstand, Ajay Menon, Ajay Sharma, Alex Boesenberg, Alexei Baevski, Allie Feinstein, Amanda Kallet, Amit Sangani, Amos Teo, Anam Yunus, Andrei Lupu, Andres Alvarado, An-drew Caples, Andrew Gu, Andrew Ho, Andrew Poulton, Andrew Ryan, Ankit Ramchandani, An-nie Dong, Annie Franco, Anuj Goyal, Aparajita Saraf, Arkabandhu Chowdhury, Ashley Gabriel, Ashwin Bharambe, Assaf Eisenman, Azadeh Yazdan, Beau James, Ben Maurer, Benjamin Leon-hardi, Bernie Huang, Beth Loyd, Beto De Paola, Bhargavi Paranjape, Bing Liu, Bo Wu, Boyu Ni, Braden Hancock, Bram Wasti, Brandon Spence, Brani Stojkovic, Brian Gamido, Britt Mon-talvo, Carl Parker, Carly Burton, Catalina Mejia, Ce Liu, Changhan Wang, Changkyu Kim, Chao Zhou, Chester Hu, Ching-Hsiang Chu, Chris Cai, Chris Tindal, Christoph Feichtenhofer, Cynthia Gao, Damon Civin, Dana Beaty, Daniel Kreymer, Daniel Li, David Adkins, David Xu, Davide 12 Preprint Testuggine, Delia David, Devi Parikh, Diana Liskovich, Didem Foss, Dingkang Wang, Duc Le, Dustin Holland, Edward Dowling, Eissa Jamil, Elaine Montgomery, Eleonora Presani, Emily Hahn, Emily Wood, Eric-Tuan Le, Erik Brinkman, Esteban Arcaute, Evan Dunbar, Evan Smoth-ers, Fei Sun, Felix Kreuk, Feng Tian, Filippos Kokkinos, Firat Ozgenel, Francesco Caggioni, Frank Kanayet, Frank Seide, Gabriela Medina Florez, Gabriella Schwarz, Gada Badeer, Georgia Swee, Gil Halpern, Grant Herman, Grigory Sizov, Guangyi, Zhang, Guna Lakshminarayanan, Hakan Inan, Hamid Shojanazeri, Han Zou, Hannah Wang, Hanwen Zha, Haroun Habeeb, Harri-son Rudolph, Helen Suk, Henry Aspegren, Hunter Goldman, Hongyuan Zhan, Ibrahim Damlaj, Igor Molybog, Igor Tufanov, Ilias Leontiadis, Irina-Elena Veliche, Itai Gat, Jake Weissman, James Geboski, James Kohli, Janice Lam, Japhet Asher, Jean-Baptiste Gaya, Jeff Marcus, Jeff Tang, Jen-nifer Chan, Jenny Zhen, Jeremy Reizenstein, Jeremy Teboul, Jessica Zhong, Jian Jin, Jingyi Yang, Joe Cummings, Jon Carvill, Jon Shepard, Jonathan McPhie, Jonathan Torres, Josh Ginsburg, Jun-jie Wang, Kai Wu, Kam Hou U, Karan Saxena, Kartikay Khandelwal, Katayoun Zand, Kathy Matosich, Kaushik Veeraraghavan, Kelly Michelena, Keqian Li, Kiran Jagadeesh, Kun Huang, Kunal Chawla, Kyle Huang, Lailin Chen, Lakshya Garg, Lavender A, Leandro Silva, Lee Bell, Lei Zhang, Liangpeng Guo, Licheng Yu, Liron Moshkovich, Luca Wehrstedt, Madian Khabsa, Manav Avalani, Manish Bhatt, Martynas Mankus, Matan Hasson, Matthew Lennie, Matthias Reso, Maxim Groshev, Maxim Naumov, Maya Lathi, Meghan Keneally, Miao Liu, Michael L. Seltzer, Michal Valko, Michelle Restrepo, Mihir Patel, Mik Vyatskov, Mikayel Samvelyan, Mike Clark, Mike Macey, Mike Wang, Miquel Jubert Hermoso, Mo Metanat, Mohammad Rastegari, Munish Bansal, Nandhini Santhanam, Natascha Parks, Natasha White, Navyata Bawa, Nayan Singhal, Nick Egebo, Nicolas Usunier, Nikhil Mehta, Nikolay Pavlovich Laptev, Ning Dong, Norman Cheng, Oleg Chernoguz, Olivia Hart, Omkar Salpekar, Ozlem Kalinli, Parkin Kent, Parth Parekh, Paul Saab, Pavan Balaji, Pedro Rittner, Philip Bontrager, Pierre Roux, Piotr Dollar, Polina Zvyagina, Prashant Ratanchandani, Pritish Yuvraj, Qian Liang, Rachad Alao, Rachel Ro-driguez, Rafi Ayub, Raghotham Murthy, Raghu Nayani, Rahul Mitra, Rangaprabhu Parthasarathy, Raymond Li, Rebekkah Hogan, Robin Battey, Rocky Wang, Russ Howes, Ruty Rinott, Sachin Mehta, Sachin Siby, Sai Jayesh Bondu, Samyak Datta, Sara Chugh, Sara Hunt, Sargun Dhillon, Sasha Sidorov, Satadru Pan, Saurabh Mahajan, Saurabh Verma, Seiji Yamamoto, Sharadh Ra-maswamy, Shaun Lindsay, Shaun Lindsay, Sheng Feng, Shenghao Lin, Shengxin Cindy Zha, Shishir Patil, Shiva Shankar, Shuqiang Zhang, Shuqiang Zhang, Sinong Wang, Sneha Agarwal, Soji Sajuyigbe, Soumith Chintala, Stephanie Max, Stephen Chen, Steve Kehoe, Steve Satter-field, Sudarshan Govindaprasad, Sumit Gupta, Summer Deng, Sungmin Cho, Sunny Virk, Suraj Subramanian, Sy Choudhury, Sydney Goldman, Tal Remez, Tamar Glaser, Tamara Best, Thilo Koehler, Thomas Robinson, Tianhe Li, Tianjun Zhang, Tim Matthews, Timothy Chou, Tzook Shaked, Varun Vontimitta, Victoria Ajayi, Victoria Montanez, Vijai Mohan, Vinay Satish Ku-mar, Vishal Mangla, Vlad Ionescu, Vlad Poenaru, Vlad Tiberiu Mihailescu, Vladimir Ivanov, Wei Li, Wenchen Wang, Wenwen Jiang, Wes Bouaziz, Will Constable, Xiaocheng Tang, Xiao-jian Wu, Xiaolan Wang, Xilun Wu, Xinbo Gao, Yaniv Kleinman, Yanjun Chen, Ye Hu, Ye Jia, Ye Qi, Yenda Li, Yilin Zhang, Ying Zhang, Yossi Adi, Youngjin Nam, Yu, Wang, Yu Zhao, Yuchen Hao, Yundi Qian, Yunlu Li, Yuzi He, Zach Rait, Zachary DeVito, Zef Rosnbrick, Zhao-duo Wen, Zhenyu Yang, Zhiwei Zhao, and Zhiyu Ma. The Llama 3 herd of models. arXiv preprint arXiv:2407.21783 , 2024. Fabian Gr¨ oger, Shuo Wen, and Maria Brbic. Revisiting the platonic representation hypothesis: An aristotelian view. In Forty-third International Conference on Machine Learning , 2026. URL 
+
+https://openreview.net/forum?id=uz0gAAYydl .Wes Gurnee and Max Tegmark. Language models represent space and time. In B. Kim, Y. Yue, S. Chaudhuri, K. Fragkiadaki, M. Khan, and Y. Sun (eds.), International Conference on Learning Representations , volume 2024, pp. 2483–2503, 2024. URL https://proceedings.iclr .cc/paper_files/paper/2024/file/0a6059857ae5c82ea9726ee9282a7145 -Paper-Conference.pdf .David Ha and J¨ urgen Schmidhuber. World models. arXiv preprint arXiv:1803.10122 , 2018. Seungwook Han, Jinyeop Song, Jeff Gore, and Pulkit Agrawal. Emergence and effectiveness of task vectors in in-context learning: An encoder decoder perspective. In Forty-second International Conference on Machine Learning , 2025. URL https://openreview.net/forum?id= 0ysC6VS0y3 .13 Preprint Roee Hendel, Mor Geva, and Amir Globerson. In-context learning creates task vectors. In Houda Bouamor, Juan Pino, and Kalika Bali (eds.), Findings of the Association for Com-putational Linguistics: EMNLP 2023 , pp. 9318–9333, Singapore, December 2023. Associa-tion for Computational Linguistics. doi: 10.18653/v1/2023.findings- emnlp.624. URL 
+
+https://aclanthology.org/2023.findings-emnlp.624/ .Keya Hu, Ali Cy, Linlu Qiu, Xiaoman Delores Ding, Runqian Wang, Yeyin Eva Zhu, Jacob Andreas, and Kaiming He. ARC is a vision problem! arXiv preprint arXiv:2511.14761 , 2025. Tianze Hua, Tian Yun, and Ellie Pavlick. mOthello: When do cross-lingual representation alignment and cross-lingual transfer emerge in multilingual models? In Kevin Duh, Helena Gomez, and Steven Bethard (eds.), Findings of the Association for Computational Linguistics: NAACL 2024 ,pp. 1585–1598, Mexico City, Mexico, June 2024. Association for Computational Linguistics. doi: 10.18653/v1/2024.findings-naacl.103. URL https://aclanthology.org/2024.find ings-naacl.103/ .Jonas H¨ ubotter, Frederike L¨ ubeck, Lejs Deen Behric, Anton Baumann, Marco Bagatella, Daniel Marta, Ido Hakimi, Idan Shenfeld, Thomas Kleine Buening, Carlos Guestrin, and Andreas Krause. Reinforcement learning via self-distillation. In Forty-third International Conference on Machine Learning , 2026. URL https://openreview.net/forum?id=QkfkxyRizZ .Michael Ivanitskiy, Alexander F Spies, Tilman R¨ auker, Guillaume Corlouer, Christopher Mathwin, Lucia Quirke, Can Rager, Rusheb Shah, Dan Valentine, Cecilia Diniz Behn, Katsumi Inoue, and Samy Wu Fung. Linearly structured world representations in maze-solving transformers. In UniReps: the First Workshop on Unifying Representations in Neural Models , 2023. URL 
+
+https://openreview.net/forum?id=pZakRK1QHU .Samyak Jain, Robert Kirk, Ekdeep Singh Lubana, Robert P. Dick, Hidenori Tanaka, Tim Rockt¨ aschel, Edward Grefenstette, and David Krueger. Mechanistically analyzing the effects of fine-tuning on procedurally defined tasks. In The Twelfth International Conference on Learning Representations , 2024. URL https://openreview.net/forum?id=A0HKeKl4Nl .Gangwei Jiang, Caigao JIANG, Zhaoyi Li, Siqiao Xue, JUN ZHOU, Linqi Song, Defu Lian, and Ying Wei. Unlocking the power of function vectors for characterizing and mitigating catastrophic forgetting in continual instruction tuning. In The Thirteenth International Conference on Learning Representations , 2025. URL https://openreview.net/forum?id=gc8QAQfXv6 .Carlos E Jimenez, John Yang, Alexander Wettig, Shunyu Yao, Kexin Pei, Ofir Press, and Karthik R Narasimhan. SWE-bench: Can language models resolve real-world github issues? In The Twelfth International Conference on Learning Representations , 2024. URL https://openreview .net/forum?id=VTF8yNQM66 .Abhinav Joshi, Vaibhav Sharma, and Ashutosh Modi. CheckersGPT: Learning world models through language modeling. In Xiyan Fu and Eve Fleisig (eds.), Proceedings of the 62nd An-nual Meeting of the Association for Computational Linguistics (Volume 4: Student Research Workshop) , pp. 414–426, Bangkok, Thailand, August 2024. Association for Computational Lin-guistics. ISBN 979-8-89176-097-4. doi: 10.18653/v1/2024.acl- srw.48. URL https: //aclanthology.org/2024.acl-srw.48/ .Saurav Kadavath, Tom Conerly, Amanda Askell, Tom Henighan, Dawn Drain, Ethan Perez, Nicholas Schiefer, Zac Hatfield-Dodds, Nova DasSarma, Eli Tran-Johnson, Scott Johnston, Sheer El-Showk, Andy Jones, Nelson Elhage, Tristan Hume, Anna Chen, Yuntao Bai, Sam Bow-man, Stanislav Fort, Deep Ganguli, Danny Hernandez, Josh Jacobson, Jackson Kernion, Shauna Kravec, Liane Lovitt, Kamal Ndousse, Catherine Olsson, Sam Ringer, Dario Amodei, Tom Brown, Jack Clark, Nicholas Joseph, Ben Mann, Sam McCandlish, Chris Olah, and Jared Ka-plan. Language models (mostly) know what they know. arXiv preprint arXiv:2207.05221 , 2022. Adam Karvonen. Emergent world models and latent variable estimation in chess-playing language models. arXiv preprint arXiv:2403.15498 , 2024. 14 Preprint Ryotaro Kawata, Kohsei Matsutani, Yuri Kinoshita, Naoki Nishikawa, and Taiji Suzuki. Mixture of experts provably detect and learn the latent cluster structure in gradient-based learning. In Forty-second International Conference on Machine Learning , 2025. URL https://openreview .net/forum?id=2xmOEbpYv1 .Seijin Kobayashi, Simon Schug, Yassir Akram, Florian Redhardt, Johannes von Oswald, Razvan Pascanu, Guillaume Lajoie, and Jo˜ ao Sacramento. When can transformers compositionally gen-eralize in-context? arXiv preprint arXiv:2407.12275 , 2024. Takeshi Kojima, Shixiang Shane Gu, Machel Reid, Yutaka Matsuo, and Yusuke Iwasawa. Large language models are zero-shot reasoners. In ICML 2022 Workshop on Knowledge Retrieval and Language Models , 2022. URL https://openreview.net/forum?id=6p3AuaHAFiN .Michael Laskin, Luyu Wang, Junhyuk Oh, Emilio Parisotto, Stephen Spencer, Richie Steigerwald, DJ Strouse, Steven Stenberg Hansen, Angelos Filos, Ethan Brooks, maxime gazeau, Himanshu Sahni, Satinder Singh, and Volodymyr Mnih. In-context reinforcement learning with algorithm distillation. In The Eleventh International Conference on Learning Representations , 2023. URL 
+
+https://openreview.net/forum?id=hy0a5MMPUv .Yann LeCun. A path towards autonomous machine intelligence. OpenReview , 2022. URL https: //openreview.net/forum?id=BZ5a1r-kVsf . Version 0.9.2, 2022-06-27. Shane Legg and Marcus Hutter. Universal intelligence: A definition of machine intelligence. Minds Mach. , 17(4):391–444, December 2007. ISSN 0924-6495. Michael A. Lepori, Michael Curtis Mozer, and Asma Ghandeharioun. Racing thoughts: Ex-plaining contextualization errors in large language models. In Luis Chiruzzo, Alan Ritter, and Lu Wang (eds.), Proceedings of the 2025 Conference of the Nations of the Americas Chapter of the Association for Computational Linguistics: Human Language Technologies (Volume 1: Long Papers) , pp. 3020–3036, Albuquerque, New Mexico, April 2025. Association for Compu-tational Linguistics. ISBN 979-8-89176-189-6. doi: 10.18653/v1/2025.naacl-long.155. URL 
+
+https://aclanthology.org/2025.naacl-long.155/ .Michael A. Lepori, Tal Linzen, Ann Yuan, and Katja Filippova. Language models struggle to use representations learned in-context. In Maria Liakata, Viviane P. Moreira, Jiajun Zhang, and David Jurgens (eds.), Proceedings of the 64th Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers) , pp. 14841–14857, San Diego, California, United States, July 2026. Association for Computational Linguistics. ISBN 979-8-89176-390-6. doi: 10.18653 /v1/2026.acl-long.676. URL https://aclanthology.org/2026.acl-long.676/ .Kenneth Li, Aspen K Hopkins, David Bau, Fernanda Vi´ egas, Hanspeter Pfister, and Martin Wat-tenberg. Emergent world representations: Exploring a sequence model trained on a synthetic task. In The Eleventh International Conference on Learning Representations , 2023. URL 
+
+https://openreview.net/forum?id=DeG07_TcZvT .Kenneth Li, Oam Patel, Fernanda Vi´ egas, Hanspeter Pfister, and Martin Wattenberg. Inference-time intervention: Eliciting truthful answers from a language model. arXiv preprint arXiv:2306.03341 ,2024. Kenneth Li, Fernanda Vi´ egas, and Martin Wattenberg. What does it mean for a neural network to learn a ”world model”? arXiv preprint arXiv:2507.21513 , 2025. Xiaofeng Lin, Sirou Zhu, Yilei Chen, Mingyu Chen, Hejian Sang, Ioannis Paschalidis, Zhipeng Wang, Aldo Pacchiano, and Xuezhou Zhang. Scaling in-context online learning capability of llms via cross-episode meta-rl. arXiv preprint arXiv:2602.04089 , 2026. Alexander H. Liu, Kartik Khandelwal, Sandeep Subramanian, Victor Jouault, Abhinav Rastogi, Adrien Sad´ e, Alan Jeffares, Albert Jiang, Alexandre Cahill, Alexandre Gavaudan, Alexandre Sablayrolles, Am´ elie H´ eliou, Amos You, Andy Ehrenberg, Andy Lo, Anton Eliseev, Anto-nia Calvi, Avinash Sooriyarachchi, Baptiste Bout, Baptiste Rozi` ere, Baudouin De Monicault, Cl´ emence Lanfranchi, Corentin Barreau, Cyprien Courtot, Daniele Grattarola, Darius Dabert, Diego de las Casas, Elliot Chane-Sane, Faruk Ahmed, Gabrielle Berrada, Ga¨ etan Ecrepont, 15 Preprint Gauthier Guinet, Georgii Novikov, Guillaume Kunsch, Guillaume Lample, Guillaume Martin, Gunshi Gupta, Jan Ludziejewski, Jason Rute, Joachim Studnia, Jonas Amar, Jos´ ephine Delas, Josselin Somerville Roberts, Karmesh Yadav, Khyathi Chandu, Kush Jain, Laurence Aitchi-son, Laurent Fainsin, L´ eonard Blier, Lingxiao Zhao, Louis Martin, Lucile Saulnier, Luyu Gao, Maarten Buyl, Margaret Jennings, Marie Pellat, Mark Prins, Mathieu Poir´ ee, Mathilde Guillau-min, Matthieu Dinot, Matthieu Futeral, Maxime Darrin, Maximilian Augustin, Mia Chiquier, Michel Schimpf, Nathan Grinsztajn, Neha Gupta, Nikhil Raghuraman, Olivier Bousquet, Olivier Duchenne, Patricia Wang, Patrick von Platen, Paul Jacob, Paul Wambergue, Paula Kurylowicz, Pavankumar Reddy Muddireddy, Philom` ene Chagniot, Pierre Stock, Pravesh Agrawal, Quentin Torroba, Romain Sauvestre, Roman Soletskyi, Rupert Menneer, Sagar Vaze, Samuel Barry, San-chit Gandhi, Siddhant Waghjale, Siddharth Gandhi, Soham Ghosh, Srijan Mishra, Sumukh Aithal, Szymon Antoniak, Teven Le Scao, Th´ eo Cachet, Theo Simon Sorg, Thibaut Lavril, Thiziri Nait Saada, Thomas Chabal, Thomas Foubert, Thomas Robert, Thomas Wang, Tim Lawson, Tom Be-wley, Tom Bewley, Tom Edwards, Umar Jamil, Umberto Tomasini, Valeriia Nemychnikova, Van Phung, Vincent Maladi` ere, Virgile Richard, Wassim Bouaziz, Wen-Ding Li, William Marshall, Xinghui Li, Xinyu Yang, Yassine El Ouahidi, Yihan Wang, Yunhao Tang, and Zaccharie Ramzi. Ministral 3. arXiv preprint arXiv:2601.08584 , 2026a. Binnan Liu, Yechi Ma, Tian Xie, and Wei Hua. TraceViT: Grounded trace supervision for visual abstract reasoning. arXiv preprint arXiv:2607.29586 , 2026b. Kohsei Matsutani, Gouki Minegishi, Takeshi Kojima, Yusuke Iwasawa, and Yutaka Matsuo. Zipping the thought: When and how compressed reasoning data works in llm post-training. arXiv preprint arXiv:2605.28008 , 2026a. Kohsei Matsutani, Shota Takashiro, Gouki Minegishi, Takeshi Kojima, Yusuke Iwasawa, and Yutaka Matsuo. RL squeezes, SFT expands: A comparative study of reasoning LLMs. In The Fourteenth International Conference on Learning Representations , 2026b. URL https://openreview .net/forum?id=N2lMNqJsBw .Thomas McGrath, Matthew Rahtz, Janos Kramar, Vladimir Mikulik, and Shane Legg. The hydra effect: Emergent self-repair in language model computations. arXiv preprint arXiv:2307.15771 ,2023. Sewon Min, Mike Lewis, Luke Zettlemoyer, and Hannaneh Hajishirzi. MetaICL: Learning to learn in context. In Marine Carpuat, Marie-Catherine de Marneffe, and Ivan Vladimir Meza Ruiz (eds.), Proceedings of the 2022 Conference of the North American Chapter of the Association for Computational Linguistics: Human Language Technologies , pp. 2791–2809, Seattle, United States, July 2022a. Association for Computational Linguistics. doi: 10.18653/v1/2022.naacl-mai n.201. URL https://aclanthology.org/2022.naacl-main.201/ .Sewon Min, Xinxi Lyu, Ari Holtzman, Mikel Artetxe, Mike Lewis, Hannaneh Hajishirzi, and Luke Zettlemoyer. Rethinking the role of demonstrations: What makes in-context learning work? In Yoav Goldberg, Zornitsa Kozareva, and Yue Zhang (eds.), Proceedings of the 2022 Conference on Empirical Methods in Natural Language Processing , pp. 11048–11064, Abu Dhabi, United Arab Emirates, December 2022b. Association for Computational Linguistics. doi: 10.18653/v1/2022 .emnlp-main.759. URL https://aclanthology.org/2022.emnlp-main.759/ .Sarthak Mittal, Yoshua Bengio, Nikolay Malkin, and Guillaume Lajoie. In-context parametric in-ference: Point or distribution estimators? arXiv preprint arXiv:2502.11617 , 2025a. Sarthak Mittal, Eric Elmoznino, Leo Gagnon, Sangnie Bhardwaj, Guillaume Lajoie, and Dhanya Sridhar. Does learning the right latent variables necessarily improve in-context learning? In 
+
+Forty-second International Conference on Machine Learning , 2025b. URL https://openre view.net/forum?id=tuYmhlu62K .Giovanni Monea, Antoine Bosselut, Kiant´ e Brantley, and Yoav Artzi. LLMs are in-context bandit reinforcement learners. In Second Conference on Language Modeling , 2025. URL https: //openreview.net/forum?id=c0RsezY2D1 .Michael C. Mozer, Shoaib Ahmed Siddiqui, and Rosanne Liu. The topological trouble with trans-formers. arXiv preprint arXiv:2604.17121 , 2026. 16 Preprint Neel Nanda, Andrew Lee, and Martin Wattenberg. Emergent linear representations in world models of self-supervised sequence models. In Yonatan Belinkov, Sophie Hao, Jaap Jumelet, Najoung Kim, Arya McCarthy, and Hosein Mohebbi (eds.), Proceedings of the 6th BlackboxNLP Work-shop: Analyzing and Interpreting Neural Networks for NLP , pp. 16–30, Singapore, December 2023. Association for Computational Linguistics. doi: 10.18653/v1/2023.blackboxnlp-1.2. URL 
+
+https://aclanthology.org/2023.blackboxnlp-1.2/ .Catherine Olsson, Nelson Elhage, Neel Nanda, Nicholas Joseph, Nova DasSarma, Tom Henighan, Ben Mann, Amanda Askell, Yuntao Bai, Anna Chen, Tom Conerly, Dawn Drain, Deep Ganguli, Zac Hatfield-Dodds, Danny Hernandez, Scott Johnston, Andy Jones, Jackson Kernion, Liane Lovitt, Kamal Ndousse, Dario Amodei, Tom Brown, Jack Clark, Jared Kaplan, Sam McCandlish, and Chris Olah. In-context learning and induction heads. arXiv preprint arXiv:2209.11895 , 2022. Core Francisco Park. Convergent world representations and divergent tasks. In Forty-third Interna-tional Conference on Machine Learning , 2026. URL https://openreview.net/forum ?id=Z4PjCncxzz .Core Francisco Park, Andrew Lee, Ekdeep Singh Lubana, Yongyi Yang, Maya Okawa, Kento Nishi, Martin Wattenberg, and Hidenori Tanaka. ICLR: In-context learning of representations. In The Thirteenth International Conference on Learning Representations , 2025. URL https://open review.net/forum?id=pXlmOmlHJZ .Alec Radford, Rafal Jozefowicz, and Ilya Sutskever. Learning to generate reviews and discovering sentiment. arXiv preprint arXiv:1704.01444 , 2017. Shauli Ravfogel, Yanai Elazar, Hila Gonen, Michael Twiton, and Yoav Goldberg. Null it out: Guard-ing protected attributes by iterative nullspace projection. In Dan Jurafsky, Joyce Chai, Natalie Schluter, and Joel Tetreault (eds.), Proceedings of the 58th Annual Meeting of the Association for Computational Linguistics , pp. 7237–7256, Online, July 2020. Association for Computational Linguistics. doi: 10.18653/v1/2020.acl-main.647. URL https://aclanthology.org/2 020.acl-main.647/ .Raanan Yehezkel Rohekar, Yaniv Gurwicz, Sungduk Yu, Estelle Aflalo, and Vasudev Lal. A causal world model underlying next token prediction: Exploring GPT in a controlled environment. In 
+
+Forty-second International Conference on Machine Learning , 2025. URL https://openre view.net/forum?id=qA3xHJzF6B .Adam Shai, Paul M. Riechers, Lucas Teixeira, Alexander Gietelink Oldenziel, and Sarah Marzen. Transformers represent belief state geometry in their residual stream. In The Thirty-eighth Annual Conference on Neural Information Processing Systems , 2024. URL https://openreview .net/forum?id=YIB7REL8UC .Idan Shenfeld, Mehul Damani, Jonas H¨ ubotter, and Pulkit Agrawal. Self-distillation enables con-tinual learning. In Forty-third International Conference on Machine Learning , 2026. URL 
+
+https://openreview.net/forum?id=qA6FgH0nnZ .Taiwei Shi, Sihao Chen, Bowen Jiang, Linxin Song, Longqi Yang, and Jieyu Zhao. Experiential reinforcement learning. arXiv preprint arXiv:2602.13949 , 2026. Wen-Jie Shu, Xuerui Qiu, Rui-Jie Zhu, Harold Haodong Chen, Yexin Liu, and Harry Yang. LoopViT: Scaling visual arc with looped transformers. arXiv preprint arXiv:2602.02156 , 2026. David Silver, Thomas Hubert, Julian Schrittwieser, Ioannis Antonoglou, Matthew Lai, Arthur Guez, Marc Lanctot, Laurent Sifre, Dharshan Kumaran, Thore Graepel, Timothy Lillicrap, Karen Si-monyan, and Demis Hassabis. A general reinforcement learning algorithm that masters chess, shogi, and go through self-play. Science , 362(6419):1140–1144, 2018. doi: 10.1126/science.aa r6404. URL https://www.science.org/doi/abs/10.1126/science.aar6404 .Kefan Song, Amir Moeini, Peng Wang, Lei Gong, Rohan Chandra, Shangtong Zhang, and Yanjun Qi. Reward is enough: LLMs are in-context reinforcement learners. In The Fourteenth Interna-tional Conference on Learning Representations , 2026a. URL https://openreview.net /forum?id=keCXNHOe4W .17 Preprint Yuda Song, Lili Chen, Fahim Tajwar, R´ emi Munos, Deepak Pathak, Drew Bagnell, Aarti Singh, and Andrea Zanette. Expanding the capabilities of reinforcement learning via text feedback. In 
+
+Forty-third International Conference on Machine Learning , 2026b. URL https://openre view.net/forum?id=3voRLZLkwU .Gemma Team, Sherif El Abd, Vaibhav Aggarwal, Robin Algayres, Alek Andreev, Olivier Bachem, Ian Ballantyne, Cormac Brick, Victor C˘ arbune, Michelle Casbon, Mayank Chaturvedi, Aditya Chawla, Victor Cotruta, Alice Coucke, Phil Culliton, Robert Dadashi, Lucas Dixon, Mohamed Elhawaty, Utku Evci, Cl´ ement Farabet, Johan Ferret, Filippo Galgani, Sertan Girgin, Jean-Bastien Grill, Maarten Grootendorst, Jiaxian Guo, Cassidy Hardin, Yanzhang He, Steven M. Hernandez, Omri Homburger, L´ eonard Hussenot, Juyeong Ji, Armand Joulin, Aishwarya Kamath, Parnian Kassraie, Olivier Lacombe, Preethi Lahoti, Ga¨ el Liu, Gus Martins, Luciano Martins, Tatiana Matejovicova, Ramona Merhej, Nikola Momchev, Sneha Mondal, Ryan Mullins, Sindhu Raghu-ram Panyam, Shreya Pathak, Sarah Perrin, Andr´ e Susano Pinto, Etienne Pot, Ang´ eline Pouget, Alexandre Ram´ e, Sabela Ramos, Douglas Reid, David Rim, Morgane Rivi` ere, Karsten Roth, Louis Rouillard, Omar Sanseviero, Pier Giuseppe Sessa, Shane Settle, Danila Sinopalnikov, Sara Smoot, Piotr Stanczyk, Andreas Steiner, Lawrence Stewart, Ilya Tolstikhin, Michael Tschannen, Anton Tsitsulin, Nino Vieillard, Renjie Wu, Pingmei Xu, Haichuan Yang, Edouard Yvinec, Biao Zhang, Li Zhang, Joe Zou, Nicolas Aagnes, Abdelrahman Abdelhamed, Jakub Adamek, Shivani Agrawal, Shubham Agrawal, Ibrahim Alabdulmohsin, Jean Baptiste Alayrac, Uri Alon, Chan-dramouli Amarnath, Ankesh Anand, Chrysovalantis Anastasiou, Setareh Ariafar, Franc ¸ois-Xavier Aubet, Kyriakos Axiotis, Federico Barbero, Joelle Barral, Alexei Bendebury, Urs Bergmann, Stanley Bileschi, Kat Black, Mathieu Blondel, Sebastian Borgeaud, Arthur Braˇ zinskas, Ryan Bur-nell, Robert Busa-Fekete, Mu Cai, Daniele Calandriello, Glenn Cameron, Charlotte Caucheteux, Rahma Chaabouni, Garima Chadha, Jetha Chan, Blake Jianhang Chen, Jesse Chen, Lin Chen, Xu Chen, Derek Cheng, Tzu hsiang Chien, Nikolai Chinaev, Yi Chou, Zhaohui Chu, Benjamin Coleman, Pooja Consul, Sam Conway-Rahman, Scott Crowell, Dylan Cutler, Vivek Dani, Samira Daruki, Anil Das, Daniel Deutsch, Nishanth Dikkala, Li Ding, Qiuhan Ding, Shenil Dodhia, Konstantin Donhauser, Tulsee Doshi, Anca Dragan, Alex Druinsky, Sahil Dua, Zoltan Egyed, Danielle Eisenbud, Daniel Eppens, Cindy Fan, Bahare Fatemi, Yassir Fathullah, Vlad Feinberg, Milen Ferev, Sebastian Flennerhag, Takumi Fujimoto, Jo˜ ao Gabriel Oliveira, Isaac Galatzer-Levy, Jo˜ ao Gante, Simon Geisler, Soham Ghosal, Antonious M. Girgis, Tamara von Glehn, Alec Go, Alhaad Gokhale, Alex Grills, Yiming Gu, Mayank Gupta, Pramod Gupta, Guru Gu-ruganesh, Raia Hadsell, Hamza Harkous, Jitendra Harlalka, Demis Hassabis, Anja Hauth, Joe Heyward, Arian Hosseini, Chih-Yang Hsia, I-Hung Hsu, Xiaopeng Huang, Yangsibo Huang, Kevin Hui, Adrian Hutter, Te I, Fotis Iliopoulos, Advait Jain, Ganesh Jawahar, Ziwei Ji, Qilin Jin, Melvin Johnson, Kandarp Joshi, Arun Kandoor, Wang-Cheng Kang, Koray Kavukcuoglu, Mehran Kazemi, Kathleen Kenealy, Amr Khalifa, Phoebe Kirk, Ivan Korotkov, Suraj Kothawade, Vitaly Kovalev, Neel Kovelamudi, Adam Kraft, Ravin Kumar, Vivek Kumar, Harish Kuppam, Justin Lannin, Chen-Yu Lee, Seungji Lee, Dmitry Lepikhin, Alon Levkovitch, Dongdong Li, Qi-ujia Li, Valentin Li´ evin, Ethan Lin, Ziqian Lin, Casper Liu, Tianlin Liu, Tianqi Liu, Xin Liu, Ivan Lobov, Mayank Lunayach, Min Ma, Gagan Madan, Andrii Maksai, Eric Malmi, Michal Matuszak, Daniel McDuff, Gaurav Menghani, Maciej Mikuła, Daniil Mirylenka, Karolis Misi-unas, Vedant Misra, Andreea Mitran, Kareem Mohamed, Maksim Mukha, Eric Noland, James O’Donnell, Brendan O’Donoghue, Kate Olszewska, Bernett Orlando, Wanqiong Pan, Rina Pan-igrahy, Unnati Parekh, Nicolas Perez-Nieves, Chunjong Park, Eric Paskie, Liqian Peng, Bryce Petrini, Slav Petrov, Jonas Pfeiffer, Bilal Piot, Martyna Plomecka, Siim Poder, Octavio Ponce, Arijit Pramanik, David Racz, Anish Rajan, Michelle Ramanovich, Anand Rao, Marvin Ritter, Vitor Rodrigues, Evan Rosen, Mikołaj Rybi´ nski, Noveen Sachdeva, Micha¨ el E. Sander, Rohit Sathyanarayana, Sagar Savla, Samuel Schmidgall, Tal Schuster, George Scrivener, Benoit Seguin, Andrew Sellergren, Aliaksei Severyn, Izhak Shafran, Dhruv Shah, Bobak Shahriari, Yuan Shang-guan, Ashish Shenoy, Pradeep Shenoy, Rakesh Shivanna, Pauline Sho, Lucas Spangher, Woj-ciech Stokowiec, Tim Strother, Yao Su, Yinghao Sun, Mukund Sundararajan, Andrea Tacchetti, Mor Hazan Taege, Pouya Tafti, Jean Tarbouriech, Chetan Tekur, Shantanu Thakoor, Rahul Thapa, Madeleine Traverse, Lenart Treven, Tao Tu, Chien Te Tung, C ¸ a˘ glar ¨ Unl¨ u, Petar Veliˇ ckovi´ c, Ma-lini Pooni Venkat, Sagar Gubbi Venkatesh, Vidya Venkiteswaran, Francesco Visin, Alex Vitvit-skyi, Kiran Vodrahalli, Weiyi Wang, Xin Wang, Tris Warkentin, Jan Wassenberg, John Wieting, Cindy Wu, Lechao Xiao, Hao Xu, Yuhui Xu, Fuzhao Xue, Arun Yadav, Jun Yan, Antoine Yang, Lin Yang, Ming-Hsuan Yang, Ziyu Ying, Jae Hyeon Yoo, Morteza Zadimoghaddam, Sajjad Zafar, 18 Preprint Fred Zhang, Jiageng Zhang, Jianyi Zhang, Xiaofan Zhang, Chao Zhao, David Zhou, and Chen Zou. Gemma 4 technical report. arXiv preprint arXiv:2607.02770 , 2026. Curt Tigges, Michael Hanna, Qinan Yu, and Stella Biderman. Llm circuit analyses are consis-tent across training and scale. In A. Globerson, L. Mackey, D. Belgrave, A. Fan, U. Paquet, J. Tomczak, and C. Zhang (eds.), Advances in Neural Information Processing Systems , vol-ume 37, pp. 40699–40731. Curran Associates, Inc., 2024. doi: 10.52202/079017-1287. URL 
+
+https://proceedings.neurips.cc/paper_files/paper/2024/file/47c7e dadfee365b394b2a3bd416048da-Paper-Conference.pdf .Eric Todd, Millicent Li, Arnab Sen Sharma, Aaron Mueller, Byron C Wallace, and David Bau. Function vectors in large language models. In The Twelfth International Conference on Learning Representations , 2024. URL https://openreview.net/forum?id=AwyxtyMwaG .Keyon Vafa, Justin Y. Chen, Ashesh Rambachan, Jon Kleinberg, and Sendhil Mullainathan. Evalu-ating the world model implicit in a generative model. In The Thirty-eighth Annual Conference on Neural Information Processing Systems , 2024. URL https://openreview.net/forum ?id=aVK4JFpegy .Johannes Von Oswald, Eyvind Niklasson, Ettore Randazzo, Joao Sacramento, Alexander Mordvint-sev, Andrey Zhmoginov, and Max Vladymyrov. Transformers learn in-context by gradient de-scent. In Andreas Krause, Emma Brunskill, Kyunghyun Cho, Barbara Engelhardt, Sivan Sabato, and Jonathan Scarlett (eds.), Proceedings of the 40th International Conference on Machine Learn-ing , volume 202 of Proceedings of Machine Learning Research , pp. 35151–35174. PMLR, 23–29 Jul 2023. URL https://proceedings.mlr.press/v202/von-oswald23a.html .Liyuan Wang, Xingxing Zhang, Hang Su, and Jun Zhu. A comprehensive survey of continual learning: Theory, method and application. arXiv preprint arXiv:2302.00487 , 2024. Jason Wei, Xuezhi Wang, Dale Schuurmans, Maarten Bosma, brian ichter, Fei Xia, Ed H. Chi, Quoc V Le, and Denny Zhou. Chain of thought prompting elicits reasoning in large language models. In Alice H. Oh, Alekh Agarwal, Danielle Belgrave, and Kyunghyun Cho (eds.), Advances in Neural Information Processing Systems , 2022. URL https://openreview.net/for um?id=_VjQlMeSB_J .Sang Michael Xie, Aditi Raghunathan, Percy Liang, and Tengyu Ma. An explanation of in-context learning as implicit bayesian inference. In International Conference on Learning Representations ,2022. URL https://openreview.net/forum?id=RdJVFCHjUMI .An Yang, Anfeng Li, Baosong Yang, Beichen Zhang, Binyuan Hui, Bo Zheng, Bowen Yu, Chang Gao, Chengen Huang, Chenxu Lv, Chujie Zheng, Dayiheng Liu, Fan Zhou, Fei Huang, Feng Hu, Hao Ge, Haoran Wei, Huan Lin, Jialong Tang, Jian Yang, Jianhong Tu, Jianwei Zhang, Jianxin Yang, Jiaxi Yang, Jing Zhou, Jingren Zhou, Junyang Lin, Kai Dang, Keqin Bao, Kexin Yang, Le Yu, Lianghao Deng, Mei Li, Mingfeng Xue, Mingze Li, Pei Zhang, Peng Wang, Qin Zhu, Rui Men, Ruize Gao, Shixuan Liu, Shuang Luo, Tianhao Li, Tianyi Tang, Wenbiao Yin, Xingzhang Ren, Xinyu Wang, Xinyu Zhang, Xuancheng Ren, Yang Fan, Yang Su, Yichang Zhang, Yinger Zhang, Yu Wan, Yuqiong Liu, Zekun Wang, Zeyu Cui, Zhenru Zhang, Zhipeng Zhou, and Zihan Qiu. Qwen3 technical report. arXiv preprint arXiv:2505.09388 , 2025a. Haolin Yang, Hakaze Cho, Yiqiao Zhong, and Naoya Inoue. Unifying attention heads and task vectors via hidden state geometry in in-context learning. In The Thirty-ninth Annual Conference on Neural Information Processing Systems , 2025b. URL https://openreview.net/for um?id=FIfjDqjV0B .John Yang, Carlos E Jimenez, Alexander Wettig, Kilian Lieret, Shunyu Yao, Karthik R Narasimhan, and Ofir Press. SWE-agent: Agent-computer interfaces enable automated software engineering. In The Thirty-eighth Annual Conference on Neural Information Processing Systems , 2024. URL 
+
+https://openreview.net/forum?id=mXpq6ut8J3 .Tianzhu Ye, Li Dong, Qingxiu Dong, Xun Wu, Shaohan Huang, and Furu Wei. Online experiential learning for language models. arXiv preprint arXiv:2603.16856 , 2026a. 19 Preprint Tianzhu Ye, Li Dong, Xun Wu, Shaohan Huang, and Furu Wei. On-policy context distillation for language models. arXiv preprint arXiv:2602.12275 , 2026b. Ilker Yildirim and L. A. Paul. From task structures to world models: What do llms know? Trends in Cognitive Sciences , 28(5):404–415, 2024. doi: 10.1016/j.tics.2024.02.008. Peiwen Yuan, Shaoxiong Feng, Yiwei Li, Xinglin Wang, Yueqi Zhang, Chuyi Tan, Boyuan Pan, Heda Wang, Yao Hu, and Kan Li. Focused large language models are stable many-shot learners. In Yaser Al-Onaizan, Mohit Bansal, and Yun-Nung Chen (eds.), Proceedings of the 2024 Conference on Empirical Methods in Natural Language Processing , pp. 6247–6261, Miami, Florida, USA, November 2024. Association for Computational Linguistics. doi: 10.18653/v1/2024.emnlp-mai n.359. URL https://aclanthology.org/2024.emnlp-main.359/ .Yifei Yuan and Anders Søgaard. Revisiting the othello world model hypothesis. arXiv preprint arXiv:2503.04421 , 2025. Tianren Zhang, Guanyu Chen, and Feng Chen. When do neural networks learn world models? In 
+
+Forty-second International Conference on Machine Learning , 2025a. URL https://openre view.net/forum?id=oUzxhnnGVM .Xiaoqing Zhang, Ang Lv, Yuhan Liu, Flood Sung, Wei Liu, Jian Luan, Shuo Shang, Xiuying Chen, and Rui Yan. More is not always better? enhancing many-shot in-context learning with differ-entiated and reweighting objectives. In Wanxiang Che, Joyce Nabende, Ekaterina Shutova, and Mohammad Taher Pilehvar (eds.), Proceedings of the 63rd Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers) , pp. 30539–30552, Vienna, Austria, July 2025b. Association for Computational Linguistics. ISBN 979-8-89176-251-0. doi: 10.18653/v1/ 2025.acl-long.1475. URL https://aclanthology.org/2025.acl-long.1475/ .Siyan Zhao, Zhihui Xie, Mengchen Liu, Jing Huang, Guan Pang, Feiyu Chen, and Aditya Grover. Self-distilled reasoner: On-policy self-distillation for large language models. In Forty-third Inter-national Conference on Machine Learning , 2026. URL https://openreview.net/for um?id=Jpxfof0EaS .20 Preprint 
+
+A RELATED WORK 
+
+World Models in LLMs. World models have been discussed in different strands of literature, such as cognitive maps (Behrens et al., 2018; Yildirim & Paul, 2024), reinforcement learnings (Sil-ver et al., 2018; Ha & Schmidhuber, 2018), abstract predictive representation(LeCun, 2022), and video generations (Bruce et al., 2024). Andreas (2024); Li et al. (2025); Zhang et al. (2025a) sought to define what it means for neural networks, especially language models, to learn world models. Prior works demonstrates that neural networks encode sentiments (Radford et al., 2017), and state and temporal information (Gurnee & Tegmark, 2024) by probing internal representations, and as-sess their causal effects by intervening them. Li et al. (2023); Nanda et al. (2023); Hua et al. (2024); Yuan & Søgaard (2025); Chawla et al. (2026) probed board state representations in Othello. Karvo-nen (2024), Joshi et al. (2024), and Ivanitskiy et al. (2023) did so for chess, checkers, and mazes, respectively. 
+
+ICL in LLMs. The properties of ICL (Brown et al., 2020) have been studied from the perspec-tives of algorithmic characteristics (Xie et al., 2022; Von Oswald et al., 2023), mechanistic circuits (Olsson et al., 2022; Hendel et al., 2023), and language data distribution (Chan et al., 2022). Park et al. (2025) showed that increasing context length induces a sudden reorganization into in-context representations, whereas Lepori et al. (2026) argued that these internal representations may not be accessible for subsequent prediction. Mittal et al. (2025b); Han et al. (2025); Kobayashi et al. (2024); Mittal et al. (2025a) analyzed latent-variable prediction in ICL, while Jiang et al. (2025); Jain et al. (2024) investigated internal behavioral changes under supervised fine-tuning (SFT). 
+
+B DEFINITION OF WORLD MODELS IN LLM S
+
+Figure 9: Illustration of World Models in LLMs. 
+
+Following Andreas (2024); Li et al. (2025); Zhang et al. (2025a), we con-sider the world underlying the gener-ation of the textual observations to be a static configuration. Although world models can be de-fined at various levels, our setting corresponds to ”The map” discussed in Andreas (2024). Rather than stor-ing pairwise relations between fruits in a lookup table, the representation encodes a graph topology that cap-tures their relative spatial relation-ships. Computation over this repre-sentation can then be used to solve navigation tasks on the graph. The random walks are generated using one-step transitions, whereas the task requires two-step reasoning, and thus cannot be solved by simply copying a single-hop transition. Our setting does not, however, correspond to ”The orrery,” which models temporal evolution, or ”The simulator,” which incorporates physical laws, as dis-cussed in Andreas (2024). Following Li et al. (2023); Nanda et al. (2023); Yuan & Søgaard (2025); Chawla et al. (2026), we say that an LLM possesses a world model in this sense if, as visualized in Figure 9, it receives textual random walks generated from a world in which fruits are arranged according to a graph, and the static graph structure of that arrangement can be recovered from the LLM’s internal representations using a linear probe. For representations associated with multiple subtokens or repeated occurrences, we use their average. In addition, intervening on these representations should disrupt predictions that were previously possible through them. Under this definition, the model is said to possess a world model. Note that this notion is narrower than more general world models that capture temporal evolution or causal dynamics. 21 Preprint Beyond our narrow notion of world models in LLMs, future work could investigate whether LLMs capture temporal dynamics and causal relationships (Gurnee & Tegmark, 2024; Vafa et al., 2024; Ro-hekar et al., 2025) through ICL, how multi-task training affects representations (Park, 2026; Chawla et al., 2026; Kawata et al., 2025), how chain-of-thought (CoT) (Wei et al., 2022; Kojima et al., 2022; Matsutani et al., 2026a) affects behaviors, and whether similar structures emerge in weight-tied recurrent models (Geiping et al., 2025). 
+
+C EXPERIMENTAL DETAILS 
+
+C.1 SYNTHETIC TASK 4 × 4 Lattice Grid 5 × 5 Lattice Grid 3 × 5 Lattice Grid 4 × 4 Triangle Grid 4 × 4 Torus Grid 
+
+Figure 10: Illustration of Five Graph Topologies. Graph Tracking. Following the adaptive world modeling setup of (Lepori et al., 2026), we use random walks generated on five graph topologies: 4 × 4 Lattice Grid, 5 × 5 Lattice Grid, 3 × 5
+
+Lattice Grid, 4 × 4 Triangle Grid, and 4 × 4 Torus Grid Figure 10. On these graphs, we consider a two-step prediction task. Each random walk is generated by randomly sampling between 48 and 80 nodes. Note that no information about the underlying topology is provided in the prompt. The LLM must infer the topology solely from the random walk. Although Lepori et al. (2026) employed the 16-State Line and 25-State Line as latent graphs, we exclude them to rule out a shortcut in which the model simply copies the token from two positions earlier in the sequence. For the two-step prediction task, following (Lepori et al., 2026), the model is asked to move from grid coordinate (i, j ) to (i + 2 , j ). Directly specifying an instruction such as “move two steps to the right” does not yield a unique answer under rotations or reflections of the grid. We therefore provide few-shot examples illustrating the mapping (i, j ) → (i + 2 , j ). We provide 6, 10, 3, 6, and 6 examples for the 4 × 4 Lattice Grid, 5 × 5 Lattice Grid, 3 × 5 Lattice Grid, 4 × 4 Triangle Grid, and 
+
+4 × 4 Torus Grid, respectively. For the downstream task, Lepori et al. (2026) considered one, two, and three-step prediction. We use two-step prediction because one-step prediction can be solved by copying an adjacent node from the random walk, whereas three-step prediction is substantially more difficult. We additionally ensure that the expected answer appears at least once in the random walk, and excluded query pairs whenever the correct target appeared exactly two positions before or after the query source in the sequence. In this paper, under the few-shot setting, we treat each random walk together with its corresponding node pair examples for the task instruction as a single shot and repeat this format across multiple shots. Note that these shots are distinct from the few-shot examples used in the instruction for the two-step prediction task. Prompt examples are in Figure 11. 22 Preprint Prompt for Graph Tracking (Two-Step Prediction Task) 
+
+Complete the pattern. [SEQUENCE] avocado, mango, strawberry, raspberry, pineapple, banana, grape, banana, lime , tomato, pear, apple, berry, apple, pear, prune, lime, banana, grape, mango, cucumber, apple, berry, apple, cucumber, date, cucumber, mango, strawberry, mango, strawberry, olive, avocado, date, berry, apple, berry , apple, pear, tomato, cucumber, apple, pear, apple, cucumber, mango, strawberry, raspberry [EXAMPLE] Input: lime Output: cucumber [EXAMPLE] Input: banana Output: mango [EXAMPLE] Input: pear Output: berry [EXAMPLE] Input: tomato Output: date [EXAMPLE] Input: pineapple Output: strawberry [EXAMPLE] Input: grape Output: avocado [EXAMPLE] Input: prune Output: apple Complete the pattern. [SEQUENCE] plum, tomato, plum, prune, plum, prune, plum, prune, plum, berry, lime, cherry, fig, cherry, cucumber, berry, cucumber, cherry, fig, cherry, apple, strawberry, apple, strawberry, fig, cherry, fig, banana, fig, cherry, lime, cherry, lime, citrus, peach, lemon, pear, lemon, peach, citrus, peach, citrus, lime, citrus, peach, citrus, lime, berry [EXAMPLE] Input: peach Output: apple [EXAMPLE] Input: lime Output: fig [EXAMPLE] Input: citrus Output: strawberry [EXAMPLE] Input: berry Output: banana [EXAMPLE] Input: prune Output: tomato [EXAMPLE] Input: lemon Output: cherry [EXAMPLE] Input: pear Output: 
+
+Figure 11: Prompt for Graph Tracking Task. A 1-shot example generated from a 4×4 Lattice Grid. The answer is ”cucumber”. The query corresponds to the illustration in Figure 1 (a). 23 Preprint C.2 PROBING , R EPRESENTATION ANALYSIS AND INTERVENTION DETAILS 
+
+All probing, representation analysis, and intervention experiments described below are conducted on NVIDIA GH200 GPUs. 
+
+t denotes the token position index. l denotes the Transformer layer index. d denotes the hidden dimension. (i, j ) denote grid coordinates in graph tracking tasks. Consider a specific sample, x(l) 
+
+> t
+
+∈
+
+Rd denotes the raw hidden state at token position t in layer l. In this paper, we use Qwen3-4B-Base, Qwen3-8B-Base and Qwen3-14B-Base (Yang et al., 2025a), where d = 2560 , 4096 , 5120 and 
+
+l = 36 , 36 , 40 , respectively. 
+
+Probing. x(l) 
+
+> t
+
+is pooled over subtokens and over occurrences of the same token within the random walk in a query. To normalize these representations, we divide them by a single scalar Root Mean Square (RMS) computed over the activations of all nodes in that layer. We obtain a node represen-tation h(l) 
+
+> i,j
+
+∈ Rd where (i, j ) denotes node indices. We train probe projection matrix W (l) ∈ Rd×r
+
+where r denotes the dimensionality of the latent probe space. We compute probe representation 
+
+z(l) 
+
+> i,j
+
+= W (l)⊤h(l) 
+
+> i,j
+
+∈ Rr , and then we obtain the probability that nodes u = ( i, j ) and v = ( i′, j ′) are adjacent p(l) 
+
+> u,v
+
+= σ(β(l) − ∥ z(l) 
+
+> u
+
+− z(l) 
+
+> v
+
+∥22) where σ(x) = (1 + exp( −x)) −1 is the logistic sigmoid function and β(l) is trainable scalar offset. Note that we train W (l) to obtain the probe space node representations z(l) 
+
+> i,j
+
+, while Dirichlet Energy in Park et al. (2025) is computed directly on the raw node representations h(l) 
+
+> i,j
+
+.To evaluate probing performance, we compute the AUROC for predicting whether pairs of graph nodes are adjacent. AUROC is computed by sweeping the threshold over predicted probabilities and integrating the resulting ROC curve using the trapezoidal rule. Gr¨ oger et al. (2026) noted that probing accuracies are not directly comparable across layers with different dimensionalities, but we compare different activations within the same model. We set r = 2 , 2, 2, 2, 4 for the 4 × 4 Lattice Grid, 5 × 5 Lattice Grid, 3 × 5 Lattice Grid, 4 × 4 Trian-gle Grid, and 4 × 4 Torus Grid, respectively. The first four grids admit two-dimensional coordinate representations, motivating r = 2 . For the 4×4 Torus Grid, we use the four-dimensional embedding 
+
+z(i, j ) = (cos(2 πi/ 4) , sin(2 πi/ 4) , cos(2 πj/ 4) , sin(2 πj/ 4)) , which represents each periodic coor-dinate using a sine and cosine pair. The squared Euclidean distance is 2 for adjacent nodes and at least 4 for non-adjacent nodes, motivating r = 4 for our probe based on distance. See Appendix E.2 for experiments with different ranks. 
+
+Representation Analysis. To obtain an orthonormal basis of this subspace, we compute the sin-gular value decomposition 
+
+W (l) = U (l)Σ(l)V (l)⊤ ∈ Rd×r ,
+
+where U (l) ∈ Rd×r , Σ(l) ∈ Rr×r and V (l) ∈ Rr×r. Then, we can define world representation space W(l) = span( u(l)1 , . . . , u (l) 
+
+> r
+
+), where u(l)1 , . . . , u (l) 
+
+> r
+
+are columns of U (l). By using orthogonal projection matrix Π(l) 
+
+> W
+
+= U (l)U (l)⊤ ∈ Rd×d, we can separate in-subspace and out-of-subspace component from an activation h(l) as 
+
+h(l) = Π(l) 
+
+> W
+
+h(l)
+
+| {z }
+
+> in-subspace component
+
++
+
+
+
+I − Π(l)
+
+> W
+
+
+
+h(l)
+
+| {z }
+
+> out-of-subspace component
+
+,
+
+where I is the identity matrix. We can use 
+
+0 ≤ ∥Π(l) 
+
+> W
+
+h(l)∥22
+
+h(l) 22
+
+≤ 1
+
+to quantify the extent (energy) to which the activation h(l) lies within the world representation sub-space. 24 Preprint To quantify the overlap (similarity) of world representation subspaces S(W(l), W′(l)) obtained from different probes at the same layer l, we compute 
+
+S(W(l), W′(l)) = ∥U (l)⊤U ′(l)∥2F
+
+r = tr(Π (l) 
+
+> W
+
+Π′(l) 
+
+> W′
+
+)
+
+r ,
+
+where ∥·∥ F denotes the Frobenius norm. Here, U (l) and U ′(l) are obtained from two probes trained on different data at the same layer l. This quantity is the mean squared cosine of the principal angles between W(l) and W′(l), ranging from 0 for orthogonal subspaces to 1 for identical subspaces. Similarly, we quantify the distance of world representation subspace D(W(l), W′(l)) obtained from different probes at the same layer l by computing 
+
+D(W(l), W′(l)) = 
+
+s
+
+1 − ∥U (l)⊤U ′(l)∥2F
+
+r = ∥Π(l) 
+
+> W
+
+− Π′(l) 
+
+> W′
+
+∥F
+
+√2r .
+
+Additionally, let θ(l) be the angle between the activation vector h(l) and the subspace W(l),
+
+θ(l) = arccos 
+
+ ∥Π(l) 
+
+> W
+
+h(l)∥2
+
+∥h(l)∥2
+
+
+
+with 0 ≤ θ(l) ≤ π
+
+2 .
+
+Intervention. A single low-rank probe may leave additional linearly decodable adjacency infor-mation. Following (Elazar et al., 2021), we repeat the probing and removal procedure. At each layer and for each sample, the pooled representations of the nodes observed in the final query walk are centered by subtracting their mean. By writing the mean representation as ¯h(l), the graph intervention removes its component in W(l) as 
+
+h(l) 
+
+> i,j
+
+← h(l) 
+
+> i,j
+
+− Π(l) 
+
+> W
+
+(h(l) 
+
+> i,j
+
+− ¯h(l)).
+
+Operationally, let s(l) denote the scalar RMS used to normalize the pooled representations. The vector −s(l)Π(l) 
+
+> W
+
+(h(l) 
+
+> i,j
+
+−¯h(l)) is added to x(l) 
+
+> t
+
+at every selected subtoken position t in every occurrence of node (i, j ) within the final query walk. To compare with this low-rank graph intervention, we intervene random orthonormal directions to the world representation subspace in the same way. At each layer, we sample as many random orthonormal directions as the current dimension of W(l). So, this random subspace has the same dimension as W(l). We project the current centered h(l) 
+
+> i,j
+
+−¯h(l) onto this orthogonal random subspace. This projected vector is rescaled separately for every node (i, j ) and every layer l so that its norm equals ∥Π(l) 
+
+> W
+
+(h(l) 
+
+> i,j
+
+− ¯h(l))∥2. We then subtract the rescaled random vector from x(l) 
+
+> t
+
+at the same token positions used by the graph intervention. C.3 PRACTICAL TASKS 
+
+ARC-AGI-1&2. We use the public evaluation set of ARC-AGI-1 (Chollet, 2019). The set contains 400 tasks and 419 test pairs, where 381 tasks have one test pair and 19 have two. For ARC-AGI-2 (Chollet et al., 2025), we use evaluation set with 120 tasks and 167 test pairs, with 75 tasks containing one test pair, 43 containing two, and 2 containing three. Each test pair was evaluated with an independent prompt, while all native input–output training pairs belonging to its target task were retained. A single shot consists of the task instruction and a set of input–output pairs provided as observations in a serialized format. We construct a few-shot prompt by concatenating these shots, using demonstrations from the training set and the query from the public evaluation set. Prompt examples are in Figure 12. Prior work has approached ARC-AGI using leave-one-out test-time training (TTT) within a task (Aky¨ urek et al., 2025), a combination of data augmentation and test-time search (Franzen et al., 2025), Vision Transformers (ViTs) that formulate ARC as an image-to-image translation problem (Hu et al., 2025), and weight-tied recurrent models (Shu et al., 2026; Liu et al., 2026b). 25 Preprint 
+
+Web Agent Task. We use the cross-website subset of the Mind2Web dataset (Deng et al., 2023), which contains 177 tasks and 1373 action steps. Each query prompt contained the user’s goal, gold previous action history, the HTML of the current webpage, and the top-10 elements from the ranking. Few-shot demonstrations were drawn from the disjoint train set, whereas queries were drawn from the cross-website subset of the test set, since we need to ensure that the world (website) of the query is different from that of the demonstrations. Prompt examples are in Figure 13. For ARC-AGI-1&2, we use top-p sampling with temperature 0.7 and top-p 0.95. For Othello and Mind2Web (cross-website subset), we use greedy decoding with temperature 0 and top-p 1. For all tasks, we generate the answer immediately after prefill in the specified format with a sufficient response length. 
+
+Othello. Following Li et al. (2023); Nanda et al. (2023), in the Othello task, the model is given a sequence of 8–52 moves, where each move is represented by a board coordinate such as “A5” or “E3” and corresponds to a move by either MINE or YOURS . The model is then asked to predict the next legal move. Although the moves are provided as board coordinates, the model is not explicitly told that they are Othello moves. It must therefore infer the current board state from the history of observed moves in order to predict a legal next move. Prompt examples are in Figure 14 26 Preprint Prompt for ARC-AGI-1&2 
+
+You are participating in a puzzle solving competition. You are an expert at solving puzzles. Below is a list of input and output pairs with a pattern. Your goal is to identify the pattern or transformation in the training examples that maps the input to the output, then apply that pattern to the test input to give a final output. Respond in the format of the training output examples --Training Examples----Example 0--INPUT: [[0, 0, 5], [0, 5, 0], [5, 0, 0]] OUTPUT: [[3, 3, 3], [4, 4, 4], [2, 2, 2]] --Example 1--INPUT: [[0, 0, 5], [0, 0, 5], [0, 0, 5]] OUTPUT: [[3, 3, 3], [3, 3, 3], [3, 3, 3]] 
+
+[SKIP] 
+
+--End of Training Examples----Test Input--[[0, 0, 5], [5, 0, 0], [0, 5, 0]] --End of Test Input--Your response: [[3, 3, 3], [2, 2, 2], [4, 4, 4]] You are participating in a puzzle solving competition. You are an expert at solving puzzles. Below is a list of input and output pairs with a pattern. Your goal is to identify the pattern or transformation in the training examples that maps the input to the output, then apply that pattern to the test input to give a final output. Respond in the format of the training output examples --Training Examples----Example 0--INPUT: [[1, 0, 3, 4], [0, 0, 2, 1], [2, 1, 4, 0], [0, 3, 1, 2]] OUTPUT: [[1, 2, 3, 4], [3, 4, 2, 1], [2, 1, 4, 3], [4, 3, 1, 2]] 
+
+[SKIP] 
+
+--End of Training Examples----Test Input--[[0, 1, 2, 3], [0, 3, 1, 0], [3, 0, 4, 1], [0, 4, 0, 2]] --End of Test Input--Your response: 
+
+Figure 12: Prompt for ARC-AGI-1&2. A 1-shot example. The part marked [SKIP] is omitted for brevity. 27 Preprint Prompt for Web Agent Task 
+
+You predict the next action on a webpage. Follow the examples exactly. Return only `Answer: <letter> `, `Action: <CLICKTYPESELECT> `, and a `Value: `
+
+line when TYPE or SELECT requires one. ### Example 1''' <html> <div> <ul> <div id=0 button> <h3> Year Manufactured </h3> </div> <div id=1 button> <h3> Price </h3> </div> </ul> <div main> <ul> <li id=2> <a id=3> <span> Price + Shipping: lowest first </span> </a> </li> <a id=4> <span> Price + Shipping: highest first </span> </a> </ul> </div> </div> </html> ''' Based on the HTML webpage above, try to complete the following task: Task: Get a Hasbro Hulk action figure manufactured in 1990 with the lowest price + shipping. Previous actions: [tab] Year Manufactured -> CLICK [checkbox] 1990 -> CLICK [button] Apply -> CLICK [input] -> CLICK [button] Sort selector. Best Match selected. -> CLICK What should be the next action? Please select from the following choices (If the correct action is not in the page above, please select A. 'None of the above'): A. None of the above B. <div id=0 button> <h3> Year Manufactured </h3> </div> C. <div id=1 button> <h3> Price </h3> </div> D. <li id=2> <a id=3> <span> Price + Shipping: lowest first E. <a id=3> <span> Price + Shipping: lowest first </span> </a> F. <a id=4> <span> Price + Shipping: highest first </span> </a> Answer: E. Action: CLICK ### Query ''' <html> <div> <div> <a id=0> Featured </a> <div> <button button match-up scores> <svg id=1 /> </button> <button button match-up scores> <svg id=2 /> </button> </div> </div> <div> <button button carousel button> <svg id=3 /> </button> <button button carousel button> <svg id=4 /> </button> </div> </div> </html> ''' Based on the HTML webpage above, try to complete the following task: Task: Find the current league leader in Assists Per Game. Previous actions: None What should be the next action? Please select from the following choices (If the correct action is not in the page above, please select A. 'None of the above'): A. None of the above B. <a id=0> Featured </a> C. <svg id=1 /> D. <svg id=2 /> E. <svg id=3 /> F. <svg id=4 /> Answer: 
+
+Figure 13: Prompt for Web Agent Task. A 1-shot example of web agent tasks from Mind2Web dataset. The answer is ”F” and ”CLICK”. 28 Preprint Prompt for Othello 
+
+Infer the answer token from the preceding token sequence. Example 1: history: C4 C3 F5 F6 D3 C5 C6 E6 B6 E3 D2 B7 B8 C1 D6 D7 C2 B3 B4 G6 E7 A5 A4 B1 E2 F4 E1 A2 answer: B5 Example 2: history: D3 C3 E6 E3 E2 D6 C6 F4 C4 B4 B5 E7 C5 B6 A6 C2 F5 F6 C7 F1 A4 F2 C1 A3 A2 D2 B3 B1 F3 C8 B7 A5 G4 H5 E1 A7 G1 D7 B8 D1 G2 G3 answer: G5 Query: history: E6 F6 F5 F4 G4 G6 G5 E7 C4 C5 B6 H3 E8 B4 G3 F7 A3 F3 H5 G8 H2 B5 E2 A4 F8 G7 D3 E3 D2 F1 F2 D8 A6 C6 H7 C2 B1 G2 G1 H1 B3 H6 D6 A2 B2 C1 D7 A1 C3 C8 C7 B8 H4 answer: 
+
+Figure 14: Prompt for Othello. A 2-shot example of classical 8×8 Othello. The answer is ”A5”. 
+
+D DETAILED RESULTS 
+
+D.1 FEW -S HOT PERFORMANCE 
+
+In addition to Figure 3, we show that mixing graph topologies different from that of the query in the demonstrations also improves performance. To evaluate this setting, we randomly sample the topology of each demonstration from four graphs other than the graph of the query. Figure 15 shows few-shot performance under the settings described above. The graph in each title indicates the query graph, while the demonstrations are sampled from the other graphs. Even under this harder setting, where the demonstrations come from different worlds, few-shot demonstrations improve task performance. 0% 10% 20% 30% 40% 50% 0 1 2 4 8 16 32    
+
+> Random: 6.2%
+> Number of Shots Accuracy Qwen3-4B-Base Qwen3-8B-Base Qwen3-14B-Base Random Guessing
+
+● ■ ▲         
+
+> 4 × 4 Lattice Grid
+> 0% 10% 20% 30% 40% 50% 0124816 32
+> Random: 4.0%
+> Number of Shots Accuracy Qwen3-4B-Base Qwen3-8B-Base Qwen3-14B-Base Random Guessing
+
+● ■ ▲         
+
+> 5 × 5 Lattice Grid
+> 0% 10% 20% 30% 40% 50% 0124816 32
+> Random: 6.7%
+> Number of Shots Accuracy Qwen3-4B-Base Qwen3-8B-Base Qwen3-14B-Base Random Guessing
+
+● ■ ▲         
+
+> 3 × 5 Lattice Grid
+> 0% 10% 20% 30% 40% 50% 0124816 32
+> Random: 6.2%
+> Number of Shots Accuracy Qwen3-4B-Base Qwen3-8B-Base Qwen3-14B-Base Random Guessing
+
+● ■ ▲         
+
+> 4 × 4 Triangle Grid
+> 0% 10% 20% 30% 40% 50% 0124816 32
+> Random: 6.2%
+> Number of Shots Accuracy Qwen3-4B-Base Qwen3-8B-Base Qwen3-14B-Base Random Guessing
+
+● ■ ▲
+
+> 4 × 4 Torus Grid
+
+Figure 15: Few-Shot Performance where Demonstrations are from Different Graph Topologies. 
+
+Accuracy of three Qwen3 models on the two-step-right prediction task across five graph topologies. The demonstrations are randomly sampled from four topologies other than the query topology, with each topology represented equally when the number of shots is 4, 8, 16, or 32. We report perfor-mance separately for each graph topology in the query. Each point reports accuracy on 300 test samples with 0, 1, 2, 4, 8, 16, or 32 few-shot demonstrations. Dotted gray lines indicate random guessing over the candidate nodes for each topology. D.2 PROBING AND REPRESENTATION ANALYSIS 
+
+For Qwen3-4B-Base, Qwen3-8B-Base, and Qwen3-14B-Base, we report detailed probing results in Figure 16, cross-probe performance in Figure 18, the overlap of the world representation subspaces in Figure 19, PCA of the graph representations in Figure 20, and PCA of the graph representation centroids over all samples in the test set in Figure 21. 29 Preprint 0.50 0.60 0.70 0.80 0 1 2 4 8 16 32                                                          
+
+> 4 × 4 Lattice Grid
+> 0.50 0.60 0.70 0.80 0124816 32
+> 5 × 5 Lattice Grid
+> 0.50 0.60 0.70 0.80 0124816 32
+> 3 × 5 Lattice Grid
+> 0.50 0.60 0.70 0.80 0124816 32
+> 4 × 4 Triangle Grid
+> 0.50 0.60 0.70 0.80 0124816 32
+> 4 × 4 Torus Grid
+> 0.10 0.14 0.18 0.22 0.26 0124816 32 0.10 0.14 0.18 0.22 0.26 0124816 32 0.10 0.14 0.18 0.22 0.26 0124816 32 0.10 0.14 0.18 0.22 0.26 0124816 32 0.10 0.14 0.18 0.22 0.26 0124816 32 Number of Shots AUROC Normalized DE Qwen3-4B-Base Qwen3-8B-Base Qwen3-14B-Base Random Feature Baseline
+
+● ■ ▲
+
+Figure 16: Probe Performance and Normalized Dirichlet Energy (DE). Probe AUROC (Top) and normalized DE of hidden states (Bottom) across shots and five graph topologies for layer 20 of three Qwen3 models. Gray lines show random feature probe baselines. Each condition is evaluated on 300 test samples. Additionally, to examine how the representation structure of the same query, specifically the relative positions of nodes, changes with the number of shots, we computed the similarity of node positions between the 0-shot setting and the 1, 2, 4, 8, 16, and 32-shot settings. For each comparison be-tween 0-shot and a given number of shots, we compute the Euclidean distances between all pairs of common nodes and normalize each distance vector to unit length. We then compute the squared Euclidean difference between the normalized vectors, average it across comparisons, and take the square root. Smaller values indicate greater preservation of the relative distance structure among nodes. Note that this metric captures the relative positions of nodes and is invariant to translation and rotation. Figure 17 suggests that, as long as the query remains the same, increasing the number of shots does not substantially change the relative positions of nodes in the graph representation. The similarity to the 0-shot setting remains nearly constant as the number of shots increases, and the variation is small compared with the case where different fruit vocabularies are assigned to nodes with the same topology. The PCA visualization on the left of Figure 6 also vizualizes that the relative node configuration remains largely unchanged. 0.00 0.20 0.40 0.60 1 2 4 8 16 32                                                 
+
+> 4 × 4 Lattice Grid
+> 0.00 0.20 0.40 0.60 124816 32
+> 5 × 5 Lattice Grid
+> 0.00 0.20 0.40 0.60 124816 32
+> 3 × 5 Lattice Grid
+> 0.00 0.20 0.40 0.60 124816 32
+> 4 × 4 Triangle Grid
+> 0.00 0.20 0.40 0.60 124816 32
+> 4 × 4 Torus Grid
+> 0.00 0.05 0.10 0.15 0.20 124816 32 0.00 0.05 0.10 0.15 0.20 124816 32 0.00 0.05 0.10 0.15 0.20 124816 32 0.00 0.05 0.10 0.15 0.20 124816 32 0.00 0.05 0.10 0.15 0.20 124816 32 Number of Shots Probe Space Hidden State Space Qwen3-4B-Base Qwen3-8B-Base Qwen3-14B-Base Di ff erent Node Assignment
+
+● ■ ▲
+
+Figure 17: Node Distance Geometry Relative to Zero-Shot Setting. Node distance geometry rela-tive to zero-shot setting using probe projected representations (Top) and full hidden states (Bottom) across shots and five graph topologies for layer 20 of three Qwen3 models. Colored lines compare the same query across shots, while gray lines compare different query families with the same topol-ogy but different node vocabulary assignments. Lower values indicate more similar relative node geometry. Each condition uses 300 test samples. 30 Preprint Evaluation Prompt Shots Probe Training Shots 0.70 0.69 0.69 0.69 0.69 0.69 0.68 0.62 0.70 0.70 0.70 0.70 0.69 0.69 0.62 0.69 0.69 0.69 0.69 0.69 0.69 0.64 0.69 0.69 0.69 0.70 0.70 0.69 0.64 0.69 0.69 0.69 0.70 0.69 0.69 0.64 0.69 0.69 0.69 0.69 0.69 0.69 0.64 0.69 0.69 0.69 0.69 0.69 0.69 0124816 32 0 1 2 4 8 16 32 0.62 0.64 0.66 0.68 0.7 0.72 0.74 0.76 0.78 AUROC 
+
+4 × 4 Lattice Grid 
+
+> Evaluation Prompt Shots
+
+Probe Training Shots 0.73 0.71 0.70 0.70 0.69 0.70 0.70 0.66 0.73 0.72 0.72 0.71 0.72 0.72 0.68 0.73 0.72 0.73 0.71 0.72 0.72 0.68 0.73 0.72 0.73 0.71 0.72 0.72 0.68 0.73 0.72 0.73 0.72 0.72 0.72 0.68 0.73 0.72 0.73 0.71 0.72 0.72 0.67 0.72 0.72 0.72 0.71 0.72 0.72 0124816 32 0 1 2 4 8 16 32 0.64 0.66 0.68 0.7 0.72 0.74 0.76 0.78 0.8 AUROC 
+
+5 × 5 Lattice Grid 
+
+> Evaluation Prompt Shots
+
+Probe Training Shots 0.72 0.69 0.69 0.69 0.69 0.68 0.69 0.63 0.70 0.70 0.70 0.70 0.70 0.70 0.63 0.70 0.70 0.70 0.70 0.70 0.70 0.65 0.70 0.70 0.70 0.70 0.70 0.70 0.65 0.69 0.70 0.70 0.70 0.70 0.70 0.66 0.69 0.69 0.69 0.70 0.70 0.70 0.65 0.69 0.69 0.70 0.70 0.70 0.70 0124816 32 0 1 2 4 8 16 32 0.6 0.65 0.7 0.75 0.8 AUROC 
+
+3 × 5 Lattice Grid 
+
+> Evaluation Prompt Shots
+
+Probe Training Shots 0.70 0.67 0.67 0.67 0.68 0.67 0.67 0.62 0.69 0.68 0.68 0.69 0.68 0.68 0.62 0.68 0.68 0.68 0.69 0.68 0.68 0.64 0.68 0.68 0.68 0.69 0.68 0.68 0.64 0.68 0.68 0.68 0.69 0.68 0.68 0.64 0.68 0.68 0.68 0.69 0.68 0.68 0.64 0.68 0.68 0.68 0.69 0.68 0.68 0124816 32 0 1 2 4 8 16 32 0.6 0.65 0.7 0.75 0.8 AUROC 
+
+4 × 4 Triangle Grid 
+
+> Evaluation Prompt Shots
+
+Probe Training Shots 0.62 0.57 0.57 0.58 0.56 0.56 0.57 0.57 0.57 0.57 0.58 0.57 0.57 0.57 0.57 0.57 0.57 0.58 0.57 0.57 0.58 0.58 0.57 0.57 0.58 0.57 0.57 0.58 0.58 0.57 0.57 0.58 0.57 0.57 0.58 0.58 0.57 0.57 0.58 0.57 0.57 0.58 0.58 0.57 0.56 0.58 0.56 0.57 0.57 0124816 32 0 1 2 4 8 16 32 0.54 0.56 0.58 0.6 0.62 0.64 0.66 0.68 0.7 0.72 AUROC 
+
+4 × 4 Torus Grid 
+
+> Evaluation Prompt Shots
+
+Probe Training Shots 0.78 0.75 0.75 0.74 0.73 0.72 0.72 0.72 0.76 0.76 0.76 0.75 0.75 0.75 0.72 0.76 0.76 0.76 0.76 0.76 0.75 0.72 0.76 0.76 0.77 0.77 0.77 0.76 0.71 0.75 0.76 0.77 0.77 0.77 0.77 0.71 0.75 0.75 0.77 0.77 0.77 0.77 0.70 0.75 0.75 0.76 0.77 0.77 0.77 0124816 32 0 1 2 4 8 16 32 0.62 0.64 0.66 0.68 0.7 0.72 0.74 0.76 0.78 AUROC 
+
+4 × 4 Lattice Grid 
+
+> Evaluation Prompt Shots
+
+Probe Training Shots 0.80 0.77 0.76 0.75 0.74 0.72 0.72 0.73 0.79 0.78 0.78 0.77 0.76 0.75 0.74 0.79 0.79 0.79 0.78 0.78 0.77 0.73 0.79 0.79 0.79 0.79 0.79 0.78 0.72 0.78 0.79 0.79 0.80 0.80 0.79 0.71 0.78 0.79 0.79 0.80 0.80 0.79 0.71 0.77 0.79 0.79 0.80 0.80 0.80 0124816 32 0 1 2 4 8 16 32 0.64 0.66 0.68 0.7 0.72 0.74 0.76 0.78 0.8 AUROC 
+
+5 × 5 Lattice Grid 
+
+> Evaluation Prompt Shots
+
+Probe Training Shots 0.80 0.78 0.77 0.75 0.72 0.73 0.73 0.75 0.79 0.78 0.77 0.76 0.76 0.76 0.75 0.78 0.78 0.78 0.77 0.77 0.77 0.74 0.78 0.78 0.78 0.78 0.78 0.78 0.74 0.78 0.78 0.78 0.78 0.78 0.78 0.72 0.77 0.77 0.77 0.78 0.78 0.78 0.72 0.77 0.77 0.77 0.78 0.78 0.78 0124816 32 0 1 2 4 8 16 32 0.6 0.65 0.7 0.75 0.8 AUROC 
+
+3 × 5 Lattice Grid 
+
+> Evaluation Prompt Shots
+
+Probe Training Shots 0.79 0.77 0.76 0.74 0.73 0.72 0.71 0.73 0.78 0.78 0.77 0.76 0.75 0.74 0.73 0.78 0.78 0.78 0.77 0.76 0.76 0.73 0.78 0.78 0.79 0.78 0.77 0.77 0.72 0.77 0.78 0.78 0.78 0.78 0.77 0.71 0.77 0.78 0.78 0.78 0.78 0.78 0.71 0.77 0.77 0.78 0.78 0.78 0.78 0124816 32 0 1 2 4 8 16 32 0.6 0.65 0.7 0.75 0.8 AUROC 
+
+4 × 4 Triangle Grid 
+
+> Evaluation Prompt Shots
+
+Probe Training Shots 0.72 0.69 0.69 0.67 0.68 0.67 0.66 0.67 0.70 0.70 0.69 0.69 0.68 0.68 0.68 0.70 0.70 0.70 0.70 0.69 0.69 0.67 0.69 0.70 0.70 0.70 0.70 0.70 0.66 0.69 0.70 0.70 0.70 0.70 0.70 0.66 0.69 0.70 0.70 0.70 0.71 0.70 0.66 0.69 0.69 0.70 0.70 0.70 0.70 0124816 32 0 1 2 4 8 16 32 0.54 0.56 0.58 0.6 0.62 0.64 0.66 0.68 0.7 0.72 AUROC 
+
+4 × 4 Torus Grid 
+
+> Evaluation Prompt Shots
+
+Probe Training Shots 0.77 0.72 0.71 0.70 0.70 0.71 0.69 0.69 0.75 0.74 0.72 0.72 0.71 0.70 0.68 0.74 0.75 0.74 0.73 0.72 0.71 0.66 0.73 0.75 0.75 0.74 0.74 0.73 0.66 0.72 0.74 0.75 0.75 0.74 0.74 0.65 0.72 0.73 0.74 0.75 0.74 0.74 0.65 0.72 0.73 0.74 0.74 0.74 0.74 0124816 32 0 1 2 4 8 16 32 0.62 0.64 0.66 0.68 0.7 0.72 0.74 0.76 0.78 AUROC 
+
+4 × 4 Lattice Grid 
+
+> Evaluation Prompt Shots
+
+Probe Training Shots 0.77 0.72 0.71 0.70 0.69 0.69 0.68 0.70 0.78 0.76 0.74 0.73 0.72 0.71 0.69 0.77 0.78 0.77 0.76 0.75 0.74 0.69 0.76 0.78 0.78 0.78 0.77 0.76 0.68 0.75 0.77 0.78 0.78 0.78 0.77 0.67 0.74 0.76 0.77 0.78 0.78 0.77 0.66 0.73 0.75 0.77 0.77 0.78 0.78 0124816 32 0 1 2 4 8 16 32 0.64 0.66 0.68 0.7 0.72 0.74 0.76 0.78 0.8 AUROC 
+
+5 × 5 Lattice Grid 
+
+> Evaluation Prompt Shots
+
+Probe Training Shots 0.76 0.74 0.73 0.72 0.71 0.70 0.69 0.70 0.75 0.75 0.74 0.73 0.71 0.71 0.69 0.75 0.76 0.76 0.75 0.73 0.72 0.69 0.74 0.75 0.77 0.76 0.75 0.75 0.69 0.73 0.75 0.76 0.77 0.76 0.76 0.68 0.72 0.74 0.76 0.76 0.76 0.76 0.68 0.72 0.74 0.76 0.76 0.76 0.76 0124816 32 0 1 2 4 8 16 32 0.6 0.65 0.7 0.75 0.8 AUROC 
+
+3 × 5 Lattice Grid 
+
+> Evaluation Prompt Shots
+
+Probe Training Shots 0.77 0.73 0.71 0.70 0.71 0.72 0.70 0.71 0.76 0.74 0.73 0.73 0.73 0.71 0.69 0.75 0.75 0.75 0.74 0.74 0.73 0.68 0.75 0.75 0.76 0.75 0.75 0.74 0.68 0.74 0.74 0.76 0.75 0.75 0.75 0.67 0.73 0.74 0.75 0.75 0.75 0.76 0.67 0.72 0.73 0.75 0.75 0.75 0.76 0124816 32 0 1 2 4 8 16 32 0.6 0.65 0.7 0.75 0.8 AUROC 
+
+4 × 4 Triangle Grid 
+
+> Evaluation Prompt Shots
+
+Probe Training Shots 0.68 0.65 0.64 0.64 0.64 0.62 0.62 0.64 0.67 0.66 0.66 0.66 0.64 0.63 0.63 0.66 0.67 0.67 0.67 0.65 0.65 0.63 0.66 0.67 0.68 0.68 0.67 0.66 0.62 0.66 0.66 0.68 0.69 0.68 0.68 0.62 0.65 0.66 0.68 0.68 0.69 0.68 0.62 0.65 0.66 0.68 0.68 0.69 0.69 0124816 32 0 1 2 4 8 16 32 0.54 0.56 0.58 0.6 0.62 0.64 0.66 0.68 0.7 0.72 AUROC 
+
+Qwen3-4B-Base Layer 4 Layer 20 Layer 36 4 × 4 Torus Grid Evaluation Prompt Shots Probe Training Shots 0.69 0.68 0.68 0.68 0.68 0.67 0.66 0.63 0.70 0.70 0.70 0.70 0.69 0.68 0.64 0.69 0.70 0.70 0.70 0.69 0.68 0.65 0.69 0.70 0.70 0.70 0.69 0.69 0.65 0.69 0.70 0.70 0.70 0.69 0.69 0.65 0.69 0.70 0.70 0.70 0.69 0.69 0.65 0.69 0.69 0.70 0.70 0.69 0.69 0124816 32 0 1 2 4 8 16 32 0.62 0.64 0.66 0.68 0.7 0.72 0.74 0.76 0.78 AUROC 
+
+4 × 4 Lattice Grid 
+
+> Evaluation Prompt Shots
+
+Probe Training Shots 0.74 0.70 0.68 0.67 0.68 0.67 0.67 0.65 0.73 0.72 0.71 0.72 0.71 0.71 0.67 0.73 0.72 0.72 0.73 0.72 0.71 0.68 0.73 0.72 0.71 0.72 0.72 0.72 0.67 0.73 0.72 0.71 0.72 0.72 0.71 0.67 0.72 0.72 0.71 0.72 0.72 0.71 0.67 0.72 0.71 0.71 0.72 0.71 0.71 0124816 32 0 1 2 4 8 16 32 0.64 0.66 0.68 0.7 0.72 0.74 0.76 0.78 0.8 AUROC 
+
+5 × 5 Lattice Grid 
+
+> Evaluation Prompt Shots
+
+Probe Training Shots 0.71 0.69 0.69 0.69 0.68 0.68 0.67 0.63 0.71 0.71 0.71 0.70 0.70 0.69 0.63 0.70 0.71 0.71 0.70 0.70 0.69 0.64 0.70 0.71 0.71 0.71 0.70 0.70 0.65 0.70 0.71 0.71 0.71 0.71 0.70 0.64 0.70 0.71 0.71 0.71 0.70 0.70 0.64 0.70 0.70 0.71 0.70 0.71 0.70 0124816 32 0 1 2 4 8 16 32 0.6 0.65 0.7 0.75 0.8 AUROC 
+
+3 × 5 Lattice Grid 
+
+> Evaluation Prompt Shots
+
+Probe Training Shots 0.70 0.67 0.66 0.66 0.65 0.65 0.64 0.62 0.69 0.68 0.68 0.68 0.68 0.67 0.63 0.68 0.68 0.68 0.68 0.68 0.68 0.65 0.68 0.68 0.68 0.69 0.68 0.68 0.66 0.68 0.68 0.68 0.68 0.68 0.68 0.66 0.68 0.68 0.68 0.69 0.68 0.68 0.66 0.68 0.68 0.68 0.68 0.68 0.68 0124816 32 0 1 2 4 8 16 32 0.6 0.65 0.7 0.75 0.8 AUROC 
+
+4 × 4 Triangle Grid 
+
+> Evaluation Prompt Shots
+
+Probe Training Shots 0.60 0.56 0.56 0.55 0.55 0.55 0.55 0.56 0.56 0.56 0.55 0.55 0.55 0.55 0.56 0.55 0.56 0.55 0.55 0.55 0.55 0.56 0.55 0.56 0.55 0.55 0.55 0.55 0.56 0.55 0.56 0.55 0.55 0.55 0.55 0.56 0.55 0.56 0.55 0.55 0.54 0.54 0.56 0.55 0.56 0.55 0.55 0.54 0.54 0124816 32 0 1 2 4 8 16 32 0.54 0.56 0.58 0.6 0.62 0.64 0.66 0.68 0.7 0.72 AUROC 
+
+4 × 4 Torus Grid 
+
+> Evaluation Prompt Shots
+
+Probe Training Shots 0.78 0.74 0.73 0.72 0.74 0.73 0.74 0.73 0.77 0.76 0.76 0.76 0.75 0.74 0.73 0.77 0.77 0.77 0.77 0.76 0.75 0.72 0.76 0.77 0.77 0.77 0.77 0.76 0.71 0.76 0.76 0.77 0.77 0.77 0.76 0.71 0.76 0.76 0.77 0.77 0.77 0.77 0.70 0.75 0.76 0.76 0.77 0.77 0.77 0124816 32 0 1 2 4 8 16 32 0.62 0.64 0.66 0.68 0.7 0.72 0.74 0.76 0.78 AUROC 
+
+4 × 4 Lattice Grid 
+
+> Evaluation Prompt Shots
+
+Probe Training Shots 0.80 0.74 0.73 0.74 0.73 0.72 0.70 0.70 0.79 0.78 0.77 0.77 0.75 0.74 0.70 0.79 0.79 0.79 0.78 0.78 0.77 0.70 0.79 0.80 0.79 0.79 0.79 0.78 0.70 0.79 0.80 0.80 0.80 0.79 0.79 0.69 0.78 0.79 0.79 0.80 0.80 0.79 0.69 0.78 0.79 0.79 0.80 0.80 0.80 0124816 32 0 1 2 4 8 16 32 0.64 0.66 0.68 0.7 0.72 0.74 0.76 0.78 0.8 AUROC 
+
+5 × 5 Lattice Grid 
+
+> Evaluation Prompt Shots
+
+Probe Training Shots 0.80 0.77 0.74 0.74 0.76 0.74 0.74 0.73 0.77 0.75 0.75 0.77 0.75 0.75 0.73 0.76 0.76 0.76 0.78 0.76 0.77 0.72 0.76 0.77 0.77 0.79 0.77 0.78 0.72 0.76 0.76 0.77 0.79 0.77 0.78 0.71 0.75 0.76 0.76 0.79 0.77 0.78 0.71 0.75 0.76 0.76 0.79 0.78 0.79 0124816 32 0 1 2 4 8 16 32 0.6 0.65 0.7 0.75 0.8 AUROC 
+
+3 × 5 Lattice Grid 
+
+> Evaluation Prompt Shots
+
+Probe Training Shots 0.80 0.76 0.75 0.72 0.72 0.71 0.71 0.72 0.78 0.77 0.76 0.76 0.76 0.75 0.72 0.78 0.77 0.77 0.77 0.77 0.77 0.72 0.78 0.77 0.77 0.78 0.78 0.77 0.72 0.77 0.77 0.77 0.78 0.78 0.78 0.72 0.77 0.77 0.77 0.78 0.78 0.78 0.72 0.77 0.77 0.77 0.78 0.78 0.78 0124816 32 0 1 2 4 8 16 32 0.6 0.65 0.7 0.75 0.8 AUROC 
+
+4 × 4 Triangle Grid 
+
+> Evaluation Prompt Shots
+
+Probe Training Shots 0.72 0.69 0.69 0.69 0.68 0.68 0.68 0.67 0.70 0.70 0.70 0.69 0.69 0.69 0.67 0.70 0.70 0.70 0.70 0.70 0.70 0.67 0.69 0.70 0.70 0.70 0.70 0.70 0.67 0.69 0.70 0.70 0.70 0.70 0.70 0.67 0.69 0.69 0.70 0.70 0.71 0.71 0.67 0.69 0.69 0.70 0.70 0.71 0.71 0124816 32 0 1 2 4 8 16 32 0.54 0.56 0.58 0.6 0.62 0.64 0.66 0.68 0.7 0.72 AUROC 
+
+4 × 4 Torus Grid 
+
+> Evaluation Prompt Shots
+
+Probe Training Shots 0.75 0.72 0.71 0.71 0.71 0.70 0.70 0.69 0.74 0.73 0.73 0.72 0.71 0.71 0.68 0.73 0.74 0.74 0.74 0.73 0.72 0.68 0.72 0.74 0.74 0.74 0.74 0.73 0.67 0.70 0.73 0.74 0.74 0.74 0.74 0.66 0.69 0.73 0.73 0.74 0.75 0.74 0.66 0.69 0.72 0.73 0.74 0.75 0.75 0124816 32 0 1 2 4 8 16 32 0.62 0.64 0.66 0.68 0.7 0.72 0.74 0.76 0.78 AUROC 
+
+4 × 4 Lattice Grid 
+
+> Evaluation Prompt Shots
+
+Probe Training Shots 0.79 0.73 0.72 0.71 0.69 0.70 0.68 0.67 0.77 0.76 0.75 0.74 0.74 0.72 0.65 0.76 0.77 0.78 0.77 0.77 0.76 0.65 0.75 0.76 0.78 0.78 0.78 0.77 0.65 0.74 0.76 0.78 0.78 0.78 0.78 0.65 0.74 0.76 0.78 0.78 0.79 0.79 0.65 0.73 0.75 0.78 0.78 0.79 0.79 0124816 32 0 1 2 4 8 16 32 0.64 0.66 0.68 0.7 0.72 0.74 0.76 0.78 0.8 AUROC 
+
+5 × 5 Lattice Grid 
+
+> Evaluation Prompt Shots
+
+Probe Training Shots 0.77 0.74 0.72 0.72 0.71 0.71 0.71 0.71 0.76 0.75 0.75 0.73 0.74 0.73 0.70 0.75 0.76 0.76 0.74 0.75 0.75 0.69 0.74 0.75 0.76 0.75 0.76 0.76 0.69 0.73 0.75 0.76 0.76 0.77 0.76 0.69 0.72 0.74 0.76 0.76 0.77 0.77 0.68 0.71 0.74 0.75 0.76 0.77 0.77 0124816 32 0 1 2 4 8 16 32 0.6 0.65 0.7 0.75 0.8 AUROC 
+
+3 × 5 Lattice Grid 
+
+> Evaluation Prompt Shots
+
+Probe Training Shots 0.76 0.73 0.71 0.71 0.71 0.69 0.69 0.70 0.75 0.74 0.74 0.73 0.71 0.71 0.69 0.75 0.75 0.76 0.75 0.73 0.73 0.68 0.74 0.75 0.76 0.75 0.74 0.74 0.67 0.73 0.74 0.75 0.75 0.75 0.75 0.67 0.72 0.74 0.75 0.75 0.75 0.75 0.66 0.71 0.73 0.75 0.75 0.75 0.76 0124816 32 0 1 2 4 8 16 32 0.6 0.65 0.7 0.75 0.8 AUROC 
+
+4 × 4 Triangle Grid 
+
+> Evaluation Prompt Shots
+
+Probe Training Shots 0.68 0.66 0.66 0.66 0.65 0.64 0.64 0.63 0.67 0.67 0.67 0.66 0.65 0.64 0.63 0.67 0.68 0.68 0.67 0.66 0.66 0.62 0.66 0.67 0.68 0.68 0.68 0.67 0.62 0.66 0.67 0.68 0.68 0.68 0.68 0.62 0.66 0.67 0.68 0.69 0.69 0.69 0.62 0.65 0.67 0.68 0.68 0.69 0.69 0124816 32 0 1 2 4 8 16 32 0.54 0.56 0.58 0.6 0.62 0.64 0.66 0.68 0.7 0.72 AUROC 
+
+Qwen3-8B-Base Layer 4 Layer 20 Layer 36 4 × 4 Torus Grid Evaluation Prompt Shots Probe Training Shots 0.62 0.62 0.62 0.62 0.62 0.62 0.62 0.61 0.63 0.63 0.63 0.63 0.63 0.63 0.61 0.63 0.63 0.63 0.63 0.63 0.63 0.61 0.63 0.63 0.64 0.64 0.63 0.63 0.61 0.63 0.63 0.64 0.64 0.64 0.63 0.61 0.63 0.63 0.64 0.64 0.63 0.63 0.61 0.63 0.63 0.64 0.64 0.63 0.63 0124816 32 0 1 2 4 8 16 32 0.62 0.64 0.66 0.68 0.7 0.72 0.74 0.76 0.78 AUROC 
+
+4 × 4 Lattice Grid 
+
+> Evaluation Prompt Shots
+
+Probe Training Shots 0.69 0.68 0.68 0.67 0.68 0.67 0.66 0.67 0.70 0.70 0.69 0.70 0.69 0.68 0.68 0.71 0.70 0.70 0.71 0.70 0.69 0.68 0.70 0.70 0.70 0.70 0.70 0.69 0.68 0.70 0.70 0.70 0.71 0.70 0.69 0.67 0.70 0.70 0.70 0.70 0.70 0.69 0.67 0.70 0.70 0.69 0.70 0.70 0.69 0124816 32 0 1 2 4 8 16 32 0.64 0.66 0.68 0.7 0.72 0.74 0.76 0.78 0.8 AUROC 
+
+5 × 5 Lattice Grid 
+
+> Evaluation Prompt Shots
+
+Probe Training Shots 0.69 0.67 0.68 0.68 0.66 0.64 0.63 0.62 0.68 0.68 0.68 0.67 0.65 0.64 0.62 0.68 0.68 0.69 0.67 0.65 0.64 0.63 0.68 0.68 0.69 0.67 0.66 0.64 0.64 0.68 0.68 0.69 0.67 0.66 0.64 0.64 0.68 0.68 0.68 0.67 0.66 0.64 0.64 0.67 0.68 0.68 0.67 0.66 0.64 0124816 32 0 1 2 4 8 16 32 0.6 0.65 0.7 0.75 0.8 AUROC 
+
+3 × 5 Lattice Grid 
+
+> Evaluation Prompt Shots
+
+Probe Training Shots 0.62 0.59 0.61 0.61 0.61 0.61 0.59 0.59 0.59 0.62 0.61 0.61 0.61 0.60 0.59 0.59 0.62 0.62 0.62 0.61 0.60 0.59 0.59 0.62 0.62 0.62 0.61 0.61 0.59 0.59 0.62 0.62 0.62 0.62 0.61 0.58 0.59 0.62 0.62 0.62 0.61 0.61 0.58 0.59 0.62 0.62 0.62 0.61 0.61 0124816 32 0 1 2 4 8 16 32 0.6 0.65 0.7 0.75 0.8 AUROC 
+
+4 × 4 Triangle Grid 
+
+> Evaluation Prompt Shots
+
+Probe Training Shots 0.56 0.56 0.57 0.57 0.58 0.58 0.58 0.56 0.56 0.57 0.58 0.58 0.58 0.58 0.56 0.56 0.57 0.58 0.58 0.58 0.59 0.56 0.56 0.58 0.58 0.59 0.59 0.59 0.56 0.56 0.58 0.58 0.59 0.59 0.59 0.56 0.56 0.58 0.58 0.59 0.59 0.59 0.56 0.56 0.58 0.59 0.59 0.59 0.59 0124816 32 0 1 2 4 8 16 32 0.54 0.56 0.58 0.6 0.62 0.64 0.66 0.68 0.7 0.72 AUROC 
+
+4 × 4 Torus Grid 
+
+> Evaluation Prompt Shots
+
+Probe Training Shots 0.76 0.74 0.75 0.73 0.73 0.73 0.73 0.71 0.76 0.75 0.74 0.74 0.74 0.73 0.70 0.75 0.75 0.74 0.74 0.74 0.74 0.70 0.74 0.75 0.74 0.75 0.75 0.75 0.69 0.74 0.74 0.74 0.75 0.75 0.75 0.69 0.74 0.74 0.74 0.75 0.75 0.75 0.69 0.73 0.74 0.74 0.75 0.75 0.75 0124816 32 0 1 2 4 8 16 32 0.62 0.64 0.66 0.68 0.7 0.72 0.74 0.76 0.78 AUROC 
+
+4 × 4 Lattice Grid 
+
+> Evaluation Prompt Shots
+
+Probe Training Shots 0.80 0.75 0.74 0.74 0.73 0.69 0.70 0.72 0.76 0.76 0.77 0.75 0.74 0.74 0.70 0.76 0.76 0.78 0.76 0.76 0.75 0.69 0.76 0.76 0.78 0.76 0.77 0.76 0.68 0.76 0.76 0.78 0.76 0.77 0.76 0.68 0.76 0.76 0.78 0.76 0.78 0.76 0.68 0.76 0.75 0.77 0.76 0.78 0.76 0124816 32 0 1 2 4 8 16 32 0.64 0.66 0.68 0.7 0.72 0.74 0.76 0.78 0.8 AUROC 
+
+5 × 5 Lattice Grid 
+
+> Evaluation Prompt Shots
+
+Probe Training Shots 0.77 0.77 0.76 0.76 0.75 0.75 0.75 0.73 0.77 0.76 0.76 0.75 0.75 0.75 0.73 0.76 0.76 0.76 0.76 0.76 0.75 0.72 0.76 0.76 0.77 0.76 0.76 0.76 0.71 0.75 0.75 0.77 0.76 0.76 0.76 0.71 0.75 0.75 0.76 0.76 0.76 0.76 0.71 0.74 0.75 0.76 0.76 0.76 0.76 0124816 32 0 1 2 4 8 16 32 0.6 0.65 0.7 0.75 0.8 AUROC 
+
+3 × 5 Lattice Grid 
+
+> Evaluation Prompt Shots
+
+Probe Training Shots 0.76 0.77 0.73 0.74 0.73 0.74 0.73 0.70 0.77 0.74 0.74 0.74 0.75 0.74 0.69 0.76 0.74 0.74 0.74 0.75 0.75 0.69 0.76 0.75 0.75 0.74 0.76 0.76 0.68 0.75 0.74 0.75 0.74 0.76 0.76 0.68 0.74 0.74 0.74 0.74 0.76 0.77 0.68 0.74 0.74 0.74 0.74 0.77 0.77 0124816 32 0 1 2 4 8 16 32 0.6 0.65 0.7 0.75 0.8 AUROC 
+
+4 × 4 Triangle Grid 
+
+> Evaluation Prompt Shots
+
+Probe Training Shots 0.71 0.69 0.68 0.68 0.67 0.66 0.66 0.66 0.70 0.69 0.69 0.69 0.68 0.68 0.65 0.69 0.70 0.70 0.69 0.69 0.69 0.65 0.69 0.69 0.70 0.70 0.69 0.69 0.65 0.68 0.69 0.70 0.70 0.70 0.69 0.65 0.68 0.69 0.70 0.70 0.70 0.70 0.64 0.67 0.68 0.69 0.70 0.70 0.70 0124816 32 0 1 2 4 8 16 32 0.54 0.56 0.58 0.6 0.62 0.64 0.66 0.68 0.7 0.72 AUROC 
+
+4 × 4 Torus Grid 
+
+> Evaluation Prompt Shots
+
+Probe Training Shots 0.76 0.70 0.70 0.68 0.67 0.62 0.67 0.66 0.74 0.73 0.72 0.70 0.65 0.68 0.65 0.73 0.73 0.74 0.72 0.68 0.70 0.65 0.73 0.73 0.74 0.73 0.70 0.72 0.65 0.72 0.73 0.75 0.74 0.71 0.73 0.65 0.72 0.73 0.75 0.74 0.72 0.73 0.66 0.72 0.73 0.75 0.73 0.72 0.74 0124816 32 0 1 2 4 8 16 32 0.62 0.64 0.66 0.68 0.7 0.72 0.74 0.76 0.78 AUROC 
+
+4 × 4 Lattice Grid 
+
+> Evaluation Prompt Shots
+
+Probe Training Shots 0.77 0.73 0.68 0.68 0.65 0.69 0.66 0.65 0.75 0.74 0.74 0.71 0.70 0.68 0.64 0.75 0.76 0.76 0.73 0.73 0.72 0.64 0.74 0.76 0.77 0.74 0.76 0.74 0.65 0.74 0.76 0.78 0.75 0.77 0.76 0.64 0.73 0.76 0.77 0.75 0.77 0.76 0.64 0.72 0.75 0.77 0.74 0.77 0.76 0124816 32 0 1 2 4 8 16 32 0.64 0.66 0.68 0.7 0.72 0.74 0.76 0.78 0.8 AUROC 
+
+5 × 5 Lattice Grid 
+
+> Evaluation Prompt Shots
+
+Probe Training Shots 0.77 0.72 0.71 0.70 0.70 0.69 0.69 0.68 0.75 0.75 0.73 0.73 0.72 0.70 0.67 0.74 0.76 0.75 0.75 0.73 0.72 0.65 0.73 0.76 0.75 0.76 0.75 0.74 0.65 0.72 0.75 0.75 0.76 0.75 0.75 0.64 0.72 0.75 0.75 0.76 0.76 0.75 0.63 0.71 0.75 0.75 0.76 0.76 0.76 0124816 32 0 1 2 4 8 16 32 0.6 0.65 0.7 0.75 0.8 AUROC 
+
+3 × 5 Lattice Grid 
+
+> Evaluation Prompt Shots
+
+Probe Training Shots 0.77 0.71 0.69 0.69 0.69 0.68 0.69 0.66 0.75 0.74 0.73 0.71 0.71 0.70 0.64 0.74 0.75 0.75 0.73 0.73 0.72 0.64 0.73 0.75 0.75 0.74 0.74 0.74 0.64 0.72 0.75 0.75 0.75 0.74 0.75 0.64 0.72 0.74 0.75 0.75 0.75 0.76 0.64 0.71 0.74 0.75 0.75 0.75 0.76 0124816 32 0 1 2 4 8 16 32 0.6 0.65 0.7 0.75 0.8 AUROC 
+
+4 × 4 Triangle Grid 
+
+> Evaluation Prompt Shots
+
+Probe Training Shots 0.68 0.63 0.61 0.62 0.60 0.60 0.60 0.62 0.65 0.64 0.64 0.62 0.63 0.62 0.61 0.65 0.65 0.65 0.63 0.64 0.64 0.61 0.65 0.65 0.66 0.65 0.65 0.65 0.61 0.65 0.66 0.66 0.65 0.66 0.66 0.61 0.65 0.66 0.67 0.66 0.67 0.67 0.61 0.65 0.65 0.67 0.66 0.67 0.67 0124816 32 0 1 2 4 8 16 32 0.54 0.56 0.58 0.6 0.62 0.64 0.66 0.68 0.7 0.72 AUROC 
+
+Qwen3-14B-Base Layer 4 Layer 20 Layer 40 4 × 4 Torus Grid 
+
+Figure 18: Cross Probe Performance. AUROC of probes trained at one shot count and evaluated at another. Results are from three Qwen3 models on five graph topologies. 31 Preprint Probe Training Shots Probe Training Shots 1.00 0.72 1.00 0.72 0.98 1.00 0.72 0.98 0.99 1.00 0.74 0.96 0.97 0.98 1.00 0.73 0.97 0.98 0.98 0.99 1.00 0.74 0.96 0.97 0.98 0.99 0.99 1.00 0124816 32 0 1 2 4 8 16 32 00.2 0.4 0.6 0.8 1Overlap 
+
+4 × 4 Lattice Grid 
+
+> Probe Training Shots
+
+Probe Training Shots 1.00 0.56 1.00 0.41 0.82 1.00 0.47 0.95 0.92 1.00 0.45 0.85 0.96 0.93 1.00 0.47 0.84 0.96 0.92 0.96 1.00 0.47 0.82 0.94 0.89 0.96 0.98 1.00 0124816 32 0 1 2 4 8 16 32 00.2 0.4 0.6 0.8 1Overlap 
+
+5 × 5 Lattice Grid 
+
+> Probe Training Shots
+
+Probe Training Shots 1.00 0.78 1.00 0.77 0.92 1.00 0.77 0.94 0.98 1.00 0.75 0.86 0.97 0.97 1.00 0.76 0.88 0.96 0.97 0.99 1.00 0.76 0.84 0.95 0.95 0.99 0.98 1.00 0124816 32 0 1 2 4 8 16 32 00.2 0.4 0.6 0.8 1Overlap 
+
+3 × 5 Lattice Grid 
+
+> Probe Training Shots
+
+Probe Training Shots 1.00 0.80 1.00 0.80 0.98 1.00 0.78 0.97 0.99 1.00 0.78 0.96 0.98 0.99 1.00 0.78 0.97 0.98 0.99 0.99 1.00 0.77 0.96 0.97 0.98 0.99 0.99 1.00 0124816 32 0 1 2 4 8 16 32 00.2 0.4 0.6 0.8 1Overlap 
+
+4 × 4 Triangle Grid 
+
+> Probe Training Shots
+
+Probe Training Shots 1.00 0.82 1.00 0.79 0.94 1.00 0.75 0.91 0.97 1.00 0.79 0.93 0.96 0.96 1.00 0.76 0.90 0.96 0.97 0.95 1.00 0.74 0.87 0.94 0.96 0.93 0.98 1.00 0124816 32 0 1 2 4 8 16 32 00.2 0.4 0.6 0.8 1Overlap 
+
+4 × 4 Torus Grid 
+
+> Probe Training Shots
+
+Probe Training Shots 1.00 0.49 1.00 0.47 0.77 1.00 0.37 0.62 0.74 1.00 0.34 0.57 0.68 0.77 1.00 0.29 0.49 0.58 0.70 0.81 1.00 0.29 0.45 0.55 0.60 0.77 0.82 1.00 0124816 32 0 1 2 4 8 16 32 00.2 0.4 0.6 0.8 1Overlap 
+
+4 × 4 Lattice Grid 
+
+> Probe Training Shots
+
+Probe Training Shots 1.00 0.38 1.00 0.38 0.72 1.00 0.36 0.62 0.80 1.00 0.38 0.58 0.72 0.80 1.00 0.32 0.51 0.64 0.74 0.83 1.00 0.30 0.46 0.57 0.67 0.77 0.84 1.00 0124816 32 0 1 2 4 8 16 32 00.2 0.4 0.6 0.8 1Overlap 
+
+5 × 5 Lattice Grid 
+
+> Probe Training Shots
+
+Probe Training Shots 1.00 0.52 1.00 0.52 0.72 1.00 0.41 0.58 0.74 1.00 0.38 0.53 0.66 0.77 1.00 0.42 0.50 0.65 0.66 0.76 1.00 0.41 0.48 0.63 0.63 0.72 0.89 1.00 0124816 32 0 1 2 4 8 16 32 00.2 0.4 0.6 0.8 1Overlap 
+
+3 × 5 Lattice Grid 
+
+> Probe Training Shots
+
+Probe Training Shots 1.00 0.56 1.00 0.54 0.76 1.00 0.51 0.68 0.80 1.00 0.47 0.60 0.72 0.82 1.00 0.48 0.57 0.66 0.77 0.86 1.00 0.46 0.53 0.61 0.72 0.81 0.90 1.00 0124816 32 0 1 2 4 8 16 32 00.2 0.4 0.6 0.8 1Overlap 
+
+4 × 4 Triangle Grid 
+
+> Probe Training Shots
+
+Probe Training Shots 1.00 0.43 1.00 0.36 0.73 1.00 0.36 0.55 0.53 1.00 0.34 0.42 0.40 0.60 1.00 0.31 0.34 0.37 0.42 0.63 1.00 0.34 0.38 0.37 0.42 0.64 0.81 1.00 0124816 32 0 1 2 4 8 16 32 00.2 0.4 0.6 0.8 1Overlap 
+
+4 × 4 Torus Grid 
+
+> Probe Training Shots
+
+Probe Training Shots 1.00 0.39 1.00 0.34 0.72 1.00 0.28 0.55 0.76 1.00 0.24 0.43 0.60 0.81 1.00 0.16 0.23 0.31 0.42 0.61 1.00 0.14 0.19 0.25 0.34 0.51 0.89 1.00 0124816 32 0 1 2 4 8 16 32 00.2 0.4 0.6 0.8 1Overlap 
+
+4 × 4 Lattice Grid 
+
+> Probe Training Shots
+
+Probe Training Shots 1.00 0.19 1.00 0.25 0.37 1.00 0.16 0.29 0.65 1.00 0.13 0.24 0.41 0.79 1.00 0.12 0.21 0.31 0.62 0.85 1.00 0.12 0.19 0.24 0.51 0.75 0.89 1.00 0124816 32 0 1 2 4 8 16 32 00.2 0.4 0.6 0.8 1Overlap 
+
+5 × 5 Lattice Grid 
+
+> Probe Training Shots
+
+Probe Training Shots 1.00 0.40 1.00 0.38 0.73 1.00 0.26 0.50 0.73 1.00 0.22 0.40 0.59 0.82 1.00 0.20 0.32 0.46 0.68 0.86 1.00 0.17 0.22 0.34 0.53 0.72 0.85 1.00 0124816 32 0 1 2 4 8 16 32 00.2 0.4 0.6 0.8 1Overlap 
+
+3 × 5 Lattice Grid 
+
+> Probe Training Shots
+
+Probe Training Shots 1.00 0.36 1.00 0.23 0.37 1.00 0.19 0.30 0.69 1.00 0.20 0.27 0.52 0.78 1.00 0.19 0.25 0.33 0.53 0.75 1.00 0.17 0.22 0.27 0.44 0.60 0.84 1.00 0124816 32 0 1 2 4 8 16 32 00.2 0.4 0.6 0.8 1Overlap 
+
+4 × 4 Triangle Grid 
+
+> Probe Training Shots
+
+Probe Training Shots 1.00 0.28 1.00 0.23 0.62 1.00 0.21 0.46 0.75 1.00 0.20 0.38 0.60 0.83 1.00 0.19 0.33 0.47 0.66 0.83 1.00 0.18 0.30 0.41 0.57 0.72 0.90 1.00 0124816 32 0 1 2 4 8 16 32 00.2 0.4 0.6 0.8 1Overlap 
+
+Qwen3-4B-Base Layer 4 Layer 20 Layer 36 4 × 4 Torus Grid Probe Training Shots Probe Training Shots 1.00 0.71 1.00 0.70 0.99 1.00 0.70 0.98 0.98 1.00 0.70 0.97 0.98 0.99 1.00 0.70 0.97 0.97 0.98 0.99 1.00 0.71 0.95 0.96 0.97 0.98 0.99 1.00 0124816 32 0 1 2 4 8 16 32 00.2 0.4 0.6 0.8 1Overlap 
+
+4 × 4 Lattice Grid 
+
+> Probe Training Shots
+
+Probe Training Shots 1.00 0.60 1.00 0.60 0.95 1.00 0.62 0.94 0.99 1.00 0.62 0.97 0.96 0.97 1.00 0.60 0.90 0.97 0.98 0.93 1.00 0.60 0.91 0.97 0.98 0.95 0.99 1.00 0124816 32 0 1 2 4 8 16 32 00.2 0.4 0.6 0.8 1Overlap 
+
+5 × 5 Lattice Grid 
+
+> Probe Training Shots
+
+Probe Training Shots 1.00 0.73 1.00 0.70 0.98 1.00 0.70 0.97 0.99 1.00 0.68 0.96 0.98 0.99 1.00 0.69 0.96 0.97 0.99 0.98 1.00 0.69 0.95 0.96 0.98 0.98 0.99 1.00 0124816 32 0 1 2 4 8 16 32 00.2 0.4 0.6 0.8 1Overlap 
+
+3 × 5 Lattice Grid 
+
+> Probe Training Shots
+
+Probe Training Shots 1.00 0.66 1.00 0.65 0.98 1.00 0.66 0.96 0.98 1.00 0.65 0.95 0.96 0.96 1.00 0.66 0.96 0.97 0.98 0.96 1.00 0.65 0.96 0.97 0.98 0.97 0.99 1.00 0124816 32 0 1 2 4 8 16 32 00.2 0.4 0.6 0.8 1Overlap 
+
+4 × 4 Triangle Grid 
+
+> Probe Training Shots
+
+Probe Training Shots 1.00 0.91 1.00 0.87 0.94 1.00 0.87 0.90 0.94 1.00 0.86 0.89 0.92 0.98 1.00 0.88 0.89 0.91 0.95 0.97 1.00 0.87 0.88 0.90 0.95 0.97 0.98 1.00 0124816 32 0 1 2 4 8 16 32 00.2 0.4 0.6 0.8 1Overlap 
+
+4 × 4 Torus Grid 
+
+> Probe Training Shots
+
+Probe Training Shots 1.00 0.48 1.00 0.36 0.50 1.00 0.32 0.43 0.76 1.00 0.34 0.46 0.70 0.79 1.00 0.35 0.45 0.62 0.68 0.80 1.00 0.33 0.40 0.47 0.53 0.67 0.71 1.00 0124816 32 0 1 2 4 8 16 32 00.2 0.4 0.6 0.8 1Overlap 
+
+4 × 4 Lattice Grid 
+
+> Probe Training Shots
+
+Probe Training Shots 1.00 0.28 1.00 0.32 0.69 1.00 0.31 0.57 0.77 1.00 0.31 0.53 0.71 0.86 1.00 0.33 0.34 0.44 0.53 0.57 1.00 0.31 0.30 0.39 0.46 0.50 0.86 1.00 0124816 32 0 1 2 4 8 16 32 00.2 0.4 0.6 0.8 1Overlap 
+
+5 × 5 Lattice Grid 
+
+> Probe Training Shots
+
+Probe Training Shots 1.00 0.50 1.00 0.45 0.54 1.00 0.49 0.60 0.71 1.00 0.36 0.44 0.60 0.70 1.00 0.45 0.55 0.60 0.79 0.67 1.00 0.35 0.42 0.54 0.65 0.79 0.70 1.00 0124816 32 0 1 2 4 8 16 32 00.2 0.4 0.6 0.8 1Overlap 
+
+3 × 5 Lattice Grid 
+
+> Probe Training Shots
+
+Probe Training Shots 1.00 0.35 1.00 0.45 0.72 1.00 0.37 0.67 0.80 1.00 0.37 0.63 0.72 0.80 1.00 0.41 0.55 0.67 0.69 0.81 1.00 0.40 0.55 0.67 0.70 0.79 0.87 1.00 0124816 32 0 1 2 4 8 16 32 00.2 0.4 0.6 0.8 1Overlap 
+
+4 × 4 Triangle Grid 
+
+> Probe Training Shots
+
+Probe Training Shots 1.00 0.46 1.00 0.45 0.64 1.00 0.44 0.53 0.66 1.00 0.45 0.52 0.58 0.72 1.00 0.43 0.47 0.55 0.62 0.73 1.00 0.44 0.49 0.54 0.60 0.68 0.85 1.00 0124816 32 0 1 2 4 8 16 32 00.2 0.4 0.6 0.8 1Overlap 
+
+4 × 4 Torus Grid 
+
+> Probe Training Shots
+
+Probe Training Shots 1.00 0.22 1.00 0.38 0.39 1.00 0.35 0.34 0.78 1.00 0.27 0.29 0.58 0.77 1.00 0.25 0.25 0.48 0.66 0.86 1.00 0.24 0.25 0.45 0.63 0.80 0.88 1.00 0124816 32 0 1 2 4 8 16 32 00.2 0.4 0.6 0.8 1Overlap 
+
+4 × 4 Lattice Grid 
+
+> Probe Training Shots
+
+Probe Training Shots 1.00 0.20 1.00 0.23 0.73 1.00 0.22 0.30 0.40 1.00 0.20 0.26 0.35 0.83 1.00 0.19 0.24 0.32 0.73 0.88 1.00 0.17 0.21 0.29 0.62 0.77 0.89 1.00 0124816 32 0 1 2 4 8 16 32 00.2 0.4 0.6 0.8 1Overlap 
+
+5 × 5 Lattice Grid 
+
+> Probe Training Shots
+
+Probe Training Shots 1.00 0.45 1.00 0.41 0.69 1.00 0.32 0.49 0.80 1.00 0.25 0.33 0.58 0.78 1.00 0.19 0.25 0.47 0.66 0.82 1.00 0.17 0.20 0.40 0.57 0.74 0.87 1.00 0124816 32 0 1 2 4 8 16 32 00.2 0.4 0.6 0.8 1Overlap 
+
+3 × 5 Lattice Grid 
+
+> Probe Training Shots
+
+Probe Training Shots 1.00 0.27 1.00 0.36 0.47 1.00 0.23 0.31 0.55 1.00 0.19 0.29 0.43 0.80 1.00 0.18 0.28 0.37 0.66 0.83 1.00 0.14 0.24 0.28 0.54 0.71 0.86 1.00 0124816 32 0 1 2 4 8 16 32 00.2 0.4 0.6 0.8 1Overlap 
+
+4 × 4 Triangle Grid 
+
+> Probe Training Shots
+
+Probe Training Shots 1.00 0.32 1.00 0.28 0.70 1.00 0.23 0.47 0.71 1.00 0.20 0.33 0.50 0.73 1.00 0.23 0.32 0.41 0.56 0.70 1.00 0.22 0.29 0.37 0.49 0.66 0.83 1.00 0124816 32 0 1 2 4 8 16 32 00.2 0.4 0.6 0.8 1Overlap 
+
+Qwen3-8B-Base Layer 4 Layer 20 Layer 36 4 × 4 Torus Grid Probe Training Shots Probe Training Shots 1.00 0.96 1.00 0.94 0.97 1.00 0.94 0.96 0.99 1.00 0.93 0.95 0.98 0.99 1.00 0.91 0.93 0.96 0.97 0.98 1.00 0.92 0.94 0.97 0.98 0.98 0.99 1.00 0124816 32 0 1 2 4 8 16 32 00.2 0.4 0.6 0.8 1Overlap 
+
+4 × 4 Lattice Grid 
+
+> Probe Training Shots
+
+Probe Training Shots 1.00 0.93 1.00 0.92 0.99 1.00 0.91 0.98 0.99 1.00 0.90 0.97 0.99 0.99 1.00 0.89 0.96 0.98 0.99 0.99 1.00 0.90 0.96 0.98 0.98 0.99 0.99 1.00 0124816 32 0 1 2 4 8 16 32 00.2 0.4 0.6 0.8 1Overlap 
+
+5 × 5 Lattice Grid 
+
+> Probe Training Shots
+
+Probe Training Shots 1.00 0.92 1.00 0.90 0.96 1.00 0.89 0.94 0.97 1.00 0.88 0.92 0.95 0.98 1.00 0.88 0.92 0.94 0.97 0.98 1.00 0.88 0.90 0.91 0.92 0.93 0.95 1.00 0124816 32 0 1 2 4 8 16 32 00.2 0.4 0.6 0.8 1Overlap 
+
+3 × 5 Lattice Grid 
+
+> Probe Training Shots
+
+Probe Training Shots 1.00 0.94 1.00 0.93 0.94 1.00 0.91 0.92 0.98 1.00 0.90 0.91 0.98 0.99 1.00 0.89 0.88 0.95 0.97 0.97 1.00 0.89 0.89 0.95 0.97 0.96 0.99 1.00 0124816 32 0 1 2 4 8 16 32 00.2 0.4 0.6 0.8 1Overlap 
+
+4 × 4 Triangle Grid 
+
+> Probe Training Shots
+
+Probe Training Shots 1.00 0.91 1.00 0.87 0.95 1.00 0.85 0.90 0.93 1.00 0.84 0.88 0.91 0.98 1.00 0.83 0.87 0.89 0.94 0.96 1.00 0.83 0.86 0.88 0.94 0.95 0.97 1.00 0124816 32 0 1 2 4 8 16 32 00.2 0.4 0.6 0.8 1Overlap 
+
+4 × 4 Torus Grid 
+
+> Probe Training Shots
+
+Probe Training Shots 1.00 0.56 1.00 0.51 0.72 1.00 0.60 0.64 0.70 1.00 0.53 0.58 0.68 0.81 1.00 0.52 0.57 0.64 0.77 0.87 1.00 0.52 0.54 0.61 0.74 0.81 0.87 1.00 0124816 32 0 1 2 4 8 16 32 00.2 0.4 0.6 0.8 1Overlap 
+
+4 × 4 Lattice Grid 
+
+> Probe Training Shots
+
+Probe Training Shots 1.00 0.49 1.00 0.36 0.43 1.00 0.33 0.24 0.58 1.00 0.46 0.48 0.28 0.32 1.00 0.47 0.58 0.40 0.32 0.65 1.00 0.41 0.53 0.39 0.19 0.59 0.78 1.00 0124816 32 0 1 2 4 8 16 32 00.2 0.4 0.6 0.8 1Overlap 
+
+5 × 5 Lattice Grid 
+
+> Probe Training Shots
+
+Probe Training Shots 1.00 0.46 1.00 0.63 0.65 1.00 0.48 0.40 0.57 1.00 0.51 0.40 0.58 0.84 1.00 0.47 0.36 0.51 0.79 0.88 1.00 0.45 0.35 0.49 0.73 0.83 0.88 1.00 0124816 32 0 1 2 4 8 16 32 00.2 0.4 0.6 0.8 1Overlap 
+
+3 × 5 Lattice Grid 
+
+> Probe Training Shots
+
+Probe Training Shots 1.00 0.48 1.00 0.44 0.51 1.00 0.44 0.48 0.69 1.00 0.44 0.44 0.58 0.83 1.00 0.38 0.38 0.37 0.53 0.63 1.00 0.40 0.39 0.36 0.50 0.58 0.85 1.00 0124816 32 0 1 2 4 8 16 32 00.2 0.4 0.6 0.8 1Overlap 
+
+4 × 4 Triangle Grid 
+
+> Probe Training Shots
+
+Probe Training Shots 1.00 0.43 1.00 0.45 0.60 1.00 0.41 0.51 0.74 1.00 0.41 0.45 0.65 0.82 1.00 0.41 0.42 0.59 0.69 0.84 1.00 0.40 0.40 0.53 0.61 0.73 0.86 1.00 0124816 32 0 1 2 4 8 16 32 00.2 0.4 0.6 0.8 1Overlap 
+
+4 × 4 Torus Grid 
+
+> Probe Training Shots
+
+Probe Training Shots 1.00 0.32 1.00 0.26 0.32 1.00 0.27 0.56 0.49 1.00 0.27 0.37 0.54 0.69 1.00 0.31 0.37 0.53 0.44 0.59 1.00 0.41 0.38 0.24 0.38 0.46 0.47 1.00 0124816 32 0 1 2 4 8 16 32 00.2 0.4 0.6 0.8 1Overlap 
+
+4 × 4 Lattice Grid 
+
+> Probe Training Shots
+
+Probe Training Shots 1.00 0.49 1.00 0.30 0.33 1.00 0.32 0.34 0.77 1.00 0.40 0.41 0.27 0.35 1.00 0.40 0.46 0.38 0.43 0.81 1.00 0.40 0.45 0.38 0.41 0.73 0.92 1.00 0124816 32 0 1 2 4 8 16 32 00.2 0.4 0.6 0.8 1Overlap 
+
+5 × 5 Lattice Grid 
+
+> Probe Training Shots
+
+Probe Training Shots 1.00 0.32 1.00 0.24 0.36 1.00 0.18 0.33 0.72 1.00 0.22 0.33 0.71 0.70 1.00 0.27 0.35 0.62 0.55 0.83 1.00 0.39 0.45 0.34 0.26 0.39 0.47 1.00 0124816 32 0 1 2 4 8 16 32 00.2 0.4 0.6 0.8 1Overlap 
+
+3 × 5 Lattice Grid 
+
+> Probe Training Shots
+
+Probe Training Shots 1.00 0.31 1.00 0.26 0.49 1.00 0.25 0.48 0.87 1.00 0.22 0.30 0.67 0.70 1.00 0.24 0.34 0.67 0.71 0.90 1.00 0.37 0.36 0.36 0.37 0.41 0.44 1.00 0124816 32 0 1 2 4 8 16 32 00.2 0.4 0.6 0.8 1Overlap 
+
+4 × 4 Triangle Grid 
+
+> Probe Training Shots
+
+Probe Training Shots 1.00 0.28 1.00 0.27 0.59 1.00 0.25 0.50 0.75 1.00 0.26 0.41 0.44 0.45 1.00 0.25 0.41 0.46 0.45 0.76 1.00 0.26 0.38 0.46 0.42 0.71 0.81 1.00 0124816 32 0 1 2 4 8 16 32 00.2 0.4 0.6 0.8 1Overlap 
+
+Qwen3-14B-Base Layer 4 Layer 20 Layer 40 4 × 4 Torus Grid 
+
+Figure 19: Representation Subspace Overlap Results. Overlap between probe subspaces across shot counts. Results are from three Qwen3 models on five graph topologies. 32 Preprint −10 010 
+
+PC1 (15.5%) 
+
+−20 
+
+−10 0
+
+PC2 (11.4%) 
+
+−10 010 
+
+> PC3 (11.1%)
+
+−10 0
+
+PC1 (9.6%) 
+
+−10 010 
+
+PC2 (7.3%) 
+
+−10 010 
+
+> PC3 (7.1%)
+
+−10 0 10 
+
+PC1 (15.4%) 
+
+−20 
+
+−10 010 
+
+PC2 (12.3%) 
+
+−10 010 
+
+> PC3 (9.8%)
+
+010 
+
+PC1 (12.2%) 
+
+−10 010 
+
+PC2 (10.4%) 
+
+−10 010 
+
+> PC3 (9.4%)
+
+−10 010 
+
+PC1 (13.8%) 
+
+−20 
+
+−10 0
+
+PC2 (10.3%) 
+
+−10 010 
+
+> PC3 (9.3%)
+
+−15 015 30 
+
+PC1 (11.7%) 
+
+−15 015 
+
+PC2 (9.6%) 
+
+−15 015 
+
+> PC3 (8.4%)
+
+−15 015 
+
+PC1 (11.2%) 
+
+−15 015 
+
+PC2 (7.0%) 
+
+−15 015 
+
+> PC3 (6.4%)
+
+−15 015 
+
+PC1 (14.2%) 
+
+−15 015 
+
+PC2 (9.9%) 
+
+−15 015 
+
+> PC3 (8.6%)
+
+−20 020 
+
+PC1 (17.0%) 
+
+−20 020 
+
+PC2 (8.7%) 
+
+−20 020 
+
+> PC3 (7.0%)
+
+−15 015 
+
+PC1 (11.2%) 
+
+−15 015 
+
+PC2 (10.1%) 
+
+−15 015 
+
+> PC3 (8.9%)
+
+−150 0
+
+PC1 (35.8%) 
+
+0150 
+
+PC2 (9.7%) 
+
+−150 0150 
+
+> PC3 (6.4%)
+
+−150 0
+
+PC1 (27.4%) 
+
+−150 0150 
+
+PC2 (8.3%) 
+
+0150 
+
+> PC3 (5.8%)
+
+−150 0
+
+PC1 (36.2%) 
+
+−150 0
+
+PC2 (10.1%) 
+
+−150 0
+
+> PC3 (7.5%)
+
+−150 0
+
+PC1 (28.4%) 
+
+−150 0
+
+PC2 (14.0%) 
+
+−150 0150 
+
+> PC3 (8.4%)
+
+−150 0
+
+PC1 (31.0%) 
+
+−150 0150 
+
+PC2 (10.0%) 
+
+0150 
+
+> PC3 (8.9%)
+
+−30 
+
+−15 0
+
+PC1 (15.4%) 
+
+−30 
+
+−15 0
+
+PC2 (12.1%) 
+
+−30 
+
+−15 0
+
+> PC3 (11.0%)
+
+−30 
+
+−15 0
+
+PC1 (11.1%) 
+
+−30 
+
+−15 0
+
+PC2 (8.2%) 
+
+−15 015 
+
+> PC3 (7.7%)
+
+015 30 
+
+PC1 (17.7%) 
+
+−15 015 
+
+PC2 (9.9%) 
+
+−15 015 
+
+> PC3 (9.8%)
+
+015 30 
+
+PC1 (17.2%) 
+
+−15 015 
+
+PC2 (10.0%) 
+
+−15 015 
+
+> PC3 (9.4%)
+
+015 30 
+
+PC1 (18.0%) 
+
+−15 015 
+
+PC2 (10.5%) 
+
+−15 015 
+
+> PC3 (9.8%)
+
+−30 030 
+
+PC1 (14.3%) 
+
+−30 030 
+
+PC2 (9.4%) 
+
+−30 030 
+
+> PC3 (8.8%)
+
+−30 030 
+
+PC1 (10.3%) 
+
+−30 030 
+
+PC2 (7.4%) 
+
+−30 030 
+
+> PC3 (6.5%)
+
+−30 030 
+
+PC1 (13.8%) 
+
+−30 030 
+
+PC2 (12.6%) 
+
+−30 030 
+
+> PC3 (8.2%)
+
+−25 025 
+
+PC1 (11.4%) 
+
+−25 025 
+
+PC2 (9.9%) 
+
+−25 025 
+
+> PC3 (8.1%)
+
+−25 025 
+
+PC1 (11.8%) 
+
+−25 025 
+
+PC2 (9.2%) 
+
+−25 025 
+
+> PC3 (8.2%)
+
+−400 0400 
+
+PC1 (44.3%) 
+
+0400 
+
+PC2 (8.7%) 
+
+−400 0400 
+
+> PC3 (7.3%)
+
+−400 0400 
+
+PC1 (45.5%) 
+
+−400 0400 
+
+PC2 (6.0%) 
+
+−400 0400 
+
+> PC3 (4.8%)
+
+−400 0400 
+
+PC1 (52.2%) 
+
+−400 0400 
+
+PC2 (5.9%) 
+
+−400 0400 
+
+> PC3 (5.1%)
+
+−400 0400 
+
+PC1 (48.9%) 
+
+−400 0400 
+
+PC2 (6.3%) 
+
+−400 0400 
+
+> PC3 (5.4%)
+
+−400 0400 
+
+PC1 (46.9%) 
+
+−400 0400 
+
+PC2 (6.8%) 
+
+−400 0400 
+
+> PC3 (6.0%)
+
+−25 0
+
+PC1 (17.2%) 
+
+−25 025 
+
+PC2 (16.4%) 
+
+−25 025 
+
+> PC3 (9.8%)
+
+−25 0
+
+PC1 (10.5%) 
+
+−25 025 
+
+PC2 (9.6%) 
+
+−25 0
+
+> PC3 (7.3%)
+
+−40 
+
+−20 0
+
+PC1 (18.0%) 
+
+−20 0
+
+PC2 (13.5%) 
+
+−20 020 
+
+> PC3 (12.3%)
+
+−40 
+
+−20 0
+
+PC1 (15.9%) 
+
+−20 0
+
+PC2 (14.5%) 
+
+−40 
+
+−20 0
+
+> PC3 (11.4%)
+
+−40 
+
+−20 0
+
+PC1 (16.6%) 
+
+−40 
+
+−20 0
+
+PC2 (14.7%) 
+
+−20 020 
+
+> PC3 (10.0%)
+
+−30 030 
+
+PC1 (12.1%) 
+
+−30 030 
+
+PC2 (9.7%) 
+
+−30 030 
+
+> PC3 (9.0%)
+
+−40 0
+
+PC1 (9.6%) 
+
+−40 040 
+
+PC2 (7.8%) 
+
+−40 040 
+
+> PC3 (7.0%)
+
+−30 0
+
+PC1 (11.4%) 
+
+−30 030 
+
+PC2 (10.7%) 
+
+−30 030 
+
+> PC3 (10.1%)
+
+−30 030 
+
+PC1 (10.9%) 
+
+−30 030 
+
+PC2 (10.7%) 
+
+−30 030 
+
+> PC3 (8.1%)
+
+−30 030 
+
+PC1 (10.7%) 
+
+−30 030 
+
+PC2 (9.8%) 
+
+−30 030 
+
+> PC3 (8.9%)
+
+−800 0
+
+PC1 (53.9%) 
+
+−800 0800 
+
+PC2 (5.8%) 
+
+−800 0800 
+
+> PC3 (5.6%)
+
+−800 0
+
+PC1 (49.3%) 
+
+−800 0800 
+
+PC2 (7.7%) 
+
+−800 0800 
+
+> PC3 (4.3%)
+
+−800 0
+
+PC1 (48.3%) 
+
+−800 0800 
+
+PC2 (8.6%) 
+
+−800 0800 
+
+> PC3 (7.9%)
+
+−800 0
+
+PC1 (47.1%) 
+
+−800 0800 
+
+PC2 (10.7%) 
+
+−800 0800 
+
+> PC3 (5.2%)
+
+−800 0
+
+PC1 (52.6%) 
+
+−800 0800 
+
+PC2 (5.3%) 
+
+−800 0800 
+
+> PC3 (5.0%)
+
+Qwen3-4B-Base 
+
+Layer 4 
+
+4×4 Lattice Grid 5×5 Lattice Grid 3×5 Lattice Grid 4×4 Triangle Grid 4×4 Torus Grid 
+
+Layer 20 
+
+4×4 Lattice Grid 5×5 Lattice Grid 3×5 Lattice Grid 4×4 Triangle Grid 4×4 Torus Grid 
+
+Layer 36 
+
+4×4 Lattice Grid 5×5 Lattice Grid 3×5 Lattice Grid 4×4 Triangle Grid 4×4 Torus Grid 
+
+Qwen3-8B-Base 
+
+Layer 4 
+
+4×4 Lattice Grid 5×5 Lattice Grid 3×5 Lattice Grid 4×4 Triangle Grid 4×4 Torus Grid 
+
+Layer 20 
+
+4×4 Lattice Grid 5×5 Lattice Grid 3×5 Lattice Grid 4×4 Triangle Grid 4×4 Torus Grid 
+
+Layer 36 
+
+4×4 Lattice Grid 5×5 Lattice Grid 3×5 Lattice Grid 4×4 Triangle Grid 4×4 Torus Grid 
+
+Qwen3-14B-Base 
+
+Layer 4 
+
+4×4 Lattice Grid 5×5 Lattice Grid 3×5 Lattice Grid 4×4 Triangle Grid 4×4 Torus Grid 
+
+Layer 20 
+
+4×4 Lattice Grid 5×5 Lattice Grid 3×5 Lattice Grid 4×4 Triangle Grid 4×4 Torus Grid 
+
+Layer 40 
+
+4×4 Lattice Grid 5×5 Lattice Grid 3×5 Lattice Grid 4×4 Triangle Grid 4×4 Torus Grid 
+
+0-shot 1-shot 2-shot 4-shot 8-shot 16-shot 32-shot 
+
+Figure 20: PCA of Shift in Hidden States of a Random Walk Across Different Number of Shots. 
+
+In each panel, PCA is fit jointly to all activations shown. Results are from three Qwen3 models on five graph topologies. 33 Preprint -15 -10 -5 0510 15 20 -20 -15 -10 -5 0 5 10 15 20 PC2 (3.5%) PC1 (3.7%) 
+
+4×4 Lattice Grid 
+
+-20 -15 -10 -5 0510 15 -15 -10 -5 0 5 10 15 20 PC2 (3.3%) PC1 (3.6%) 
+
+5×5 Lattice Grid 
+
+-20 -15 -10 -5 0510 15 20 -25 -20 -15 -10 -5 0 5 10 15 20 PC2 (4.0%) PC1 (4.1%) 
+
+3 × 5 Lattice Grid 
+
+-20 -15 -10 -5 0510 15 -20 -15 -10 -5 0 5 10 15 20 PC2 (3.5%) PC1 (3.8%) 
+
+4×4 Triangle Grid 
+
+-20 -15 -10 -5 0510 15 20 -20 -15 -10 -5 0 5 10 15 PC2 (3.4%) PC1 (3.6%) 
+
+4×4 Torus Grid 
+
+-15 -10 -5 0510 15 20 -20 -15 -10 -5 0 5 10 15 PC2 (4.1%) PC1 (4.4%) 
+
+4×4 Lattice Grid 
+
+-20 -15 -10 -5 0510 15 -20 -15 -10 -5 0 5 10 15 20 PC2 (3.7%) PC1 (4.1%) 
+
+5×5 Lattice Grid 
+
+-15 -10 -5 0510 -25 -20 -15 -10 -5 0 5 10 15 20 PC2 (4.2%) PC1 (5.1%) 
+
+3 × 5 Lattice Grid 
+
+-20 -15 -10 -5 0510 15 -15 -10 -5 0 5 10 15 20 PC2 (4.3%) PC1 (4.4%) 
+
+4×4 Triangle Grid 
+
+-15 -10 -5 0510 15 -20 -15 -10 -5 0 5 10 PC2 (3.3%) PC1 (4.6%) 
+
+4×4 Torus Grid 
+
+-10 -5 0510 15 -15 -10 -5 0 5 10 PC2 (10.6%) PC1 (14.3%) 
+
+4×4 Lattice Grid 
+
+-15 -10 -5 0510 15 -25 -20 -15 -10 -5 0 5 10 15 PC2 (7.0%) PC1 (11.2%) 
+
+5×5 Lattice Grid 
+
+-15 -10 -5 0510 -20 -15 -10 -5 0 5 10 15 20 25 PC2 (13.2%) PC1 (15.9%) 
+
+3 × 5 Lattice Grid 
+
+-6 -4 -2 0246810 12 -15 -10 -5 0 5 10 PC2 (13.4%) PC1 (13.7%) 
+
+4×4 Triangle Grid 
+
+-6 -4 -2 0246810 12 14 -15 -10 -5 0 5 10 PC2 (6.5%) PC1 (15.3%) 
+
+4×4 Torus Grid 
+
+-15 -10 -5 0510 15 20 -25 -20 -15 -10 -5 0 5 10 15 20 25 PC2 (3.5%) PC1 (3.8%) 
+
+4×4 Lattice Grid 
+
+-20 -15 -10 -5 0510 15 20 25 -20 -15 -10 -5 0 5 10 15 20 25 PC2 (3.3%) PC1 (3.8%) 
+
+5×5 Lattice Grid 
+
+-25 -20 -15 -10 -5 0510 15 20 -40 -30 -20 -10 0 10 20 30 PC2 (3.9%) PC1 (4.4%) 
+
+3 × 5 Lattice Grid 
+
+-25 -20 -15 -10 -5 0510 15 20 25 -20 -15 -10 -5 0 5 10 15 20 PC2 (3.5%) PC1 (3.9%) 
+
+4×4 Triangle Grid 
+
+-20 -15 -10 -5 0510 15 20 25 -25 -20 -15 -10 -5 0 5 10 15 20 PC2 (3.4%) PC1 (3.7%) 
+
+4×4 Torus Grid 
+
+-20 -15 -10 -5 0510 15 20 25 -25 -20 -15 -10 -5 0 5 10 15 PC2 (4.0%) PC1 (4.5%) 
+
+4×4 Lattice Grid 
+
+-15 -10 -5 0510 15 20 25 -30 -25 -20 -15 -10 -5 0 5 10 15 20 PC2 (3.9%) PC1 (4.2%) 
+
+5×5 Lattice Grid 
+
+-20 -15 -10 -5 0510 15 -40 -30 -20 -10 0 10 20 30 PC2 (4.1%) PC1 (5.2%) 
+
+3 × 5 Lattice Grid 
+
+-15 -10 -5 0510 15 20 -25 -20 -15 -10 -5 0 5 10 15 PC2 (4.3%) PC1 (4.5%) 
+
+4×4 Triangle Grid 
+
+-15 -10 -5 0510 15 20 -15 -10 -5 0 5 10 15 20 PC2 (3.2%) PC1 (4.7%) 
+
+4×4 Torus Grid 
+
+-10 -5 0510 15 20 -20 -15 -10 -5 0 5 10 15 PC2 (10.8%) PC1 (19.6%) 
+
+4×4 Lattice Grid 
+
+-15 -10 -5 0510 15 20 -30 -25 -20 -15 -10 -5 0 5 10 15 20 PC2 (9.3%) PC1 (11.3%) 
+
+5×5 Lattice Grid 
+
+-30 -25 -20 -15 -10 -5 0510 15 20 -20 -15 -10 -5 0 5 10 15 20 PC2 (16.5%) PC1 (17.3%) 
+
+3 × 5 Lattice Grid 
+
+-10 -5 0510 15 -20 -15 -10 -5 0 5 10 15 PC2 (13.6%) PC1 (19.0%) 
+
+4×4 Triangle Grid 
+
+-10 -5 0510 15 20 -15 -10 -5 0 5 10 15 20 PC2 (6.5%) PC1 (21.0%) 
+
+4×4 Torus Grid 
+
+-25 -20 -15 -10 -5 0510 15 20 25 -25 -20 -15 -10 -5 0 5 10 15 20 25 PC2 (3.8%) PC1 (3.9%) 
+
+4×4 Lattice Grid 
+
+-25 -20 -15 -10 -5 0510 15 20 25 -20 -15 -10 -5 0 5 10 15 20 25 PC2 (3.7%) PC1 (4.1%) 
+
+5×5 Lattice Grid 
+
+-25 -20 -15 -10 -5 0510 15 20 25 -40 -30 -20 -10 0 10 20 30 PC2 (3.9%) PC1 (4.7%) 
+
+3 × 5 Lattice Grid 
+
+-30 -25 -20 -15 -10 -5 0510 15 20 25 -25 -20 -15 -10 -5 0 5 10 15 PC2 (3.7%) PC1 (4.1%) 
+
+4×4 Triangle Grid 
+
+-20 -15 -10 -5 0510 15 20 25 -20 -15 -10 -5 0 5 10 15 20 25 30 PC2 (3.6%) PC1 (3.7%) 
+
+4×4 Torus Grid 
+
+-25 -20 -15 -10 -5 0510 15 20 -25 -20 -15 -10 -5 0 5 10 15 20 25 30 PC2 (4.1%) PC1 (4.2%) 
+
+4×4 Lattice Grid 
+
+-15 -10 -5 0510 15 20 25 -30 -25 -20 -15 -10 -5 0 5 10 15 20 PC2 (3.7%) PC1 (4.6%) 
+
+5×5 Lattice Grid 
+
+-25 -20 -15 -10 -5 0510 15 20 25 -40 -30 -20 -10 0 10 20 30 PC2 (3.9%) PC1 (5.7%) 
+
+3 × 5 Lattice Grid 
+
+-15 -10 -5 0510 15 20 25 -20 -15 -10 -5 0 5 10 15 20 PC2 (4.1%) PC1 (4.8%) 
+
+4×4 Triangle Grid 
+
+-25 -20 -15 -10 -5 0510 15 -25 -20 -15 -10 -5 0 5 10 15 PC2 (3.4%) PC1 (4.3%) 
+
+4×4 Torus Grid 
+
+-20 -15 -10 -5 0510 15 -20 -10 0 10 20 30 40 PC2 (7.3%) PC1 (27.8%) 
+
+4×4 Lattice Grid 
+
+-30 -25 -20 -15 -10 -5 0510 15 20 -30 -20 -10 0 10 20 30 40 PC2 (8.7%) PC1 (16.5%) 
+
+5×5 Lattice Grid 
+
+-20 -10 010 20 30 40 -40 -30 -20 -10 0 10 20 PC2 (11.4%) PC1 (23.8%) 
+
+3 × 5 Lattice Grid 
+
+-20 -15 -10 -5 0510 -20 -10 0 10 20 30 40 PC2 (9.5%) PC1 (25.5%) 
+
+4×4 Triangle Grid 
+
+-10 -5 0510 15 20 25 -20 -10 0 10 20 30 40 PC2 (4.6%) PC1 (29.6%) 
+
+Qwen3-4B-Base Qwen3-8B-Base Qwen3-14B-Base Layer 4 Layer 20 Layer 36 Layer 4 Layer 20 Layer 36 Layer 4 Layer 20 Layer 40 4×4 Torus Grid 
+
+0-shot 1-shot 2-shot 4-shot 8-shot 16-shot 32-shot 
+
+Figure 21: PCA of Shifts in Hidden-State Centroids across Random Walks Across Different Number of Shots. PCA of 300 test samples per shot. Points represent individual random walks and triangles indicate their means. In each panel, PCA is fit jointly to all activations shown. Results are from three Qwen3 models on five graph topologies. 34 Preprint D.3 SHOT VECTOR 
+
+We define the Shot Vector ∆¯h(l) as the mean difference between few shot and zero shot hidden states for corresponding nodes in the query random walk, computed over the test set. Figure 22 reports detailed results on the overlap between the Shot Vector and the World Representation Subspace. We also show in Figure 23 that the Task Vector (Hendel et al., 2023), defined as the few shot hidden state immediately before the answer (” \n” in our graph tracking task), is distinct from the Shot Vector and nearly orthogonal to it. Note that Hendel et al. (2023) define the Task Vector for tasks with input–output pairs, including algorithmic, translation, linguistic, and knowledge tasks. This differs from our few-shot setting, where each demonstration consists of an observation, few-shot examples as an instruction, and an answer. Nevertheless, we extract the Task Vector using the same definition. Angle Number of Shots 4 × 4 Lattice Grid 5 × 5 Lattice Grid 3 × 5 Lattice Grid 4 × 4 Triangle Grid 4 × 4 Torus Grid 60° 65° 70° 75° 80° 85° 90° 1 2 4 8 16 32 
+
+Layer 4 
+
+> Angle Number of Shots
+
+4 × 4 Lattice Grid 5 × 5 Lattice Grid 3 × 5 Lattice Grid 4 × 4 Triangle Grid 4 × 4 Torus Grid 60° 65° 70° 75° 80° 85° 90° 1 2 4 8 16 32 
+
+Layer 20 
+
+> Angle Number of Shots
+
+4 × 4 Lattice Grid 5 × 5 Lattice Grid 3 × 5 Lattice Grid 4 × 4 Triangle Grid 4 × 4 Torus Grid 60° 65° 70° 75° 80° 85° 90° 1 2 4 8 16 32 
+
+Layer 36 
+
+> Angle Number of Shots
+
+4 × 4 Lattice Grid 5 × 5 Lattice Grid 3 × 5 Lattice Grid 4 × 4 Triangle Grid 4 × 4 Torus Grid 60° 65° 70° 75° 80° 85° 90° 1 2 4 8 16 32 
+
+Layer 4 
+
+> Angle Number of Shots
+
+4 × 4 Lattice Grid 5 × 5 Lattice Grid 3 × 5 Lattice Grid 4 × 4 Triangle Grid 4 × 4 Torus Grid 60° 65° 70° 75° 80° 85° 90° 1 2 4 8 16 32 
+
+Layer 20 
+
+> Angle Number of Shots
+
+4 × 4 Lattice Grid 5 × 5 Lattice Grid 3 × 5 Lattice Grid 4 × 4 Triangle Grid 4 × 4 Torus Grid 60° 65° 70° 75° 80° 85° 90° 1 2 4 8 16 32 
+
+Layer 36 
+
+> Angle Number of Shots
+
+4 × 4 Lattice Grid 5 × 5 Lattice Grid 3 × 5 Lattice Grid 4 × 4 Triangle Grid 4 × 4 Torus Grid 60° 65° 70° 75° 80° 85° 90° 1 2 4 8 16 32 
+
+Layer 4 
+
+> Angle Number of Shots
+
+4 × 4 Lattice Grid 5 × 5 Lattice Grid 3 × 5 Lattice Grid 4 × 4 Triangle Grid 4 × 4 Torus Grid 60° 65° 70° 75° 80° 85° 90° 1 2 4 8 16 32 
+
+Layer 20 
+
+> Angle Number of Shots
+
+4 × 4 Lattice Grid 5 × 5 Lattice Grid 3 × 5 Lattice Grid 4 × 4 Triangle Grid 4 × 4 Torus Grid 60° 65° 70° 75° 80° 85° 90° 1 2 4 8 16 32 
+
+Qwen3-4B-Base Qwen3-8B-Base Qwen3-14B-Base Layer 40 
+
+Figure 22: Angle Between the World Representation Subspace and the Shot Vector. Angles to the corresponding probe subspaces, shown separately for each topology. Results are from three Qwen3 models on five graph topologies. 75° 80° 85° 90° 95° 100° 1 2 4 8 16 32 
+
+Layer 4 
+
+75° 80° 85° 90° 95° 100° 1 2 4 8 16 32 Number of Shots 
+
+Layer 20 
+
+75° 80° 85° 90° 95° 100° 1 2 4 8 16 32 4 × 4 Lattice Grid 5 × 5 Lattice Grid 3 × 5 Lattice Grid 4 × 4 Triangle Grid 4 × 4 Torus Grid Angle 
+
+Layer 36 
+
+Figure 23: Angle Between the Shot Vector and the Task Vector. The angle between the two vectors is in degrees from 0◦ to 180 ◦. Results from Qwen3-4B-Base on five topologies. 35 Preprint Distance from Previous Shots Number of Shots 00.2 0.4 0.6 0.8 10 1 2 4 8 16 32 
+
+4 × 4 Lattice Grid 
+
+> Distance from Previous Shots
+
+Number of Shots 00.2 0.4 0.6 0.8 10 1 2 4 8 16 32 
+
+5 × 5 Lattice Grid 
+
+> Distance from Previous Shots
+
+Number of Shots 00.2 0.4 0.6 0.8 10 1 2 4 8 16 32 
+
+3 × 5 Lattice Grid 
+
+> Distance from Previous Shots
+
+Number of Shots 00.2 0.4 0.6 0.8 10 1 2 4 8 16 32 
+
+4 × 4 Triangle Grid 
+
+> Distance from Previous Shots
+
+Number of Shots 00.2 0.4 0.6 0.8 10 1 2 4 8 16 32 
+
+4 × 4 Torus Grid 
+
+> Distance from Previous Shots
+
+Number of Shots 00.2 0.4 0.6 0.8 10 1 2 4 8 16 32 
+
+4 × 4 Lattice Grid 
+
+> Distance from Previous Shots
+
+Number of Shots 00.2 0.4 0.6 0.8 10 1 2 4 8 16 32 
+
+5 × 5 Lattice Grid 
+
+> Distance from Previous Shots
+
+Number of Shots 00.2 0.4 0.6 0.8 10 1 2 4 8 16 32 
+
+3 × 5 Lattice Grid 
+
+> Distance from Previous Shots
+
+Number of Shots 00.2 0.4 0.6 0.8 10 1 2 4 8 16 32 
+
+4 × 4 Triangle Grid 
+
+> Distance from Previous Shots
+
+Number of Shots 00.2 0.4 0.6 0.8 10 1 2 4 8 16 32 
+
+4 × 4 Torus Grid 
+
+> Distance from Previous Shots
+
+Number of Shots 00.2 0.4 0.6 0.8 10 1 2 4 8 16 32 
+
+4 × 4 Lattice Grid 
+
+> Distance from Previous Shots
+
+Number of Shots 00.2 0.4 0.6 0.8 10 1 2 4 8 16 32 
+
+5 × 5 Lattice Grid 
+
+> Distance from Previous Shots
+
+Number of Shots 00.2 0.4 0.6 0.8 10 1 2 4 8 16 32 
+
+3 × 5 Lattice Grid 
+
+> Distance from Previous Shots
+
+Number of Shots 00.2 0.4 0.6 0.8 10 1 2 4 8 16 32 
+
+4 × 4 Triangle Grid 
+
+> Distance from Previous Shots
+
+Number of Shots 00.2 0.4 0.6 0.8 10 1 2 4 8 16 32 
+
+Qwen3-4B-Base Layer 4 Layer 20 Layer 36 4 × 4 Torus Grid Distance from Previous Shots Number of Shots 00.2 0.4 0.6 0.8 10 1 2 4 8 16 32 
+
+4 × 4 Lattice Grid 
+
+> Distance from Previous Shots
+
+Number of Shots 00.2 0.4 0.6 0.8 10 1 2 4 8 16 32 
+
+5 × 5 Lattice Grid 
+
+> Distance from Previous Shots
+
+Number of Shots 00.2 0.4 0.6 0.8 10 1 2 4 8 16 32 
+
+3 × 5 Lattice Grid 
+
+> Distance from Previous Shots
+
+Number of Shots 00.2 0.4 0.6 0.8 10 1 2 4 8 16 32 
+
+4 × 4 Triangle Grid 
+
+> Distance from Previous Shots
+
+Number of Shots 00.2 0.4 0.6 0.8 10 1 2 4 8 16 32 
+
+4 × 4 Torus Grid 
+
+> Distance from Previous Shots
+
+Number of Shots 00.2 0.4 0.6 0.8 10 1 2 4 8 16 32 
+
+4 × 4 Lattice Grid 
+
+> Distance from Previous Shots
+
+Number of Shots 00.2 0.4 0.6 0.8 10 1 2 4 8 16 32 
+
+5 × 5 Lattice Grid 
+
+> Distance from Previous Shots
+
+Number of Shots 00.2 0.4 0.6 0.8 10 1 2 4 8 16 32 
+
+3 × 5 Lattice Grid 
+
+> Distance from Previous Shots
+
+Number of Shots 00.2 0.4 0.6 0.8 10 1 2 4 8 16 32 
+
+4 × 4 Triangle Grid 
+
+> Distance from Previous Shots
+
+Number of Shots 00.2 0.4 0.6 0.8 10 1 2 4 8 16 32 
+
+4 × 4 Torus Grid 
+
+> Distance from Previous Shots
+
+Number of Shots 00.2 0.4 0.6 0.8 10 1 2 4 8 16 32 
+
+4 × 4 Lattice Grid 
+
+> Distance from Previous Shots
+
+Number of Shots 00.2 0.4 0.6 0.8 10 1 2 4 8 16 32 
+
+5 × 5 Lattice Grid 
+
+> Distance from Previous Shots
+
+Number of Shots 00.2 0.4 0.6 0.8 10 1 2 4 8 16 32 
+
+3 × 5 Lattice Grid 
+
+> Distance from Previous Shots
+
+Number of Shots 00.2 0.4 0.6 0.8 10 1 2 4 8 16 32 
+
+4 × 4 Triangle Grid 
+
+> Distance from Previous Shots
+
+Number of Shots 00.2 0.4 0.6 0.8 10 1 2 4 8 16 32 
+
+Qwen3-8B-Base Layer 4 Layer 20 Layer 36 4 × 4 Torus Grid Distance from Previous Shots Number of Shots 00.2 0.4 0.6 0.8 10 1 2 4 8 16 32 
+
+4 × 4 Lattice Grid 
+
+> Distance from Previous Shots
+
+Number of Shots 00.2 0.4 0.6 0.8 10 1 2 4 8 16 32 
+
+5 × 5 Lattice Grid 
+
+> Distance from Previous Shots
+
+Number of Shots 00.2 0.4 0.6 0.8 10 1 2 4 8 16 32 
+
+3 × 5 Lattice Grid 
+
+> Distance from Previous Shots
+
+Number of Shots 00.2 0.4 0.6 0.8 10 1 2 4 8 16 32 
+
+4 × 4 Triangle Grid 
+
+> Distance from Previous Shots
+
+Number of Shots 00.2 0.4 0.6 0.8 10 1 2 4 8 16 32 
+
+4 × 4 Torus Grid 
+
+> Distance from Previous Shots
+
+Number of Shots 00.2 0.4 0.6 0.8 10 1 2 4 8 16 32 
+
+4 × 4 Lattice Grid 
+
+> Distance from Previous Shots
+
+Number of Shots 00.2 0.4 0.6 0.8 10 1 2 4 8 16 32 
+
+5 × 5 Lattice Grid 
+
+> Distance from Previous Shots
+
+Number of Shots 00.2 0.4 0.6 0.8 10 1 2 4 8 16 32 
+
+3 × 5 Lattice Grid 
+
+> Distance from Previous Shots
+
+Number of Shots 00.2 0.4 0.6 0.8 10 1 2 4 8 16 32 
+
+4 × 4 Triangle Grid 
+
+> Distance from Previous Shots
+
+Number of Shots 00.2 0.4 0.6 0.8 10 1 2 4 8 16 32 
+
+4 × 4 Torus Grid 
+
+> Distance from Previous Shots
+
+Number of Shots 00.2 0.4 0.6 0.8 10 1 2 4 8 16 32 
+
+4 × 4 Lattice Grid 
+
+> Distance from Previous Shots
+
+Number of Shots 00.2 0.4 0.6 0.8 10 1 2 4 8 16 32 
+
+5 × 5 Lattice Grid 
+
+> Distance from Previous Shots
+
+Number of Shots 00.2 0.4 0.6 0.8 10 1 2 4 8 16 32 
+
+3 × 5 Lattice Grid 
+
+> Distance from Previous Shots
+
+Number of Shots 00.2 0.4 0.6 0.8 10 1 2 4 8 16 32 
+
+4 × 4 Triangle Grid 
+
+> Distance from Previous Shots
+
+Number of Shots 00.2 0.4 0.6 0.8 10 1 2 4 8 16 32 
+
+Qwen3-14B-Base Layer 4 Layer 20 Layer 40 4 × 4 Torus Grid 
+
+Figure 24: Representation Subspace Distance Results. Normalized projection distance between probe subspaces at consecutive tested shot counts, shown separately for each topology. Results are from three Qwen3 models on five graph topologies. 36 Preprint D.4 INTERVENTION 
+
+We report the degradation in probability of the correct answer token caused by graph intervention and random intervention across five topologies for three Qwen3 models in Figure 25. Graph inter-vention tends to cause larger degradation in the 16-shot setting than in the 0-shot setting, whereas random intervention shows the opposite trend. Test probe AUROC Figure 26 also gradually decreases over the intervention iterations. Our interven-tion removes graph information by subtracting the component of each centered node representation that lies in the learned world representation subspace. Since we intervene on a very low dimensional subspace with r = 2 , 4 relative to the ambient dimension, the effect on the representation is limited. We therefore apply the intervention multiple times, following (Elazar et al., 2021). -15 -10 -5 0510 15 20 4 8 12 16 20 
+
+Relative Degradation of Correct-Answer Probability across Shots 
+
+> 16-shot  − 0-shot (%)
+
+Iteration Relative degradation = mean[100 × (Pclean − Pintervention) / Pclean] · Each shot uses its own clean baseline · 300 paired cases · 95% bootstrap CI 
+
+Graph Intervention 4 × 4 Lattice Grid                     
+
+> 4812 16 20
+> 5 × 5 Lattice Grid
+> 4812 16 20
+> 3 × 5 Lattice Grid
+> 4812 16 20
+> 4 × 4 Triangle Grid
+> 4812 16 20
+> 4 × 4 Torus Grid
+> -15 -10 -5 0510 15 20 4812 16 20
+
+Random Intervention 4 × 4 Lattice Grid                 
+
+> 4812 16 20
+> 5 × 5 Lattice Grid
+> 4812 16 20
+> 3 × 5 Lattice Grid
+> 4812 16 20
+> 4 × 4 Triangle Grid
+> 4812 16 20
+> 4 × 4 Torus Grid
+
+Qwen3-4B-Base Qwen3-8B-Base Qwen3-14B-Base 
+
+Figure 25: Intervention Results across Intervention Iterations. Plotted points represent the aver-age paired difference in this degradation between the 16-shot and 0-shot settings across 300 samples in test set. The top is iterative nullspace projection targeted to graph structure, and the bottom is random orthogonal subspace intervention matched in rank. For each prompt condition, relative degradation is computed per test sample as the drop in the model’s assigned probability for the cor-rect answer after intervention, normalized by the probability before intervention. Positive values indicate that intervention causes a larger relative performance drop under 16-shot prompting than under 0-shot setting. 0.50 0.55 0.60 0.65 0.70 0.75 4 8 12 16 20 
+
+Fresh Probe Test AUROC after Cumulative Graph Intervention 
+
+> AUROC
+
+Iteration Layer means: 2–36 (4B, 8B), 2–40 (14B) · Same measured layers across iterations · Each curve shows the mean per-layer AUROC 
+
+0-shot 4 × 4 Lattice Grid                     
+
+> 4812 16 20
+> 5 × 5 Lattice Grid
+> 4812 16 20
+> 3 × 5 Lattice Grid
+> 4812 16 20
+> 4 × 4 Triangle Grid
+> 4812 16 20
+> 4 × 4 Torus Grid
+> 0.50 0.55 0.60 0.65 0.70 0.75 4812 16 20
+
+16-shot 4 × 4 Lattice Grid                 
+
+> 4812 16 20
+> 5 × 5 Lattice Grid
+> 4812 16 20
+> 3 × 5 Lattice Grid
+> 4812 16 20
+> 4 × 4 Triangle Grid
+> 4812 16 20
+> 4 × 4 Torus Grid
+
+Qwen3-4B-Base Qwen3-8B-Base Qwen3-14B-Base 
+
+Figure 26: Probe Performance during Intervention Iterations. At each cumulative intervention step (4, 8, 12, 16, and 20), a new linear probe is trained on the intervened residual stream activations and evaluated on a held-out test set. Plotted points indicate the average of test AUROC across the layers 2–36 for Qwen3-4B-Base and Qwen3-8B-Base, and layers 2–40 for Qwen3-14B-Base. 37 Preprint 
+
+E ADDITIONAL EXPERIMENTS 
+
+E.1 EXPERIMENTS ON LLAMA , G EMMA , AND MINISTRAL 
+
+In addition to the results for Qwen3-4B-Base, Qwen3-8B-Base, and Qwen3-14B-Base (Yang et al., 2025a), we report the few-shot performance of Llama-3.2-3B (Grattafiori et al., 2024), Gemma-4-12B (Team et al., 2026), and Ministral-3-8B-Base-2512 (Liu et al., 2026a) across the five topologies in Figure 27. We further report the results of our probing and representation analyses on the 4 × 4
+
+lattice grid in Figure 28, and the intervention results in Figure 29. Across all of these experiments, we observe results consistent with the results from Qwen3. 0% 10% 20% 30% 40% 50% 0 1 2 4 8 16 32 
+
+Random: 6.2% 
+
+Number of Shots Accuracy Llama3.2-3B Gemma4-12B Ministral-8B-Base Random Guessing ● ■ ▲
+
+4 × 4 Lattice Grid 
+
+0% 10% 20% 30% 40% 50% 0 1 2 4 8 16 32 
+
+Random: 4.0% 
+
+Number of Shots Accuracy Llama3.2-3B Gemma4-12B Ministral-8B-Base Random Guessing ● ■ ▲
+
+5 × 5 Lattice Grid 
+
+0% 10% 20% 30% 40% 50% 0 1 2 4 8 16 32 
+
+Random: 6.7% 
+
+Number of Shots Accuracy Llama3.2-3B Gemma4-12B Ministral-8B-Base Random Guessing ● ■ ▲
+
+3 × 5 Lattice Grid 
+
+0% 10% 20% 30% 40% 50% 0 1 2 4 8 16 32 
+
+Random: 6.2% 
+
+Number of Shots Accuracy Llama3.2-3B Gemma4-12B Ministral-8B-Base Random Guessing ● ■ ▲
+
+4 × 4 Triangle Grid 
+
+0% 10% 20% 30% 40% 50% 0 1 2 4 8 16 32 
+
+Random: 6.2% 
+
+Number of Shots Accuracy Llama3.2-3B Gemma4-12B Ministral-8B-Base Random Guessing ● ■ ▲
+
+4 × 4 Torus Grid 
+
+Figure 27: Few-Shot Performance. Accuracy of Llama-3.2-3B, Gemma-4-12B, and Ministral-3-8B-Base-2512 on the two-step-right prediction task across five graph topologies. Each point reports accuracy on 300 test samples with 0, 1, 2, 4, 8, 16, or 32 few-shot demonstrations. Dotted gray lines indicate random guessing over the candidate nodes for each topology. AUROC Number of shots Learned Probe Random Feature Baseline 0.50 0.60 0.70 0.80 0.90 0 1 2 4 8 16 32 
+
+(a) Probe Performance 
+
+> Evaluation Prompt Shots
+
+Probe Training Shots 0.73 0.71 0.70 0.70 0.70 0.69 0.68 0.66 0.73 0.73 0.72 0.70 0.68 0.66 0.63 0.71 0.72 0.72 0.71 0.69 0.68 0.63 0.70 0.72 0.73 0.72 0.72 0.70 0.62 0.69 0.71 0.73 0.73 0.73 0.72 0.61 0.69 0.71 0.72 0.73 0.73 0.72 0.61 0.68 0.70 0.72 0.73 0.73 0.73 0124816 32 0 1 2 4 8 16 32 0.58 0.60 0.62 0.64 0.66 0.68 0.70 0.72 0.74 0.76 
+
+> AUROC
+
+(b) Cross Probe Performance Llama3.2-3B 
+
+> Probe Training Shots
+
+Probe Training Shots 1.00 0.42 1.00 0.38 0.65 1.00 0.55 0.47 0.55 1.00 0.54 0.45 0.50 0.89 1.00 0.51 0.43 0.48 0.82 0.93 1.00 0.52 0.42 0.47 0.76 0.88 0.93 1.00 0124816 32 0 1 2 4 8 16 32 00.2 0.4 0.6 0.8 1
+
+> Overlap
+
+(c) Representation Subspace Overlap 
+
+> Angle
+
+Number of Shots 60° 65° 70° 75° 80° 85° 90° 1 2 4 8 16 32 
+
+(d) Angle between Representation Subspace and Shot Vector 
+
+> Distance from Previous Shots
+
+Number of Shots 0.0 0.2 0.4 0.6 0.8 1.0 012 4 8 16 32 
+
+(e) Distance Between Representation Subspaces 
+
+> AUROC
+
+Number of shots Learned Probe Random Feature Baseline 0.50 0.60 0.70 0.80 0.90 0 1 2 4 8 16 32 
+
+(a) Probe Performance 
+
+> Evaluation Prompt Shots
+
+Probe Training Shots 0.73 0.69 0.61 0.60 0.59 0.60 0.60 0.66 0.72 0.64 0.62 0.61 0.61 0.60 0.60 0.64 0.69 0.70 0.69 0.69 0.68 0.60 0.63 0.69 0.71 0.71 0.71 0.70 0.60 0.63 0.69 0.72 0.72 0.72 0.71 0.60 0.62 0.69 0.72 0.72 0.72 0.72 0.60 0.63 0.69 0.72 0.72 0.72 0.72 0124816 32 0 1 2 4 8 16 32 0.58 0.60 0.62 0.64 0.66 0.68 0.70 0.72 0.74 0.76 
+
+> AUROC
+
+(b) Cross Probe Performance Gemma4-12B 
+
+> Probe Training Shots
+
+Probe Training Shots 1.00 0.20 1.00 0.07 0.11 1.00 0.04 0.07 0.51 1.00 0.04 0.07 0.43 0.78 1.00 0.05 0.08 0.39 0.67 0.80 1.00 0.04 0.06 0.32 0.58 0.71 0.82 1.00 0124816 32 0 1 2 4 8 16 32 00.2 0.4 0.6 0.8 1
+
+> Overlap
+
+(c) Representation Subspace Overlap 
+
+> Angle
+
+Number of Shots 60° 65° 70° 75° 80° 85° 90° 1 2 4 8 16 32 
+
+(d) Angle between Representation Subspace and Shot Vector 
+
+> Distance from Previous Shots
+
+Number of Shots 0.0 0.2 0.4 0.6 0.8 1.0 012 4 8 16 32 
+
+(e) Distance Between Representation Subspaces 
+
+> AUROC
+
+Number of shots Learned Probe Random Feature Baseline 0.50 0.60 0.70 0.80 0.90 0 1 2 4 8 16 32 
+
+(a) Probe Performance 
+
+> Evaluation Prompt Shots
+
+Probe Training Shots 0.73 0.68 0.66 0.62 0.61 0.62 0.61 0.63 0.70 0.68 0.66 0.66 0.64 0.63 0.60 0.70 0.68 0.69 0.70 0.68 0.67 0.60 0.69 0.69 0.70 0.71 0.70 0.70 0.60 0.68 0.68 0.70 0.72 0.72 0.72 0.59 0.68 0.68 0.70 0.73 0.73 0.72 0.59 0.67 0.68 0.70 0.73 0.73 0.73 0124816 32 0 1 2 4 8 16 32 0.58 0.60 0.62 0.64 0.66 0.68 0.70 0.72 0.74 0.76 
+
+> AUROC
+
+(b) Cross Probe Performance Ministral-8B-Base 
+
+> Probe Training Shots
+
+Probe Training Shots 1.00 0.58 1.00 0.61 0.80 1.00 0.62 0.70 0.87 1.00 0.60 0.64 0.77 0.91 1.00 0.61 0.63 0.73 0.87 0.96 1.00 0.61 0.62 0.71 0.84 0.92 0.96 1.00 0124816 32 0 1 2 4 8 16 32 00.2 0.4 0.6 0.8 1
+
+> Overlap
+
+(c) Representation Subspace Overlap 
+
+> Angle
+
+Number of Shots 60° 65° 70° 75° 80° 85° 90° 1 2 4 8 16 32 
+
+(d) Angle between Representation Subspace and Shot Vector 
+
+> Distance from Previous Shots
+
+Number of Shots 0.0 0.2 0.4 0.6 0.8 1.0 012 4 8 16 32 
+
+(e) Distance Between Representation Subspaces 
+
+Figure 28: (a) Probe Performance. Probe AUROC. Gray lines show random feature probe base-lines. (b) Cross Probe Performance. AUROC of probes trained at one shot count and evaluated at another. (c) World Representation Subspace Overlap. Overlap between probe subspaces across shot counts. (d) Angle Between Shot Vectors and the World Representation Subspace. Angles to the corresponding probe subspaces. (e) Distance between Representation Subspaces across Shots. Normalized projection distance between probe subspaces at consecutive tested shot counts. Results are from layer 28 of Llama-3.2-3B, layer 48 of Gemma-4-12B, and layer 34 of Ministral-3-8B-Base-2512 on 4 × 4 Lattice Grid. 38 Preprint -4 04812 
+
+4 × 4 Lattice Grid Llama3.2-3B Mean Relative Degradation Di ff erence (%) 0-shot 16-shot 
+
+-1000 -800 -600 -400 -200 0200 
+
+4 × 4 Lattice Grid Gemma4-12B Mean Relative Degradation Di ff erence (%) 0-shot 16-shot 
+
+-10 -5 0510 
+
+4 × 4 Lattice Grid Ministral-8B-Base Mean Relative Degradation Di ff erence (%) 0-shot 16-shot Graph Subspace More Important Graph Subspace Less Important 
+
+Figure 29: Intervention Results. Graph subspace erasure at iteration 20 in Llama-3.2-3B, Gemma-4-12B, and Ministral-3-8B-Base-2512 on 4 × 4 Lattice Grid. Interventions target node subtokens in the final query’s walk at every Transformer block output. The random intervention uses an orthogo-nal subspace with matched rank and perturbation norm per node. Points show the mean difference in correct answer probability reduction between graph and random interventions, normalized by each query’s unperturbed probability, across 300 test samples. Probabilities are normalized over candi-date answer sequence likelihoods. Positive values indicate greater degradation from graph erasure. Horizontal bars show 95% bootstrap confidence intervals obtained by resampling test samples 5000 times. Note that the wide confidence intervals for 0-shot Gemma-4-12B are because of near-zero baseline probabilities in the denominator. E.2 EXPERIMENTS ON DIFFERENT RANKS 
+
+For probing, we set the rank r of the probe layer W (l) ∈ Rd×r to 2, 2, 2, 2, and 4 for the 4×4 Lattice Grid, 5 × 5 Lattice Grid, 3 × 5 Lattice Grid, 4 × 4 Triangle Grid, and 4 × 4 Torus Grid, respectively. We use r = 4 for the 4 × 4 Torus Grid because encoding its two periodic coordinates with sine and cosine pairs yields a four-dimensional embedding that exactly separates adjacent and non-adjacent nodes by a Euclidean distance threshold. We use r = 2 for the other grids because they admit two-dimensional coordinate representations. We additionally evaluate higher ranks, r = 8 and 16 , on the 
+
+4 × 4 Lattice Grid with Qwen3-4B-Base. Figures 30 and 31 report the probing and representation analysis results, and Figure 32 reports the intervention results. AUROC Number of shots Learned Probe Random Feature Baseline 0.50 0.60 0.70 0.80 0.90 0 1 2 4 8 16 32 
+
+(a) Probe Performance Layer 4 Qwen3-4B-Base 
+
+> Evaluation prompt shots
+
+Probe training shots 0.72 0.71 0.70 0.70 0.70 0.70 0.69 0.65 0.72 0.71 0.71 0.71 0.71 0.71 0.66 0.71 0.71 0.71 0.71 0.71 0.71 0.67 0.71 0.71 0.71 0.71 0.72 0.71 0.67 0.71 0.71 0.71 0.71 0.71 0.71 0.67 0.71 0.71 0.71 0.71 0.71 0.71 0.67 0.71 0.71 0.71 0.71 0.71 0.71 0124816 32 0 1 2 4 8 16 32 0.65 0.67 0.69 0.70 0.72 AUROC 
+
+(b) Cross Probe Performance 
+
+> Probe training shots
+
+Probe training shots 1.00 0.83 1.00 0.80 0.94 1.00 0.79 0.93 0.96 1.00 0.77 0.90 0.94 0.96 1.00 0.77 0.89 0.93 0.95 0.97 1.00 0.77 0.89 0.91 0.95 0.97 0.98 1.00 0124816 32 0 1 2 4 8 16 32 0.77 0.82 0.88 0.94 1.00 Overlap 
+
+(c) Representation Subspace Overlap 
+
+> Angle
+
+Number of shots 60° 65° 70° 75° 80° 85° 90° 1 2 4 8 16 32 
+
+(d) Angle between Representation Subspace and Shot Vector 
+
+> Distance from Previous Shots
+
+Number of shots 0.0 0.2 0.4 0.6 0.8 1.0 012 4 8 16 32 
+
+(e) Distance Between Representation Subspaces 
+
+> AUROC
+
+Number of shots Learned Probe Random Feature Baseline 0.50 0.60 0.70 0.80 0.90 0 1 2 4 8 16 32 
+
+(a) Probe Performance Layer 20 
+
+> Evaluation prompt shots
+
+Probe training shots 0.85 0.85 0.84 0.83 0.83 0.83 0.83 0.83 0.85 0.85 0.84 0.84 0.84 0.84 0.83 0.85 0.85 0.85 0.85 0.84 0.84 0.83 0.85 0.85 0.85 0.85 0.85 0.85 0.83 0.85 0.85 0.85 0.85 0.85 0.85 0.83 0.84 0.85 0.85 0.85 0.85 0.85 0.83 0.84 0.84 0.85 0.85 0.85 0.85 0124816 32 0 1 2 4 8 16 32 0.83 0.83 0.84 0.85 0.85 AUROC 
+
+(b) Cross Probe Performance 
+
+> Probe training shots
+
+Probe training shots 1.00 0.36 1.00 0.35 0.61 1.00 0.30 0.47 0.62 1.00 0.30 0.40 0.51 0.69 1.00 0.29 0.37 0.48 0.61 0.79 1.00 0.31 0.37 0.47 0.56 0.70 0.81 1.00 0124816 32 0 1 2 4 8 16 32 0.29 0.47 0.65 0.82 1.00 Overlap 
+
+(c) Representation Subspace Overlap 
+
+> Angle
+
+Number of shots 60° 65° 70° 75° 80° 85° 90° 1 2 4 8 16 32 
+
+(d) Angle between Representation Subspace and Shot Vector 
+
+> Distance from Previous Shots
+
+Number of shots 0.0 0.2 0.4 0.6 0.8 1.0 012 4 8 16 32 
+
+(e) Distance Between Representation Subspaces 
+
+> AUROC
+
+Number of shots Learned Probe Random Feature Baseline 0.50 0.60 0.70 0.80 0.90 0 1 2 4 8 16 32 
+
+(a) Probe Performance Layer 36 
+
+> Evaluation prompt shots
+
+Probe training shots 0.82 0.79 0.79 0.78 0.77 0.77 0.76 0.78 0.81 0.81 0.80 0.79 0.79 0.79 0.78 0.81 0.82 0.81 0.81 0.80 0.80 0.78 0.81 0.82 0.82 0.82 0.82 0.82 0.77 0.81 0.82 0.82 0.83 0.83 0.83 0.77 0.81 0.82 0.82 0.83 0.83 0.83 0.77 0.81 0.81 0.82 0.83 0.83 0.84 0124816 32 0 1 2 4 8 16 32 0.76 0.78 0.80 0.82 0.84 AUROC 
+
+(b) Cross Probe Performance 
+
+> Probe training shots
+
+Probe training shots 1.00 0.40 1.00 0.35 0.75 1.00 0.28 0.52 0.70 1.00 0.23 0.40 0.52 0.79 1.00 0.20 0.33 0.42 0.64 0.83 1.00 0.16 0.28 0.35 0.51 0.68 0.82 1.00 0124816 32 0 1 2 4 8 16 32 0.16 0.37 0.58 0.79 1.00 Overlap 
+
+(c) Representation Subspace Overlap 
+
+> Angle
+
+Number of shots 60° 65° 70° 75° 80° 85° 90° 1 2 4 8 16 32 
+
+(d) Angle between Representation Subspace and Shot Vector 
+
+> Distance from Previous Shots
+
+Number of shots 0.0 0.2 0.4 0.6 0.8 1.0 012 4 8 16 32 
+
+(e) Distance Between Representation Subspaces 
+
+Figure 30: (a) Probe Performance. Probe AUROC. Gray lines show random feature probe base-lines. (b) Cross Probe Performance. AUROC of probes trained at one shot count and evaluated at another. (c) World Representation Subspace Overlap. Overlap between probe subspaces across shot counts. (d) Angle Between Shot Vectors and the World Representation Subspace. Angles to the corresponding probe subspaces. (e) Distance between Representation Subspaces across Shots. Normalized projection distance between probe subspaces at consecutive tested shot counts. Results are from Qwen3-4B-Base on 4 × 4 Lattice Grid, where r = 8 .39 Preprint AUROC Number of shots Learned Probe Random Feature Baseline 0.50 0.60 0.70 0.80 0.90 0 1 2 4 8 16 32 
+
+(a) Probe Performance Layer 4 Qwen3-4B-Base 
+
+> Evaluation prompt shots
+
+Probe training shots 0.72 0.71 0.70 0.71 0.71 0.70 0.70 0.65 0.72 0.71 0.71 0.72 0.71 0.71 0.66 0.71 0.71 0.71 0.71 0.71 0.71 0.67 0.71 0.71 0.71 0.72 0.71 0.71 0.67 0.71 0.71 0.71 0.72 0.71 0.71 0.67 0.71 0.71 0.71 0.72 0.71 0.71 0.67 0.71 0.71 0.71 0.72 0.71 0.71 0124816 32 0 1 2 4 8 16 32 0.65 0.67 0.69 0.70 0.72 AUROC 
+
+(b) Cross Probe Performance 
+
+> Probe training shots
+
+Probe training shots 1.00 0.80 1.00 0.77 0.91 1.00 0.76 0.87 0.93 1.00 0.75 0.84 0.90 0.95 1.00 0.74 0.83 0.88 0.93 0.95 1.00 0.74 0.82 0.88 0.92 0.95 0.96 1.00 0124816 32 0 1 2 4 8 16 32 0.74 0.80 0.87 0.93 1.00 Overlap 
+
+(c) Representation Subspace Overlap 
+
+> Angle
+
+Number of shots 60° 65° 70° 75° 80° 85° 90° 1 2 4 8 16 32 
+
+(d) Angle between Representation Subspace and Shot Vector 
+
+> Distance from Previous Shots
+
+Number of shots 0.0 0.2 0.4 0.6 0.8 1.0 012 4 8 16 32 
+
+(e) Distance Between Representation Subspaces 
+
+> AUROC
+
+Number of shots Learned Probe Random Feature Baseline 0.50 0.60 0.70 0.80 0.90 0 1 2 4 8 16 32 
+
+(a) Probe Performance Layer 20 
+
+> Evaluation prompt shots
+
+Probe training shots 0.87 0.87 0.86 0.86 0.85 0.85 0.85 0.85 0.87 0.87 0.86 0.86 0.86 0.86 0.85 0.87 0.87 0.87 0.86 0.86 0.86 0.85 0.87 0.87 0.87 0.87 0.87 0.87 0.85 0.86 0.87 0.87 0.87 0.87 0.87 0.85 0.86 0.87 0.87 0.87 0.87 0.87 0.85 0.86 0.86 0.86 0.87 0.87 0.87 0124816 32 0 1 2 4 8 16 32 0.85 0.85 0.86 0.86 0.87 AUROC 
+
+(b) Cross Probe Performance 
+
+> Probe training shots
+
+Probe training shots 1.00 0.41 1.00 0.38 0.66 1.00 0.35 0.52 0.66 1.00 0.34 0.46 0.54 0.71 1.00 0.34 0.42 0.48 0.61 0.77 1.00 0.33 0.40 0.43 0.53 0.65 0.77 1.00 0124816 32 0 1 2 4 8 16 32 0.33 0.49 0.66 0.83 1.00 Overlap 
+
+(c) Representation Subspace Overlap 
+
+> Angle
+
+Number of shots 60° 65° 70° 75° 80° 85° 90° 1 2 4 8 16 32 
+
+(d) Angle between Representation Subspace and Shot Vector 
+
+> Distance from Previous Shots
+
+Number of shots 0.0 0.2 0.4 0.6 0.8 1.0 012 4 8 16 32 
+
+(e) Distance Between Representation Subspaces 
+
+> AUROC
+
+Number of shots Learned Probe Random Feature Baseline 0.50 0.60 0.70 0.80 0.90 0 1 2 4 8 16 32 
+
+(a) Probe Performance Layer 36 
+
+> Evaluation prompt shots
+
+Probe training shots 0.83 0.81 0.81 0.80 0.80 0.79 0.78 0.80 0.83 0.83 0.82 0.82 0.82 0.81 0.80 0.83 0.83 0.83 0.83 0.83 0.82 0.80 0.83 0.83 0.84 0.84 0.84 0.84 0.80 0.83 0.83 0.84 0.85 0.85 0.85 0.80 0.82 0.83 0.84 0.85 0.85 0.85 0.80 0.82 0.83 0.84 0.85 0.85 0.85 0124816 32 0 1 2 4 8 16 32 0.78 0.80 0.82 0.84 0.85 AUROC 
+
+(b) Cross Probe Performance 
+
+> Probe training shots
+
+Probe training shots 1.00 0.39 1.00 0.34 0.69 1.00 0.30 0.50 0.69 1.00 0.24 0.39 0.52 0.75 1.00 0.24 0.35 0.43 0.61 0.79 1.00 0.22 0.32 0.38 0.52 0.68 0.84 1.00 0124816 32 0 1 2 4 8 16 32 0.22 0.41 0.61 0.80 1.00 Overlap 
+
+(c) Representation Subspace Overlap 
+
+> Angle
+
+Number of shots 60° 65° 70° 75° 80° 85° 90° 1 2 4 8 16 32 
+
+(d) Angle between Representation Subspace and Shot Vector 
+
+> Distance from Previous Shots
+
+Number of shots 0.0 0.2 0.4 0.6 0.8 1.0 012 4 8 16 32 
+
+(e) Distance Between Representation Subspaces 
+
+Figure 31: (a) Probe Performance. Probe AUROC. Gray lines show random feature probe base-lines. (b) Cross Probe Performance. AUROC of probes trained at one shot count and evaluated at another. (c) World Representation Subspace Overlap. Overlap between probe subspaces across shot counts. (d) Angle Between Shot Vectors and the World Representation Subspace. Angles to the corresponding probe subspaces. (e) Distance between Representation Subspaces across Shots. Normalized projection distance between probe subspaces at consecutive tested shot counts. Results are from Qwen3-4B-Base on 4 × 4 Lattice Grid, where r = 16 .-20 -15 -10 -5 0510 15 
+
+4 × 4 Lattice Grid Qwen3-4B-Base (Rank 8) Mean Relative Degradation Di ff erence (%) 0-shot 16-shot 
+
+-20 -15 -10 -5 0510 15 
+
+4 × 4 Lattice Grid Qwen3-4B-Base (Rank 16) Mean Relative Degradation Di ff erence (%) 0-shot 16-shot Graph Subspace More Important Graph Subspace Less Important 
+
+Figure 32: Intervention Results. Graph subspace erasure at iteration 4 in Qwen3-4B-Base on 4 × 4
+
+Lattice Grid, where r = 8 , 16 . Interventions target node subtokens in the final query’s walk at ev-ery Transformer block output. The random intervention uses an orthogonal subspace with matched rank and perturbation norm per node. Points show the mean difference in correct answer proba-bility reduction between graph and random interventions, normalized by each query’s unperturbed probability, across 300 test samples. Probabilities are normalized over candidate answer sequence likelihoods. Positive values indicate greater degradation from graph erasure. Horizontal bars show 95% bootstrap confidence intervals obtained by resampling test samples 5000 times. 40 Preprint E.3 SENSITIVITY TO RANDOM SEED 
+
+To quantify variability across seeds, we report results over five seeds for probing, representation analysis, and intervention on the 4 × 4 Lattice Grid with Qwen3-4B-Base. Table 1: Probe Performance. Results from Qwen3-4B-Base evaluated on 300 test samples on 4 × 4
+
+Lattice Grid. “L4, 0-Shot” denotes the probe performance at Layer 4 with 0-shot prompting. 
+
+Setting Seed 1 Seed 2 Seed 3 Seed 4 Seed 5 Mean ± Std L4, 0-Shot 0.6903 0.7072 0.7060 0.7048 0.7013 0.7019 ± 0.0069 
+
+L4, 16-Shot 0.6867 0.6824 0.7046 0.6763 0.6941 0.6888 ± 0.0109 
+
+L20, 0-Shot 0.7812 0.7761 0.7792 0.7784 0.7777 0.7785 ± 0.0019 
+
+L20, 16-Shot 0.7664 0.7573 0.7591 0.7688 0.7722 0.7647 ± 0.0064 
+
+L36, 0-Shot 0.7675 0.7508 0.7629 0.7591 0.7656 0.7612 ± 0.0066 
+
+L36, 16-Shot 0.7407 0.7359 0.7419 0.7406 0.7412 0.7401 ± 0.0024 
+
+Table 2: Cross Probe Performance. Results from Qwen3-4B-Base on 4 × 4 Lattice Grid. “L4, 
+
+0 → 16 -Shot” denotes the Layer 4 probe trained on 500 0-shot samples and evaluated on 300 16-shot samples. 
+
+Setting Seed 1 Seed 2 Seed 3 Seed 4 Seed 5 Mean ± Std L4, 0 → 16 -Shot 0.6406 0.6487 0.6525 0.6483 0.6425 0.6465 ± 0.0049 
+
+L4, 16 → 32 -Shot 0.6857 0.6821 0.7036 0.6755 0.6942 0.6882 ± 0.0109 
+
+L20, 0 → 16 -Shot 0.7191 0.7112 0.7028 0.7136 0.7061 0.7106 ± 0.0064 
+
+L20, 16 → 32 -Shot 0.7669 0.7580 0.7592 0.7692 0.7731 0.7653 ± 0.0065 
+
+L36, 0 → 16 -Shot 0.6329 0.6727 0.6551 0.6641 0.6538 0.6557 ± 0.0148 
+
+L36, 16 → 32 -Shot 0.7428 0.7375 0.7439 0.7436 0.7415 0.7419 ± 0.0026 
+
+Table 3: Representation Subspace Overlap. Results from Qwen3-4B-Base on 4 × 4 Lattice Grid. “L4, 0 ↔ 16 -Shot” denotes the overlap between the rank-2 representation subspaces of probe layers trained on 500 samples. 
+
+Setting Seed 1 Seed 2 Seed 3 Seed 4 Seed 5 Mean ± Std L4, 0 ↔ 16 -Shot 0.6295 0.8563 0.7353 0.7794 0.7285 0.7458 ± 0.0826 
+
+L4, 16 ↔ 32 -Shot 0.9804 0.9728 0.9681 0.9238 0.9928 0.9676 ± 0.0262 
+
+L20, 0 ↔ 16 -Shot 0.3329 0.4381 0.3081 0.3230 0.2904 0.3385 ± 0.0580 
+
+L20, 16 ↔ 32 -Shot 0.7970 0.7931 0.8709 0.8691 0.8247 0.8310 ± 0.0376 
+
+L36, 0 ↔ 16 -Shot 0.1776 0.2669 0.1812 0.1554 0.1601 0.1882 ± 0.0453 
+
+L36, 16 ↔ 32 -Shot 0.8654 0.8654 0.8993 0.8901 0.8861 0.8813 ± 0.0153 
+
+41 Preprint Table 4: Mean Relative Degradation Difference after Interventions. Results from Qwen3-4B-Base on the 4 × 4 Lattice Grid. Each row reports the mean difference in correct answer probability reduction between graph and random interventions after 20 iterations for the corresponding shot setting, normalized by the corresponding clean probability before interventions. Positive values indicate greater degradation under the graph intervention.                         
+
+> Setting Seed 1 Seed 2 Seed 3 Seed 4 Seed 5 Mean ±Std 0-Shot -0.401 -0.649 -0.380 -0.359 -0.648 −0.487 ±0.148
+> 16-Shot 1.010 1.293 1.069 1.246 1.635 1.251 ±0.245
+
+Table 5: Probe Performance after Graph Interventions. Results from Qwen3-4B-Base evaluated on 300 test samples on 4 × 4 Lattice Grid after graph intervention for 20 iterations. “L4, 0-Shot” denotes the probe performance at Layer 4 with 0-shot prompting.                                                         
+
+> Setting Seed 1 Seed 2 Seed 3 Seed 4 Seed 5 Mean ±Std L4, 0-Shot 0.5862 0.6337 0.5985 0.6015 0.5806 0.6001 ±0.0207
+> L4, 16-Shot 0.5798 0.5897 0.5543 0.5758 0.5582 0.5716 ±0.0149
+> L20, 0-Shot 0.7158 0.6900 0.6920 0.7095 0.7000 0.7015 ±0.0111
+> L20, 16-Shot 0.6658 0.6783 0.6947 0.6891 0.6845 0.6825 ±0.0111
+> L36, 0-Shot 0.6905 0.7208 0.7263 0.7059 0.7109 0.7109 ±0.0139
+> L36, 16-Shot 0.6795 0.7056 0.6901 0.6915 0.6914 0.6916 ±0.0093
+
+42

@@ -1,0 +1,242 @@
+Title: World State Generator
+
+URL Source: https://arxiv.org/pdf/2609.24744v1
+
+Published Time: Tue, 22 Sep 2026 02:59:26 GMT
+
+Number of Pages: 12
+
+Markdown Content:
+# World State Generator 
+
+SUNGHEON JEONG 1 SANGGEON YUN 1 RYOZO MASUKAWA 1
+
+HALEH ALIMOHAMADI 1 MAHDI IMANI 2 MOHSEN IMANI 11University of California, Irvine, 2Northeastern University 
+
+sungheoj@uci.edu 
+
+## Abstract 
+
+Language agents solve complex tasks through plans and actions. A single step the world refuses puts the goal out of reach, and what the agent does next decides the task. Prompted planners fail at exactly this point, rewriting the refused step in new words, meeting the same refusal, and burning the attempt budget without moving. They fail because the plan was never tied to the world, so a refusal has nothing in the plan to attach to. A world is where a task runs, and it has its own rules, its own admissible actions, and its own constraints. We build synthetic worlds across 7 domains and extract training data from them. A program enforces each world’s rules and grades its goal, and every world is admitted only if its goal is reachable from its initial state. Agents run inside and leave verified failures paired with repairs that carried the run to a state the world certified, a record of about 226K trajectories. On this record we train the World State Generator , a model that writes a plan as checkable states of the world and keeps that plan aligned with the world it runs in. That alignment is what a plan written in language lacks, since the world it runs in has physical limits, logical dependencies, and required orders the language never states, and the plan encounters these rules only when a state fails. WSG takes that failure as the rule the world has stated and rewrites the remaining states to obey it, so the plan bends to the world as the run goes on. Across 7 public benchmarks, WSG raises end-to-end success for two open models near 30B parameters over prompting and brings to the level of proprietary model. 
+
+## 1 Introduction 
+
+A language agent working through a long task follows a plan, and long tasks give the world many chances to refuse a step of it. When that happens, the agent rewrites the refused step in different words, submits it again, and meets the same refusal, cycling until the attempt budget is spent [9, 30]. Reflecting on the failure before the rewrite does not break the cycle [23, 21], which survives because the plan was never tied to the world. Since a prompted planner writes what it imagines the task should look like, nothing in that plan says which tools exist, which calls the interface accepts, or which conditions must already hold. The model therefore has nothing in its plan to attach the world’s report to, and when that report comes, the only thing left to change is the wording. A refusal is therefore information, the world stating a rule the plan omitted, and repair means reading that rule and rewriting the rest of the plan to obey it. Learning to repair this way requires data with three properties. Every failure must come with the re-pair that resolved it, and both sides must be decided against the world rather than by opinion. Agent corpora are filtered for success, so failures are rarely kept at all [33, 2], generated environments that collect trajectories at scale harvest successes in the same way [8, 24, 6], and a failure that does survive stands alone. Even a failure and a repair recorded together would not be decided, since no procedure checks whether a written state holds in its world, so nothing establishes that the failure 
+
+> Preprint. arXiv:2609.24744v1 [cs.AI] 21 Sep 2026
+
+was real or that the repair worked. The third property concerns where the pairs come from. A model trained on one world learns that world’s rules, and rules are what differs between worlds, so the pairs must span many worlds for the model to learn how to read a refusal instead. Agents trained in one environment degrade sharply when the evaluation environment changes [14]. No existing corpus holds pairs with these three properties, so we build them ourselves. We construct synthetic worlds, self-contained environments whose rules are enforced by program, and run agents inside them under a runtime that checks each state against the world. Two choices follow from what classical planning already knows. A world is written in a form a program can execute, so a solver can confirm that its goal is reachable from its initial state before any agent runs in it [16, 5], and each world is composed from seed material rather than stamped from one template [8]. The worlds are drawn from 7 domains, whose states record what must be known, what must be built, or how the world must stand, and no two worlds in a domain enforce the same rules. Agents running inside fail against the rules and repair their plans, and we keep a repair only when it carried the run to a state the world certified. Each kept pair holds a failure and the repair that followed it, both decided by the world rather than by us, and the pairs come from worlds that differ across all 7 domains. On these pairs we train the World State Generator ( WSG ), a planner that keeps its plan aligned with the world it runs in. Alignment is what a prompted planner cannot hold, since the rules that decide a plan are physical limits, logical dependencies, and required orders that the goal never states, and the planner meets them one at a time as its steps fail. The runtime that collected these pairs is the State-Centric Decision Process ( SDP ) [10], where each step of a plan is written as a state the world must reach, so the loop checks each state against the world and reports which condition did not hold and what it found instead, a refutation. SDP fills the planner in this loop by prompting, and WSG 
+
+is a model trained to fill it, so the loop is unchanged and only the planner inside it learns. We train it on the repair call alone, so the first plan of a run is still written by the prompted backbone. WSG 
+
+reads that refutation as a rule of the world and rewrites the remaining states to obey it, so the plan bends to the world as the run goes on. Given a goal, the states the world has already certified, and the refutation, WSG returns the states that carry the world from where it stands to the goal. Our contribution is the pipeline that produces these pairs at scale, the model trained on them, and the finding that repair learned in synthetic worlds transfers to worlds outside the corpus. We construct 226K trajectories in this way and train WSG on them in open models near 30B parameters. The evaluation is zero-shot, since none of the benchmarks contributed a world, a task, or a trajectory to the corpus. Across 7 public agent benchmarks, the trained models gain 3.4 to 31.9 points of end-to-end success over prompting and, on all of them, reach the level of proprietary models. The gains concentrate where the supervision aimed, in repairs after a failed state. 
+
+## 2 Related Work 
+
+Decomposition and its unit. Work on task decomposition sits between two poles that differ in what a part of the plan is. At one pole, least-to-most prompting and its successors elicit subproblems in free text, so a part is a sentence whose correctness nobody checks [35, 27]. Plans built this way cannot be trusted without outside verification [11]. At the other pole, language models write PDDL for a symbolic planner, so a part is a predicate a solver decides [16, 5]. The price is a symbol set a person must formalize for every new domain. SDP keeps the part decidable and drops the formalization, since it writes each part as a state in natural language and decides it against observation at run time [10]. The model that writes these states is prompted in SDP . This paper trains it on the repair call. 
+
+Supervision for agents. Agent supervision has scaled by collecting more of what worked. Tuning corpora collect interaction traces from capable models, so what they teach is how a stronger model behaves [33, 2]. Synthesis pipelines replay tutorials or explore applications to manufacture such trajectories at scale [29, 25]. The environments themselves are now generated by program, from PDDL domains [8] to tool backends [24] and full web sites [6]. A generated environment is checked for being well formed and executable before agents run in it. Verification of the trajectories has tightened alongside, with execution checks and rule-based validation filtering what enters training [18]. What survives into training is still the path that succeeded. Rejection sampling states this bias openly, since it keeps the completions whose answer passed and discards the rest [32, 31]. This line therefore does not supply the unit repair needs, which is a verified failure paired with the repair that 2resolved it. Our worlds are also admitted before use, each with a goal reachable from its initial state. What we keep from them is the opposite record, the refusals their rules issued and the repairs that carried the run to a state the world certified. 
+
+Learning to repair. Repair entered the literature as a prompting strategy. Reflexion turns a fail-ure into a verbal lesson replayed in context, Self-Refine has the model critique its own output, and CRITIC routes interpreter and test results back into the prompt [23, 21, 4]. Prompting has a docu-mented limit, since without external feedback a model rarely locates its own fault and often revises an answer that was right [9]. The response has been to train the ability, and training so far has meant reward. SCoRe reports that supervised fine-tuning on the model’s own correction traces col-lapses onto the first attempt, and it therefore trains through multi-turn reinforcement learning [12]. Verifiable-reward and process-reward methods keep a verifier but reduce its verdict to a score, so the model learns that a step failed and never sees what the verifier found in its place [13, 15]. The collapse SCoRe reports was observed on corrections the model wrote for itself, judged only by the final answer. Our pairs differ on both counts. Each repair is conditioned on the refutation, which is evidence the first attempt never had, and a repair that restates the refuted chain is dropped at corpus construction. Regression onto the first attempt is therefore a pattern the training data never contains, and on such pairs repair is learnable by supervised fine-tuning alone. 
+
+## 3 Preliminaries: the state-centric runtime 
+
+This paper builds on the State-Centric Decision Process ( SDP ) [10], a runtime that makes every step of an agent’s execution verifiable. An SDP agent does not select actions against raw observations but commits to states of the world. Each state is written as a predicate, which is a natural-language condition that can be checked true or false. The task’s goal is itself a predicate, written g. Four operators drive the runtime. P ROPOSE writes the plan, R EALIZE acts toward it, V ALIDATE judges each state against the world, and R EPLAN rewrites the plan after a state fails. P ROPOSE and R EPLAN 
+
+decide what the agent attempts, and this paper concerns those two. The other two stay as SDP defines them, and one fact about V ALIDATE matters throughout. When a state fails, V ALIDATE records the observation that stood in its place. That observation describes what held and carries no diagnosis or advice. PROPOSE is where an open task takes form. Given a goal that says only how the world should end up, it writes the states the world must pass through on the way. In SDP , this is a prompted call to a large language model, 
+
+ˆC = PROPOSE (g, c, τ ), ˆC = (ˆ s1, . . . , ˆsn), ˆsn = g, (1) where g is the goal, c is the prefix of states the world has already certified, and τ is the refutation defined below, empty on the first call. The hat marks a state the world has not yet ruled on, and the runtime rules on one state at a time. R EALIZE acts until it can report an observation for the first proposed state, and V ALIDATE decides that state against the observation, 
+
+o ← REALIZE (c, ˆs1), (c, τ ) ←
+
+(c ⊕ ˆs1, ∅) if V ALIDATE (ˆ s1, o ) certifies ˆs1,
+
+(c, (ˆ s1, o )) otherwise . (2) A certified state joins the prefix and the chain advances to the next. When V ALIDATE refutes a state, that state and the observation recorded in its place become the refutation, written τ = ( sf , o f ).After a refutation Eq. 1 is called again from the current prefix, so execution moves forward only, the prefix is never reopened, and the loop ends when g is certified. On the first call τ is empty and the call decomposes, and with τ present it repairs, the call SDP names R EPLAN . The two are one operator under the single interface of Eq. 1, distinguished only by whether τ is present, and we call that operator the proposer . Throughout, the lowercase nouns proposer, realizer, and validator name the models that fill P ROPOSE , R EALIZE , and V ALIDATE .The model that fills this interface was never trained for it. What the runtime needs from the call is the chain whose execution most likely carries the world from where it stands to the goal, 
+
+arg max 
+
+> ˆC
+
+P  g certified | c, ˆC, (3) where the probability is over the runtime’s stochastic execution of the chain through Eq. 2, yet no prompted model was trained toward Eq. 3. Its chains are whatever the prompt elicits, and they 3change when the wording does. The gap is widest on the calls that follow a refutation, for repairing under τ settles two decisions at once, what the rewritten remainder must pass through and how finely to cut it. 
+
+## 4 World State Generator 
+
+We build synthetic worlds whose rules a program enforces and whose goals are reachable from their initial states. Inside these worlds we run the SDP loop and collect pairs of an input (g, c, τ ) and the repair written after it, keeping the repairs that carried the run to a state the world certified. On these pairs we train the proposer for the repair call and call the trained model the World State Generator. Its supervision is a pair, an input (g, c, τ ) with a chain written after τ that carried the run to a state the world certified, and such pairs come only from worlds whose rules are enforced and whose goals are reachable from their initial states. This is why we build those worlds, run the SDP loop inside them, and keep the repairs that carried the run to a state the world certified. 
+
+Figure 1: Left: worlds are built from entities, rules, and a goal, and a world is kept only if its goal is reachable from its initial state. Middle: agents run the SDP loop inside these worlds. When the world refutes a state, the certified prefix stays and the rest of the chain is rewritten. Right: each refutation becomes a training pair, the input (g, c, τ ) and the rewritten chain. A pair is kept when the rewritten chain reaches a state the world certifies, whether or not the run later reaches the goal. 
+
+4.1 The World as a State Chain 
+
+A world is a self-contained environment with three parts, entities with attributes, actions with rules, and a goal given as a sentence, 
+
+W = ( E, A, g ), g = ( ℓg , χ g ). (4) The attributes of E are what an action in A can read or change, and the rules of A decide what each action does and when it is refused. The goal carries two forms, the sentence ℓg that the agent reads and the check χg that the program runs on the entities to decide whether the goal holds. In a tool world the entities are database rows such as invoices and tickets, the actions are tools that read and change them, a rule refuses a call on an invoice that is still in draft or on an id the table does not hold, and ℓg reads “Put the invoice Acme Consulting through for payment” while χg inspects the status of that row in the final table. Table 1 gives the three parts for each of the 7 domains. A world is composed by drawing its three parts and joining them, and the parts take the two sides a plan must cross, ℓg as the sentence the plan is written from and E and A as the world that holds the limits, dependencies, and orders the sentence never states. Joining the parts is not enough on its own, because the three are composed separately and a goal can demand a condition that E and A
+
+together never allow. A plan in such a world fails for no reason it could repair, so admission removes the world before any agent enters. Writing e0 for the initial configuration of the entities, admission proves 
+
+∃ a1, . . . , a k ∈ A such that χg
+
+ ak ◦ · · · ◦ a1(e0) = 1 , (5) by executing a reference route where one can be written and by exhaustive search where it cannot. What remains is a world whose goal was reachable when the run began. 4Domain Component Description Physical Entities Objects with locations and properties. Actions Primitive actions such as open, move, and combine. Enforced rule An action whose precondition does not hold changes nothing. Goal check The goal predicate on the final configuration. Admission Exhaustive search over configurations. 
+
+Software Entities An index of Wikipedia documents. Actions Search, read, and note. Enforced rule A read of a title the index does not hold returns an error with similar titles, and a search with no terms is refused. Goal check The submitted answer against the gold answer. Admission Every gold document is found by a search on its title. 
+
+Web search Entities Pages of a crawled snapshot. Actions Search, navigate, read, and note. Enforced rule A page opens only from a search result or a link on an open page. Goal check The submitted answer against the snapshot. Admission The reference route reaches the page, and exactly one page fits. 
+
+Tool use Entities Database rows such as invoices and tickets. Actions 22 to 36 tools that search, list, read, create, update, and advance rows. Enforced rule A call on the wrong status or an unknown id is refused, and lists return ten rows per page. Goal check Row status and events in the final table. Admission The reference route is accepted, and a wrong run is rejected. 
+
+Constraint Entities Candidates per slot with prices. Actions Inspect and select candidates. Enforced rule A selection that breaks a hidden policy is refused. Goal check Every constraint on the submitted selection. Admission Exhaustive search over combinations finds exactly one solution, and a decoy is rejected. 
+
+Reasoning Entities A subject text and hidden facts. Actions Record a finding on an aspect, and conclude a verdict. Enforced rule A finding is checked against the hidden facts by program. Goal check The verdict against the hidden facts. Admission The verdict from the subject alone differs from the verdict with the facts. 
+
+Math Entities A problem and the values determined so far. Actions Derive a value, and submit an answer. Enforced rule Only the submitted answer is checked, by program against the reference answer. Goal check The answer under tolerance. Admission The reference answer is machine checkable. 
+
+Table 1: Entities, actions, enforced rules, goal checks, and admission criteria for the 7 domains. Inside an admitted world the agent runs the SDP loop, and one refutation from the invoice world shows what the loop records. The proposer writes a chain such as “the invoice Acme Consulting has been located”, “the invoice has been submitted for payment”, and the second state fails when the submit tool refuses an invoice that is still in draft. The validator reads the program’s record of the call and the table and writes that the invoice is still in draft and that the submission was refused. That sentence is of , and with the refuted state it is the τ of Eq. 2. From the table as the refused call left it, the proposer places “the invoice has been approved” before the submission and keeps the rest. The invoice run divides its decisions in a way that holds in every domain. What a call returns, what an action changes, and whether χg holds are decided by the program. Whether an intermediate state holds is decided by the validator, a language model that reads the program’s record and answers only that question, except in reasoning worlds, where a program checks each finding against the hidden facts. An episode ends when χg passes or when the attempt budget is spent, and a chain that completes without χg passing is handled by domain. In physical, software, and web worlds 5Domain What the program decides Model Episodes Refuted (%) Reached (%) Repair calls Kept (%)                                                                                                                      
+
+> Physical the goal check on the engine state Qwen3-32B 11,064 90.6 24.9 85,921 33.3 Qwen3.6-27B 10,614 91.5 19.1 87,231 39.2 Gemma4-31B 10,097 87.9 19.0 80,134 15.8 Software the submitted answer against the gold answer Qwen3-32B 11,040 86.2 43.4 37,870 27.0 Qwen3.6-27B 10,239 69.4 60.6 27,357 30.7 Gemma4-31B 10,380 67.3 53.0 28,200 33.3 Web search the answer against the snapshot Qwen3-32B 13,338 51.3 87.6 19,671 37.7 Qwen3.6-27B 10,306 39.9 90.5 14,858 29.3 Gemma4-31B 11,279 52.6 72.7 25,375 21.8 Tool use the database after the run Qwen3-32B 12,614 73.9 78.5 29,272 16.0 Qwen3.6-27B 10,141 78.3 88.8 22,359 20.1 Gemma4-31B 11,074 67.7 94.6 17,463 17.5 Constraint every constraint on the submitted selection Qwen3-32B 11,345 97.9 39.3 46,873 17.3 Qwen3.6-27B 10,495 96.0 54.9 35,979 20.1 Gemma4-31B 10,817 97.6 62.5 26,208 34.6 Reasoning the verdict against the hidden facts Qwen3-32B 10,508 96.8 53.2 55,481 43.2 Qwen3.6-27B 10,444 87.3 78.6 34,922 58.9 Gemma4-31B 10,003 75.2 79.6 27,922 52.5 Math the final answer under tolerance Qwen3-32B 10,291 58.3 61.2 22,950 31.0 Qwen3.6-27B 10,203 71.6 55.1 30,621 31.9 Gemma4-31B 10,024 46.4 66.4 18,513 27.4 Total 226,316 75.3 61.5 775,180 30.8
+
+Table 2: 7 domains, what the program grades in each, and what each extraction model produced inside them. Episodes counts runs of the SDP loop, Refuted the share of episodes in which the world refuted at least one state, and Reached the share that certified the goal. Repair calls counts the repair calls the proposer made, and Kept the share of those that survived the corpus filters. Intermediate states are judged by the validator, by a program in reasoning worlds, and the goal by the program in every domain. the check returns only that the goal does not hold, so there is nothing to repair from and the episode fails, while in tool, constraint, reasoning, and math worlds the check can name the condition it found unmet or the answer it rejected, and the proposer receives that as one more refutation and repairs from it. A run leaves the world written as a chain of states, and the chains written after a refutation are what the corpus keeps, 
+
+D =  (x, C ) : x = ( g, c, τ ), C = ( s1, . . . , s n), s n = g, ∃ i ≤ n such that the run certified si ,
+
+(6) one repair for every τ after which the run certified at least one state of the rewritten chain. From the invoice episode Eq. 6 yields one example, with the goal, the prefix up to “located”, and the τ
+
+of the refused submission as x, and the chain from “approved” to the goal as C. The target is the whole remainder the proposer wrote, and what is certified about it is the prefix the run went on to reach, at least the decision of what to establish first where the previous chain broke, while the rest of the chain is decomposition that the run may or may not have carried out. 48.9% of the kept repairs come from episodes that went on to certify the goal, and the rest from episodes that certified part of the repair but ended short of the goal. A repair is dropped if it restates, as a set of states, a chain that was already refuted from the same prefix, if any of its states names an action rather than a condition, or if it duplicates a kept example exactly. Table 2 gives the yield of Eq. 6. Three open models near 30B parameters, Qwen3-32B, Qwen3.6-27B, and Gemma4-31B, ran the loop over the same worlds for 226,316 episodes, and the world refuted at least one state in 75.3% of them. Those refutations produced 775,180 repair calls, and 238,563 of the repairs, 30.8%, passed the filters. The domains contribute unequally, from 75,455 repairs in physical worlds to 12,243 in tool worlds. The difference comes first from how often each world refutes, 253,286 repair calls in physical worlds against 69,094 in tool worlds, and only second from the share that passes, which ranges from 17.7% in tool worlds to 50.0% in reasoning worlds. A kept repair holds 5.5 states on average, from 1.2 in constraint worlds to 11.2 in physical worlds, which is shorter than the 5.9 states of a first plan because the certified prefix is not rewritten. An episode attempts 8.7 states on average, from 4.8 in web worlds to 18.5 in physical worlds. 64.2 Training the World State Generator 
+
+A training example is one element of D in Eq. 6, serialized with the prompt the proposer received at extraction, so the training input is the call itself. WSG is the backbone with LoRA [7] adapters θ
+
+on every attention and feed-forward projection of its language model, and θ is trained by supervised fine-tuning on these pairs alone, 
+
+L(θ) = − X
+
+> (x, C )∈D |C|
+
+X
+
+> t=1
+
+log pθ
+
+ Ct | x, C <t 
+
+, (7) where Ct ranges over the tokens of the chain and the tokens of x carry no loss. No reward and no comparison between chains enters the objective. Every chain in D holds a state the world certified after the previous chain broke, so Eq. 7 raises the likelihood of remainders the world certified at least in part, and a remainder the world refused at every state never enters the objective. The 7 domains contribute unequally, so examples are drawn per domain with probability 
+
+pd ∝ n 1/2 
+
+> d
+
+, (8) where nd is the number of examples the domain holds. Eq. 8 keeps the largest domains from crowding out the smallest without discarding their examples, and both backbones we train use the same corpus, objective, and mixture. Two properties of this supervision let it carry beyond the worlds it came from. Each target is con-ditioned on τ , the evidence the first attempt did not have, so the model learns to read a refutation and write the remainder from it rather than to write chains from the goal alone. The states it learns to write are free descriptions of conditions, not symbols from a fixed vocabulary, so what the model learns is a map from refutation to remainder over descriptions, and nothing in that map names the tools, pages, or objects of a particular world. 
+
+## 5 Experiments 
+
+We train WSG on the corpus of Section 4.1 with Eq. 7, on two open backbones, Gemma4-31B [26] and Qwen3.6-27B [22], since smaller backbones had difficulty writing a full chain from a long con-text. We evaluate zero-shot on 7 public agent benchmarks, τ 2-bench [1], ScienceWorld [28], Tool-Sandbox [19], PlanBench-XL [17], REAL [3], DeepPlanning [34], and AgentBoard’s PDDL [20]. Every run uses the SDP runtime, and in every run the same backbone fills the realizer and the val-idator. In the SDP condition the backbone is prompted for every proposer call, and in the WSG 
+
+condition the same backbone writes the first plan while WSG takes every repair call, with budgets and decoding held identical. Each benchmark is scored by its own metric, which Table 3 lists. An aborted episode counts as a failure, and every number is the mean over the benchmark’s task set. 
+
+5.1 Training 
+
+Both backbones train on the same corpus with the same settings. The corpus holds 238,563 repair examples, and 2% of the worlds are held out with every example they produced. The settings are LoRA rank 32 and alpha 64, learning rate 10 −4 with cosine decay, sequences packed to 4,096 tokens, an effective batch of 96, and 10 epochs in bf16. Each run uses two H200 GPUs and takes 12 to 16 hours per epoch. The loss on held-out worlds falls monotonically on both backbones and flattens within the first 1,200 steps, and no gap opens between training and held-out loss over the remaining epochs. Every chain the model generates from held-out repair prompts parses as a valid state list from the first evaluation onward. When the training set included first plans, written without τ , the model overfit faster than on repairs alone and lost the planning it had under prompting. A first plan is conditioned on the goal alone, so it teaches the shape of a chain rather than a response to evidence, and a model trained on shapes overwrites its habit of planning instead of adding a conditional one. A repair does not do this, because it is tied to the τ that produced it. The same collapse appeared with a larger adapter or a higher learning rate, and it was sharpest when one domain dominated the mixture. The adapter is small, the learning rate is low, and Eq. 8 balances the domains for this reason. 7The corpus keeps the repairs each backbone extracted for itself alongside those of the other two models, because runs trained without a backbone’s own repairs recovered less often on held-out worlds. The corpus is large and spans 7 domains because a repair is specific to the rule that was broken and the rules differ by world, so a model learns to read a refutation rather than memorize one world’s fixes only after seeing refutations of many kinds.                                                                 
+
+> Gemma4-31B Qwen3.6-27B Benchmark Metric Proprietary models (published) SDP WSG SDP WSG
+> τ2-bench Accuracy 46.3
+> Gemini-2.5-Pro
+> 53.7
+> Sonnet-4
+> 54.3
+> GPT-4.1
+> 79.9
+> GPT-5-Think 42.5 56.3 (+13.8) 68.3 76.6 (+8.3)
+> ScienceWorld Average score 36.4
+> GPT-4 ReAct
+> 39.2
+> GPT-4 CoT
+> 45.3
+> GPT-4 Reflexion
+> 47.9
+> GPT-4 Plan-and-Act 35.8 44.4 (+8.6) 36.4 46.8 (+10.4)
+> ToolSandbox Average score 64.3
+> GPT-4
+> 65.6
+> GPT-3.5
+> 69.2
+> Opus-3
+> 73.0
+> GPT-4o 64.3 72.5 (+8.2) 64.7 69.6 (+4.9)
+> PlanBench-XL Accuracy 51.9
+> GPT-5.4
+> 52.2
+> Gemini-3.5-Flash
+> 63.1
+> DeepSeek-V4-Flash
+> 77.1
+> Gemini-3.1-Pro 38.5 53.9 (+15.4) 16.1 48.0 (+31.9)
+> REAL Accuracy 25.0
+> o3-mini
+> 35.0
+> Gemini-2.5-Pro
+> 38.0
+> o3-pro
+> 41.0
+> Sonnet-3.7 27.7 37.3 (+9.6) 22.6 40.2 (+17.6)
+> DeepPlanning (Shop) Match score 50.1
+> Grok-4.1-Fast
+> 58.6
+> GPT-5.2
+> 69.1
+> Gemini-2.5-Pro
+> 75.8
+> Sonnet-4.5 48.5 59.0 (+10.5) 29.1 51.2 (+22.1)
+> AgentBoard (PDDL) Success rate 13.3
+> Haiku-3
+> 40.0
+> Claude-2
+> 61.7
+> GPT-4o
+> 61.7
+> GPT-4 53.3 58.3 (+5.0) 58.3 61.7 (+3.4)
+
+Table 3: Zero-shot performance on 7 agent benchmarks. SDP prompts the backbone for every proposer call, and WSG replaces the calls under τ with the trained model on the same backbone and runtime, with the gain over SDP in parentheses. Bold marks the best proprietary result and the best open result per row. 
+
+5.2 Zero-shot Performance on Agent Benchmarks 
+
+WSG raises performance across all 7 benchmarks (Table 3). The gain is largest where the prompted proposer is weakest, 32 points for Qwen3.6-27B on PlanBench-XL, and smallest on AgentBoard, where both backbones already succeed on more than half the tasks before training. On every bench-mark WSG lands within the range of published proprietary results, and on five of them within a few points of the best, while on PlanBench-XL and DeepPlanning the strongest published systems remain well ahead. Much of this gap comes from the realizer and the validator, which we discuss in Section 6. Every point of this gain comes from what the agent does after the world has refuted a state, since the two conditions differ only in the calls made under τ , and the logs show what changed there. When the prompted proposer receives a refutation, it often rewrites the refuted state in different words, in 38 percent of repairs on REAL and 28 percent on ScienceWorld for Gemma4-31B, and the rest of its chain changes with it. WSG keeps the refuted state and changes what surrounds it, rewording it in 19 and 7 percent of repairs on the same benchmarks, and its rewritten chain overlaps the chain it replaced far more, 0.49 against 0.29 in state overlap. What it inserts is the condition the refutation named. On ToolSandbox, for example, the observation reports a tool call rejected for a parameter below its valid range, the prompted proposer concludes that no reminders exist and closes the task, and WSG drops the filter, retrieves the full list, and reaches the goal. The difference is where each proposer looks for the fix. The prompted proposer searches the language of the plan, and WSG reads the rule the world has just stated, a parameter range, a button that must be enabled, a room the agent must first be in, and bends the plan to it. 
+
+5.3 Recovery after Refutation and Its Cost 
+
+WSG adds the most recovery where the prompted proposer recovered least, and Table 4 shows this on the refuted episodes behind the gain in Table 3. Recovery is the share of refuted episodes that still reached the goal. It can exceed the success rate in Table 3 because an episode the world never refutes can still end on a wrong answer that only the benchmark’s final check rejects. On DeepPlanning and ScienceWorld the prompted proposer recovered fewer than one refuted episode in seven, and WSG 
+
+raises that share by 66% to 187%. On τ 2-bench and ToolSandbox the prompted proposer already recovered more than half of its refuted episodes, and the rise there stays between 9% and 25%. Training on refutations adds the most where prompting could not repair a refusal. What that recovery costs depends on where the prompted proposer was failing. On 6 of the 7 benchmarks replans per episode fall as recovery rises, because the calls the prompted proposer spent 8Gemma4-31B Qwen3.6-27B Benchmark Recovery (%) Steps Replans Time (s) Recovery (%) Steps Replans Time (s)                                                          
+
+> τ2-bench 51.0 / 64.0 42.2 / 41.8 5.91 / 5.57 15.6 / 13.9 74.0 / 81.0 38.8 / 42.6 3.57 / 2.47 16.3 / 15.6 ScienceWorld 10.6 / 27.5 73.6 / 43.8 4.19 / 3.07 348 / 223 13.8 / 22.9 73.1 / 40.2 3.89 / 2.23 404 / 215 ToolSandbox 71.3 / 85.1 10.9 / 10.1 2.14 / 1.05 27 / 31 66.5 / 72.7 11.9 / 12.1 2.37 / 1.46 22 / 20 PlanBench-XL 40.2 / 63.1 32.0 / 30.7 1.90 / 4.55 307 / 335 20.8 / 48.4 32.8 / 36.2 1.30 / 4.26 259 / 353 REAL 17.2 / 25.0 33.6 / 27.6 3.94 / 2.43 832 / 376 18.9 / 23.0 41.9 / 28.6 3.92 / 2.01 1077 / 478 DeepPlanning (Shop) 8.7 / 17.2 55.6 / 67.3 6.74 / 4.26 2116 / 1036 6.8 / 19.5 30.8 / 50.0 2.92 / 2.73 1223 / 1511 AgentBoard (PDDL) 20.0 / 26.7 57.2 / 58.1 4.26 / 3.65 455 / 345 24.1 / 25.9 53.2 / 51.5 3.13 / 2.10 551 / 335
+
+Table 4: Recovery after refutation and its cost, reported as SDP / WSG. Recovery is the share of episodes that reached the goal after at least one refutation. Steps counts messages per episode, Replans counts proposer calls under τ per episode, and Time is wall-clock seconds per episode. rewording a refuted state are no longer made. Wall-clock time falls where those calls were most expensive, by 55% on REAL with Gemma4-31B and by 47% on ScienceWorld with Qwen3.6-27B. PlanBench-XL is the exception, and there replans more than double on Gemma4-31B and more than triple on Qwen3.6-27B, because the prompted proposer stops after fewer calls where WSG 
+
+keeps rewriting, and those added calls are what buy the largest point rise in recovery in the table. Recovery is cheaper where the prompted proposer wasted calls and dearer where it made too few. 
+
+## 6 Discussion 
+
+Most remaining failures come from the realizer and the validator, which WSG leaves untrained. Training changes only the repair call, and the realizer and the validator stay prompted. Judged by hand on the failed episodes of DeepPlanning and ScienceWorld, the realizer fails to reach a correctly written state in 45% of them. In another 20% the validator refutes a state that already holds and triggers a repair the run did not need. Recovery on these two benchmarks stays below 30% after training because these failures lie outside the repair call. The same two roles stay prompted on PlanBench-XL and DeepPlanning, where the gap to the strongest published systems is largest. Extending training to the realizer and the validator is therefore the next step. The worlds that produced the repair corpus also hold supervision for the other two roles. Every call the realizer made is logged with the program’s record of whether it was refused and what it changed. These records can train the realizer to reach a written state. The validator needs a label for whether a state holds, and reasoning worlds already supply one by checking each finding against the hidden facts. Writing such a check for the states of the other domains would give the validator the same supervision. The worlds also support reinforcement learning, since the program’s goal check defines a reward and the observation in τ gives feedback at the failed state. Whether learning from both signals raises recovery beyond supervised repair remains open. 
+
+## 7 Conclusion 
+
+We introduced World State Generator, a planner trained to keep its plan aligned with the world it runs in. When a failure reveals a constraint the plan overlooked, WSG uses that evidence to revise the remaining plan while preserving the conditions already achieved. To train it, we built a pipeline that pairs failures with the repairs that followed them in 7 domains of synthetic worlds and collected about 226K trajectories. Each world is checked for goal reachability before agents run, and a repair is kept only when it leads to a state the world certified. Trained only on these worlds, two open backbones near 30B parameters improve end-to-end success over prompting on 7 public benchmarks and reach the level of proprietary models on all of them. The gains concentrate in recovery after failed states, where the supervision aimed. These results show that verified failure and repair pairs from diverse synthetic worlds can teach a planner to use failure evidence in unseen environments. 
+
+## Acknowledgement 
+
+This work was supported in part by the DARPA Young Faculty Award, the National Science Founda-tion (NSF) under Grants #2127780, #2319198, #2321840, #2312517, and #2235472, the Semicon-9ductor Research Corporation (SRC), the Office of Naval Research through the Young Investigator Program Award, and Grants #N00014-21-1-2225 and N00014-24-1-2547, Army Research Office Grant #W911NF2410360. Additionally, support was provided by the Air Force Office of Scientific Research under Award #FA9550-22-1-0253. 
+
+## References 
+
+[1] Victor Barres, Honghua Dong, Soham Ray, Xujie Si, and Karthik Narasimhan. tau2-bench: Evaluating conversational agents in a dual-control environment. arXiv preprint arXiv:2506.07982 , 2025. [2] Baian Chen, Chang Shu, Ehsan Shareghi, Nigel Collier, Karthik Narasimhan, and Shunyu Yao. Fireact: Toward language agent fine-tuning. arXiv preprint arXiv:2310.05915 , 2023. [3] Div Garg, Diego Caples, Andis Draguns, Nikil Ravi, Pranav Putta, Naman Garg, Prannay Hebbar, Youngchul Joo, Jindong Gu, Charles London, et al. Real: Benchmarking autonomous agents on de-terministic simulations of real websites. Advances in Neural Information Processing Systems , 38, 2026. [4] Zhibin Gou, Zhihong Shao, Yeyun Gong, Yujiu Yang, Nan Duan, Weizhu Chen, et al. Critic: Large language models can self-correct with tool-interactive critiquing. In International Conference on Learning Representations , volume 2024, pages 57734–57811, 2024. [5] Lin Guan, Karthik Valmeekam, Sarath Sreedharan, and Subbarao Kambhampati. Leveraging pre-trained large language models to construct and utilize world models for model-based task planning. Advances in Neural Information Processing Systems , 36:79081–79094, 2023. [6] Jiacheng Guo, Ling Yang, Peter Chen, Qixin Xiao, Yinjie Wang, Xinzhe Juan, Jiahao Qiu, Ke Shen, and Mengdi Wang. Genenv: Difficulty-aligned co-evolution between llm agents and environment simulators. 
+
+arXiv preprint arXiv:2512.19682 , 2025. [7] Edward J Hu, Yelong Shen, Phillip Wallis, Zeyuan Allen-Zhu, Yuanzhi Li, Shean Wang, Lu Wang, and Weizhu Chen. Lora: Low-rank adaptation of large language models. arXiv preprint arXiv:2106.09685 ,2021. [8] Mengkang Hu, Pu Zhao, Can Xu, Qingfeng Sun, Jian-Guang Lou, Qingwei Lin, Ping Luo, and Saravan Rajmohan. Agentgen: Enhancing planning abilities for large language model based agent via environment and task generation. In Proceedings of the 31st ACM SIGKDD Conference on Knowledge Discovery and Data Mining V. 1 , pages 496–507, 2025. [9] Jie Huang, Xinyun Chen, Swaroop Mishra, Huaixiu Steven Zheng, Adams Yu, Xinying Song, and Denny Zhou. Large language models cannot self-correct reasoning yet. In International conference on learning representations , volume 2024, pages 32808–32824, 2024. [10] Sungheon Jeong, Ryozo Masukawa, Sanggeon Yun, Mahdi Imani, and Mohsen Imani. State-centric decision process. arXiv preprint arXiv:2605.12755 , 2026. [11] Subbarao Kambhampati, Karthik Valmeekam, Lin Guan, Mudit Verma, Kaya Stechly, Siddhant Bhambri, Lucas Saldyt, and Anil Murthy. Llms can’t plan, but can help planning in llm-modulo frameworks. arXiv preprint arXiv:2402.01817 , 2024. [12] Aviral Kumar, Vincent Zhuang, Rishabh Agarwal, Yi Su, John D Co-Reyes, Avi Singh, Kate Baumli, Shariq Iqbal, Colton Bishop, Rebecca Roelofs, et al. Training language models to self-correct via re-inforcement learning. In International Conference on Learning Representations , volume 2025, pages 54523–54549, 2025. [13] Nathan Lambert, Jacob Morrison, Valentina Pyatkin, Shengyi Huang, Hamish Ivison, Faeze Brahman, Lester James V Miranda, Alisa Liu, Nouha Dziri, Shane Lyu, et al. Tulu 3: Pushing frontiers in open language model post-training. arXiv preprint arXiv:2411.15124 , 2024. [14] Xiaochuan Li, Ryan Ming, Pranav Setlur, Abhijay Paladugu, Andy Tang, Hao Kang, Shuai Shao, Rong Jin, and Chenyan Xiong. Benchmark test-time scaling of general llm agents. arXiv preprint arXiv:2602.18998 , 2026. [15] Hunter Lightman, Vineet Kosaraju, Yuri Burda, Harrison Edwards, Bowen Baker, Teddy Lee, Jan Leike, John Schulman, Ilya Sutskever, and Karl Cobbe. Let’s verify step by step. In International Conference on Learning Representations , volume 2024, pages 39578–39601, 2024. [16] Bo Liu, Yuqian Jiang, Xiaohan Zhang, Qiang Liu, Shiqi Zhang, Joydeep Biswas, and Peter Stone. Llm+ p: Empowering large language models with optimal planning proficiency. arXiv preprint arXiv:2304.11477 ,2023. 
+
+10 [17] Jiayu Liu, Qihan Lin, Cheng Qian, Rui Wang, Emre Can Acikgoz, Xiaocheng Yang, Jiateng Liu, Zhen-hailong Wang, Xiusi Chen, Heng Ji, et al. Planbench-xl: Evaluating long-horizon planning of llm tool-use agents in large-scale tool ecosystems. arXiv preprint arXiv:2606.22388 , 2026. [18] Zuxin Liu, Thai Hoang, Jianguo Zhang, Ming Zhu, Tian Lan, Shirley Kokane, Juntao Tan, Weiran Yao, Zhiwei Liu, Yihao Feng, et al. Apigen: Automated pipeline for generating verifiable and diverse function-calling datasets. Advances in Neural Information Processing Systems , 37:54463–54482, 2024. [19] Jiarui Lu, Thomas Holleis, Yizhe Zhang, Bernhard Aumayer, Feng Nan, Haoping Bai, Shuang Ma, Shen Ma, Mengyu Li, Guoli Yin, et al. Toolsandbox: A stateful, conversational, interactive evaluation bench-mark for llm tool use capabilities. In Findings of the Association for Computational Linguistics: NAACL 2025 , pages 1160–1183, 2025. [20] Chang Ma, Junlei Zhang, Zhihao Zhu, Cheng Yang, Yujiu Yang, Yaohui Jin, Zhenzhong Lan, Lingpeng Kong, and Junxian He. Agentboard: An analytical evaluation board of multi-turn llm agents. Advances in neural information processing systems , 37:74325–74362, 2024. [21] Aman Madaan, Niket Tandon, Prakhar Gupta, Skyler Hallinan, Luyu Gao, Sarah Wiegreffe, Uri Alon, Nouha Dziri, Shrimai Prabhumoye, Yiming Yang, et al. Self-refine: Iterative refinement with self-feedback. Advances in neural information processing systems , 36:46534–46594, 2023. [22] Qwen Team. Qwen3.6-27B: Flagship-level coding in a 27b dense model, April 2026. [23] Noah Shinn, Federico Cassano, Ashwin Gopinath, Karthik Narasimhan, and Shunyu Yao. Reflexion: Language agents with verbal reinforcement learning. Advances in neural information processing systems ,36:8634–8652, 2023. [24] Xiaoshuai Song, Haofei Chang, Guanting Dong, Yutao Zhu, Ji-Rong Wen, and Zhicheng Dou. Envs-caler: Scaling tool-interactive environments for llm agent via programmatic synthesis. In Findings of the Association for Computational Linguistics: ACL 2026 , pages 8326–8357, 2026. [25] Qiushi Sun, Kanzhi Cheng, Zichen Ding, Chuanyang Jin, Yian Wang, Fangzhi Xu, Zhenyu Wu, Chengyou Jia, Liheng Chen, Zhoumianze Liu, et al. Os-genesis: Automating gui agent trajectory construction via reverse task synthesis. In Proceedings of the 63rd Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers) , pages 5555–5579, 2025. [26] Gemma Team, Sherif El Abd, Vaibhav Aggarwal, Robin Algayres, Alek Andreev, Olivier Bachem, Ian Ballantyne, Cormac Brick, Victor C˘ arbune, Michelle Casbon, et al. Gemma 4 technical report. arXiv preprint arXiv:2607.02770 , 2026. [27] Lei Wang, Wanyu Xu, Yihuai Lan, Zhiqiang Hu, Yunshi Lan, Roy Ka-Wei Lee, and Ee-Peng Lim. Plan-and-solve prompting: Improving zero-shot chain-of-thought reasoning by large language models. In 
+
+Proceedings of the 61st annual meeting of the association for computational linguistics (volume 1: Long papers) , pages 2609–2634, 2023. [28] Ruoyao Wang, Peter Jansen, Marc-Alexandre Côté, and Prithviraj Ammanabrolu. Scienceworld: Is your agent smarter than a 5th grader? In Proceedings of the 2022 Conference on Empirical Methods in Natural Language Processing , pages 11279–11298, 2022. [29] Yiheng Xu, Dunjie Lu, Zhennan Shen, Junli Wang, Zekun Wang, Yuchen Mao, Caiming Xiong, and Tao Yu. Agenttrek: Agent trajectory synthesis via guiding replay with web tutorials. In International Conference on Learning Representations , volume 2025, pages 79822–79843, 2025. [30] Hang Yan, Xinyu Che, Fangzhi Xu, Qiushi Sun, Zichen Ding, Kanzhi Cheng, Jian Zhang, Tao Qin, Jun Liu, and Qika Lin. Tide: Trajectory-based diagnostic evaluation of test-time improvement in llm agents. 
+
+arXiv preprint arXiv:2602.02196 , 2026. [31] Zheng Yuan, Hongyi Yuan, Chengpeng Li, Guanting Dong, Keming Lu, Chuanqi Tan, Chang Zhou, and Jingren Zhou. Scaling relationship on learning mathematical reasoning with large language models. arXiv preprint arXiv:2308.01825 , 2023. [32] Eric Zelikman, Yuhuai Wu, Jesse Mu, and Noah Goodman. Star: Bootstrapping reasoning with reasoning. 
+
+Advances in Neural Information Processing Systems , 35:15476–15488, 2022. [33] Aohan Zeng, Mingdao Liu, Rui Lu, Bowen Wang, Xiao Liu, Yuxiao Dong, and Jie Tang. Agenttuning: Enabling generalized agent abilities for llms. In Findings of the Association for Computational Linguis-tics: ACL 2024 , pages 3053–3077, 2024. 
+
+11 [34] Yinger Zhang, Shutong Jiang, Renhao Li, Jianhong Tu, Yang Su, Lianghao Deng, Xudong Guo, Chenxu Lv, and Junyang Lin. Deepplanning: Benchmarking long-horizon agentic planning with verifiable con-straints. In Proceedings of the 64th Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers) , pages 7377–7407, 2026. [35] Denny Zhou, Nathanael Schärli, Le Hou, Jason Wei, Nathan Scales, Xuezhi Wang, Dale Schuurmans, Claire Cui, Olivier Bousquet, Quoc Le, et al. Least-to-most prompting enables complex reasoning in large language models. arXiv preprint arXiv:2205.10625 , 2022. 
+
+12

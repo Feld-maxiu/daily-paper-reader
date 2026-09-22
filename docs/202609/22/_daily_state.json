@@ -1,0 +1,217 @@
+{
+  "date": "20260922",
+  "date_label": "",
+  "generated_at": "2026-09-22 22:31:22 UTC",
+  "recommend_exists": true,
+  "run_count": 1,
+  "papers": [
+    {
+      "paper_id": "2609.23466v1",
+      "route": "202609/22/2609.23466v1-rpmem-learning-long-term-recurrent-parametric-memory-across-sessions-for-llm-agents",
+      "title": "RPMem: Learning Long-Term Recurrent Parametric Memory Across Sessions for LLM Agents",
+      "section": "deep",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 10.0,
+      "evidence": "跨会话参数记忆用于长运行LLM智能体",
+      "first_seen_at": "2026-09-22 22:31:22 UTC",
+      "updated_at": "2026-09-22 22:31:22 UTC"
+    },
+    {
+      "paper_id": "2609.22592v1",
+      "route": "202609/22/2609.22592v1-autogym-blueprint-first-generation-of-verifiable-agent-gyms",
+      "title": "AutoGym: Blueprint-First Generation of Verifiable Agent Gyms",
+      "section": "deep",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 9.0,
+      "evidence": "AutoGym为智能体强化学习生成任务、环境和验证器",
+      "first_seen_at": "2026-09-22 22:31:22 UTC",
+      "updated_at": "2026-09-22 22:31:22 UTC"
+    },
+    {
+      "paper_id": "2609.24352v1",
+      "route": "202609/22/2609.24352v1-few-shot-demonstrations-elicit-the-use-of-in-context-world-representations-in-llms",
+      "title": "Few-Shot Demonstrations Elicit the Use of In-Context World Representations in LLMs",
+      "section": "deep",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 9.0,
+      "evidence": "大语言模型在少样本图跟踪任务中使用上下文世界表征进行预测",
+      "first_seen_at": "2026-09-22 22:31:22 UTC",
+      "updated_at": "2026-09-22 22:31:22 UTC"
+    },
+    {
+      "paper_id": "2609.24526v1",
+      "route": "202609/22/2609.24526v1-me-vlma-unified-vlm-for-embodied-cognition-and-agent-coordination",
+      "title": "ME-VLM:A Unified VLM for Embodied Cognition and Agent Coordination",
+      "section": "deep",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 9.0,
+      "evidence": "统一视觉语言模型，支持具身多模态智能体协调与物理感知",
+      "first_seen_at": "2026-09-22 22:31:22 UTC",
+      "updated_at": "2026-09-22 22:31:22 UTC"
+    },
+    {
+      "paper_id": "2609.24744v1",
+      "route": "202609/22/2609.24744v1-world-state-generator",
+      "title": "World State Generator",
+      "section": "deep",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 9.0,
+      "evidence": "程序强制的合成世界为语言智能体生成可验证的世界条件规划训练数据",
+      "first_seen_at": "2026-09-22 22:31:22 UTC",
+      "updated_at": "2026-09-22 22:31:22 UTC"
+    },
+    {
+      "paper_id": "2609.20034v1",
+      "route": "202609/22/2609.20034v1-astronex-world-10-real-time-interactive-world-model-foundation",
+      "title": "Astronex-World 1.0: Real-Time Interactive World Model Foundation",
+      "section": "quick",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 8.0,
+      "evidence": "可控视频世界模型基础，支持文本和动作条件",
+      "first_seen_at": "2026-09-22 22:31:22 UTC",
+      "updated_at": "2026-09-22 22:31:22 UTC"
+    },
+    {
+      "paper_id": "2609.23578v1",
+      "route": "202609/22/2609.23578v1-ar-wam-a-visual-conditioned-agent-ready-world-action-model-for-robotic-manipulation",
+      "title": "AR-WAM: A Visual-Conditioned Agent-Ready World Action Model for Robotic Manipulation",
+      "section": "deep",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 8.0,
+      "evidence": "视觉条件的世界动作模型用于智能体驱动机器人操作，替代语言",
+      "first_seen_at": "2026-09-22 22:31:22 UTC",
+      "updated_at": "2026-09-22 22:31:22 UTC"
+    },
+    {
+      "paper_id": "2609.23841v1",
+      "route": "202609/22/2609.23841v1-structured-world-state-reasoning-for-agentic-robotic-search",
+      "title": "Structured World-State Reasoning for Agentic Robotic Search",
+      "section": "quick",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 8.0,
+      "evidence": "持久图世界状态与多模态审查器处理文本、地图和观测以进行语言引导搜索",
+      "first_seen_at": "2026-09-22 22:31:22 UTC",
+      "updated_at": "2026-09-22 22:31:22 UTC"
+    },
+    {
+      "paper_id": "2609.22641v1",
+      "route": "202609/22/2609.22641v1-consistworld-evidence-routing-for-consistent-multi-agent-world-models",
+      "title": "ConsistWorld: Evidence Routing for Consistent Multi-Agent World Models",
+      "section": "quick",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 7.0,
+      "evidence": "姿态条件记忆检索恢复多智能体历史观测以实现世界模型一致性",
+      "first_seen_at": "2026-09-22 22:31:22 UTC",
+      "updated_at": "2026-09-22 22:31:22 UTC"
+    },
+    {
+      "paper_id": "2609.22925v1",
+      "route": "202609/22/2609.22925v1-dear-llava-please-drive-a-depth-aware-vision-language-agent-for-closed-loop-robotic-control",
+      "title": "\"Dear LLaVA, Please Drive\": A Depth-Aware Vision-Language Agent for Closed-Loop Robotic Control",
+      "section": "quick",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 7.0,
+      "evidence": "用于自主导航的视觉语言模型",
+      "first_seen_at": "2026-09-22 22:31:22 UTC",
+      "updated_at": "2026-09-22 22:31:22 UTC"
+    },
+    {
+      "paper_id": "2609.24094v1",
+      "route": "202609/22/2609.24094v1-widgetva-a-widget-centric-framework-and-benchmark-for-agentic-visual-analytics",
+      "title": "WidgetVA: A Widget-Centric Framework and Benchmark for Agentic Visual Analytics",
+      "section": "quick",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 7.0,
+      "evidence": "基于视觉语言模型的智能体可视分析",
+      "first_seen_at": "2026-09-22 22:31:22 UTC",
+      "updated_at": "2026-09-22 22:31:22 UTC"
+    },
+    {
+      "paper_id": "2609.23064v1",
+      "route": "202609/22/2609.23064v1-fireworldbench-benchmarking-complex-physical-world-intelligence-through-coupled-field-fire-dynamics",
+      "title": "FireWorldBench: Benchmarking Complex Physical World Intelligence through Coupled-Field Fire Dynamics",
+      "section": "quick",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 6.0,
+      "evidence": "评估多模态智能体物理世界智能的基准",
+      "first_seen_at": "2026-09-22 22:31:22 UTC",
+      "updated_at": "2026-09-22 22:31:22 UTC"
+    },
+    {
+      "paper_id": "2609.23371v1",
+      "route": "202609/22/2609.23371v1-machine-interpretable-information-compiling-documents-into-searchable-and-readable-protocol-states",
+      "title": "Machine-Interpretable Information: Compiling Documents into Searchable and Readable Protocol States",
+      "section": "quick",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 6.0,
+      "evidence": "将文档编译为固定状态用于检索，可作为智能体记忆增强",
+      "first_seen_at": "2026-09-22 22:31:22 UTC",
+      "updated_at": "2026-09-22 22:31:22 UTC"
+    }
+  ]
+}
