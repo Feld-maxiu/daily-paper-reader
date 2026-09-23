@@ -1,0 +1,96 @@
+{
+  "mode": "standard",
+  "generated_at": "2026-09-23T22:14:38.164864+00:00",
+  "stats": {
+    "mode": "standard",
+    "tag_count": 1,
+    "deep_divecandidates": 2,
+    "deep_cap": 6,
+    "deep_selected": 2,
+    "quick_candidates": 0,
+    "quick_skim_target": 11,
+    "quick_selected": 0
+  },
+  "deep_dive": [
+    {
+      "id": "2609.25611v1",
+      "source": "arxiv",
+      "title": "Qwen3.8-Omni: Towards Native Omni-Modal Agents",
+      "abstract": "We introduce Qwen3.8-Omni-Flash, a natively multimodal agentic model for real-world multimodal productivity. Compared with previous omni models, which primarily emphasized perception and interaction, Qwen3.8-Omni-Flash substantially improves multimodal understanding and reasoning, as well as performance on long-horizon agentic tasks. These capabilities are supported by a native multimodal co-training strategy that preserves strong text-domain capabilities while facilitating the transfer of agentic capabilities from text to audio and video tasks. The model inherits the sparse mixture-of-experts (MoE) architecture of Qwen3.8-Next and extends the context window to one million tokens, supporting long-context multimodal reasoning and long-horizon planning. These advances enable integration into production workflows as a primary agent or a specialized sub-agent, supporting video editing, long-form audio and video translation, music-conditioned music video or movie generation, and video-based note or omni-skill creation. To address the lack of native audio and video support in existing agent harnesses, we release Qwen-MM-Plugins, a lightweight open-source plugin framework for multimodal productivity. We further frame real-time multimodal interaction as a system-level challenge requiring orchestration of context and memory management, tool use, and sub-agent delegation. Accordingly, we release Qwen-Live-Harness, an open-source framework for building responsive, real-time multimodal agents based on Qwen3.8-Omni-Flash. Extensive evaluations demonstrate that Qwen3.8-Omni-Flash achieves strong performance across multimodal understanding, reasoning, long-horizon agentic execution, and video productivity tasks. These results and the accompanying open-source tools support Qwen3.8-Omni-Flash as a practical foundation for deploying natively multimodal agents in research and production.",
+      "authors": [
+        "Qwen Team"
+      ],
+      "primary_category": "cs.CL",
+      "categories": [
+        "cs.CL",
+        "cs.CV",
+        "cs.MM"
+      ],
+      "published": "2026-09-22T03:07:59+00:00",
+      "link": "https://arxiv.org/pdf/2609.25611v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "natively multimodal agentic model for real-world multimodal productivity",
+      "llm_evidence_cn": "面向真实世界多模态生产力的原生多模态智能体模型",
+      "llm_evidence": "面向真实世界多模态生产力的原生多模态智能体模型",
+      "canonical_evidence": "面向真实世界多模态生产力的原生多模态智能体模型",
+      "llm_tldr_en": "Introduces Qwen3.8-Omni-Flash, a natively multimodal agentic model that improves multimodal understanding, reasoning, and long-horizon agentic tasks through native multimodal co-training and a one-million-token context window.",
+      "llm_tldr_cn": "针对现有全模态模型多关注感知交互而在多模态理解和长程智能体任务上能力不足的问题，本文推出Qwen3.8-Omni-Flash。采用原生多模态共训练策略，在保持强文本能力的同时将智能体能力迁移至音频和视频任务；模型继承稀疏MoE架构并将上下文扩展至100万token。该模型显著提升多模态理解、推理及长程规划表现，为真实世界多模态智能体应用提供了有力支撑。",
+      "llm_tldr": "针对现有全模态模型多关注感知交互而在多模态理解和长程智能体任务上能力不足的问题，本文推出Qwen3.8-Omni-Flash。采用原生多模态共训练策略，在保持强文本能力的同时将智能体能力迁移至音频和视频任务；模型继承稀疏MoE架构并将上下文扩展至100万token。该模型显著提升多模态理解、推理及长程规划表现，为真实世界多模态智能体应用提供了有力支撑。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "agent that processes multiple modalities",
+      "matched_requirement_id": "req-2",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2609.26458v1",
+      "source": "arxiv",
+      "title": "Code Plans, Diffusion Renders: Open-Ended Generative World Modeling",
+      "abstract": "We introduce \\textbf{CoDeR}, a new paradigm for world modeling. Unlike existing video world models that implicitly represent world dynamics through visual observations, our system explicitly constructs an executable world with code and employs video generation models for visual realization. Specifically, we coordinate five complementary roles to translate high-level concepts into structured world rules, executable dynamics, and perceptual observations. This design enables \\textit{long-term memory}, \\textit{open-ended interactions}, \\textit{autonomous world evolution}, and \\textit{multi-agent scenarios}, where multiple entities can act, interact, and evolve persistently beyond the current observation. Extensive experiments demonstrate that our framework substantially extends the capabilities of existing world models, enabling long-term memory, open-ended interactions, autonomous evolution, and persistent multi-agent dynamics, while achieving state-of-the-art performance across multiple evaluation settings. Code and model weights will be made publicly available. Project Page: \\href{https://becauseimbatman0.github.io/CoDeR}{CoDeR}.",
+      "authors": [
+        "Zixun Fang",
+        "Yawen Shao",
+        "Kai Zhu",
+        "Jie Xiao",
+        "Shihan Chen",
+        "Yu Liu",
+        "Xueyang Fu",
+        "Yang Cao",
+        "Wei Zhai",
+        "Zheng-Jun Zha"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV"
+      ],
+      "published": "2026-09-22T14:12:15+00:00",
+      "link": "https://arxiv.org/pdf/2609.26458v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "executable code-based world model with long-term memory and multi-agent evolution",
+      "llm_evidence_cn": "基于代码的可执行世界模型，具备长期记忆与多智能体演化",
+      "llm_evidence": "基于代码的可执行世界模型，具备长期记忆与多智能体演化",
+      "canonical_evidence": "基于代码的可执行世界模型，具备长期记忆与多智能体演化",
+      "llm_tldr_en": "CoDeR explicitly constructs executable worlds with code and uses video generation for visual realization, enabling long-term memory, open-ended interactions, autonomous evolution, and multi-agent scenarios beyond single-observation video world models.",
+      "llm_tldr_cn": "针对现有视频世界模型隐式表达动态、缺乏长期记忆和多智能体扩展的问题，提出CoDeR范式，将高层概念转化为结构化世界规则和可执行动态，并用视频生成模型进行视觉呈现。该方法支持长期记忆、开放式交互、自主世界演化和多智能体场景。实验表明该框架能实现多个实体持久交互与演化，为生成式世界建模提供了新方向。",
+      "llm_tldr": "针对现有视频世界模型隐式表达动态、缺乏长期记忆和多智能体扩展的问题，提出CoDeR范式，将高层概念转化为结构化世界规则和可执行动态，并用视频生成模型进行视觉呈现。该方法支持长期记忆、开放式交互、自主世界演化和多智能体场景。实验表明该框架能实现多个实体持久交互与演化，为生成式世界建模提供了新方向。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "text-based world model for environment simulation",
+      "matched_requirement_id": "req-4",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "quick_skim": []
+}

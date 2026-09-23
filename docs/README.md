@@ -41,17 +41,17 @@
 <section class="dpr-home-dashboard-card dpr-home-report-card">
   <div class="dpr-home-dashboard-header">
     <div>
-      <span class="dpr-home-dashboard-kicker">2026-09-22</span>
+      <span class="dpr-home-dashboard-kicker">2026-09-23</span>
       <h3 class="dpr-home-dashboard-title">今日汇总</h3>
     </div>
-    <strong class="dpr-home-dashboard-count">共 13 篇</strong>
+    <strong class="dpr-home-dashboard-count">共 2 篇</strong>
   </div>
   <dl class="dpr-home-dashboard-stats">
     <div class="dpr-home-dashboard-stat"><dt>累计更新</dt><dd>1 次</dd></div>
-    <div class="dpr-home-dashboard-stat"><dt>精读</dt><dd>6</dd></div>
-    <div class="dpr-home-dashboard-stat"><dt>速读</dt><dd>7</dd></div>
+    <div class="dpr-home-dashboard-stat"><dt>精读</dt><dd>2</dd></div>
+    <div class="dpr-home-dashboard-stat"><dt>速读</dt><dd>0</dd></div>
   </dl>
-  <p class="dpr-home-dashboard-body">最近更新：2026-09-22 22:31:22 UTC<br>状态：成功</p>
+  <p class="dpr-home-dashboard-body">最近更新：2026-09-23 22:18:43 UTC<br>状态：成功</p>
 </section>
 <section class="dpr-home-dashboard-card dpr-home-brief-card">
   <div class="dpr-home-dashboard-header">
@@ -62,10 +62,9 @@
     <strong class="dpr-home-dashboard-count">AI</strong>
   </div>
   <div class="dpr-home-dashboard-body">
-<p>今日共生成 13 篇推荐（精读 6 篇，速读 7 篇）</p>
-<p>精读：《RPMem: Learning Long-Term Recurrent Parametric Memory Across Sessions for LLM Agents》（10.0/10）, 《AutoGym: Blueprint-First Generation of Verifiable Agent Gyms》（9.0/10）</p>
-<p>速读：《Astronex-World 1.0: Real-Time Interactive World Model Foundation》（8.0/10）, 《Structured World-State Reasoning for Agentic Robotic Search》（8.0/10）, 《ConsistWorld: Evidence Routing for Consistent Multi-Agent World Models》（7.0/10）</p>
-<p>这些结果覆盖了当下较热的方向，建议先看精读区论文的关键问题与方法。</p>
+<p>今日精读两篇 9.0 高分论文：Qwen3.8-Omni 探索原生全模态智能体，Code Plans + Diffusion Renders 探索开放式生成世界建模。</p>
+<p>最值得关注的两个方向：让模型同时具备多模态感知与行动能力，以及用代码规划加扩散渲染生成可长期演化的世界。</p>
+<p>建议普通读者从“全模态智能体如何统一输入输出”和“生成式世界模型如何用于模拟与交互”两个切口继续跟进。</p>
   </div>
 </section>
 <section class="dpr-home-dashboard-card dpr-home-deep-card">
@@ -74,12 +73,12 @@
       <span class="dpr-home-dashboard-kicker">今日累计</span>
       <h3 class="dpr-home-dashboard-title">精读推荐</h3>
     </div>
-    <strong class="dpr-home-dashboard-count">6 篇</strong>
+    <strong class="dpr-home-dashboard-count">2 篇</strong>
   </div>
   <div class="dpr-home-dashboard-body">
-<ul class="dpr-home-dashboard-paper-list"><li><span class="dpr-home-dashboard-paper-title" title="RPMem: Learning Long-Term Recurrent Parametric Memory Across Sessions for LLM Agents">RPMem: Learning Long-Term Recurrent Parametric Memory Across Sessions for LLM Agents</span></li><li><span class="dpr-home-dashboard-paper-title" title="AutoGym: Blueprint-First Generation of Verifiable Agent Gyms">AutoGym: Blueprint-First Generation of Verifiable Agent Gyms</span></li><li><span class="dpr-home-dashboard-paper-title" title="Few-Shot Demonstrations Elicit the Use of In-Context World Representations in LLMs">Few-Shot Demonstrations Elicit the Use of In-Context World Representations in LLMs</span></li></ul>
+<ul class="dpr-home-dashboard-paper-list"><li><span class="dpr-home-dashboard-paper-title" title="Qwen3.8-Omni: Towards Native Omni-Modal Agents">Qwen3.8-Omni: Towards Native Omni-Modal Agents</span></li><li><span class="dpr-home-dashboard-paper-title" title="Code Plans, Diffusion Renders: Open-Ended Generative World Modeling">Code Plans, Diffusion Renders: Open-Ended Generative World Modeling</span></li></ul>
   </div>
-  <div class="dpr-home-dashboard-tags"><span class="dpr-home-dashboard-tag">agent-memory <strong>6</strong></span></div>
+  <div class="dpr-home-dashboard-tags"><span class="dpr-home-dashboard-tag">agent-memory <strong>2</strong></span></div>
 </section>
 <section class="dpr-home-dashboard-card dpr-home-skim-card">
   <div class="dpr-home-dashboard-header">
@@ -87,12 +86,12 @@
       <span class="dpr-home-dashboard-kicker">今日累计</span>
       <h3 class="dpr-home-dashboard-title">速读推荐</h3>
     </div>
-    <strong class="dpr-home-dashboard-count">7 篇</strong>
+    <strong class="dpr-home-dashboard-count">0 篇</strong>
   </div>
   <div class="dpr-home-dashboard-body">
-<ul class="dpr-home-dashboard-paper-list"><li><span class="dpr-home-dashboard-paper-title" title="Astronex-World 1.0: Real-Time Interactive World Model Foundation">Astronex-World 1.0: Real-Time Interactive World Model Foundation</span></li><li><span class="dpr-home-dashboard-paper-title" title="Structured World-State Reasoning for Agentic Robotic Search">Structured World-State Reasoning for Agentic Robotic Search</span></li><li><span class="dpr-home-dashboard-paper-title" title="ConsistWorld: Evidence Routing for Consistent Multi-Agent World Models">ConsistWorld: Evidence Routing for Consistent Multi-Agent World Models</span></li></ul>
+<p class="dpr-home-dashboard-empty">今日暂无推荐。</p>
   </div>
-  <div class="dpr-home-dashboard-tags"><span class="dpr-home-dashboard-tag">agent-memory <strong>7</strong></span></div>
+
 </section>
 </div>
 
