@@ -1,0 +1,185 @@
+{
+  "date": "20260925",
+  "date_label": "",
+  "generated_at": "2026-09-25 22:02:52 UTC",
+  "recommend_exists": true,
+  "run_count": 1,
+  "papers": [
+    {
+      "paper_id": "2609.28003v1",
+      "route": "202609/25/2609.28003v1-learning-from-failures-heterogeneous-graph-memory-for-small-language-model-tool-using-agents",
+      "title": "Learning from Failures: Heterogeneous Graph Memory for Small Language Model Tool-Using Agents",
+      "section": "deep",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 10.0,
+      "evidence": "工具使用智能体的异构图书记忆",
+      "first_seen_at": "2026-09-25 22:02:52 UTC",
+      "updated_at": "2026-09-25 22:02:52 UTC"
+    },
+    {
+      "paper_id": "2609.28416v1",
+      "route": "202609/25/2609.28416v1-agent-editing-world-model-rethinking-world-modeling-for-llm-agents",
+      "title": "Agent-Editing World Model: Rethinking World Modeling for LLM Agents",
+      "section": "deep",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 10.0,
+      "evidence": "提出面向LLM智能体推理的智能体编辑世界模型，不预测环境观测",
+      "first_seen_at": "2026-09-25 22:02:52 UTC",
+      "updated_at": "2026-09-25 22:02:52 UTC"
+    },
+    {
+      "paper_id": "2609.27286v1",
+      "route": "202609/25/2609.27286v1-memory-control-signals-emerge-before-action-in-long-horizon-agents",
+      "title": "Memory Control Signals Emerge Before Action in Long Horizon Agents",
+      "section": "deep",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 9.0,
+      "evidence": "智能体动作前隐藏状态中的记忆控制信号",
+      "first_seen_at": "2026-09-25 22:02:52 UTC",
+      "updated_at": "2026-09-25 22:02:52 UTC"
+    },
+    {
+      "paper_id": "2609.29144v1",
+      "route": "202609/25/2609.29144v1-scope-before-you-persist-preventing-cross-family-interference-in-agent-memory",
+      "title": "Scope Before You Persist: Preventing Cross-Family Interference in Agent Memory",
+      "section": "deep",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 9.0,
+      "evidence": "语言模型智能体的持久记忆，通过匹配检索范围与认证范围防止跨任务族干扰",
+      "first_seen_at": "2026-09-25 22:02:52 UTC",
+      "updated_at": "2026-09-25 22:02:52 UTC"
+    },
+    {
+      "paper_id": "2609.22879v1",
+      "route": "202609/25/2609.22879v1-prioritized-rollouts-for-efficient-world-model-based-vision-language-action-policy-optimization",
+      "title": "Prioritized Rollouts for Efficient World Model-based Vision-Language-Action Policy Optimization",
+      "section": "deep",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 8.0,
+      "evidence": "基于优先展开的高效模型强化学习策略优化，用于视觉语言动作智能体",
+      "first_seen_at": "2026-09-25 22:02:52 UTC",
+      "updated_at": "2026-09-25 22:02:52 UTC"
+    },
+    {
+      "paper_id": "2609.27321v1",
+      "route": "202609/25/2609.27321v1-verifiable-hidden-dynamics-play-generating-agentic-rl-environments-from-solved-mechanisms",
+      "title": "Verifiable Hidden Dynamics Play: Generating Agentic RL Environments from Solved Mechanisms",
+      "section": "deep",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 8.0,
+      "evidence": "从已解机制生成面向语言模型智能体的强化学习环境",
+      "first_seen_at": "2026-09-25 22:02:52 UTC",
+      "updated_at": "2026-09-25 22:02:52 UTC"
+    },
+    {
+      "paper_id": "2609.28609v1",
+      "route": "202609/25/2609.28609v1-adversarial-closed-loop-curriculum-for-evolving-role-playing-agents",
+      "title": "Adversarial Closed-Loop Curriculum for Evolving Role-Playing Agents",
+      "section": "quick",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 8.0,
+      "evidence": "角色扮演强化学习智能体的对抗性闭环课程",
+      "first_seen_at": "2026-09-25 22:02:52 UTC",
+      "updated_at": "2026-09-25 22:02:52 UTC"
+    },
+    {
+      "paper_id": "2609.25738v1",
+      "route": "202609/25/2609.25738v1-omnifysics-nano-v2-technical-report-understanding-the-physical-world-across-modalities",
+      "title": "OmniFysics-Nano-V2 Technical Report: Understanding the Physical World Across Modalities",
+      "section": "quick",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 7.0,
+      "evidence": "支持图像、视频、音频、语音和文本输入的全模态模型，共享推理框架",
+      "first_seen_at": "2026-09-25 22:02:52 UTC",
+      "updated_at": "2026-09-25 22:02:52 UTC"
+    },
+    {
+      "paper_id": "2609.29964v1",
+      "route": "202609/25/2609.29964v1-world-action-agent-harnessing-vlms-for-robot-manipulation-via-world-action-rehearsal",
+      "title": "World Action Agent: Harnessing VLMs for Robot Manipulation via World Action Rehearsal",
+      "section": "quick",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 7.0,
+      "evidence": "VLM驱动的机器人操作中视觉动作工作空间与动作预演",
+      "first_seen_at": "2026-09-25 22:02:52 UTC",
+      "updated_at": "2026-09-25 22:02:52 UTC"
+    },
+    {
+      "paper_id": "2609.20034v1",
+      "route": "202609/25/2609.20034v1-astronex-world-10-real-time-interactive-world-model-foundation",
+      "title": "Astronex-World 1.0: Real-Time Interactive World Model Foundation",
+      "section": "quick",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 6.0,
+      "evidence": "可控视频世界模型基础，根据相机轨迹、动作和文本事件预测未来视觉状态",
+      "first_seen_at": "2026-09-25 22:02:52 UTC",
+      "updated_at": "2026-09-25 22:02:52 UTC"
+    },
+    {
+      "paper_id": "2609.24308v1",
+      "route": "202609/25/2609.24308v1-happyworld-bench",
+      "title": "HappyWorld-Bench",
+      "section": "quick",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 6.0,
+      "evidence": "评估生成世界在智能体交互下是否可靠的综合基准",
+      "first_seen_at": "2026-09-25 22:02:52 UTC",
+      "updated_at": "2026-09-25 22:02:52 UTC"
+    }
+  ]
+}

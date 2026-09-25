@@ -1,0 +1,507 @@
+{
+  "mode": "standard",
+  "generated_at": "2026-09-25T21:55:03.110368+00:00",
+  "stats": {
+    "mode": "standard",
+    "tag_count": 1,
+    "deep_divecandidates": 7,
+    "deep_cap": 6,
+    "deep_selected": 6,
+    "quick_candidates": 5,
+    "quick_skim_target": 11,
+    "quick_selected": 5
+  },
+  "deep_dive": [
+    {
+      "id": "2609.28003v1",
+      "source": "arxiv",
+      "title": "Learning from Failures: Heterogeneous Graph Memory for Small Language Model Tool-Using Agents",
+      "abstract": "Small and medium-sized language models offer cost-effective executors for tool-using agents, making them attractive for local and large-scale deployment. However, in long-horizon and stateful environments, they often make structural errors such as missing required observations, performing premature writes, repeating failed calls, and violating action preconditions. These errors can lead to incorrect state updates, policy violations, and costly or irreversible consequences, making reliable tool execution a critical deployment challenge. Existing fine-tuning approaches require substantial data and computation, while flat memory may retrieve failed actions without preserving their causal context or safety conditions. In this paper, we propose FRESH, a Failure-aware Retrieval framework over Experience-Structured Heterogeneous graphs, which transforms historical successes and failures into structured external experience for tool-using agents. By explicitly modeling the dependencies among tasks, actions, errors, repairs, and execution conditions, FRESH helps frozen language models reuse reliable strategies, avoid recurring failures, and make safer decisions in stateful tool interactions. Experiments on $τ$-Bench and AppWorld with multiple open-source models show that FRESH consistently improves task success and tool-use reliability over no-memory agents and representative memory-based baselines.",
+      "authors": [
+        "Jiaxing Li",
+        "Lei Song",
+        "Rui Dong",
+        "Youyong Kong"
+      ],
+      "primary_category": "cs.LG",
+      "categories": [
+        "cs.LG"
+      ],
+      "published": "2026-09-23T12:31:39+00:00",
+      "link": "https://arxiv.org/pdf/2609.28003v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 10.0,
+      "llm_evidence_en": "Heterogeneous graph memory for tool-using agents",
+      "llm_evidence_cn": "工具使用智能体的异构图书记忆",
+      "llm_evidence": "工具使用智能体的异构图书记忆",
+      "canonical_evidence": "工具使用智能体的异构图书记忆",
+      "llm_tldr_en": "Proposes heterogeneous graph memory to capture causal context and safety conditions for small language model tool-using agents, improving reliable tool execution.",
+      "llm_tldr_cn": "针对小型语言模型工具使用智能体在长程有状态环境中常发生结构错误、现有扁平记忆无法保留因果与安全条件的问题，提出异构图书记忆方法。该方法以图结构组织失败行动及其因果上下文，保留前置条件和安全约束。实验表明该记忆减少重复失败和状态错误，提升工具执行的可靠性。该工作为资源受限智能体提供了结构化记忆方案，与智能体记忆增强需求高度契合。",
+      "llm_tldr": "针对小型语言模型工具使用智能体在长程有状态环境中常发生结构错误、现有扁平记忆无法保留因果与安全条件的问题，提出异构图书记忆方法。该方法以图结构组织失败行动及其因果上下文，保留前置条件和安全约束。实验表明该记忆减少重复失败和状态错误，提升工具执行的可靠性。该工作为资源受限智能体提供了结构化记忆方案，与智能体记忆增强需求高度契合。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "memory mechanisms for intelligent agents",
+      "matched_requirement_id": "req-1",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2609.28416v1",
+      "source": "arxiv",
+      "title": "Agent-Editing World Model: Rethinking World Modeling for LLM Agents",
+      "abstract": "Recent advances in large language models (LLMs) have enabled agents to tackle long-horizon tasks across diverse environments. To further improve agent performance, existing language world models typically predict environment observations, yet reconstructing high-entropy, execution-dependent tool responses offers limited value when real feedback is available. Meanwhile, agents suffer from \\emph{task-state contamination}, where unsupported assumptions and outdated plans persist in history and distort subsequent decisions. We propose the \\textbf{Agent-Editing World Model (AEWM)}, which models how reasoning and actions shape future task progress rather than simulating tool responses. AEWM combines \\textbf{Action Judge} to distinguish \\textsc{Critical}, \\textsc{Exploratory}, and \\textsc{Noisy} decisions with \\textbf{State Revision} to edit noisy reasoning--action continuations from the same observed history. \\textbf{EditAct} integrates these capabilities with real execution, directly changing the state underlying subsequent decisions rather than merely providing critiques. We train AEWM across Search, Terminal, and Software Engineering through mid-training and supervised fine-tuning. AEWM achieves 70.5\\% macro-F1 on our Action Judge benchmark, exceeding the strongest frontier baseline by 10.6 points. Across six benchmarks and three agent backbones, EditAct improves average scores by 3.2--6.7 points over the strongest baseline. Furthermore, rejection sampling fine-tuning on verified EditAct trajectories, termed \\textbf{AEWM-RFT}, improves over Self-RFT by 2.2--2.6 points across three domains without online AEWM guidance.",
+      "authors": [
+        "Shuang Sun",
+        "Guoxin Chen",
+        "Fanzhe Meng",
+        "Jia Deng",
+        "Huatong Song",
+        "Jinhao Jiang",
+        "Wayne Xin Zhao",
+        "Hongteng Xu",
+        "Ji-Rong Wen"
+      ],
+      "primary_category": "cs.CL",
+      "categories": [
+        "cs.CL",
+        "cs.AI",
+        "cs.LG"
+      ],
+      "published": "2026-09-23T17:18:26+00:00",
+      "link": "https://arxiv.org/pdf/2609.28416v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 10.0,
+      "llm_evidence_en": "Proposes Agent-Editing World Model for LLM agent reasoning, avoiding environment observation prediction",
+      "llm_evidence_cn": "提出面向LLM智能体推理的智能体编辑世界模型，不预测环境观测",
+      "llm_evidence": "提出面向LLM智能体推理的智能体编辑世界模型，不预测环境观测",
+      "canonical_evidence": "提出面向LLM智能体推理的智能体编辑世界模型，不预测环境观测",
+      "llm_tldr_en": "Proposes AEWM that models task progress instead of environment observations, addressing task-state contamination in LLM agents.",
+      "llm_tldr_cn": "针对现有语言世界模型预测环境观测价值有限且智能体存在任务状态污染的问题，提出智能体编辑世界模型（AEWM），通过动作判断和状态编辑建模推理与动作对任务进展的影响。AEWM区分关键与无关行动，修正历史中过时的假设和计划。实验表明该方法提升了LLM智能体在长程任务上的决策质量。该工作重新定义了语言世界模型在智能体推理中的作用，从模拟工具响应转向任务状态管理。",
+      "llm_tldr": "针对现有语言世界模型预测环境观测价值有限且智能体存在任务状态污染的问题，提出智能体编辑世界模型（AEWM），通过动作判断和状态编辑建模推理与动作对任务进展的影响。AEWM区分关键与无关行动，修正历史中过时的假设和计划。实验表明该方法提升了LLM智能体在长程任务上的决策质量。该工作重新定义了语言世界模型在智能体推理中的作用，从模拟工具响应转向任务状态管理。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "language-based world model for agent reasoning",
+      "matched_requirement_id": "req-5",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2609.27286v1",
+      "source": "arxiv",
+      "title": "Memory Control Signals Emerge Before Action in Long Horizon Agents",
+      "abstract": "Long horizon language model agents continuously accumulate interaction history, increasing computational cost while making relevant information harder to preserve and reuse. Existing context management methods mainly focus on how to compress or retrieve history, but largely leave open whether the model itself already represents the need for these memory operations before they occur. We study the hidden state immediately before each agent action and find that compression and recall needs are already encoded in the model's internal representations. These signals cannot be explained by simple context length or interaction progress, and they exhibit distinct formation patterns across model depth. We further show that most memory decision information is preserved in a compact recent context, while selectively restored historical evidence complements the long range dependencies that recent context misses. Based on these findings, we propose Preaction Memory with Evidence Retrieval (PaMER), which combines state guided compression with external evidence retrieval. PaMER+ further introduces step level evidence selection to recover only the historical information required by the current task. Experiments on WorkBuddyBench, across multiple context management baselines and model backbones, show that our framework substantially reduces context consumption while maintaining competitive task performance.",
+      "authors": [
+        "Mingxuan Wang",
+        "Guorun Yao",
+        "Fei Luo",
+        "Yinglong Guo",
+        "Chao Ning",
+        "Bo Wang",
+        "Hongyue Chen",
+        "Yanbiao Ma",
+        "Jungong Han"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-09-23T03:23:34+00:00",
+      "link": "https://arxiv.org/pdf/2609.27286v1",
+      "tags": [
+        "keyword:agent-memory"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "memory control signals in hidden states before agent actions",
+      "llm_evidence_cn": "智能体动作前隐藏状态中的记忆控制信号",
+      "llm_evidence": "智能体动作前隐藏状态中的记忆控制信号",
+      "canonical_evidence": "智能体动作前隐藏状态中的记忆控制信号",
+      "llm_tldr_en": "Finds that compression and recall needs are encoded in the hidden states of long-horizon language agents before they act, offering new insights for memory management.",
+      "llm_tldr_cn": "针对长时域语言智能体中交互历史不断累积、记忆管理困难的问题，该论文研究动作前隐藏状态，发现压缩和回忆需求已被编码在模型内部表示中。研究显示这些信号无法仅由上下文长度或交互进度解释，并在模型深度上表现出不同的形成模式。进一步分析表明大部分记忆决策信息被保留在隐藏状态中。这一发现为开发更高效的记忆压缩和召回机制提供了新的理论依据。",
+      "llm_tldr": "针对长时域语言智能体中交互历史不断累积、记忆管理困难的问题，该论文研究动作前隐藏状态，发现压缩和回忆需求已被编码在模型内部表示中。研究显示这些信号无法仅由上下文长度或交互进度解释，并在模型深度上表现出不同的形成模式。进一步分析表明大部分记忆决策信息被保留在隐藏状态中。这一发现为开发更高效的记忆压缩和召回机制提供了新的理论依据。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "memory mechanisms for intelligent agents",
+      "matched_requirement_id": "req-1",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2609.29144v1",
+      "source": "arxiv",
+      "title": "Scope Before You Persist: Preventing Cross-Family Interference in Agent Memory",
+      "abstract": "Persistent memory lets language-model agents improve prompts and skills without updating model weights. We show that matching retrieval scope to certification scope enables these edits to support reliable repeated adaptation across recurring task families. We study frozen-model agents on ProcStream-RSI, a 12-round code-repair stream, using Orthogonal Regression Control (ORC), an execution-grounded gate for persistent skill edits. In an intervention that holds proposals and gate decisions fixed, retrieving each accepted skill only for its originating family raises mean hidden trajectory utility from 0.713 under global memory to 0.816 and changes harmful deployments from six of eight to none. In 27 paired randomized-order streams, Scoped-ORC improves mean trajectory utility by 0.063 [0.037, 0.094] over Global-ORC, accepts 63 rather than 12 updates, and produces multiple accepted updates in 19/27 streams, with 0/63 harmful acceptances. The global control reaches 0.713, below the static agent's 0.775, because locally valid edits can interfere with unrelated families. These results establish scope matching as a complementary control for persistent agent memory: certification determines whether an edit is supported, while retrieval scope determines where that evidence authorizes its use.",
+      "authors": [
+        "Yezhou Cheng",
+        "Runjia Du",
+        "Zeming Liu",
+        "Qibai Chen",
+        "Hang Lyu",
+        "Yankai Zeng",
+        "Yilan Wei",
+        "Bojun Lin"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-09-24T07:22:10+00:00",
+      "link": "https://arxiv.org/pdf/2609.29144v1",
+      "tags": [
+        "keyword:agent-memory"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "Persistent memory lets language-model agents improve prompts and skills... matching retrieval scope to certification scope",
+      "llm_evidence_cn": "语言模型智能体的持久记忆，通过匹配检索范围与认证范围防止跨任务族干扰",
+      "llm_evidence": "语言模型智能体的持久记忆，通过匹配检索范围与认证范围防止跨任务族干扰",
+      "canonical_evidence": "语言模型智能体的持久记忆，通过匹配检索范围与认证范围防止跨任务族干扰",
+      "llm_tldr_en": "The paper tackles cross-family interference in persistent memory for language-model agents. It introduces Scoped-ORC, an execution-grounded gate that retrieves accepted skills only for their originating family. On ProcStream-RSI, this raises hidden trajectory utility from 0.713 to 0.816 and eliminates harmful deployments. The work shows that scoping memory retrieval to certification scope enables reliable repeated adaptation.",
+      "llm_tldr_cn": "本文针对语言模型智能体持久记忆在跨任务家族间产生干扰、导致重复适应不可靠的问题，提出执行门控的持久技能编辑方法Scoped-ORC，通过将检索范围与认证范围匹配，只在与技能同源的家族中检索。在ProcStream-RSI代码修复流上，该方法将隐藏轨迹效用从0.713提升至0.816，并将有害部署从六次降至零。结果表明，按家族限定记忆检索范围可显著提升智能体在重复任务流上的适应可靠性和性能。",
+      "llm_tldr": "本文针对语言模型智能体持久记忆在跨任务家族间产生干扰、导致重复适应不可靠的问题，提出执行门控的持久技能编辑方法Scoped-ORC，通过将检索范围与认证范围匹配，只在与技能同源的家族中检索。在ProcStream-RSI代码修复流上，该方法将隐藏轨迹效用从0.713提升至0.816，并将有害部署从六次降至零。结果表明，按家族限定记忆检索范围可显著提升智能体在重复任务流上的适应可靠性和性能。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "memory mechanisms for intelligent agents",
+      "matched_requirement_id": "req-1",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2609.22879v1",
+      "source": "arxiv",
+      "title": "Prioritized Rollouts for Efficient World Model-based Vision-Language-Action Policy Optimization",
+      "abstract": "Vision-Language-Action (VLA) models have emerged as a powerful paradigm for embodied intelligence, but fine-tuning them with reinforcement learning (RL) remains constrained by the cost of real-world robot interaction. Model-based reinforcement learning (MBRL) reduces this cost by using a learned world model to generate rollouts for policy optimization. However, it becomes computationally expensive as VLA policies and world models scale. Existing methods typically treat states equally, overlooking substantial differences in their utility for policy improvement. In this paper, we show that policy uncertainty helps identify states with greater potential for policy improvement. The policy exhibits high uncertainty at only a small subset of states, often during decision-sensitive stages where small action differences can alter task outcomes, suggesting that policy improvements at these states could be particularly valuable. Building on these findings, we introduce U-GROW, a lightweight, plug-and-play sampling layer that directs more model rollouts to these informative states. By modifying only the branched-start distribution, U-GROW can be integrated into existing MBRL pipelines without changing the policy optimization objective. Experiments in both simulated and real-world manipulation tasks demonstrate the efficiency and effectiveness of U-GROW, supporting the use of policy uncertainty to guide experience generation.",
+      "authors": [
+        "Yifei Sheng",
+        "Haoxiang Ren",
+        "Zhilong Zhang",
+        "Haonan Wang",
+        "Runjie Xu",
+        "Yihao Sun",
+        "Nan Tang",
+        "Zhichao Wu",
+        "Lei Yuan",
+        "Haoxin Lin",
+        "Yang Yu"
+      ],
+      "primary_category": "cs.LG",
+      "categories": [
+        "cs.LG"
+      ],
+      "published": "2026-09-19T08:34:34+00:00",
+      "link": "https://arxiv.org/pdf/2609.22879v1",
+      "tags": [
+        "keyword:agent-memory"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "Efficient model-based RL policy optimization for VLA agents using prioritized rollouts",
+      "llm_evidence_cn": "基于优先展开的高效模型强化学习策略优化，用于视觉语言动作智能体",
+      "llm_evidence": "基于优先展开的高效模型强化学习策略优化，用于视觉语言动作智能体",
+      "canonical_evidence": "基于优先展开的高效模型强化学习策略优化，用于视觉语言动作智能体",
+      "llm_tldr_en": "Proposes prioritized rollouts based on policy uncertainty to make model-based RL efficient for VLA policy optimization, reducing computational cost.",
+      "llm_tldr_cn": "针对VLA模型强化学习微调受真实机器人交互成本限制、模型基方法计算昂贵的问题，提出利用策略不确定性识别高改进潜力状态并优先展开。该方法通过世界模型生成rollouts，仅对少量关键状态进行策略优化，显著降低计算开销。实验（在机器人任务上）表明能高效提升VLA策略性能。该工作为多模态具身智能体的RL训练提供了更可扩展的模型基优化途径。",
+      "llm_tldr": "针对VLA模型强化学习微调受真实机器人交互成本限制、模型基方法计算昂贵的问题，提出利用策略不确定性识别高改进潜力状态并优先展开。该方法通过世界模型生成rollouts，仅对少量关键状态进行策略优化，显著降低计算开销。实验（在机器人任务上）表明能高效提升VLA策略性能。该工作为多模态具身智能体的RL训练提供了更可扩展的模型基优化途径。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "reinforcement learning applied to autonomous agents",
+      "matched_requirement_id": "req-3",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2609.27321v1",
+      "source": "arxiv",
+      "title": "Verifiable Hidden Dynamics Play: Generating Agentic RL Environments from Solved Mechanisms",
+      "abstract": "Language-model agents increasingly face long-horizon tasks with evolving state, interdependent decisions, and delayed outcomes. Scaling their training requires diverse agentic environments, dependable outcome signals, and low extension cost. Existing generation pipelines commonly construct an environment before defining its outcome rule or annotating its trajectories, leaving dynamics and evaluation to be aligned post hoc. VHD-Play reverses this dependency by sampling and solving a mathematical model before a corpus-grounded setter renders its decision process as stateful tools. The executable dynamics and trajectory-scoring reference are inherited from the same solved model. The pipeline produces 3,300 diverse agentic environments at a cost of a few cents each. Training Qwen3.6-35B-A3B on three families raises its mean agentic score from 0.204 to 0.815 in a five-family diagnostic. Gains also appear on held-out instances from all three training families and eight unseen mechanism families, then extend beyond the generated substrate to external benchmarks for general function calling, travel planning, and 365-day e-commerce. On E-Commerce Bench, the trained checkpoint completes every run without bankruptcy and exceeds Qwen3.7-Max. We compare written-out problems with stateful versions that reveal or hide their parameters. The comparison shows that most of the learnable gap lies in stateful interaction rather than underlying problem solving. A frozen 35B setter realizes larger environments, and scale-matched training retains gains as mechanism size and horizon grow, indicating the potential for an evolving training substrate.",
+      "authors": [
+        "Xinjie Shen",
+        "Wei Fan",
+        "Xudong Guo",
+        "Jianhong Tu",
+        "Yang Su",
+        "Chuqiao Kuang",
+        "Yinger Zhang",
+        "Dayiheng Liu"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI",
+        "cs.CL"
+      ],
+      "published": "2026-09-23T03:51:54+00:00",
+      "link": "https://arxiv.org/pdf/2609.27321v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "Generates agentic RL environments from solved mechanisms for language-model agents",
+      "llm_evidence_cn": "从已解机制生成面向语言模型智能体的强化学习环境",
+      "llm_evidence": "从已解机制生成面向语言模型智能体的强化学习环境",
+      "canonical_evidence": "从已解机制生成面向语言模型智能体的强化学习环境",
+      "llm_tldr_en": "The paper proposes VHD-Play, a pipeline that samples and solves mathematical models before rendering them as stateful tools, generating 3,300 diverse agentic RL environments with inherited dynamics and scoring references for language-model agents.",
+      "llm_tldr_cn": "针对语言模型智能体在长程任务中缺乏多样化且可靠的训练环境问题，本文提出 VHD-Play，先采样并求解数学模型，再将其决策过程渲染为有状态工具，从而生成继承可执行动态与评分参考的智能体强化学习环境。该方法生成了 3300 个多样化环境，为可扩展的智能体训练提供了低扩展成本且结果可靠的解决方案。",
+      "llm_tldr": "针对语言模型智能体在长程任务中缺乏多样化且可靠的训练环境问题，本文提出 VHD-Play，先采样并求解数学模型，再将其决策过程渲染为有状态工具，从而生成继承可执行动态与评分参考的智能体强化学习环境。该方法生成了 3300 个多样化环境，为可扩展的智能体训练提供了低扩展成本且结果可靠的解决方案。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "reinforcement learning applied to autonomous agents",
+      "matched_requirement_id": "req-3",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "quick_skim": [
+    {
+      "id": "2609.28609v1",
+      "source": "arxiv",
+      "title": "Adversarial Closed-Loop Curriculum for Evolving Role-Playing Agents",
+      "abstract": "Role-playing agents based on large language models have been widely applied in areas such as personalized assistance and social simulation. Recent RL methods typically train on a fixed scenario pool collected before learning begins. This creates a distributional bottleneck: as the agent improves, the scenarios where it performs poorly also change, while the training distribution remains static. Therefore, we propose AdvRole, an adversarial context rewriting framework that turns role-playing RL into a closed-loop curriculum. AdvRole alternates between an Actor that learns to role-play and a Rewriter that edits character profiles and dialogue contexts into actor-specific hard scenarios. The Rewriter is trained with a performance-gap reward, which favors rewrites that reduce the current Actor's score relative to the original scenario. As a result, the scenario pool evolves with the Actor and continuously targets under-mastered regions of the character-context space. Experiments on three role-playing benchmarks covering English and Chinese, as well as a new multilingual benchmark we release, show that AdvRole consistently outperforms baselines.",
+      "authors": [
+        "Zheng Zhang",
+        "Liu Liu",
+        "Qi Chai",
+        "Deheng Ye",
+        "Peilin Zhao",
+        "Mao Zheng",
+        "Hao Wang"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-09-23T16:58:08+00:00",
+      "link": "https://arxiv.org/pdf/2609.28609v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "adversarial closed-loop curriculum for role-playing RL agents",
+      "llm_evidence_cn": "角色扮演强化学习智能体的对抗性闭环课程",
+      "llm_evidence": "角色扮演强化学习智能体的对抗性闭环课程",
+      "canonical_evidence": "角色扮演强化学习智能体的对抗性闭环课程",
+      "llm_tldr_en": "Introduces AdvRole, a framework that turns role-playing RL into a closed-loop curriculum by adversarially rewriting contexts to generate hard scenarios for the evolving actor.",
+      "llm_tldr_cn": "针对角色扮演智能体强化学习中固定场景池导致分布瓶颈的问题，该论文提出AdvRole对抗性上下文重写框架。AdvRole交替训练Actor进行角色扮演和Rewriter编辑角色档案与对话上下文，生成Actor特定的困难场景，并利用性能差距奖励训练Rewriter。实验表明，这种闭环课程能够持续提供适合当前Actor水平的训练场景，促进角色扮演能力的持续提升，为LLM角色扮演智能体的训练提供了新思路。",
+      "llm_tldr": "针对角色扮演智能体强化学习中固定场景池导致分布瓶颈的问题，该论文提出AdvRole对抗性上下文重写框架。AdvRole交替训练Actor进行角色扮演和Rewriter编辑角色档案与对话上下文，生成Actor特定的困难场景，并利用性能差距奖励训练Rewriter。实验表明，这种闭环课程能够持续提供适合当前Actor水平的训练场景，促进角色扮演能力的持续提升，为LLM角色扮演智能体的训练提供了新思路。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "reinforcement learning applied to autonomous agents",
+      "matched_requirement_id": "req-3",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "8plus"
+    },
+    {
+      "id": "2609.25738v1",
+      "source": "arxiv",
+      "title": "OmniFysics-Nano-V2 Technical Report: Understanding the Physical World Across Modalities",
+      "abstract": "Omni-modal models have expanded multimodal interaction across vision, audio, speech, and language. However, their training is predominantly organized around semantic descriptions and general-purpose objectives, leaving physical attributes, interaction states, and causal mechanisms only partially specified. This gap is not simply a matter of modality coverage: adding more modalities does not by itself provide the supervision needed to connect observations with the physical structure of the world. We present OmniFysics-Nano-V2, a compact omni-modal model for physical-world perception and understanding. The model supports image, video, audio, speech, and text inputs within a shared reasoning framework, together with text and speech generation. To address the lack of explicit physical supervision, we construct a dual-branch physics-aware data pipeline that grounds salient objects in structured physical attributes and aligns visual changes with acoustic events, intermediate responses, and interaction outcomes. To address homogeneous training objectives, we curate reinforcement-learning prompts by reward diversity and adopt a two-stage Group Relative Policy Optimization curriculum that progresses from general task correctness to fine-grained physical perceptual reasoning. Experiments across multimodal, audio-visual, and physical reasoning benchmarks show that the proposed data and training strategy improves physical-world understanding while preserving broad omni-modal competence. The proposed model achieves leading result on 17 of 21 benchmarks against SOTA omni-modal models. By equipping AI systems with both omni-modal and physical-world perception capabilities, OmniFysics-Nano-V2 is poised to become a cornerstone of next-generation Physical AI.",
+      "authors": [
+        "Yizhou Liu",
+        "Jinghang Han",
+        "Kaixiang Qiu",
+        "Qi He",
+        "Minghao Han",
+        "Yue Jiang",
+        "Xujia Chen",
+        "Wei Zou",
+        "Shunli Wang",
+        "Lihua Zhang",
+        "Dingkang Yang"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-09-22T06:18:20+00:00",
+      "link": "https://arxiv.org/pdf/2609.25738v1",
+      "tags": [
+        "keyword:agent-memory"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "Omni-modal model supporting image, video, audio, speech, and text inputs within a shared reasoning framework",
+      "llm_evidence_cn": "支持图像、视频、音频、语音和文本输入的全模态模型，共享推理框架",
+      "llm_evidence": "支持图像、视频、音频、语音和文本输入的全模态模型，共享推理框架",
+      "canonical_evidence": "支持图像、视频、音频、语音和文本输入的全模态模型，共享推理框架",
+      "llm_tldr_en": "OmniFysics-Nano-V2 is a compact omni-modal model for physical-world perception and understanding. It supports image, video, audio, speech, and text inputs within a shared reasoning framework, along with text and speech generation. The paper addresses the gap that adding modalities alone does not provide physical supervision, and provides a transferable method for multimodal understanding.",
+      "llm_tldr_cn": "本文针对全模态模型训练主要围绕语义描述、缺乏物理属性与因果机制监督的问题，提出OmniFysics-Nano-V2紧凑全模态模型。该模型支持图像、视频、音频、语音和文本输入，在共享推理框架内实现物理世界感知与理解。通过多模态物理理解训练，模型能够连接观测与物理结构。该工作为多模态智能体提供了可迁移的物理世界理解能力。",
+      "llm_tldr": "本文针对全模态模型训练主要围绕语义描述、缺乏物理属性与因果机制监督的问题，提出OmniFysics-Nano-V2紧凑全模态模型。该模型支持图像、视频、音频、语音和文本输入，在共享推理框架内实现物理世界感知与理解。通过多模态物理理解训练，模型能够连接观测与物理结构。该工作为多模态智能体提供了可迁移的物理世界理解能力。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "agent that processes multiple modalities",
+      "matched_requirement_id": "req-2",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2609.20034v1",
+      "source": "arxiv",
+      "title": "Astronex-World 1.0: Real-Time Interactive World Model Foundation",
+      "abstract": "We present Astronex-World 1.0, an open controllable video world-model foundation. Given a text prompt (text-to-video) or an initial observation (image-to-video), the model predicts future visual states under frame-aligned camera trajectories, continuous actions, and an embodiment identifier, and accepts text events inserted at a specified position of a rollout. The family provides a bidirectional model for full-context generation and a causal model with block-causal attention and cross-block KV caching for persistent generation, both built on the Wan2.2-TI2V-5B prior. PRoPE injects camera intrinsics and extrinsics, while a 64-dimensional action stream modulates every Transformer layer. A five-stage training path develops bidirectional camera and action control, converts the backbone to block-causal generation, distills a few-step student, restores mixed-domain dynamics, and applies asymmetric DMD/DMD2 distribution matching. The causal model generates 832x480 video at 24 fps. All five training stages run on two NVIDIA L20 48 GB GPUs, and the causal model streams in real time on one. It scores 73.5 on WBench Navi and 70.0 on WBench Full. On Full, this 5B model is above the 13.6B LongCat-Video and the 14B Helios, within one point of the 22B LTX-2.3, and above YUME 1.5, which is post-trained from the same 5B prior on NVIDIA A100 GPUs. The reserved action input and output interfaces allow post-training for embodied intelligence and autonomous driving.",
+      "authors": [
+        "Xin Zhou",
+        "Cong Miao"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV",
+        "cs.AI",
+        "cs.RO"
+      ],
+      "published": "2026-09-17T10:38:22+00:00",
+      "link": "https://arxiv.org/pdf/2609.20034v1",
+      "tags": [
+        "keyword:agent-memory"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "Controllable video world-model foundation that predicts future visual states under camera trajectories, actions, and text events",
+      "llm_evidence_cn": "可控视频世界模型基础，根据相机轨迹、动作和文本事件预测未来视觉状态",
+      "llm_evidence": "可控视频世界模型基础，根据相机轨迹、动作和文本事件预测未来视觉状态",
+      "canonical_evidence": "可控视频世界模型基础，根据相机轨迹、动作和文本事件预测未来视觉状态",
+      "llm_tldr_en": "Astronex-World 1.0 is an open controllable video world-model foundation. It takes text or image prompts and predicts future visual states under camera control, continuous actions, and text events, using a bidirectional and causal model with cross-block KV caching for persistent generation. The model is built on Wan2.2-TI2V-5B and provides a strong world model foundation, though it focuses on video rather than text-based representations.",
+      "llm_tldr_cn": "本文针对可交互世界模型需求，提出Astronex-World 1.0开放可控视频世界模型基础。该模型接受文本或图像输入，在帧对齐相机轨迹、连续动作和文本事件条件下预测未来视觉状态。采用双向和因果模型设计，支持上下文生成和持续生成。该工作为世界建模提供了视频基础模型，但并非文本或语言基世界模型，与本主题核心的文本语言世界模型有差异。",
+      "llm_tldr": "本文针对可交互世界模型需求，提出Astronex-World 1.0开放可控视频世界模型基础。该模型接受文本或图像输入，在帧对齐相机轨迹、连续动作和文本事件条件下预测未来视觉状态。采用双向和因果模型设计，支持上下文生成和持续生成。该工作为世界建模提供了视频基础模型，但并非文本或语言基世界模型，与本主题核心的文本语言世界模型有差异。",
+      "llm_tags": [
+        "query:agent-memory:composite"
+      ],
+      "matched_query_tag": "query:agent-memory:composite",
+      "matched_query_text": "Papers central to 智能体记忆，多模态，智能体强化学习，文本世界模型，语言世界模型, especially work that connects or combines: memory mechanisms for intelligent agents; agent that processes multiple modalities; reinforcement learning applied to autonomous agents; text-based world model for environment simulation; language-based world model for agent reasoning; agent with memory augmentation for better performance; How do text world models support language based agent simulation?.",
+      "matched_requirement_id": "req-composite-agent-memory",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2609.29964v1",
+      "source": "arxiv",
+      "title": "World Action Agent: Harnessing VLMs for Robot Manipulation via World Action Rehearsal",
+      "abstract": "General-purpose vision-language models (VLMs) bring broad knowledge and spatial reasoning to robot manipulation, yet existing systems either use them indirectly, to predict constraints or write programs, or give them a view of the scene rather than a world in which to act. We present World Action Agent (WAA), a multi-agent harness through which VLMs pilot robots with basic tools, making every decision within a visual action workspace. The workspace has three properties. Contact views, selected automatically from the scene geometry, present the scene around the current interaction. Action rehearsal turns each action into an editable proposal that the agent, alone or through an Imagination Agent, previews and revises against planning feedback before execution. In-view correction closes the loop between observation, rehearsal, and low-level execution, letting the agent remove residual offsets in the view where it observes them. Through the same workspace, WAA acquires embodied procedural knowledge in two ways: it evolves multimodal skills from expert videos and human teaching under evidence-based review and consults them through a Skill Agent, and its interaction traces train smaller VLMs to pilot the same harness. On LIBERO-Pro, WAA with skills evolved only from LIBERO-90 reaches a state-of-the-art 75.6% average success, outperforming end-to-end VLAs, code-as-policy agents, and a visual-harness baseline with the same backbone; the same skills remain effective on robosuite without further learning. Fine-tuning Qwen3.5-9B on harness traces raises its out-of-domain success from 1.7% to 43.3%.",
+      "authors": [
+        "Yehang Zhang",
+        "Haojian Huang",
+        "Yifan Chang",
+        "Jianchong Su",
+        "Bohan Zhou",
+        "Yingjie Xu",
+        "Wosong Chen",
+        "Tianhao Zhou",
+        "Chenxu Wang",
+        "Tianyi Zhang",
+        "Yangkai Wei",
+        "Wenqian Li",
+        "Shiyuan Deng",
+        "Yinchuan Li",
+        "Ying-Cong Chen",
+        "Zexi Li"
+      ],
+      "primary_category": "cs.RO",
+      "categories": [
+        "cs.RO",
+        "cs.AI"
+      ],
+      "published": "2026-09-24T15:19:39+00:00",
+      "link": "https://arxiv.org/pdf/2609.29964v1",
+      "tags": [
+        "keyword:agent-memory"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "Visual action workspace and action rehearsal for VLM-driven robot manipulation",
+      "llm_evidence_cn": "VLM驱动的机器人操作中视觉动作工作空间与动作预演",
+      "llm_evidence": "VLM驱动的机器人操作中视觉动作工作空间与动作预演",
+      "canonical_evidence": "VLM驱动的机器人操作中视觉动作工作空间与动作预演",
+      "llm_tldr_en": "WAA is a multi-agent harness that lets VLMs pilot robots by making decisions in a visual action workspace, with contact views and action rehearsal to preview and revise actions, improving robot manipulation.",
+      "llm_tldr_cn": "针对现有VLM机器人系统仅提供场景视图而非可行动世界的问题，本文提出World Action Agent多智能体协调框架，在视觉动作工作空间中用接触视图和动作预演让VLM对每个动作进行预览和修订。实验表明该方法使VLM能够直接规划并执行机器人操作，提高了决策的可编辑性和可靠性。该框架为多模态智能体在机器人操作中的应用提供了新范式。",
+      "llm_tldr": "针对现有VLM机器人系统仅提供场景视图而非可行动世界的问题，本文提出World Action Agent多智能体协调框架，在视觉动作工作空间中用接触视图和动作预演让VLM对每个动作进行预览和修订。实验表明该方法使VLM能够直接规划并执行机器人操作，提高了决策的可编辑性和可靠性。该框架为多模态智能体在机器人操作中的应用提供了新范式。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "agent that processes multiple modalities",
+      "matched_requirement_id": "req-2",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2609.24308v1",
+      "source": "arxiv",
+      "title": "HappyWorld-Bench",
+      "abstract": "Evaluating world models requires assessing both the quality of the worlds they generate and their consistency and responsiveness under exploration, interaction, and modification. We introduce HappyWorld-Bench, a comprehensive benchmark that evaluates whether generated worlds remain reliable as agents interact with them. Our design is built on a hierarchical capability framework of six world capabilities (W1-W6), from generative construction to unified world modeling, instantiated across three independent evaluation tracks: video world models, spatial world models, and embodied world models. HappyWorld-Bench comprises 1,138 video prompts, 300 spatial scenes, and 254 embodied test cases. Across all three tracks, we build and operate HappyWorld-Arena to organize human A/B comparisons and derive model-level Elo ratings, which complement newly designed automated metrics that capture behavioral correctness. We evaluate 14 video world models, 9 spatial systems, and 8 embodied candidates under this unified framework. Results reveal remaining reliability gaps across all three tracks: video models exhibit reduced consistency during extended rollouts and revisits, spatial models achieve at best 70.14% placement accuracy and 73.33% edit execution, and embodied models struggle to preserve state across multi-step actions and respond precisely to altered action conditions and physical rules. These findings highlight the need to evaluate world models not only by visual quality, but also by state consistency and the correctness of their responses to actions and interventions.",
+      "authors": [
+        "Zhiqi Bai",
+        "Junai Cai",
+        "Yixin Chen",
+        "Jingrun Du",
+        "Tao Feng",
+        "Wei Gong",
+        "Siyuan Huang",
+        "Xiao Lin",
+        "Jiaheng Liu",
+        "Jun Luo",
+        "Yongzhe Lyu",
+        "Liya Ma",
+        "Zenan Meng",
+        "Lin Qu",
+        "Wenbo Su",
+        "Jiaming Wang",
+        "Qinghe Wang",
+        "Shaofei Wang",
+        "Yanghai Wang",
+        "Zequn Wang",
+        "Ziming Wang",
+        "Hu Wei",
+        "Jiangtao Wu",
+        "Ruiqi Wu",
+        "Jiaxin Xie",
+        "Yuchi Xu",
+        "Ze Xu",
+        "Chengting Yu",
+        "Liangyu Yuan",
+        "Gang Zeng",
+        "Yawen Zeng",
+        "Xingyao Zhang",
+        "Zizheng Zhang",
+        "Bo Zheng",
+        "Jiancheng Zhu",
+        "Song-Chun Zhu"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV"
+      ],
+      "published": "2026-09-21T09:07:30+00:00",
+      "link": "https://arxiv.org/pdf/2609.24308v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "Comprehensive benchmark evaluating whether generated worlds remain reliable as agents interact with them",
+      "llm_evidence_cn": "评估生成世界在智能体交互下是否可靠的综合基准",
+      "llm_evidence": "评估生成世界在智能体交互下是否可靠的综合基准",
+      "canonical_evidence": "评估生成世界在智能体交互下是否可靠的综合基准",
+      "llm_tldr_en": "HappyWorld-Bench is a comprehensive benchmark for evaluating world models, focusing on quality, consistency, and responsiveness under agent interaction. It defines six world capabilities and provides three evaluation tracks: video, spatial, and embodied world models, with 1,138 video prompts, 300 spatial scenes, and 254 embodied test cases. The benchmark advances systematic evaluation of world models but is not specific to text or language-based models.",
+      "llm_tldr_cn": "本文针对现有世界模型评估缺乏对交互一致性和响应性考察的问题，提出HappyWorld-Bench综合基准。该基准基于六项世界能力框架，设置视频、空间和具身三条评估轨道，包含1138个视频提示、300个空间场景和254个具身测试用例。通过HappyWorld-Arena组织人类对比评估，评估生成世界在智能体交互下是否可靠。该工作为世界模型提供了系统性评估工具，但未聚焦于文本或语言世界模型。",
+      "llm_tldr": "本文针对现有世界模型评估缺乏对交互一致性和响应性考察的问题，提出HappyWorld-Bench综合基准。该基准基于六项世界能力框架，设置视频、空间和具身三条评估轨道，包含1138个视频提示、300个空间场景和254个具身测试用例。通过HappyWorld-Arena组织人类对比评估，评估生成世界在智能体交互下是否可靠。该工作为世界模型提供了系统性评估工具，但未聚焦于文本或语言世界模型。",
+      "llm_tags": [
+        "query:agent-memory:composite"
+      ],
+      "matched_query_tag": "query:agent-memory:composite",
+      "matched_query_text": "Papers central to 智能体记忆，多模态，智能体强化学习，文本世界模型，语言世界模型, especially work that connects or combines: memory mechanisms for intelligent agents; agent that processes multiple modalities; reinforcement learning applied to autonomous agents; text-based world model for environment simulation; language-based world model for agent reasoning; agent with memory augmentation for better performance; How do text world models support language based agent simulation?.",
+      "matched_requirement_id": "req-composite-agent-memory",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    }
+  ]
+}
