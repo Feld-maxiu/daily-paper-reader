@@ -1,0 +1,69 @@
+{
+  "label": "2026-09-26",
+  "date": "2026-09-26",
+  "generated_at": "2026-09-26T22:09:54",
+  "count": 4,
+  "papers": [
+    {
+      "paper_id": "202609/26/2609.27353v1-guides-that-cause-actions-an-offline-study-of-guide-action-mutual-reinforcement-in-multimodal-web-agents",
+      "section": "quick",
+      "title_en": "Guides That Cause Actions: An Offline Study of Guide-Action Mutual Reinforcement in Multimodal Web Agents",
+      "authors": "Chengguang Gan, Yunhao Liang, QingHao Zhang, Shiwen Ni",
+      "date": "2026-09-23",
+      "pdf": "https://arxiv.org/pdf/2609.27353v1",
+      "score": "7.0",
+      "evidence": "多模态网页代理离线基准研究引导-动作互强化",
+      "tldr": "Web agent 在 live 环境中评估分数不可复现，难以进行训练现象的受控研究。为此提出离线基准 WebMRE，含 541 个任务、5293 步，每步配对指导句与接地动作，并采用确定性评分。联合解码指导句可提升元素选择，且随模型规模增大；中介分析证明指导句是因果通道，强制使用正确指导使动作准确率从 0.422 升至 0.684。该基准使可复现研究成为可能，微调模型零样本超越主流大模型。",
+      "tags": "query:agent-memory",
+      "abstract_en": "Web agents are usually evaluated in live environments, where environment state and judge models drift between runs, so the same checkpoint rarely reproduces the same score, making controlled studies of training phenomena impractical. We present WebMRE, an offline benchmark of 541 tasks and 5,293 steps derived from successful WebArena trajectories, with fully audited test labels and a deterministic protocol that scores a checkpoint identically on every run without any environment. Each step pairs a human oriented guide sentence with a grounded action, enabling the first study of the mutual reinforcement effect between them in web agents. Averaged over three seeds the effect holds for both models in both decoding orders and grows with scale: jointly decoding a guide lifts element selection over an action only reference by 0.9 and 0.2 points for Qwen3.5-4B and by 1.7 and 2.2 points for Qwen3.5-9B. A mediation analysis shows that the guide is a causal channel rather than commentary: forcing the gold guide as a decoding prefix lifts action accuracy from .422 to .684, another step's guide collapses it to .055, and a paraphrase that renames the target still recovers half of the gain, so the channel carries instruction meaning and not only the label string. The same channel yields an offline reward that only a replayable protocol makes computable, though optimizing it from a strong checkpoint brings no gain yet. Our fine tuned models outperform GPT-5.5, Claude Opus 4.8, and Gemini 3.5 Flash, run zero shot, on every offline metric.",
+      "source": "arxiv",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "paper_id": "202609/26/2609.22971v1-automatic-multimodal-ux-improvement-recommendations-from-llm-agent-user-simulations",
+      "section": "quick",
+      "title_en": "Automatic multimodal UX improvement recommendations from LLM agent user simulations",
+      "authors": "Anu Chowdhury, Bin Wu, Hossein A. Rahmani, Emine Yilmaz",
+      "date": "2026-09-19",
+      "pdf": "https://arxiv.org/pdf/2609.22971v1",
+      "score": "6.0",
+      "evidence": "多模态框架模拟用户行为并生成用户体验改进建议",
+      "tldr": "网站用户体验测试成本高且难以规模化，现有 LLM 智能体模拟缺乏多模态且需人工提取见解。AMUSER 框架将改进推荐形式化为生成与排序任务，通过多模态模拟自动产出优先推荐。在商业网站上，该方法显著优于纯文本模拟（NDCG@3 为 0.758 对 0.359），且模拟成本降低 89%。研究揭示多模态作用不对称：模拟期视觉访问增进推荐质量，而推荐生成期引入视觉输入可能轻微降低质量。",
+      "tags": "query:agent-memory",
+      "abstract_en": "Evaluating user experience (UX) on live websites through user testing is expensive, subjective, and difficult to scale. LLM agents offer a promising route to automating UX testing by simulating realistic user behaviour. However, existing simulation approaches typically lack multimodality and require time-consuming manual review to extract actionable insights. We formalise UX improvement recommendation from simulation data as a structured natural language generation and ranking problem, and establish an evaluation protocol using expert annotation and LLM-as-a-Judge. We present AMUSER, a multimodal framework which simulates user behaviour and automatically generates prioritised UX improvement recommendations from resulting data. We evaluate AMUSER on commercial websites and show that its recommendations substantially outperform those from text-only simulation (NDCG@3 = 0.758 versus 0.359) at an 89% lower simulation cost. Our results suggest an asymmetric role of multimodality: visual access during simulation improves recommendations through richer traces, while providing visual inputs during recommendation generation can modestly degrade quality. We also discuss practical deployment lessons from applying AMUSER to commercial websites.",
+      "source": "arxiv",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "paper_id": "202609/26/2609.26891v1-harness-as-a-language-a-minimalist-agent-framework-with-maximal-expressivity",
+      "section": "quick",
+      "title_en": "Harness as a Language: A Minimalist Agent Framework With Maximal Expressivity",
+      "authors": "Zhening Li, Joshua Liu, Mateja Vukelic, Nicole Shen, Supriya Lall, Amitayush Thakur, Alex Zhang, Omar Khattab, Jonathan Light, Armando Solar-Lezama",
+      "date": "2026-09-22",
+      "pdf": "https://arxiv.org/pdf/2609.26891v1",
+      "score": "6.0",
+      "evidence": "探讨最小智能体循环是否足够，涉及记忆系统与自我改进系统",
+      "tldr": "现代语言模型智能体常需额外记忆与自改进等专用系统，导致框架庞杂。JAZ框架仅暴露一个LLM原语invoke，支持递归代码执行，并将全部交互历史作为变量，实现极简但高表达力的agent loop。在长时记忆与自改进基准上，JAZ invoke比专用系统Letta、ACE分别提升8%和4%，且成本更低。这表明最小化harness即可统一多种复杂工作流。",
+      "tags": "query:agent-memory",
+      "abstract_en": "Modern language-model agents are built around the \\textit{agent loop}, where the LLM is placed in an environment exposing a set of tools, and the LLM has full control over the workflow by alternating between tool calls and observing their output. However, certain workflows currently require additional engineering beyond the agent loop itself, such as memory systems and self-improving systems. We built an LLM agent framework, JAZ, to explore the extent to which a minimal harness that is little more than the agent loop itself can accomplish tasks these specialized systems are built for. JAZ exposes a single LLM-based primitive invoke and provides a set of built-in hooks that allow the programmer to apply constraints and monitoring. Generalizing existing code-mode agent loops, \\texttt{invoke} is the simplest loop that satisfies two defining properties: (1) the LLM can write arbitrary executable code that can include recursive \\texttt{invoke}; (2) everything visible to the LLM --- all inputs to \\texttt{invoke} as well as its interaction history with the code environment --- are variables in the code environment. We motivate our design from first principles, viewing \\texttt{invoke} as a language primitive representing a function whose implementation is provided at runtime by an LLM every time it is called. To validate the design of our core \\texttt{invoke} primitive, we evaluate \\texttt{invoke} --- with only prompting, no manually designed tools, harness, or external systems (e.g., memory or the file system) --- on workflows traditionally implemented through specialized external harnesses. On long-horizon workflows requiring recall beyond the context window, JAZ invoke outperforms Letta (MemGPT) by 8\\% at half its cost on the recall-heavy portion of StuLife. On continual self-improvement, JAZ invoke outperforms ACE by 4\\% at a lower cost on AppWorld.",
+      "source": "arxiv",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "paper_id": "202609/26/2609.27717v2-skillgym-internalizing-human-skills-into-llms-for-real-world-problem-solving",
+      "section": "quick",
+      "title_en": "SkillGym: Internalizing Human Skills into LLMs for Real-World Problem Solving",
+      "authors": "Zhilong Ge, Yuting Shao, Yutao Yang, Yuxuan Cai, Jie Zhou, Kai Chen, Bo Zhang, Qin Chen, Liang He",
+      "date": "2026-09-23",
+      "pdf": "https://arxiv.org/pdf/2609.27717v2",
+      "score": "6.0",
+      "evidence": "从人类技能创建可执行可验证的LLM智能体训练环境",
+      "tldr": "人类编写的智能体技能常被用作外部推理指令，未能内化为模型可复用的能力。SkillGym 框架将技能转化为可执行、可验证的训练环境，构建了2756个环境并采集8364条成功轨迹。在 Claude Code 下监督微调使 Qwen3.5-35B-A3B 多项基准大幅提升，35B SkillGym-Agent 在技能辅助 SkillsBench 达51.47%，超过多个先进模型。该工作验证了技能内化训练的有效性，使模型获得可复用程序性能力。",
+      "tags": "query:agent-memory",
+      "abstract_en": "Human-written agent skills encode rich workflows for real-world problem solving, but are typically used as external inference-time instructions rather than internalized as reusable model capabilities. We introduce \\texttt{SkillGym}, a framework that transforms these skills into executable, verifiable training environments for large language model agents. Its skill-to-task pipeline instantiates concrete tasks, verifies outcomes with code-based checkers, and assesses empirical skill dependence through contrastive executions. We construct and release 2,756 environments across 12 categories and collect 8,364 successful trajectories from multiple models and harnesses, averaging 49 tool calls and over 60k logged text tokens. These resources support supervised fine-tuning on verified workflows and reinforcement learning with outcome-based rewards. Under Claude Code, supervised fine-tuning improves Qwen3.5-35B-A3B by 199 Elo on GDPval-AA v2, 19.10 percentage points on Terminal-Bench 2.1, and 28.13 and 12.38 points on SkillsBench v1.1 with and without skills, respectively. Our 35B \\texttt{SkillGym-Agent} reaches 51.47\\% on skill-assisted SkillsBench, exceeding reported scores for Claude Sonnet 4.6, GPT-5.4 Mini, and DeepSeek V4 Pro. Without skills, it also surpasses skill-assisted bases under Codex and Claude Code, suggesting reusable procedural competence.",
+      "source": "arxiv",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "errors": []
+}
