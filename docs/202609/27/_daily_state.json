@@ -1,0 +1,25 @@
+{
+  "date": "20260927",
+  "date_label": "",
+  "generated_at": "2026-09-27 22:11:43 UTC",
+  "recommend_exists": true,
+  "run_count": 1,
+  "papers": [
+    {
+      "paper_id": "2609.25991v1",
+      "route": "202609/27/2609.25991v1-knowledge-as-skill-a-structural-design-for-autonomous-knowledge-base-use-by-llm-agents",
+      "title": "Knowledge-as-Skill: A Structural Design for Autonomous Knowledge-Base Use by LLM Agents",
+      "section": "deep",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 8.0,
+      "evidence": "LLM智体自主知识库使用的结构化设计",
+      "first_seen_at": "2026-09-27 22:11:43 UTC",
+      "updated_at": "2026-09-27 22:11:43 UTC"
+    }
+  ]
+}

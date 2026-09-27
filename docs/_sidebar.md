@@ -1,6 +1,9 @@
 * <a class="dpr-sidebar-root-link" href="#/">首页</a>
 * <a class="dpr-sidebar-root-link dpr-sidebar-noactive-link" href="javascript:void(0)" data-dpr-hash="#/tutorial/README">使用教程</a>
 * Daily Papers
+  * 2026-09-27 <!--dpr-date:20260927-->
+    * 精读区
+      * <a class="dpr-sidebar-item-link dpr-sidebar-item-structured" href="#/202609/27/2609.25991v1-knowledge-as-skill-a-structural-design-for-autonomous-knowledge-base-use-by-llm-agents" data-sidebar-item="{&quot;title&quot;: &quot;Knowledge-as-Skill: A Structural Design for Autonomous Knowledge-Base Use by LLM Agents&quot;, &quot;link&quot;: &quot;https://arxiv.org/abs/2609.25991v1-knowledge-as-skill-a-structural-design-for-autonomous-knowledge-base-use-by-llm-agents&quot;, &quot;score&quot;: &quot;8.0&quot;, &quot;tags&quot;: [{&quot;kind&quot;: &quot;query&quot;, &quot;label&quot;: &quot;agent-memory&quot;}], &quot;evidence&quot;: &quot;LLM智体自主知识库使用的结构化设计&quot;}">Knowledge-as-Skill: A Structural Design for Autonomous Knowledge-Base Use by LLM Agents</a>
   * 2026-09-26 <!--dpr-date:20260926-->
     * 速读区
       * <a class="dpr-sidebar-item-link dpr-sidebar-item-structured" href="#/202609/26/2609.27353v1-guides-that-cause-actions-an-offline-study-of-guide-action-mutual-reinforcement-in-multimodal-web-agents" data-sidebar-item="{&quot;title&quot;: &quot;Guides That Cause Actions: An Offline Study of Guide-Action Mutual Reinforcement in Multimodal Web Agents&quot;, &quot;link&quot;: &quot;https://arxiv.org/abs/2609.27353v1-guides-that-cause-actions-an-offline-study-of-guide-action-mutual-reinforcement-in-multimodal-web-agents&quot;, &quot;score&quot;: &quot;7.0&quot;, &quot;tags&quot;: [{&quot;kind&quot;: &quot;query&quot;, &quot;label&quot;: &quot;agent-memory&quot;}], &quot;evidence&quot;: &quot;多模态网页代理离线基准研究引导-动作互强化&quot;}">Guides That Cause Actions: An Offline Study of Guide-Action Mutual Reinforcement in Multimodal Web Agents</a>

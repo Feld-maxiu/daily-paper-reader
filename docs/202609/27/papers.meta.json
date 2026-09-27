@@ -1,0 +1,24 @@
+{
+  "label": "2026-09-27",
+  "date": "2026-09-27",
+  "generated_at": "2026-09-27T22:11:51",
+  "count": 1,
+  "papers": [
+    {
+      "paper_id": "202609/27/2609.25991v1-knowledge-as-skill-a-structural-design-for-autonomous-knowledge-base-use-by-llm-agents",
+      "section": "deep",
+      "title_en": "Knowledge-as-Skill: A Structural Design for Autonomous Knowledge-Base Use by LLM Agents",
+      "authors": "Jiangxu Wu",
+      "date": "2026-09-22",
+      "pdf": "https://arxiv.org/pdf/2609.25991v1",
+      "score": "8.0",
+      "evidence": "LLM智体自主知识库使用的结构化设计",
+      "tldr": "传统RAG由管线替模型做检索决定，而agent自主检索时暴露新瓶颈：agent不知知识库包含什么。本文提出Knowledge-as-Skill三层结构：SKILL.md发现层、每目录index.md导航层、带YAML元数据的知识层，使知识库可发现、可导航、自描述。在WixQA企业客服基准上，Factuality达0.889、Context Recall达0.816，优于Corpus2Skill的0.767和0.708。该设计不改动agent框架，并提供异构文档转换pipeline。",
+      "tags": "query:agent-memory",
+      "abstract_en": "Retrieval-augmented generation (RAG) gives large language models (LLMs) access to external knowledge, but its conventional retrieve-concatenate-generate pipeline makes retrieval decisions on behalf of the model. As tool use and agent loops become more reliable, an agent can decide whether to retrieve, what to inspect, and when to stop. This shift exposes a new bottleneck: the agent may not know what a knowledge base contains. Traditional knowledge bases expose documents as anonymous text chunks with limited information about scope, purpose, provenance, or relations.   We propose Knowledge-as-Skill, an organization scheme that makes a knowledge base discoverable, navigable, and self-descriptive. It has three layers: a discovery layer centered on SKILL.md; a navigation layer with one index.md per directory; and a knowledge layer containing documents with YAML frontmatter for topic, type, provenance, and lifecycle. The design follows the Open Knowledge Format (OKF) and the Skill protocol without modifying the agent framework. We also provide knowledge-as-skill, a pipeline for converting heterogeneous collections of PDFs, Word files, web exports, and notes into this structure.   In a preliminary evaluation on the WixQA enterprise customer-support benchmark, our setup obtains 0.889 Factuality and 0.816 Context Recall, compared with reported Corpus2Skill values of 0.767 and 0.708. It obtains slightly lower Faithfulness, lower Context Precision, and more interaction turns. Because the models, prompts, and knowledge-package construction differ, these results are directional cross-work evidence rather than a controlled comparison.",
+      "source": "arxiv",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "errors": []
+}

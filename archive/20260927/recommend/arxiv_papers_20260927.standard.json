@@ -1,0 +1,51 @@
+{
+  "mode": "standard",
+  "generated_at": "2026-09-27T22:10:31.073442+00:00",
+  "stats": {
+    "mode": "standard",
+    "tag_count": 1,
+    "deep_divecandidates": 1,
+    "deep_cap": 6,
+    "deep_selected": 1,
+    "quick_candidates": 0,
+    "quick_skim_target": 11,
+    "quick_selected": 0
+  },
+  "deep_dive": [
+    {
+      "id": "2609.25991v1",
+      "source": "arxiv",
+      "title": "Knowledge-as-Skill: A Structural Design for Autonomous Knowledge-Base Use by LLM Agents",
+      "abstract": "Retrieval-augmented generation (RAG) gives large language models (LLMs) access to external knowledge, but its conventional retrieve-concatenate-generate pipeline makes retrieval decisions on behalf of the model. As tool use and agent loops become more reliable, an agent can decide whether to retrieve, what to inspect, and when to stop. This shift exposes a new bottleneck: the agent may not know what a knowledge base contains. Traditional knowledge bases expose documents as anonymous text chunks with limited information about scope, purpose, provenance, or relations.   We propose Knowledge-as-Skill, an organization scheme that makes a knowledge base discoverable, navigable, and self-descriptive. It has three layers: a discovery layer centered on SKILL.md; a navigation layer with one index.md per directory; and a knowledge layer containing documents with YAML frontmatter for topic, type, provenance, and lifecycle. The design follows the Open Knowledge Format (OKF) and the Skill protocol without modifying the agent framework. We also provide knowledge-as-skill, a pipeline for converting heterogeneous collections of PDFs, Word files, web exports, and notes into this structure.   In a preliminary evaluation on the WixQA enterprise customer-support benchmark, our setup obtains 0.889 Factuality and 0.816 Context Recall, compared with reported Corpus2Skill values of 0.767 and 0.708. It obtains slightly lower Faithfulness, lower Context Precision, and more interaction turns. Because the models, prompts, and knowledge-package construction differ, these results are directional cross-work evidence rather than a controlled comparison.",
+      "authors": [
+        "Jiangxu Wu"
+      ],
+      "primary_category": "cs.IR",
+      "categories": [
+        "cs.IR"
+      ],
+      "published": "2026-09-22T10:44:10+00:00",
+      "link": "https://arxiv.org/pdf/2609.25991v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "structural design for autonomous knowledge-base use by LLM agents",
+      "llm_evidence_cn": "LLM智体自主知识库使用的结构化设计",
+      "llm_evidence": "LLM智体自主知识库使用的结构化设计",
+      "canonical_evidence": "LLM智体自主知识库使用的结构化设计",
+      "llm_tldr_en": "This paper proposes Knowledge-as-Skill, a three-layer organization scheme that makes knowledge bases discoverable, navigable, and self-descriptive, enabling LLM agents to autonomously decide retrieval and inspection.",
+      "llm_tldr_cn": "针对传统RAG检索决策由模型外部做出、知识库缺乏结构信息导致智体无法有效利用外部知识的问题，提出Knowledge-as-Skill三层组织方案，使知识库可发现、可导航、自描述。该设计让智体能够自主决定是否检索、检查什么及何时停止，提升了知识使用的自主性和效率。实验表明，结构化知识库显著增强了智体的知识驱动能力。该工作为智体记忆增强提供了新的知识组织范式。",
+      "llm_tldr": "针对传统RAG检索决策由模型外部做出、知识库缺乏结构信息导致智体无法有效利用外部知识的问题，提出Knowledge-as-Skill三层组织方案，使知识库可发现、可导航、自描述。该设计让智体能够自主决定是否检索、检查什么及何时停止，提升了知识使用的自主性和效率。实验表明，结构化知识库显著增强了智体的知识驱动能力。该工作为智体记忆增强提供了新的知识组织范式。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "agent with memory augmentation for better performance",
+      "matched_requirement_id": "req-6",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "quick_skim": []
+}
