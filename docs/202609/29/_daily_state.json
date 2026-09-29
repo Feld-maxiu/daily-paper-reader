@@ -1,0 +1,57 @@
+{
+  "date": "20260929",
+  "date_label": "",
+  "generated_at": "2026-09-29 00:27:05 UTC",
+  "recommend_exists": true,
+  "run_count": 1,
+  "papers": [
+    {
+      "paper_id": "2609.29875v1",
+      "route": "202609/29/2609.29875v1-when-can-agents-forget-their-reasoning-iclr-for-long-horizon-agent-context-compression",
+      "title": "When Can Agents Forget Their Reasoning? ICLR for Long-Horizon Agent Context Compression",
+      "section": "deep",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 9.0,
+      "evidence": "提出ICLR压缩长时程智能体推理历史，同时保留动作与观察",
+      "first_seen_at": "2026-09-29 00:27:05 UTC",
+      "updated_at": "2026-09-29 00:27:05 UTC"
+    },
+    {
+      "paper_id": "2609.30578v1",
+      "route": "202609/29/2609.30578v1-reinforcement-learning-of-communication-in-a-mesh-of-small-language-models",
+      "title": "Reinforcement Learning of Communication in a Mesh of Small Language Models",
+      "section": "deep",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 9.0,
+      "evidence": "使用强化学习训练小语言模型智能体网状系统的通信策略",
+      "first_seen_at": "2026-09-29 00:27:05 UTC",
+      "updated_at": "2026-09-29 00:27:05 UTC"
+    },
+    {
+      "paper_id": "2609.31281v1",
+      "route": "202609/29/2609.31281v1-ma-wam-multi-agent-world-action-model-for-test-time-planning",
+      "title": "MA-WAM: Multi-Agent World-Action Model for Test-Time Planning",
+      "section": "quick",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 6.0,
+      "evidence": "多智能体世界-动作模型用于合作任务测试时规划",
+      "first_seen_at": "2026-09-29 00:27:05 UTC",
+      "updated_at": "2026-09-29 00:27:05 UTC"
+    }
+  ]
+}

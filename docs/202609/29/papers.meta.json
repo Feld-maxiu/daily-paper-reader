@@ -1,0 +1,54 @@
+{
+  "label": "2026-09-29",
+  "date": "2026-09-29",
+  "generated_at": "2026-09-29T00:27:13",
+  "count": 3,
+  "papers": [
+    {
+      "paper_id": "202609/29/2609.29875v1-when-can-agents-forget-their-reasoning-iclr-for-long-horizon-agent-context-compression",
+      "section": "deep",
+      "title_en": "When Can Agents Forget Their Reasoning? ICLR for Long-Horizon Agent Context Compression",
+      "authors": "Mingxuan Wang, Fei Luo, Bo Wang, Guorun Yao, Yinglong Guo, Chao Ning, Hongyue Chen, Yanbiao Ma, Jungong Han",
+      "date": "2026-09-24",
+      "pdf": "https://arxiv.org/pdf/2609.29875v1",
+      "score": "9.0",
+      "evidence": "提出ICLR压缩长时程智能体推理历史，同时保留动作与观察",
+      "tldr": "长程语言智能体因持续累积推理历史而面临上下文长度和推理开销增长，但直接删除历史推理可能改变后续动作与交互轨迹。为此，论文提出训练无关在线压缩方法 ICLR，利用冻结代理熵对推理块排序，同时保留动作、工具调用与观察结果。在 260 个 WorkBuddyBench 任务上，ICLR 将平均奖励从 0.699 提升至 0.718，并减少输入、输出和缓存读取 token 最多 33.3%。分析表明，历史推理在任务相关状态被外部化到代码、文件或环境反馈后可安全遗忘，揭示推理是动态工作状态而非永久历史。",
+      "tags": "query:agent-memory",
+      "abstract_en": "Long horizon language model agents continually accumulate reasoning history, increasing context length and inference cost even after earlier decisions have been executed and observed. Unlike static Chain of Thought compression, removing historical reasoning can change future actions and the resulting interaction trajectory. We study when such reasoning can be safely forgotten. We propose Interaction Aware Compression for Long Horizon Reasoning (ICLR), a training free online method that ranks reasoning blocks using frozen proxy entropy while preserving actions, tool calls, and observations. On 260 WorkBuddyBench tasks, ICLR improves average reward from 0.699 to 0.718, while reducing input, output, and cache read tokens by 25.5%, 14.4%, and 33.3%, respectively. Ablations reveal trajectory amplification, where local reasoning deletion produces nonlinear changes in total computation by altering subsequent interaction. Representation probing, activation patching, and controlled trajectory analyses further suggest that historical reasoning becomes more replaceable once task relevant derived state has been reliably externalized into code, files, tool outputs, or environmental feedback. These results characterize agent reasoning as dynamic working state rather than permanent interaction history.",
+      "source": "arxiv",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "paper_id": "202609/29/2609.30578v1-reinforcement-learning-of-communication-in-a-mesh-of-small-language-models",
+      "section": "deep",
+      "title_en": "Reinforcement Learning of Communication in a Mesh of Small Language Models",
+      "authors": "Mehmet Kerem Turkcan",
+      "date": "2026-09-24",
+      "pdf": "https://arxiv.org/pdf/2609.30578v1",
+      "score": "9.0",
+      "evidence": "使用强化学习训练小语言模型智能体网状系统的通信策略",
+      "tldr": "多数投票在独立样本上随采样增加而饱和，但通信能传递关键解题步骤。TalkMesh构建去中心化小语言模型智能体网格，让智能体根据置信度广播提示并修订提议，通过组相对策略优化学习何时与如何通信。三个智能体仅生成至多六个输出，即可达到32样本多数投票的准确率，在GSM8K和MATH-500上准确率分别提升至0.705和0.722。该方法在信息不对称任务中证明消息价值，并能防御恶意合谋。",
+      "tags": "query:agent-memory",
+      "abstract_en": "Language models gain accuracy from more compute at test time, but majority voting over independent samples saturates: as samples grow, the vote converges to the model's most frequent answer. Communication can add what sampling cannot: an agent that solves a problem can pass the key step to the others. We present TalkMesh, a decentralized mesh of small language model agents that learns when and what to communicate. Each agent samples a proposal and scores it with a trained confidence head. The most confident agent broadcasts a hint; agents below a confidence threshold revise, keeping each revision that outscores its proposal. Gossip consensus approximates the vote weighted by confidence without a coordinator. A talk policy, trained with group relative policy optimization on the change in correctness after revision, writes hints and revisions. With three agents, which together generate at most six outputs, the mesh reaches the accuracy of majority voting over 32 samples with each of three models. Trained with at most 8 agents and evaluated with 32, it raises accuracy from 0.568 under self-consistency to 0.705 (Qwen3.5-0.8B, GSM8K) and from 0.492 to 0.722 (SmolLM3-3B, MATH-500). When 4 of 8 agents collude on a wrong answer with fabricated confidence and poisoned hints, majority vote accuracy falls to 0.000 (Qwen3.5-0.8B, GSM8K). A defended mesh, whose agents rescore solutions with their own confidence heads, retains 0.507. Across reasoning, embodied coordination, and traffic signal control, messages improve a decision when the acting agent cannot observe the information it requires and another agent can send it.",
+      "source": "arxiv",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "paper_id": "202609/29/2609.31281v1-ma-wam-multi-agent-world-action-model-for-test-time-planning",
+      "section": "quick",
+      "title_en": "MA-WAM: Multi-Agent World-Action Model for Test-Time Planning",
+      "authors": "Guowei Zou, Haitao Wang, Guoxin Wang, Beiwen Zhang, Zhiquan Chen, Guojie Wang, Hejun Wu",
+      "date": "2026-09-25",
+      "pdf": "https://arxiv.org/pdf/2609.31281v1",
+      "score": "6.0",
+      "evidence": "多智能体世界-动作模型用于合作任务测试时规划",
+      "tldr": "多智能体协作中联合动作存在跨智能体依赖，直接扩展单智能体世界模型无法准确预测团队回报。MA-WAM 作为首个面向多智能体流策略的测试时世界模型规划器，利用跨智能体依赖预测候选联合动作后果并高效评分。在30个离线 MARL 基准上，MA-WAM 相对直接执行与均匀动作选择分别平均提升22.0%和25.6%，计算开销仅增加12.1毫秒。该方法为多智能体测试时规划提供了有效且低成本的解决方案。",
+      "tags": "query:agent-memory",
+      "abstract_en": "Multi-agent cooperative tasks require different agents to execute a joint action simultaneously, and each agent's action affects both the observations and responses of the other agents. Hence, a world model is needed to predict the team return resulting from the joint actions of all agents. A naive extension directly applies a single-agent world model to each agent's action when predicting the team return step by step. However, such an extension fails to capture the dependencies among the simultaneous actions of multiple agents. We propose Multi-Agent World-Action Model (MA-WAM), a test-time planning framework that enables a frozen multi-agent flow policy to evaluate futures of candidate joint actions. To our knowledge, MA-WAM is the first test-time world-model planner for multi-agent flow policies. MA-WAM predicts the consequences of each joint action according to cross-agent dependencies and enables efficient candidate scoring. Across 30 offline multi-agent reinforcement learning (MARL) settings on MAMuJoCo, SMAC, and MPE, MA-WAM achieves mean relative gains of 22.0% over direct execution and 25.6% over uniform action selection. Under the standard evaluation protocol on an A100 GPU, MA-WAM adds 12.1 ms, accounting for 2.5% of the measured generation-and-scoring time.",
+      "source": "arxiv",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "errors": []
+}

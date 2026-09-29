@@ -1,0 +1,136 @@
+{
+  "mode": "standard",
+  "generated_at": "2026-09-29T00:21:49.550854+00:00",
+  "stats": {
+    "mode": "standard",
+    "tag_count": 1,
+    "deep_divecandidates": 2,
+    "deep_cap": 6,
+    "deep_selected": 2,
+    "quick_candidates": 1,
+    "quick_skim_target": 11,
+    "quick_selected": 1
+  },
+  "deep_dive": [
+    {
+      "id": "2609.29875v1",
+      "source": "arxiv",
+      "title": "When Can Agents Forget Their Reasoning? ICLR for Long-Horizon Agent Context Compression",
+      "abstract": "Long horizon language model agents continually accumulate reasoning history, increasing context length and inference cost even after earlier decisions have been executed and observed. Unlike static Chain of Thought compression, removing historical reasoning can change future actions and the resulting interaction trajectory. We study when such reasoning can be safely forgotten. We propose Interaction Aware Compression for Long Horizon Reasoning (ICLR), a training free online method that ranks reasoning blocks using frozen proxy entropy while preserving actions, tool calls, and observations. On 260 WorkBuddyBench tasks, ICLR improves average reward from 0.699 to 0.718, while reducing input, output, and cache read tokens by 25.5%, 14.4%, and 33.3%, respectively. Ablations reveal trajectory amplification, where local reasoning deletion produces nonlinear changes in total computation by altering subsequent interaction. Representation probing, activation patching, and controlled trajectory analyses further suggest that historical reasoning becomes more replaceable once task relevant derived state has been reliably externalized into code, files, tool outputs, or environmental feedback. These results characterize agent reasoning as dynamic working state rather than permanent interaction history.",
+      "authors": [
+        "Mingxuan Wang",
+        "Fei Luo",
+        "Bo Wang",
+        "Guorun Yao",
+        "Yinglong Guo",
+        "Chao Ning",
+        "Hongyue Chen",
+        "Yanbiao Ma",
+        "Jungong Han"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI",
+        "cs.CV"
+      ],
+      "published": "2026-09-24T14:28:43+00:00",
+      "link": "https://arxiv.org/pdf/2609.29875v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "proposes ICLR to compress long-horizon agent reasoning history while preserving actions and observations",
+      "llm_evidence_cn": "提出ICLR压缩长时程智能体推理历史，同时保留动作与观察",
+      "llm_evidence": "提出ICLR压缩长时程智能体推理历史，同时保留动作与观察",
+      "canonical_evidence": "提出ICLR压缩长时程智能体推理历史，同时保留动作与观察",
+      "llm_tldr_en": "The paper studies when long-horizon agents can safely forget past reasoning, proposing training-free ICLR that ranks reasoning blocks via frozen proxy entropy while preserving actions and observations, improving reward and reducing tokens.",
+      "llm_tldr_cn": "该论文针对长时程语言智能体持续累积推理历史导致上下文过长的问题，提出训练无关的在线压缩方法ICLR。ICLR利用冻结代理熵对推理块排序，在保留动作、工具调用和观察的前提下选择性遗忘历史推理。在260个WorkBuddyBench任务上，ICLR将平均奖励从0.699提升至0.718，同时显著减少输入、输出和缓存读取令牌。该工作为智能体记忆管理和高效长时程推理提供了有效方案。",
+      "llm_tldr": "该论文针对长时程语言智能体持续累积推理历史导致上下文过长的问题，提出训练无关的在线压缩方法ICLR。ICLR利用冻结代理熵对推理块排序，在保留动作、工具调用和观察的前提下选择性遗忘历史推理。在260个WorkBuddyBench任务上，ICLR将平均奖励从0.699提升至0.718，同时显著减少输入、输出和缓存读取令牌。该工作为智能体记忆管理和高效长时程推理提供了有效方案。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "memory mechanisms for intelligent agents",
+      "matched_requirement_id": "req-1",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2609.30578v1",
+      "source": "arxiv",
+      "title": "Reinforcement Learning of Communication in a Mesh of Small Language Models",
+      "abstract": "Language models gain accuracy from more compute at test time, but majority voting over independent samples saturates: as samples grow, the vote converges to the model's most frequent answer. Communication can add what sampling cannot: an agent that solves a problem can pass the key step to the others. We present TalkMesh, a decentralized mesh of small language model agents that learns when and what to communicate. Each agent samples a proposal and scores it with a trained confidence head. The most confident agent broadcasts a hint; agents below a confidence threshold revise, keeping each revision that outscores its proposal. Gossip consensus approximates the vote weighted by confidence without a coordinator. A talk policy, trained with group relative policy optimization on the change in correctness after revision, writes hints and revisions. With three agents, which together generate at most six outputs, the mesh reaches the accuracy of majority voting over 32 samples with each of three models. Trained with at most 8 agents and evaluated with 32, it raises accuracy from 0.568 under self-consistency to 0.705 (Qwen3.5-0.8B, GSM8K) and from 0.492 to 0.722 (SmolLM3-3B, MATH-500). When 4 of 8 agents collude on a wrong answer with fabricated confidence and poisoned hints, majority vote accuracy falls to 0.000 (Qwen3.5-0.8B, GSM8K). A defended mesh, whose agents rescore solutions with their own confidence heads, retains 0.507. Across reasoning, embodied coordination, and traffic signal control, messages improve a decision when the acting agent cannot observe the information it requires and another agent can send it.",
+      "authors": [
+        "Mehmet Kerem Turkcan"
+      ],
+      "primary_category": "cs.LG",
+      "categories": [
+        "cs.LG"
+      ],
+      "published": "2026-09-24T21:41:12+00:00",
+      "link": "https://arxiv.org/pdf/2609.30578v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "Reinforcement learning trains talk policy for decentralized mesh of small language model agents to communicate",
+      "llm_evidence_cn": "使用强化学习训练小语言模型智能体网状系统的通信策略",
+      "llm_evidence": "使用强化学习训练小语言模型智能体网状系统的通信策略",
+      "canonical_evidence": "使用强化学习训练小语言模型智能体网状系统的通信策略",
+      "llm_tldr_en": "TalkMesh learns communication policy via reinforcement learning among small language model agents; each agent scores proposals, broadcasts hints, and revises low-confidence answers via gossip consensus, overcoming majority voting saturation.",
+      "llm_tldr_cn": "语言模型多数投票在采样增加时趋于饱和，仅靠独立采样难以突破。本文提出TalkMesh，一个去中心化的小语言模型智能体网状系统，通过强化学习训练对话策略，决定何时及传递何种信息。每个智能体采样提案并用置信度头评分，高置信智能体广播提示，低置信智能体根据得分修订，最终以置信度加权的流言共识逼近投票结果。该方法无需协调器即可实现智能体间通信，提升推理准确度，具有重要意义。",
+      "llm_tldr": "语言模型多数投票在采样增加时趋于饱和，仅靠独立采样难以突破。本文提出TalkMesh，一个去中心化的小语言模型智能体网状系统，通过强化学习训练对话策略，决定何时及传递何种信息。每个智能体采样提案并用置信度头评分，高置信智能体广播提示，低置信智能体根据得分修订，最终以置信度加权的流言共识逼近投票结果。该方法无需协调器即可实现智能体间通信，提升推理准确度，具有重要意义。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "reinforcement learning applied to autonomous agents",
+      "matched_requirement_id": "req-3",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "quick_skim": [
+    {
+      "id": "2609.31281v1",
+      "source": "arxiv",
+      "title": "MA-WAM: Multi-Agent World-Action Model for Test-Time Planning",
+      "abstract": "Multi-agent cooperative tasks require different agents to execute a joint action simultaneously, and each agent's action affects both the observations and responses of the other agents. Hence, a world model is needed to predict the team return resulting from the joint actions of all agents. A naive extension directly applies a single-agent world model to each agent's action when predicting the team return step by step. However, such an extension fails to capture the dependencies among the simultaneous actions of multiple agents. We propose Multi-Agent World-Action Model (MA-WAM), a test-time planning framework that enables a frozen multi-agent flow policy to evaluate futures of candidate joint actions. To our knowledge, MA-WAM is the first test-time world-model planner for multi-agent flow policies. MA-WAM predicts the consequences of each joint action according to cross-agent dependencies and enables efficient candidate scoring. Across 30 offline multi-agent reinforcement learning (MARL) settings on MAMuJoCo, SMAC, and MPE, MA-WAM achieves mean relative gains of 22.0% over direct execution and 25.6% over uniform action selection. Under the standard evaluation protocol on an A100 GPU, MA-WAM adds 12.1 ms, accounting for 2.5% of the measured generation-and-scoring time.",
+      "authors": [
+        "Guowei Zou",
+        "Haitao Wang",
+        "Guoxin Wang",
+        "Beiwen Zhang",
+        "Zhiquan Chen",
+        "Guojie Wang",
+        "Hejun Wu"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-09-25T13:52:39+00:00",
+      "link": "https://arxiv.org/pdf/2609.31281v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "multi-agent world-action model for test-time planning in cooperative tasks",
+      "llm_evidence_cn": "多智能体世界-动作模型用于合作任务测试时规划",
+      "llm_evidence": "多智能体世界-动作模型用于合作任务测试时规划",
+      "canonical_evidence": "多智能体世界-动作模型用于合作任务测试时规划",
+      "llm_tldr_en": "Naive single-agent world models fail to capture dependencies in simultaneous multi-agent actions; MA-WAM enables a frozen multi-agent policy to evaluate candidate joint actions for test-time planning.",
+      "llm_tldr_cn": "该文针对多智能体合作任务中联合动作的相互依赖问题，提出多智能体世界-动作模型(MA-WAM)。该测试时规划框架让冻结的多智能体流策略能够评估候选联合动作的未来。首次实现测试时世界模型在多智能体场景下的应用。",
+      "llm_tldr": "该文针对多智能体合作任务中联合动作的相互依赖问题，提出多智能体世界-动作模型(MA-WAM)。该测试时规划框架让冻结的多智能体流策略能够评估候选联合动作的未来。首次实现测试时世界模型在多智能体场景下的应用。",
+      "llm_tags": [
+        "query:agent-memory:composite"
+      ],
+      "matched_query_tag": "query:agent-memory:composite",
+      "matched_query_text": "Papers central to 智能体记忆，多模态，智能体强化学习，文本世界模型，语言世界模型, especially work that connects or combines: memory mechanisms for intelligent agents; agent that processes multiple modalities; reinforcement learning applied to autonomous agents; text-based world model for environment simulation; language-based world model for agent reasoning; agent with memory augmentation for better performance; How do text world models support language based agent simulation?.",
+      "matched_requirement_id": "req-composite-agent-memory",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    }
+  ]
+}
