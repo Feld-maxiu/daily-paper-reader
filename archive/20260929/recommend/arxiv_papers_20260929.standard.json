@@ -1,52 +1,45 @@
 {
   "mode": "standard",
-  "generated_at": "2026-09-29T00:21:49.550854+00:00",
+  "generated_at": "2026-09-29T22:43:17.004440+00:00",
   "stats": {
     "mode": "standard",
     "tag_count": 1,
-    "deep_divecandidates": 2,
+    "deep_divecandidates": 12,
     "deep_cap": 6,
-    "deep_selected": 2,
-    "quick_candidates": 1,
+    "deep_selected": 8,
+    "quick_candidates": 5,
     "quick_skim_target": 11,
-    "quick_selected": 1
+    "quick_selected": 5
   },
   "deep_dive": [
     {
-      "id": "2609.29875v1",
+      "id": "2609.31874v1",
       "source": "arxiv",
-      "title": "When Can Agents Forget Their Reasoning? ICLR for Long-Horizon Agent Context Compression",
-      "abstract": "Long horizon language model agents continually accumulate reasoning history, increasing context length and inference cost even after earlier decisions have been executed and observed. Unlike static Chain of Thought compression, removing historical reasoning can change future actions and the resulting interaction trajectory. We study when such reasoning can be safely forgotten. We propose Interaction Aware Compression for Long Horizon Reasoning (ICLR), a training free online method that ranks reasoning blocks using frozen proxy entropy while preserving actions, tool calls, and observations. On 260 WorkBuddyBench tasks, ICLR improves average reward from 0.699 to 0.718, while reducing input, output, and cache read tokens by 25.5%, 14.4%, and 33.3%, respectively. Ablations reveal trajectory amplification, where local reasoning deletion produces nonlinear changes in total computation by altering subsequent interaction. Representation probing, activation patching, and controlled trajectory analyses further suggest that historical reasoning becomes more replaceable once task relevant derived state has been reliably externalized into code, files, tool outputs, or environmental feedback. These results characterize agent reasoning as dynamic working state rather than permanent interaction history.",
+      "title": "COUNTERMEM: World-Model Verified Counter-Factual Memory for Language Agents",
+      "abstract": "Existing agent memory frameworks mainly create memory through an agent's interaction with the factual world, e.g., remembering feedback from actions taken to improve performance on future tasks. However, these frameworks seldom ask the \"what if\" question during memory construction: what if a different action had been taken, would the feedback have changed, and how could this feedback become useful memory? Obtaining such feedback directly in an active environment can be expensive and can alter the state needed for comparison. In this work, we introduce COUNTERMEM, a reinforcement-learning framework for constructing and using verified counterfactual memory across tasks. After a failed action, COUNTERMEM evaluates local alternatives from a copy or reset of the original state using executable world models, such as tests, proof checkers, and solvers. It stores improvements with the original and corrected actions, checked outcomes, and conditions for reuse. A learned memory-use policy selects a retrieved record or skips memory to balance task success and interaction cost, while the base LLM remains fixed. Both memory and policy are frozen during held-out evaluation. We evaluate COUNTERMEM on 12 benchmark settings across six domains. With gpt-oss-120b, COUNTERMEM improves both ReAct and Reflexion on all 12 benchmarks across six domains, averaging a gain of 12.6 percentage points over their unaugmented versions. In the four-domain comparison across two backbones, task-run tokens decrease by 7.7-42.0%, excluding offline selector-training costs. Further analyses show that removing verification or persistent storage weakens the gains, while applying verified corrections to unsuitable decisions can reverse them. Code will be released upon acceptance.",
       "authors": [
-        "Mingxuan Wang",
-        "Fei Luo",
-        "Bo Wang",
-        "Guorun Yao",
-        "Yinglong Guo",
-        "Chao Ning",
-        "Hongyue Chen",
-        "Yanbiao Ma",
-        "Jungong Han"
+        "Hongji Pu",
+        "Ruixiang Tang",
+        "Yongfeng Zhang"
       ],
       "primary_category": "cs.AI",
       "categories": [
-        "cs.AI",
-        "cs.CV"
+        "cs.AI"
       ],
-      "published": "2026-09-24T14:28:43+00:00",
-      "link": "https://arxiv.org/pdf/2609.29875v1",
+      "published": "2026-09-25T18:12:38+00:00",
+      "link": "https://arxiv.org/pdf/2609.31874v1",
       "tags": [
         "keyword:agent-memory",
         "query:agent-memory"
       ],
-      "llm_score": 9.0,
-      "llm_evidence_en": "proposes ICLR to compress long-horizon agent reasoning history while preserving actions and observations",
-      "llm_evidence_cn": "提出ICLR压缩长时程智能体推理历史，同时保留动作与观察",
-      "llm_evidence": "提出ICLR压缩长时程智能体推理历史，同时保留动作与观察",
-      "canonical_evidence": "提出ICLR压缩长时程智能体推理历史，同时保留动作与观察",
-      "llm_tldr_en": "The paper studies when long-horizon agents can safely forget past reasoning, proposing training-free ICLR that ranks reasoning blocks via frozen proxy entropy while preserving actions and observations, improving reward and reducing tokens.",
-      "llm_tldr_cn": "该论文针对长时程语言智能体持续累积推理历史导致上下文过长的问题，提出训练无关的在线压缩方法ICLR。ICLR利用冻结代理熵对推理块排序，在保留动作、工具调用和观察的前提下选择性遗忘历史推理。在260个WorkBuddyBench任务上，ICLR将平均奖励从0.699提升至0.718，同时显著减少输入、输出和缓存读取令牌。该工作为智能体记忆管理和高效长时程推理提供了有效方案。",
-      "llm_tldr": "该论文针对长时程语言智能体持续累积推理历史导致上下文过长的问题，提出训练无关的在线压缩方法ICLR。ICLR利用冻结代理熵对推理块排序，在保留动作、工具调用和观察的前提下选择性遗忘历史推理。在260个WorkBuddyBench任务上，ICLR将平均奖励从0.699提升至0.718，同时显著减少输入、输出和缓存读取令牌。该工作为智能体记忆管理和高效长时程推理提供了有效方案。",
+      "llm_score": 10.0,
+      "llm_evidence_en": "reinforcement-learning framework for verified counterfactual memory in language agents",
+      "llm_evidence_cn": "语言智能体中验证反事实记忆的强化学习框架",
+      "llm_evidence": "语言智能体中验证反事实记忆的强化学习框架",
+      "canonical_evidence": "语言智能体中验证反事实记忆的强化学习框架",
+      "llm_tldr_en": "Introduces COUNTERMEM, a reinforcement-learning framework that constructs and uses verified counterfactual memory after failed actions by evaluating local alternatives from a copy, improving future task performance for language agents.",
+      "llm_tldr_cn": "针对现有智能体记忆框架只记录事实交互反馈、未探索如果采取不同行动会怎样的问题，提出COUNTERMEM强化学习框架。它在动作失败后从副本环境评估局部替代方案，构建经过验证的反事实记忆并跨任务使用。该方法既降低在真实环境中试错的成本，又扩展了记忆内容。实验表明该框架能提升语言智能体在后续任务中的表现，为记忆增强型智能体提供新思路。",
+      "llm_tldr": "针对现有智能体记忆框架只记录事实交互反馈、未探索如果采取不同行动会怎样的问题，提出COUNTERMEM强化学习框架。它在动作失败后从副本环境评估局部替代方案，构建经过验证的反事实记忆并跨任务使用。该方法既降低在真实环境中试错的成本，又扩展了记忆内容。实验表明该框架能提升语言智能体在后续任务中的表现，为记忆增强型智能体提供新思路。",
       "llm_tags": [
         "query:agent-memory"
       ],
@@ -55,6 +48,283 @@
       "matched_requirement_id": "req-1",
       "selection_source": "fresh_fetch"
     },
+    {
+      "id": "2609.32193v1",
+      "source": "arxiv",
+      "title": "Devol-ONE: One Autoregressive Mixture of Transformers to Unify Vision-Language-Action and Latent World Modeling",
+      "abstract": "Vision Language Action (VLA) models condition actions directly on current visual and language context, without an explicit account of how the scene evolves under candidate actions. World Action Models (WAM) attempt to address this limitation by predicting future states, but existing designs keep prediction and policy learning architecturally separate, connecting them only through the predicted output, whether through pixel space video generation or a latent forecasting module trained independently of the policy. We present Devol-ONE, a Mixture of Transformers architecture that unifies vision language understanding, latent world dynamics prediction, and action generation within a single autoregressive framework. Instead of encoding vision language tokens once and feeding them to the action expert, Devol-ONE runs autoregressive prediction jointly across a vision language stream and a V-JEPA pretrained dynamics stream, attending to the vision language key-value cache at every layer to forecast future latent states under language guidance. The action expert is in turn shaped continuously by semantic reasoning and predicted physical dynamics rather than by a fixed representation computed in advance. Extensive experiments are conducted on LIBERO, LIBERO-PLUS, RoboTwin2.0 along with real-world evaluation on Flexiv single-arm and dual-arm setups. Ablation studies show the effectiveness of dynamic stream prediction and layer-wise unified attention to validate our model architectural coherency.",
+      "authors": [
+        "Hongyi Cai",
+        "Yi Herng Ong",
+        "Tingshiuan C. Wu",
+        "Lim Chiew Hui",
+        "Hanxia Li",
+        "Kehong Guo",
+        "Sze Yuan Cheong"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV"
+      ],
+      "published": "2026-09-26T03:35:15+00:00",
+      "link": "https://arxiv.org/pdf/2609.32193v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "unifies VLA and latent world modeling in one autoregressive mixture",
+      "llm_evidence_cn": "统一视觉语言动作与潜在世界建模的自回归混合模型",
+      "llm_evidence": "统一视觉语言动作与潜在世界建模的自回归混合模型",
+      "canonical_evidence": "统一视觉语言动作与潜在世界建模的自回归混合模型",
+      "llm_tldr_en": "Proposes Devol-ONE, a Mixture of Transformers that unifies vision-language understanding, latent world dynamics prediction, and action generation in a single autoregressive framework, overcoming separation between world and policy learning.",
+      "llm_tldr_cn": "针对现有视觉语言动作模型仅基于当前上下文做决策、世界动作模型与策略学习分离的问题，提出Devol-ONE自回归混合Transformer架构。它将视觉语言理解、潜在世界动态预测和动作生成统一在单一框架中。该设计使模型能显式建模场景在候选动作下的演化，并与策略端到端学习。实验表明统一建模比分离式设计更有效，为视觉语言动作与世界模型结合的智能体提供基础。",
+      "llm_tldr": "针对现有视觉语言动作模型仅基于当前上下文做决策、世界动作模型与策略学习分离的问题，提出Devol-ONE自回归混合Transformer架构。它将视觉语言理解、潜在世界动态预测和动作生成统一在单一框架中。该设计使模型能显式建模场景在候选动作下的演化，并与策略端到端学习。实验表明统一建模比分离式设计更有效，为视觉语言动作与世界模型结合的智能体提供基础。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "language-based world model for agent reasoning",
+      "matched_requirement_id": "req-5",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2609.32401v1",
+      "source": "arxiv",
+      "title": "Shared Worlds, Private Minds: Structured Memory for Long-Form Writing as World Creation",
+      "abstract": "LLM agents that write long-form fiction need an explicit memory of the evolving storyworld to keep new events consistent with established facts. Such memory must keep heterogeneous narrative information distinct, integrate story developments across granularities, and recover dependencies that a writing request leaves implicit. We present NarraWorld, a structured memory system for long-form writing that treats memory construction as world creation. From a shared evidence-grounded graph, NarraWorld derives four connected views: world facts, per-character beliefs, open developments, and hypothetical branches (possible-world continuations). Hierarchical aggregation with atomic closure consolidates events into scenes, plotlines, and plots, keeping each higher-level node traceable to its constituent source spans. For retrieval, planned reconstruction infers a query's dependencies from the current narrative situation and a preview of memory, then assembles the relevant records within a token budget. Across three writing benchmarks, NarraWorld achieves the strongest aggregate results. Its memory also transfers to situated role-playing and largely preserves recall on a general-purpose long-term memory benchmark, paving the way for agents that sustain coherent storyworlds across diverse narrative tasks.",
+      "authors": [
+        "Qiuyu Tian",
+        "Xiaowen Gu",
+        "Hang Su",
+        "Jianghan Chao",
+        "Haojie Yin",
+        "Fan Guo",
+        "Xin Zhang",
+        "Jinjing Shen",
+        "Ewing Luo",
+        "Youyong Kong",
+        "Yingce Xia",
+        "Zequn Liu"
+      ],
+      "primary_category": "cs.CL",
+      "categories": [
+        "cs.CL",
+        "cs.AI"
+      ],
+      "published": "2026-09-26T09:24:22+00:00",
+      "link": "https://arxiv.org/pdf/2609.32401v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "structured memory system for long-form writing as world creation",
+      "llm_evidence_cn": "长篇写作的结构化记忆系统视为世界创建",
+      "llm_evidence": "长篇写作的结构化记忆系统视为世界创建",
+      "canonical_evidence": "长篇写作的结构化记忆系统视为世界创建",
+      "llm_tldr_en": "Presents NarraWorld, a structured memory system for LLM agents writing long-form fiction that treats memory construction as world creation, deriving multiple views from a shared graph to keep storyworld consistent.",
+      "llm_tldr_cn": "针对长篇写作智能体需要显式记忆不断演化的故事世界以保持一致性，提出NarraWorld结构化记忆系统。它将记忆构建视为世界创建，从共享证据图中派生世界事实、角色信念、开放性进展和假设分支四种视图。层次化聚合与原子闭包将事件整合为场景、情节和整体情节。实验表明该系统能有效维护异构叙事信息并恢复隐式依赖，支持长篇写作中的世界一致性。",
+      "llm_tldr": "针对长篇写作智能体需要显式记忆不断演化的故事世界以保持一致性，提出NarraWorld结构化记忆系统。它将记忆构建视为世界创建，从共享证据图中派生世界事实、角色信念、开放性进展和假设分支四种视图。层次化聚合与原子闭包将事件整合为场景、情节和整体情节。实验表明该系统能有效维护异构叙事信息并恢复隐式依赖，支持长篇写作中的世界一致性。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "memory mechanisms for intelligent agents",
+      "matched_requirement_id": "req-1",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2609.32692v1",
+      "source": "arxiv",
+      "title": "World Agent: Can Language Models Keep a World Running?",
+      "abstract": "World models are moving from generating realistic frames to generating playable worlds, yet whether a delivered world can keep running is not tested anywhere. Existing evaluations stop at generation, at delivery, or at single-step transitions, and each stops at a different point along the way. Correct local state transitions or intermediate outcomes do not guarantee a correctly organized causal event flow. We propose the world agent task, which moves the evaluation point of world generation from the moment of delivery to the continued operation that follows. In this task, a model is not asked to generate a world. It is held responsible for keeping the world running, which requires coordinating events and carrying forward their consequences to constrain subsequent evolution. We instantiate the task in WorldAgent-Benchmark with two complementary tracks. In the maintenance track, the model must ground the events of a continuous narrative into correct transitions of the explicit world state while respecting causal, temporal, and concurrency constraints. In the deduction track, the model must predict how the world will evolve under partial observations and act toward a goal. The maintenance track combines LLM-assisted semantic judgments with programmatic validation and scoring, while the deduction track is evaluated entirely programmatically. Individual judgments are auditable against world states and execution logs, and scores can be recomputed from the saved judgments and execution records. Across 8 models, scores decline steadily as pre-built structure is removed from the world, and causal-relation checking is the weakest component for every model. The benchmark makes the continued operation of a world measurable and distinguishes local completion from failures in event organization. Code and dataset will be released on https://github.com/HCPLab-SYSU/WorldAgent-Benchmark.",
+      "authors": [
+        "Weixing Chen",
+        "Weipeng Zhang",
+        "Nan An",
+        "Yang Liu",
+        "Liang Lin"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-09-26T14:55:08+00:00",
+      "link": "https://arxiv.org/pdf/2609.32692v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "language model as world model for reasoning",
+      "llm_evidence_cn": "语言模型作为世界模型进行推理",
+      "llm_evidence": "语言模型作为世界模型进行推理",
+      "canonical_evidence": "语言模型作为世界模型进行推理",
+      "llm_tldr_en": "Introduces world agent task to evaluate if language models can keep a world running, moving beyond generation to sustained causal event flow.",
+      "llm_tldr_cn": "针对现有世界模型评估止步于生成或单步转移，无法保证世界持续运行的问题，本文提出世界智能体任务。该任务要求语言模型负责世界的持续运行，协调事件并传递后果以约束后续演化。实验表明模型在组织因果事件流方面存在不足。这项工作将世界模型评估从交付延伸到持续操作，推动了语言模型世界模拟能力的检验。",
+      "llm_tldr": "针对现有世界模型评估止步于生成或单步转移，无法保证世界持续运行的问题，本文提出世界智能体任务。该任务要求语言模型负责世界的持续运行，协调事件并传递后果以约束后续演化。实验表明模型在组织因果事件流方面存在不足。这项工作将世界模型评估从交付延伸到持续操作，推动了语言模型世界模拟能力的检验。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "language-based world model for agent reasoning",
+      "matched_requirement_id": "req-5",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2609.33563v1",
+      "source": "arxiv",
+      "title": "MA-JEPA: Joint-Embedding World Models for Multi-Agent Reinforcement Learning",
+      "abstract": "World models improve sample efficiency by training policies on imagined trajectories, but their usefulness depends on learning representations that capture the information needed for future control. We study whether self-supervised joint-embedding prediction (JEPA) can provide this learning signal for multi-agent reinforcement learning. We introduce MA-JEPA, a stochastic world model that replaces observation reconstruction with prediction of target representations, enabling model-based multi-agent reinforcement learning with centralized training and decentralized execution. A categorical latent state and a causal Transformer are trained with posterior and action-conditioned dynamics prediction objectives and are then used for actor-critic learning from latent imagination. A training-only joint predictor conditions on all agents' local states and actions to predict each agent's next local observation embedding. These predictions are passed through the same local posterior used during real interaction with a centralized critic that is used only for value learning, with execution remaining decentralized. Our experiments show that this architecture performs strongly on SMAC, matching or exceeding the strongest reported comparator mean win rate on four of eight evaluated maps.",
+      "authors": [
+        "Brandon Gary Kaplowitz",
+        "Osaze James Obahor",
+        "Christian Schroeder de Witt"
+      ],
+      "primary_category": "cs.LG",
+      "categories": [
+        "cs.LG",
+        "cs.AI",
+        "cs.MA"
+      ],
+      "published": "2026-09-27T13:37:30+00:00",
+      "link": "https://arxiv.org/pdf/2609.33563v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "Joint-embedding world models for multi-agent reinforcement learning",
+      "llm_evidence_cn": "多智能体强化学习的联合嵌入世界模型",
+      "llm_evidence": "多智能体强化学习的联合嵌入世界模型",
+      "canonical_evidence": "多智能体强化学习的联合嵌入世界模型",
+      "llm_tldr_en": "MA-JEPA uses self-supervised joint-embedding prediction to build world models for model-based multi-agent RL.",
+      "llm_tldr_cn": "针对多智能体强化学习中世界模型表示学习不足的问题，提出MA-JEPA，用自监督联合嵌入预测替代观测重建。结合分类潜状态和因果Transformer，支持集中训练分散执行。该方法提高了多智能体RL的样本效率。",
+      "llm_tldr": "针对多智能体强化学习中世界模型表示学习不足的问题，提出MA-JEPA，用自监督联合嵌入预测替代观测重建。结合分类潜状态和因果Transformer，支持集中训练分散执行。该方法提高了多智能体RL的样本效率。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "reinforcement learning applied to autonomous agents",
+      "matched_requirement_id": "req-3",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2609.33717v1",
+      "source": "arxiv",
+      "title": "Self-Designed Evaluators and Warm Memory for Long-Horizon Agents",
+      "abstract": "A tool-using language-model agent deployed over a long stream of tasks receives no reward, so it cannot tell whether it succeeded, cannot safely retry, and cannot label the experience it needs to improve. We present SelfSuite, in which the agent's own base model, given only the world's public materials, designs a small evaluation suite of weighted judges and grounded per-task briefs, freezes it, and uses it to gate a keep-best retry and to label a typed, outcome-tracked memory. On matched five-repeat benchmarks over tau2-bench and AppWorld, SelfSuite scores above the plain agent without any labels, matches methods given ten expert labels on tau2-bench, and trails Agentic Context Engineering (ACE) on AppWorld, where code execution gives a direct success signal. In an ablation campaign run on the same tasks, it is above label-free ACE in every repeat, and the gated second attempt is the only component whose removal hurts in every repeat. We also simulate a subject-matter expert who grades ten onboarding tasks per world. Using those labels to calibrate SelfSuite's evaluator gives a small, consistent gain, and using them to warm up ACE's memory lifts ACE to tie calibrated SelfSuite. A single-run study on a second model family shows the same ordering.",
+      "authors": [
+        "Saeid Asgari",
+        "Emre Kiciman",
+        "Leonardo de Oliveira Nunes",
+        "Ranveer Chandra"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-09-27T16:19:10+00:00",
+      "link": "https://arxiv.org/pdf/2609.33717v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "designs typed, outcome-tracked memory to improve long-horizon agent performance",
+      "llm_evidence_cn": "设计类型化、结果跟踪的记忆以提升长程代理性能",
+      "llm_evidence": "设计类型化、结果跟踪的记忆以提升长程代理性能",
+      "canonical_evidence": "设计类型化、结果跟踪的记忆以提升长程代理性能",
+      "llm_tldr_en": "SelfSuite enables a tool-using language agent to design its own evaluation suite and maintain typed, outcome-tracked memory, allowing it to label experiences and improve over long streams of tasks without external rewards.",
+      "llm_tldr_cn": "针对工具型语言模型代理在长程任务中无法获得奖励、难以自我评估和改进的问题，SelfSuite让代理基于公开材料自主设计评估器，冻结后用于门控重试并标注类型化的结果跟踪记忆。在tau2-bench和AppWorld基准上，该方法在无标签情况下超越普通代理，并匹配使用专家标签的方法。这为代理的记忆增强和自动改进提供了有效机制。",
+      "llm_tldr": "针对工具型语言模型代理在长程任务中无法获得奖励、难以自我评估和改进的问题，SelfSuite让代理基于公开材料自主设计评估器，冻结后用于门控重试并标注类型化的结果跟踪记忆。在tau2-bench和AppWorld基准上，该方法在无标签情况下超越普通代理，并匹配使用专家标签的方法。这为代理的记忆增强和自动改进提供了有效机制。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "agent with memory augmentation for better performance",
+      "matched_requirement_id": "req-6",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2609.34392v1",
+      "source": "arxiv",
+      "title": "Org-Agent: Beyond Personal Assistants Towards Organizational Agents",
+      "abstract": "Language model agents serving organizations must coordinate requests from multiple users while using knowledge distributed across their interactions. We identify two complementary capabilities for this setting, namely cross-user interaction and decision-making, as well as cross-user memory and knowledge use. Both capabilities are governed by organizational constraints across three aspects: user identity, authority, and access permissions; the attribution and temporal validity of information; and rules for resolving conflicting requirements across users and completion requirements for joint decisions. These constraints shape what information or decisions must be obtained before an action can proceed and what conditions must be satisfied during its execution. Motivated by this, we introduce Org-Agent, a unified constraint-centric reasoning framework that organizes task execution in three stages. Specifically, Org-Agent decomposes a task into atomic subtasks and constructs a task dependency graph whose edges encode the dependencies among them. Building on this graph, it schedules the subtasks in dependency order through topological sorting. It then executes each subtask while accounting for the task's constraints, supported by evidence-acquisition and memory-management tools. Experiments on MUSES-Bench and GroupMemBench demonstrate the effectiveness of Org-Agent on both capabilities, and ablations further support the contributions of dependency modeling and tool use.",
+      "authors": [
+        "Luyao Zhuang",
+        "Yujing Zhang",
+        "Zijin Hong",
+        "Yilin Xiao",
+        "Xiao Huang"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-09-28T06:07:00+00:00",
+      "link": "https://arxiv.org/pdf/2609.34392v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "cross-user memory and knowledge use",
+      "llm_evidence_cn": "跨用户记忆与知识使用",
+      "llm_evidence": "跨用户记忆与知识使用",
+      "canonical_evidence": "跨用户记忆与知识使用",
+      "llm_tldr_en": "Identifies cross-user memory and knowledge use as key capabilities for organizational agents, governed by organizational constraints.",
+      "llm_tldr_cn": "针对语言模型智能体在组织环境中需协调多用户请求并利用分布式知识的挑战，本文识别跨用户交互与跨用户记忆两大核心能力。通过引入用户身份、权限、信息时效等组织约束，框架确保信息获取和决策的合规性。实验表明该设定能有效管理组织级智能体的记忆与知识使用。该工作为组织级智能体设计提供了新思路，弥补了个人助手场景的不足。",
+      "llm_tldr": "针对语言模型智能体在组织环境中需协调多用户请求并利用分布式知识的挑战，本文识别跨用户交互与跨用户记忆两大核心能力。通过引入用户身份、权限、信息时效等组织约束，框架确保信息获取和决策的合规性。实验表明该设定能有效管理组织级智能体的记忆与知识使用。该工作为组织级智能体设计提供了新思路，弥补了个人助手场景的不足。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "memory mechanisms for intelligent agents",
+      "matched_requirement_id": "req-1",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2609.35463v1",
+      "source": "arxiv",
+      "title": "A.D.A.M.O. (Agent for language-Driven Actions with Multimodal Observations): A Visual-Symbolic Framework for Virtual Humans",
+      "abstract": "Creating believable vh requires the coherent integration of perception, reasoning, and action mediated by language. A central challenge is to combine these components into a control loop grounded in interactive 3D environments. To this end, we present A.D.A.M.O. (Agent for language-Driven Actions with Multimodal Observations), a visual-symbolic framework for language-driven vh that leverages a pretrained vlm with tool calling to unify perception, reasoning, and action within a single control loop. A.D.A.M.O. maintains a dual visual-symbolic world model that combines egocentric visual input and synchronized symbolic state to support grounded task-oriented behavior from natural language prompts. To support diagnostic evaluation, we introduce a controlled task suite organized by a cd taxonomy that breaks down spatial tasks into procedural and linguistic complexity. Experiments in controlled scenes show that semantic labeling strongly influences task completion and failure modes, reducing perceptual ambiguity while shifting failures toward downstream execution, whereas reasoning errors remain comparatively rare.",
+      "authors": [
+        "Alessandro Emmanuel Pecora",
+        "Stefano Calzolari",
+        "Francesco Strada",
+        "Andrea Bottino"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI",
+        "cs.GR"
+      ],
+      "published": "2026-09-28T15:51:25+00:00",
+      "link": "https://arxiv.org/pdf/2609.35463v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "dual visual-symbolic world model for language-driven virtual humans",
+      "llm_evidence_cn": "视觉符号世界模型用于语言驱动虚拟人",
+      "llm_evidence": "视觉符号世界模型用于语言驱动虚拟人",
+      "canonical_evidence": "视觉符号世界模型用于语言驱动虚拟人",
+      "llm_tldr_en": "Presents A.D.A.M.O., a visual-symbolic framework for virtual humans that uses a pretrained VLM with tool calling to unify perception, reasoning, and action in interactive 3D environments through a dual visual-symbolic world model.",
+      "llm_tldr_cn": "针对虚拟人需要整合感知、推理与动作并落地到交互式3D环境的问题，提出A.D.A.M.O.视觉符号框架。该框架利用预训练视觉语言模型和工具调用，将感知、推理与动作统一到单一控制循环。其维护的双重视觉-符号世界模型结合自我中心视觉输入与同步符号状态，支持从自然语言提示生成有根据的任务行为。实验表明该框架能实现语言驱动的虚拟人控制，促进具身交互研究。",
+      "llm_tldr": "针对虚拟人需要整合感知、推理与动作并落地到交互式3D环境的问题，提出A.D.A.M.O.视觉符号框架。该框架利用预训练视觉语言模型和工具调用，将感知、推理与动作统一到单一控制循环。其维护的双重视觉-符号世界模型结合自我中心视觉输入与同步符号状态，支持从自然语言提示生成有根据的任务行为。实验表明该框架能实现语言驱动的虚拟人控制，促进具身交互研究。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "language-based world model for agent reasoning",
+      "matched_requirement_id": "req-5",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "quick_skim": [
     {
       "id": "2609.30578v1",
       "source": "arxiv",
@@ -73,24 +343,23 @@
         "keyword:agent-memory",
         "query:agent-memory"
       ],
-      "llm_score": 9.0,
-      "llm_evidence_en": "Reinforcement learning trains talk policy for decentralized mesh of small language model agents to communicate",
-      "llm_evidence_cn": "使用强化学习训练小语言模型智能体网状系统的通信策略",
-      "llm_evidence": "使用强化学习训练小语言模型智能体网状系统的通信策略",
-      "canonical_evidence": "使用强化学习训练小语言模型智能体网状系统的通信策略",
-      "llm_tldr_en": "TalkMesh learns communication policy via reinforcement learning among small language model agents; each agent scores proposals, broadcasts hints, and revises low-confidence answers via gossip consensus, overcoming majority voting saturation.",
-      "llm_tldr_cn": "语言模型多数投票在采样增加时趋于饱和，仅靠独立采样难以突破。本文提出TalkMesh，一个去中心化的小语言模型智能体网状系统，通过强化学习训练对话策略，决定何时及传递何种信息。每个智能体采样提案并用置信度头评分，高置信智能体广播提示，低置信智能体根据得分修订，最终以置信度加权的流言共识逼近投票结果。该方法无需协调器即可实现智能体间通信，提升推理准确度，具有重要意义。",
-      "llm_tldr": "语言模型多数投票在采样增加时趋于饱和，仅靠独立采样难以突破。本文提出TalkMesh，一个去中心化的小语言模型智能体网状系统，通过强化学习训练对话策略，决定何时及传递何种信息。每个智能体采样提案并用置信度头评分，高置信智能体广播提示，低置信智能体根据得分修订，最终以置信度加权的流言共识逼近投票结果。该方法无需协调器即可实现智能体间通信，提升推理准确度，具有重要意义。",
+      "llm_score": 8.0,
+      "llm_evidence_en": "Trains a talk policy with reinforcement learning for agents in a mesh of small language models.",
+      "llm_evidence_cn": "在小语言模型网格中使用强化学习训练对话策略",
+      "llm_evidence": "在小语言模型网格中使用强化学习训练对话策略",
+      "canonical_evidence": "在小语言模型网格中使用强化学习训练对话策略",
+      "llm_tldr_en": "Presents TalkMesh, a decentralized mesh of small LM agents that learns when and what to communicate via a reinforcement-learned talk policy, improving answer accuracy beyond majority voting.",
+      "llm_tldr_cn": "TalkMesh提出一种去中心化的小语言模型智能体网格，通过强化学习训练通信策略，让智能体学习何时以及如何共享提示信息，从而突破多数投票的饱和限制，提升答案准确性。实验表明，通信机制能够传递关键步骤，使整体性能优于独立采样。该方法为多智能体协作提供了新的学习范式。",
+      "llm_tldr": "TalkMesh提出一种去中心化的小语言模型智能体网格，通过强化学习训练通信策略，让智能体学习何时以及如何共享提示信息，从而突破多数投票的饱和限制，提升答案准确性。实验表明，通信机制能够传递关键步骤，使整体性能优于独立采样。该方法为多智能体协作提供了新的学习范式。",
       "llm_tags": [
         "query:agent-memory"
       ],
       "matched_query_tag": "query:agent-memory",
       "matched_query_text": "reinforcement learning applied to autonomous agents",
       "matched_requirement_id": "req-3",
-      "selection_source": "fresh_fetch"
-    }
-  ],
-  "quick_skim": [
+      "selection_source": "fresh_fetch",
+      "quick_tier": "8plus"
+    },
     {
       "id": "2609.31281v1",
       "source": "arxiv",
@@ -115,14 +384,14 @@
         "keyword:agent-memory",
         "query:agent-memory"
       ],
-      "llm_score": 6.0,
-      "llm_evidence_en": "multi-agent world-action model for test-time planning in cooperative tasks",
-      "llm_evidence_cn": "多智能体世界-动作模型用于合作任务测试时规划",
-      "llm_evidence": "多智能体世界-动作模型用于合作任务测试时规划",
-      "canonical_evidence": "多智能体世界-动作模型用于合作任务测试时规划",
-      "llm_tldr_en": "Naive single-agent world models fail to capture dependencies in simultaneous multi-agent actions; MA-WAM enables a frozen multi-agent policy to evaluate candidate joint actions for test-time planning.",
-      "llm_tldr_cn": "该文针对多智能体合作任务中联合动作的相互依赖问题，提出多智能体世界-动作模型(MA-WAM)。该测试时规划框架让冻结的多智能体流策略能够评估候选联合动作的未来。首次实现测试时世界模型在多智能体场景下的应用。",
-      "llm_tldr": "该文针对多智能体合作任务中联合动作的相互依赖问题，提出多智能体世界-动作模型(MA-WAM)。该测试时规划框架让冻结的多智能体流策略能够评估候选联合动作的未来。首次实现测试时世界模型在多智能体场景下的应用。",
+      "llm_score": 7.0,
+      "llm_evidence_en": "multi-agent world-action model for test-time planning",
+      "llm_evidence_cn": "多智能体世界动作模型用于测试时规划",
+      "llm_evidence": "多智能体世界动作模型用于测试时规划",
+      "canonical_evidence": "多智能体世界动作模型用于测试时规划",
+      "llm_tldr_en": "Proposes MA-WAM, a multi-agent world-action model that predicts team return from joint actions and enables test-time planning with a frozen policy, capturing action dependencies among agents.",
+      "llm_tldr_cn": "针对多智能体协作中联合动作依赖难以建模的问题，提出MA-WAM世界-动作模型，在测试时利用冻结的多智能体策略评估候选联合动作的未来团队回报。该模型显式捕捉同时动作间的依赖关系，克服逐智能体应用单智能体世界模型的缺陷。实验表明该方法支持多智能体协作的测试时规划，为多智能体世界建模与规划提供新思路。",
+      "llm_tldr": "针对多智能体协作中联合动作依赖难以建模的问题，提出MA-WAM世界-动作模型，在测试时利用冻结的多智能体策略评估候选联合动作的未来团队回报。该模型显式捕捉同时动作间的依赖关系，克服逐智能体应用单智能体世界模型的缺陷。实验表明该方法支持多智能体协作的测试时规划，为多智能体世界建模与规划提供新思路。",
       "llm_tags": [
         "query:agent-memory:composite"
       ],
@@ -130,7 +399,132 @@
       "matched_query_text": "Papers central to 智能体记忆，多模态，智能体强化学习，文本世界模型，语言世界模型, especially work that connects or combines: memory mechanisms for intelligent agents; agent that processes multiple modalities; reinforcement learning applied to autonomous agents; text-based world model for environment simulation; language-based world model for agent reasoning; agent with memory augmentation for better performance; How do text world models support language based agent simulation?.",
       "matched_requirement_id": "req-composite-agent-memory",
       "selection_source": "fresh_fetch",
-      "quick_tier": "6"
+      "quick_tier": "7"
+    },
+    {
+      "id": "2609.33379v1",
+      "source": "arxiv",
+      "title": "NLPG: Natural-Language Policy Gradients for Self-Evolving Language Agents",
+      "abstract": "Large language model agents increasingly rely on compound programs for retrieval, tool use, reasoning, and verification, yet their failures often arise from local procedural decisions. Existing reinforcement-learning and prompt-optimization approaches typically rely on scalar rewards or repeatedly modify entire prompts, making it difficult to capture and reuse procedural improvements while preserving a frozen agent. To address this problem, We propose Natural-Language Policy Gradients (NLPG), an external policy-memory method for improving a fixed agent without changing its model parameters or program structure. NLPG diagnoses execution traces, propagates downstream feedback backward through the module graph, and converts recurring failures into route-local natural-language corrections that are aggregated into bounded policy updates for subsequent executions. Across six benchmarks covering memory, reasoning, instruction following, and evidence verification, NLPG also outperforms the strongest listed baseline for each benchmark by 8.71 percentage points on average. These results provide evidence that evaluated procedural experience can be transformed into local and interpretable policy updates, enabling continual improvement of frozen agents.",
+      "authors": [
+        "Xu Liu",
+        "WenZhang Wei",
+        "Jun Cao",
+        "Dehua Peng",
+        "Huan Chen",
+        "Zhipeng Gui",
+        "Huayi Wu"
+      ],
+      "primary_category": "cs.CL",
+      "categories": [
+        "cs.CL",
+        "cs.AI"
+      ],
+      "published": "2026-09-27T09:01:48+00:00",
+      "link": "https://arxiv.org/pdf/2609.33379v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "proposes external policy-memory to improve a fixed agent",
+      "llm_evidence_cn": "提出外部策略记忆以改进固定代理",
+      "llm_evidence": "提出外部策略记忆以改进固定代理",
+      "canonical_evidence": "提出外部策略记忆以改进固定代理",
+      "llm_tldr_en": "NLPG introduces an external policy-memory method that uses natural-language policy gradients to diagnose failures, propagate feedback, and convert recurring failures into routines, improving a fixed agent without parameter changes.",
+      "llm_tldr_cn": "针对大语言模型代理复合程序中局部决策导致失败、现有方法难以捕获并复用改进的问题，NLPG提出外部策略记忆方法，通过自然语言策略梯度诊断执行轨迹，沿模块图反向传播反馈，将重复失败转化为例程。实验表明该方法能在不改变模型参数的情况下提升固定代理性能，为自进化语言代理提供了新的改进范式。",
+      "llm_tldr": "针对大语言模型代理复合程序中局部决策导致失败、现有方法难以捕获并复用改进的问题，NLPG提出外部策略记忆方法，通过自然语言策略梯度诊断执行轨迹，沿模块图反向传播反馈，将重复失败转化为例程。实验表明该方法能在不改变模型参数的情况下提升固定代理性能，为自进化语言代理提供了新的改进范式。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "agent with memory augmentation for better performance",
+      "matched_requirement_id": "req-6",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "8plus"
+    },
+    {
+      "id": "2609.33618v1",
+      "source": "arxiv",
+      "title": "ParaAgent: Reinforcing Parallel Acting in Open-World Tool Environments",
+      "abstract": "Language model agents are increasingly deployed in open-world tool environments, which require balancing exploring unknown capabilities and exploiting known ones. Existing methods face a performance-efficiency tradeoff: they either rigidly decouple exploration and execution or interleave them without coordination. We argue that the key lies not in whether to decouple or interleave them, but in how to coordinate them across granularities. We introduce ParaAct, a structured parallel-action loop that combines phase-level Exploration $\\rightleftharpoons$ Execution with action-level parallelism. To learn this loop, ParaAgent combines multi-agent cold-start demonstrations with reinforcement learning under multi-level advantage decoupling, making planning structure explicit and supervising it with step-, phase-, and trajectory-level rewards. Learning is supported by our ToolEnv, a scalable simulator grounded in 50,011 realistic tool interfaces. On two open-world tool benchmarks, ParaAgent-4B achieves the best average success among all baselines, including GPT-4.1 systems, with the largest gains on multi-tool tasks. Behavioral analyses show that these gains stem from this action organization, highlighting its importance for capable and efficient open-world agents.",
+      "authors": [
+        "Shengbin Yue",
+        "Hongru Wang",
+        "Siyuan Wang",
+        "Xiaoxin Chen",
+        "Wei Chen",
+        "Zhongyu Wei"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI",
+        "cs.CL"
+      ],
+      "published": "2026-09-27T14:34:22+00:00",
+      "link": "https://arxiv.org/pdf/2609.33618v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "uses reinforcement learning to learn parallel action loop in tool environments",
+      "llm_evidence_cn": "使用强化学习学习工具环境中的并行行动循环",
+      "llm_evidence": "使用强化学习学习工具环境中的并行行动循环",
+      "canonical_evidence": "使用强化学习学习工具环境中的并行行动循环",
+      "llm_tldr_en": "ParaAgent introduces ParaAct, a parallel action loop combining exploration and execution, learned via multi-agent demonstrations and reinforcement learning to improve agent performance in open-world tool environments.",
+      "llm_tldr_cn": "针对语言模型代理在开放世界工具环境中探索与执行难以平衡的问题，ParaAgent提出ParaAct结构化并行行动循环，结合阶段级探索与执行以及行动级并行。通过多智能体冷启动演示和强化学习训练，该方法在规划阶段实现更高效的协调。实验表明ParaAgent在工具环境中优于现有方法，为自主代理的强化学习训练提供了新思路。",
+      "llm_tldr": "针对语言模型代理在开放世界工具环境中探索与执行难以平衡的问题，ParaAgent提出ParaAct结构化并行行动循环，结合阶段级探索与执行以及行动级并行。通过多智能体冷启动演示和强化学习训练，该方法在规划阶段实现更高效的协调。实验表明ParaAgent在工具环境中优于现有方法，为自主代理的强化学习训练提供了新思路。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "reinforcement learning applied to autonomous agents",
+      "matched_requirement_id": "req-3",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "8plus"
+    },
+    {
+      "id": "2609.34826v1",
+      "source": "arxiv",
+      "title": "WM-VLM: Probing Internal World Models for Interleaved Visual-Textual Reasoning",
+      "abstract": "Humans often solve spatial problems by mentally simulating visual transformations. In contrast, conventional vision-language models (VLMs) reason primarily through language. We investigate whether VLMs can solve spatial problems by reasoning with both text and generated visual states. To this end, we introduce WM-VLM, which equips a pretrained VLM with a lightweight world model branch for generating intermediate visual states. Our two-stage training first teaches the model to generate the next visual state and then to use that state for reasoning. We programmatically construct spatial reasoning tasks with verifiable intermediate visual states. These tasks allow us to evaluate how well the model generates visual states and how much it relies on them to answer the question. On 2D and 3D mental rotation tasks, WM-VLM consistently outperforms the supervised fine-tuned backbone, with gains of up to 39.25 percentage points. Ablations suggest that these gains depend on the generated visual states, as removing or corrupting them sharply reduces performance. Together, these results suggest that internal world models offer a promising path toward VLMs that reason in both language and visual space.",
+      "authors": [
+        "Yuheng Zha",
+        "Yilei Wang",
+        "Qiyue Gao",
+        "Junrong Chen",
+        "Yujia Wu",
+        "Zhengfeng Lai",
+        "Zhengzhong Liu",
+        "Eric P. Xing"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV"
+      ],
+      "published": "2026-09-28T10:23:42+00:00",
+      "link": "https://arxiv.org/pdf/2609.34826v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "world model branch enables interleaved visual-textual reasoning",
+      "llm_evidence_cn": "世界模型分支支持视觉文本交错推理",
+      "llm_evidence": "世界模型分支支持视觉文本交错推理",
+      "canonical_evidence": "世界模型分支支持视觉文本交错推理",
+      "llm_tldr_en": "Introduces WM-VLM, adding a lightweight world model branch to a pretrained VLM to generate intermediate visual states for spatial reasoning, with two-stage training and programmatically constructed tasks evaluating state generation and reliance.",
+      "llm_tldr_cn": "针对传统视觉语言模型主要通过语言推理而缺乏空间模拟能力的问题，提出WM-VLM，在预训练VLM中加入轻量世界模型分支以生成中间视觉状态。两阶段训练先教会模型预测下一视觉状态，再使用该状态进行推理。程序化生成的空间推理任务验证了模型生成视觉状态和利用它们的能力。结果表明该方法能促进视觉与文本交错推理，为世界模型驱动的视觉推理提供新范式。",
+      "llm_tldr": "针对传统视觉语言模型主要通过语言推理而缺乏空间模拟能力的问题，提出WM-VLM，在预训练VLM中加入轻量世界模型分支以生成中间视觉状态。两阶段训练先教会模型预测下一视觉状态，再使用该状态进行推理。程序化生成的空间推理任务验证了模型生成视觉状态和利用它们的能力。结果表明该方法能促进视觉与文本交错推理，为世界模型驱动的视觉推理提供新范式。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "language-based world model for agent reasoning",
+      "matched_requirement_id": "req-5",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "8plus"
     }
   ]
 }

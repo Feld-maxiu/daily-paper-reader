@@ -1,10 +1,154 @@
 {
   "date": "20260929",
   "date_label": "",
-  "generated_at": "2026-09-29 00:27:05 UTC",
+  "generated_at": "2026-09-29 22:51:24 UTC",
   "recommend_exists": true,
-  "run_count": 1,
+  "run_count": 2,
   "papers": [
+    {
+      "paper_id": "2609.31874v1",
+      "route": "202609/29/2609.31874v1-countermem-world-model-verified-counter-factual-memory-for-language-agents",
+      "title": "COUNTERMEM: World-Model Verified Counter-Factual Memory for Language Agents",
+      "section": "deep",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 10.0,
+      "evidence": "语言智能体中验证反事实记忆的强化学习框架",
+      "first_seen_at": "2026-09-29 22:51:24 UTC",
+      "updated_at": "2026-09-29 22:51:24 UTC"
+    },
+    {
+      "paper_id": "2609.30578v1",
+      "route": "202609/29/2609.30578v1-reinforcement-learning-of-communication-in-a-mesh-of-small-language-models",
+      "title": "Reinforcement Learning of Communication in a Mesh of Small Language Models",
+      "section": "deep",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 9.0,
+      "evidence": "在小语言模型网格中使用强化学习训练对话策略",
+      "first_seen_at": "2026-09-29 00:27:05 UTC",
+      "updated_at": "2026-09-29 22:51:24 UTC"
+    },
+    {
+      "paper_id": "2609.32193v1",
+      "route": "202609/29/2609.32193v1-devol-one-one-autoregressive-mixture-of-transformers-to-unify-vision-language-action-and-latent-world-modeling",
+      "title": "Devol-ONE: One Autoregressive Mixture of Transformers to Unify Vision-Language-Action and Latent World Modeling",
+      "section": "deep",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 9.0,
+      "evidence": "统一视觉语言动作与潜在世界建模的自回归混合模型",
+      "first_seen_at": "2026-09-29 22:51:24 UTC",
+      "updated_at": "2026-09-29 22:51:24 UTC"
+    },
+    {
+      "paper_id": "2609.32401v1",
+      "route": "202609/29/2609.32401v1-shared-worlds-private-minds-structured-memory-for-long-form-writing-as-world-creation",
+      "title": "Shared Worlds, Private Minds: Structured Memory for Long-Form Writing as World Creation",
+      "section": "deep",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 9.0,
+      "evidence": "长篇写作的结构化记忆系统视为世界创建",
+      "first_seen_at": "2026-09-29 22:51:24 UTC",
+      "updated_at": "2026-09-29 22:51:24 UTC"
+    },
+    {
+      "paper_id": "2609.32692v1",
+      "route": "202609/29/2609.32692v1-world-agent-can-language-models-keep-a-world-running",
+      "title": "World Agent: Can Language Models Keep a World Running?",
+      "section": "deep",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 9.0,
+      "evidence": "语言模型作为世界模型进行推理",
+      "first_seen_at": "2026-09-29 22:51:24 UTC",
+      "updated_at": "2026-09-29 22:51:24 UTC"
+    },
+    {
+      "paper_id": "2609.33563v1",
+      "route": "202609/29/2609.33563v1-ma-jepa-joint-embedding-world-models-for-multi-agent-reinforcement-learning",
+      "title": "MA-JEPA: Joint-Embedding World Models for Multi-Agent Reinforcement Learning",
+      "section": "deep",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 9.0,
+      "evidence": "多智能体强化学习的联合嵌入世界模型",
+      "first_seen_at": "2026-09-29 22:51:24 UTC",
+      "updated_at": "2026-09-29 22:51:24 UTC"
+    },
+    {
+      "paper_id": "2609.33717v1",
+      "route": "202609/29/2609.33717v1-self-designed-evaluators-and-warm-memory-for-long-horizon-agents",
+      "title": "Self-Designed Evaluators and Warm Memory for Long-Horizon Agents",
+      "section": "deep",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 9.0,
+      "evidence": "设计类型化、结果跟踪的记忆以提升长程代理性能",
+      "first_seen_at": "2026-09-29 22:51:24 UTC",
+      "updated_at": "2026-09-29 22:51:24 UTC"
+    },
+    {
+      "paper_id": "2609.34392v1",
+      "route": "202609/29/2609.34392v1-org-agent-beyond-personal-assistants-towards-organizational-agents",
+      "title": "Org-Agent: Beyond Personal Assistants Towards Organizational Agents",
+      "section": "deep",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 9.0,
+      "evidence": "跨用户记忆与知识使用",
+      "first_seen_at": "2026-09-29 22:51:24 UTC",
+      "updated_at": "2026-09-29 22:51:24 UTC"
+    },
+    {
+      "paper_id": "2609.35463v1",
+      "route": "202609/29/2609.35463v1-adamo-agent-for-language-driven-actions-with-multimodal-observations-a-visual-symbolic-framework-for-virtual-humans",
+      "title": "A.D.A.M.O. (Agent for language-Driven Actions with Multimodal Observations): A Visual-Symbolic Framework for Virtual Humans",
+      "section": "deep",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 9.0,
+      "evidence": "视觉符号世界模型用于语言驱动虚拟人",
+      "first_seen_at": "2026-09-29 22:51:24 UTC",
+      "updated_at": "2026-09-29 22:51:24 UTC"
+    },
     {
       "paper_id": "2609.29875v1",
       "route": "202609/29/2609.29875v1-when-can-agents-forget-their-reasoning-iclr-for-long-horizon-agent-context-compression",
@@ -22,20 +166,52 @@
       "updated_at": "2026-09-29 00:27:05 UTC"
     },
     {
-      "paper_id": "2609.30578v1",
-      "route": "202609/29/2609.30578v1-reinforcement-learning-of-communication-in-a-mesh-of-small-language-models",
-      "title": "Reinforcement Learning of Communication in a Mesh of Small Language Models",
-      "section": "deep",
+      "paper_id": "2609.33379v1",
+      "route": "202609/29/2609.33379v1-nlpg-natural-language-policy-gradients-for-self-evolving-language-agents",
+      "title": "NLPG: Natural-Language Policy Gradients for Self-Evolving Language Agents",
+      "section": "quick",
       "tags": [
         {
           "kind": "query",
           "label": "agent-memory"
         }
       ],
-      "score": 9.0,
-      "evidence": "使用强化学习训练小语言模型智能体网状系统的通信策略",
-      "first_seen_at": "2026-09-29 00:27:05 UTC",
-      "updated_at": "2026-09-29 00:27:05 UTC"
+      "score": 8.0,
+      "evidence": "提出外部策略记忆以改进固定代理",
+      "first_seen_at": "2026-09-29 22:51:24 UTC",
+      "updated_at": "2026-09-29 22:51:24 UTC"
+    },
+    {
+      "paper_id": "2609.33618v1",
+      "route": "202609/29/2609.33618v1-paraagent-reinforcing-parallel-acting-in-open-world-tool-environments",
+      "title": "ParaAgent: Reinforcing Parallel Acting in Open-World Tool Environments",
+      "section": "quick",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 8.0,
+      "evidence": "使用强化学习学习工具环境中的并行行动循环",
+      "first_seen_at": "2026-09-29 22:51:24 UTC",
+      "updated_at": "2026-09-29 22:51:24 UTC"
+    },
+    {
+      "paper_id": "2609.34826v1",
+      "route": "202609/29/2609.34826v1-wm-vlm-probing-internal-world-models-for-interleaved-visual-textual-reasoning",
+      "title": "WM-VLM: Probing Internal World Models for Interleaved Visual-Textual Reasoning",
+      "section": "quick",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 8.0,
+      "evidence": "世界模型分支支持视觉文本交错推理",
+      "first_seen_at": "2026-09-29 22:51:24 UTC",
+      "updated_at": "2026-09-29 22:51:24 UTC"
     },
     {
       "paper_id": "2609.31281v1",
@@ -48,10 +224,10 @@
           "label": "agent-memory"
         }
       ],
-      "score": 6.0,
-      "evidence": "多智能体世界-动作模型用于合作任务测试时规划",
+      "score": 7.0,
+      "evidence": "多智能体世界动作模型用于测试时规划",
       "first_seen_at": "2026-09-29 00:27:05 UTC",
-      "updated_at": "2026-09-29 00:27:05 UTC"
+      "updated_at": "2026-09-29 22:51:24 UTC"
     }
   ]
 }
