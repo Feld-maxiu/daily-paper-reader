@@ -1,0 +1,153 @@
+{
+  "date": "20260930",
+  "date_label": "",
+  "generated_at": "2026-09-30 23:18:31 UTC",
+  "recommend_exists": true,
+  "run_count": 1,
+  "papers": [
+    {
+      "paper_id": "2609.29204v1",
+      "route": "202609/30/2609.29204v1-adahvla-adaptive-harnesses-for-long-horizon-vision-language-action-execution",
+      "title": "AdaHVLA: Adaptive Harnesses for Long-Horizon Vision-Language-Action Execution",
+      "section": "deep",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 9.0,
+      "evidence": "自适应框架为长程VLA执行提供持久记忆",
+      "first_seen_at": "2026-09-30 23:18:31 UTC",
+      "updated_at": "2026-09-30 23:18:31 UTC"
+    },
+    {
+      "paper_id": "2609.33244v1",
+      "route": "202609/30/2609.33244v1-activemem-dynamic-latent-memory-trees-for-long-horizon-agents",
+      "title": "ActiveMem: Dynamic Latent Memory Trees for Long-Horizon Agents",
+      "section": "deep",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 9.0,
+      "evidence": "提出ActiveMem，一种用于LLM智能体的分层记忆框架，改善长程推理",
+      "first_seen_at": "2026-09-30 23:18:31 UTC",
+      "updated_at": "2026-09-30 23:18:31 UTC"
+    },
+    {
+      "paper_id": "2609.34214v1",
+      "route": "202609/30/2609.34214v1-glyphbench-a-playground-for-language-model-reinforcement-learning",
+      "title": "GlyphBench: A Playground for Language-Model Reinforcement Learning",
+      "section": "deep",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 9.0,
+      "evidence": "语言模型智能体强化学习后训练的环境套件",
+      "first_seen_at": "2026-09-30 23:18:31 UTC",
+      "updated_at": "2026-09-30 23:18:31 UTC"
+    },
+    {
+      "paper_id": "2609.31281v1",
+      "route": "202609/30/2609.31281v1-ma-wam-multi-agent-world-action-model-for-test-time-planning",
+      "title": "MA-WAM: Multi-Agent World-Action Model for Test-Time Planning",
+      "section": "deep",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 8.0,
+      "evidence": "多智能体世界行动模型在测试时规划预测联合行动的团队回报",
+      "first_seen_at": "2026-09-30 23:18:31 UTC",
+      "updated_at": "2026-09-30 23:18:31 UTC"
+    },
+    {
+      "paper_id": "2609.33665v1",
+      "route": "202609/30/2609.33665v1-compoworld-compositional-environment-scaling-for-general-agents",
+      "title": "CompoWorld: Compositional Environment Scaling for General Agents",
+      "section": "deep",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 8.0,
+      "evidence": "组合环境扩展使用世界模型处理无法实现的工具",
+      "first_seen_at": "2026-09-30 23:18:31 UTC",
+      "updated_at": "2026-09-30 23:18:31 UTC"
+    },
+    {
+      "paper_id": "2609.33464v1",
+      "route": "202609/30/2609.33464v1-videas-distilling-explicit-action-semantics-from-demonstration-videos-for-world-models-via-prior-guided-simulation",
+      "title": "VIDEAS: Distilling Explicit Action Semantics from Demonstration Videos for World Models via Prior-Guided Simulation",
+      "section": "quick",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 7.0,
+      "evidence": "利用视觉语言模型从视频中蒸馏动作语义用于世界模型",
+      "first_seen_at": "2026-09-30 23:18:31 UTC",
+      "updated_at": "2026-09-30 23:18:31 UTC"
+    },
+    {
+      "paper_id": "2609.34606v1",
+      "route": "202609/30/2609.34606v1-worldattention-an-efficient-attention-architecture-for-interactive-video-world-models",
+      "title": "WorldAttention: An Efficient Attention Architecture for Interactive Video World Models",
+      "section": "quick",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 7.0,
+      "evidence": "面向文本条件交互式视频世界模型的高效注意力架构",
+      "first_seen_at": "2026-09-30 23:18:31 UTC",
+      "updated_at": "2026-09-30 23:18:31 UTC"
+    },
+    {
+      "paper_id": "2609.33208v1",
+      "route": "202609/30/2609.33208v1-worldagent-verification-guided-agentic-physical-world-construction",
+      "title": "WorldAgent: Verification-Guided Agentic Physical World Construction",
+      "section": "quick",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 6.0,
+      "evidence": "语言驱动的智能体物理世界构建与验证，从文本提示支持环境模拟",
+      "first_seen_at": "2026-09-30 23:18:31 UTC",
+      "updated_at": "2026-09-30 23:18:31 UTC"
+    },
+    {
+      "paper_id": "2609.34058v1",
+      "route": "202609/30/2609.34058v1-do-world-models-learn-global-understanding",
+      "title": "Do World Models Learn Global Understanding?",
+      "section": "quick",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 6.0,
+      "evidence": "研究世界模型从局部转换中学习全局约束",
+      "first_seen_at": "2026-09-30 23:18:31 UTC",
+      "updated_at": "2026-09-30 23:18:31 UTC"
+    }
+  ]
+}

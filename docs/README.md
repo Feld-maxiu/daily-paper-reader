@@ -41,17 +41,17 @@
 <section class="dpr-home-dashboard-card dpr-home-report-card">
   <div class="dpr-home-dashboard-header">
     <div>
-      <span class="dpr-home-dashboard-kicker">2026-09-29</span>
+      <span class="dpr-home-dashboard-kicker">2026-09-30</span>
       <h3 class="dpr-home-dashboard-title">今日汇总</h3>
     </div>
-    <strong class="dpr-home-dashboard-count">共 14 篇</strong>
+    <strong class="dpr-home-dashboard-count">共 9 篇</strong>
   </div>
   <dl class="dpr-home-dashboard-stats">
-    <div class="dpr-home-dashboard-stat"><dt>累计更新</dt><dd>2 次</dd></div>
-    <div class="dpr-home-dashboard-stat"><dt>精读</dt><dd>10</dd></div>
+    <div class="dpr-home-dashboard-stat"><dt>累计更新</dt><dd>1 次</dd></div>
+    <div class="dpr-home-dashboard-stat"><dt>精读</dt><dd>5</dd></div>
     <div class="dpr-home-dashboard-stat"><dt>速读</dt><dd>4</dd></div>
   </dl>
-  <p class="dpr-home-dashboard-body">最近更新：2026-09-29 22:51:24 UTC<br>状态：成功</p>
+  <p class="dpr-home-dashboard-body">最近更新：2026-09-30 23:18:31 UTC<br>状态：成功</p>
 </section>
 <section class="dpr-home-dashboard-card dpr-home-brief-card">
   <div class="dpr-home-dashboard-header">
@@ -62,9 +62,9 @@
     <strong class="dpr-home-dashboard-count">AI</strong>
   </div>
   <div class="dpr-home-dashboard-body">
-<p>今日共生成 14 篇推荐（精读 10 篇，速读 4 篇）</p>
-<p>精读：《COUNTERMEM: World-Model Verified Counter-Factual Memory for Language Agents》（10.0/10）, 《Reinforcement Learning of Communication in a Mesh of Small Language Models》（9.0/10）</p>
-<p>速读：《NLPG: Natural-Language Policy Gradients for Self-Evolving Language Agents》（8.0/10）, 《ParaAgent: Reinforcing Parallel Acting in Open-World Tool Environments》（8.0/10）, 《WM-VLM: Probing Internal World Models for Interleaved Visual-Textual Reasoning》（8.0/10）</p>
+<p>今日共生成 9 篇推荐（精读 5 篇，速读 4 篇）</p>
+<p>精读：《AdaHVLA: Adaptive Harnesses for Long-Horizon Vision-Language-Action Execution》（9.0/10）, 《ActiveMem: Dynamic Latent Memory Trees for Long-Horizon Agents》（9.0/10）</p>
+<p>速读：《VIDEAS: Distilling Explicit Action Semantics from Demonstration Videos for World Models via Prior-Guided Simulation》（7.0/10）, 《WorldAttention: An Efficient Attention Architecture for Interactive Video World Models》（7.0/10）, 《WorldAgent: Verification-Guided Agentic Physical World Construction》（6.0/10）</p>
 <p>这些结果覆盖了当下较热的方向，建议先看精读区论文的关键问题与方法。</p>
   </div>
 </section>
@@ -74,12 +74,12 @@
       <span class="dpr-home-dashboard-kicker">今日累计</span>
       <h3 class="dpr-home-dashboard-title">精读推荐</h3>
     </div>
-    <strong class="dpr-home-dashboard-count">10 篇</strong>
+    <strong class="dpr-home-dashboard-count">5 篇</strong>
   </div>
   <div class="dpr-home-dashboard-body">
-<ul class="dpr-home-dashboard-paper-list"><li><span class="dpr-home-dashboard-paper-title" title="COUNTERMEM: World-Model Verified Counter-Factual Memory for Language Agents">COUNTERMEM: World-Model Verified Counter-Factual Memory for Language Agents</span></li><li><span class="dpr-home-dashboard-paper-title" title="Reinforcement Learning of Communication in a Mesh of Small Language Models">Reinforcement Learning of Communication in a Mesh of Small Language Models</span></li><li><span class="dpr-home-dashboard-paper-title" title="Devol-ONE: One Autoregressive Mixture of Transformers to Unify Vision-Language-Action and Latent World Modeling">Devol-ONE: One Autoregressive Mixture of Transformers to Unify Vision-Language-Action and Latent World Modeling</span></li></ul>
+<ul class="dpr-home-dashboard-paper-list"><li><span class="dpr-home-dashboard-paper-title" title="AdaHVLA: Adaptive Harnesses for Long-Horizon Vision-Language-Action Execution">AdaHVLA: Adaptive Harnesses for Long-Horizon Vision-Language-Action Execution</span></li><li><span class="dpr-home-dashboard-paper-title" title="ActiveMem: Dynamic Latent Memory Trees for Long-Horizon Agents">ActiveMem: Dynamic Latent Memory Trees for Long-Horizon Agents</span></li><li><span class="dpr-home-dashboard-paper-title" title="GlyphBench: A Playground for Language-Model Reinforcement Learning">GlyphBench: A Playground for Language-Model Reinforcement Learning</span></li></ul>
   </div>
-  <div class="dpr-home-dashboard-tags"><span class="dpr-home-dashboard-tag">agent-memory <strong>10</strong></span></div>
+  <div class="dpr-home-dashboard-tags"><span class="dpr-home-dashboard-tag">agent-memory <strong>5</strong></span></div>
 </section>
 <section class="dpr-home-dashboard-card dpr-home-skim-card">
   <div class="dpr-home-dashboard-header">
@@ -90,7 +90,7 @@
     <strong class="dpr-home-dashboard-count">4 篇</strong>
   </div>
   <div class="dpr-home-dashboard-body">
-<ul class="dpr-home-dashboard-paper-list"><li><span class="dpr-home-dashboard-paper-title" title="NLPG: Natural-Language Policy Gradients for Self-Evolving Language Agents">NLPG: Natural-Language Policy Gradients for Self-Evolving Language Agents</span></li><li><span class="dpr-home-dashboard-paper-title" title="ParaAgent: Reinforcing Parallel Acting in Open-World Tool Environments">ParaAgent: Reinforcing Parallel Acting in Open-World Tool Environments</span></li><li><span class="dpr-home-dashboard-paper-title" title="WM-VLM: Probing Internal World Models for Interleaved Visual-Textual Reasoning">WM-VLM: Probing Internal World Models for Interleaved Visual-Textual Reasoning</span></li></ul>
+<ul class="dpr-home-dashboard-paper-list"><li><span class="dpr-home-dashboard-paper-title" title="VIDEAS: Distilling Explicit Action Semantics from Demonstration Videos for World Models via Prior-Guided Simulation">VIDEAS: Distilling Explicit Action Semantics from Demonstration Videos for World Models via Prior-Guided Simulation</span></li><li><span class="dpr-home-dashboard-paper-title" title="WorldAttention: An Efficient Attention Architecture for Interactive Video World Models">WorldAttention: An Efficient Attention Architecture for Interactive Video World Models</span></li><li><span class="dpr-home-dashboard-paper-title" title="WorldAgent: Verification-Guided Agentic Physical World Construction">WorldAgent: Verification-Guided Agentic Physical World Construction</span></li></ul>
   </div>
   <div class="dpr-home-dashboard-tags"><span class="dpr-home-dashboard-tag">agent-memory <strong>4</strong></span></div>
 </section>

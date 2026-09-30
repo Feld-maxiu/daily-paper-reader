@@ -1,0 +1,391 @@
+{
+  "mode": "standard",
+  "generated_at": "2026-09-30T23:11:06.571988+00:00",
+  "stats": {
+    "mode": "standard",
+    "tag_count": 1,
+    "deep_divecandidates": 5,
+    "deep_cap": 6,
+    "deep_selected": 5,
+    "quick_candidates": 4,
+    "quick_skim_target": 11,
+    "quick_selected": 4
+  },
+  "deep_dive": [
+    {
+      "id": "2609.29204v1",
+      "source": "arxiv",
+      "title": "AdaHVLA: Adaptive Harnesses for Long-Horizon Vision-Language-Action Execution",
+      "abstract": "Vision-language-action (VLA) models offer strong local control and instruction following but often struggle with long-horizon tasks requiring persistent memory and planning. Task harnesses provide persistent context for agent reasoning by retaining task history and tracking progress across execution stages. To bring these complementary capabilities together, we introduce AdaHVLA, an adaptive harness that refines code-based coordination policies through robot experience to better align agent reasoning and memory with VLA execution. Its decoupled multiagent adaptation process separates evidence analysis, harness revision, and behavioral assessment into distinct working contexts, using testable coordination hypotheses to guide revisions and subsequent rollouts to assess their predicted effects. A stateful revision graph links execution evidence, hypotheses, revisions, and observed effects, preserving alternative harnesses and adaptation memory to guide refinement across repeated attempts and continued adaptation across tasks and environments. In simulation, AdaHVLA raises mean test success on NaVILA-LH from 22.5\\% to as high as 57.5\\% and improves manipulation test success across three VLA backbones by up to 30.8 percentage points over the initial harness. Real-world deployment further illustrates how the adapted policies support stable execution across task stages.",
+      "authors": [
+        "Junyi Tang",
+        "Jie Peng",
+        "Zezhen Ding",
+        "Yuan Shen",
+        "Tianlong Chen"
+      ],
+      "primary_category": "cs.RO",
+      "categories": [
+        "cs.RO"
+      ],
+      "published": "2026-09-24T08:14:03+00:00",
+      "link": "https://arxiv.org/pdf/2609.29204v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "adaptive harness provides persistent memory for long-horizon VLA execution",
+      "llm_evidence_cn": "自适应框架为长程VLA执行提供持久记忆",
+      "llm_evidence": "自适应框架为长程VLA执行提供持久记忆",
+      "canonical_evidence": "自适应框架为长程VLA执行提供持久记忆",
+      "llm_tldr_en": "AdaHVLA refines code-based coordination policies through robot experience, using persistent context and decoupled multiagent adaptation to align memory and planning with VLA execution.",
+      "llm_tldr_cn": "针对VLA模型在需要持久记忆和规划的长程任务中表现不佳的问题，本文提出自适应框架AdaHVLA，通过机器人经验调整基于代码的协调策略，将证据分析、框架修订和行为评估分离到不同工作上下文。使用可测试的协调假设引导修订，使智能体推理和记忆与VLA执行更好对齐。实验表明该方法能改进长程视觉语言动作执行中的记忆保持和任务完成度。",
+      "llm_tldr": "针对VLA模型在需要持久记忆和规划的长程任务中表现不佳的问题，本文提出自适应框架AdaHVLA，通过机器人经验调整基于代码的协调策略，将证据分析、框架修订和行为评估分离到不同工作上下文。使用可测试的协调假设引导修订，使智能体推理和记忆与VLA执行更好对齐。实验表明该方法能改进长程视觉语言动作执行中的记忆保持和任务完成度。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "memory mechanisms for intelligent agents",
+      "matched_requirement_id": "req-1",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2609.33244v1",
+      "source": "arxiv",
+      "title": "ActiveMem: Dynamic Latent Memory Trees for Long-Horizon Agents",
+      "abstract": "Large Language Model (LLM) agents increasingly rely on external memory to support long-horizon reasoning and decision making. Existing memory systems typically retrieve historical trajectories or summaries as independent context fragments, overlooking the procedural dependencies underlying multi-step execution. As memory scales, such flat retrieval introduces context fragmentation and cross-task interference, leading to structurally inconsistent reasoning trajectories. We propose ActiveMem, a hierarchical memory framework that recursively organizes agent experiences into dependency-aware latent execution trees. ActiveMem abstracts trajectories into reusable subtask nodes while explicitly preserving execution transitions, enabling coherent reasoning-path retrieval conditioned on the current execution state. To support continual adaptation, ActiveMem further learns dynamic memory expansion, retrieval, and pruning policies through reinforcement learning. Experiments across various agent benchmarks demonstrate that ActiveMem consistently improves task completion, reasoning stability, and memory efficiency over existing memory-based agents. Moreover, ActiveMem enables compact open-weight models to achieve competitive performance with substantially larger proprietary systems.",
+      "authors": [
+        "Song-Li Wu",
+        "Jingyi Wang",
+        "Zhaocheng Du",
+        "Weinan Gan"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-09-27T05:30:01+00:00",
+      "link": "https://arxiv.org/pdf/2609.33244v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "Proposes ActiveMem, a hierarchical memory framework for LLM agents to improve long-horizon reasoning",
+      "llm_evidence_cn": "提出ActiveMem，一种用于LLM智能体的分层记忆框架，改善长程推理",
+      "llm_evidence": "提出ActiveMem，一种用于LLM智能体的分层记忆框架，改善长程推理",
+      "canonical_evidence": "提出ActiveMem，一种用于LLM智能体的分层记忆框架，改善长程推理",
+      "llm_tldr_en": "Existing LLM agent memory retrieves flat context fragments, causing fragmentation; ActiveMem organizes experiences into dependency-aware latent execution trees for coherent reasoning-path retrieval and better long-horizon performance.",
+      "llm_tldr_cn": "现有LLM智能体的外部记忆常以扁平方式检索历史轨迹，忽略多步执行的过程依赖，导致上下文碎片化和推理不一致。本文提出ActiveMem，一种分层记忆框架，将智能体经验递归组织为依赖感知的潜在执行树，抽象出可复用的子任务节点并保留执行转换。实验表明该方法能检索连贯推理路径，提升长程决策性能，为智能体记忆增强提供了新思路。",
+      "llm_tldr": "现有LLM智能体的外部记忆常以扁平方式检索历史轨迹，忽略多步执行的过程依赖，导致上下文碎片化和推理不一致。本文提出ActiveMem，一种分层记忆框架，将智能体经验递归组织为依赖感知的潜在执行树，抽象出可复用的子任务节点并保留执行转换。实验表明该方法能检索连贯推理路径，提升长程决策性能，为智能体记忆增强提供了新思路。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "memory mechanisms for intelligent agents",
+      "matched_requirement_id": "req-1",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2609.34214v1",
+      "source": "arxiv",
+      "title": "GlyphBench: A Playground for Language-Model Reinforcement Learning",
+      "abstract": "We introduce GlyphBench, an environment suite for reinforcement learning (RL) post-training of language-model agents, with over 360 tasks spanning diverse games. GlyphBench renders spatial observations as two-dimensional Unicode grids and connects training, evaluation, and trajectory replay through a unified interface designed to support efficient and reproducible research. We use GlyphBench to study how observation interfaces, reasoning effort, and agent harnesses affect performance, and how RL configurations shape learning dynamics. Our results show that glyph observations outperform native text and pixels in our Craftax experiments, with further gains on several BALROG environments. RL on 100 GlyphBench tasks improves Qwen3.5-4B on held-out Reasoning Gym problems, reaching 63.48% accuracy and outperforming the base model, a math-trained baseline, and a code-trained baseline. These experiments provide empirical evidence that reasoning gains from gameplay can yield stronger transfer than math or code. Together, these results highlight GlyphBench's value as a testbed for systematic research on how language-model agents learn, interact, and generalize.",
+      "authors": [
+        "Roger Creus Castanyer",
+        "Marc-Alexandre Côté",
+        "Matthew James Sargent",
+        "Augustine N. Mavor-Parker",
+        "Glen Berseth",
+        "Pablo Samuel Castro"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-09-28T03:21:57+00:00",
+      "link": "https://arxiv.org/pdf/2609.34214v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "environment suite for reinforcement learning post-training of language-model agents",
+      "llm_evidence_cn": "语言模型智能体强化学习后训练的环境套件",
+      "llm_evidence": "语言模型智能体强化学习后训练的环境套件",
+      "canonical_evidence": "语言模型智能体强化学习后训练的环境套件",
+      "llm_tldr_en": "GlyphBench provides over 360 RL tasks rendering spatial observations as Unicode grids, studying observation interfaces and RL configurations to improve language-model agents.",
+      "llm_tldr_cn": "针对缺乏统一的强化学习后训练环境阻碍语言模型智能体高效可复现研究的问题，本文构建GlyphBench环境套件，包含360多个跨越多种游戏的任务。该套件将空间观测渲染为二维Unicode网格，并通过统一接口连接训练、评估和轨迹回放。实验表明字形观测在Craftax等环境中优于原生文本和像素，RL训练能提升模型在留出推理任务上的表现。该工作为语言模型智能体强化学习提供了实验平台和有效设计指导。",
+      "llm_tldr": "针对缺乏统一的强化学习后训练环境阻碍语言模型智能体高效可复现研究的问题，本文构建GlyphBench环境套件，包含360多个跨越多种游戏的任务。该套件将空间观测渲染为二维Unicode网格，并通过统一接口连接训练、评估和轨迹回放。实验表明字形观测在Craftax等环境中优于原生文本和像素，RL训练能提升模型在留出推理任务上的表现。该工作为语言模型智能体强化学习提供了实验平台和有效设计指导。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "reinforcement learning applied to autonomous agents",
+      "matched_requirement_id": "req-3",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2609.31281v1",
+      "source": "arxiv",
+      "title": "MA-WAM: Multi-Agent World-Action Model for Test-Time Planning",
+      "abstract": "Multi-agent cooperative tasks require different agents to execute a joint action simultaneously, and each agent's action affects both the observations and responses of the other agents. Hence, a world model is needed to predict the team return resulting from the joint actions of all agents. A naive extension directly applies a single-agent world model to each agent's action when predicting the team return step by step. However, such an extension fails to capture the dependencies among the simultaneous actions of multiple agents. We propose Multi-Agent World-Action Model (MA-WAM), a test-time planning framework that enables a frozen multi-agent flow policy to evaluate futures of candidate joint actions. To our knowledge, MA-WAM is the first test-time world-model planner for multi-agent flow policies. MA-WAM predicts the consequences of each joint action according to cross-agent dependencies and enables efficient candidate scoring. Across 30 offline multi-agent reinforcement learning (MARL) settings on MAMuJoCo, SMAC, and MPE, MA-WAM achieves mean relative gains of 22.0% over direct execution and 25.6% over uniform action selection. Under the standard evaluation protocol on an A100 GPU, MA-WAM adds 12.1 ms, accounting for 2.5% of the measured generation-and-scoring time.",
+      "authors": [
+        "Guowei Zou",
+        "Haitao Wang",
+        "Guoxin Wang",
+        "Beiwen Zhang",
+        "Zhiquan Chen",
+        "Guojie Wang",
+        "Hejun Wu"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-09-25T13:52:39+00:00",
+      "link": "https://arxiv.org/pdf/2609.31281v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "Multi-agent world-action model for test-time planning predicts team returns from joint actions",
+      "llm_evidence_cn": "多智能体世界行动模型在测试时规划预测联合行动的团队回报",
+      "llm_evidence": "多智能体世界行动模型在测试时规划预测联合行动的团队回报",
+      "canonical_evidence": "多智能体世界行动模型在测试时规划预测联合行动的团队回报",
+      "llm_tldr_en": "MA-WAM introduces a test-time world model that predicts team returns from joint actions in multi-agent cooperative tasks, enabling improved planning without training the policy.",
+      "llm_tldr_cn": "针对多智能体协作任务中联合行动同时执行、单智能体世界模型无法捕获依赖的问题，本文提出MA-WAM测试时世界模型。该模型能预测所有智能体联合行动产生的团队回报，使冻结的多智能体流程策略评估候选行动的未来。实验表明该框架在多智能体任务上优于单智能体扩展方法。此工作为多智能体规划提供了首个测试时世界模型。",
+      "llm_tldr": "针对多智能体协作任务中联合行动同时执行、单智能体世界模型无法捕获依赖的问题，本文提出MA-WAM测试时世界模型。该模型能预测所有智能体联合行动产生的团队回报，使冻结的多智能体流程策略评估候选行动的未来。实验表明该框架在多智能体任务上优于单智能体扩展方法。此工作为多智能体规划提供了首个测试时世界模型。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "language-based world model for agent reasoning",
+      "matched_requirement_id": "req-5",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2609.33665v1",
+      "source": "arxiv",
+      "title": "CompoWorld: Compositional Environment Scaling for General Agents",
+      "abstract": "Automatically generated environments provide a scalable source of interaction data for training general agents. However, existing approaches mainly generate tasks within a single environment, while real-world workflows require agents to connect information and actions across multiple services. We introduce Compositional Environment Scaling (\\textbf{CompoWorld}), which expands the task space by composing a finite library of reusable services. Coding agents turn tool specifications into verified services with typed states and shared interfaces, while a world model handles tools that cannot be reliably implemented. A random-walk procedure connects services through dependency graphs, enabling the generation and verification of tasks that require information to flow across services. Verified trajectories support supervised fine-tuning (SFT), while our Completion-Focused Rubric Reward guides reinforcement learning (RL) toward full task completion by emphasizing criteria with lower pass rates within each rollout group. We construct 448 services exposing 10,130 tools and use 3K SFT trajectories and 1K RL tasks to train Qwen3.6-35B-A3B. Experimental results show that CompoWorld improves on its backbone by 9.17 points on average across eight benchmarks. On AutomationBench, it surpasses frontier models such as Claude Opus 4.6 and leads all compared agent-specialized 35B-A3B models.",
+      "authors": [
+        "Xiao-Wen Yang",
+        "Weiyi Xu",
+        "Wen Da",
+        "Hang Xu",
+        "Canwei Li",
+        "Hong-Jie You",
+        "Pusen Dong",
+        "Yucheng Zeng",
+        "Zhaokai Luo",
+        "Yu-Feng Li",
+        "Yao Hu",
+        "Mu Chuan"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-09-27T15:25:01+00:00",
+      "link": "https://arxiv.org/pdf/2609.33665v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "compositional environment scaling uses world model for unimplementable tools",
+      "llm_evidence_cn": "组合环境扩展使用世界模型处理无法实现的工具",
+      "llm_evidence": "组合环境扩展使用世界模型处理无法实现的工具",
+      "canonical_evidence": "组合环境扩展使用世界模型处理无法实现的工具",
+      "llm_tldr_en": "CompoWorld composes reusable services into scalable task spaces, using coding agents and a world model to generate verified cross-service tasks for training general agents.",
+      "llm_tldr_cn": "针对现有自动生成环境主要限于单一环境、难以覆盖真实工作流中跨服务信息与动作连接的问题，本文提出CompoWorld组合环境扩展方法。该方法通过组合有限可重用服务库，让编码智能体将工具规范转化为带类型状态和共享接口的已验证服务，同时使用世界模型处理无法可靠实现的工具。随机游走程序通过依赖图连接服务，生成并验证需要跨服务信息流的任务。实验表明CompoWorld能有效扩展任务空间并支持通用智能体训练。",
+      "llm_tldr": "针对现有自动生成环境主要限于单一环境、难以覆盖真实工作流中跨服务信息与动作连接的问题，本文提出CompoWorld组合环境扩展方法。该方法通过组合有限可重用服务库，让编码智能体将工具规范转化为带类型状态和共享接口的已验证服务，同时使用世界模型处理无法可靠实现的工具。随机游走程序通过依赖图连接服务，生成并验证需要跨服务信息流的任务。实验表明CompoWorld能有效扩展任务空间并支持通用智能体训练。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "text-based world model for environment simulation",
+      "matched_requirement_id": "req-4",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "quick_skim": [
+    {
+      "id": "2609.33464v1",
+      "source": "arxiv",
+      "title": "VIDEAS: Distilling Explicit Action Semantics from Demonstration Videos for World Models via Prior-Guided Simulation",
+      "abstract": "World models learn internal representations of environment dynamics to predict future states, enabling agents to optimize action plans without physical interactions. However, developing world models that genuinely internalize underlying causal physical laws to explicitly reason about action preconditions and subsequent state transitions remains an open challenge. In this paper, we propose VIDEAS, a data distillation framework that transforms continuous physical dynamics from operational videos into explicit action semantics for foundation models. Specifically, it deconstructs visual demonstrations into discrete action trajectories and utilizes advanced vision-language models (VLMs) to extract structured knowledge encapsulating action preconditions and effects. To ensure physical consistency, we introduce a prior-guided trajectory simulation mechanism grounded within a text-based environment to rigorously validate the extracted knowledge. Notably, we incorporate negative trajectories to enrich knowledge completeness and enhance data diversity to mitigate cognitive bias. Furthermore, we present VIDEAS-WM, an 8B/9B-parameter suite of language-based world models trained on 34K high-quality samples derived from AgiBot-World dataset. Extensive experiments demonstrate that VIDEAS-WM establishes state-of-the-art performance in high-level embodied action semantic reasoning, exhibiting profound physical understanding and robust generalization across unseen scenarios.",
+      "authors": [
+        "Jianan Wang",
+        "Haoquan Zhai",
+        "Siyang Zhang",
+        "Bin Li",
+        "Juan Chen",
+        "Jingtao Qi",
+        "Zhuo Zhang",
+        "Enze Wang",
+        "Haoxiang Jin",
+        "Chen Qian"
+      ],
+      "primary_category": "cs.RO",
+      "categories": [
+        "cs.RO"
+      ],
+      "published": "2026-09-27T11:19:17+00:00",
+      "link": "https://arxiv.org/pdf/2609.33464v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "distills action semantics from videos using VLMs for world models",
+      "llm_evidence_cn": "利用视觉语言模型从视频中蒸馏动作语义用于世界模型",
+      "llm_evidence": "利用视觉语言模型从视频中蒸馏动作语义用于世界模型",
+      "canonical_evidence": "利用视觉语言模型从视频中蒸馏动作语义用于世界模型",
+      "llm_tldr_en": "VIDEAS is a data distillation framework that transforms continuous physical dynamics from demonstration videos into explicit action semantics for world models, using prior-guided simulation and vision-language models to extract structured knowledge.",
+      "llm_tldr_cn": "针对现有世界模型难以内化因果物理规律、显式推理动作前提和状态转移的难题，论文提出VIDEAS框架。该框架将操作视频中的连续物理动态分解为离散动作轨迹，并利用视觉语言模型提取结构化知识，通过先验引导仿真生成显式动作语义。实验表明，该蒸馏方法能有效提升基础世界模型对动作语义的内化能力，为无需物理交互的智能体规划提供支撑。",
+      "llm_tldr": "针对现有世界模型难以内化因果物理规律、显式推理动作前提和状态转移的难题，论文提出VIDEAS框架。该框架将操作视频中的连续物理动态分解为离散动作轨迹，并利用视觉语言模型提取结构化知识，通过先验引导仿真生成显式动作语义。实验表明，该蒸馏方法能有效提升基础世界模型对动作语义的内化能力，为无需物理交互的智能体规划提供支撑。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "agent that processes multiple modalities",
+      "matched_requirement_id": "req-2",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2609.33208v1",
+      "source": "arxiv",
+      "title": "WorldAgent: Verification-Guided Agentic Physical World Construction",
+      "abstract": "Constructing complex physical worlds from language requires coordinating extensive 3D environments, detailed structures and objects at different spatial scales, and interacting physical processes under both stated goals and implicit physical constraints. We present WorldAgent, an agentic framework for verification-guided physical world construction from a single natural-language prompt, without iterative user debugging. A world construction layer expands the prompt into a structured world specification and uses physical knowledge to build scenes and run numerical simulations. After every step, a verification layer inspects scene geometry and simulation states alongside rendered views. Failed checks guide automatic revisions to the specification and re-execution of the affected steps. Accepted worlds pass the required checks and remain editable for further inspection and resimulation. We introduce AgenticSimBench, on which WorldAgent achieves the best scores among the evaluated agent-based methods on five of seven metrics. In a 26-participant user study, it receives the highest mean ratings across all four criteria.",
+      "authors": [
+        "Caoliwen Wang",
+        "Mengdi Wang",
+        "Yige Chen",
+        "Zejia Wu",
+        "Bowen Huang",
+        "Siyuan Chen",
+        "Guanxiong Chen",
+        "Lifu Wei",
+        "Heng Zhang",
+        "Qinghai Zhang",
+        "Yin Yang",
+        "Guandao Yang",
+        "Shiying Xiong",
+        "Peng Wang",
+        "Chenfanfu Jiang",
+        "Peter Yichen Chen"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI",
+        "cs.CV"
+      ],
+      "published": "2026-09-27T04:46:03+00:00",
+      "link": "https://arxiv.org/pdf/2609.33208v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "Language-driven agentic physical world construction with verification, supports environment simulation from text prompts",
+      "llm_evidence_cn": "语言驱动的智能体物理世界构建与验证，从文本提示支持环境模拟",
+      "llm_evidence": "语言驱动的智能体物理世界构建与验证，从文本提示支持环境模拟",
+      "canonical_evidence": "语言驱动的智能体物理世界构建与验证，从文本提示支持环境模拟",
+      "llm_tldr_en": "WorldAgent presents an agentic framework for language-based physical world construction with verification-guided revision, automatically creating 3D scenes and simulations from a single natural-language prompt.",
+      "llm_tldr_cn": "针对从语言构建复杂物理世界需要协调多尺度环境和物理约束的难题，本文提出WorldAgent智能体框架。该框架通过世界构建层将自然语言提示扩展为结构化规格，利用物理知识构建场景并运行数值模拟；验证层在每步后检查几何和模拟状态，自动指导规格修订。实验表明该方法无需用户迭代调试即可从单一提示构建可信物理世界。该工作为语言驱动的环境生成和模拟提供了智能代理方案。",
+      "llm_tldr": "针对从语言构建复杂物理世界需要协调多尺度环境和物理约束的难题，本文提出WorldAgent智能体框架。该框架通过世界构建层将自然语言提示扩展为结构化规格，利用物理知识构建场景并运行数值模拟；验证层在每步后检查几何和模拟状态，自动指导规格修订。实验表明该方法无需用户迭代调试即可从单一提示构建可信物理世界。该工作为语言驱动的环境生成和模拟提供了智能代理方案。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "text-based world model for environment simulation",
+      "matched_requirement_id": "req-4",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2609.34606v1",
+      "source": "arxiv",
+      "title": "WorldAttention: An Efficient Attention Architecture for Interactive Video World Models",
+      "abstract": "Leveraging the paradigm of autoregressive diffusion, text-conditioned interactive video world models aim to simulate temporally coherent environments guided by textual instructions. While enabling low-latency, long-duration generation is pivotal for embodied AI and simulation-based planning, current frameworks primarily rely on sliding-window mechanisms to bound computational complexity. However, this approach inherently sacrifices historical context, undermining the long-range interactive capabilities. Conversely, maintaining a full-history cache remains computationally prohibitive and memory-intensive: the quadratic complexity of attention leads to excessive computational overhead, while the linear growth of the KV cache inevitably leads to GPU memory saturation. To overcome these limitations, we propose WorldAttention, a system-oriented attention architecture that achieves high efficiency through the co-design of specialized attention kernels and hierarchical KV cache management. First, we introduce Hybrid Sparse Attention (HSA), which integrates linear global attention supplemented with head-adaptive sparse attention. Additionally, we design a Hierarchical KV Cache (HKV) that organizes historical KV pairs into semantically indexed pages across multi-tier memory, enabling fine-grained retrieval and controlled GPU residency. These two designs are supported by tailored kernels to effectively translate their theoretical efficiency into real-world performance. Extensive experiments on VBench-Long and InterVBench demonstrate that WorldAttention consistently surpasses prior state-of-the-art methods, achieving subject consistency scores of 0.9472 on VBench-Long and 0.9668 on InterVBench, respectively.",
+      "authors": [
+        "Zeyu Zhang",
+        "Jinyuan Mao",
+        "Dakai An",
+        "Wangbo Zhao",
+        "Hanfeng Lu",
+        "Jiasheng Tang",
+        "Yinghao Yu",
+        "Wei Wang",
+        "Bohan Zhuang"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV"
+      ],
+      "published": "2026-09-28T08:37:04+00:00",
+      "link": "https://arxiv.org/pdf/2609.34606v1",
+      "tags": [
+        "keyword:agent-memory"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "efficient attention architecture for text-conditioned interactive video world models",
+      "llm_evidence_cn": "面向文本条件交互式视频世界模型的高效注意力架构",
+      "llm_evidence": "面向文本条件交互式视频世界模型的高效注意力架构",
+      "canonical_evidence": "面向文本条件交互式视频世界模型的高效注意力架构",
+      "llm_tldr_en": "Proposes WorldAttention to balance historical context and computational efficiency in interactive video world models, avoiding sliding-window limitations.",
+      "llm_tldr_cn": "针对现有交互式视频世界模型使用滑动窗口导致历史上下文丢失、或全历史缓存计算和内存开销过大的问题，提出WorldAttention高效注意力架构。该架构在保持长程交互能力的同时控制计算复杂度。该工作为文本条件世界模型的长时生成提供了更优的注意力方案，有利于具身智能和仿真规划。",
+      "llm_tldr": "针对现有交互式视频世界模型使用滑动窗口导致历史上下文丢失、或全历史缓存计算和内存开销过大的问题，提出WorldAttention高效注意力架构。该架构在保持长程交互能力的同时控制计算复杂度。该工作为文本条件世界模型的长时生成提供了更优的注意力方案，有利于具身智能和仿真规划。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "text-based world model for environment simulation",
+      "matched_requirement_id": "req-4",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2609.34058v1",
+      "source": "arxiv",
+      "title": "Do World Models Learn Global Understanding?",
+      "abstract": "AI systems often feel brittle and fragmented. A large language model (LLM) may correctly explain a concept but fail to apply it, or follow safety instructions in one context but not another. This behavior suggests a general failure to lift local information to a global understanding. To gain fundamental insight, we frame \"understanding\" as learning constraints and propagating their consequences. We construct learning tasks on monoid worlds, sets of states connected by action transitions, where observed training transitions and an unseen constraint jointly determine held-out transitions. Measuring generalization tests whether models can learn global constraints from local transitions and propagate their consequences. We consider inverse, commutativity, composition, and periodicity constraints relevant to spatial and semantic structure. Across attention, recurrent, and state-space architectures, next-state training fits the data but fails to propagate non-trivial constraints. Compositional training, which uses identical paths but hides intermediate states from the input, achieves 96% accuracy on inverse, commutativity, and composition constraints across architectures, yields corresponding improvements in geometric generalization of world models trained on embodied environments and relational generalization in Wikidata-finetuned LLMs. How far do models propagate constraints when inferring an unseen fact may depend on first inferring others? We define proof depth d of a held-out transition, measuring the minimum number of inference rounds to infer the transition, and find that model generalization decreases sharply with proof depth. Increasing compositional path length T improves generalization. These results provide a formal way to investigate global understanding in language and world models and demonstrate that compositional training promotes information propagation and integration.",
+      "authors": [
+        "Alexander Detkov",
+        "Matt Thomson"
+      ],
+      "primary_category": "cs.LG",
+      "categories": [
+        "cs.LG",
+        "cs.AI"
+      ],
+      "published": "2026-09-28T00:38:48+00:00",
+      "link": "https://arxiv.org/pdf/2609.34058v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "investigates world models learning global constraints from local transitions",
+      "llm_evidence_cn": "研究世界模型从局部转换中学习全局约束",
+      "llm_evidence": "研究世界模型从局部转换中学习全局约束",
+      "canonical_evidence": "研究世界模型从局部转换中学习全局约束",
+      "llm_tldr_en": "Frames understanding as learning constraints and propagating consequences in monoid worlds, testing generalization to held-out transitions.",
+      "llm_tldr_cn": "针对AI系统难以将局部信息提升为全局理解的问题，将理解定义为学习约束并传播其后果。在幺半群世界上构建学习任务，观察到的训练转换和隐藏约束共同决定留出转换。通过测量泛化能力，检验模型能否从局部转换学习全局约束。研究逆、交换、组合和周期性等约束。该工作为世界模型的全局理解提供了基础性评测框架。",
+      "llm_tldr": "针对AI系统难以将局部信息提升为全局理解的问题，将理解定义为学习约束并传播其后果。在幺半群世界上构建学习任务，观察到的训练转换和隐藏约束共同决定留出转换。通过测量泛化能力，检验模型能否从局部转换学习全局约束。研究逆、交换、组合和周期性等约束。该工作为世界模型的全局理解提供了基础性评测框架。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "language-based world model for agent reasoning",
+      "matched_requirement_id": "req-5",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    }
+  ]
+}
