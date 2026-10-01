@@ -1,0 +1,142 @@
+{
+  "mode": "standard",
+  "generated_at": "2026-10-01T23:16:02.249973+00:00",
+  "stats": {
+    "mode": "standard",
+    "tag_count": 1,
+    "deep_divecandidates": 2,
+    "deep_cap": 6,
+    "deep_selected": 2,
+    "quick_candidates": 1,
+    "quick_skim_target": 11,
+    "quick_selected": 1
+  },
+  "deep_dive": [
+    {
+      "id": "2609.32069v1",
+      "source": "arxiv",
+      "title": "Find Something You Can't Do: Agentic Real-World Reinforcement Learning for Self-Improving VLA Models",
+      "abstract": "Vision--language--action (VLA) models provide strong priors for robotic manipulation but are typically deployed as frozen policies, unable to improve from their own failures. Real-world reinforcement learning (RL) offers a path to continued improvement, yet manual environment resets and task-success supervision hinder autonomous learning. We introduce \\textbf{FIND}, an agentic real-world RL framework that closes the loop between scene understanding, weakness-aware practice, self-evaluation, and policy improvement in a persistent workspace. FIND reframes autonomous practice as a scene-conditioned, performance-aware task-selection problem: instead of restoring a predefined scene after each rollout, it uses the resulting scene to determine what to practice next. A vision--language agent identifies feasible tasks from a predefined library, prioritizes those with lower recent success rates, and evaluates outcomes using paired pre- and post-execution observations. We instantiate FIND with a frozen $π_{0.5}$ VLA and residual off-policy RL. Across eight real-world manipulation tasks, the independent human-assessed success rate improves from $55\\%$ to $71.9\\%$. A representative run completes 456 autonomous episodes within 6 hours of interaction, requiring 30 scene-recovery interventions and no human-provided reward labels during online learning. Ablations and systematic evaluations further examine key design choices, agent evaluation accuracy, and human intervention requirements. Our website is made publicly available at: FIND.github.io.",
+      "authors": [
+        "Yuan Fang",
+        "Zechu Li",
+        "Haolei Tong",
+        "Puze Liu",
+        "Georgia Chalvatzaki"
+      ],
+      "primary_category": "cs.RO",
+      "categories": [
+        "cs.RO"
+      ],
+      "published": "2026-09-25T23:06:53+00:00",
+      "link": "https://arxiv.org/pdf/2609.32069v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "agentic real-world reinforcement learning for self-improving VLA models",
+      "llm_evidence_cn": "面向自改进 VLA 模型的智能体真实世界强化学习",
+      "llm_evidence": "面向自改进 VLA 模型的智能体真实世界强化学习",
+      "canonical_evidence": "面向自改进 VLA 模型的智能体真实世界强化学习",
+      "llm_tldr_en": "FIND is an agentic RL framework that enables VLA models to improve from their own failures in real-world robotic manipulation without manual resets.",
+      "llm_tldr_cn": "现有视觉语言动作模型通常作为冻结策略部署，无法从失败中改进，真实世界强化学习又受手动重置和任务监督限制。FIND 框架将自主练习重构为场景条件、性能感知的任务选择问题，闭环连接场景理解、弱点练习、自我评估和策略改进。该方法在持久工作空间中实现无需手动重置的自主强化学习，为机器人操作策略的持续自我改进提供了新途径。",
+      "llm_tldr": "现有视觉语言动作模型通常作为冻结策略部署，无法从失败中改进，真实世界强化学习又受手动重置和任务监督限制。FIND 框架将自主练习重构为场景条件、性能感知的任务选择问题，闭环连接场景理解、弱点练习、自我评估和策略改进。该方法在持久工作空间中实现无需手动重置的自主强化学习，为机器人操作策略的持续自我改进提供了新途径。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "reinforcement learning applied to autonomous agents",
+      "matched_requirement_id": "req-3",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2609.33517v1",
+      "source": "arxiv",
+      "title": "TRACE: Governing Memory Validity in Evolving Multi-Agent Systems",
+      "abstract": "Persistent memory lets language-model agents carry information across long-running collaborations, but leaves a lifecycle question open: what may a returning agent still act on once the shared state has changed? A memory can be correctly retrieved, relevant to the current task, and faithful to its source, and nonetheless be inadmissible for action: an itinerary saved before a pause still names the hotel the team has since replaced. We formalize this as temporal memory admission and present TRACE, a training-free layer that treats re-entry as an eligibility decision rather than a storage or retrieval operation, reconciling a departure checkpoint against absence-period updates, resolving explicit and implicit invalidation, and releasing a bounded Return View only when it covers the returning role's open obligations. We evaluate TRACE under three actor models on Memora, STALE Type II, and a derived ManBench-Return setting, each recast as return episodes: one agent departs, four teammates change the shared state, and the agent rejoins. What separates methods is not overall accuracy but whether one can retain valid memory and reject stale memory at once, and no single-policy baseline can: Restore (reinstate the departure checkpoint in full) admits stale state, Reset (start the return from an empty memory) discards valid state, each bottoming out at 0% on one of the two. TRACE is the only method high on both, reaching 92.6-98.3% valid-information availability with 98.4-99.5% invalid-information rejection on ManBench-Return, within 3.8 points of the best baseline's overall accuracy. On STALE Type II it improves Overall over the strongest comparison policy by 22.3 (Qwen), 18.5 (Gemini), and 27.5 (DeepSeek) points at roughly 2.3 times their tokens, while a write-time consolidation pipeline is more accurate still at 3.99 times TRACE's.",
+      "authors": [
+        "Wenjun Xiong",
+        "Shengtao Zhang",
+        "Shangding Gu",
+        "Bo Tang",
+        "Zhiyu Li",
+        "Feiyu Xiong",
+        "Ying Wen",
+        "Muning Wen"
+      ],
+      "primary_category": "cs.MA",
+      "categories": [
+        "cs.MA"
+      ],
+      "published": "2026-09-27T12:39:42+00:00",
+      "link": "https://arxiv.org/pdf/2609.33517v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "persistent memory with temporal admission for evolving multi-agent systems",
+      "llm_evidence_cn": "多智能体系统中持久记忆的时间有效性管理",
+      "llm_evidence": "多智能体系统中持久记忆的时间有效性管理",
+      "canonical_evidence": "多智能体系统中持久记忆的时间有效性管理",
+      "llm_tldr_en": "TRACE formalizes temporal memory admission for returning agents in evolving multi-agent systems, a training-free layer that checks whether saved memories are still admissible for action.",
+      "llm_tldr_cn": "针对多智能体系统中持久记忆在共享状态变化后可能失效的问题，提出TRACE训练免费层。该方法将重新进入视为资格决策，协调离开检查点与缺席期间更新，解决显式和隐式失效，释放有界返回视图。实验表明能管理记忆有效性，提升长期协作可靠性。",
+      "llm_tldr": "针对多智能体系统中持久记忆在共享状态变化后可能失效的问题，提出TRACE训练免费层。该方法将重新进入视为资格决策，协调离开检查点与缺席期间更新，解决显式和隐式失效，释放有界返回视图。实验表明能管理记忆有效性，提升长期协作可靠性。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "memory mechanisms for intelligent agents",
+      "matched_requirement_id": "req-1",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "quick_skim": [
+    {
+      "id": "2609.29773v2",
+      "source": "arxiv",
+      "title": "Breaking the Environment Wall: A Unified Framework for Preparing and Evolving Agent-Native Environments",
+      "abstract": "Many real-world tasks (e.g., office workflows, scientific experimentation) require LLM agents to interact repeatedly with their environments for context-dependent operations. However, such environments are often not agent-ready. First, information is often scattered and fragmented across the environment. Second, relevant evidence in the environment is often mixed with misleading information and conflicting versions. Third, environments evolve over time, introducing new noise and more challenging tasks. These challenges can substantially degrade performance for state-of-the-art AI agents (e.g., from 83.9% to 57.6%). To address these challenges, we propose Env-Rethink (a system with 27B post-trained model) that supports three main capabilities: (1) It adaptively builds Collection Maps (for organizing related files) and Event Logs (for contextualizing cross-data relationships) to supplement necessary context; (2) It further leverages the post-trained model (through offline trajectory learning) to identify underlying noise issues in the environment; (3) It ultimately evolves environments through virtual event histories that alter environmental states and evidence relationships, producing more tricky ones for further agent improvement. Experiments show that Env-Rethink can effectively improve downstream task performance (with a 15.1 percentage-point increase in mean rubric pass rate across nine models on 30 tasks).",
+      "authors": [
+        "Yukai Wu",
+        "Yuanjing Yang",
+        "Le Zhou",
+        "Shaokun Han",
+        "Haoyu Wang",
+        "Zirui Tang",
+        "Xuzhou Zhu",
+        "Weihuang Zheng",
+        "Maxm Pan",
+        "Xuanhe Zhou",
+        "Fan Wu"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-09-24T13:17:57+00:00",
+      "link": "https://arxiv.org/pdf/2609.29773v2",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "Prepares and evolves agent-native environments for repeated LLM agent interactions, supporting environment simulation.",
+      "llm_evidence_cn": "准备和演化面向智能体的环境，支持LLM智能体反复交互，与环境模拟相关。",
+      "llm_evidence": "准备和演化面向智能体的环境，支持LLM智能体反复交互，与环境模拟相关。",
+      "canonical_evidence": "准备和演化面向智能体的环境，支持LLM智能体反复交互，与环境模拟相关。",
+      "llm_tldr_en": "The paper proposes Env-Rethink, a unified framework that addresses scattered information, misleading evidence, and environment evolution, improving LLM agent performance in agent-native environments.",
+      "llm_tldr_cn": "论文提出Env-Rethink，一个统一框架，解决信息分散、误导信息和环境演化问题，提升LLM智能体在面向智能体环境中的表现。",
+      "llm_tldr": "论文提出Env-Rethink，一个统一框架，解决信息分散、误导信息和环境演化问题，提升LLM智能体在面向智能体环境中的表现。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "text-based world model for environment simulation",
+      "matched_requirement_id": "req-4",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    }
+  ]
+}
