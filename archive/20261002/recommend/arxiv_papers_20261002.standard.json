@@ -1,0 +1,278 @@
+{
+  "mode": "standard",
+  "generated_at": "2026-10-02T22:49:40.706204+00:00",
+  "stats": {
+    "mode": "standard",
+    "tag_count": 1,
+    "deep_divecandidates": 5,
+    "deep_cap": 6,
+    "deep_selected": 5,
+    "quick_candidates": 1,
+    "quick_skim_target": 11,
+    "quick_selected": 1
+  },
+  "deep_dive": [
+    {
+      "id": "2609.37725v1",
+      "source": "arxiv",
+      "title": "Context Language Models",
+      "abstract": "We introduce Context Language Models (CLMs), language models that natively manage their own context. We implement this by treating the context as a file and allowing the model to make unrestricted updates to this file. This allows the model to learn what is most important to maintain in context, and naturally extends to multi-agent systems where multiple agent contexts coexist as files. Building CLMs zero-shot with existing models outperforms SOTA context management strategies across a variety of tasks: 11.4% higher accuracy with 21.5% fewer FLOPs on BrowseComp-Plus, 5% higher scores with 59% fewer FLOPs on 12-hour EdgeBench, and 65% greater improvement with the same compute on a 24-hour multi-repository agent-swarm task. Moreover, by shifting context management from external harness control to intrinsic model behavior, CLMs naturally enable both in-context and parametric learning of context-management strategies. We show that CLMs can be steered with natural-language instructions evolved through a standard skill-optimization loop, improving held-out accuracy by up to 35.9 points on a context-management task while reducing compute. We also introduce an online reinforcement learning method for CLMs, improving Qwen3.5-9B performance on BrowseComp-Plus by 47.6% while using 12% fewer FLOPs. Finally, we co-design Suffix Cache Reuse for CLM serving, further reducing server-side compute by 35% relative to standard SGLang at matched performance.",
+      "authors": [
+        "Rulin Shao",
+        "Shannon Zejiang Shen",
+        "Junjie Oscar Yin",
+        "Yuetai Li",
+        "Minheng Wang",
+        "Hamish Ivison",
+        "Radha Poovendran",
+        "Nathan Lambert",
+        "Teng Xiao",
+        "Mike Lewis",
+        "Wen-tau Yih",
+        "Luke Zettlemoyer",
+        "Pang Wei Koh"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI",
+        "cs.CL",
+        "cs.LG"
+      ],
+      "published": "2026-09-29T14:50:08+00:00",
+      "link": "https://arxiv.org/pdf/2609.37725v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "Proposes language models that natively manage their own context as memory, enabling better context retention and multi-agent memory coexistence",
+      "llm_evidence_cn": "提出原生管理自身上下文作为记忆的语言模型，支持多智能体上下文共存",
+      "llm_evidence": "提出原生管理自身上下文作为记忆的语言模型，支持多智能体上下文共存",
+      "canonical_evidence": "提出原生管理自身上下文作为记忆的语言模型，支持多智能体上下文共存",
+      "llm_tldr_en": "Context Language Models treat context as an updateable file, letting the model learn what to keep in memory; zero-shot CLMs outperform SOTA context management across tasks with fewer FLOPs, enabling multi-agent memory.",
+      "llm_tldr_cn": "针对现有LLM上下文由外部框架管理导致记忆效率低的问题，该工作提出上下文语言模型（CLM），将上下文视为可自由更新的文件，使模型自主决定保留内容，并自然扩展至多智能体上下文共存。零样本CLM在多项任务上以更少计算量超越现有上下文管理策略，为智能体记忆机制提供了原生解决方案。",
+      "llm_tldr": "针对现有LLM上下文由外部框架管理导致记忆效率低的问题，该工作提出上下文语言模型（CLM），将上下文视为可自由更新的文件，使模型自主决定保留内容，并自然扩展至多智能体上下文共存。零样本CLM在多项任务上以更少计算量超越现有上下文管理策略，为智能体记忆机制提供了原生解决方案。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "memory mechanisms for intelligent agents",
+      "matched_requirement_id": "req-1",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2610.00704v1",
+      "source": "arxiv",
+      "title": "SkillSpec: Consensus-Gated Agent Skill Evolution via Representation Specialization",
+      "abstract": "Natural-language skills are textual procedural memories through which large language model (LLM) agents retain reusable task knowledge without updating model weights. Existing methods typically treat skills as either static artifacts or monolithic documents optimized using aggregate validation scores as feedback. However, representing a skill as a monolithic document restricts optimization to its textual content, without explicitly modeling the structure through which procedural knowledge is retrieved and executed. We identify a key distinction between learning what knowledge to retain and determining how to organize it: textual updates should first be validated through execution evidence, after which the retained knowledge should be structured according to its procedural dependencies and retrieval requirements. To this end, we introduce SkillSpec, a two-phase framework comprising consensus-gated evolution and representation specialization. In the consensus-gated phase, complementary editing intents generate complete candidate skills. An update is committed only when paired evaluations reach consensus, requiring sufficient overall improvement and non-negative aggregate paired gain in every repeated evaluation. In the specialization phase, signals of process and redundancy sensitivity derived from the full optimization trajectory, including accepted and rejected candidates, guide the selection of a flat, graph, or hybrid representation.Across six benchmarks and three target language models, SkillSpec improves average success rate over SkillOpt by 6.89%, averaged across the three models. These results demonstrate that reliable skill evolution and representation specialization address complementary objectives: deciding what knowledge to retain and how to structure it for inference.",
+      "authors": [
+        "Huancheng Chen",
+        "Xiaodi Sun",
+        "Zhaoqiong Huang",
+        "Shenyang Huang Shreya Singhal",
+        "Jingwen Lu"
+      ],
+      "primary_category": "cs.LG",
+      "categories": [
+        "cs.LG"
+      ],
+      "published": "2026-09-30T20:52:00+00:00",
+      "link": "https://arxiv.org/pdf/2610.00704v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "textual procedural memories for LLM agents",
+      "llm_evidence_cn": "LLM智能体的文本程序记忆",
+      "llm_evidence": "LLM智能体的文本程序记忆",
+      "canonical_evidence": "LLM智能体的文本程序记忆",
+      "llm_tldr_en": "SkillSpec addresses monolithic skill documents by evolving natural-language procedural memories through consensus-gated validation and representation specialization, improving structured retrieval and execution of agent skills.",
+      "llm_tldr_cn": "现有技能存储常为静态整体文档，未能显式建模程序知识的检索与执行结构。该工作提出共识门控的技能进化方法，通过执行证据验证文本更新，并利用表征特化组织保留的知识。实验表明该方法能更有效地组织与复用智能体技能，提升长程任务表现。其贡献在于分离知识保留与组织结构，为基于文本记忆的智能体提供了新思路。",
+      "llm_tldr": "现有技能存储常为静态整体文档，未能显式建模程序知识的检索与执行结构。该工作提出共识门控的技能进化方法，通过执行证据验证文本更新，并利用表征特化组织保留的知识。实验表明该方法能更有效地组织与复用智能体技能，提升长程任务表现。其贡献在于分离知识保留与组织结构，为基于文本记忆的智能体提供了新思路。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "memory mechanisms for intelligent agents",
+      "matched_requirement_id": "req-1",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2609.38334v2",
+      "source": "arxiv",
+      "title": "EVOKE: Eliciting World Knowledge in Agents for Transferable Decision-Making",
+      "abstract": "Large language models (LLMs) are increasingly deployed as agents for multi-step decision-making, yet transfer poorly to unseen environments. World-model methods address this by training agents to predict future observations, at the cost of additional training and errors that compound when predictions are used for planning. However, for LLM agents operating in digital environments, much of this world knowledge is already internalized during pretraining, which shifts the problem from acquiring it to eliciting it. We argue that typical post-training provides little pressure for such elicitation, since supervision under a single goal at each visited state inadvertently drives policies to rely on superficial contextual habits. We introduce EVOKE, a post-training method that supplies this pressure through goal diversity at fixed states. Motivated by theory showing that an agent competent across diverse goals must encode a world model recoverable from its action preferences, EVOKE holds the environment state and interaction history fixed and ranks the same candidate actions under alternative goals, forcing action preferences to change, so that a policy relying on contextual habits or single-goal correlations cannot order them correctly. This implicitly elicits the policy's pretrained world knowledge to inform decisions. We evaluate EVOKE across diverse tasks in three backbones, demonstrating improved task performance, unseen environment generalization, and data efficiency. We further conduct controlled analyses to better understand what drives these gains. These findings offer a new perspective on eliciting internalized world knowledge for transferable action through direct decision supervision.",
+      "authors": [
+        "Yuhan Guo",
+        "Jinming Liu",
+        "Liang Xu",
+        "Ziqiang Li",
+        "Jianguo Huang",
+        "Zhicheng Wang",
+        "Hu Zhu",
+        "Qiuyu Chen",
+        "Yuntao Wei",
+        "Xin Jin",
+        "Wenjun Zeng"
+      ],
+      "primary_category": "cs.CL",
+      "categories": [
+        "cs.CL"
+      ],
+      "published": "2026-09-29T18:01:45+00:00",
+      "link": "https://arxiv.org/pdf/2609.38334v2",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "Eliciting internalized world knowledge for transferable decision-making",
+      "llm_evidence_cn": "激发智能体内化的世界知识用于可迁移决策",
+      "llm_evidence": "激发智能体内化的世界知识用于可迁移决策",
+      "canonical_evidence": "激发智能体内化的世界知识用于可迁移决策",
+      "llm_tldr_en": "EVOKE argues that LLM agents already possess world knowledge and proposes post-training to elicit it rather than training explicit world models, improving transfer.",
+      "llm_tldr_cn": "针对LLM智能体部署到未见环境时迁移能力差、显式世界模型训练代价高的问题，本文提出EVOKE，认为智能体在预训练中已内化大量世界知识，应通过后训练施压以激发而非重新获取。方法通过监督设计促使策略依赖可泛化的世界知识而非表面上下文习惯，实验显示迁移决策表现提升。",
+      "llm_tldr": "针对LLM智能体部署到未见环境时迁移能力差、显式世界模型训练代价高的问题，本文提出EVOKE，认为智能体在预训练中已内化大量世界知识，应通过后训练施压以激发而非重新获取。方法通过监督设计促使策略依赖可泛化的世界知识而非表面上下文习惯，实验显示迁移决策表现提升。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "language-based world model for agent reasoning",
+      "matched_requirement_id": "req-5",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2609.39149v1",
+      "source": "arxiv",
+      "title": "Rep2Skill: Representation-Guided Skill Self-Evolution for LLM Agents",
+      "abstract": "Textual skills enable large language model (LLM) based agents to accumulate reusable procedural knowledge without updating model parameters. Yet existing skill evolution remains largely confined to the text space: an optimizer must diagnose success and failure patterns, and revise skills solely from long execution trajectories and sparse task outcomes. This text-only paradigm leaves the agent's internal representations, which contain rich records of its evolving execution state, outside the skill optimization loop. We ask whether an agent can improve its external textual skills by reflecting on its own internal representations. We introduce Rep2Skill, a representation-guided framework for self-evolution on agent skills. Specifically, upon the collected agent rollouts, Rep2Skill models their internal model representation trajectories to localize turns that deviate from successful execution dynamics, and it further interprets these signals alongside the execution contexts as actionable textual feedback for targeted skill revision. Experiments on two agent environments with two open-source LLMs show that Rep2Skill consistently outperforms text-only approaches in the self-evolution setting, where the same LLM serves as both executor and optimizer without a stronger external model. This establishes a promising direction moving agent self-improvement beyond text-only reflection.",
+      "authors": [
+        "Kaixing Zhang",
+        "Changming Li",
+        "Yingdong Shi",
+        "Zheng Zhang",
+        "Kaitao Song",
+        "Wenjie Shi",
+        "Jingang Wang",
+        "Kan Ren"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-09-30T07:15:10+00:00",
+      "link": "https://arxiv.org/pdf/2609.39149v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "Representation-guided skill self-evolution for LLM agents",
+      "llm_evidence_cn": "表征引导的LLM智能体技能自进化",
+      "llm_evidence": "表征引导的LLM智能体技能自进化",
+      "canonical_evidence": "表征引导的LLM智能体技能自进化",
+      "llm_tldr_en": "Rep2Skill lets LLM agents improve external textual skills by reflecting on internal representations, closing the loop between representation and skill optimization.",
+      "llm_tldr_cn": "针对文本技能演化仅局限于文本空间、忽略智能体内部表征的问题，本文提出Rep2Skill表征引导框架，在收集执行轨迹后利用内部表征诊断成败模式并修订外部文本技能。该方法将内部表征纳入技能优化循环，使技能演进更高效，实验显示可提升智能体任务表现。",
+      "llm_tldr": "针对文本技能演化仅局限于文本空间、忽略智能体内部表征的问题，本文提出Rep2Skill表征引导框架，在收集执行轨迹后利用内部表征诊断成败模式并修订外部文本技能。该方法将内部表征纳入技能优化循环，使技能演进更高效，实验显示可提升智能体任务表现。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "agent with memory augmentation for better performance",
+      "matched_requirement_id": "req-6",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2609.40221v1",
+      "source": "arxiv",
+      "title": "PhantomEnvironments: Training LLM Agents in Fictional Worlds",
+      "abstract": "Training LLM agents with reinforcement learning (RL) is bottlenecked by environments, which must provide verifiable rewards, support long-horizon interaction, and scale cheaply. Existing approaches rely on costly human-curated data or on LLM-generated environments that risk hallucinations and benchmark contamination. We show that LLMs can instead be trained into capable search agents using synthetic environments generated entirely by rules, whose generation requires no LLM and has zero marginal cost. We build PhantomEnvironments, multi-turn RL environments from fictional worlds, where agents must search a corpus of templated articles to answer multi-hop questions. Despite sharing no facts with the real world, these strikingly simple environments yield agents that transfer to real-world multi-hop search benchmarks, often outperforming real-world training data on newer benchmarks. Trained agents generalize to unseen fictional universes, and Qwen models learn to scale their search budget roughly linearly with question difficulty, suggesting emergent search scaling from environment interaction alone. Ablating environment complexity reveals that hop count drives transfer more than constraints or comparisons: even the simplest rule-generated environments are a surprisingly effective, free resource for training generalizable LLM agents.",
+      "authors": [
+        "Anmol Kabra",
+        "Swathi Saravana Selvam",
+        "Albert Gong",
+        "Chao Wan",
+        "Christian Belardi",
+        "Dongyoung Go",
+        "Katie Z. Luo",
+        "Kilian Q. Weinberger"
+      ],
+      "primary_category": "cs.LG",
+      "categories": [
+        "cs.LG",
+        "cs.AI",
+        "cs.CL"
+      ],
+      "published": "2026-09-30T17:26:57+00:00",
+      "link": "https://arxiv.org/pdf/2609.40221v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "Trains LLM agents with reinforcement learning in rule-generated synthetic environments",
+      "llm_evidence_cn": "在规则生成的合成环境中用强化学习训练LLM智能体",
+      "llm_evidence": "在规则生成的合成环境中用强化学习训练LLM智能体",
+      "canonical_evidence": "在规则生成的合成环境中用强化学习训练LLM智能体",
+      "llm_tldr_en": "PhantomEnvironments builds multi-turn RL environments from fictional worlds entirely by rules, eliminating LLM hallucination and cost; LLM agents trained as multi-hop search agents achieve strong performance.",
+      "llm_tldr_cn": "针对LLM智能体强化学习受环境验证奖励和扩展成本制约的问题，该工作提出完全由规则生成、零边际成本的虚构世界环境，用于多轮RL训练。在虚构的模板化文章语料上进行多跳问答搜索训练，使LLM智能体获得较强的搜索能力，验证了规则生成环境作为RL训练源的有效性。",
+      "llm_tldr": "针对LLM智能体强化学习受环境验证奖励和扩展成本制约的问题，该工作提出完全由规则生成、零边际成本的虚构世界环境，用于多轮RL训练。在虚构的模板化文章语料上进行多跳问答搜索训练，使LLM智能体获得较强的搜索能力，验证了规则生成环境作为RL训练源的有效性。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "reinforcement learning applied to autonomous agents",
+      "matched_requirement_id": "req-3",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "quick_skim": [
+    {
+      "id": "2609.36630v1",
+      "source": "arxiv",
+      "title": "Distilling Agentic Systems: A Roadmap across Models, Artifacts, and Harnesses",
+      "abstract": "Modern agents increasingly rely on memories, tools, and execution logic, so their competence extends beyond model parameters. This shift exposes a limitation of conventional knowledge distillation, which asks how a student model imitates a teacher model. We define Agent Distillation as the persistent transfer of task-solving knowledge from a teacher agent to a student agent. Our study organizes the field by where transferred knowledge is retained: within the model, as artifacts, through the execution harness, or across substrates. This perspective separates transfer evidence from its outcome and clarifies how knowledge moves between agent components. We develop an evaluation framework that relates retention to causal contribution and deployed utility. Together, these contributions establish a foundation for the reliable, maintainable, and safe development of increasingly complex agentic systems.",
+      "authors": [
+        "Ziluowen Luo",
+        "Senzhang Wang",
+        "Chaozhuo Li",
+        "Jun Yin",
+        "Hao Yan",
+        "Ming Cheng",
+        "Chenxu Wang",
+        "Songyang Liu",
+        "Litian Zhang",
+        "Qiwei Ye",
+        "Zheng Liu",
+        "Philip S. Yu"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-09-29T03:38:17+00:00",
+      "link": "https://arxiv.org/pdf/2609.36630v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "Explicitly includes memories as key agent components and studies knowledge retention across distillation",
+      "llm_evidence_cn": "明确将记忆作为智能体关键组件并研究蒸馏中的知识保留",
+      "llm_evidence": "明确将记忆作为智能体关键组件并研究蒸馏中的知识保留",
+      "canonical_evidence": "明确将记忆作为智能体关键组件并研究蒸馏中的知识保留",
+      "llm_tldr_en": "Defines Agent Distillation as persistent transfer of task-solving knowledge, organizing by where knowledge is retained (model, artifacts, harness), directly addressing memory in agentic systems.",
+      "llm_tldr_cn": "该路线图针对现代智能体记忆、工具与执行逻辑超出模型参数带来的蒸馏局限，提出智能体蒸馏概念，按知识保留位置（模型、工件、执行框架）组织领域，建立评估框架以关联保留与因果贡献，为记忆等组件在智能体知识迁移中的作用提供了系统视角，对研究智能体记忆机制具有参考价值。",
+      "llm_tldr": "该路线图针对现代智能体记忆、工具与执行逻辑超出模型参数带来的蒸馏局限，提出智能体蒸馏概念，按知识保留位置（模型、工件、执行框架）组织领域，建立评估框架以关联保留与因果贡献，为记忆等组件在智能体知识迁移中的作用提供了系统视角，对研究智能体记忆机制具有参考价值。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "memory mechanisms for intelligent agents",
+      "matched_requirement_id": "req-1",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    }
+  ]
+}

@@ -1,0 +1,105 @@
+{
+  "date": "20261002",
+  "date_label": "",
+  "generated_at": "2026-10-02 22:56:56 UTC",
+  "recommend_exists": true,
+  "run_count": 1,
+  "papers": [
+    {
+      "paper_id": "2609.37725v1",
+      "route": "202610/02/2609.37725v1-context-language-models",
+      "title": "Context Language Models",
+      "section": "deep",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 9.0,
+      "evidence": "提出原生管理自身上下文作为记忆的语言模型，支持多智能体上下文共存",
+      "first_seen_at": "2026-10-02 22:56:56 UTC",
+      "updated_at": "2026-10-02 22:56:56 UTC"
+    },
+    {
+      "paper_id": "2610.00704v1",
+      "route": "202610/02/2610.00704v1-skillspec-consensus-gated-agent-skill-evolution-via-representation-specialization",
+      "title": "SkillSpec: Consensus-Gated Agent Skill Evolution via Representation Specialization",
+      "section": "deep",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 9.0,
+      "evidence": "LLM智能体的文本程序记忆",
+      "first_seen_at": "2026-10-02 22:56:56 UTC",
+      "updated_at": "2026-10-02 22:56:56 UTC"
+    },
+    {
+      "paper_id": "2609.38334v2",
+      "route": "202610/02/2609.38334v2-evoke-eliciting-world-knowledge-in-agents-for-transferable-decision-making",
+      "title": "EVOKE: Eliciting World Knowledge in Agents for Transferable Decision-Making",
+      "section": "deep",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 8.0,
+      "evidence": "激发智能体内化的世界知识用于可迁移决策",
+      "first_seen_at": "2026-10-02 22:56:56 UTC",
+      "updated_at": "2026-10-02 22:56:56 UTC"
+    },
+    {
+      "paper_id": "2609.39149v1",
+      "route": "202610/02/2609.39149v1-rep2skill-representation-guided-skill-self-evolution-for-llm-agents",
+      "title": "Rep2Skill: Representation-Guided Skill Self-Evolution for LLM Agents",
+      "section": "deep",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 8.0,
+      "evidence": "表征引导的LLM智能体技能自进化",
+      "first_seen_at": "2026-10-02 22:56:56 UTC",
+      "updated_at": "2026-10-02 22:56:56 UTC"
+    },
+    {
+      "paper_id": "2609.40221v1",
+      "route": "202610/02/2609.40221v1-phantomenvironments-training-llm-agents-in-fictional-worlds",
+      "title": "PhantomEnvironments: Training LLM Agents in Fictional Worlds",
+      "section": "deep",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 8.0,
+      "evidence": "在规则生成的合成环境中用强化学习训练LLM智能体",
+      "first_seen_at": "2026-10-02 22:56:56 UTC",
+      "updated_at": "2026-10-02 22:56:56 UTC"
+    },
+    {
+      "paper_id": "2609.36630v1",
+      "route": "202610/02/2609.36630v1-distilling-agentic-systems-a-roadmap-across-models-artifacts-and-harnesses",
+      "title": "Distilling Agentic Systems: A Roadmap across Models, Artifacts, and Harnesses",
+      "section": "quick",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 7.0,
+      "evidence": "明确将记忆作为智能体关键组件并研究蒸馏中的知识保留",
+      "first_seen_at": "2026-10-02 22:56:56 UTC",
+      "updated_at": "2026-10-02 22:56:56 UTC"
+    }
+  ]
+}
