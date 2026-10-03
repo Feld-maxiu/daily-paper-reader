@@ -1,0 +1,266 @@
+{
+  "mode": "standard",
+  "generated_at": "2026-10-03T22:09:26.093998+00:00",
+  "stats": {
+    "mode": "standard",
+    "tag_count": 1,
+    "deep_divecandidates": 3,
+    "deep_cap": 6,
+    "deep_selected": 3,
+    "quick_candidates": 3,
+    "quick_skim_target": 11,
+    "quick_selected": 3
+  },
+  "deep_dive": [
+    {
+      "id": "2609.36116v1",
+      "source": "arxiv",
+      "title": "Dyad: Extending Large Language Models with Native Typed Decision-Making",
+      "abstract": "We study how to build more capable general-purpose agents by extending large language models (LLMs) with native typed decision-making. We introduce Dyad, an architecture that augments a pretrained LLM with an environment-conditioned action encoder that embeds each candidate action description in parallel, then scores these embeddings against the LLM's internal state to yield a distribution over typed actions. By factorizing decision-making into representations of the evolving interaction state and environment-specific action semantics, Dyad introduces an inductive bias for learning reusable representations while keeping action scoring efficient even as the action space grows. We investigate two complementary reinforcement learning settings driven by environment interaction. With the LLM frozen, training the action encoder alone achieves consistent gains across four unseen environments, enabling modular adaptation without modifying any LLM parameters. Jointly optimizing both components outperforms conventional RL post-training across diverse interactive tasks and model scales, including a 3.80% average absolute gain on ALFWorld with a 9B model, while improving general knowledge, reasoning, and coding.",
+      "authors": [
+        "Yundaichuan Zhan",
+        "Weishi Wang",
+        "Wenbiao Liu",
+        "Daniel Dahlmeier",
+        "Chengwei Qin",
+        "Juncheng Li",
+        "Fredrik D. Johansson",
+        "Zhongqi Yue"
+      ],
+      "primary_category": "cs.LG",
+      "categories": [
+        "cs.LG"
+      ],
+      "published": "2026-09-28T18:50:13+00:00",
+      "link": "https://arxiv.org/pdf/2609.36116v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "studies reinforcement learning settings for typed decision-making agents",
+      "llm_evidence_cn": "研究类型化决策智能体的强化学习设置",
+      "llm_evidence": "研究类型化决策智能体的强化学习设置",
+      "canonical_evidence": "研究类型化决策智能体的强化学习设置",
+      "llm_tldr_en": "Introduces Dyad, an architecture that augments an LLM with an environment-conditioned action encoder for typed decision-making, and evaluates it in two reinforcement learning settings to build capable general-purpose agents.",
+      "llm_tldr_cn": "针对通用智能体决策能力受限于动作空间规模与表示效率的问题，提出Dyad架构，为预训练大语言模型增加环境条件动作编码器，将候选动作描述并行编码并与模型内部状态打分，得到类型化动作分布。通过因子化交互状态与动作语义，在动作空间增长时仍保持高效评分。该架构在两类强化学习设置中验证，展示了学习可重用表示、提升智能体决策能力的潜力。",
+      "llm_tldr": "针对通用智能体决策能力受限于动作空间规模与表示效率的问题，提出Dyad架构，为预训练大语言模型增加环境条件动作编码器，将候选动作描述并行编码并与模型内部状态打分，得到类型化动作分布。通过因子化交互状态与动作语义，在动作空间增长时仍保持高效评分。该架构在两类强化学习设置中验证，展示了学习可重用表示、提升智能体决策能力的潜力。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "reinforcement learning applied to autonomous agents",
+      "matched_requirement_id": "req-3",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2610.01415v1",
+      "source": "arxiv",
+      "title": "Beyond Memory: Harnessing Long-Horizon Agents with Explicit Belief States",
+      "abstract": "Large language model (LLM) agents can now undertake increasingly complex tasks, but the way they organize interaction history into memory does not ensure a coherent understanding of the current world. We introduce PoS, an inference-time framework that constructs and continually maintains explicit belief states as the agent's decision context. Each belief combines an estimate of the current world state with unresolved task requirements, making explicit what the agent still needs to learn and accomplish. To keep this belief reliable and actionable, PoS validates its consistency and monitors task progress to detect Belief Trapping, where the agent continues to act without making meaningful progress toward the goal. Recovery is then tailored to both the trapping pattern and the type of unresolved task requirement. Experiments on four benchmarks spanning execution and diagnosis show that PoS achieves the highest overall performance on every benchmark with all three LLM backbones. Ablations demonstrate the importance of consistency validation and recovery, while context-scaling experiments show resilience to context growth. Together, these results support belief construction and continual maintenance as a foundation for long-horizon context management beyond history retention and compression.",
+      "authors": [
+        "Yu Luo",
+        "Jiamin Jiang",
+        "Yimin Zuo",
+        "Xidao Wen",
+        "Rongchen Gao",
+        "Yongqian Sun",
+        "Shenglin Zhang",
+        "Guiyang Liu",
+        "Cheng Zhang",
+        "Fang Situ",
+        "Qi Zhou",
+        "Dan Pei"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-10-01T10:21:46+00:00",
+      "link": "https://arxiv.org/pdf/2610.01415v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "explicit belief states as improved alternative to interaction history memory",
+      "llm_evidence_cn": "显式信念状态作为交互历史记忆的改进替代",
+      "llm_evidence": "显式信念状态作为交互历史记忆的改进替代",
+      "canonical_evidence": "显式信念状态作为交互历史记忆的改进替代",
+      "llm_tldr_en": "PoS constructs and maintains explicit belief states for LLM agents, validating consistency and detecting lack of progress to avoid Belief Trapping, improving long-horizon task performance over raw memory.",
+      "llm_tldr_cn": "本文针对大语言模型智能体将交互历史组织成记忆但缺乏对当前世界连贯理解的问题，提出PoS框架，在推理时构建并持续维护显式信念状态，将当前世界状态估计与未解决任务要求结合，并通过一致性验证和进度监控检测信念困局。该方法使智能体在长程任务中能更有针对性地恢复和决策，提升记忆利用效率。",
+      "llm_tldr": "本文针对大语言模型智能体将交互历史组织成记忆但缺乏对当前世界连贯理解的问题，提出PoS框架，在推理时构建并持续维护显式信念状态，将当前世界状态估计与未解决任务要求结合，并通过一致性验证和进度监控检测信念困局。该方法使智能体在长程任务中能更有针对性地恢复和决策，提升记忆利用效率。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "memory mechanisms for intelligent agents",
+      "matched_requirement_id": "req-1",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2609.37810v1",
+      "source": "arxiv",
+      "title": "Explore, Execute, Evolve: A Skill Acquisition and Reuse Loop for Embodied Agents",
+      "abstract": "Vision-language-action and world-action models have demonstrated impressive capabilities in robotics, yet generalization to unseen tasks remains challenging. More recently, general-purpose multimodal agents have shown great potential for zero-shot robotic task solving. However, they often incur high execution costs by reasoning and exploring the physical world from scratch. To reduce these costs, we introduce RoboSkill, a framework that connects skill acquisition and reuse through an Explore, Execute, Evolve loop. Within this loop, the agent explores to gather task-relevant information, executes tasks while adapting to feedback, and evolves its skill library based on execution records. It then reuses these skills to guide exploration and execution in the next cycle, closing the loop. To improve loop efficiency, we complement vision with tactile feedback to reduce uncertainty during physical interaction. We further augment textual guidance with reusable code to reduce reasoning overhead during skill reuse. On LIBERO-10, RoboSkill improves first-episode success rates by 12.5--25.0 percentage points and reduces average runtime by 7.6--72.4% across four agents. On real robots, it improves success rates by 8.3 percentage points and reduces average runtime for successful trials by at least 14.4%.",
+      "authors": [
+        "Sicheng Xie",
+        "Yitong Chen",
+        "Haidong Cao",
+        "Shunlin Lu",
+        "Zuxuan Wu",
+        "Yu-Gang Jiang"
+      ],
+      "primary_category": "cs.RO",
+      "categories": [
+        "cs.RO",
+        "cs.AI"
+      ],
+      "published": "2026-09-29T15:25:43+00:00",
+      "link": "https://arxiv.org/pdf/2609.37810v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "evolves skill library and reuses skills to reduce execution costs",
+      "llm_evidence_cn": "演化技能库并重用技能以降低执行成本",
+      "llm_evidence": "演化技能库并重用技能以降低执行成本",
+      "canonical_evidence": "演化技能库并重用技能以降低执行成本",
+      "llm_tldr_en": "Proposes RoboSkill, an Explore-Execute-Evolve loop for embodied agents to acquire and reuse skills from execution records, reducing reasoning costs and improving generalization.",
+      "llm_tldr_cn": "针对具身智能体零样本任务求解中从零推理探索导致执行成本高的问题，提出RoboSkill框架，通过探索-执行-演化循环连接技能获取与重用。智能体在执行任务中收集任务相关信息并适应反馈，将执行记录沉淀为技能库，并在后续探索中重用已有技能。实验表明该机制可降低探索与执行开销，提升任务泛化能力。",
+      "llm_tldr": "针对具身智能体零样本任务求解中从零推理探索导致执行成本高的问题，提出RoboSkill框架，通过探索-执行-演化循环连接技能获取与重用。智能体在执行任务中收集任务相关信息并适应反馈，将执行记录沉淀为技能库，并在后续探索中重用已有技能。实验表明该机制可降低探索与执行开销，提升任务泛化能力。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "agent with memory augmentation for better performance",
+      "matched_requirement_id": "req-6",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "quick_skim": [
+    {
+      "id": "2609.35432v1",
+      "source": "arxiv",
+      "title": "Self-Evolving Coding Agents: From Digital Programs to Physical-World Intelligence",
+      "abstract": "Vision-language-action (VLA) and world-action (WAM) models map observations and instructions directly to robot actions. This directness ties a policy to training: minor layout or viewpoint changes cause failure, and instructions generalize poorly. The root cause lies in representation: task requirements, conditions, progress, and failure recovery are implicitly encoded in action sequences, making them difficult to inspect or revise. Digital coding agents offer a precedent: LLMs call tools, verify results, and revise from feedback as executable code. The same working pattern of explicit state, manageable execution, and revisable procedures underlies generalization and long-horizon execution in the physical world, letting physical experience return as reusable programs, memory, or evidence. We propose Physical Coding, representing task state and execution as code. Code as World records objects, relations, constraints, and progress; Code as Policy organizes planning, verification, recovery, and execution. We build HexaAnything, which calls perception, planning, and control tools, including VLA/WAM policies, and makes in-the-loop decisions from external feedback. Verified traces become data and memory, enabling evolution from tools and Harness to model weights, architectures, and ultimately hardware and task design. On RoboCasa365, HexaAnything improves Composite-Unseen and overall success over XR-1 VLA, and its Harness-trained HexaModel beats the base on every split, indicating code traces internalize physical execution. On PhyBench and a dual-arm AgileX robot, the agent autonomously completes physics experiments and most tabletop tasks, often faster than published results. We observe data, model, and tool self-evolution; future work targets weight internalization, autonomous redesign of architectures, languages, representations, and tasks, and deployment in manufacturing and science.",
+      "authors": [
+        "Hongcheng Gao",
+        "Jingjing Zhou",
+        "Zelin Zheng",
+        "Shijia Ge",
+        "Jay Zhu",
+        "Yazhe Wang",
+        "Jianshu Zeng",
+        "Xuan Shangguan",
+        "Di Wu",
+        "Lingyu He",
+        "Zhiqi Jia",
+        "Sihang Wu",
+        "Xiao He"
+      ],
+      "primary_category": "cs.RO",
+      "categories": [
+        "cs.RO"
+      ],
+      "published": "2026-09-28T15:38:07+00:00",
+      "link": "https://arxiv.org/pdf/2609.35432v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "Addresses vision-language-action (VLA) and world-action (WAM) models that process multimodal inputs, proposing coding agent patterns for physical-world intelligence.",
+      "llm_evidence_cn": "针对处理多模态输入的视觉-语言-动作（VLA）和世界-动作（WAM）模型，提出编码智能体模式以提升物理世界智能。",
+      "llm_evidence": "针对处理多模态输入的视觉-语言-动作（VLA）和世界-动作（WAM）模型，提出编码智能体模式以提升物理世界智能。",
+      "canonical_evidence": "针对处理多模态输入的视觉-语言-动作（VLA）和世界-动作（WAM）模型，提出编码智能体模式以提升物理世界智能。",
+      "llm_tldr_en": "The paper identifies representation limitations in VLA and WAM models for robotics, and proposes that digital coding agents' pattern of explicit state, executable code, and revisable procedures can generalize to physical-world tasks, enabling better long-horizon execution.",
+      "llm_tldr_cn": "视觉-语言-动作（VLA）和世界-动作（WAM）模型直接将观测和指令映射到机器人动作，导致布局或视角微小变化即失效，泛化差。本文指出根源在于任务需求被隐式编码在动作序列中，难以检查和修正。借鉴数字编码智能体的显式状态、可管理执行和可修订程序模式，将其应用于物理世界，使物理经验能够转化为可执行代码并迭代改进，从而提升机器人在长程任务中的泛化能力。",
+      "llm_tldr": "视觉-语言-动作（VLA）和世界-动作（WAM）模型直接将观测和指令映射到机器人动作，导致布局或视角微小变化即失效，泛化差。本文指出根源在于任务需求被隐式编码在动作序列中，难以检查和修正。借鉴数字编码智能体的显式状态、可管理执行和可修订程序模式，将其应用于物理世界，使物理经验能够转化为可执行代码并迭代改进，从而提升机器人在长程任务中的泛化能力。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "agent that processes multiple modalities",
+      "matched_requirement_id": "req-2",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2610.00613v1",
+      "source": "arxiv",
+      "title": "Spatial Strategies, Not Actions: Vector-Quantized Geodesics as Tools for LLM-Driven Agents",
+      "abstract": "Large language model (LLM) based agents are often criticized for lacking spatial understanding and mainly exploiting statistical text patterns. We investigate their spatial comprehension through an architecture combining geometrical tools with a LLM serving as a high-level orchestrator in grid-world environments. The agent first collects geodesic trajectories, which are then vector-quantized to extract a representative subset. Offline, the LLM associates a natural language description of the underlying behavioral patterns to each selected trajectory, making it a tool. Online, the LLM chooses the appropriate tool conditioned on the current state and goal. Low-level control is handled by primitive actions that execute the trajectory associated with the tool. From an agentic AI perspective, this approach separates learning into two levels: tool discovery is handled through unsupervised quantization of trajectories, while reasoning and decision-making are handled by the LLM. We test the approach in a partially observable dynamic 2D grid environment with an open vision-language model (Qwen3.6-35B-A3B). Pairing the geometry-derived tool library with an agent-centered zoom tool and a collision detection tool lets a fast, non-reasoning configuration match the goal-reaching rate of a much more costly chain-of-thought version, while cutting the cost of a decision from minutes to seconds.",
+      "authors": [
+        "Gabriel Turinici"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI",
+        "cs.RO",
+        "eess.SY"
+      ],
+      "published": "2026-09-30T19:16:47+00:00",
+      "link": "https://arxiv.org/pdf/2610.00613v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "offline collection and vector quantization of geodesic trajectories creates a reusable strategy library, augmenting the LLM agent with spatial memory",
+      "llm_evidence_cn": "离线收集并向量量化测地轨迹形成可复用策略库，为LLM智能体增加了空间记忆",
+      "llm_evidence": "离线收集并向量量化测地轨迹形成可复用策略库，为LLM智能体增加了空间记忆",
+      "canonical_evidence": "离线收集并向量量化测地轨迹形成可复用策略库，为LLM智能体增加了空间记忆",
+      "llm_tldr_en": "The paper addresses LLM agents' weak spatial understanding by collecting geodesic trajectories, vector-quantizing them into a representative subset, and having an LLM associate natural language descriptions to create reusable tools; online the LLM selects tools based on state and goal, improving spatial decision-making in grid-world tasks.",
+      "llm_tldr_cn": "LLM智能体常因缺乏空间理解而主要依赖统计文本模式。本文提出收集测地轨迹并向量量化提取代表性子集，离线让LLM为每条轨迹关联自然语言行为描述形成工具，在线根据当前状态和目标选择合适的工具，低层控制执行轨迹。实验表明该方法提升了网格世界中的空间决策能力，为LLM智能体的空间策略学习提供了新途径。",
+      "llm_tldr": "LLM智能体常因缺乏空间理解而主要依赖统计文本模式。本文提出收集测地轨迹并向量量化提取代表性子集，离线让LLM为每条轨迹关联自然语言行为描述形成工具，在线根据当前状态和目标选择合适的工具，低层控制执行轨迹。实验表明该方法提升了网格世界中的空间决策能力，为LLM智能体的空间策略学习提供了新途径。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "agent with memory augmentation for better performance",
+      "matched_requirement_id": "req-6",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2609.39382v1",
+      "source": "arxiv",
+      "title": "SkillFM: Generating Skills for LLM Agents via Latent Flow Matching",
+      "abstract": "Textual skills provide reusable guidance for large language model agents, but existing approaches often rely on manually curated skill banks or reinforcement learning with indirect and delayed feedback. We introduce SkillFM (Skill Flow Matching), a generative framework that synthesizes task-conditioned textual skills directly without test-time skill retrieval. Our framework combines a codec for encoding and reconstructing textual skills in a continuous latent space with a conditional flow model trained using improved MeanFlow. At inference time, the learned velocity field enables single-step latent sampling, and an LLM-based decoder converts the sampled representation into textual guidance for a frozen downstream agent. We evaluate the framework on embodied tasks, question answering, and web shopping. On ALFWorld and Search-QA, our method achieves the best overall performance among the compared vector-based skill approaches. Our analyses further demonstrate that latent skill generation is an effective alternative to retrieval-based skill augmentation. Our code and training skill libraries are available at https://github.com/lulushang999/SkillFM.",
+      "authors": [
+        "Zuming Zhang",
+        "Jie He",
+        "Yizhe Zhang",
+        "Jeff Z. Pan"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-09-30T09:32:54+00:00",
+      "link": "https://arxiv.org/pdf/2609.39382v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "Generates textual skills as reusable guidance for LLM agents, augmenting agent memory",
+      "llm_evidence_cn": "生成文本技能作为LLM智能体的可重用指导，增强智能体记忆",
+      "llm_evidence": "生成文本技能作为LLM智能体的可重用指导，增强智能体记忆",
+      "canonical_evidence": "生成文本技能作为LLM智能体的可重用指导，增强智能体记忆",
+      "llm_tldr_en": "SkillFM generates task-conditioned textual skills via latent flow matching, avoiding manual skill banks and indirect RL feedback, and improves a frozen downstream agent without test-time retrieval.",
+      "llm_tldr_cn": "针对文本技能依赖人工整理或强化学习间接反馈的问题，提出SkillFM框架，组合编码解码器和条件流模型，在连续潜在空间中直接合成任务条件文本技能。推理时利用学习到的速度场进行单步潜在采样，LLM解码器将采样表示转换为文本指导提供给冻结的下游智能体。在具身任务上的评估表明，该方法无需测试时技能检索即可生成有效技能并提升智能体表现。该框架为LLM智能体的可重用知识积累提供了新的生成式方法，可作为记忆增强的一种形式。",
+      "llm_tldr": "针对文本技能依赖人工整理或强化学习间接反馈的问题，提出SkillFM框架，组合编码解码器和条件流模型，在连续潜在空间中直接合成任务条件文本技能。推理时利用学习到的速度场进行单步潜在采样，LLM解码器将采样表示转换为文本指导提供给冻结的下游智能体。在具身任务上的评估表明，该方法无需测试时技能检索即可生成有效技能并提升智能体表现。该框架为LLM智能体的可重用知识积累提供了新的生成式方法，可作为记忆增强的一种形式。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "agent with memory augmentation for better performance",
+      "matched_requirement_id": "req-6",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    }
+  ]
+}
