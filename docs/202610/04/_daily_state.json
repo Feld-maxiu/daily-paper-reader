@@ -1,0 +1,73 @@
+{
+  "date": "20261004",
+  "date_label": "",
+  "generated_at": "2026-10-04 22:52:13 UTC",
+  "recommend_exists": true,
+  "run_count": 1,
+  "papers": [
+    {
+      "paper_id": "2609.37923v1",
+      "route": "202610/04/2609.37923v1-epicon-collective-agent-learning-through-co-evolving-multimodal-memory",
+      "title": "EpiCon: Collective Agent Learning through Co-Evolving Multimodal Memory",
+      "section": "deep",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 9.0,
+      "evidence": "共享多模态记忆框架用于智能体集体学习，精炼文本与视觉经验",
+      "first_seen_at": "2026-10-04 22:52:13 UTC",
+      "updated_at": "2026-10-04 22:52:13 UTC"
+    },
+    {
+      "paper_id": "2609.39101v1",
+      "route": "202610/04/2609.39101v1-beyond-prediction-steering-vlm-agents-with-retrospective-world-modeling",
+      "title": "Beyond Prediction: Steering VLM Agents with Retrospective World Modeling",
+      "section": "deep",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 9.0,
+      "evidence": "VLM智能体的回顾性世界建模以保持因果一致性",
+      "first_seen_at": "2026-10-04 22:52:13 UTC",
+      "updated_at": "2026-10-04 22:52:13 UTC"
+    },
+    {
+      "paper_id": "2609.39207v1",
+      "route": "202610/04/2609.39207v1-asena-self-evolving-agents-for-embodied-navigation",
+      "title": "ASENA: Self-evolving Agents for Embodied Navigation",
+      "section": "deep",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 8.0,
+      "evidence": "具身智能体的持久经验与可复用技能",
+      "first_seen_at": "2026-10-04 22:52:13 UTC",
+      "updated_at": "2026-10-04 22:52:13 UTC"
+    },
+    {
+      "paper_id": "2610.01892v1",
+      "route": "202610/04/2610.01892v1-selection-based-structured-reasoning-toward-efficient-multimodal-search-agents",
+      "title": "Selection-Based Structured Reasoning: Toward Efficient Multimodal Search Agents",
+      "section": "deep",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 8.0,
+      "evidence": "通过基于选择的结构化推理实现高效多模态搜索智能体",
+      "first_seen_at": "2026-10-04 22:52:13 UTC",
+      "updated_at": "2026-10-04 22:52:13 UTC"
+    }
+  ]
+}

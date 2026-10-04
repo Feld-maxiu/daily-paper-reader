@@ -1,0 +1,69 @@
+{
+  "label": "2026-10-04",
+  "date": "2026-10-04",
+  "generated_at": "2026-10-04T22:52:20",
+  "count": 4,
+  "papers": [
+    {
+      "paper_id": "202610/04/2609.37923v1-epicon-collective-agent-learning-through-co-evolving-multimodal-memory",
+      "section": "deep",
+      "title_en": "EpiCon: Collective Agent Learning through Co-Evolving Multimodal Memory",
+      "authors": "Ziyun Zeng, Hang Hua, Shaden Alshammari, Rogerio Feris, William T. Freeman, Jiebo Luo",
+      "date": "2026-09-29",
+      "pdf": "https://arxiv.org/pdf/2609.37923v1",
+      "score": "9.0",
+      "evidence": "共享多模态记忆框架用于智能体集体学习，精炼文本与视觉经验",
+      "tldr": "智能体虽能从过往执行中学习，但不同智能体之间难以复用和积累彼此的经验。EpiCon 提出共享多模态记忆框架，通过独立训练的 2B 记忆控制器与树自组织器，在没有更新宿主模型参数的情况下实现集体经验演化与检索。在 11 个基准、四个任务域上，EpiCon 相比无记忆基线提升宏平均 1.7 至 4.9 分，并将记忆操作时间减少 67% 至 74%。该框架为多智能体经验共享提供了轻量高效的记忆增强途径。",
+      "tags": "query:agent-memory",
+      "abstract_en": "Agents can learn from past executions, but enabling different agents to reuse and build on one another's experience remains challenging. We introduce EpiCon, a shared multimodal memory framework for agent collective learning without updating host model parameters. EpiCon links question-level memory evolution to a persistent experience bank through two independently trained 2B models: a memory controller and a tree self-organizer. The controller jointly refines textual guidance and visual evidence across attempts and selectively includes visual memory. The self-organizer consolidates lessons hierarchically and retrieves experience and rules for new problems. We evaluate EpiCon on eleven benchmarks spanning four multimodal task domains, using two harnesses and multiple backbones. A frozen bank improves other systems even with a single solving attempt. A second harness raises the original system's macro-average score by 2.6 points across eleven benchmarks. Across four host configurations, EpiCon improves macro-average scores by 1.7 to 4.9 points over No Memory and reduces memory-operation time by 67\\% to 74\\% relative to backbone-sized memory models.",
+      "source": "arxiv",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "paper_id": "202610/04/2609.39101v1-beyond-prediction-steering-vlm-agents-with-retrospective-world-modeling",
+      "section": "deep",
+      "title_en": "Beyond Prediction: Steering VLM Agents with Retrospective World Modeling",
+      "authors": "Yongjiang Liu, Jie Zhang, Haoyue Zhang, Jingcai Guo, Deze Zeng, Song Guo",
+      "date": "2026-09-30",
+      "pdf": "https://arxiv.org/pdf/2609.39101v1",
+      "score": "9.0",
+      "evidence": "VLM智能体的回顾性世界建模以保持因果一致性",
+      "tldr": "现有VLM智能体的世界建模主要依赖前向预测，难以验证动作与状态转移间的因果一致性，易产生物理不合理行为。本文提出回顾性世界建模，让智能体反向估计引起给定转移的最可能动作分布，并据此构建自一致性奖励SCR。将SCR融入强化学习提供密集转移级反馈，在多种智能体任务中显著提升策略鲁棒性和泛化性。该方法超越纯前瞻范式，为物理一致、可解释的智能体学习提供新路径。",
+      "tags": "query:agent-memory",
+      "abstract_en": "Equipping VLM agents with world modeling capabilities has shown strong potential for complex reasoning and long-horizon planning, while reducing the dependence of policy learning on costly real-world interactions. Existing methods mainly rely on prospective simulation to predict the consequences of candidate actions. However, this forward-only paradigm focuses on what will happen next and provides limited constraints for verifying whether an action is causally consistent with the observed state transition, which can lead to plausible-looking but physically incoherent behaviors. In this paper, we challenge the view of world modeling as only prospective prediction and introduce Retrospective World Modeling, a new agent learning paradigm that enables agents to reason backward by estimating the retrospective attribution distribution $P(\\hat{a}{t}|s_t, s{t+1})$ for the action that most likely caused a given transition. Based on this capability, we formulate the Self-Consistency Reward (SCR), an intrinsic signal that measures the probabilistic consistency between the policy action and the retrospective explanation. Integrating SCR into reinforcement learning provides dense transition-level feedback and steers agents toward behaviors that are both task-effective and physically grounded. Extensive experiments across diverse agentic tasks show that our method substantially improves policy robustness and generalization over prospective-only world modeling baselines.",
+      "source": "arxiv",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "paper_id": "202610/04/2609.39207v1-asena-self-evolving-agents-for-embodied-navigation",
+      "section": "deep",
+      "title_en": "ASENA: Self-evolving Agents for Embodied Navigation",
+      "authors": "An-Chieh Cheng, Isabella Liu, Edmund Bu, Johan Bjorck, Hongxu Yin, Zhengyi Luo, Jan Kautz, Linxi \"Jim\" Fan, Yuke Zhu, Sifei Liu",
+      "date": "2026-09-30",
+      "pdf": "https://arxiv.org/pdf/2609.39207v1",
+      "score": "8.0",
+      "evidence": "具身智能体的持久经验与可复用技能",
+      "tldr": "现有具身导航通常依赖预定义技能，难以应对开放环境。ASENA 将通用编码智能体与机器人感知、执行和持久经验连接，并集成 4B 单目导航策略 ASENA-VLN 作为可编程工具，使智能体可写程序、检视结果并修复失败。在 R2R 和 RxR 基准上，集成后成功率提升 11 个百分点；十轮迭代后成功率分别从 72% 和 65% 提升至 98% 和 89%。该系统还实现了具身问答最优精度及更少交互步数，展示了在线编程扩展机器人行为的能力。",
+      "tags": "query:agent-memory",
+      "abstract_en": "We present ASENA, an embodied agent system that connects general-purpose coding agents to robot sensing, computation, supervised execution, and persistent experience. Agents can write and execute programs, inspect recorded outcomes, repair failures, and reuse notes and executable skills while keeping their model weights fixed. We further introduce ASENA-VLN, a 4B monocular navigation policy that serves as an optional tool within this programmable system. ASENA-VLN predicts body-frame trajectories for both extended routes and short-horizon behaviors using a shared vision-language decoder trained on route instructions, visual question answering, and a newly curated dataset of geometry-derived atomic navigation tasks. As a standalone policy, ASENA-VLN achieves state-of-the-art success rates of 68.7% on R2R and 70.2% on RxR. When integrated with a coding agent, learned navigation improves ASENA's success rate by 11 percentage points on both agentic benchmarks while reducing execution time. Through persistent workspace evolution and simulator feedback, ten passes over recurring 100-task subsets further improve success from 72% to 98% on R2R and from 65% to 89% on RxR. On embodied question answering, ASENA achieves state-of-the-art accuracy with fewer interaction steps. Finally, real-world demonstrations on a Unitree G1 combine search, visual inspection, spatial reasoning, and synthesized gestures without a pre-built map, illustrating how online programming extends robot behavior beyond route following and predefined skills.",
+      "source": "arxiv",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "paper_id": "202610/04/2610.01892v1-selection-based-structured-reasoning-toward-efficient-multimodal-search-agents",
+      "section": "deep",
+      "title_en": "Selection-Based Structured Reasoning: Toward Efficient Multimodal Search Agents",
+      "authors": "Feiyu Gavin Zhu, Xiaoyu Zhu, Jiqi Yang, Rui Yang, Arnab Kumar Mondal, Yancheng Wang, Xinke Deng, Jean Oh, Reid Simmons, Joerg Liebelt, Xiang Kong, Zhongyu Jiang",
+      "date": "2026-10-01",
+      "pdf": "https://arxiv.org/pdf/2610.01892v1",
+      "score": "8.0",
+      "evidence": "通过基于选择的结构化推理实现高效多模态搜索智能体",
+      "tldr": "多模态搜索智能体通常在小模型上生成冗长的自由形式推理，不仅计算成本高，而且对后续动作生成的指导作用有限。针对这一挑战，SSR 框架将推理过程重构为从一组预定义且可复用的自然语言候选项中进行选择，从而避免开放式生成。在七个多模态搜索基准上，使用 2B 和 4B 模型评估表明，SSR 的平均成功率与同规模领先搜索智能体相当，同时将每轮推理延迟降低超过 90%，总推理延迟降低 28% 至 54%。该框架在多种强化学习目标与监督微调下均实现了显著的效率提升，且未牺牲任务性能。",
+      "tags": "query:agent-memory",
+      "abstract_en": "Multimodal agents commonly generate free-form reasoning before each action. For small models, limited model capacity can result in lengthy reasoning that provides little useful guidance for action generation while incurring substantial inference cost. To address this challenge, we introduce Selection-based Structured Reasoning (SSR), a framework that reformulates reasoning as selection instead of open-ended generation. SSR represents recurring high-level reasoning as pre-specified, reusable natural-language candidates. At each turn, the model selects from these reasoning candidates based on their likelihoods given the current context, without requiring an auxiliary task head. Using pre-specified reasoning traces enables parallel scoring, where teacher-forced prefilling computes token likelihoods concurrently within and across candidates using a shared context KV cache. We evaluate SSR on seven multimodal search benchmarks using 2B and 4B models. Across multiple reinforcement learning objectives and supervised fine-tuning, SSR delivers significant efficiency gains without sacrificing task performance. SSR achieves an average success rate competitive with leading search agents of the same scale, while reducing per-turn reasoning latency by over 90% and total per-question model inference latency by 28-54%. Project page: https://zfy0314.github.io/ssr-webpage/.",
+      "source": "arxiv",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "errors": []
+}
