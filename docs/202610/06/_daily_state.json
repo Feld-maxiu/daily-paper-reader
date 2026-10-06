@@ -1,0 +1,89 @@
+{
+  "date": "20261006",
+  "date_label": "",
+  "generated_at": "2026-10-06 01:02:46 UTC",
+  "recommend_exists": true,
+  "run_count": 1,
+  "papers": [
+    {
+      "paper_id": "2610.02542v1",
+      "route": "202610/06/2610.02542v1-how-to-train-your-world-model-fine-tuning-vs-rag-for-lm-based-world-modeling",
+      "title": "How To Train Your World Model: Fine-tuning vs RAG for LM-based World Modeling",
+      "section": "deep",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 9.0,
+      "evidence": "系统比较微调与RAG用于基于语言模型的世界模型",
+      "first_seen_at": "2026-10-06 01:02:46 UTC",
+      "updated_at": "2026-10-06 01:02:46 UTC"
+    },
+    {
+      "paper_id": "2610.03356v1",
+      "route": "202610/06/2610.03356v1-refract-benchmarking-perspective-awareness-in-language-model-agents-with-text-world-models",
+      "title": "ReFract: Benchmarking Perspective Awareness in Language Model Agents with Text World Models",
+      "section": "deep",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 9.0,
+      "evidence": "使用文本世界模型进行角色感知智能体基准测试",
+      "first_seen_at": "2026-10-06 01:02:46 UTC",
+      "updated_at": "2026-10-06 01:02:46 UTC"
+    },
+    {
+      "paper_id": "2609.34206v1",
+      "route": "202610/06/2609.34206v1-worldguide-learning-success-failure-boundaries-in-latent-world-models-for-vision-language-action-policies",
+      "title": "WorldGuide: Learning Success-Failure Boundaries in Latent World Models for Vision-Language-Action Policies",
+      "section": "deep",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 8.0,
+      "evidence": "通过潜在世界模型改进视觉-语言-动作策略",
+      "first_seen_at": "2026-10-06 01:02:46 UTC",
+      "updated_at": "2026-10-06 01:02:46 UTC"
+    },
+    {
+      "paper_id": "2610.02451v1",
+      "route": "202610/06/2610.02451v1-a-simulation-grounded-agentic-vlm-framework-for-wildfire-monitoring-and-reporting",
+      "title": "A Simulation-Grounded Agentic VLM Framework for Wildfire Monitoring and Reporting",
+      "section": "deep",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 8.0,
+      "evidence": "为多智能体VLM系统构建可复用的多模态记忆",
+      "first_seen_at": "2026-10-06 01:02:46 UTC",
+      "updated_at": "2026-10-06 01:02:46 UTC"
+    },
+    {
+      "paper_id": "2610.02488v1",
+      "route": "202610/06/2610.02488v1-harnessing-llms-as-agents-what-does-it-cost",
+      "title": "Harnessing LLMs as Agents: What Does It Cost?",
+      "section": "deep",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 8.0,
+      "evidence": "资源有界抽象量化智能体外链中的上下文记忆流量",
+      "first_seen_at": "2026-10-06 01:02:46 UTC",
+      "updated_at": "2026-10-06 01:02:46 UTC"
+    }
+  ]
+}
