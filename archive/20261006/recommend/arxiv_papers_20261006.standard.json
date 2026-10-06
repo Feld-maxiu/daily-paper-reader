@@ -1,17 +1,105 @@
 {
   "mode": "standard",
-  "generated_at": "2026-10-06T00:57:59.916477+00:00",
+  "generated_at": "2026-10-06T23:02:02.608574+00:00",
   "stats": {
     "mode": "standard",
     "tag_count": 1,
-    "deep_divecandidates": 5,
+    "deep_divecandidates": 6,
     "deep_cap": 6,
-    "deep_selected": 5,
-    "quick_candidates": 0,
+    "deep_selected": 6,
+    "quick_candidates": 4,
     "quick_skim_target": 11,
-    "quick_selected": 0
+    "quick_selected": 4
   },
   "deep_dive": [
+    {
+      "id": "2609.34422v2",
+      "source": "arxiv",
+      "title": "Coding Agent Memory Post-training: Unlocking the Memory Potential of Pre-trained File Operations for Long-Horizon Tasks via Reinforcement Learning",
+      "abstract": "Language-model agents increasingly tackle long-horizon tasks whose interaction histories exceed the model's active context. Recent work has begun to use reinforcement learning to make memory control part of the policy, often relying on predefined memory tools within domain-specific training environments of relatively short horizons. This setup ties learned memory behavior to environment-specific interfaces that lie outside the base model's pre-training and must be learned from scratch, so even after post-training, agents struggle to use memory in long-horizon tasks. To address these limitations, we introduce Coding Agent Memory Gym (CAMG), a suite of long-horizon agentic-RL environments spanning Shop, Coding, DeepResearch, and AutoResearch. Alongside each environment's native task interface, CAMG provides executable shell access and an episode-persistent workspace, enabling agents to create, revise, search, and reuse files as memory throughout an episode. We also introduce CAMG-RL, which trains a single policy jointly across all four environments with fully asynchronous PPO, learning this file-based memory behavior directly from downstream task reward, and we train CAMG-RL-4B and CAMG-RL-9B from Qwen3.5 models of matching size. On SWE-bench Verified and MLE-bench Lite, CAMG-RL-4B and CAMG-RL-9B are competitive with Qwen3.5-35B-A3B and Qwen3.5-122B-A10B, respectively.",
+      "authors": [
+        "Lirui Luo",
+        "Kelong Mao",
+        "Heming Xia",
+        "Rongqing Li",
+        "Xinwei Yang",
+        "Luyu Chen",
+        "Kieran Wong",
+        "Yudong Guo",
+        "Xinrui Wang",
+        "Jiayin Zhu",
+        "Simiu Gu",
+        "Sulong Xu",
+        "Cong Fang"
+      ],
+      "primary_category": "cs.LG",
+      "categories": [
+        "cs.LG",
+        "cs.AI",
+        "cs.CL"
+      ],
+      "published": "2026-09-28T06:40:28+00:00",
+      "link": "https://arxiv.org/pdf/2609.34422v2",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 10.0,
+      "llm_evidence_en": "Uses reinforcement learning to train memory control for long-horizon language-model agents",
+      "llm_evidence_cn": "用强化学习训练语言模型智能体的记忆控制，用于长时程任务",
+      "llm_evidence": "用强化学习训练语言模型智能体的记忆控制，用于长时程任务",
+      "canonical_evidence": "用强化学习训练语言模型智能体的记忆控制，用于长时程任务",
+      "llm_tldr_en": "This paper addresses memory control in long-horizon language-model agents by introducing CAMG, a suite of environments that use pre-trained file operations for memory. It post-trains agents with reinforcement learning to leverage these operations, avoiding environment-specific memory tools. Results show improved long-horizon task performance.",
+      "llm_tldr_cn": "长时程语言模型智能体的交互历史常超出上下文窗口，现有强化学习方法依赖环境特定的记忆工具，难泛化。本文提出编码智能体记忆健身房（CAMG），提供长时程智能体RL环境套件，利用预训练文件操作作为记忆接口。通过强化学习后训练，智能体学会在长任务中主动读写文件来管理记忆，而不需要从零学习特定工具。实验表明该方法能解锁预训练操作中的记忆潜力，提升长时程任务表现，为通用记忆控制提供了新途径。",
+      "llm_tldr": "长时程语言模型智能体的交互历史常超出上下文窗口，现有强化学习方法依赖环境特定的记忆工具，难泛化。本文提出编码智能体记忆健身房（CAMG），提供长时程智能体RL环境套件，利用预训练文件操作作为记忆接口。通过强化学习后训练，智能体学会在长任务中主动读写文件来管理记忆，而不需要从零学习特定工具。实验表明该方法能解锁预训练操作中的记忆潜力，提升长时程任务表现，为通用记忆控制提供了新途径。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "memory mechanisms for intelligent agents",
+      "matched_requirement_id": "req-1",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2610.02451v1",
+      "source": "arxiv",
+      "title": "A Simulation-Grounded Agentic VLM Framework for Wildfire Monitoring and Reporting",
+      "abstract": "Effective wildfire monitoring requires relating visual evidence to physical fire dynamics, yet real videos with synchronized physical annotations are scarce and high-fidelity 3D simulation is costly. We present a simulation-grounded vision-language model (VLM) framework that automatically converts 2D wildfire simulations into labeled video episodes. A fixed Blender mapping produces low-detail 3D proxies aligned with simulator terrain, fuel layout, fire activity, and wind cues; controllable video generation supplies richer appearance. The proxies are intermediate representations rather than finely rendered final scenes. Generated videos and simulator labels form reusable multimodal memory for a training-free multi-agent VLM system that retrieves reference episodes, reconciles visual and memory-based predictions, and produces structured wildfire reports. On held-out generated episodes, video memory achieves 51.5% exact four-tag accuracy, compared with 22.6% for direct VLM querying and 16-17% for text-only memory; the complete system achieves 77.3% accuracy on six simulator-derived report fields. Component ablations, cross-generator tests, and three real-UAV evaluations assess retrieval, reporting, generator changes, and observable monitoring tasks. The framework connects automatic simulation-to-proxy conversion with memory-based VLM reasoning under scarce real-world physical annotations.",
+      "authors": [
+        "Duowen Chen",
+        "Yuchen Sun",
+        "Zhiqi Li",
+        "Yuxuan Liao",
+        "Sinan Wang",
+        "Bart van Bloemen Waanders",
+        "Bo Zhu"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV",
+        "cs.GR"
+      ],
+      "published": "2026-10-01T20:22:10+00:00",
+      "link": "https://arxiv.org/pdf/2610.02451v1",
+      "tags": [
+        "keyword:agent-memory"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "reusable multimodal memory for training-free multi-agent VLM system",
+      "llm_evidence_cn": "可复用的多模态记忆用于免训练多智能体VLM系统",
+      "llm_evidence": "可复用的多模态记忆用于免训练多智能体VLM系统",
+      "canonical_evidence": "可复用的多模态记忆用于免训练多智能体VLM系统",
+      "llm_tldr_en": "A simulation-grounded VLM framework generates labeled video episodes and uses them as reusable multimodal memory for a training-free multi-agent wildfire monitoring system.",
+      "llm_tldr_cn": "野火监测需要关联视觉证据与物理火行为，但带同步物理标注的真实视频稀缺且高保真3D仿真成本高。本文提出仿真基础的VLM框架，将2D野火仿真自动转换为带标注的视频片段：固定Blender映射生成与仿真器地形、燃料布局、火活动和风场对齐的低细节3D代理，可控视频生成补充外观细节。生成的视频与仿真标签构成可复用多模态记忆，供免训练多智能体VLM系统检索推理。该方法为多模态智能体在物理场景中的记忆构建提供了范例。",
+      "llm_tldr": "野火监测需要关联视觉证据与物理火行为，但带同步物理标注的真实视频稀缺且高保真3D仿真成本高。本文提出仿真基础的VLM框架，将2D野火仿真自动转换为带标注的视频片段：固定Blender映射生成与仿真器地形、燃料布局、火活动和风场对齐的低细节3D代理，可控视频生成补充外观细节。生成的视频与仿真标签构成可复用多模态记忆，供免训练多智能体VLM系统检索推理。该方法为多模态智能体在物理场景中的记忆构建提供了范例。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "memory mechanisms for intelligent agents",
+      "matched_requirement_id": "req-1",
+      "selection_source": "fresh_fetch"
+    },
     {
       "id": "2610.02542v1",
       "source": "arxiv",
@@ -35,20 +123,228 @@
         "query:agent-memory"
       ],
       "llm_score": 9.0,
-      "llm_evidence_en": "systematic comparison of fine-tuning vs RAG for LM-based world models",
-      "llm_evidence_cn": "系统比较微调与RAG用于基于语言模型的世界模型",
-      "llm_evidence": "系统比较微调与RAG用于基于语言模型的世界模型",
-      "canonical_evidence": "系统比较微调与RAG用于基于语言模型的世界模型",
-      "llm_tldr_en": "The paper systematically evaluates fine-tuning versus retrieval-augmented generation for LM-based world modeling across five diverse environments. It finds fine-tuning often outperforms RAG, with fine-tuned world models enabling agents to achieve higher rewards on most setups.",
-      "llm_tldr_cn": "针对基于语言模型的世界模型中检索增强方法研究不足的问题，本文在涵盖具身、网页导航和社交场景的五个不同环境中系统比较了微调与RAG两种构建世界模型的方法。实验表明，微调通常在20个设置中的15个上优于RAG，使智能体获得更高奖励。该研究为如何训练LM世界模型提供了实证指导，揭示了非参数检索方法的局限性。",
-      "llm_tldr": "针对基于语言模型的世界模型中检索增强方法研究不足的问题，本文在涵盖具身、网页导航和社交场景的五个不同环境中系统比较了微调与RAG两种构建世界模型的方法。实验表明，微调通常在20个设置中的15个上优于RAG，使智能体获得更高奖励。该研究为如何训练LM世界模型提供了实证指导，揭示了非参数检索方法的局限性。",
+      "llm_evidence_en": "Fine-tuning vs RAG for LM-based world modeling in text environments",
+      "llm_evidence_cn": "文本环境中基于语言模型世界建模的微调与RAG对比",
+      "llm_evidence": "文本环境中基于语言模型世界建模的微调与RAG对比",
+      "canonical_evidence": "文本环境中基于语言模型世界建模的微调与RAG对比",
+      "llm_tldr_en": "The paper systematically evaluates fine-tuning versus retrieval-augmented generation for language model-based world modeling across five diverse text-based environments, finding fine-tuning often outperforms RAG.",
+      "llm_tldr_cn": "针对文本环境中基于语言模型的世界建模中RAG方法未被充分探索的问题，论文在涵盖具身、网页导航和社交等五个环境上系统比较了微调与RAG两种世界模型构建方式。实验表明微调在多数设置下带来更高奖励，说明微调仍是更有效的世界模型训练范式，但RAG在特定场景有优势。",
+      "llm_tldr": "针对文本环境中基于语言模型的世界建模中RAG方法未被充分探索的问题，论文在涵盖具身、网页导航和社交等五个环境上系统比较了微调与RAG两种世界模型构建方式。实验表明微调在多数设置下带来更高奖励，说明微调仍是更有效的世界模型训练范式，但RAG在特定场景有优势。",
       "llm_tags": [
         "query:agent-memory"
       ],
       "matched_query_tag": "query:agent-memory",
-      "matched_query_text": "language-based world model for agent reasoning",
-      "matched_requirement_id": "req-5",
+      "matched_query_text": "text-based world model for environment simulation",
+      "matched_requirement_id": "req-4",
       "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2610.06100v1",
+      "source": "arxiv",
+      "title": "From Traces to Agentic Worlds: Agentic Language World Models for Interactive Environment Simulation",
+      "abstract": "Realistic environment replicas are increasingly valuable for training and evaluating LLM agents, yet the original systems may be inaccessible or impractical to reproduce. We explore agentic language world modeling: rather than rebuilding an executable environment, a world model agent serves as the environment for a task agent and supports faithful and stateful simulation. We instantiate this paradigm with Trace2Env, a learning-free framework for settings where the original system is unavailable but historical interaction traces remain accessible. Trace2Env reconstructs these traces into a reusable environment worldbook containing environment schemas, grounded evidence, and induced behavioral knowledge. At runtime, the world model agent actively consults the worldbook together with persistent episodic state to infer each action's observation and lasting state effects. Across nine environments, Trace2Env improves both next-observation fidelity and long-horizon interaction consistency over conventional prompt-based LWMs. In multi-turn interaction, task agent actions generated against Trace2Env remain valid more often when replayed in the real environment, indicating that its simulated dynamics better preserve the consequences of earlier actions across successive turns. These results establish agentic language world modeling as an alternative direction for building realistic environment replicas without reconstructing the original executable system.",
+      "authors": [
+        "Quanyu Long",
+        "Xiao Chen",
+        "Jianda Chen",
+        "Haozhen Zhang",
+        "Qisheng Hu",
+        "Jianzhu Bao",
+        "Wenya Wang"
+      ],
+      "primary_category": "cs.CL",
+      "categories": [
+        "cs.CL"
+      ],
+      "published": "2026-10-05T10:32:28+00:00",
+      "link": "https://arxiv.org/pdf/2610.06100v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "Agentic language world models for interactive environment simulation",
+      "llm_evidence_cn": "用于交互式环境模拟的智能体语言世界模型",
+      "llm_evidence": "用于交互式环境模拟的智能体语言世界模型",
+      "canonical_evidence": "用于交互式环境模拟的智能体语言世界模型",
+      "llm_tldr_en": "The paper proposes Trace2Env, a learning-free agentic language world model that reconstructs interaction traces into an environment worldbook to simulate interactive environments for training and evaluating LLM agents.",
+      "llm_tldr_cn": "针对原始系统不可用但交互轨迹可获取的场景，论文提出Trace2Env框架，将历史轨迹重建为包含模式、证据和行为知识的环境世界书，由世界模型智能体充当任务环境的忠实化有状态模拟器。该方法使LLM智能体无需重建可执行环境即可进行训练和评估，为语言世界模型用于智能体交互模拟提供了可行路径。",
+      "llm_tldr": "针对原始系统不可用但交互轨迹可获取的场景，论文提出Trace2Env框架，将历史轨迹重建为包含模式、证据和行为知识的环境世界书，由世界模型智能体充当任务环境的忠实化有状态模拟器。该方法使LLM智能体无需重建可执行环境即可进行训练和评估，为语言世界模型用于智能体交互模拟提供了可行路径。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "text-based world model for environment simulation",
+      "matched_requirement_id": "req-4",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2610.01569v1",
+      "source": "arxiv",
+      "title": "Managing Context and Communication in Distributed Agentic UAV Swarms",
+      "abstract": "Unmanned aerial vehicle (UAV) swarms increasingly rely on language-model agents to provide adaptive mission-level reasoning in uncertain environments. Fully distributed control, in which each UAV hosts an independent Small Language Model (SLM), removes reliance on a centralized coordinator but introduces an information-management problem: long-running interaction histories can degrade the reasoning context, while indiscriminate information dissemination increases communication and inference overhead. We address these challenges with a distributed UAV-agent architecture that enables continuous local SLM control through an event-driven reason-act-observe lifecycle. Runtime knowledge is represented as structured atomic notes and organized into core, local, and peer-specific memory. A deterministic interest-aware gossip engine selectively disseminates these notes according to recipient-specific semantic novelty and recency. We evaluate the architecture using ten UAVs in a simulated search-and-rescue mission. Our approach completes all experimental runs, whereas unrestricted flooding messages completes only 70-85\\%, and delegating forwarding decisions to the SLM prevents mission completion in every run. Compared with unrestricted flooding, our approach approximately halves inference-token consumption, reduces transmitted data, and achieves lower survivor-count error.",
+      "authors": [
+        "Andrea Iannoli",
+        "Ivan Zyrianoff",
+        "Angelo Trotta",
+        "Lorenzo Gigli",
+        "Marco Di Felice"
+      ],
+      "primary_category": "cs.MA",
+      "categories": [
+        "cs.MA",
+        "cs.AI",
+        "cs.LG",
+        "cs.NI",
+        "cs.RO"
+      ],
+      "published": "2026-10-01T12:30:29+00:00",
+      "link": "https://arxiv.org/pdf/2610.01569v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "uses structured atomic notes to manage agent memory and context",
+      "llm_evidence_cn": "使用结构化原子笔记管理智能体记忆与上下文",
+      "llm_evidence": "使用结构化原子笔记管理智能体记忆与上下文",
+      "canonical_evidence": "使用结构化原子笔记管理智能体记忆与上下文",
+      "llm_tldr_en": "Addresses long-horizon context degradation in distributed UAV agents by representing runtime knowledge as structured atomic notes, reducing communication overhead while preserving reasoning quality.",
+      "llm_tldr_cn": "针对分布式无人机智能体集群中长对话历史导致上下文退化与通信开销过大的问题，该文提出将运行知识表示为结构化原子笔记并组织为核心、局部等层级，实现事件驱动的推理-行动-观察循环，在降低通信和推理开销的同时保持连续控制能力。",
+      "llm_tldr": "针对分布式无人机智能体集群中长对话历史导致上下文退化与通信开销过大的问题，该文提出将运行知识表示为结构化原子笔记并组织为核心、局部等层级，实现事件驱动的推理-行动-观察循环，在降低通信和推理开销的同时保持连续控制能力。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "memory mechanisms for intelligent agents",
+      "matched_requirement_id": "req-1",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2610.04899v1",
+      "source": "arxiv",
+      "title": "Rewrite What Matters: Adaptive Multilingual Query Rewriting for Reasoning via Agentic Reinforcement Learning",
+      "abstract": "In multilingual scenarios, queries with equivalent semantics but in different languages could guide the model into different reasoning trajectories, leading to performance disparities. To mitigate this gap, previous studies typically apply a one-size-fits-all query rewriting strategy, such as translation, which overlooks the fact that different scenarios require diverse types of semantic transformations. In this paper, we propose mRewriter-R1, an agentic multilingual query rewriting framework with reinforcement learning. Unlike single-turn rewriting, mRewriter-R1 formulates multilingual query rewriting as a multi-turn sequential decision-making process, where the model dynamically performs multi-aspect optimization through adaptive operator selection. Experimental results demonstrate that mRewriter-R1 outperforms all strong multilingual rewriting baselines on different large reasoning backbones. Further analyses show that the learned policy can adaptively decide on rewriting operators according to query characteristics, exhibiting strong generalization ability across diverse reasoning tasks, and plug-and-play compatibility with heterogeneous reasoning language models.",
+      "authors": [
+        "Rui Qi",
+        "Yufeng Chen",
+        "Yunlong Liang",
+        "Chuan Meng",
+        "Sijin Lu",
+        "Ge Shi",
+        "Jinan Xu",
+        "Fandong Meng",
+        "Kaiyu Huang"
+      ],
+      "primary_category": "cs.CL",
+      "categories": [
+        "cs.CL"
+      ],
+      "published": "2026-10-04T03:19:46+00:00",
+      "link": "https://arxiv.org/pdf/2610.04899v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "agentic reinforcement learning for multilingual query rewriting",
+      "llm_evidence_cn": "面向多语言查询重写的智能体强化学习",
+      "llm_evidence": "面向多语言查询重写的智能体强化学习",
+      "canonical_evidence": "面向多语言查询重写的智能体强化学习",
+      "llm_tldr_en": "mRewriter-R1 formulates multilingual query rewriting as a multi-turn sequential decision-making process optimized via agentic reinforcement learning, dynamically performing multi-aspect transformation to reduce reasoning disparities.",
+      "llm_tldr_cn": "mRewriter-R1 针对多语言场景下等价语义查询因语言不同导致推理轨迹差异、进而造成性能不均衡的问题，提出了一种智能体强化学习框架。该框架将多语言查询重写形式化为多轮顺序决策过程，模型动态进行多方面语义变换优化，而非采用单一翻译策略。实验表明其能有效缩小跨语言推理的性能差距，提升多语言场景中的查询质量。",
+      "llm_tldr": "mRewriter-R1 针对多语言场景下等价语义查询因语言不同导致推理轨迹差异、进而造成性能不均衡的问题，提出了一种智能体强化学习框架。该框架将多语言查询重写形式化为多轮顺序决策过程，模型动态进行多方面语义变换优化，而非采用单一翻译策略。实验表明其能有效缩小跨语言推理的性能差距，提升多语言场景中的查询质量。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "reinforcement learning applied to autonomous agents",
+      "matched_requirement_id": "req-3",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "quick_skim": [
+    {
+      "id": "2609.34206v1",
+      "source": "arxiv",
+      "title": "WorldGuide: Learning Success-Failure Boundaries in Latent World Models for Vision-Language-Action Policies",
+      "abstract": "Latent world models offer a promising way to improve Vision-Language-Action policies by capturing the consequences of actions. However, models trained primarily on expert demonstrations have limited exposure to failure outcomes and may struggle to distinguish visually similar successful and failed interactions. We propose \\textbf{WorldGuide}, a framework that learns these distinctions in latent space and uses them to guide policy training. WorldGuide combines predictive pretraining on successful and failed trajectories with contrastive learning on matched success--failure pairs. The learned predictor then provides a differentiable reward to guide joint optimization of the policy and visual encoder. The predictor is discarded after training, so deployment requires no additional world-model inference. Extensive experiments show that WorldGuide substantially improves VLA reliability and achieves state of the art performance on LIBERO 100 and SimplerEnv, reaching \\textbf{96.8\\%} and \\textbf{72.0\\%}, respectively. Code will be publicly available.",
+      "authors": [
+        "Lin Liu",
+        "Lu Zhang",
+        "Ziying Song",
+        "Wu Yang",
+        "Yuzheng Zhuang",
+        "Yunzhi Zhuge",
+        "Shuai Tao",
+        "Wulong Liu",
+        "Huchuan Lu"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV"
+      ],
+      "published": "2026-09-28T03:13:43+00:00",
+      "link": "https://arxiv.org/pdf/2609.34206v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "Latent world models for vision-language-action policies",
+      "llm_evidence_cn": "用于视觉-语言-动作策略的潜世界模型",
+      "llm_evidence": "用于视觉-语言-动作策略的潜世界模型",
+      "canonical_evidence": "用于视觉-语言-动作策略的潜世界模型",
+      "llm_tldr_en": "The paper proposes WorldGuide, which learns success-failure boundaries in latent world models using contrastive learning on matched pairs, then provides differentiable reward to guide vision-language-action policy training.",
+      "llm_tldr_cn": "针对潜世界模型缺乏失败经验导致难以区分视觉相似成败交互的问题，论文提出WorldGuide框架，在成功与失败轨迹上进行预测预训练并结合对比学习，学习潜在空间中的成败边界。学习到的预测器提供可微奖励，联合优化策略与视觉编码器，从而改进视觉-语言-动作策略的训练效果。",
+      "llm_tldr": "针对潜世界模型缺乏失败经验导致难以区分视觉相似成败交互的问题，论文提出WorldGuide框架，在成功与失败轨迹上进行预测预训练并结合对比学习，学习潜在空间中的成败边界。学习到的预测器提供可微奖励，联合优化策略与视觉编码器，从而改进视觉-语言-动作策略的训练效果。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "agent that processes multiple modalities",
+      "matched_requirement_id": "req-2",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2610.02488v1",
+      "source": "arxiv",
+      "title": "Harnessing LLMs as Agents: What Does It Cost?",
+      "abstract": "Language-model agents increasingly rely on harnesses that manage bounded context, persistent memory, tools, verification, and repeated execution, yet existing notions of model capability do not quantify the computational resources these mechanisms consume. We introduce the Language Model Agent Machine (LAM), a resource-bounded abstraction that fixes the underlying semantic model while explicitly charging harness-level resources. We establish four classes of results. Communication: LAM execution is instancewise equivalent to red--blue pebbling under simultaneous call--transfer budgets, transferring classical I/O lower bounds to context--memory traffic. Access: memory interfaces induce asymptotic separations, including a $Θ(n)$ gap between random and non-speculative sequential access on pointer chasing. Recomputation: bit-reversal DAGs require $Θ(n^2/(C+S)+n)$ model calls with context capacity $C$ and persistent-memory capacity $S$, quantifying when stored intermediate state avoids repeated semantic computation. Reliability: we derive tight stage-local sampling bounds, exact imperfect-verification costs, and a Young--Daly-type checkpoint law with a closed-form optimal verification interval. Controlled and held-out experiments on GPT-6 Astra test communication and reliability predictions, including checkpoint optima, policy selection under programmatic checking, and tradeoffs among call granularity, logical input traffic, and reliability on chained MATH tasks. Together, these results provide a resource theory for the computational cost of language-model agent harnesses.",
+      "authors": [
+        "Zelin Zhao",
+        "Xinyu Guo",
+        "Jingyuan Zhang",
+        "Yuxuan Zhang",
+        "Yongxin Chen"
+      ],
+      "primary_category": "cs.LG",
+      "categories": [
+        "cs.LG"
+      ],
+      "published": "2026-10-01T21:05:49+00:00",
+      "link": "https://arxiv.org/pdf/2610.02488v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "resource-bounded abstraction charges context and persistent memory in LLM agent harnesses",
+      "llm_evidence_cn": "资源有界抽象对LLM智能体框架中的上下文和持久记忆进行计费",
+      "llm_evidence": "资源有界抽象对LLM智能体框架中的上下文和持久记忆进行计费",
+      "canonical_evidence": "资源有界抽象对LLM智能体框架中的上下文和持久记忆进行计费",
+      "llm_tldr_en": "Introduces the Language Model Agent Machine (LAM), a resource-bounded abstraction quantifying harness-level costs including context and persistent memory traffic.",
+      "llm_tldr_cn": "LLM智能体日益依赖管理有界上下文、持久记忆、工具、验证和重复执行的框架，但现有能力概念未量化这些机制消耗的计算资源。本文提出语言模型智能体机器（LAM）抽象，固定底层语义模型并显式对框架级资源收费。理论分析揭示LAM执行与红蓝卵石游戏的等价性，并得到内存接口的渐近分离。该工作为理解智能体记忆机制的计算成本提供了基础。",
+      "llm_tldr": "LLM智能体日益依赖管理有界上下文、持久记忆、工具、验证和重复执行的框架，但现有能力概念未量化这些机制消耗的计算资源。本文提出语言模型智能体机器（LAM）抽象，固定底层语义模型并显式对框架级资源收费。理论分析揭示LAM执行与红蓝卵石游戏的等价性，并得到内存接口的渐近分离。该工作为理解智能体记忆机制的计算成本提供了基础。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "memory mechanisms for intelligent agents",
+      "matched_requirement_id": "req-1",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
     },
     {
       "id": "2610.03356v1",
@@ -77,142 +373,59 @@
         "keyword:agent-memory",
         "query:agent-memory"
       ],
-      "llm_score": 9.0,
-      "llm_evidence_en": "uses text world models for role-aware agent benchmarking",
-      "llm_evidence_cn": "使用文本世界模型进行角色感知智能体基准测试",
-      "llm_evidence": "使用文本世界模型进行角色感知智能体基准测试",
-      "canonical_evidence": "使用文本世界模型进行角色感知智能体基准测试",
-      "llm_tldr_en": "Benchmarks LLM agents' ability to infer user roles and act appropriately in high-stakes settings using text world models.",
-      "llm_tldr_cn": "针对工业维护等高风险场景中智能体需根据用户角色校准行为但现有基准忽视角色边界的问题，提出ReFract基准，利用文本世界模型模拟不同角色的知识与能力限制。通过受控评估，考察智能体推断角色意图并仅使用该角色合法工具的能力。实验表明当前智能体在角色感知上存在不足，可能造成设备损坏等不可逆后果。该基准为改进角色敏感的智能体提供诊断工具。",
-      "llm_tldr": "针对工业维护等高风险场景中智能体需根据用户角色校准行为但现有基准忽视角色边界的问题，提出ReFract基准，利用文本世界模型模拟不同角色的知识与能力限制。通过受控评估，考察智能体推断角色意图并仅使用该角色合法工具的能力。实验表明当前智能体在角色感知上存在不足，可能造成设备损坏等不可逆后果。该基准为改进角色敏感的智能体提供诊断工具。",
+      "llm_score": 6.0,
+      "llm_evidence_en": "Benchmarking perspective awareness in language model agents using text world models",
+      "llm_evidence_cn": "使用文本世界模型评估语言模型智能体的视角意识",
+      "llm_evidence": "使用文本世界模型评估语言模型智能体的视角意识",
+      "canonical_evidence": "使用文本世界模型评估语言模型智能体的视角意识",
+      "llm_tldr_en": "This paper introduces ReFract, a benchmark using text world models to evaluate whether LLM agents can act in a role-calibrated manner in high-stakes industrial settings.",
+      "llm_tldr_cn": "针对LLM智能体在高风险工业维护等场景中缺乏角色视角校准的问题，论文提出ReFract基准，利用文本世界模型构建需要遵守角色知识边界和工具权限的环境。该基准评估智能体是否根据用户角色采取适当行动和信息提供，从而避免因越权操作导致设备损坏或安全事故。",
+      "llm_tldr": "针对LLM智能体在高风险工业维护等场景中缺乏角色视角校准的问题，论文提出ReFract基准，利用文本世界模型构建需要遵守角色知识边界和工具权限的环境。该基准评估智能体是否根据用户角色采取适当行动和信息提供，从而避免因越权操作导致设备损坏或安全事故。",
       "llm_tags": [
         "query:agent-memory"
       ],
       "matched_query_tag": "query:agent-memory",
       "matched_query_text": "text-based world model for environment simulation",
       "matched_requirement_id": "req-4",
-      "selection_source": "fresh_fetch"
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
     },
     {
-      "id": "2609.34206v1",
+      "id": "2610.04168v1",
       "source": "arxiv",
-      "title": "WorldGuide: Learning Success-Failure Boundaries in Latent World Models for Vision-Language-Action Policies",
-      "abstract": "Latent world models offer a promising way to improve Vision-Language-Action policies by capturing the consequences of actions. However, models trained primarily on expert demonstrations have limited exposure to failure outcomes and may struggle to distinguish visually similar successful and failed interactions. We propose \\textbf{WorldGuide}, a framework that learns these distinctions in latent space and uses them to guide policy training. WorldGuide combines predictive pretraining on successful and failed trajectories with contrastive learning on matched success--failure pairs. The learned predictor then provides a differentiable reward to guide joint optimization of the policy and visual encoder. The predictor is discarded after training, so deployment requires no additional world-model inference. Extensive experiments show that WorldGuide substantially improves VLA reliability and achieves state of the art performance on LIBERO 100 and SimplerEnv, reaching \\textbf{96.8\\%} and \\textbf{72.0\\%}, respectively. Code will be publicly available.",
+      "title": "Agentic Cognitive Depth: Operational Criteria for Evaluating LLM Agents",
+      "abstract": "Agentic large language model (LLM) systems are commonly implemented as an LLM in a loop with Planning, Memory, Tools, and Control Flow. This application-focused view connects agentic LLM research with deployable systems and leaves open how such systems should be evaluated beyond end-to-end task success. Building on this view, we define agentic cognitive depth as a trajectory-level profile across five operational criteria. The profile contains context sensitivity ($C$), temporal continuity ($T$), multimodal coordination ($M$), adaptive interaction ($A$), and metacognitive monitoring ($Mc$). The first four criteria measure how well Control Flow, Memory, Tools, and Planning are used across a trajectory. The fifth measures whether the system monitors and regulates the full run. For each criterion, we give operational proxies and a perturbation procedure, then connect the profile to the agent's world model. We provide the structure needed to extend benchmarks such as GAIA, SWE-bench, WebArena, and TRIP-Bench with per-criterion diagnostics. Symbolic verifiers, structured memory, planner coupling, and tool constraints provide practical ways to build and test these capacities.",
       "authors": [
-        "Lin Liu",
-        "Lu Zhang",
-        "Ziying Song",
-        "Wu Yang",
-        "Yuzheng Zhuang",
-        "Yunzhi Zhuge",
-        "Shuai Tao",
-        "Wulong Liu",
-        "Huchuan Lu"
+        "Nijesh Upreti",
+        "Chris Sypherd",
+        "Vaishak Belle"
       ],
-      "primary_category": "cs.CV",
+      "primary_category": "cs.AI",
       "categories": [
-        "cs.CV"
+        "cs.AI"
       ],
-      "published": "2026-09-28T03:13:43+00:00",
-      "link": "https://arxiv.org/pdf/2609.34206v1",
+      "published": "2026-10-03T00:19:23+00:00",
+      "link": "https://arxiv.org/pdf/2610.04168v1",
       "tags": [
         "keyword:agent-memory",
         "query:agent-memory"
       ],
-      "llm_score": 8.0,
-      "llm_evidence_en": "improves vision-language-action policies via latent world models",
-      "llm_evidence_cn": "通过潜在世界模型改进视觉-语言-动作策略",
-      "llm_evidence": "通过潜在世界模型改进视觉-语言-动作策略",
-      "canonical_evidence": "通过潜在世界模型改进视觉-语言-动作策略",
-      "llm_tldr_en": "The paper proposes WorldGuide to learn success-failure boundaries in latent world models, combining predictive pretraining and contrastive learning to provide a differentiable reward for jointly optimizing VLA policies and visual encoders. This addresses failure exposure limitations in expert-demonstration trained models.",
-      "llm_tldr_cn": "针对潜在世界模型在专家演示上训练导致失败样本暴露不足、难以区分视觉相似成功与失败交互的问题，本文提出WorldGuide框架。它结合成功和失败轨迹的预测预训练与匹配成功-失败对的对比学习，学习潜在空间中的成功-失败边界，并用学到的预测器提供可微奖励来联合优化策略和视觉编码器。该方法可提升视觉-语言-动作策略在复杂任务中的决策能力。",
-      "llm_tldr": "针对潜在世界模型在专家演示上训练导致失败样本暴露不足、难以区分视觉相似成功与失败交互的问题，本文提出WorldGuide框架。它结合成功和失败轨迹的预测预训练与匹配成功-失败对的对比学习，学习潜在空间中的成功-失败边界，并用学到的预测器提供可微奖励来联合优化策略和视觉编码器。该方法可提升视觉-语言-动作策略在复杂任务中的决策能力。",
+      "llm_score": 6.0,
+      "llm_evidence_en": "defines trajectory-level criteria including memory usage and multimodal coordination",
+      "llm_evidence_cn": "定义包含记忆使用和多模态协调的轨迹级准则",
+      "llm_evidence": "定义包含记忆使用和多模态协调的轨迹级准则",
+      "canonical_evidence": "定义包含记忆使用和多模态协调的轨迹级准则",
+      "llm_tldr_en": "The paper proposes operational criteria for evaluating LLM agents across memory, planning, and multimodal coordination, addressing the lack of evaluation beyond task success.",
+      "llm_tldr_cn": "该文针对智能体评估缺乏超越任务成功度量的局限，提出五维操作准则：上下文敏感性、时间连续性、多模态协调、自适应交互和元认知监控，从轨迹层面刻画智能体认知深度，为部署系统提供诊断工具。",
+      "llm_tldr": "该文针对智能体评估缺乏超越任务成功度量的局限，提出五维操作准则：上下文敏感性、时间连续性、多模态协调、自适应交互和元认知监控，从轨迹层面刻画智能体认知深度，为部署系统提供诊断工具。",
       "llm_tags": [
-        "query:agent-memory"
+        "query:agent-memory:composite"
       ],
-      "matched_query_tag": "query:agent-memory",
-      "matched_query_text": "agent that processes multiple modalities",
-      "matched_requirement_id": "req-2",
-      "selection_source": "fresh_fetch"
-    },
-    {
-      "id": "2610.02451v1",
-      "source": "arxiv",
-      "title": "A Simulation-Grounded Agentic VLM Framework for Wildfire Monitoring and Reporting",
-      "abstract": "Effective wildfire monitoring requires relating visual evidence to physical fire dynamics, yet real videos with synchronized physical annotations are scarce and high-fidelity 3D simulation is costly. We present a simulation-grounded vision-language model (VLM) framework that automatically converts 2D wildfire simulations into labeled video episodes. A fixed Blender mapping produces low-detail 3D proxies aligned with simulator terrain, fuel layout, fire activity, and wind cues; controllable video generation supplies richer appearance. The proxies are intermediate representations rather than finely rendered final scenes. Generated videos and simulator labels form reusable multimodal memory for a training-free multi-agent VLM system that retrieves reference episodes, reconciles visual and memory-based predictions, and produces structured wildfire reports. On held-out generated episodes, video memory achieves 51.5% exact four-tag accuracy, compared with 22.6% for direct VLM querying and 16-17% for text-only memory; the complete system achieves 77.3% accuracy on six simulator-derived report fields. Component ablations, cross-generator tests, and three real-UAV evaluations assess retrieval, reporting, generator changes, and observable monitoring tasks. The framework connects automatic simulation-to-proxy conversion with memory-based VLM reasoning under scarce real-world physical annotations.",
-      "authors": [
-        "Duowen Chen",
-        "Yuchen Sun",
-        "Zhiqi Li",
-        "Yuxuan Liao",
-        "Sinan Wang",
-        "Bart van Bloemen Waanders",
-        "Bo Zhu"
-      ],
-      "primary_category": "cs.CV",
-      "categories": [
-        "cs.CV",
-        "cs.GR"
-      ],
-      "published": "2026-10-01T20:22:10+00:00",
-      "link": "https://arxiv.org/pdf/2610.02451v1",
-      "tags": [
-        "keyword:agent-memory"
-      ],
-      "llm_score": 8.0,
-      "llm_evidence_en": "Builds reusable multimodal memory for a multi-agent VLM system using simulation-generated videos",
-      "llm_evidence_cn": "为多智能体VLM系统构建可复用的多模态记忆",
-      "llm_evidence": "为多智能体VLM系统构建可复用的多模态记忆",
-      "canonical_evidence": "为多智能体VLM系统构建可复用的多模态记忆",
-      "llm_tldr_en": "Presents a simulation-grounded VLM framework that converts wildfire simulations into labeled video episodes, creating reusable multimodal memory for a training-free multi-agent VLM system to improve monitoring and reporting.",
-      "llm_tldr_cn": "针对野火监测中视觉证据与物理动态关联标注稀缺的问题，本文提出基于仿真环境的VLM智能体框架。方法将二维野火仿真自动转化为带标签的视频片段，并借助可控视频生成丰富外观，生成视频与仿真标签共同构成多智能体VLM系统的可复用多模态记忆。该记忆用于检索，使免训练的多智能体系统能够有效进行野火监测与报告，显著降低对真实标注数据和高保真仿真的依赖。",
-      "llm_tldr": "针对野火监测中视觉证据与物理动态关联标注稀缺的问题，本文提出基于仿真环境的VLM智能体框架。方法将二维野火仿真自动转化为带标签的视频片段，并借助可控视频生成丰富外观，生成视频与仿真标签共同构成多智能体VLM系统的可复用多模态记忆。该记忆用于检索，使免训练的多智能体系统能够有效进行野火监测与报告，显著降低对真实标注数据和高保真仿真的依赖。",
-      "llm_tags": [
-        "query:agent-memory"
-      ],
-      "matched_query_tag": "query:agent-memory",
-      "matched_query_text": "agent that processes multiple modalities",
-      "matched_requirement_id": "req-2",
-      "selection_source": "fresh_fetch"
-    },
-    {
-      "id": "2610.02488v1",
-      "source": "arxiv",
-      "title": "Harnessing LLMs as Agents: What Does It Cost?",
-      "abstract": "Language-model agents increasingly rely on harnesses that manage bounded context, persistent memory, tools, verification, and repeated execution, yet existing notions of model capability do not quantify the computational resources these mechanisms consume. We introduce the Language Model Agent Machine (LAM), a resource-bounded abstraction that fixes the underlying semantic model while explicitly charging harness-level resources. We establish four classes of results. Communication: LAM execution is instancewise equivalent to red--blue pebbling under simultaneous call--transfer budgets, transferring classical I/O lower bounds to context--memory traffic. Access: memory interfaces induce asymptotic separations, including a $Θ(n)$ gap between random and non-speculative sequential access on pointer chasing. Recomputation: bit-reversal DAGs require $Θ(n^2/(C+S)+n)$ model calls with context capacity $C$ and persistent-memory capacity $S$, quantifying when stored intermediate state avoids repeated semantic computation. Reliability: we derive tight stage-local sampling bounds, exact imperfect-verification costs, and a Young--Daly-type checkpoint law with a closed-form optimal verification interval. Controlled and held-out experiments on GPT-6 Astra test communication and reliability predictions, including checkpoint optima, policy selection under programmatic checking, and tradeoffs among call granularity, logical input traffic, and reliability on chained MATH tasks. Together, these results provide a resource theory for the computational cost of language-model agent harnesses.",
-      "authors": [
-        "Zelin Zhao",
-        "Xinyu Guo",
-        "Jingyuan Zhang",
-        "Yuxuan Zhang",
-        "Yongxin Chen"
-      ],
-      "primary_category": "cs.LG",
-      "categories": [
-        "cs.LG"
-      ],
-      "published": "2026-10-01T21:05:49+00:00",
-      "link": "https://arxiv.org/pdf/2610.02488v1",
-      "tags": [
-        "keyword:agent-memory",
-        "query:agent-memory"
-      ],
-      "llm_score": 8.0,
-      "llm_evidence_en": "resource-bounded abstraction charges context-memory traffic in agent harnesses",
-      "llm_evidence_cn": "资源有界抽象量化智能体外链中的上下文记忆流量",
-      "llm_evidence": "资源有界抽象量化智能体外链中的上下文记忆流量",
-      "canonical_evidence": "资源有界抽象量化智能体外链中的上下文记忆流量",
-      "llm_tldr_en": "LAM is a resource-bounded abstraction charging harness-level resources like context and memory. Shows communication equivalent to red-blue pebbling and memory access separations. Provides theory of memory costs in LLM agents.",
-      "llm_tldr_cn": "针对现有LLM智能体能力评估忽视外链机制资源消耗的问题，提出语言模型智能体机LAM，在固定语义模型的同时显式计费外链级资源，如上下文记忆访问。通信复杂度等价于红蓝石子游戏，并揭示内存接口的渐近分离。该工作为智能体记忆机制的资源成本提供了理论基础，对设计高效记忆系统具有指导意义。",
-      "llm_tldr": "针对现有LLM智能体能力评估忽视外链机制资源消耗的问题，提出语言模型智能体机LAM，在固定语义模型的同时显式计费外链级资源，如上下文记忆访问。通信复杂度等价于红蓝石子游戏，并揭示内存接口的渐近分离。该工作为智能体记忆机制的资源成本提供了理论基础，对设计高效记忆系统具有指导意义。",
-      "llm_tags": [
-        "query:agent-memory"
-      ],
-      "matched_query_tag": "query:agent-memory",
-      "matched_query_text": "memory mechanisms for intelligent agents",
-      "matched_requirement_id": "req-1",
-      "selection_source": "fresh_fetch"
+      "matched_query_tag": "query:agent-memory:composite",
+      "matched_query_text": "Papers central to 智能体记忆，多模态，智能体强化学习，文本世界模型，语言世界模型, especially work that connects or combines: memory mechanisms for intelligent agents; agent that processes multiple modalities; reinforcement learning applied to autonomous agents; text-based world model for environment simulation; language-based world model for agent reasoning; agent with memory augmentation for better performance; How do text world models support language based agent simulation?.",
+      "matched_requirement_id": "req-composite-agent-memory",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
     }
-  ],
-  "quick_skim": []
+  ]
 }

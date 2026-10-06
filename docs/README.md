@@ -44,14 +44,14 @@
       <span class="dpr-home-dashboard-kicker">2026-10-06</span>
       <h3 class="dpr-home-dashboard-title">今日汇总</h3>
     </div>
-    <strong class="dpr-home-dashboard-count">共 5 篇</strong>
+    <strong class="dpr-home-dashboard-count">共 10 篇</strong>
   </div>
   <dl class="dpr-home-dashboard-stats">
-    <div class="dpr-home-dashboard-stat"><dt>累计更新</dt><dd>1 次</dd></div>
-    <div class="dpr-home-dashboard-stat"><dt>精读</dt><dd>5</dd></div>
-    <div class="dpr-home-dashboard-stat"><dt>速读</dt><dd>0</dd></div>
+    <div class="dpr-home-dashboard-stat"><dt>累计更新</dt><dd>2 次</dd></div>
+    <div class="dpr-home-dashboard-stat"><dt>精读</dt><dd>9</dd></div>
+    <div class="dpr-home-dashboard-stat"><dt>速读</dt><dd>1</dd></div>
   </dl>
-  <p class="dpr-home-dashboard-body">最近更新：2026-10-06 01:02:46 UTC<br>状态：成功</p>
+  <p class="dpr-home-dashboard-body">最近更新：2026-10-06 23:08:40 UTC<br>状态：成功</p>
 </section>
 <section class="dpr-home-dashboard-card dpr-home-brief-card">
   <div class="dpr-home-dashboard-header">
@@ -62,8 +62,9 @@
     <strong class="dpr-home-dashboard-count">AI</strong>
   </div>
   <div class="dpr-home-dashboard-body">
-<p>今日共生成 5 篇推荐（精读 5 篇，速读 0 篇）</p>
-<p>精读：《How To Train Your World Model: Fine-tuning vs RAG for LM-based World Modeling》（9.0/10）, 《ReFract: Benchmarking Perspective Awareness in Language Model Agents with Text World Models》（9.0/10）</p>
+<p>今日共生成 10 篇推荐（精读 9 篇，速读 1 篇）</p>
+<p>精读：《Coding Agent Memory Post-training: Unlocking the Memory Potential of Pre-trained File Operations for Long-Horizon Tasks via Reinforcement Learning》（10.0/10）, 《A Simulation-Grounded Agentic VLM Framework for Wildfire Monitoring and Reporting》（9.0/10）</p>
+<p>速读：《Agentic Cognitive Depth: Operational Criteria for Evaluating LLM Agents》（6.0/10）</p>
 <p>这些结果覆盖了当下较热的方向，建议先看精读区论文的关键问题与方法。</p>
   </div>
 </section>
@@ -73,12 +74,12 @@
       <span class="dpr-home-dashboard-kicker">今日累计</span>
       <h3 class="dpr-home-dashboard-title">精读推荐</h3>
     </div>
-    <strong class="dpr-home-dashboard-count">5 篇</strong>
+    <strong class="dpr-home-dashboard-count">9 篇</strong>
   </div>
   <div class="dpr-home-dashboard-body">
-<ul class="dpr-home-dashboard-paper-list"><li><span class="dpr-home-dashboard-paper-title" title="How To Train Your World Model: Fine-tuning vs RAG for LM-based World Modeling">How To Train Your World Model: Fine-tuning vs RAG for LM-based World Modeling</span></li><li><span class="dpr-home-dashboard-paper-title" title="ReFract: Benchmarking Perspective Awareness in Language Model Agents with Text World Models">ReFract: Benchmarking Perspective Awareness in Language Model Agents with Text World Models</span></li><li><span class="dpr-home-dashboard-paper-title" title="WorldGuide: Learning Success-Failure Boundaries in Latent World Models for Vision-Language-Action Policies">WorldGuide: Learning Success-Failure Boundaries in Latent World Models for Vision-Language-Action Policies</span></li></ul>
+<ul class="dpr-home-dashboard-paper-list"><li><span class="dpr-home-dashboard-paper-title" title="Coding Agent Memory Post-training: Unlocking the Memory Potential of Pre-trained File Operations for Long-Horizon Tasks via Reinforcement Learning">Coding Agent Memory Post-training: Unlocking the Memory Potential of Pre-trained File Operations for Long-Horizon Tasks via Reinforcement Learning</span></li><li><span class="dpr-home-dashboard-paper-title" title="A Simulation-Grounded Agentic VLM Framework for Wildfire Monitoring and Reporting">A Simulation-Grounded Agentic VLM Framework for Wildfire Monitoring and Reporting</span></li><li><span class="dpr-home-dashboard-paper-title" title="How To Train Your World Model: Fine-tuning vs RAG for LM-based World Modeling">How To Train Your World Model: Fine-tuning vs RAG for LM-based World Modeling</span></li></ul>
   </div>
-  <div class="dpr-home-dashboard-tags"><span class="dpr-home-dashboard-tag">agent-memory <strong>5</strong></span></div>
+  <div class="dpr-home-dashboard-tags"><span class="dpr-home-dashboard-tag">agent-memory <strong>9</strong></span></div>
 </section>
 <section class="dpr-home-dashboard-card dpr-home-skim-card">
   <div class="dpr-home-dashboard-header">
@@ -86,12 +87,12 @@
       <span class="dpr-home-dashboard-kicker">今日累计</span>
       <h3 class="dpr-home-dashboard-title">速读推荐</h3>
     </div>
-    <strong class="dpr-home-dashboard-count">0 篇</strong>
+    <strong class="dpr-home-dashboard-count">1 篇</strong>
   </div>
   <div class="dpr-home-dashboard-body">
-<p class="dpr-home-dashboard-empty">今日暂无推荐。</p>
+<ul class="dpr-home-dashboard-paper-list"><li><span class="dpr-home-dashboard-paper-title" title="Agentic Cognitive Depth: Operational Criteria for Evaluating LLM Agents">Agentic Cognitive Depth: Operational Criteria for Evaluating LLM Agents</span></li></ul>
   </div>
-
+  <div class="dpr-home-dashboard-tags"><span class="dpr-home-dashboard-tag">agent-memory <strong>1</strong></span></div>
 </section>
 </div>
 
