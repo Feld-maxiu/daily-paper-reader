@@ -1,0 +1,501 @@
+{
+  "mode": "standard",
+  "generated_at": "2026-10-07T23:46:30.018030+00:00",
+  "stats": {
+    "mode": "standard",
+    "tag_count": 1,
+    "deep_divecandidates": 9,
+    "deep_cap": 6,
+    "deep_selected": 7,
+    "quick_candidates": 5,
+    "quick_skim_target": 11,
+    "quick_selected": 5
+  },
+  "deep_dive": [
+    {
+      "id": "2610.07118v1",
+      "source": "arxiv",
+      "title": "AMBER: Training Long-Horizon Web Agents through Append-Only Memory",
+      "abstract": "Modern language-model agents increasingly interact with external environments over long-horizon, multi-step trajectories, where the accumulated interaction history can quickly exceed practical context budgets. To ensure reliability, agents must maintain factual information over long horizons, remember execution errors and corrective feedback, and track progress across actions. Several approaches have been proposed to achieve this without the need for maintaining the entire execution history in context, such as using the reasoning and action history, learning to maintain a fixed-size memory through an overwrite mechanism, and periodic summarization. Although overwrite memory can in principle retain anything an append-only memory can, it must learn to carry each fact through every subsequent rewrite, which is difficult to learn from sparse outcome rewards; for interactive applications like web agents, we find that trained overwrite memories delete key information required by the trajectory, as well as corrective feedback received from the environment. We introduce AMBER (Append-only Memory Bank for Evidence Retention) - a simple and scalable framework where an agent jointly learns to reason, act, and write free-form memory, while an append-only rule guarantees retention by construction. This allows AMBER to be trained end-to-end with reinforcement learning from outcome rewards without the need for extensive curated SFT data. On WebArena Lite, AMBER improves average success over overwrite-based memory by 4.09 percentage points, increases the fraction of tasks solved in five repeated runs by 4.8 percentage points, and matches an overwrite baseline trained on substantially more expensive curated supervision. AMBER achieves these improvements while maintaining a practical token budget, providing a strong balance between context efficiency, task performance, and reliable long-horizon execution.",
+      "authors": [
+        "Chinmay Savadikar",
+        "Zhaoyu Zhang",
+        "Mingyu Zhao",
+        "Shuang Xie",
+        "Han Li",
+        "Tianfu Wu",
+        "Lingyun Wang"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI",
+        "cs.LG"
+      ],
+      "published": "2026-10-05T17:11:07+00:00",
+      "link": "https://arxiv.org/pdf/2610.07118v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 10.0,
+      "llm_evidence_en": "Append-only memory for long-horizon web agents",
+      "llm_evidence_cn": "长程网页智能体的仅追加记忆",
+      "llm_evidence": "长程网页智能体的仅追加记忆",
+      "canonical_evidence": "长程网页智能体的仅追加记忆",
+      "llm_tldr_en": "Proposes AMBER, training long-horizon web agents using append-only memory to maintain factual information, remember errors, and track progress without storing entire history, improving reliability.",
+      "llm_tldr_cn": "针对长程多步交互中上下文超限的问题，提出AMBER方法，通过仅追加记忆机制让网页智能体高效维护事实信息、记忆错误和跟踪进度，无需保存完整历史。实验表明该记忆方式提升了智能体的可靠性和任务完成率。该工作为智能体记忆增强提供了实用的训练方法。",
+      "llm_tldr": "针对长程多步交互中上下文超限的问题，提出AMBER方法，通过仅追加记忆机制让网页智能体高效维护事实信息、记忆错误和跟踪进度，无需保存完整历史。实验表明该记忆方式提升了智能体的可靠性和任务完成率。该工作为智能体记忆增强提供了实用的训练方法。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "agent with memory augmentation for better performance",
+      "matched_requirement_id": "req-6",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2609.39436v1",
+      "source": "arxiv",
+      "title": "From Imitation to Reward Discovery: On-Policy Warmup for Agentic RL",
+      "abstract": "Reinforcement learning with a verifiable reward (RLVR) offers a scalable approach to training language-model agents, yet sparse outcome rewards can leave early training with little signal for policy improvement. We identify an On-Policy Acceleration Phenomenon: in our main comparisons, RLVR initialized with on-policy distillation reaches high performance earlier in training and achieves both higher average performance during subsequent RLVR and higher final performance than the alternative baselines. Motivated by this observation, we study On-Policy Warmup (OPW), a teacher-guided stage in which the student trains with teacher supervision on its own interaction trajectories before transitioning to RLVR. Unlike imitation on fixed teacher-generated trajectories, OPW targets states induced by the student's own decisions, including imperfect actions and recovery situations. We provide a theoretical explanation by connecting on-policy reverse-KL distillation to trajectory-level distribution matching. Under a competent teacher and sufficiently small population distillation loss, this connection yields a lower bound on initial verifier success and a corresponding bound on reward-discovery complexity. For group-relative RLVR, we further characterize when increased success probability produces more reward-informative groups. Together, our findings support on-policy distillation as an effective warmup for agentic RLVR and identify initial reward discovery as a mechanism that can contribute to the observed acceleration.",
+      "authors": [
+        "Yitong Qiao",
+        "Tiantian He",
+        "Lei Liu",
+        "Yue Shen",
+        "Jian Wang",
+        "Jinjie Gu",
+        "Zhixuan Chu"
+      ],
+      "primary_category": "cs.LG",
+      "categories": [
+        "cs.LG",
+        "cs.AI"
+      ],
+      "published": "2026-09-30T10:13:01+00:00",
+      "link": "https://arxiv.org/pdf/2609.39436v1",
+      "tags": [
+        "keyword:agent-memory"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "RLVR training for language-model agents with on-policy warmup",
+      "llm_evidence_cn": "语言模型智能体的RLVR训练与在策略预热",
+      "llm_evidence": "语言模型智能体的RLVR训练与在策略预热",
+      "canonical_evidence": "语言模型智能体的RLVR训练与在策略预热",
+      "llm_tldr_en": "Proposes On-Policy Warmup to give RLVR better early learning signal, improving training speed and final performance for language-model agents.",
+      "llm_tldr_cn": "针对语言模型智能体强化学习中稀疏奖励导致早期信号不足的问题，本文提出在策略预热(OPW)方法，在进入RLVR前利用教师模型对学生自身交互轨迹进行监督训练。实验表明OPW初始化能加速训练并提升最终平均和最高性能，验证了在策略蒸馏对智能体强化学习的有效性。",
+      "llm_tldr": "针对语言模型智能体强化学习中稀疏奖励导致早期信号不足的问题，本文提出在策略预热(OPW)方法，在进入RLVR前利用教师模型对学生自身交互轨迹进行监督训练。实验表明OPW初始化能加速训练并提升最终平均和最高性能，验证了在策略蒸馏对智能体强化学习的有效性。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "reinforcement learning applied to autonomous agents",
+      "matched_requirement_id": "req-3",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2609.39915v1",
+      "source": "arxiv",
+      "title": "NavHarness: Adaptive Goals for Agentic Vision-Language Navigation",
+      "abstract": "Vision-Language Navigation (VLN) requires embodied agents to generate actions based on instructions and observations. General-purpose multimodal agents offer a promising basis for this task, but selecting plausible local actions does not ensure that execution remains consistent with the intended route, particularly in long-horizon tasks. Moreover, the accumulated interaction history increases the input required for subsequent decisions, resulting in a significant inference overhead. To this end, we introduce \\method, an Agentic VLN framework that includes a Goal Agent that sets adaptive goals for local actions, a Verify Agent that dynamically verifies whether a goal has been completed, a Memory Agent for multimodal context compression, and a Visuomotor Agent to execute adaptive goals. Specifically, the Goal Agent formulates adaptive goals based on the instruction, current observation, and execution history. Then the Visuomotor Agent executes navigation actions to achieve each goal, while the Verify Agent uses a goal-specific verification question to dynamically assess whether the observed outcomes satisfy the intended completion condition. Verified goal completion then marks a boundary for the Memory Agent to compress the corresponding multimodal interaction history while preserving information needed for subsequent navigation. We evaluate navigation on R2R-CE and RxR-CE, examine framework variants across three model backbones, and study context evolution during execution. For Real-World evaluation, \\method achieves 83.3\\% success and 1.51\\,m navigation error across eight challenging routes evaluated three times each.",
+      "authors": [
+        "Haoxiang Shi",
+        "Zaijing Li",
+        "Muhe Ding",
+        "Xiang Deng",
+        "Yaowei Wang",
+        "Liqiang Nie"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV",
+        "cs.RO"
+      ],
+      "published": "2026-09-30T15:06:45+00:00",
+      "link": "https://arxiv.org/pdf/2609.39915v1",
+      "tags": [
+        "keyword:agent-memory"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "Memory Agent for multimodal context compression",
+      "llm_evidence_cn": "用于多模态上下文压缩的记忆智能体",
+      "llm_evidence": "用于多模态上下文压缩的记忆智能体",
+      "canonical_evidence": "用于多模态上下文压缩的记忆智能体",
+      "llm_tldr_en": "Proposes NavHarness, an agentic VLN framework with Memory Agent that compresses multimodal context to maintain route consistency and reduce inference overhead.",
+      "llm_tldr_cn": "针对视觉语言导航中长程任务下多模态交互历史过长导致推理开销大的问题，提出NavHarness框架，引入目标智能体、验证智能体和记忆智能体，其中记忆智能体负责多模态上下文压缩以保持路径一致性。实验表明该框架能有效降低计算成本并提升导航性能。该工作为多模态智能体的记忆机制设计提供了新思路。",
+      "llm_tldr": "针对视觉语言导航中长程任务下多模态交互历史过长导致推理开销大的问题，提出NavHarness框架，引入目标智能体、验证智能体和记忆智能体，其中记忆智能体负责多模态上下文压缩以保持路径一致性。实验表明该框架能有效降低计算成本并提升导航性能。该工作为多模态智能体的记忆机制设计提供了新思路。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "memory mechanisms for intelligent agents",
+      "matched_requirement_id": "req-1",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2609.40325v1",
+      "source": "arxiv",
+      "title": "WorldAuditBench: Interactive 3D World Auditing with Multimodal Agents",
+      "abstract": "As interactive 3D worlds are increasingly used to study intelligent behavior, it becomes important to develop efficient pipelines for identifying anomalies in these simulated environments, such as floating objects, traversable walls, or objects inconsistent with the surrounding scene. Multimodal AI systems, including vision-language models (VLMs) and vision-language-action models (VLAs), have shown potential for automating this task. However, 3D world auditing is complex, requiring the close coupling of two distinct capabilities: action, to navigate the 3D world and search for anomalies systematically and efficiently; and visual reasoning, to understand the environment and identify anomalies from multimodal observations. It remains largely unexplored whether multimodal agents can effectively couple these two capabilities, using visual reasoning to identify potential anomalies while taking actions to validate them. In this paper, we introduce WorldAuditBench, a benchmark for 3D world auditing comprising 213 anomaly tasks across 13 environments built with Unreal Engine 5 and Three.js, spanning five anomaly families. We evaluate five frontier models under a fixed exploration budget using two auditing paradigms: VLA-based exploration followed by VLM-based anomaly identification, and an end-to-end VLM agent in which visual reasoning directly guides action selection. Across the evaluated models and two paradigms, success rates range from 6.6% to 42.3%, substantially below human performance (83.4%). Through the task of world auditing, WorldAuditBench provides a testbed for studying how multimodal agents couple action and visual reasoning in interactive 3D environments, while highlighting current limitations in their ability to gather and interpret evidence during exploration.",
+      "authors": [
+        "Ziyan Jiang",
+        "Jingbo Yang",
+        "Jiabao Ji",
+        "Yujian Liu",
+        "Qiucheng Wu",
+        "Tommi Jaakkola",
+        "Yang Zhang",
+        "Shiyu Chang"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-09-30T17:55:29+00:00",
+      "link": "https://arxiv.org/pdf/2609.40325v1",
+      "tags": [
+        "keyword:agent-memory"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "multimodal agents audit interactive 3D worlds",
+      "llm_evidence_cn": "多模态智能体审计交互式三维世界",
+      "llm_evidence": "多模态智能体审计交互式三维世界",
+      "canonical_evidence": "多模态智能体审计交互式三维世界",
+      "llm_tldr_en": "Introduces WorldAuditBench, a benchmark for evaluating multimodal agents (VLMs and VLAs) on interactive 3D world anomaly detection, requiring coupled action and visual reasoning.",
+      "llm_tldr_cn": "针对交互式3D世界异常检测需结合导航动作与视觉推理的双重能力，提出WorldAuditBench基准，评估多模态智能体（VLM和VLA）在3D世界审计中的表现。基准要求智能体系统搜索并识别漂浮物体、可穿越墙壁等异常。初步结果表明多模态系统具有自动化审计潜力但仍有差距。该基准为多模态世界理解与行动能力结合提供了评测平台。",
+      "llm_tldr": "针对交互式3D世界异常检测需结合导航动作与视觉推理的双重能力，提出WorldAuditBench基准，评估多模态智能体（VLM和VLA）在3D世界审计中的表现。基准要求智能体系统搜索并识别漂浮物体、可穿越墙壁等异常。初步结果表明多模态系统具有自动化审计潜力但仍有差距。该基准为多模态世界理解与行动能力结合提供了评测平台。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "agent that processes multiple modalities",
+      "matched_requirement_id": "req-2",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2610.00388v1",
+      "source": "arxiv",
+      "title": "T2SPO: Trajectory-to-Step Policy Optimization for Agentic Reinforcement Learning",
+      "abstract": "Reinforcement learning enables large language model (LLM) agents to learn multi-step behaviors through interaction with their environments. However, rewards in many interactive tasks reflect only the final outcome, providing limited guidance on which intermediate decisions advance the task. Successful training trajectories contain intermediate states that can provide supervision for subsequent interactions. We introduce Trajectory-to-Step Policy Optimization (T2SPO), a method that uses past interaction trajectories to provide step-level feedback for policy learning. T2SPO derives remaining-distance targets from successful trajectories and pairs them with representations of the states visited along the way. Conditioned on these examples, a pretrained TabPFN regressor estimates the remaining distance to success at each state of a new rollout. Changes in this distance estimate across consecutive states yield auxiliary credit for agent steps alongside task-level supervision. As training proceeds, newly completed trajectories refresh the estimator's context, incorporating new experience without updating its parameters. Experiments with 1.5B and 7B language models on ALFWorld and WebShop show that T2SPO consistently improves overall task success over GRPO.",
+      "authors": [
+        "Bo-Wen Zhang",
+        "Junwei He",
+        "Maoqi Liu",
+        "Feiran Li",
+        "Song-Lin Lv",
+        "Wentao Ma",
+        "Rongyi Lin",
+        "Shuhan Zhong",
+        "Lan-Zhe Guo"
+      ],
+      "primary_category": "cs.LG",
+      "categories": [
+        "cs.LG",
+        "cs.AI"
+      ],
+      "published": "2026-09-30T10:34:27+00:00",
+      "link": "https://arxiv.org/pdf/2610.00388v1",
+      "tags": [
+        "keyword:agent-memory"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "uses past interaction trajectories to provide step-level feedback for agentic reinforcement learning",
+      "llm_evidence_cn": "利用历史交互轨迹提供逐步反馈，优化LLM智能体的强化学习策略",
+      "llm_evidence": "利用历史交互轨迹提供逐步反馈，优化LLM智能体的强化学习策略",
+      "canonical_evidence": "利用历史交互轨迹提供逐步反馈，优化LLM智能体的强化学习策略",
+      "llm_tldr_en": "Proposes T2SPO, which derives remaining-distance targets from successful trajectories and pairs them with state representations to provide step-level feedback for agentic RL, addressing sparse final-only rewards.",
+      "llm_tldr_cn": "交互任务中奖励通常仅反映最终结果，中间步骤缺乏指导。T2SPO从成功轨迹中提取剩余距离目标，并与沿途状态表示配对，条件化地为预训练策略提供逐步反馈。实验表明该方法改进了LLM智能体的多步行为学习。为智能体强化学习提供了更密集的监督信号。",
+      "llm_tldr": "交互任务中奖励通常仅反映最终结果，中间步骤缺乏指导。T2SPO从成功轨迹中提取剩余距离目标，并与沿途状态表示配对，条件化地为预训练策略提供逐步反馈。实验表明该方法改进了LLM智能体的多步行为学习。为智能体强化学习提供了更密集的监督信号。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "reinforcement learning applied to autonomous agents",
+      "matched_requirement_id": "req-3",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2610.05473v1",
+      "source": "arxiv",
+      "title": "Hierarchical Reinforcement Learning with Stable Temporal Abstraction for Language Model Agents",
+      "abstract": "Hierarchical reinforcement learning improves long-horizon control by organizing primitive actions around persistent subgoals and assigning credit at multiple temporal scales. Recent hierarchical language agents bring these benefits to interactive tasks by explicitly separating subgoal planning from action execution. We observe, however, that an explicit hierarchy does not by itself determine how stable the resulting temporal abstraction is: the learned boundary policy may replace the subgoal almost every turn, making it effectively transient, or retain a subgoal after it has stopped being appropriate. We call this temporal abstraction instability. We propose Stable Temporal Abstraction via Constrained Optimization (STAC), a constrained boundary-policy optimization method that represents premature replanning and stale persistence as constraint costs. STAC applies the resulting Lagrangian costs only to the sampled boundary decision, leaving the underlying algorithm's rewards, critic targets, subgoal advantages, and primitive-action advantages unchanged. Across two backbones and two benchmarks, STAC improves success over a strong hierarchical baseline by $8.1$ and $7.9$ points on ALFWorld and WebShop with Qwen3-0.6B, and by $23.5$ and $15.8$ points with Llama-3.2-1B-Instruct.",
+      "authors": [
+        "Shayan Mohajer Hamidi",
+        "Yize Cheng",
+        "Yuanda Xu",
+        "Zhengze Zhou",
+        "Alborz Geramifard"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-10-04T19:25:27+00:00",
+      "link": "https://arxiv.org/pdf/2610.05473v1",
+      "tags": [
+        "keyword:agent-memory"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "proposes constrained optimization to stabilize temporal abstraction in hierarchical RL for language model agents",
+      "llm_evidence_cn": "提出稳定时间抽象约束优化方法，改进语言模型智能体的分层强化学习",
+      "llm_evidence": "提出稳定时间抽象约束优化方法，改进语言模型智能体的分层强化学习",
+      "canonical_evidence": "提出稳定时间抽象约束优化方法，改进语言模型智能体的分层强化学习",
+      "llm_tldr_en": "Proposes STAC, a constrained optimization method that stabilizes temporal abstraction in hierarchical RL for language model agents, preventing subgoal replacement instability.",
+      "llm_tldr_cn": "分层强化学习通过持久子目标改善长程控制，但语言智能体的显式分层存在时间抽象不稳定问题。STAC通过约束优化稳定时间抽象，防止边界策略频繁替换子目标或不恰当地保留。实验表明该方法提升分层语言智能体的控制稳定性。为语言模型智能体的分层强化学习提供了有效正则。",
+      "llm_tldr": "分层强化学习通过持久子目标改善长程控制，但语言智能体的显式分层存在时间抽象不稳定问题。STAC通过约束优化稳定时间抽象，防止边界策略频繁替换子目标或不恰当地保留。实验表明该方法提升分层语言智能体的控制稳定性。为语言模型智能体的分层强化学习提供了有效正则。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "reinforcement learning applied to autonomous agents",
+      "matched_requirement_id": "req-3",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2610.07332v1",
+      "source": "arxiv",
+      "title": "Structuring MoE Expert Selection for Agentic Reinforcement Learning",
+      "abstract": "Long-horizon LLM agents are frequently implemented using sparse mixture-of-experts (MoE) models, yet the co-design of agentic behavior and MoE structures remains underexplored. In this work, we comprehensively study the connections between agentic post-training and MoE expert selection. In off-the-shelf MoE models, we observe expert selection exhibits a specialized structure that naturally aligns with agentic trajectories. Specifically, expert routing overlaps more between turns where the agent performs semantically similar operations (e.g., READ, UPDATE) than between turns with differing operations. However, standard RL algorithms ignore this specialization, allowing the MoE routing to go uncontrolled during training, which empirically limit task performance and inference efficiency. To address this, we introduce a hierarchical routing control framework for agentic tasks. We explicitly encourage turn-level expert selections to align with agentic operations while regularizing token-level expert selections to maintain local consistency. To resolve stability issues that arise during post-training with the proposed methods, we further introduce an entropy-gated control mechanism. Overall, our routing control framework achieves over 10-point improvements in success rate on all evaluated benchmarks. These results demonstrate that agentic trajectory structure provides an effective signal for optimizing MoE capacity during RL post-training.",
+      "authors": [
+        "Bolian Li",
+        "Ting-Yao Hu",
+        "Cheng-Yu Hsieh",
+        "Sanjoy Chowdhury",
+        "Oncel Tuzel",
+        "Raviteja Vemulapalli"
+      ],
+      "primary_category": "cs.LG",
+      "categories": [
+        "cs.LG",
+        "cs.CL"
+      ],
+      "published": "2026-10-05T20:06:47+00:00",
+      "link": "https://arxiv.org/pdf/2610.07332v1",
+      "tags": [
+        "keyword:agent-memory"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "structuring MoE expert selection for agentic reinforcement learning",
+      "llm_evidence_cn": "智能体强化学习中结构化MoE专家选择",
+      "llm_evidence": "智能体强化学习中结构化MoE专家选择",
+      "canonical_evidence": "智能体强化学习中结构化MoE专家选择",
+      "llm_tldr_en": "Studies the co-design of agentic RL and MoE expert selection, finding expert routing aligns with agent operations, and proposes structured selection to improve performance.",
+      "llm_tldr_cn": "针对长时程LLM智能体常用稀疏MoE模型但智能体行为与MoE结构协同设计缺乏研究的问题，作者系统地研究智能体后训练与MoE专家选择的关系。发现专家路由在语义相似操作间重叠更高，而标准RL忽略这一结构导致性能受限。提出结构化专家选择方法以对齐智能体轨迹，实验表明能提升任务性能。该工作为智能体RL训练中的模型结构优化提供了新视角。",
+      "llm_tldr": "针对长时程LLM智能体常用稀疏MoE模型但智能体行为与MoE结构协同设计缺乏研究的问题，作者系统地研究智能体后训练与MoE专家选择的关系。发现专家路由在语义相似操作间重叠更高，而标准RL忽略这一结构导致性能受限。提出结构化专家选择方法以对齐智能体轨迹，实验表明能提升任务性能。该工作为智能体RL训练中的模型结构优化提供了新视角。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "reinforcement learning applied to autonomous agents",
+      "matched_requirement_id": "req-3",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "quick_skim": [
+    {
+      "id": "2609.37025v1",
+      "source": "arxiv",
+      "title": "AnyAct: Universal Action for Self-Evolving Agents",
+      "abstract": "As large language models (LLMs) advance, AI agents are increasingly deployed in open-world environments to tackle complex sequential tasks (e.g., document processing, cross-application collaboration), relying heavily on actions ranging from GUI operations to semantic APIs. However, three core challenges persist: the \"scale dilemma\" of massive tool ecosystems exceeding LLM context windows, the \"non-stationarity\" of tool quality due to updates or outages, and the \"heterogeneity\" of feedback formats (pixels, text, structured data) creating information silos. To address these, we propose AnyAct, a universal action layer that unifies available capabilities into a self-evolving action space, enabling agents to operate efficiently and reliably in large-scale, dynamic tool ecosystems. AnyAct's core design focuses on two objectives: constructing this action space via hierarchical progressive retrieval (filtering task-relevant actions) and test-time reliability evolution (pruning unreliable actions), and enabling reliability-aware action orchestration through a heterogeneous observation grounding module that unifies multi-modal feedback. Additionally, it defines a hybrid action space (primitive + semantic actions) and optimizes for a balance between task success rate and execution cost. Evaluations on LiveMCPBench and OSMCP (a new benchmark we developed for multi-granularity action collaboration) demonstrate state-of-the-art performance. AnyAct delivers substantial performance gains over baseline methods across various LLM base models on LiveMCPBench and improvements are particularly notable for models with constrained native capabilities. On OSMCP, it achieves 77.27% overall success with only 50 steps, which is half the steps required by most competitors.",
+      "authors": [
+        "Lingrui Xu",
+        "Yangqin Jiang",
+        "Jiachang Zhang",
+        "Xubin Ren",
+        "Chao Huang"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-09-29T08:41:27+00:00",
+      "link": "https://arxiv.org/pdf/2609.37025v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "Universal action layer aggregates heterogeneous feedback formats (pixels, text, structured data)",
+      "llm_evidence_cn": "通用动作层聚合异构反馈格式（像素、文本、结构化数据）",
+      "llm_evidence": "通用动作层聚合异构反馈格式（像素、文本、结构化数据）",
+      "canonical_evidence": "通用动作层聚合异构反馈格式（像素、文本、结构化数据）",
+      "llm_tldr_en": "Proposes AnyAct, a self-evolving universal action layer for agents to manage large tool ecosystems and heterogeneous multimodal feedback, improving efficiency and reliability in open-world tasks.",
+      "llm_tldr_cn": "针对大规模工具生态、工具非平稳性及反馈格式异构等问题，提出AnyAct通用动作层，将可用能力统一为自演化动作空间，使智能体能高效可靠地处理像素、文本、结构化数据等多元反馈。实验表明该层提升了智能体在开放世界任务中的稳定性和效率。该工作为多模态智能体的动作管理提供了统一框架。",
+      "llm_tldr": "针对大规模工具生态、工具非平稳性及反馈格式异构等问题，提出AnyAct通用动作层，将可用能力统一为自演化动作空间，使智能体能高效可靠地处理像素、文本、结构化数据等多元反馈。实验表明该层提升了智能体在开放世界任务中的稳定性和效率。该工作为多模态智能体的动作管理提供了统一框架。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "agent that processes multiple modalities",
+      "matched_requirement_id": "req-2",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "8plus"
+    },
+    {
+      "id": "2609.40358v1",
+      "source": "arxiv",
+      "title": "Physis-Lang: Self-Evolving Language as a Physical Representation for Video World Model",
+      "abstract": "Video world models are expected to predict how the physical world evolves, yet they often produce visually plausible videos that violate basic physical principles. Existing approaches commonly assume that natural language is insufficient to represent the physical knowledge required for reliable generation, and therefore introduce additional visual, latent, numerical, or planning-based signals. We revisit this assumption and introduce Physis-Lang, a self-evolving framework that treats physical language as a shared and optimizable representation across data curation, model training, and video generation. Physis-Lang represents physical processes through language that describes their relevant entities, causes, interactions, governing principles, temporal evolution, and effects. To improve this representation, we construct PhysCapBench, which decomposes physical processes into atomic assertions and evaluates captions using recall and precision. An agentic loop iteratively analyzes assertion-level errors and refines the instruction used to produce physical captions. Physis-Lang further converts model deficiencies into textual descriptions and uses language-guided retrieval to identify visually diverse videos that cover missing physical processes. Experiments on four widely used physical video benchmarks with Wan and Cosmos backbones demonstrate consistent improvements in physical plausibility. Notably, starting from open-source Cosmos3-Nano backbones, our Physis-Lang-enhanced models surpass the leading proprietary Veo 3.1 model.",
+      "authors": [
+        "Liming Lu",
+        "Xianzheng Ma",
+        "Wenkun He",
+        "Guanqi Zhan",
+        "Yilin Zhao",
+        "Junyu Chen",
+        "Mengyao Xu",
+        "Jiaojiao Fan",
+        "Wenhang Ge",
+        "Yuchao Gu",
+        "Yunze Liu",
+        "Boyi Li",
+        "Zhen Dong",
+        "Victor Prisacariu",
+        "Ming-Yu Liu",
+        "Song Han",
+        "Han Cai"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV"
+      ],
+      "published": "2026-09-30T17:59:51+00:00",
+      "link": "https://arxiv.org/pdf/2609.40358v1",
+      "tags": [
+        "keyword:agent-memory"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "self-evolving language as physical representation for video world model",
+      "llm_evidence_cn": "自进化语言作为视频世界模型的物理表示",
+      "llm_evidence": "自进化语言作为视频世界模型的物理表示",
+      "canonical_evidence": "自进化语言作为视频世界模型的物理表示",
+      "llm_tldr_en": "Introduces Physis-Lang, using self-evolving physical language for video world models to enforce physical consistency.",
+      "llm_tldr_cn": "针对视频世界模型生成违反物理规律的问题，本文提出Physis-Lang框架，将物理语言作为可优化表示贯穿数据管理、模型训练和视频生成。通过自进化语言描述实体、因果、相互作用和原理，实现物理一致的视频世界建模。",
+      "llm_tldr": "针对视频世界模型生成违反物理规律的问题，本文提出Physis-Lang框架，将物理语言作为可优化表示贯穿数据管理、模型训练和视频生成。通过自进化语言描述实体、因果、相互作用和原理，实现物理一致的视频世界建模。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "language-based world model for agent reasoning",
+      "matched_requirement_id": "req-5",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2610.05861v1",
+      "source": "arxiv",
+      "title": "Imagine to Act: High-Fidelity Data Synthesis via Image Editing World Model for Scalable GUI Agent Training",
+      "abstract": "Graphical User Interface (GUI) agents have emerged as a promising paradigm for automating complex digital workflows across diverse applications. However, training highly capable and generalizable agents fundamentally relies on massive, high-fidelity visual-action trajectories, which are notoriously difficult to acquire. While human demonstrations are unscalable, existing GUI world models rely on text descriptions or HTML rendering, discarding crucial pixel-level visual details like icons and layout styles. To address this issue, we introduce Infinite-Dreamer, a simulation-free data synthesis method powered by a pixel-level Image Editing World Model. By conceptualizing GUI transitions as image editing tasks, we leverage Vision-Language Models (VLMs) to describe action-induced UI changes as structured delta-text. We then fine-tune an image editing backbone to controllably synthesize realistic screenshot transitions. We utilize this model to generate both single-frame visual robustness data and multi-step imaginary trajectories. To validate the effectiveness of our approach, we fine-tune the Qwen3-VL baseline solely on the synthesized data to obtain Infinite-Actor, and evaluate it on AndroidWorld, MobileWorld, and AndroidControl-Curated benchmarks. Infinite-Actor consistently outperforms the Qwen3-VL baselines across scales: Infinite-Actor-8B improves AndroidWorld Pass@1 by +4.45 and nearly doubles the MobileWorld Pass@3 success rate, while Infinite-Actor-2B improves Pass@1 by +9.05. Code is available at https://github.com/swaydy-n/Infinite-Dreamer.",
+      "authors": [
+        "Yongxin Ning",
+        "Runliang Niu",
+        "Qianli Xing",
+        "Zhiyi Duan",
+        "Qingzu He",
+        "Pan Wang",
+        "Qi Wang"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV",
+        "cs.AI"
+      ],
+      "published": "2026-10-05T06:28:58+00:00",
+      "link": "https://arxiv.org/pdf/2610.05861v1",
+      "tags": [
+        "keyword:agent-memory"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "proposes a pixel-level image editing world model to synthesize visual-action trajectories for GUI agent training",
+      "llm_evidence_cn": "提出像素级图像编辑世界模型为GUI智能体合成高保真视觉-行动轨迹",
+      "llm_evidence": "提出像素级图像编辑世界模型为GUI智能体合成高保真视觉-行动轨迹",
+      "canonical_evidence": "提出像素级图像编辑世界模型为GUI智能体合成高保真视觉-行动轨迹",
+      "llm_tldr_en": "Introduces Infinite-Dreamer, a simulation-free data synthesis method using a pixel-level image editing world model to generate high-fidelity visual-action trajectories for scalable GUI agent training.",
+      "llm_tldr_cn": "GUI智能体训练依赖大量高保真视觉-行动轨迹，人类示范不可扩展，现有世界模型丢失像素级细节。Infinite-Dreamer将GUI状态转换视为图像编辑任务，利用像素级图像编辑世界模型合成训练数据。方法免仿真，保留图标和布局等视觉细节。实验表明可扩展训练通用GUI智能体。该方法为世界模型用于智能体训练提供了新思路。",
+      "llm_tldr": "GUI智能体训练依赖大量高保真视觉-行动轨迹，人类示范不可扩展，现有世界模型丢失像素级细节。Infinite-Dreamer将GUI状态转换视为图像编辑任务，利用像素级图像编辑世界模型合成训练数据。方法免仿真，保留图标和布局等视觉细节。实验表明可扩展训练通用GUI智能体。该方法为世界模型用于智能体训练提供了新思路。",
+      "llm_tags": [
+        "query:agent-memory:composite"
+      ],
+      "matched_query_tag": "query:agent-memory:composite",
+      "matched_query_text": "Papers central to 智能体记忆，多模态，智能体强化学习，文本世界模型，语言世界模型, especially work that connects or combines: memory mechanisms for intelligent agents; agent that processes multiple modalities; reinforcement learning applied to autonomous agents; text-based world model for environment simulation; language-based world model for agent reasoning; agent with memory augmentation for better performance; How do text world models support language based agent simulation?.",
+      "matched_requirement_id": "req-composite-agent-memory",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2610.07704v1",
+      "source": "arxiv",
+      "title": "Independent Multi-Agent Reinforcement Learning with Counterfactual Semantic-Social World Models",
+      "abstract": "Fully decentralized multi-agent reinforcement learning (MARL), also referred to as independent learning, requires each agent to learn and act using only its local information and experience, without a centralized critic or inter-agent communication. Such a stringent information structure renders the conventional reward signal ambiguous. A poor return may result from an ineffective ego action, an incompatible teammate response, or an effective opponent response, yet scalar rewards alone do not reveal which explanation is responsible. We argue that agents can learn more effectively by prospectively comparing the consequences of candidate actions rather than diagnosing failures only from realized returns. We introduce CASTLE (Counterfactual Action-conditioned Semantic Tokens for Local Execution in Decentralized MARL), an offline-training, online-in-context guidance framework with two complementary world models. A Local Dynamics World Model, offline pre-trained over agents' local trajectories, summarizes the agent's local trajectory dynamics and partial observability, while a Semantic-Social World Model predicts compact short-horizon task and social consequences for each candidate ego action. The latter is trained from counterfactual simulator rollouts that expose plausible teammate and opponent responses to alternative actions taken from the same logged rollout state. During online learning and execution, both world models remain frozen and are queried by agents using only locally available information. Their prediction logits provide in-context guidance to an independent PPO policy. Across 30 matched seeds on Tag, Spread, and Adversary in the benchmark multi-particle environments, our proposed CASTLE achieves the highest mean final score among the evaluated methods, exceeding the strongest baseline on each task by 10.67, 6.46, and 0.33 normalized points, respectively.",
+      "authors": [
+        "Fernando Martinez",
+        "Tao Li",
+        "Yingdong Lu",
+        "Juntao Chen"
+      ],
+      "primary_category": "cs.MA",
+      "categories": [
+        "cs.MA",
+        "cs.LG"
+      ],
+      "published": "2026-10-06T03:53:47+00:00",
+      "link": "https://arxiv.org/pdf/2610.07704v1",
+      "tags": [
+        "keyword:agent-memory"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "MARL with counterfactual semantic-social world models",
+      "llm_evidence_cn": "多智能体强化学习与反事实语义-社会世界模型",
+      "llm_evidence": "多智能体强化学习与反事实语义-社会世界模型",
+      "canonical_evidence": "多智能体强化学习与反事实语义-社会世界模型",
+      "llm_tldr_en": "Introduces CASTLE, a MARL method using counterfactual semantic-social world models to help fully decentralized agents prospectively compare action consequences, improving independent learning.",
+      "llm_tldr_cn": "针对完全去中心化多智能体强化学习中奖励信号模糊的问题，提出CASTLE方法，利用反事实语义-社会世界模型使智能体能够前瞻性地比较候选动作的后果。实验表明该方法提升了独立学习的效率和效果。该工作为多智能体强化学习中的世界模型构建提供了新思路。",
+      "llm_tldr": "针对完全去中心化多智能体强化学习中奖励信号模糊的问题，提出CASTLE方法，利用反事实语义-社会世界模型使智能体能够前瞻性地比较候选动作的后果。实验表明该方法提升了独立学习的效率和效果。该工作为多智能体强化学习中的世界模型构建提供了新思路。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "reinforcement learning applied to autonomous agents",
+      "matched_requirement_id": "req-3",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "8plus"
+    },
+    {
+      "id": "2610.04168v1",
+      "source": "arxiv",
+      "title": "Agentic Cognitive Depth: Operational Criteria for Evaluating LLM Agents",
+      "abstract": "Agentic large language model (LLM) systems are commonly implemented as an LLM in a loop with Planning, Memory, Tools, and Control Flow. This application-focused view connects agentic LLM research with deployable systems and leaves open how such systems should be evaluated beyond end-to-end task success. Building on this view, we define agentic cognitive depth as a trajectory-level profile across five operational criteria. The profile contains context sensitivity ($C$), temporal continuity ($T$), multimodal coordination ($M$), adaptive interaction ($A$), and metacognitive monitoring ($Mc$). The first four criteria measure how well Control Flow, Memory, Tools, and Planning are used across a trajectory. The fifth measures whether the system monitors and regulates the full run. For each criterion, we give operational proxies and a perturbation procedure, then connect the profile to the agent's world model. We provide the structure needed to extend benchmarks such as GAIA, SWE-bench, WebArena, and TRIP-Bench with per-criterion diagnostics. Symbolic verifiers, structured memory, planner coupling, and tool constraints provide practical ways to build and test these capacities.",
+      "authors": [
+        "Nijesh Upreti",
+        "Chris Sypherd",
+        "Vaishak Belle"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-10-03T00:19:23+00:00",
+      "link": "https://arxiv.org/pdf/2610.04168v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "agentic cognitive depth includes multimodal coordination and temporal continuity",
+      "llm_evidence_cn": "智能体认知深度包含多模态协调与时间连续性标准",
+      "llm_evidence": "智能体认知深度包含多模态协调与时间连续性标准",
+      "canonical_evidence": "智能体认知深度包含多模态协调与时间连续性标准",
+      "llm_tldr_en": "Defines agentic cognitive depth across five trajectory-level criteria, including multimodal coordination and memory, for evaluating LLM agents beyond task success.",
+      "llm_tldr_cn": "针对LLM智能体评测缺少对规划、记忆、工具等使用的细粒度指标的问题，本文提出智能体认知深度框架，从上下文敏感性、时间连续性、多模态协调、自适应交互和元认知监控五个维度刻画轨迹。该框架为超越端到端任务成功的智能体评估提供了操作性标准。",
+      "llm_tldr": "针对LLM智能体评测缺少对规划、记忆、工具等使用的细粒度指标的问题，本文提出智能体认知深度框架，从上下文敏感性、时间连续性、多模态协调、自适应交互和元认知监控五个维度刻画轨迹。该框架为超越端到端任务成功的智能体评估提供了操作性标准。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "agent that processes multiple modalities",
+      "matched_requirement_id": "req-2",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    }
+  ]
+}
