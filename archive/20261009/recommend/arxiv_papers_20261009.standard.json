@@ -1,0 +1,261 @@
+{
+  "mode": "standard",
+  "generated_at": "2026-10-09T00:26:46.965574+00:00",
+  "stats": {
+    "mode": "standard",
+    "tag_count": 1,
+    "deep_divecandidates": 4,
+    "deep_cap": 6,
+    "deep_selected": 4,
+    "quick_candidates": 2,
+    "quick_skim_target": 11,
+    "quick_selected": 2
+  },
+  "deep_dive": [
+    {
+      "id": "2610.09560v1",
+      "source": "arxiv",
+      "title": "World Potential Model: Pretrained World Knowledge as Progress Potentials",
+      "abstract": "Long-horizon language agents often receive supervision only from terminal task outcomes, leaving little signal for distinguishing productive intermediate behavior from stagnation or even regression. Rather than learning a separate value function or process reward model for every task, we ask whether pretrained models can recognize task progress from their existing world knowledge. We formalize this capability with a World Potential Model (WPM), a goal-conditioned evaluator of task-relative realized progress in agent contexts. In ALFWorld and ScienceWorld, off-the-shelf pretrained models substantially outperform chance at recovering realized-progress structure without task-specific evaluator fine-tuning. We further anchor these progress judgments to task-specific milestones to obtain scalar world potentials, whose temporal differences provide process-sensitive step-level credit for policy optimization. Under matched comparisons, WPM-guided optimization improves success over outcome-only GRPO across all evaluated configurations. Together, these results provide initial evidence that pretrained world knowledge can support reusable realized-progress evaluation and provide useful supervision for long-horizon agents.",
+      "authors": [
+        "Jun Zhao",
+        "Jixin Tang",
+        "Yang Shu",
+        "Jinyang Wu",
+        "Yuyang Lu",
+        "Jingqi Tong",
+        "Hao Xu",
+        "Weifeng Ge",
+        "Qi Zhang"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-10-07T07:01:35+00:00",
+      "link": "https://arxiv.org/pdf/2610.09560v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "Introduces a goal-conditioned evaluator of task-relative progress using pretrained world knowledge for language agents",
+      "llm_evidence_cn": "提出利用预训练世界知识评估语言智能体任务相对进度的目标条件评价器",
+      "llm_evidence": "提出利用预训练世界知识评估语言智能体任务相对进度的目标条件评价器",
+      "canonical_evidence": "提出利用预训练世界知识评估语言智能体任务相对进度的目标条件评价器",
+      "llm_tldr_en": "Proposes World Potential Model (WPM), which uses pretrained models' world knowledge to assess task progress for long-horizon language agents, providing dense reward signals without task-specific value function training.",
+      "llm_tldr_cn": "针对长程语言智能体仅获得终端结果监督导致中间行为难以评估的问题，本文提出世界潜力模型（WPM），利用预训练模型已有的世界知识来评估智能体在任务中的相对进度，无需为每个任务训练独立价值函数或过程奖励模型。在ALFWorld和ScienceWorld上的实验显示，现成的预训练模型无需微调即可显著优于随机基准，恢复真实进度结构，并为后续基于进度的智能体控制提供了锚点。",
+      "llm_tldr": "针对长程语言智能体仅获得终端结果监督导致中间行为难以评估的问题，本文提出世界潜力模型（WPM），利用预训练模型已有的世界知识来评估智能体在任务中的相对进度，无需为每个任务训练独立价值函数或过程奖励模型。在ALFWorld和ScienceWorld上的实验显示，现成的预训练模型无需微调即可显著优于随机基准，恢复真实进度结构，并为后续基于进度的智能体控制提供了锚点。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "language-based world model for agent reasoning",
+      "matched_requirement_id": "req-5",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2610.09858v1",
+      "source": "arxiv",
+      "title": "Training Advisors for LLM Agents from Task Outcomes",
+      "abstract": "Large language model agents tackle multi-step tasks by interleaving reasoning and tool calls with observations from the environment. Prior work has shown that natural-language feedback can help these agents revise their decisions during task execution. We introduce Caddie, a method for training critics to provide natural-language analysis and advice as agents work through a task. Unlike approaches that rely on step-level labels or reference critiques, Caddie learns from whether the agent ultimately succeeds after receiving the critic's feedback. We optimize the critic through reinforcement learning while keeping the base model frozen. Trained on multi-hop question answering with a single base model, our Qwen3-4B critic improves success rates across four base models of different scales and architectures, including three not used during critic training. On the MuSiQue benchmark, the trained critic improves Qwen3-4B's success rate by more than 25 percentage points, surpassing the performance of Kimi K3 without a critic. The same critic also yields gains on out-of-domain interactive benchmarks, including $τ^3$ and DeepDive, with no additional training. Our results show that agents can decide when to seek help from a critic at inference time and that outcome-based critic training can produce guidance that transfers across base models and task domains.",
+      "authors": [
+        "Sergei Polezhaev",
+        "Barys Liskavets",
+        "Ori Press",
+        "Alexander Golubev"
+      ],
+      "primary_category": "cs.CL",
+      "categories": [
+        "cs.CL",
+        "cs.AI",
+        "cs.LG"
+      ],
+      "published": "2026-10-07T11:14:26+00:00",
+      "link": "https://arxiv.org/pdf/2610.09858v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "Trains critics via reinforcement learning from task outcomes to advise LLM agents",
+      "llm_evidence_cn": "利用强化学习从任务结果训练评论家以指导LLM智能体",
+      "llm_evidence": "利用强化学习从任务结果训练评论家以指导LLM智能体",
+      "canonical_evidence": "利用强化学习从任务结果训练评论家以指导LLM智能体",
+      "llm_tldr_en": "Proposes Caddie, which trains critics via reinforcement learning from final task success to provide natural-language feedback to LLM agents during execution, improving multi-step task success across models.",
+      "llm_tldr_cn": "针对LLM智能体在多步任务中缺乏有效过程反馈的问题，本文提出Caddie方法，利用任务最终成功与否作为信号，通过强化学习训练评论家模型，在执行过程中为智能体提供自然语言分析与建议。在多项多跳问答任务上，使用单个基础模型训练的Qwen3-4B评论家能提升四种不同规模基础模型的成功率，验证了从结果反馈训练过程顾问的有效性。",
+      "llm_tldr": "针对LLM智能体在多步任务中缺乏有效过程反馈的问题，本文提出Caddie方法，利用任务最终成功与否作为信号，通过强化学习训练评论家模型，在执行过程中为智能体提供自然语言分析与建议。在多项多跳问答任务上，使用单个基础模型训练的Qwen3-4B评论家能提升四种不同规模基础模型的成功率，验证了从结果反馈训练过程顾问的有效性。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "reinforcement learning applied to autonomous agents",
+      "matched_requirement_id": "req-3",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2610.05303v1",
+      "source": "arxiv",
+      "title": "ASCENT: Online Test-Time Training of Long-Horizon Agents via Self-Distillation of Verified Experience",
+      "abstract": "A large language model (LLM) agent solves long-horizon tasks through many reasoning-action turns, with one verification signal at termination. Deployed agents face streams of related tasks, making their trajectories a natural resource for improvement. In-context adaptation agents store reflections, memories, or skills as text, so reuse depends on retrieving the right experience and on a frozen policy executing it. We study Online Agentic Test-Time Training (OaTTT), which trains the LLM's weights on its own execution trajectories during deployment. The agent executes each task once, in one pass over the stream, and the executed trajectory with its verification result is the only learning signal for weight updates that persist across tasks. Directly imitating or reinforcing the generated tokens of this single attempt destabilizes the policy. We introduce ASCENT (Agentic Self-distillation for Cross-task EvolutioN at Test-time), which instead self-distills verified experience. A stable version of the LLM, its frozen initial copy, receives the verified trajectory as privileged information and predicts next-token distributions along it with this hindsight. Distilling them into persistent LoRA fast weights updates the agent for later tasks, without an external reference solution or stronger teacher. By further removing invalid-action turns, ASCENT distills enhanced privileged experience for more efficient execution. We characterize its population target and the limits of sparse outcome selection. Across ALFWorld, WebShop, and AppWorld at varied model scales, ASCENT improves task success and interaction efficiency as experience accumulates, outperforms online adaptation methods, and transfers to held-out scenes, showing that an agent can consolidate verified experience into its weights without a separate training phase or memory retrieval. Project page: https://artificer-ai-lab.github.io/ASCENT",
+      "authors": [
+        "Haodong Lu",
+        "Dong Gong"
+      ],
+      "primary_category": "cs.LG",
+      "categories": [
+        "cs.LG"
+      ],
+      "published": "2026-10-04T15:27:20+00:00",
+      "link": "https://arxiv.org/pdf/2610.05303v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "proposes online test-time training using verified trajectories instead of in-context memory retrieval",
+      "llm_evidence_cn": "提出使用已验证轨迹进行在线测试时训练，替代上下文记忆检索",
+      "llm_evidence": "提出使用已验证轨迹进行在线测试时训练，替代上下文记忆检索",
+      "canonical_evidence": "提出使用已验证轨迹进行在线测试时训练，替代上下文记忆检索",
+      "llm_tldr_en": "This paper addresses the limitation of in-context memory retrieval in long-horizon LLM agents by proposing Online Agentic Test-Time Training (OaTTT), which updates model weights from the agent's own verified trajectories during deployment. Experiments show that self-distillation from verified experience improves performance over frozen memory retrieval.",
+      "llm_tldr_cn": "针对长程LLM智能体依赖上下文记忆检索但受限于冻结策略和检索质量的问题，本文提出在线智能体测试时训练方法OaTTT，在部署过程中利用智能体自身执行轨迹和验证信号进行权重自蒸馏更新，实现连续改进而无需检索文本记忆。实验表明，从已验证经验中自蒸馏能够提升智能体在多任务流上的表现，为智能体记忆机制提供了新的实现路径。",
+      "llm_tldr": "针对长程LLM智能体依赖上下文记忆检索但受限于冻结策略和检索质量的问题，本文提出在线智能体测试时训练方法OaTTT，在部署过程中利用智能体自身执行轨迹和验证信号进行权重自蒸馏更新，实现连续改进而无需检索文本记忆。实验表明，从已验证经验中自蒸馏能够提升智能体在多任务流上的表现，为智能体记忆机制提供了新的实现路径。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "memory mechanisms for intelligent agents",
+      "matched_requirement_id": "req-1",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2610.05935v1",
+      "source": "arxiv",
+      "title": "ThunderSyncRL: Lossless Acceleration of Agentic Reinforcement Learning",
+      "abstract": "Language models are moving beyond generating answers to pursuing long-horizon goals in interactive environments. Post-training these agents requires long, heterogeneous trajectories, and synchronous systems leave learner engines idle until rollout and verification finish. To squeeze out these pipeline bubbles, asynchronous training overlaps rollout and learning across updates, but comes at the cost of policy staleness. We introduce ThunderSyncRL, which starts gradient computation as soon as all required inputs are fixed, without policy staleness. For group relative policy optimization (GRPO), ThunderSyncRL computes each trajectory's score gradient as soon as the reward for that trajectory arrives, without waiting for the group. For on-policy distillation (OPD), it computes gradients for each completed agentic turn's teacher-scored actions while tool calls run in the sandbox. We prove that gradient streaming produces the same GRPO and OPD updates as batch-synchronous training, without changing either objective. On SWE-bench Verified and Terminal Bench 4.0, we train models to the same performance up to $1.9 \\times$ faster than synchronous training. With zero policy staleness, ThunderSyncRL also outperforms asynchronous training at a fixed budget by up to $2.47$ percentage points.",
+      "authors": [
+        "Seil Kang",
+        "Hangoo Kang",
+        "Tarun Suresh",
+        "Youngeun Kim",
+        "Shreyas Pimpalgaonkar",
+        "Seong Jae Hwang",
+        "Azalia Mirhoseini"
+      ],
+      "primary_category": "cs.LG",
+      "categories": [
+        "cs.LG",
+        "cs.AI"
+      ],
+      "published": "2026-10-05T07:51:46+00:00",
+      "link": "https://arxiv.org/pdf/2610.05935v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "lossless acceleration of agentic reinforcement learning",
+      "llm_evidence_cn": "智能体强化学习的无损加速",
+      "llm_evidence": "智能体强化学习的无损加速",
+      "canonical_evidence": "智能体强化学习的无损加速",
+      "llm_tldr_en": "Proposes ThunderSyncRL, which overlaps gradient computation with trajectory rewards to accelerate agentic RL without policy staleness.",
+      "llm_tldr_cn": "针对同步RL系统在轨迹回放与验证期间存在空闲的问题，提出ThunderSyncRL方法，在所需输入确定后立即开始梯度计算，避免策略滞后。实验表明该方法在不牺牲训练质量的情况下显著加速智能体强化学习。该工作为大规模智能体RL训练提供了高效基础设施。",
+      "llm_tldr": "针对同步RL系统在轨迹回放与验证期间存在空闲的问题，提出ThunderSyncRL方法，在所需输入确定后立即开始梯度计算，避免策略滞后。实验表明该方法在不牺牲训练质量的情况下显著加速智能体强化学习。该工作为大规模智能体RL训练提供了高效基础设施。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "reinforcement learning applied to autonomous agents",
+      "matched_requirement_id": "req-3",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "quick_skim": [
+    {
+      "id": "2609.39727v1",
+      "source": "arxiv",
+      "title": "OverForge: Reasoning Through Strategies and Tactics Helps Cooperative Lifelong Adaptation",
+      "abstract": "Cooperative language-model agents must coordinate over long horizons and adapt to changing environments and to partners with unfamiliar conventions, yet existing agents map observations to actions without separating persistent coordination strategies from their tactical execution. We introduce OverForge, a training-free hierarchical architecture that separates strategic reasoning over roles and divisions of labour from tactical reasoning over actions within each agent's private, partner-conditioned world model. A metacognitive Prefrontal Cortex Module couples the two levels by forming strategy-action branches, imagining their consequences with a forward model, and committing when confident. In OvercookedV2, OverForge delivers 7 soups in a connected kitchen versus 3 for each flat LLM baseline, retains agreed roles, and adopts roles proposed by unfamiliar partners. Ablations and a fixed-strategy probe show that persistent strategies guide tactical adaptation while each reasoning level contributes to coordination. Memory restarts show that cross-episode partner knowledge supports task performance and partner prediction, linking the hierarchy to continual adaptation.",
+      "authors": [
+        "Oana Madalina Fron",
+        "Ojas Shirekar",
+        "Chirag Raman"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI",
+        "cs.CL",
+        "cs.MA"
+      ],
+      "published": "2026-09-30T13:37:03+00:00",
+      "link": "https://arxiv.org/pdf/2609.39727v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "Hierarchical world model with strategic and tactical reasoning for cooperative LLM agents",
+      "llm_evidence_cn": "面向合作LLM智能体的分层世界模型，分离战略与战术推理",
+      "llm_evidence": "面向合作LLM智能体的分层世界模型，分离战略与战术推理",
+      "canonical_evidence": "面向合作LLM智能体的分层世界模型，分离战略与战术推理",
+      "llm_tldr_en": "OverForge addresses long-horizon adaptation in cooperative LLM agents by separating strategic role reasoning from tactical action execution within each agent's private, partner-conditioned world model. A metacognitive module uses a forward model to imagine strategy-action branches and commit confidently, improving adaptation in OvercookedV2.",
+      "llm_tldr_cn": "该工作针对合作LLM智能体难以在长期内适应变化环境和陌生伙伴的问题，提出OverForge分层架构，在每个智能体私有的伙伴条件化世界模型内分离战略角色推理与战术动作执行。元认知前额叶模块通过前向模型想象策略-动作分支并自信承诺，在OvercookedV2中显著提升适应性能。",
+      "llm_tldr": "该工作针对合作LLM智能体难以在长期内适应变化环境和陌生伙伴的问题，提出OverForge分层架构，在每个智能体私有的伙伴条件化世界模型内分离战略角色推理与战术动作执行。元认知前额叶模块通过前向模型想象策略-动作分支并自信承诺，在OvercookedV2中显著提升适应性能。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "language-based world model for agent reasoning",
+      "matched_requirement_id": "req-5",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2610.01939v1",
+      "source": "arxiv",
+      "title": "Fewer Tokens, Better Action: GPT-6 Astra Robot Agents with 14% Higher Success Rate but 65% Fewer Tokens",
+      "abstract": "Vision language model (VLM) agents can control robots through visual feedback and action primitives, but repeated model invocations and redundant observations incur substantial token overhead. We introduce PyRUA-Lean, an interactive code-execution framework that couples feedback-driven primitive composition with selective observation: the agent composes classical robot primitives and learned vision-language-action (VLA) policies into Python cells that perform conditional checks and local retries, returning only explicitly requested images and state feedback for replanning. Across 700 simulated task instances from LIBERO-PRO, RoboTwin 2.0, and RoboCasa365, we compare PyRUA-Lean with a tool-calling baseline using the same GPT-6 Astra planner and underlying robot primitives. Under equal LLM-call budgets, PyRUA-Lean increases overall success from 63.1% to 71.7%. On instances solved by both agents, it uses 49% fewer LLM calls and 65% fewer input tokens.",
+      "authors": [
+        "Ruiyang Si",
+        "Jianxin Bi",
+        "Shunyu Yang",
+        "Rui Ni",
+        "Wenbo Huang",
+        "Qiang Wang",
+        "Shulong Jiang",
+        "Duomin Wang",
+        "Xiuyu Li",
+        "Haiwen Feng",
+        "Zhen Dong",
+        "Daquan Zhou"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV",
+        "cs.RO"
+      ],
+      "published": "2026-10-01T16:07:49+00:00",
+      "link": "https://arxiv.org/pdf/2610.01939v1",
+      "tags": [
+        "keyword:agent-memory",
+        "query:agent-memory"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "VLM agent that processes visual feedback, language instructions, and action primitives with selective observation",
+      "llm_evidence_cn": "处理视觉反馈、语言指令与动作原语的VLM智能体，并有选择性观察",
+      "llm_evidence": "处理视觉反馈、语言指令与动作原语的VLM智能体，并有选择性观察",
+      "canonical_evidence": "处理视觉反馈、语言指令与动作原语的VLM智能体，并有选择性观察",
+      "llm_tldr_en": "PyRUA-Lean addresses token overhead in VLM robot agents by coupling feedback-driven primitive composition with selective observation, composing classical primitives and learned VLA policies into Python cells that return only explicitly requested images and state feedback. Across 700 simulated tasks, it achieves 14% higher success rate with 65% fewer tokens than a tool-calling baseline.",
+      "llm_tldr_cn": "该工作针对VLM机器人智能体重复调用模型和冗余观测导致的高token开销问题，提出PyRUA-Lean交互式代码执行框架，将经典原语与学习到的视觉-语言-动作策略组合成Python单元，并仅返回显式请求的图像和状态反馈。在700个模拟任务上，相比工具调用基线，成功率提高14%且token减少65%。",
+      "llm_tldr": "该工作针对VLM机器人智能体重复调用模型和冗余观测导致的高token开销问题，提出PyRUA-Lean交互式代码执行框架，将经典原语与学习到的视觉-语言-动作策略组合成Python单元，并仅返回显式请求的图像和状态反馈。在700个模拟任务上，相比工具调用基线，成功率提高14%且token减少65%。",
+      "llm_tags": [
+        "query:agent-memory"
+      ],
+      "matched_query_tag": "query:agent-memory",
+      "matched_query_text": "agent that processes multiple modalities",
+      "matched_requirement_id": "req-2",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    }
+  ]
+}

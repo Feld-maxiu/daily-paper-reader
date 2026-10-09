@@ -1,0 +1,799 @@
+Title: World Potential Model: Pretrained World Knowledge as Progress Potentials
+
+URL Source: https://arxiv.org/pdf/2610.09560v1
+
+Published Time: Thu, 08 Oct 2026 00:50:43 GMT
+
+Number of Pages: 24
+
+Markdown Content:
+World Potential Model: Pretrained World Knowledge as Progress Potentials 
+
+Jun Zhao 1,*, †, Jixin Tang 2,* , Yang Shu 2, Jinyang Wu 3, Yuyang Lu 2, Jingqi Tong 2,Hao Xu 4, Weifeng Ge 2, Qi Zhang 2.
+
+> 1
+
+National University of Singapore 2Fudan University 3Tsinghua University 4The University of Sydney 
+
+* Equal contribution. † Corresponding author. 
+
+## Abstract 
+
+Long-horizon language agents often receive supervision only from terminal task outcomes, leaving little signal for distinguishing productive intermediate behavior from stagnation or even regression. Rather than learning a separate value function or process reward model for every task, we ask whether pretrained models can recognize task progress from their existing world knowledge. We formalize this capability with a World Potential Model (WPM ), a goal-conditioned evaluator of task-relative realized progress in agent contexts. In ALFWorld and ScienceWorld, off-the-shelf pretrained models substantially outperform chance at recovering realized-progress structure without task-specific evaluator fine-tuning. We further anchor these progress judgments to task-specific milestones to obtain scalar world potentials , whose temporal differences provide process-sensitive step-level credit for policy optimization. Under matched comparisons, WPM -guided optimization improves success over outcome-only GRPO across all evaluated configurations. Together, these results provide initial evidence that pretrained world knowledge can support reusable realized-progress evaluation and provide useful supervision for long-horizon agents. 
+
+Correspondence: jzhao.nlp@gmail.com 
+
+Code Repository: https://github.com/Gabrile166/world-potential-model …                           
+
+> Planning Navigation Science Coding Web
+> 𝜙 != 0.0 𝑚 !:Task start
+> 𝜙 "= 0.25 𝑚 ":Hallway reached
+> 𝜙 #= 0.5 𝑚 #:Kitchen reached
+> 𝜙 $= 0.75 𝑚 $:Pot located
+> 𝜙 %= 1.0 𝑚 %:Pot on burner
+> Progress anchors Progress comparison
+> 𝑥 &≽'𝑚 !𝑥 &≽'𝑚 "𝑥 &≽'𝑚 #m$≽'𝑥 &𝑚 %≽'𝑥 &
+
+World Potential Model (WPM) 𝚽 
+
+Pretrained World Knowledge       
+
+> Current Context 𝑥 &
+> Search in kitchen
+> Task Goal 𝑔:
+> Find the pot and put it on the burner.
+> ΔΦ = 𝛾Φ '𝑥 &(" − Φ '𝑥 &
+> > 0 progress
+> ≈0stagnation < 0 regression
+
+Progress-Sensitive Policy Optimization    
+
+> Progress Signal
+> Φ!𝑥 "= 𝜙 #= 0.5
+
+Figure 1 Overview of the World Potential Model (WPM ) and its downstream scalarization. A WPM elicits task-relative realized-progress structure from pretrained world knowledge, with ordinal progress judgments as its primary interface. For downstream use, these judgments can be referenced to task-specific progress anchors to obtain scalar world potentials, whose temporal differences provide process-sensitive credit for policy optimization. 
+
+1arXiv:2610.09560v1 [cs.AI] 7 Oct 2026 1 Introduction 
+
+Large language models (LLMs) are rapidly becoming the cognitive core of agentic systems [1], where they interpret environments [2], invoke tools [3, 4], and drive multi-step reasoning [5–7] across increasingly complex tasks. As these tasks become longer-horizon, however, terminal outcomes alone provide too little structure for evaluating intermediate processes [8–15]. A failed trajectory may have made substantial progress before a late mistake, while a successful trajectory may contain redundant exploration, prolonged stagnation, or temporary regression. Long-horizon agents therefore need a way to distinguish productive intermediate behavior before the final outcome is known. Value functions and process reward models provide one route to denser supervision by estimating future return or scoring intermediate behavior [16, 17]. These evaluators can be effective, but typically rely on task-specific annotation and training. For agents expected to operate across heterogeneous tasks and environments, repeatedly constructing a new evaluator may be expensive and difficult to scale. This raises a complementary question: must progress evaluation itself require learning a task-specific evaluator, or can it be elicited from knowledge already acquired during pretraining? 
+
+Pretrained foundation models encounter broad descriptions of procedures, physical interactions, causal relationships, and the structure of complex tasks [18–21]. Such knowledge provides a plausible basis for recognizing not only whether an individual action is plausible, but also what has already been accomplished in an evolving agent context. For example, acquiring a required object, resolving a constraint, or completing a necessary subprocedure may represent meaningful progress, whereas undoing a satisfied condition may represent regression. This suggests that pretrained models may support a reusable capability for recognizing realized task progress without task-specific evaluator training. We formalize this hypothesized capability through the abstraction of a World Potential Model (WPM ). Given a task goal, a WPM evaluates the goal-relevant progress already realized in an agent context using pretrained world knowledge. We call the resulting task-relative progress structure world potential . Because globally calibrated scalar progress is difficult to define across open-ended tasks, we take ordinal judgments of relative progress as the primary interface to this structure. To obtain a scalar potential for downstream use, we introduce one concrete instantiation that anchors these judgments to ordered task-specific milestones. The resulting task-local potentials can then provide step-level progress signals through their temporal differences. We study the WPM abstraction and its downstream utility in ALFWorld [22] and ScienceWorld [23], two structured long-horizon environments in which privileged progress signals enable controlled evaluation. Across both environments, off-the-shelf pretrained models substantially outperform chance at recovering realized-progress structure without task-specific evaluator fine-tuning, providing evidence for the existence of the progress-recognition capability underlying WPM s. We further find that, when these judgments are anchored to task-specific milestones, the resulting scalar potentials provide useful downstream supervision: under matched comparisons, WPM -guided optimization improves success over outcome-only GRPO across all evaluated configurations. This paper makes three contributions. First, we introduce the World Potential Model , a general abstraction for eliciting task-relative realized progress from pretrained world knowledge. Second, we develop a practical framework for turning realized-progress judgments into task-local scalar potentials for long-horizon agents. Third, we show how world potentials can provide process-sensitive supervision for sparse-reward policy optimization. Together, our results provide initial evidence that realized-progress evaluation is a reusable capability of pretrained models and a useful source of supervision for long-horizon agents. 
+
+## 2 Problem Setup and World Potential Models 
+
+2.1 Long-Horizon Sparse-Reward Agent Tasks 
+
+We consider a finite-horizon episodic task specified by a goal or instruction 𝑔 . The environment may be partially observable. At step 𝑡 , let 𝑥 𝑡 denote the agent-visible interaction context, comprising the information 2available from the interaction history, including observations, previous actions, tool outputs, intermediate reasoning, memory, and other task-relevant information. The policy conditions on both the task goal and the current context, 
+
+𝑎 𝑡 ∼ 𝜋 (· | 𝑔, 𝑥 𝑡 ). (1) After the action is executed, the environment returns new feedback or observations, which are incorporated into the interaction context to form 𝑥 𝑡 +1. A trajectory is therefore represented as 
+
+𝜏 = (𝑥 0 , 𝑎 0 , 𝑥 1 , 𝑎 1 , . . . , 𝑥 𝑇 ). (2) This formulation accommodates embodied, web, software, and tool-using agents whose decisions depend on an evolving interaction context rather than a compact fully observed environment state. We do not require the agent-visible context itself to be Markov. We focus on sparse, outcome-only supervision: 
+
+𝑟 env  
+
+> 𝑡
+
+=
+
+(
+
+0, 𝑡 < 𝑇 − 1,𝑅 (𝜏 ), 𝑡 = 𝑇 − 1, (3) where 𝑅 (𝜏 ) denotes the terminal task outcome and is binary in our experiments. Such feedback determines whether the episode ultimately succeeds, but provides little direct information about the goal-relevant progress realized at intermediate contexts. 
+
+2.2 World Potential Models 
+
+World potential. For a task goal 𝑔 , a World Potential Model (WPM ) is an evaluator that uses pretrained world knowledge to assess an agent context 𝑥 in terms of the goal-relevant progress already realized toward 
+
+𝑔 . We refer to the resulting task-relative progress structure as world potential . The target is retrospective :it characterizes what has already been accomplished in the current context, rather than predicting future 
+
+return . A WPM need not directly produce a globally calibrated numerical progress score. Instead, we take ordinal judgments of relative realized progress as its primary interface, and introduce a task-local scalar representation only when needed for downstream use. 
+
+Ordinal progress interface. Given two contexts 𝑥 𝑖 and 𝑥 𝑗 from the same task instance, a WPM compares their relative realized progress. We write 
+
+𝑥 𝑖 ⪰𝑔 𝑥 𝑗 , (4) when the WPM judges 𝑥 𝑖 to embody at least as much goal-relevant realized progress toward 𝑔 as 𝑥 𝑗 . Relative progress can be meaningful even when an absolute progress score is not. For example, after an agent acquires a necessary clue, it may be natural to judge the resulting context as representing greater realized progress than the preceding one, while assigning either context a globally meaningful score such as “0.63 complete” is considerably less well-defined. The relation is task-relative: a WPM need not place unrelated tasks on a common numerical scale, but only compare realized progress within the task being evaluated. Listing 1 in Appendix A.1 gives the pairwise prompt used in our implementation. 
+
+2.3 Anchored Scalar World Potentials 
+
+The ordinal WPM interface in Section 2.2 does not require a numerical notion of progress. For downstream applications that require a scalar signal, we introduce a task-local reference frame consisting of ordered progress anchors, 
+
+𝑀 𝑔 = {( 𝑚 𝑘 , 𝜙 𝑘 )} 𝐾 𝑘 =0 , (5) where each 𝑚 𝑘 describes a verifiable goal-relevant accomplishment and 𝜙 𝑘 assigns it a task-local scalar coordinate. The anchors range from task initiation to completion, with 𝑚 0 representing no meaningful 3progress and 𝑚 𝐾 representing task completion, and 0 = 𝜙 0 < 𝜙 1 < · · · < 𝜙 𝐾 = 1. (6) These coordinates need only be meaningful within the task; no numerical calibration across unrelated tasks is assumed. Given an intermediate context 𝑥 𝑡 , the WPM localizes its realized progress relative to the ordered anchors. We define 
+
+𝑧 𝑡 = max {𝑘 | 𝑥 𝑡 ⪰𝑔 𝑚 𝑘 }, (7) where 𝑧 𝑡 denotes the most advanced anchor relative to which 𝑥 𝑡 is judged to embody at least as much goal-relevant realized progress. The corresponding scalar world potential is 
+
+Φ𝑔 (𝑥 𝑡 ) = 𝜙 𝑧 𝑡 . (8) This construction separates task-local calibration from progress evaluation. The anchors specify a sparse reference frame for the task, while the frozen WPM supplies the evaluative mapping that places arbitrary agent contexts onto that frame using pretrained knowledge. The formulation itself is agnostic to how the reference frame is obtained. In our experiments, we instantiate 
+
+𝑀 𝑔 once per task from the task description and a single successful expert trajectory. The resulting anchors are then fixed, and the successful trajectory is not provided when the WPM evaluates new agent contexts. Appendix A.2 describes this construction in detail. 
+
+2.4 Relation to Existing Abstractions 
+
+World Potential Model s are related to value functions , reward models , and world models , but differ in what they evaluate and how that evaluation is obtained. 
+
+Value functions. Both value functions and WPM s evaluate an agent context or state, but their targets differ fundamentally. A policy-conditioned value function 𝑉 𝜋 (𝑥 ) is prospective : it estimates the expected future return 
+
+obtainable from 𝑥 under policy 𝜋 , and therefore generally depends on the policy being evaluated. A WPM 
+
+is retrospective : it evaluates the goal-relevant progress already realized in the current context rather than predicting future return . This progress judgment is defined independently of the policy that produced the context. Two contexts may therefore embody similar realized progress even if their future prospects under a particular policy differ substantially. 
+
+Reward and process-reward models. World potentials can be converted into reward-like signals, for example through temporal differences such as 𝛾 Φ𝑔 (𝑥 𝑡 +1) − Φ𝑔 (𝑥 𝑡 ), but the WPM itself is an evaluator of realized progress rather than a reward model trained for a particular task. Conventional reward or process-reward models 
+
+are typically fitted from task-specific labels, preferences, or rollouts. In our setting, the evaluator parameters receive no task-specific fine-tuning; instead, progress judgments are elicited from a pretrained model and, for the scalar instantiation above, referenced to task-specific milestone anchors. Thus, task-specific structure enters through the scalarization reference frame rather than through evaluator parameter training. 
+
+World models. Despite the shared term world , a WPM is not a model of environment dynamics. Conventional 
+
+world models predict transitions, future observations, or other consequences of actions, for example through 
+
+𝑝 (𝑠 𝑡 +1 | 𝑠 𝑡 , 𝑎 𝑡 ). A WPM neither predicts transitions nor simulates future states. It evaluates the realized progress represented in the current context. World instead refers to the pretrained world knowledge from which these progress judgments are elicited. 4Table 1 Accuracy (%) on two realized-progress evaluations. Pairwise comparison directly evaluates the ordinal progress interface of a WPM , while Anchored localization evaluates context localization relative to a task-specific milestone ladder. Random Guess denotes uniform selection among the valid candidate labels for each instance and is averaged over the corresponding evaluation set.    
+
+> Model ALFWorld ScienceWorld Avg.
+
+Pairwise Anchored Pairwise Anchored                                         
+
+> Random Guess 50.00 20.00 50.00 15.27 33.82 MiMo-VL-7B [24] 92.67 58.00 97.33 63.33 77.83 Qwen2.5-VL-7B [25] 80.00 60.00 81.33 48.00 67.33 Qwen2.5-32B [26] 95.33 80.67 96.67 76.00 87.17 Qwen2.5-VL-72B [27] 93.33 82.00 94.67 81.33 87.83 Qwen3-30B-A3B [28] 91.33 86.67 97.33 80.00 88.83 Qwen3-VL-30B-A3B [29] 90.00 88.00 98.00 85.33 90.33
+> Qwen3-VL-32B [30] 92.67 86.67 94.67 70.00 86.00
+
+## 3 Do Pretrained Models Expose World-Potential Structure? 
+
+The central empirical question behind the WPM abstraction is whether pretrained models can recover meaningful task-relative progress structure from agent contexts without task-specific evaluator fine-tuning. We evaluate this question at the two levels introduced in Section 2. Pairwise progress comparison directly tests whether pretrained models can make the relative progress judgments that constitute the WPM ’s primary ordinal interface. Anchored progress localization further tests whether these judgments can be referenced to a fixed task-specific milestone ladder to obtain the task-local localization used in the scalar construction. 
+
+3.1 Evaluation Tasks 
+
+Pairwise progress comparison. Given two agent contexts 𝑥 𝑖 and 𝑥 𝑗 associated with the same task goal 𝑔 ,the model predicts which context embodies greater goal-relevant progress already realized toward task completion. The two contexts may arise from different interaction trajectories and need not share a common prefix. The task therefore requires comparing the realized progress represented in the contexts rather than relying on their temporal positions within a trajectory. No milestone ladder is provided, so this evaluation directly probes the ordinal progress interface defined in Section 2.2. 
+
+Anchored progress localization. Given an agent context 𝑥 𝑡 together with its fixed task-specific milestone ladder 𝑀 𝑔 , the model predicts the anchor index 𝑧 𝑡 corresponding to the context’s realized-progress level. The number of anchors is determined during task-specific milestone construction and may vary across tasks. The corresponding scalar world potential is then given by the fixed anchor coordinate 𝜙 𝑧 𝑡 . This evaluation therefore tests the anchored scalar representation introduced in Section 2.3 rather than requiring the model to assign an unconstrained numerical progress score directly to the context. Both tasks are formulated as categorical prediction problems. The exact evaluation prompts are provided in Appendix A.1. 
+
+3.2 Experimental Setting 
+
+Benchmarks and labels. We instantiate both evaluation tasks in ALFWorld [22] and ScienceWorld [23], two long-horizon interactive environments in which successful task completion requires multiple stages of meaningful intermediate progress. Both environments provide privileged signals for constructing environment-grounded progress labels. In ALFWorld, we use normalized remaining expert-plan length as a planner-based proxy : although formally a cost-to-go measure, manual inspection indicates that its ordering tracks relative realized progress, and we filter near-tied states. In ScienceWorld, the native task score directly awards partial credit for satisfied goals and subgoals. These signals are used only for evaluation-label construction and are never provided to the models; Appendix A.3 gives full details. 5Models and evaluation protocol. We evaluate seven language and vision-language models from three model families: MiMo, Qwen2.5, and Qwen3. All models are tested under the same prompting protocol and without task-specific evaluator fine-tuning. We measure accuracy against environment-grounded labels. For an evaluation instance with 𝐶 𝑖 candidate labels, uniform random guessing has expected accuracy 1 /𝐶 𝑖 .Pairwise comparison therefore has a fixed chance accuracy of 50%, whereas anchored progress localization has a task-dependent chance accuracy because the number of milestone anchors varies across tasks. The mean random-guess accuracies are 20 .00% in ALFWorld and 15 .27% in ScienceWorld. 
+
+3.3 Results 
+
+Table 1 reports performance on pairwise progress comparison and anchored progress localization .
+
+Relative realized progress is strongly recoverable in these settings. All evaluated models substantially outperform the 50% random baseline on pairwise progress comparison. Averaged across models and environments, pairwise accuracy reaches 92 .52%, with the best results reaching 95 .33% on ALFWorld and 98 .00% on ScienceWorld. These results provide direct evidence that pretrained models can often determine which of two partially completed agent contexts embodies greater goal-relevant realized progress, even when the contexts arise from different interaction paths. The result is consistent across all three evaluated model families, both language-only and vision-language models, and both environments, suggesting that it is not specific to a single model or benchmark. 
+
+Anchored progress localization is harder but remains informative. Average localization accuracy across models and environments reaches 74 .71%, with all evaluated models exceeding the corresponding random baselines of 20 .00% in ALFWorld and 15 .27% in ScienceWorld. The best results reach 88 .00% and 85 .33%, respectively. Although localization accuracy is lower than pairwise accuracy, this gap is consistent with the different structure of the two evaluations: pairwise comparison requires resolving a single relative-progress relation, whereas anchored localization requires placing a context among multiple ordered, task-dependent progress anchors. These results show that pretrained models can meaningfully localize agent contexts relative to fixed task-specific milestone ladders, providing the localization step required by the scalar construction in Section 2.3. 
+
+Takeaway. The pairwise results support the core premise of the WPM abstraction: in two controlled long-horizon environments, off-the-shelf pretrained models recover substantial task-relative ordinal realized-progress structure without task-specific evaluator fine-tuning. Anchored localization is less accurate but remains substantially above chance, showing that these judgments can also be referenced to task-specific progress anchors for the scalar construction introduced in Section 2.3. We next ask whether world potentials constructed from these imperfect judgments provide useful downstream supervision. 
+
+## 4 Progress-Sensitive Policy Optimization with World Potentials 
+
+The anchored construction in Section 2.3 provides a task-local scalar potential Φ𝑔 (𝑥 ) over agent contexts. We now consider one downstream use of this signal: converting temporal changes in world potential into process-sensitive step-level credit for critic-free policy optimization. Section 5 uses this construction to test whether imperfect world-potential estimates provide useful supervision beyond sparse terminal outcomes. 
+
+4.1 World-Potential Transition Signal 
+
+Under the sparse-reward setting of Section 2.1, the environment reward is zero at intermediate steps and is determined by the task outcome on the terminal transition. We augment this sparse signal with the temporal difference in world potential :
+
+𝑟 WP  
+
+> 𝑡
+
+= 𝑟 env  
+
+> 𝑡
+
++ 𝛾 Φ𝑔 (𝑥 𝑡 +1) − Φ𝑔 (𝑥 𝑡 ), (9) where 𝛾 ∈ ( 0, 1] is the base temporal discount. A transition to a context with higher world potential receives a positive potential contribution, whereas a transition to a lower-potential context receives a negative 6contribution. When the potential remains unchanged (i.e., Φ𝑔 (𝑥 𝑡 +1) = Φ 𝑔 (𝑥 𝑡 ) > 0) and 𝛾 < 1, the potential contribution becomes −( 1 − 𝛾 )Φ𝑔 (𝑥 𝑡 ) < 0, yielding a small negative signal and mildly discouraging interaction that fails to advance the task. 
+
+4.2 Process-Sensitive Returns 
+
+We next aggregate the transition signals in Eq. 9 into step-level returns. To control how future intermediate contexts contribute to the credit assigned at step 𝑡 , we introduce a process-sensitivity parameter 𝜌 ∈ [ 0, 1]
+
+and define the effective return discount as 
+
+𝛽 = 𝛾𝜌 . (10) The resulting world-potential return from step 𝑡 is 
+
+𝐺 WP ,𝜌  
+
+> 𝑡
+
+=
+
+> 𝑇 −𝑡 −1
+
+Õ 
+
+> ℓ=0
+
+𝛽 ℓ 𝑟 WP  
+
+> 𝑡 +ℓ
+
+=
+
+> 𝑇 −𝑡 −1
+
+Õ 
+
+> ℓ=0
+
+(𝛾𝜌 )ℓ 𝑟 WP  
+
+> 𝑡 +ℓ
+
+. (11) Let 𝐻 = 𝑇 − 𝑡 . Substituting Eq. 9 and collecting the potential terms gives 
+
+𝐺 WP ,𝜌  
+
+> 𝑡
+
+=
+
+> 𝐻 −1
+
+Õ 
+
+> ℓ=0
+
+𝛽 ℓ 𝑟 env 
+
+> 𝑡 +ℓ
+
+| {z }
+
+> environment return
+
+− Φ𝑔 (𝑥 𝑡 )
+
+| {z }
+
+> current-context potential
+
++ 𝛾 (1 − 𝜌 )
+
+> 𝐻 −1
+
+Õ
+
+> 𝑘 =1
+
+𝛽 𝑘 −1Φ𝑔 (𝑥 𝑡 +𝑘 )
+
+| {z }
+
+> intermediate world potentials
+
++ 𝛾𝛽 𝐻 −1Φ𝑔 (𝑥 𝑇 )
+
+| {z }
+
+> terminal-context potential
+
+. (12) For 0 < 𝜌 < 1, each future intermediate context contributes explicitly to the return with weight 
+
+𝑤 𝑘 (𝜌 ) = 𝛾 (1 − 𝜌 )( 𝛾𝜌 )𝑘 −1 = 𝛾 𝑘 (1 − 𝜌 )𝜌 𝑘 −1 , (13) where 1 ≤ 𝑘 < 𝐻 and adjacent weights satisfy 
+
+𝑤 𝑘 +1(𝜌 )
+
+𝑤 𝑘 (𝜌 ) = 𝛾𝜌 < 1, (14) so the contribution of intermediate world potentials decays geometrically with temporal distance. Smaller values of 𝜌 concentrate this contribution more strongly on nearer-term contexts, whereas larger values extend credit over a longer portion of the remaining trajectory. The return can therefore remain sensitive to when progress is realized and how it evolves over subsequent intermediate contexts. The boundary cases further clarify the role of 𝜌 . At 𝜌 = 0, we have 𝛽 = 0, and the return reduces to the one-step transition signal, 
+
+𝐺 WP ,0 
+
+> 𝑡
+
+= 𝑟 WP  
+
+> 𝑡
+
+. (15) At 𝜌 = 1, by contrast, 𝛽 = 𝛾 and the coefficient on every intermediate potential in Eq. 12 becomes zero. In this case, using the same discount 𝛾 for both the potential difference and its temporal accumulation causes the intermediate potential terms to cancel telescopically, leaving 
+
+𝐺 WP ,1 
+
+> 𝑡
+
+=
+
+> 𝐻 −1
+
+Õ 
+
+> ℓ=0
+
+𝛾 ℓ 𝑟 env  
+
+> 𝑡 +ℓ
+
+− Φ𝑔 (𝑥 𝑡 ) + 𝛾 𝐻 Φ𝑔 (𝑥 𝑇 ). (16) Thus, for 0 < 𝜌 < 1, intermediate world potentials remain explicitly represented in the return rather than canceling out. The resulting return is therefore intentionally process-sensitive: it uses intermediate realized-progress estimates to distinguish trajectories that may share the same terminal outcome but differ in how progress unfolds along the way. 74.3 Step-Level Group-Relative Advantages 
+
+We retain the group-relative standardization principle of GRPO, but apply it to step-level world-potential returns rather than trajectory-level outcome rewards. Consider a rollout group of 𝑁 trajectories sampled for the same task 𝑔 . For every valid environment step, we compute the world-potential return 𝐺 WP ,𝜌  
+
+> 𝑖,𝑡
+
+and standardize these returns across all valid environment steps from the 𝑁 trajectories in the task group: 
+
+ˆ𝐴 𝑖,𝑡 = 𝐺 WP ,𝜌  
+
+> 𝑖,𝑡
+
+− 𝜇 step 
+
+> 𝑔
+
+𝜎 step  
+
+> 𝑔
+
++ 𝜖 norm 
+
+, (17) where 𝜇 step  
+
+> 𝑔
+
+and 𝜎 step  
+
+> 𝑔
+
+denote the mean and standard deviation over the corresponding set of valid step-level returns. This changes the granularity of credit assignment relative to our outcome-only GRPO baseline. In that baseline, each trajectory receives a single group-relative advantage derived from its terminal outcome, which is shared by all actions in the trajectory. WPM-guided optimization instead assigns a distinct advantage to each valid environment step according to its process-sensitive return. Actions followed by different patterns of progress, stagnation, or regression can therefore receive different optimization weights even within the same trajectory. 
+
+## 5 A Utility Case Study in Sparse-Reward Policy Optimization 
+
+Section 3 shows that pretrained models can recover meaningful realized-progress structure from agent contexts, while Section 4 converts anchored world potentials into process-sensitive step-level credit. We now ask whether this credit provides useful supervision for policy learning under sparse terminal rewards. We compare WPM -guided optimization with outcome-only GRPO under matched actor-training configurations, using task success as the downstream evaluation criterion. This experiment is intended as a controlled test of the utility of WPM -derived process-sensitive credit rather than as a comprehensive comparison of reinforcement learning algorithms. 
+
+5.1 Experimental Setup 
+
+Environments and data splits. We evaluate on the same two long-horizon interactive environments used in Section 3: ALFWorld and ScienceWorld. For ALFWorld, policies are trained on the official training split and evaluated on valid_unseen . For ScienceWorld, policies are trained on the official training variations and evaluated on the corresponding test variations. Both environments provide sparse terminal supervision. 
+
+Policies and controlled comparison. We optimize Qwen2.5-Instruct models at 3B and 7B scale and Qwen3 at 4B scale. For reference, we also report the corresponding vanilla checkpoints. Our primary comparison is between outcome-only GRPO and WPM -guided optimization. For each actor model, the two optimization methods use matched task sampling, rollout construction, and actor-update configurations; they differ in the learning signal and resulting credit construction. Outcome-only GRPO derives trajectory-level advantages from terminal task outcomes, whereas WPM -guided optimization uses the process-sensitive step-level returns defined in Section 4. World potentials are produced by a frozen Qwen3-VL-32B evaluator using the fixed task-specific milestone ladders described in Section 2.3. The evaluator parameters remain fixed throughout actor training. For each actor–environment configuration, we run both methods with the same three random seeds and report mean performance across the three runs. 
+
+Evaluation metric. We report task success rate, defined as the percentage of evaluation episodes whose final environment state satisfies the task goal. Full details of task sampling, rollout construction, optimization hyperparameters, evaluator settings, and metric computation are provided in Appendix C. 8Table 2 Task success rate (%) for vanilla policies, outcome-only GRPO, and WPM -guided optimization in ALFWorld and ScienceWorld. Results for GRPO and WPM are averaged over three independent random seeds. 
+
+Model Method Alf World Science World Qwen2.5-3B Vanilla 10.93 8.59 GRPO 53.90 51.56 WPM 60.50 55.39 
+
+Qwen2.5-7B Vanilla 15.62 13.28 GRPO 68.70 66.40 WPM 72.10 74.73 
+
+Qwen3-4B Vanilla 22.65 19.53 GRPO 48.43 42.96 WPM 53.64 46.09 
+
+5.2 Results 
+
+WPM -guided optimization consistently improves task success. As shown in Table 2, WPM -guided opti-mization outperforms the matched outcome-only GRPO baseline in all six actor–environment configurations. The improvements range from 3 .13 to 8 .33 percentage points, with an average gain of 5 .08 points. The largest improvement occurs for Qwen2.5-7B on ScienceWorld, where success increases from 66 .40% to 74 .73%. Improvements are observed for all three actor models in both environments. These results provide evidence that the realized-progress information recovered by the WPM can be converted into useful supervision for sparse-reward policy optimization. In particular, under the matched training configurations studied here, the process-sensitive credit construction of Section 4 provides more useful learning signal than assigning credit solely from terminal trajectory outcomes. The experiment therefore establishes a downstream utility result for world potentials in the evaluated settings, without requiring the 
+
+WPM evaluator itself to be trained on task-specific progress labels. 
+
+## 6 Related Work 
+
+Process supervision and progress-based credit. Process supervision provides intermediate learning signals beyond terminal correctness [17]. Recent work extends this idea to interactive agents through learned process reward models, rollout-derived credit, and subgoal- or progress-based supervision [15, 31–35]. These approaches reinforce the importance of intermediate credit in long-horizon tasks, but obtain such credit from different sources, including policy rollouts, learned evaluators, intrinsic beliefs, or explicit subgoal structure. Our focus is complementary: we ask whether a frozen pretrained model already exposes a task-relative notion of realized progress that can be elicited without task-specific evaluator fine-tuning. A WPM therefore treats realized-progress evaluation as the object of study itself, with ordinal comparison as its primary interface, rather than defining progress through predicted future return. 
+
+Foundation models for reward and progress construction. Pretrained language and vision-language models have been used to generate reward functions, provide reward judgments, and construct task-progress signals [20, 36–41]. These methods share with WPM s the premise that pretrained models contain task knowledge that can support downstream learning. Our formulation isolates a different interface to that knowledge: the pretrained evaluator makes ordinal judgments about progress already realized in an agent context, which can then be referenced to task-specific anchors when a scalar potential is needed. This separates the general progress-evaluation capability from the particular scalarization and optimization scheme used downstream. Our policy-optimization construction is also related to potential-based reward shaping [42]; however, for 0 < 𝜌 < 1, intermediate world potentials remain explicitly represented in the process-sensitive return, so the resulting objective is not the classical policy-invariant shaping construction. 97 Conclusion 
+
+We introduced the World Potential Model (WPM ), an abstraction for eliciting task-relative realized progress from pretrained world knowledge. In ALFWorld and ScienceWorld, off-the-shelf pretrained models recover substantial realized-progress structure without task-specific evaluator fine-tuning. We further showed that these judgments can be anchored into scalar world potentials and converted into process-sensitive step-level credit. Under matched actor-training configurations, WPM -guided optimization improves task success over outcome-only GRPO across all evaluated settings. Together, these results provide initial evidence that realized-progress evaluation can serve as a reusable interface between pretrained world knowledge and long-horizon agent learning. Evaluating world potentials 
+
+across broader tasks and agent settings remains an important direction. 
+
+## References 
+
+[1] Lei Wang, Chen Ma, Xueyang Feng, Zeyu Zhang, Hao Yang, Jingsen Zhang, Zhiyuan Chen, Jiakai Tang, Xu Chen, Yankai Lin, Wayne Xin Zhao, Zhewei Wei, and Jirong Wen. A survey on large language model based autonomous agents. Frontiers of Computer Science, 18(6):186345, Mar 2024. ISSN 2095-2236. doi: 10.1007/s11704-024-40231-1. URL https://doi.org/10.1007/s11704-024-40231-1 .[2] Wenlong Huang, Fei Xia, Ted Xiao, Harris Chan, Jacky Liang, Pete Florence, Andy Zeng, Jonathan Tompson, Igor Mordatch, Yevgen Chebotar, Pierre Sermanet, Tomas Jackson, Noah Brown, Linda Luu, Sergey Levine, Karol Hausman, and brian ichter. Inner monologue: Embodied reasoning through planning with language models. In Karen Liu, Dana Kulic, and Jeff Ichnowski, editors, Proceedings of The 6th Conference on Robot Learning, volume 205 of Proceedings of Machine Learning Research, pages 1769–1782. PMLR, 14–18 Dec 2023. URL 
+
+https://proceedings.mlr.press/v205/huang23c.html .[3] Timo Schick, Jane Dwivedi-Yu, Roberto Dessi, Roberta Raileanu, Maria Lomeli, Eric Hambro, Luke Zettlemoyer, Nicola Cancedda, and Thomas Scialom. Toolformer: Language models can teach themselves to use tools. In Thirty-seventh Conference on Neural Information Processing Systems, 2023. URL https://openreview.net/ forum?id=Yacmpz84TH .[4] Bhargavi Paranjape, Scott M. Lundberg, Sameer Singh, Hannaneh Hajishirzi, Luke Zettlemoyer, and Marco Tulio Ribeiro. Art: Automatic multi-step reasoning and tool-use for large language models. ArXiv, abs/2303.09014, 2023. URL https://api.semanticscholar.org/CorpusID:257557449 .[5] Shunyu Yao, Jeffrey Zhao, Dian Yu, Nan Du, Izhak Shafran, Karthik R Narasimhan, and Yuan Cao. React: Synergizing reasoning and acting in language models. In The Eleventh International Conference on Learning Representations, 2023. URL https://openreview.net/forum?id=WE_vluYUL-X .[6] Jun Zhao, Can Zu, Xu Hao, Yi Lu, Wei He, Yiwen Ding, Tao Gui, Qi Zhang, and Xuanjing Huang. LONGAGENT: Achieving question answering for 128k-token-long documents through multi-agent collaboration. In Yaser Al-Onaizan, Mohit Bansal, and Yun-Nung Chen, editors, Proceedings of the 2024 Conference on Empirical Methods in Natural Language Processing, pages 16310–16324, Miami, Florida, USA, November 2024. Association for Computational Linguistics. doi: 10.18653/v1/2024.emnlp-main.912. URL https://aclanthology.org/2024.emnlp-main. 912/ .[7] Guanzhi Wang, Yuqi Xie, Yunfan Jiang, Ajay Mandlekar, Chaowei Xiao, Yuke Zhu, Linxi Fan, and Anima Anandkumar. Voyager: An open-ended embodied agent with large language models. Transactions on Machine Learning Research, 2024. ISSN 2835-8856. URL https://openreview.net/forum?id=ehfRiF0R3a .[8] Prithvi Rajasekaran. Harness design for long-running application development, March 2026. URL https: //www.anthropic.com/engineering/harness-design-long-running-apps .[9] Justin Young. Effective harnesses for long-running agents, November 2025. URL https://www.anthropic.com/ engineering/effective-harnesses-for-long-running-agents .[10] Chenyu Zhou, Huacan Chai, Wenteng Chen, Zihan Guo, Rong Shan, Yuanyi Song, Tianyi Xu, Yingxuan Yang, Aofan Yu, Weiming Zhang, Congming Zheng, Jiachen Zhu, Zeyu Zheng, Zhuosheng Zhang, Xingyu Lou, Changwang 
+
+10 Zhang, Zhihui Fu, Jun Wang, Weiwen Liu, Jianghao Lin, and Weinan Zhang. Externalization in llm agents: A unified review of memory, skills, protocols and harness engineering, 2026. URL https://arxiv.org/abs/2604.08224 .[11] Li Ju, Jun Zhao, Mingxu Chai, Ziyu Shen, Xiangyang Wang, Yage Geng, Chunchun Ma, Hao Peng, Guangbin Li, Tao Li, Chengyong Liao, Fu Wang, Xiaolong Wang, Junshen Chen, Rui Gong, Shĳia Liang, Feiyan Li, Ming Zhang, Kexin Tan, Junjie Ye, Zhiheng Xi, Shihan Dou, Tao Gui, Yuankai Ying, Yang Shi, Yue Zhang, and Qi Zhang. Wispaper: Your ai scholar search engine, 2026. URL https://arxiv.org/abs/2512.06879 .[12] Mike A Merrill, Alexander Glenn Shaw, Nicholas Carlini, Boxuan Li, Harsh Raj, Ivan Bercovich, Lin Shi, Jeong Yeon Shin, Thomas Walshe, E. Kelly Buchanan, Junhong Shen, Guanghao Ye, Haowei Lin, Jason Poulos, Maoyu Wang, Marianna Nezhurina, Di Lu, Orfeas Menis Mastromichalakis, Zhiwei Xu, Zizhao Chen, Yue Liu, Robert Zhang, Leon Liangyu Chen, Anurag Kashyap, Jan-Lucas Uslu, Jeffrey Li, Jianbo Wu, Minghao Yan, Song Bian, Vedang Sharma, Ke Sun, Steven Dillmann, Akshay Anand, Andrew Lanpouthakoun, Bardia Koopah, Changran Hu, Etash Kumar Guha, Gabriel H. S. Dreiman, Jiacheng Zhu, Karl Krauth, Li Zhong, Niklas Muennighoff, Robert Kwesi Amanfu, Shangyin Tan, Shreyas Pimpalgaonkar, Tushar Aggarwal, Xiangning Lin, Xin Lan, Xuandong Zhao, Yiqing Liang, Yuanli Wang, Zilong Wang, Changzhi Zhou, David Heineman, Hange Liu, Harsh Trivedi, John Yang, Junhong Lin, Manish Shetty, Michael Yang, Nabil Omi, Negin Raoof, Shanda Li, Terry Yue Zhuo, Wuwei Lin, Yiwei Dai, Yuxin Wang, Wenhao Chai, Shang Zhou, Dariush Wahdany, Ziyu She, Jiaming Hu, Zhikang Dong, Yuxuan Zhu, Sasha Cui, Ahson Saiyed, Arinbjörn Kolbeinsson, Christopher Michael Rytting, Ryan Marten, Yixin Wang, Jenia Jitsev, Alex Dimakis, Andy Konwinski, and Ludwig Schmidt. Terminal-bench: Benchmarking agents on hard, realistic tasks in command line interfaces. In The Fourteenth International Conference on Learning Representations, 2026. URL 
+
+https://openreview.net/forum?id=a7Qa4CcHak .[13] Keyu Li, Junhao Shi, Yang Xiao, Mohan Jiang, Jie Sun, Yunze Wu, Dayuan Fu, Shĳie Xia, Xiaojie Cai, Tianze Xu, Weiye Si, Wenjie Li, Dequan Wang, and Pengfei Liu. Agencybench: Benchmarking the frontiers of autonomous agents in 1m-token real-world contexts, 2026. URL https://arxiv.org/abs/2601.11044 .[14] Abhishek Chandwani and Ishan Gupta. Beyond binary correctness: Scaling evaluation of long-horizon agents on subjective enterprise tasks, 2026. URL https://arxiv.org/abs/2603.22744 .[15] Hui-Ze Tan, Xiao-Wen Yang, Hao Chen, Jie-Jing Shao, Yi Wen, Yuteng Shen, Weihong Luo, Xiku Du, Lan-Zhe Guo, and Yu-Feng Li. Hindsight credit assignment for long-horizon llm agents, 2026. URL https://arxiv.org/abs/ 2603.08754 .[16] Long Ouyang, Jeff Wu, Xu Jiang, Diogo Almeida, Carroll L. Wainwright, Pamela Mishkin, Chong Zhang, Sandhini Agarwal, Katarina Slama, Alex Ray, John Schulman, Jacob Hilton, Fraser Kelton, Luke Miller, Maddie Simens, Amanda Askell, Peter Welinder, Paul Christiano, Jan Leike, and Ryan Lowe. Training language models to follow instructions with human feedback. In Proceedings of the 36th International Conference on Neural Information Processing Systems, NIPS ’22, Red Hook, NY, USA, 2022. Curran Associates Inc. ISBN 9781713871088. [17] Hunter Lightman, Vineet Kosaraju, Yura Burda, Harri Edwards, Bowen Baker, Teddy Lee, Jan Leike, John Schulman, Ilya Sutskever, and Karl Cobbe. Let’s verify step by step, 2023. URL https://arxiv.org/abs/2305.20050 .[18] Wenlong Huang, Pieter Abbeel, Deepak Pathak, and Igor Mordatch. Language models as zero-shot planners: Extract-ing actionable knowledge for embodied agents, 2022. URL https://openreview.net/forum?id=6NT1a56mNim .[19] brian ichter, Anthony Brohan, Yevgen Chebotar, Chelsea Finn, Karol Hausman, Alexander Herzog, Daniel Ho, Julian Ibarz, Alex Irpan, Eric Jang, Ryan Julian, Dmitry Kalashnikov, Sergey Levine, Yao Lu, Carolina Parada, Kanishka Rao, Pierre Sermanet, Alexander T Toshev, Vincent Vanhoucke, Fei Xia, Ted Xiao, Peng Xu, Mengyuan Yan, Noah Brown, Michael Ahn, Omar Cortes, Nicolas Sievers, Clayton Tan, Sichun Xu, Diego Reyes, Jarek Rettinghouse, Jornell Quiambao, Peter Pastor, Linda Luu, Kuang-Huei Lee, Yuheng Kuang, Sally Jesmonth, Nikhil J. Joshi, Kyle Jeffrey, Rosario Jauregui Ruano, Jasmine Hsu, Keerthana Gopalakrishnan, Byron David, Andy Zeng, and Chuyuan Kelly Fu. Do as i can, not as i say: Grounding language in robotic affordances. In Karen Liu, Dana Kulic, and Jeff Ichnowski, editors, Proceedings of The 6th Conference on Robot Learning, volume 205 of Proceedings of Machine Learning Research, pages 287–318. PMLR, 14–18 Dec 2023. URL https: //proceedings.mlr.press/v205/ichter23a.html .[20] Juan Rocamonde, Victoriano Montesinos, Elvis Nava, Ethan Perez, and David Lindner. Vision-language models are zero-shot reward models for reinforcement learning. In The Twelfth International Conference on Learning Representations, 2024. URL https://openreview.net/forum?id=N0I2RtD8je .
+
+11 [21] Laura Ruis, Maximilian Mozes, Juhan Bae, Siddhartha Rao Kamalakara, Dwaraknath Gnaneshwar, Acyr Locatelli, Robert Kirk, Tim Rocktaeschel, Edward Grefenstette, and Max Bartolo. Procedural knowledge in pretraining drives reasoning in large language models. In Y. Yue, A. Garg, N. Peng, F. Sha, and R. Yu, editors, International Conference on Learning Representations, volume 2025, pages 29367–29429, 2025. URL https://proceedings.iclr.cc/ paper_files/paper/2025/file/482847908fd916b5b6b9e82525c773ad-Paper-Conference.pdf .[22] Mohit Shridhar, Xingdi Yuan, Marc-Alexandre Cote, Yonatan Bisk, Adam Trischler, and Matthew Hausknecht. {ALFW}orld: Aligning text and embodied environments for interactive learning. In International Conference on Learning Representations, 2021. URL https://openreview.net/forum?id=0IOX0YcCdTn .[23] Ruoyao Wang, Peter Jansen, Marc-Alexandre Côté, and Prithviraj Ammanabrolu. ScienceWorld: Is your agent smarter than a 5th grader? In Yoav Goldberg, Zornitsa Kozareva, and Yue Zhang, editors, Proceedings of the 2022 Conference on Empirical Methods in Natural Language Processing, pages 11279–11298, Abu Dhabi, United Arab Emirates, December 2022. Association for Computational Linguistics. doi: 10.18653/v1/2022.emnlp-main.775. URL 
+
+https://aclanthology.org/2022.emnlp-main.775/ .[24] XiaomiMiMo. Mimo-vl-7b-rl-2508. https://huggingface.co/XiaomiMiMo/MiMo-VL-7B-RL-2508 , 2025. Model checkpoint. Accessed: 2026-05-18. [25] Qwen Team. Qwen2.5-vl-7b-instruct. https://huggingface.co/Qwen/Qwen2.5-VL-7B-Instruct , 2025. Instruction-tuned 7B Qwen2.5-VL model checkpoint. Accessed: 2026-05-18. [26] Qwen Team. Qwen2.5-32b-instruct-awq. https://huggingface.co/Qwen/Qwen2.5-32B-Instruct-AWQ , 2024. AWQ 4-bit quantized model checkpoint. Accessed: 2026-05-18. [27] Qwen Team. Qwen2.5-vl-72b-instruct-awq. https://huggingface.co/Qwen/Qwen2. 5-VL-72B-Instruct-AWQ , 2025. AWQ quantized instruction-tuned 72B Qwen2.5-VL model checkpoint. Accessed: 2026-05-18. [28] Qwen Team. Qwen3-30b-a3b-instruct-2507-fp8. https://huggingface.co/Qwen/ Qwen3-30B-A3B-Instruct-2507-FP8 , 2025. FP8 quantized checkpoint of Qwen3-30B-A3B-Instruct-2507. Accessed: 2026-05-18. [29] Qwen Team. Qwen3-vl-30b-a3b-instruct. https://huggingface.co/Qwen/Qwen3-VL-30B-A3B-Instruct ,2025. MoE instruction-tuned Qwen3-VL model checkpoint. Accessed: 2026-05-18. [30] Qwen Team. Qwen3-vl-32b-thinking-fp8. https://huggingface.co/Qwen/Qwen3-VL-32B-Thinking-FP8 ,2025. FP8 quantized checkpoint of Qwen3-VL-32B-Thinking. Accessed: 2026-05-18. [31] Sanjiban Choudhury. Process reward models for llm agents: Practical framework and directions, 2025. URL 
+
+https://arxiv.org/abs/2502.10325 .[32] Zhiheng Xi, Chenyang Liao, Guanyu Li, Yajie Yang, Wenxiang Chen, Zhihao Zhang, Binghai Wang, Senjie Jin, Yuhao Zhou, Jian Guan, Wei Wu, Tao Ji, Tao Gui, Qi Zhang, and Xuanjing Huang. Agentprm: Process reward models for llm agents via step-wise promise and progress, 2025. URL https://arxiv.org/abs/2511.08325 .[33] Danyang Zhang, Situo Zhang, Ziyue Yang, Zichen Zhu, Zihan Zhao, Ruisheng Cao, Lu Chen, and Kai Yu. Progrm: Build better gui agents with progress rewards, 2025. URL https://arxiv.org/abs/2505.18121 .[34] Ilze Amanda Auzina, Joschka Strüber, Sergio Hernández-Gutiérrez, Shashwat Goel, Ameya Prabhu, and Matthias Bethge. Intrinsic credit assignment for long horizon interaction. In Forty-third International Conference on Machine Learning, 2026. URL https://openreview.net/forum?id=SAJMlj9x39 .[35] Taiyi Wang, Sian Gooding, Florian Hartmann, Oriana Riva, and Edward Grefenstette. A subgoal-driven framework for improving long-horizon llm agents, 2026. URL https://arxiv.org/abs/2603.19685 .[36] Tianbao Xie, Siheng Zhao, Chen Henry Wu, Yitao Liu, Qian Luo, Victor Zhong, Yanchao Yang, and Tao Yu. Text2reward: Reward shaping with language models for reinforcement learning. In The Twelfth International Conference on Learning Representations, 2024. URL https://openreview.net/forum?id=tUM39YTRxH .[37] Yecheng Jason Ma, William Liang, Guanzhi Wang, De-An Huang, Osbert Bastani, Dinesh Jayaraman, Yuke Zhu, Linxi Fan, and Anima Anandkumar. Eureka: Human-level reward design via coding large language models. In The 
+
+12 Twelfth International Conference on Learning Representations, 2024. URL https://openreview.net/forum? id=IEduRUO55F .[38] Yufei Wang, Zhanyi Sun, Jesse Zhang, Zhou Xian, Erdem Biyik, David Held, and Zackory Erickson. RL-VLM-f: Reinforcement learning from vision language foundation model feedback. In Ruslan Salakhutdinov, Zico Kolter, Katherine Heller, Adrian Weller, Nuria Oliver, Jonathan Scarlett, and Felix Berkenkamp, editors, Proceedings of the 41st International Conference on Machine Learning, volume 235 of Proceedings of Machine Learning Research, pages 51484–51501. PMLR, 21–27 Jul 2024. URL https://proceedings.mlr.press/v235/wang24bn.html .[39] Vishnu Sarukkai, Brennan Shacklett, Zander Majercik, Kush Bhatia, Christopher Re, and Kayvon Fatahalian. Automated rewards via LLM-generated progress functions, 2025. URL https://openreview.net/forum?id= lvDHfy169r .[40] Xiuhui Zhang, Ning Gao, Xingyu Jiang, Yihui Chen, Yuheng Pan, Mohan Zhang, and Yue Deng. Progress reward model for reinforcement learning via large language models. In The Thirty-ninth Annual Conference on Neural Information Processing Systems, 2025. URL https://openreview.net/forum?id=TJhHb6CscW .[41] Henrik Müller and Daniel Kudenko. Automating potential-based reward shaping with vision language model guidance, 2026. URL https://arxiv.org/abs/2606.27180 .[42] Andrew Y. Ng, Daishi Harada, and Stuart J. Russell. Policy invariance under reward transformations: Theory and application to reward shaping. In Proceedings of the Sixteenth International Conference on Machine Learning, ICML ’99, page 278–287, San Francisco, CA, USA, 1999. Morgan Kaufmann Publishers Inc. ISBN 1558606122. 
+
+13 Appendix 
+
+## A World Potential Model Instantiation and Capability Evaluation Details 
+
+This appendix provides implementation details for the World Potential Model (WPM ) instantiation and the capability evaluations in Section 3. We first present the prompt interfaces used to elicit realized-progress judgments, then describe the construction of task-specific milestone ladders, and finally detail the environment-grounded labels used for capability evaluation. 
+
+A.1 WPM Progress-Judgment Interfaces 
+
+As described in Section 2, we access world potential primarily through ordinal judgments rather than asking the model to directly produce a globally calibrated scalar score. Our implementation uses two prompt interfaces: pairwise progress comparison between agent contexts and anchored progress localization of a single context. 
+
+Pairwise progress comparison. Given two agent contexts associated with the same task goal, the WPM 
+
+identifies which context embodies greater goal-relevant realized progress toward task completion. Listing 1 shows the prompt used for this comparison. 
+
+Listing 1 Prompt for comparing the progress of two agent contexts. 
+
+> You are evaluating the progress of two agent contexts on the same task. ## Task Description {sample.task_description} ## Context A {context_a} ## Context B {context_b} ## Question Which context has made MORE progress toward completing the task? Provide your reasoning first, then give your final answer. Output format: Reasoning: <your analysis> Answer: <A or B>
+
+Anchored progress localization. For downstream scalarization, we additionally provide the WPM with the fixed task-specific milestone ladder and ask it to localize the current context relative to the ordered progress anchors. The output is the anchor index corresponding to the context’s realized-progress level, whose associated coordinate determines the scalar world potential . Listing 2 shows the prompt used in our implementation. 
+
+Listing 2 Prompt for anchored progress localization. 
+
+> You are evaluating the realized progress of an embodied agent on a task. ## Task {sample.task_description} ## Ordered Progress Anchors {generated_formatted_milestones} The anchors represent increasing levels of realized progress toward task completion. ## Current Context {formatted_context} ## Question
+
+14 Which anchor best represents the realized-progress level of the current context? Do not assign progress that has not yet been realized. Provide your reasoning first, then give your final answer. Output format: Reasoning: <your analysis> Answer: <one anchor id, e.g. {answer_options}> 
+
+Pairwise comparison directly probes the ordinal progress relation underlying a WPM , while anchored localization implements the task-local scalarization used in our experiments. In Section 3, both outputs are evaluated against independently constructed environment-grounded labels described in Appendix A.3. 
+
+A.2 Task-Specific Anchors Construction 
+
+The scalar construction in Section 2.3 requires a task-local set of ordered progress anchors 𝑀 𝑔 . The WPM formulation does not require a particular source for these anchors; here we describe the construction used in our experiments. For each task instance, we provide a pretrained model with the task description and one successful expert trajectory. The purpose of the trajectory is to expose a valid realization of the task from which the model can identify salient intermediate accomplishments. It is used only to construct the reference frame: it does not train or fine-tune the WPM evaluator, and it is not provided when the WPM subsequently evaluates agent-generated contexts. Importantly, the generated anchors describe task states rather than steps of the demonstration. We instruct the model to identify verifiable accomplishments that characterize increasing levels of goal-relevant realized progress, rather than reproducing the demonstrated action sequence. Consequently, the resulting ladder provides a sparse set of reference points rather than progress labels for the arbitrary contexts that the policy may later visit. Localizing such contexts relative to these anchors remains the responsibility of the frozen 
+
+WPM .Concretely, the model generates between 4 and 10 intermediate anchors according to task complexity. Each anchor must (i) describe a salient accomplishment relevant to task completion, (ii) be state-based rather than tied to a particular action or trajectory position, and (iii) be verifiable from the agent-visible context. The model also assigns each anchor a scalar coordinate satisfying 0 = 𝜙 0 < 𝜙 1 < · · · < 𝜙 𝐾 = 1,
+
+where 𝑚 0 denotes no meaningful task progress and 𝑚 𝐾 denotes task completion. Coordinates are intended to reflect the relative amount of goal-relevant progress represented by each accomplishment rather than being determined solely by its ordinal index. The resulting anchor set is generated once and fixed throughout capability evaluation and policy optimization. Thus, this instantiation uses a single successful demonstration to establish task-local calibration, while relying on pretrained knowledge to interpret previously unseen and potentially off-demonstration agent contexts relative to that calibration. Listing 3 gives the prompt used to construct the anchor set, and Listing 4 shows an example. 
+
+Listing 3 Prompt template for constructing a task-specific milestone ladder. 
+
+> You are a task decomposition expert. ## Task Description {task_description} ## Expert Successful Trajectory {expert_trajectory}
+
+15 ## Instructions Analyze the task and successful expert trajectory and construct an ordered set of milestones representing increasing levels of realized progress from task initiation to completion. Requirements: 1. Generate between 4 and 10 intermediate milestones depending on task complexity: simpler tasks need fewer milestones, while complex multi-stage tasks need more. 2. Each milestone should describe a salient accomplishment or state relevant to completing the task. 3. Criteria must be state-based rather than step-based. Do not refer to step numbers or positions in the expert trajectory. 4. Milestones should be verifiable from the agent context and ordered according to the logical progression of the task. 5. Assign each milestone a progress coordinate between 0 and 1 that reflects how much goal-relevant progress the milestone represents. Coordinates must increase strictly with the milestone order; do not assign them solely from the milestone index. Use 0 for the initial anchor and 1 for task completion. Output format (strict JSON): {"milestones": [ {"id": "M0", "name": "Not started", "criteria": "No meaningful task progress has been made.", "progress": 0.0 }, {"id": "M1", "name": "Milestone name", "criteria": "Verifiable state-based accomplishment", "progress": <value between 0 and 1> }, ... {"id": "M<K>", "name": "Task complete", "criteria": "The task objective has been completed.", "progress": 1.0 }], "reasoning": "Brief explanation of the milestone decomposition and progress coordinates." }
+
+Listing 4 Example of a generated task-specific milestone ladder. 
+
+{"milestones": [ {"id": "M0", "name": "Not started", "criteria": "No meaningful task progress has been made.", "progress": 0.0 }, {"id": "M1", "name": "Locate the cup", "criteria": "The target cup is explicitly visible in the environment observation.", "progress": 0.10 }, {"id": "M2", "name": "Pick up the cup", "criteria": "The agent has successfully picked up the target cup.", "progress": 0.25 }, {"id": "M3", "name": "Reach the sink with the cup", "criteria": "The agent is carrying the target cup and has reached the sink basin.", "progress": 0.40 }, {"id": "M4", 
+
+16 "name": "Clean the cup", "criteria": "The target cup has been successfully cleaned.", "progress": 0.65 }, {"id": "M5", "name": "Reach the cabinet with the clean cup", "criteria": "The agent is carrying the cleaned cup and has reached the target cabinet.", "progress": 0.80 }, {"id": "M6", "name": "Place the clean cup in the cabinet", "criteria": "The cleaned target cup has been placed in the specified cabinet, completing the task.", "progress": 1.0 }]}
+
+A.3 Environment-Grounded Capability Evaluation Labels 
+
+We construct capability-evaluation labels from privileged progress signals available in the two environments. These signals are used only to construct evaluation targets and are never provided to the evaluated models. For each environment, let 𝑃 (𝑥 ) denote the privileged progress score associated with an agent context 𝑥 , with larger values indicating greater environment-grounded progress toward task completion. 
+
+Environment-grounded progress scores. For ALFWorld, we use the environment’s symbolic planner to measure remaining distance to task completion. Let 𝐿 𝐷 (𝑥 ) denote the length of an expert plan from the restored environment state associated with context 𝑥 to a goal-satisfying state. We define 
+
+𝑃 ALF (𝑥 ) = 1 − 𝐿 𝐷 (𝑥 )
+
+𝐿 𝐷 (𝑥 0) , (18) where 𝑥 0 is the initial context of the task instance. 𝑃 ALF is formally a normalized cost-to-go-based proxy, rather than a definition of retrospective realized progress itself. We use it because ALFWorld consists of structured navigation and manipulation tasks in which realizing additional goal-relevant prerequisites typically reduces the remaining expert-plan distance, while losing previously satisfied conditions can increase it. We additionally exclude near-tied states when constructing pairwise labels, as described below, to avoid treating small and potentially ambiguous differences in planner distance as reliable progress distinctions. As a qualitative sanity check, we manually inspected 100 randomly sampled context pairs and found that the planner-induced ordering was consistent with relative realized-progress judgments in 100% of the inspected pairs. For ScienceWorld, we use the benchmark’s native normalized task score, 
+
+𝑃 SW (𝑥 ) = 𝑆 env (𝑥 ), (19) which provides partial credit according to the task’s environment-defined goals and subgoals. Because this score directly reflects which task components have already been satisfied, it provides a more direct operationalization of realized task progress than the planner-distance proxy used in ALFWorld. 
+
+Pairwise progress labels. For two contexts 𝑥 𝑖 and 𝑥 𝑗 from the same task instance, we label the context with the larger privileged progress score as having greater realized progress. Pairs with equal scores are discarded. For ALFWorld, we additionally retain a pair only when 
+
+𝑃 ALF (𝑥 𝑖 ) − 𝑃 ALF (𝑥 𝑗 ) > 𝛿 , 𝛿 = 0.12 , (20) 17 to exclude near-tied states for which differences in planner distance provide an ambiguous progress ordering. 
+
+Anchored-localization labels. Each generated milestone anchor 𝑚 𝑘 is associated with a corresponding expert-trajectory context ¯𝑥 𝑘 . We map this context onto the privileged environment progress scale, 
+
+𝑠 𝑘 = 𝑃 ( ¯ 𝑥 𝑘 ), (21) and use 𝑠 𝑘 as the environment-grounded progress level associated with anchor 𝑘 . For a sampled context 𝑥 ,the localization target is 
+
+𝑦 loc (𝑥 ) = max {𝑘 : 𝑠 𝑘 ≤ 𝑃 (𝑥 )} . (22) Thus, the target identifies the most advanced anchor whose environment-grounded progress level has been reached by the current context. Importantly, this construction does not require the natural-language criterion of each milestone to be independently evaluated when constructing the target. We use 𝑃 ALF in ALFWorld and 𝑃 SW in ScienceWorld. 
+
+Pairwise comparison and Anchored localization therefore use the same underlying environment-grounded progress signal for evaluation: the former tests the induced ordering between contexts, while the latter tests localization relative to the fixed task-specific progress anchors. 
+
+## B Process-Sensitive Return Derivation 
+
+This appendix derives the process-sensitive return introduced in Section 4 and characterizes how the parameter 
+
+𝜌 controls the temporal weighting of world potentials . We first derive the return decomposition, then examine its boundary cases and induced trajectory preferences. 
+
+B.1 Return Decomposition 
+
+Recall the world-potential transition signal 
+
+𝑟 WP  
+
+> 𝑡
+
+= 𝑟 env  
+
+> 𝑡
+
++ 𝛾 Φ𝑔 (𝑥 𝑡 +1) − Φ𝑔 (𝑥 𝑡 ), (23) and the effective return discount 
+
+𝛽 = 𝛾𝜌 , 𝜌 ∈ [ 0, 1]. (24) For a trajectory terminating at context 𝑥 𝑇 , let 𝐻 = 𝑇 − 𝑡 . The process-sensitive return from step 𝑡 is 
+
+𝐺 WP ,𝜌  
+
+> 𝑡
+
+=
+
+> 𝐻 −1
+
+Õ 
+
+> ℓ=0
+
+𝛽 ℓ 𝑟 WP  
+
+> 𝑡 +ℓ
+
+. (25) Substituting the transition signal gives 
+
+𝐺 WP ,𝜌  
+
+> 𝑡
+
+=
+
+> 𝐻 −1
+
+Õ 
+
+> ℓ=0
+
+𝛽 ℓ 𝑟 env  
+
+> 𝑡 +ℓ
+
++ 𝛾 
+
+> 𝐻 −1
+
+Õ 
+
+> ℓ=0
+
+𝛽 ℓ Φ𝑔 (𝑥 𝑡 +ℓ +1) − 
+
+> 𝐻 −1
+
+Õ 
+
+> ℓ=0
+
+𝛽 ℓ Φ𝑔 (𝑥 𝑡 +ℓ ). (26) Re-indexing the second potential sum yields 
+
+𝐺 WP ,𝜌  
+
+> 𝑡
+
+=
+
+> 𝐻 −1
+
+Õ 
+
+> ℓ=0
+
+𝛽 ℓ 𝑟 env  
+
+> 𝑡 +ℓ
+
+− Φ𝑔 (𝑥 𝑡 ) + 
+
+> 𝐻 −1
+
+Õ
+
+> 𝑘 =1
+
+
+
+𝛾𝛽 𝑘 −1 − 𝛽 𝑘 
+
+
+
+Φ𝑔 (𝑥 𝑡 +𝑘 ) + 𝛾𝛽 𝐻 −1Φ𝑔 (𝑥 𝑇 ). (27) Since 𝛽 = 𝛾𝜌 ,
+
+𝛾𝛽 𝑘 −1 − 𝛽 𝑘 = 𝛾 (1 − 𝜌 )𝛽 𝑘 −1. (28) 18 Therefore, 
+
+𝐺 WP ,𝜌  
+
+> 𝑡
+
+=
+
+> 𝐻 −1
+
+Õ 
+
+> ℓ=0
+
+𝛽 ℓ 𝑟 env  
+
+> 𝑡 +ℓ
+
+− Φ𝑔 (𝑥 𝑡 )+ 𝛾 (1 − 𝜌 )
+
+> 𝐻 −1
+
+Õ
+
+> 𝑘 =1
+
+𝛽 𝑘 −1Φ𝑔 (𝑥 𝑡 +𝑘 ) + 𝛾𝛽 𝐻 −1Φ𝑔 (𝑥 𝑇 ). (29) Equation (29) separates the return into four components: discounted environment reward, the current-context potential, temporally weighted intermediate potentials, and the terminal-context potential. For 0 < 𝜌 < 1, the intermediate-potential term is nonzero, allowing realized progress along the continuation to directly affect step-level credit. 
+
+B.2 Temporal Weighting Controlled by 𝜌 
+
+Equation (29) makes explicit how 𝜌 controls the temporal weighting of world potentials . The 𝑘 -th future intermediate context receives weight 
+
+𝑤 𝑘 (𝜌 ) = 𝛾 (1 − 𝜌 )( 𝛾𝜌 )𝑘 −1 = 𝛾 𝑘 (1 − 𝜌 )𝜌 𝑘 −1 , 1 ≤ 𝑘 ≤ 𝐻 − 1, (30) while the terminal-context potential receives weight 
+
+𝑤 𝑇 (𝜌 ) = 𝛾 (𝛾𝜌 )𝐻 −1 = 𝛾 𝐻 𝜌 𝐻 −1. (31) The environment reward at temporal offset ℓ receives weight 
+
+𝑢 ℓ (𝜌 ) = (𝛾𝜌 )ℓ . (32) For two adjacent intermediate contexts, 
+
+𝑤 𝑘 +1(𝜌 )
+
+𝑤 𝑘 (𝜌 ) = 𝛾𝜌 . (33) Thus, 𝛾𝜌 determines how rapidly the influence of future intermediate contexts decays with temporal distance. Smaller values of 𝜌 concentrate credit on near-term realized progress, whereas larger values allow progress and regression farther in the future to influence the current action. At the same time, increasing 𝜌 reduces the factor 1 − 𝜌 multiplying intermediate potentials while increasing the relative influence of longer-range environment rewards and the terminal potential. Thus, 𝜌 controls both the temporal range of credit and the relative emphasis on intermediate versus terminal signals. 
+
+Boundary cases. When 𝜌 = 0, we have 𝛽 = 0, and therefore 
+
+𝐺 WP ,0 
+
+> 𝑡
+
+= 𝑟 env  
+
+> 𝑡
+
++ 𝛾 Φ𝑔 (𝑥 𝑡 +1) − Φ𝑔 (𝑥 𝑡 ) = 𝑟 WP  
+
+> 𝑡
+
+. (34) The current action is evaluated only through its immediate environment signal and one-step change in realized progress. For 0 < 𝜌 < 1, future intermediate contexts receive nonzero weight, so the return can distinguish continuations according to when progress is realized and whether it is subsequently preserved. When 𝜌 = 1, the intermediate-potential coefficient vanishes: 
+
+𝛾 (1 − 𝜌 )
+
+> 𝐻 −1
+
+Õ
+
+> 𝑘 =1
+
+(𝛾𝜌 )𝑘 −1Φ𝑔 (𝑥 𝑡 +𝑘 ) = 0. (35) 19 The potential-dependent component then reduces to 
+
+−Φ𝑔 (𝑥 𝑡 ) + 𝛾 𝐻 Φ𝑔 (𝑥 𝑇 ). (36) Thus, when the environment return and the current and terminal potentials are fixed, intermediate realized-progress differences no longer affect the return. 
+
+Temporal scale of an individual intermediate context. For a fixed temporal position 𝑘 ≥ 2, the dependence of Eq. (30) on 𝜌 , up to the factor 𝛾 𝑘 , is 
+
+𝑓 𝑘 (𝜌 ) = (1 − 𝜌 )𝜌 𝑘 −1. (37) Differentiating gives 
+
+𝑑 𝑑 𝜌 
+
+(1 − 𝜌 )𝜌 𝑘 −1 = 𝜌 𝑘 −2 (𝑘 − 1) − 𝑘 𝜌  . (38) Thus, the weight assigned to the 𝑘 -th future intermediate context is maximized at 
+
+𝜌 ★ 
+
+> 𝑘
+
+= 𝑘 − 1
+
+𝑘 = 1 − 1
+
+𝑘 . (39) For 𝑘 = 1, 𝑤 1(𝜌 ) = 𝛾 (1 − 𝜌 ) is instead maximized at 𝜌 = 0. Equation (39) provides a temporal-scale interpretation: sensitivity to progress or regression occurring farther in the future requires a larger value of 𝜌 . It should not be interpreted as an optimal parameter formula for the complete learning objective, since the appropriate choice also depends on the task horizon, environment rewards, and evaluator noise. 
+
+Geometric-weighting interpretation. When 𝛾 = 1, the potential component of Eq. (29) becomes 
+
+−Φ𝑔 (𝑥 𝑡 ) + ( 1 − 𝜌 )
+
+> 𝐻 −1
+
+Õ
+
+> 𝑘 =1
+
+𝜌 𝑘 −1Φ𝑔 (𝑥 𝑡 +𝑘 ) + 𝜌 𝐻 −1Φ𝑔 (𝑥 𝑇 ). (40) The coefficients on all noncurrent contexts satisfy 
+
+(1 − 𝜌 )
+
+> 𝐻 −1
+
+Õ
+
+> 𝑘 =1
+
+𝜌 𝑘 −1 + 𝜌 𝐻 −1 = 1. (41) They can therefore be viewed as a truncated geometric weighting over a future evaluation time. For the corresponding untruncated geometric distribution, Pr (𝐾 = 𝑘 ) = (1 − 𝜌 )𝜌 𝑘 −1 , 𝔼 [𝐾 ] = 11 − 𝜌 . (42) When 𝛾 < 1, both environment and potential contributions additionally decay according to 𝛽 = 𝛾𝜌 . In this case, 
+
+𝐻 eff ≈ 11 − 𝛾𝜌 (43) provides a rough temporal decay scale. Because 𝛾 also changes the total coefficient mass, Eq. (43) should be interpreted as an influence range rather than the exact mean of a normalized distribution. 
+
+B.3 Illustrative Trajectory Preferences 
+
+The decomposition in the preceding subsection makes the induced trajectory preferences explicit. We illustrate these preferences with two simple examples, setting 𝛾 = 1 and omitting the current-context term 20 and environment return, which are identical across the compared trajectories. For 𝛾 = 1, the potential-dependent contribution to the return can be written as 
+
+e𝐺 = (1 − 𝜌 )
+
+> 𝐻 −1
+
+Õ
+
+> 𝑘 =1
+
+𝜌 𝑘 −1Φ𝑔 (𝑥 𝑘 ) + 𝜌 𝐻 −1Φ𝑔 (𝑥 𝐻 ), (44) where e𝐺 contains only the terms that can differ between the trajectories considered below. 
+
+B.3.1 Earlier Versus Later Realized Progress 
+
+Consider two trajectories that reach the same terminal potential: Trajectory A: Φ𝑔 (𝑥 1) = 1, Φ𝑔 (𝑥 2) = 1, Φ𝑔 (𝑥 3) = 1,
+
+Trajectory B: Φ𝑔 (𝑥 1) = 0, Φ𝑔 (𝑥 2) = 0, Φ𝑔 (𝑥 3) = 1.
+
+Trajectory A realizes high potential earlier and preserves it, whereas Trajectory B reaches the same potential only at termination. Here 𝐻 = 3. For Trajectory A, 
+
+e𝐺 𝐴 = (1 − 𝜌 ) Φ𝑔 (𝑥 1) + 𝜌 Φ𝑔 (𝑥 2) + 𝜌 2Φ𝑔 (𝑥 3)
+
+= (1 − 𝜌 )( 1 + 𝜌 ) + 𝜌 2
+
+= 1. (45) For Trajectory B, 
+
+e𝐺 𝐵 = (1 − 𝜌 ) Φ𝑔 (𝑥 1) + 𝜌 Φ𝑔 (𝑥 2) + 𝜌 2Φ𝑔 (𝑥 3)
+
+= 𝜌 2. (46) Therefore, 
+
+Δ𝐺 early = e𝐺 𝐴 − e𝐺 𝐵 
+
+= 1 − 𝜌 2 (47) Thus, for any 0 < 𝜌 < 1, the objective prefers the trajectory that realizes the same terminal progress earlier and preserves it. The strength of this preference decreases monotonically with 𝜌 and vanishes at 𝜌 = 1, where intermediate-context potentials no longer contribute directly to the return. 
+
+B.3.2 Preserved Progress Versus Intermediate Regression 
+
+Now consider two trajectories with the same next-context and terminal potentials: Trajectory A: Φ𝑔 (𝑥 1) = 1, Φ𝑔 (𝑥 2) = 1, Φ𝑔 (𝑥 3) = 1,
+
+Trajectory B: Φ𝑔 (𝑥 1) = 1, Φ𝑔 (𝑥 2) = 0, Φ𝑔 (𝑥 3) = 1.
+
+Both trajectories make the same immediate progress and reach the same terminal potential, but Trajectory B temporarily regresses at the second future context. 21 Again, 𝐻 = 3. For Trajectory A, 
+
+e𝐺 𝐴 = (1 − 𝜌 ) Φ𝑔 (𝑥 1) + 𝜌 Φ𝑔 (𝑥 2) + 𝜌 2Φ𝑔 (𝑥 3)
+
+= (1 − 𝜌 )( 1 + 𝜌 ) + 𝜌 2
+
+= 1. (48) For Trajectory B, 
+
+e𝐺 𝐵 = (1 − 𝜌 ) Φ𝑔 (𝑥 1) + 𝜌 Φ𝑔 (𝑥 2) + 𝜌 2Φ𝑔 (𝑥 3)
+
+= (1 − 𝜌 ) + 𝜌 2. (49) Their return difference is therefore 
+
+Δ𝐺 preserve = e𝐺 𝐴 − e𝐺 𝐵 
+
+= 1 − (1 − 𝜌 ) + 𝜌 2
+
+= 𝜌 − 𝜌 2
+
+= (1 − 𝜌 )𝜌 . (50) Thus, for any 0 < 𝜌 < 1, Trajectory A is preferred over Trajectory B: preserving realized progress yields a higher process-sensitive return than temporarily regressing and later recovering to the same terminal potential. At 𝜌 = 0, this difference is zero because a one-step objective cannot observe a regression occurring two transitions later. At 𝜌 = 1, it is also zero because intermediate-context potentials no longer contribute. The preference is maximized at 
+
+𝜌 ★ = 12 . (51) More generally, suppose two trajectories differ in potential by ΔΦ only at the 𝑘 -th future context. From Eq. (30), the induced return difference is 
+
+Δ𝐺 𝑘 = 𝛾 𝑘 (1 − 𝜌 )𝜌 𝑘 −1ΔΦ . (52) For 𝑘 ≥ 2, this difference is maximized with respect to 𝜌 at 
+
+𝜌 ★ 
+
+> 𝑘
+
+= 𝑘 − 1
+
+𝑘 . (53) This illustrates that sensitivity to progress or regression farther in the future requires a larger value of 𝜌 .
+
+B.4 Experimental Setting 
+
+We use the same parameter setting in all policy-optimization experiments: 
+
+𝛾 = 0.99 , 𝜌 = 0.95 . (54) The corresponding effective return discount is 
+
+𝛽 = 𝛾𝜌 = 0.9405 . (55) For intuition, Eq. (43) gives the approximate decay scale 
+
+𝐻 eff ≈ 11 − 0.9405 ≈ 16 .8 (56) 22 environment steps. This setting allows substantially delayed progress and terminal outcomes to influence earlier actions while retaining a nonzero intermediate-potential coefficient 1 − 𝜌 = 0.05. We use 𝜌 = 0.95 uniformly across tasks without per-task tuning or a systematic sensitivity analysis. We therefore treat it as a fixed algorithmic choice rather than claiming that it is empirically optimal or universally preferable for long-horizon tasks. 
+
+## C Policy Optimization Implementation Details 
+
+This appendix provides implementation details for the policy-optimization experiments in Section 5. The experiments compare outcome-only GRPO with WPM -guided optimization under a shared actor-training pipeline. The two methods use matched task sampling, rollout construction, policy models, and actor-update configurations, while differing in the learning signal and resulting credit construction. 
+
+C.1 Environments and Task Sampling 
+
+Benchmark documentation. We study two English-language interactive agent benchmarks with complemen-tary task domains. ALFWorld consists of compositional household navigation and object-manipulation tasks, including object placement, examination, cleaning, heating, and cooling. ScienceWorld is a text-based environment grounded in an elementary-school science curriculum and contains 30 task types spanning scientific procedures and reasoning involving topics such as changes of state, measurement, electrical conductivity, biology, chemistry, and forces. Both benchmarks require multi-step interaction with simulated environments rather than static language prediction. They contain no demographic groups or human-subject data relevant to our experiments. 
+
+Data partitions and statistics. We use the official data partitions provided by ALFWorld and ScienceWorld and do not construct additional random train–evaluation splits. ALFWorld contains 3 , 553 training games, 140 valid_seen games, and 134 valid_unseen games. We sample policy-training tasks from the 3 , 553-game training split and evaluate on all 134 valid_unseen games, which contain held-out environments and task instances. ScienceWorld contains 7 , 207 task variations across 30 task types. Its official partitions contain 3, 589 training, 1 , 799 development, and 1 , 819 test variations. We sample policy-training tasks from the official training variations and evaluate on the official test variations; the development variations are not used in our policy-optimization experiments. The ScienceWorld splits are exposed by the environment through 
+
+get_variations_train() , get_variations_dev() , and get_variations_test() .The dataset records supplied to our trainer serve only as rollout slots and should not be interpreted as additional benchmark examples or a new data split. Interactive task instances are sampled from the corresponding official benchmark partition when the environment is initialized or reset. 
+
+C.2 Training Configuration and Software 
+
+Training Configuration. We optimize Qwen2.5-Instruct-3B, Qwen2.5-Instruct-7B, and Qwen3-4B policies. Outcome-only GRPO and WPM -guided optimization use the same actor-training configuration. Each update samples 16 task groups with 8 policy rollouts per task, yielding 128 trajectories. Each rollout is capped at 30 environment actions, and the policy context retains the two most recent interaction steps. We use PPO-style clipped actor updates with KL regularization and the same invalid-action treatment for both methods. The learning rate is 1 × 10 −6, and training runs for 100 epochs. 
+
+Software and implementations. Our released implementation targets Linux with NVIDIA GPUs and Python 3.12. The reproduction environment uses vLLM 0.11.0, FlashAttention 2.7.4.post1, Gymnasium 0.29.1, and Stable-Baselines3 2.6.0. We use the ALFWorld environment through its official Python package and the ScienceWorld implementation included in our released codebase. The policy checkpoints are specified through the exact Hugging Face model identifiers. World-potential evaluation and milestone generation use 23 OpenAI-compatible vLLM endpoints serving Qwen/Qwen3-VL-32B-Thinking-FP8. The released implemen-tation and experiment entry points are provided in our public repository. Our computational experiments were conducted using 8 NVIDIA H100 GPUs. 
+
+C.3 Learning-Signal Construction 
+
+Outcome-only GRPO. Let 𝑅 (𝜏 ) = 10 · 1won denote the binary task outcome. In the policy-optimization implementation, we use the scaled terminal environment reward 
+
+𝑟 env  
+
+> 𝑡
+
+=
+
+(
+
+𝑅 (𝜏 ), 𝑡 = 𝑇 − 1,
+
+0, 𝑡 < 𝑇 − 1. (57) Outcome-only GRPO constructs trajectory-level group-relative advantages from this terminal outcome signal. 
+
+WPM -guided optimization. World-potential supervision is produced by the frozen evaluator described in Section 5. Milestone-ladder construction and anchored progress localization follow Appendix A. The process-sensitive transition signal and return follow Section 4 and Appendix B, using 
+
+𝛾 = 0.99 , 𝜌 = 0.95 .
+
+For successful episodes, the terminal world potential is set to 1; otherwise, the final evaluated potential is retained. 
+
+World potentials and process-sensitive returns are computed at the environment-action level. Step-level group-relative advantages are then constructed as described in Section 4. Because a single environment action may contain multiple generated tokens, all valid tokens belonging to the same action share the corresponding step-level advantage. The remaining actor-update procedure is shared with outcome-only GRPO. 
+
+C.4 Evaluation 
+
+We evaluate policies using episode-level task success rate. An episode is counted as successful when its final environment output reports info["won"] = True . We report the percentage of successful episodes over the evaluation set. The same evaluation protocol is used for vanilla, outcome-only GRPO, and WPM -guided policies. 
+
+C.5 Artifact Licenses and Terms of Use 
+
+We use publicly released benchmark environments and pretrained model checkpoints in accordance with their respective licenses and terms of use. The ALFWorld software is released under the MIT License; its official repository additionally lists TextWorld under the MIT License and Fast Downward under GPL v3.0. ScienceWorld is released under the Apache License 2.0. For the capability evaluations in Table 1, MiMo-VL-7B-RL-2508 is released under the MIT License; Qwen2.5-VL-7B-Instruct, Qwen2.5-32B-Instruct-AWQ, Qwen3-30B-A3B-Instruct-2507-FP8, Qwen3-VL-30B-A3B-Instruct, and Qwen3-VL-32B-Thinking-FP8 are released under the Apache License 2.0; and Qwen2.5-VL-72B-Instruct-AWQ is distributed under the Qwen License Agreement. For policy optimization, Qwen2.5-3B-Instruct is distributed under the Qwen Research License, which permits non-commercial research and evaluation use, while Qwen2.5-7B-Instruct and Qwen3-4B are released under the Apache License 2.0. The Qwen3-VL-32B evaluator used for world-potential estimation is also released under the Apache License 2.0. Our use of these artifacts is limited to research-oriented evaluation, inference, and policy optimization. We do not assume broader licensing rights for benchmark assets distributed separately from their software repositories, and any redistribution of third-party artifacts should retain the notices and conditions required by the corresponding upstream licenses. 24

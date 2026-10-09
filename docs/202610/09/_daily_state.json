@@ -1,0 +1,105 @@
+{
+  "date": "20261009",
+  "date_label": "",
+  "generated_at": "2026-10-09 00:36:41 UTC",
+  "recommend_exists": true,
+  "run_count": 1,
+  "papers": [
+    {
+      "paper_id": "2610.09560v1",
+      "route": "202610/09/2610.09560v1-world-potential-model-pretrained-world-knowledge-as-progress-potentials",
+      "title": "World Potential Model: Pretrained World Knowledge as Progress Potentials",
+      "section": "deep",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 9.0,
+      "evidence": "提出利用预训练世界知识评估语言智能体任务相对进度的目标条件评价器",
+      "first_seen_at": "2026-10-09 00:36:41 UTC",
+      "updated_at": "2026-10-09 00:36:41 UTC"
+    },
+    {
+      "paper_id": "2610.09858v1",
+      "route": "202610/09/2610.09858v1-training-advisors-for-llm-agents-from-task-outcomes",
+      "title": "Training Advisors for LLM Agents from Task Outcomes",
+      "section": "deep",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 9.0,
+      "evidence": "利用强化学习从任务结果训练评论家以指导LLM智能体",
+      "first_seen_at": "2026-10-09 00:36:41 UTC",
+      "updated_at": "2026-10-09 00:36:41 UTC"
+    },
+    {
+      "paper_id": "2610.05303v1",
+      "route": "202610/09/2610.05303v1-ascent-online-test-time-training-of-long-horizon-agents-via-self-distillation-of-verified-experience",
+      "title": "ASCENT: Online Test-Time Training of Long-Horizon Agents via Self-Distillation of Verified Experience",
+      "section": "deep",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 8.0,
+      "evidence": "提出使用已验证轨迹进行在线测试时训练，替代上下文记忆检索",
+      "first_seen_at": "2026-10-09 00:36:41 UTC",
+      "updated_at": "2026-10-09 00:36:41 UTC"
+    },
+    {
+      "paper_id": "2610.05935v1",
+      "route": "202610/09/2610.05935v1-thundersyncrl-lossless-acceleration-of-agentic-reinforcement-learning",
+      "title": "ThunderSyncRL: Lossless Acceleration of Agentic Reinforcement Learning",
+      "section": "deep",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 8.0,
+      "evidence": "智能体强化学习的无损加速",
+      "first_seen_at": "2026-10-09 00:36:41 UTC",
+      "updated_at": "2026-10-09 00:36:41 UTC"
+    },
+    {
+      "paper_id": "2609.39727v1",
+      "route": "202610/09/2609.39727v1-overforge-reasoning-through-strategies-and-tactics-helps-cooperative-lifelong-adaptation",
+      "title": "OverForge: Reasoning Through Strategies and Tactics Helps Cooperative Lifelong Adaptation",
+      "section": "quick",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 7.0,
+      "evidence": "面向合作LLM智能体的分层世界模型，分离战略与战术推理",
+      "first_seen_at": "2026-10-09 00:36:41 UTC",
+      "updated_at": "2026-10-09 00:36:41 UTC"
+    },
+    {
+      "paper_id": "2610.01939v1",
+      "route": "202610/09/2610.01939v1-fewer-tokens-better-action-gpt-6-astra-robot-agents-with-14-higher-success-rate-but-65-fewer-tokens",
+      "title": "Fewer Tokens, Better Action: GPT-6 Astra Robot Agents with 14% Higher Success Rate but 65% Fewer Tokens",
+      "section": "quick",
+      "tags": [
+        {
+          "kind": "query",
+          "label": "agent-memory"
+        }
+      ],
+      "score": 7.0,
+      "evidence": "处理视觉反馈、语言指令与动作原语的VLM智能体，并有选择性观察",
+      "first_seen_at": "2026-10-09 00:36:41 UTC",
+      "updated_at": "2026-10-09 00:36:41 UTC"
+    }
+  ]
+}
